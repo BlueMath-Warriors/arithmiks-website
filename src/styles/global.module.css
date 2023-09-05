@@ -1,11 +1,35 @@
+:root {
+  --secondary80: #5C5C5C;
+  --button-gradient: linear-gradient(230deg, #BC4E9B 19.66%, #0957DE 115.46%)
+}
+
 * {
   padding: 0px;
   margin: 0px;
   box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
+  /* font-family: "Poppins", sans-serif; */
+  /* font-family: 'Roboto', sans-serif; */
   color: #fff;
 }
 
 body {
-  font-family: "Poppins";
+  /* font-family: "Poppins";
+  font-family: 'Roboto', sans-serif; */
+}
+
+button {
+  cursor: pointer;
+}
+
+.main_hero {
+  background-color: #F2FAFC;
+  background-image: url('../images/hero-bg.png');
+  background-size: cover;
+  background-position: center;
+  height: 850px;
+  padding-top: 90px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

@@ -1,9 +1,9 @@
 import * as React from "react";
-import ComingSoonPage from "../components/ComingSoon";
+import LandingPage from "../components/Landing";
 
 const IndexPage = () => {
   return (
-    <ComingSoonPage/>
+    <LandingPage/>
   );
 };
 
