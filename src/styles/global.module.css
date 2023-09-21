@@ -44,3 +44,16 @@ button {
   align-items: center;
   flex-direction: column;
 }
+
+
+.services{
+  background-color: #FFF;
+  height: 1340px;
+  padding-top: 90px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+}
