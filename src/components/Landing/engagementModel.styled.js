@@ -34,21 +34,6 @@ export const BtnIcon = styled.img`
   height: 24px;
 `;
 
-export const ModelCardLeft = styled.div`
-  display: flex;
-  width: 1120px;
-  height: 376px;
-  padding: 0px 24px;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 48px;
-  flex-shrink: 0;
-  border-radius: 32px;
-  background: #181818;
-  box-shadow: 0px 16px 48px 0px rgba(0, 0, 0, 0.04);
-  margin-bottom: 32px;
-`;
-
 export const ModelCard = styled.div`
   display: flex;
   width: 1120px;
