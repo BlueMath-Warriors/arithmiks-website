@@ -10,11 +10,11 @@ import {
   CardBody,
   CardBtn,
   BtnIcon,
-} from "./engagementModel.styled";
-import * as containerStyles from "../../styles/global.module.css";
-import ArrowRigth from "../../images/ArrowRight.svg";
-import model_1_img from "../../images/model_1.jpg";
-import model_2_img from "../../images/model_2.jpg";
+} from "./index.styled";
+import * as containerStyles from "../../../styles/global.module.css";
+import ArrowRigth from "../../../images/ArrowRight.svg";
+import model_1_img from "../../../images/model_1.jpg";
+import model_2_img from "../../../images/model_2.jpg";
 
 const EngagementModel = () => {
   return (

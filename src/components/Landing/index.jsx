@@ -17,7 +17,7 @@ import {
 import { StaticImage, getSrc } from "gatsby-plugin-image";
 import heroBG from "../../images/hero-bg.png";
 import * as containerStyles from "../../styles/global.module.css";
-import EngagementModel from "./engagementModel";
+import EngagementModel from "./Engagement-Model";
 
 const LandingPage = () => {
   return (
