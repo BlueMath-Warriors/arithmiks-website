@@ -6,6 +6,7 @@ export const Header = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 35px;
 `
 export const Left = styled.div`
   text-align: left;
@@ -33,18 +34,6 @@ export const SmallTxt = styled.p`
   text-transform: uppercase;
   margin-bottom: 8px;
 `
-export const ViewAllBtn = styled.p`
-  display: inline-flex;
-  padding: 12px 16px 12px 24px;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-
-  border-radius: 6px;
-  border: 1px solid #E7EAEE;
-  background: #FFF;
-
-`
 export const HeaderText = styled.h1`
   color: #061237;
   font-variant-numeric: lining-nums proportional-nums;
@@ -52,7 +41,7 @@ export const HeaderText = styled.h1`
   font-family: Poppins;
   font-size: 44px;
   font-style: normal;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 60px;
   letter-spacing: -0.66px;
   width: 430px;
@@ -71,7 +60,7 @@ export const ViewButton = styled.button`
   gap: 8px;
   Style
   border-radius: 6px;
-  border: 1px solid var(--neutral-200, #E7EAEE);
+  border: 1px solid #E7EAEE;
   background: #FFF;
 
   color: #07090D;
