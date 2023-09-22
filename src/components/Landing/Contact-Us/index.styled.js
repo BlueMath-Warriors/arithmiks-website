@@ -107,14 +107,15 @@ export const CardContent = styled.div`
 `
 
 export const Caption = styled.h1`
-  color: #1D1D1F;
+  color: #8E8E8F;
   font-family: Inter;
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
-  line-height: 100%; /* 14px */
+  line-height: 100%;
   letter-spacing: 0.14px;
   text-transform: uppercase;
+
 `
 
 export const ContentText = styled.p`
