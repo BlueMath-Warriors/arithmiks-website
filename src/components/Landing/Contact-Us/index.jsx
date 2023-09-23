@@ -2,7 +2,6 @@ import React from "react";
 import {
   Caption,
   CardLeft,
-  CardRight,
   Circle,
   CircleIcon,
   HeaderText,
@@ -34,6 +33,8 @@ import insta_icon from "../../../images/social-icons/insta.svg";
 import twitter_icon from "../../../images/social-icons/twitter.svg";
 import dribble_icon from "../../../images/social-icons/dribble.svg";
 import bg_img from "../../../images/contact-left-bg.svg"
+
+import InputForm from "./Input-Form";
 
 const ContactUs = () => {
   return (
@@ -106,7 +107,7 @@ const ContactUs = () => {
               </FooterBottom>
             </CardFooter>
           </CardLeft>
-          <CardRight></CardRight>
+          <InputForm/>
         </MainCard>
       </div>
     </>

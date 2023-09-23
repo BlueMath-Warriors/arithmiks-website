@@ -177,8 +177,8 @@ export const CardRight = styled.div`
   z-index: 10;
   width: 672px;
   height: 654px;
-  border-radius: 24px;
-  background: #996767;
+  border-radius: 0px 24px 24px 0px;
+  background: #000;
   display: flex;
   justify-content: center;
   align-items: center;
