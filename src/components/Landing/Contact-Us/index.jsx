@@ -84,25 +84,31 @@ const ContactUs = () => {
                 <FooterText>Connect with us:</FooterText>
               </FooterTop>
               <FooterBottom>
-                <SocialContainer>
-                  <SocialIcon src={fb_icon}/>
-                </SocialContainer>
-
-                <SocialContainer blue>
-                  <SocialIcon src={twitter_icon}/>
-                </SocialContainer>
-
-                <SocialContainer>
-                  <SocialIcon src={in_icon}/>
-                </SocialContainer>
-
-                <SocialContainer>
-                  <SocialIcon src={insta_icon}/>
-                </SocialContainer>
-
-                <SocialContainer>
-                  <SocialIcon src={dribble_icon}/>
-                </SocialContainer>
+                <a href="/landing">
+                  <SocialContainer>
+                    <SocialIcon src={fb_icon}/>
+                  </SocialContainer>
+                </a>
+                <a href="/landing">
+                  <SocialContainer blue>
+                    <SocialIcon src={twitter_icon}/>
+                  </SocialContainer>
+                </a>
+                <a href="/landing">
+                  <SocialContainer>
+                    <SocialIcon src={in_icon}/>
+                  </SocialContainer>
+                </a>
+                <a href="/landing">
+                  <SocialContainer>
+                    <SocialIcon src={insta_icon}/>
+                  </SocialContainer>
+                </a>
+                <a href="/landing">
+                  <SocialContainer>
+                    <SocialIcon src={dribble_icon}/>
+                  </SocialContainer>
+                </a>
 
               </FooterBottom>
             </CardFooter>
