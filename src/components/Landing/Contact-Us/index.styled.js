@@ -50,14 +50,13 @@ export const CardLeft = styled.div`
   background: #FFF;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
 `
 
 export const BackImage = styled.img`
   position: absolute;
-  width: 211.755px;
-  height: 261px;
-  right: -32px;
+  height: 225px;
+  right: 0;
   top: 0;
 `
 
