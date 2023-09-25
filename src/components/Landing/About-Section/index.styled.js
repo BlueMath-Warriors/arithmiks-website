@@ -1,11 +1,23 @@
 import { styled } from "styled-components";
 
+const breakpoints = {
+  small: "820px",
+  medium: "820px",
+  large: "1040px",
+};
+
 export const TextCard = styled.div`
   display: flex;
   max-width: 543px;
   flex-direction: column;
 	justify-content: center;
   align-items: flex-start;
+  gap: 24px;
+  
+  @media screen and (max-width: ${breakpoints.large}) {
+    width: 372px;
+    gap: 16px;
+  }
 `;
 
 export const SmallTxt = styled.p`
@@ -19,8 +31,8 @@ export const SmallTxt = styled.p`
     line-height: 24px;
     letter-spacing: 1.25px;
     text-transform: uppercase;
-		margin-bottom: 16px;
-`
+`;
+
 export const CardHeader = styled.h1`
     color: #061237;
     font-variant-numeric: lining-nums proportional-nums;
@@ -32,8 +44,13 @@ export const CardHeader = styled.h1`
     line-height: 60px;
     letter-spacing: -0.66px;
 		width: 430px;
-		margin-bottom: 24px;
-`
+    @media screen and (max-width: ${breakpoints.large}) {
+      font-size: 32px;
+      line-height: 40px;
+      letter-spacing: -0.48px;
+      width: 310px;
+    }
+`;
 
 export const SecondaryColor = styled.span`
     color: #1355FF;
@@ -50,8 +67,13 @@ export const CardBody = styled.p`
     line-height: 28px;
     letter-spacing: -0.18px;
 		width: 448px;
-		margin-bottom: 32px;
-`
+
+    @media screen and (max-width: ${breakpoints.large}) {
+      font-size: 14px;
+      font-style: normal;
+      width: 372px;
+    }
+`;
 
 export const CardBtn = styled.button`
   display: flex;
@@ -62,7 +84,6 @@ export const CardBtn = styled.button`
   border-radius: 7px;
   background: #0b63e5;
   border: none;
-  margin-top: 24px;
 
   color: var(--gray-00, #fff);
   font-family: Inter;
@@ -79,8 +100,15 @@ export const BtnIcon = styled.img`
 `;
 
 export const ImageSection = styled.div`
+  display: flex;
   position: relative;
   top: 17px;
+
+  @media screen and (max-width: ${breakpoints.large}) {
+    width: 371px;
+    height: 323px;
+  }
+
 `
 
 export const ImageTop = styled.img`
@@ -91,7 +119,21 @@ export const ImageTop = styled.img`
   border-radius: 16px;
   border: 0px solid var(--White, #FFF);
   z-index: 5;
-`
+
+  @media screen and (max-width: ${breakpoints.large}) {
+    width: 194px;
+    height: 266px;
+    left: 22px;
+  }
+
+  @media screen and (max-width: ${breakpoints.small}) {
+    width: 194px;
+    height: 266px;
+    left: 22px;
+    top: -10px;
+  }
+`;
+
 export const ImageBottom = styled.img`
   position: relative;
   top: 30px;
@@ -101,7 +143,22 @@ export const ImageBottom = styled.img`
   border-radius: 16px;
   border: 0px solid var(--White, #FFF);
   z-index: 5;
-`
+
+  @media screen and (max-width: ${breakpoints.large}) {
+    width: 194px;
+    height: 266px;
+    top: 5px;
+    right: 30px;  
+  }
+
+  @media screen and (max-width: ${breakpoints.small}) {
+    width: 194px;
+    height: 266px;
+    top: 35px;
+    right: 30px;  
+  }
+
+`;
 
 export const BgCircle = styled.img`
   position: absolute;
@@ -110,11 +167,41 @@ export const BgCircle = styled.img`
   left: 140px;
   bottom: 0px;
   z-index: 1;
-`
+
+  @media screen and (max-width: ${breakpoints.large}) {
+    width: 75px;
+    height: 75px;
+    left: 110px;
+    bottom: 65px;
+  }
+  @media screen and (max-width: ${breakpoints.small}) {
+    width: 75px;
+    height: 75px;
+    left: 120px;
+    bottom: 35px;
+  }
+`;
 
 export const BgRectabgle = styled.img`
   position: absolute;
   left: 206px;
   top: -17px;
+  width: 125px;
+  height: 125px;
   z-index: 1;
-`
+  
+  @media screen and (max-width: ${breakpoints.large}) {
+    width: 90px;
+    height: 90px;
+    left: 165px;
+    top: -25px;
+  }
+
+  @media screen and (max-width: ${breakpoints.small}) {
+    width: 90px;
+    height: 90px;
+    left: 165px;
+    top: 5px;
+  }
+
+`;
