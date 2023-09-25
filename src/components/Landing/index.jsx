@@ -19,8 +19,9 @@ import heroBG from "../../images/hero-bg.png";
 import * as containerStyles from "../../styles/global.module.css";
 import EngagementModel from "./Engagement-Model";
 import About from "./About-Section";
-import Footer from "./Footer";
 import Services from "./Services-Section";
+import ContactUs from "./Contact-Us";
+import Footer from "./Footer";
 
 const LandingPage = () => {
   return (
@@ -88,6 +89,7 @@ const LandingPage = () => {
       <About/>
       <Services/>
       <EngagementModel/>
+      <ContactUs/>
       <Footer/>
     </>
   );
