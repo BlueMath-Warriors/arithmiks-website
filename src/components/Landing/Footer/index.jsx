@@ -7,6 +7,7 @@ import {
   Logo,
   LogoHeading,
   Text,
+  Moto,
   Services,
   Technologies,
   Industries,
@@ -30,9 +31,9 @@ const Footer = () => {
               <Logo src={favicon} />
               <CompanyName>Arithmiks</CompanyName>
             </LogoHeading>
-            <Text fontSize18>
+            <Moto>
               Data visualization, and expense management for your business.
-            </Text>
+            </Moto>
           </Arithmiks>
 
           <Services>
