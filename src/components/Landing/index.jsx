@@ -18,6 +18,7 @@ import { StaticImage, getSrc } from "gatsby-plugin-image";
 import heroBG from "../../images/hero-bg.png";
 import * as containerStyles from "../../styles/global.module.css";
 import EngagementModel from "./Engagement-Model";
+import About from "./About-Section";
 import Footer from "./Footer";
 
 const LandingPage = () => {
@@ -83,6 +84,7 @@ const LandingPage = () => {
           <CtaBtn>Lets Talk About Your Need</CtaBtn>
         </TextContainer>
       </div>
+      <About/>
       <EngagementModel/>
       <Footer/>
     </>

@@ -45,6 +45,14 @@ button {
   flex-direction: column;
 }
 
+.about{
+  background-color: #FFF;
+  height: 704px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .footer {
   background-color: #FFF;
   height: 820px;
