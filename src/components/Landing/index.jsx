@@ -20,6 +20,7 @@ import * as containerStyles from "../../styles/global.module.css";
 import EngagementModel from "./Engagement-Model";
 import About from "./About-Section";
 import Footer from "./Footer";
+import Services from "./Services-Section";
 
 const LandingPage = () => {
   return (
@@ -85,6 +86,7 @@ const LandingPage = () => {
         </TextContainer>
       </div>
       <About/>
+      <Services/>
       <EngagementModel/>
       <Footer/>
     </>
