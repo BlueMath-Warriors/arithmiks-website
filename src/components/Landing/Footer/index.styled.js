@@ -142,12 +142,13 @@ export const Moto = styled.p`
 export const Services = styled.div`
   display: flex;
   flex-direction: column;
-  width: 176px;
+  width: 192px;
   flex-direction: column;
   align-items: flex-start;
   gap: 16px;
   margin-right: 50px;
   @media screen and (max-width: ${breakpoints.x_large}) {
+    width: 176px;
     margin-right: 0px;
   }
   @media screen and (max-width: ${breakpoints.medium}) {
@@ -161,12 +162,13 @@ export const Services = styled.div`
 export const Technologies = styled.div`
   display: flex;
   flex-direction: column;
-  width: 176px;
+  width: 151px;
   flex-direction: column;
   align-items: flex-start;
   gap: 24px;
   margin-right: 61.5px;
   @media screen and (max-width: ${breakpoints.x_large}) {
+    width: 176px;
     margin-right: 0px;
   }
   @media screen and (max-width: ${breakpoints.medium}) {
@@ -180,12 +182,13 @@ export const Technologies = styled.div`
 export const Industries = styled.div`
   display: flex;
   flex-direction: column;
-  width: 176px;
+  width: 103.5px;
   flex-direction: column;
   align-items: flex-start;
   gap: 24px;
   margin-right: 88px;
   @media screen and (max-width: ${breakpoints.x_large}) {
+    width: 176px;
     margin-right: 0px;
   }
   @media screen and (max-width: ${breakpoints.medium}) {
@@ -199,11 +202,12 @@ export const Industries = styled.div`
 export const Experties = styled.div`
   display: flex;
   flex-direction: column;
-  width: 176px;
+  width: 128px;
   flex-direction: column;
   align-items: flex-start;
   gap: 24px;
   @media screen and (max-width: ${breakpoints.x_large}) {
+    width: 176px;
     margin-right: 0px;
   }
   @media screen and (max-width: ${breakpoints.medium}) {
@@ -225,7 +229,7 @@ export const Divider =  styled.hr`
   }
 
   @media screen and (max-width: ${breakpoints.medium}) {
-    width: 398px;
+    width: 90%;
   }  
 `
 
@@ -241,7 +245,7 @@ export const FooterBottom = styled.div`
   }
   @media screen and (max-width: ${breakpoints.medium}) {
     margin-top: 16px;
-    width: 398px;
+    width: 90%;
     flex-direction: column;
     gap: 8px;
   }
@@ -255,6 +259,7 @@ export const FooterLinks = styled.div`
   gap: 32px;
 
   @media screen and (max-width: ${breakpoints.medium}) {
+    justify-content: center;
     gap: 4px;
   }
 
@@ -285,6 +290,19 @@ export const Link = styled.a`
     font-weight: 400;
     letter-spacing: -0.28px;
   }
+  @media screen and (max-width: ${breakpoints.medium}) {
+    ${props =>
+    props.divider &&
+    ` &::after {
+      content: " I"; 
+      color: #1A202C; 
+      font-size: 18px;
+      line-height: 150%; 
+      letter-spacing: -0.36px; 
+      margin-left: 4px;
+    } `
+  }
+
 `
 
 export const CopyRightText = styled.p`
