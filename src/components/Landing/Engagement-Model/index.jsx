@@ -22,13 +22,13 @@ const EngagementModel = () => {
       <div className={containerStyles.engagement_model}>
         <TextContainer>
           <MainHead>
-            Engagement
+            Engagement<br/>
             <SecondaryText>Model</SecondaryText>
           </MainHead>
         </TextContainer>
         <ModelCard>
           <CardImg src={model_1_img} />
-          <CardText>
+          <CardText right>
             <CardHeader>Build Your Dedicated Team</CardHeader>
             <CardBody>
               Aenean interdum arcu sit amet nulla lacinia suscipit. Vivamus at
