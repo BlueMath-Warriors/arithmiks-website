@@ -35,11 +35,19 @@ export const HeaderText = styled.h1`
   margin-bottom: 72px;
   @media screen and (max-width: ${breakpoints.large}) {
     margin-bottom: 48px;
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 40px;
+    letter-spacing: -0.48px;
   }
   @media screen and (max-width: ${breakpoints.medium}) {
     margin-bottom: 17px;
+    margin-bottom: 48px;
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 40px;
+    letter-spacing: -0.48px;
   }
-
 `
 
 export const SecondaryColor = styled.span`
@@ -75,21 +83,22 @@ export const CardLeft = styled.div`
   flex-direction: column;
   justify-content: flex-start;
 
-
   @media screen and (max-width: ${breakpoints.large}) {
     order: 2;
     width: 760px;
     border-radius: 0px;
     flex-direction: row;
   }
+
   @media screen and (max-width: ${breakpoints.medium}) {
     flex-direction: column;
     justify-content: flex-start;
     order: 1;
-    width: 382px;
-    height: 414px; 
+    width: 382px; 
+    height: 584px;
+    padding: 24px;
+    border-radius: 0px 0px 24px 24px;
   }
-
 `
 
 export const BackImage = styled.img`
@@ -118,11 +127,9 @@ export const LeftCardHeader = styled.h1`
     margin-left:  24px;
     margin-top: 24px;
     margin-bottom: 16px;
-
     font-size: 26px;
     letter-spacing: -0.52px;
   }
-
 `
 
 export const SubCard = styled.div`
@@ -148,9 +155,7 @@ export const Circle = styled.div`
   gap: 10px;
   border-radius: 152px;
   background: rgba(11, 99, 229, 0.20);
-  @media screen and (max-width: ${breakpoints.medium}) {
-    width: 350px;
-  }
+
   
 `
 
@@ -206,7 +211,7 @@ export const CardFooter = styled.div`
 
   @media screen and (max-width: ${breakpoints.medium}) {
     align-items: flex-start;
-    justify-content: center;
+    // justify-content: center;
     margin: 0;
     padding-left: 24px;
   }

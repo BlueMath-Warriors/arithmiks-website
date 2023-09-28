@@ -21,6 +21,11 @@ export const FormSection = styled.div`
     border-radius: 24px 24px 0px 0px;
     padding: 32px 65px;
   }
+  @media screen and (max-width: ${breakpoints.medium}) {
+    width: 382px; 
+    height: 584px;
+    padding: 16px;
+  }
 `
 
 export const Form = styled.form`
