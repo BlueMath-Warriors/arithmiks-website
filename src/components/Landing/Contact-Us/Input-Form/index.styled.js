@@ -1,5 +1,12 @@
 import { styled } from "styled-components";
 
+const breakpoints = {
+  small: "820px",
+  medium: "820px",
+  large: "1040px",
+  x_large: "1440px",
+};
+
 export const FormSection = styled.div`
   z-index: 10;
   width: 672px;
@@ -9,6 +16,11 @@ export const FormSection = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  @media screen and (max-width: ${breakpoints.large}) {
+    width: 760px;
+    border-radius: 24px 24px 0px 0px;
+    padding: 32px 65px;
+  }
 `
 
 export const Form = styled.form`
@@ -17,20 +29,22 @@ export const Form = styled.form`
   align-items: flex-start;
   justify-content: center;
   gap: 20px;
-
-  padding-top: 20px;
   background-color: #fff;
 `;
 
 export const HeaderText = styled.label`
-  color: #475569;
+  color: #333;
   font-family: Inter;
-  font-size: 15px;
+  font-size: 26px;
   font-style: normal;
   font-weight: 600;
-  line-height: normal;
-  letter-spacing: 0.075px;
-`;
+  line-height: 44px;
+  letter-spacing: -0.52px;
+    @media screen and (max-width: ${breakpoints.large}) {
+    height: 44px;
+    width: 307px;
+  `
+;
 
 export const RadioLabel = styled.label`
   color: #1F2937;
@@ -76,19 +90,18 @@ export const InputLabel = styled.label`
 `
 
 export const NameInput = styled.input`
-  height: 48px;
-  width: 280px;
+  height: 44px;
+  width: 256px;
   display: flex;    
-  padding: 12px 18px;
+  padding: 10px 16px;
   align-items: center;
   flex: 1 0 0;
   align-self: stretch;
   border-radius: 5px;
   border: 1px solid #E6E8EC;
   background: #FFF;
-  margin-top: 6px;
 
-  color: #000;
+  color: #838E9E;
   font-family: Inter;
   font-size: 16px;
   font-style: normal;
@@ -102,6 +115,14 @@ export const NameInput = styled.input`
     font-style: normal;
     font-weight: 400;
     line-height: 24px;
+  }
+  @media screen and (max-width: ${breakpoints.large}) {
+    height: 44px;
+    width: 307px;
+  }
+  @media screen and (max-width: ${breakpoints.medium}) {
+    width: 350px;
+    height: 44px;
   }
 `;
 
@@ -116,9 +137,8 @@ export const EmailInput = styled.input`
   border-radius: 5px;
   border: 1px solid #E6E8EC;
   background: #FFF;
-  margin-top: 6px;
   
-  color: #000;
+  color: #838E9E;
   font-family: Inter;
   font-size: 16px;
   font-style: normal;
@@ -133,10 +153,14 @@ export const EmailInput = styled.input`
     font-weight: 400;
     line-height: 24px;
   }
+  @media screen and (max-width: ${breakpoints.medium}) {
+    width: 350px;
+    height: 44px;
+  }
 `;
 
-export const MessageInput = styled.textarea`
-  height: 100px;
+export const DropDownInput = styled.select`
+  height: 48px;
   width: 580px;
   display: flex;
   padding: 12px 18px;
@@ -146,10 +170,8 @@ export const MessageInput = styled.textarea`
   border-radius: 5px;
   border: 1px solid #E6E8EC;
   background: #FFF;
-  margin-top: 6px;
-  resize: none;
-
-  color: #000;
+  
+  color: #838E9E;
   font-family: Inter;
   font-size: 16px;
   font-style: normal;
@@ -164,13 +186,54 @@ export const MessageInput = styled.textarea`
     font-weight: 400;
     line-height: 24px;
   }
+  @media screen and (max-width: ${breakpoints.medium}) {
+    width: 350px;
+    height: 44px;
+  }
+`;
+
+export const MessageInput = styled.textarea`
+  height: 132px;
+  width: 100%;
+  display: flex;
+  padding: 12px 18px;
+  align-items: center;
+  flex: 1 0 0;
+  align-self: stretch;
+  border-radius: 5px;
+  border: 1px solid #E6E8EC;
+  background: #FFF;
+  resize: none;
+
+  color: #838E9E;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+
+  ::placeholder {
+    color: #838E9E;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+  }
+
+  media screen and (max-width: ${breakpoints.large}) {
+    height: 132px;
+  }
+  @media screen and (max-width: ${breakpoints.medium}) {
+    width: 350px;
+    height: 132px;
+  }
 `;
 
 export const SubmitButton = styled.button`
   display: flex;
   width: 183.273px;
   height: 48px;
-  padding: 0px 16px;
   justify-content: center;
   align-items: center;
   gap: 12px;
@@ -193,7 +256,14 @@ export const BtnIcon = styled.img`
   height: 24px;
 `
 
-export const NameInputs = styled.div`
+export const InputRow = styled.div`
   display: flex;
-  gap: 20px;
+  gap: 32px;
+  @media screen and (max-width: ${breakpoints.large}) {
+    gap: 16px;
+  }
+  @media screen and (max-width: ${breakpoints.medium}) {
+    flex-direction: column;
+    gap: 20px;
+  }
 `

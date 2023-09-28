@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import {
-  NameInputs,
+  InputRow,
   FormSection,
   Form,
   HeaderText,
@@ -10,6 +10,7 @@ import {
   RadioContainer,
   InputLabel,
   NameInput,
+  DropDownInput,
   EmailInput,
   MessageInput,
   SubmitButton,
@@ -20,122 +21,66 @@ import ArrowRight from "../../../../images/ArrowRight.svg";
 
 const InputForm = () => {
   const [selectedValue, setSelectedValue] = useState("");
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
+  const [name, setName] = useState("");
+  const [organization, setOrganization] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
-
-  const handleRadioChange = (e) => {
-    setSelectedValue(e.target.value);
-  };
+  const [phone, setPhone] = useState("");
 
   return (
     <FormSection>
       <Form>
-        <HeaderText>Select Requirement:</HeaderText>
+        <HeaderText>Requirements</HeaderText>
 
-        <RadioInputs>
-          <RadioContainer>
-            <RadioInput
-              type="radio"
-              name="requirement"
-              id="1"
-              value="Project Outsourcing"
-              onChange={handleRadioChange}
-              checked={selectedValue === "Project Outsourcing"}
-            />
-            <RadioLabel for="html">Project Outsourcing</RadioLabel>
-          </RadioContainer>
-
-          <RadioContainer>
-            <RadioInput
-              type="radio"
-              name="requirement"
-              id="2"
-              value="Hiring Dev Team"
-              onChange={handleRadioChange}
-              checked={selectedValue === "Hiring Dev Team"}
-            />
-            <RadioLabel for="html">Hiring Dev Team</RadioLabel>
-          </RadioContainer>
-
-          <RadioContainer>
-            <RadioInput
-              type="radio"
-              name="requirement"
-              id="3"
-              value="Maching Learning"
-              onChange={handleRadioChange}
-              checked={selectedValue === "Maching Learning"}
-            />
-            <RadioLabel for="html">Maching Learning</RadioLabel>
-          </RadioContainer>
-
-          <RadioContainer>
-            <RadioInput
-              type="radio"
-              name="requirement"
-              id="4"
-              value="Digital Transformation"
-              onChange={handleRadioChange}
-              checked={selectedValue === "Digital Transformation"}
-            />
-            <RadioLabel for="html">Digital Transformation</RadioLabel>
-          </RadioContainer>
-
-          <RadioContainer>
-          <RadioInput
-              type="radio"
-              name="requirement"
-              id="5"
-              value="Something Else"
-              onChange={handleRadioChange}
-              checked={selectedValue === "Something Else"}
-            />
-            <RadioLabel for="html">Something Else</RadioLabel>
-          </RadioContainer>
-        </RadioInputs>
-
-        <NameInputs>
-          <InputLabel>
-            Name
+        <DropDownInput
+          type="text"
+          placeholder="How can we help you?"
+          value={selectedValue}
+          onChange={(e) => {
+            setSelectedValue(e.target.value);
+          }}
+        >
+          <option value="" disabled selected>How can we help you?</option>
+        </DropDownInput>
+        <InputRow>
             <NameInput
               type="text"
-              placeholder="First Name"
-              value={firstName}
+              placeholder="Your Name"
+              value={name}
               onChange={(e) => {
-                setFirstName(e.target.value);
+                setName(e.target.value);
               }}
             />
-          </InputLabel>
-
-          <InputLabel>
-            Last Name
             <NameInput
-              type="text"
-              placeholder="Last Name"
-              value={lastName}
+              type="email"
+              placeholder="Your Email"
+              value={email}
               onChange={(e) => {
-                setLastName(e.target.value);
+                setEmail(e.target.value);
               }}
             />
-          </InputLabel>
-        </NameInputs>
+        </InputRow>
 
-        <InputLabel>
-          Email
-          <EmailInput
-            type="email"
-            placeholder="example@mail.com"
-            value={email}
-            onChange={(e) => {
-              setEmail(e.target.value);
-            }}
-          />
-        </InputLabel>
+        <InputRow>
+            <NameInput
+              type="email"
+              placeholder="(+12) 345-67890"
+              value={phone}
+              onChange={(e) => {
+                setPhone(e.target.value);
+              }}
+            />
 
-        <InputLabel>
-          Message
+            <NameInput
+              type="email"
+              placeholder="Organization"
+              value={organization}
+              onChange={(e) => {
+                setOrganization(e.target.value);
+              }}
+            />
+        </InputRow>
+        
           <MessageInput
             placeholder="Tell us about your project..."
             value={message}
@@ -143,7 +88,6 @@ const InputForm = () => {
               setMessage(e.target.value);
             }}
           />
-        </InputLabel>
         <SubmitButton>
           Send Message <BtnIcon src={ArrowRight} />
         </SubmitButton>

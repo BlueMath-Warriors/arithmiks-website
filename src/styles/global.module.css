@@ -47,12 +47,26 @@ button {
 
 .contact_us {
   background-color: #F5F5F7;
-  height: 1050px;
+  height: auto;
   padding-top: 90px;
+  padding-bottom: 142px;
   
   display: flex;
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
 
+}
+
+@media screen and (max-width: 1040px) {
+  .contact_us {
+    padding-bottom: 90px;
+  }
+}
+
+@media screen and (max-width: 1040px) {
+  .contact_us {
+    padding-top: 60px;
+    padding-bottom: 43px;
+  }
 }

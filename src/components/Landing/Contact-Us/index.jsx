@@ -20,6 +20,7 @@ import {
   SocialContainer,
   SocialIcon,
   BackImage,
+  CardDetails
 } from "./index.styled";
 import * as containerStyles from "../../../styles/global.module.css";
 import Envelope from "../../../images/envelop-icon.svg";
@@ -46,37 +47,40 @@ const ContactUs = () => {
         </HeaderText>
         <MainCard>
           <CardLeft>
-            <BackImage src={bg_img}/>
-            <LeftCardHeader>Get in touch</LeftCardHeader>
-            <SubCard>
-              <Circle>
-                <CircleIcon src={Envelope} />
-              </Circle>
-              <CardContent>
-                <Caption>Email us</Caption>
-                <ContentText>info@arithmiks.com</ContentText>
-              </CardContent>
-            </SubCard>
+            <CardDetails>
+              <BackImage src={bg_img}/>
+              <LeftCardHeader>Get in touch</LeftCardHeader>
+              <SubCard>
+                <Circle>
+                  <CircleIcon src={Envelope} />
+                </Circle>
+                <CardContent>
+                  <Caption>Email us</Caption>
+                  <ContentText>info@arithmiks.com</ContentText>
+                </CardContent>
+              </SubCard>
 
-            <SubCard>
-              <Circle>
-                <CircleIcon src={PhoneCall} />
-              </Circle>
-              <CardContent>
-                <Caption>Phone number</Caption>
-                <ContentText>+1-202-555-0138</ContentText>
-              </CardContent>
-            </SubCard>
+              <SubCard>
+                <Circle>
+                  <CircleIcon src={PhoneCall} />
+                </Circle>
+                <CardContent>
+                  <Caption>Phone number</Caption>
+                  <ContentText>+1-202-555-0138</ContentText>
+                </CardContent>
+              </SubCard>
 
 
-            <SubCard>
-              <Circle>
-                <CircleIcon src={Map} />
-              </Circle>
-              <CardContent>
-                <ContentText medium>901 N Pitt Str., Suite 170<br/>Alexandria, VA 22314, USA</ContentText>
-              </CardContent>
-            </SubCard>
+              <SubCard>
+                <Circle>
+                  <CircleIcon src={Map} />
+                </Circle>
+                <CardContent>
+                  <ContentText medium>901 N Pitt Str., Suite 170<br/>Alexandria, VA 22314, USA</ContentText>
+                </CardContent>
+              </SubCard>
+            </CardDetails>
+            
 
             <CardFooter>
               <FooterTop>

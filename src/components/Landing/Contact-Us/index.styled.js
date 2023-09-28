@@ -1,5 +1,12 @@
 import { styled } from "styled-components";
 
+const breakpoints = {
+  small: "820px",
+  medium: "820px",
+  large: "1040px",
+  x_large: "1440px",
+};
+
 export const SmallTxt = styled.p`
   color: #1355FF;
   text-align: center;
@@ -26,6 +33,13 @@ export const HeaderText = styled.h1`
   line-height: 60px;
   letter-spacing: -0.66px;
   margin-bottom: 72px;
+  @media screen and (max-width: ${breakpoints.large}) {
+    margin-bottom: 48px;
+  }
+  @media screen and (max-width: ${breakpoints.medium}) {
+    margin-bottom: 17px;
+  }
+
 `
 
 export const SecondaryColor = styled.span`
@@ -36,10 +50,19 @@ export const MainCard = styled.div`
   width: 1120px;
   height: 654px;
   border-radius: 24px;
-  background: #996767;
+  background: #F5F5F7;
   display: flex;
   justify-content: center;
   align-items: center;
+  
+  @media screen and (max-width: ${breakpoints.large}) {
+    flex-direction: column;
+    height: 842px;
+  }
+  @media screen and (max-width: ${breakpoints.medium}) {
+    flex-direction: column;
+    height: 1000px;
+  }
 `
 
 export const CardLeft = styled.div`
@@ -51,6 +74,22 @@ export const CardLeft = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+
+
+  @media screen and (max-width: ${breakpoints.large}) {
+    order: 2;
+    width: 760px;
+    border-radius: 0px;
+    flex-direction: row;
+  }
+  @media screen and (max-width: ${breakpoints.medium}) {
+    flex-direction: column;
+    justify-content: flex-start;
+    order: 1;
+    width: 382px;
+    height: 414px; 
+  }
+
 `
 
 export const BackImage = styled.img`
@@ -70,7 +109,20 @@ export const LeftCardHeader = styled.h1`
   letter-spacing: -0.72px;
   margin-top: 72px;
   margin-bottom: 40px;
-  margin-left:  72px;
+  margin-left:  96px;
+  @media screen and (max-width: ${breakpoints.large}) {
+    margin-left:  65px;
+    margin-top: 32px;
+  }
+  @media screen and (max-width: ${breakpoints.medium}) {
+    margin-left:  24px;
+    margin-top: 24px;
+    margin-bottom: 16px;
+
+    font-size: 26px;
+    letter-spacing: -0.52px;
+  }
+
 `
 
 export const SubCard = styled.div`
@@ -79,7 +131,13 @@ export const SubCard = styled.div`
   align-items: center;
   gap: 16px;
   margin-bottom: 24px;
-  margin-left:  72px;
+  margin-left:  96px;
+  @media screen and (max-width: ${breakpoints.large}) {
+    margin-left:  65px;
+  }
+  @media screen and (max-width: ${breakpoints.medium}) {
+    margin-left:  24px;
+  }
 
 `
 
@@ -90,11 +148,19 @@ export const Circle = styled.div`
   gap: 10px;
   border-radius: 152px;
   background: rgba(11, 99, 229, 0.20);
+  @media screen and (max-width: ${breakpoints.medium}) {
+    width: 350px;
+  }
+  
 `
 
 export const CircleIcon = styled.img`
   width: 32px;
   height: 32px;
+  @media screen and (max-width: ${breakpoints.medium}) {
+    width: 24px;
+    height: 24px;
+  }
 `
 
 export const CardContent = styled.div`
@@ -131,7 +197,20 @@ export const CardFooter = styled.div`
   align-items: flex-start;
   gap: 16px;
   margin-top: 78px;
-  margin-left: 72px;
+  margin-left: 96px;
+  @media screen and (max-width: ${breakpoints.large}) {
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+
+  @media screen and (max-width: ${breakpoints.medium}) {
+    align-items: flex-start;
+    justify-content: center;
+    margin: 0;
+    padding-left: 24px;
+  }
+
 `
 
 export const FooterTop = styled.div`
@@ -175,10 +254,30 @@ export const SocialIcon = styled.img`
 export const CardRight = styled.div`
   z-index: 10;
   width: 672px;
-  height: 654px;
   border-radius: 0px 24px 24px 0px;
   background: #000;
   display: flex;
   justify-content: center;
   align-items: center;
+  @media screen and (max-width: ${breakpoints.large}) {
+    order: 1;
+    width: 760px;
+    border-radius: 24px 24px 0px 0px;
+  }
+  @media screen and (max-width: ${breakpoints.medium}) {
+    order: 2;
+    width: 382px;
+    height: 616px; 
+  }
+`
+
+export const CardDetails = styled.div`
+  padding; 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  @media screen and (max-width: ${breakpoints.large}) {
+    margin-bottom:  6px;
+  }
+
 `
