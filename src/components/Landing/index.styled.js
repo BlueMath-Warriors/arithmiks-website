@@ -67,6 +67,9 @@ export const Header = styled.header`
   right: 0;
   top: 0;
   z-index: 2;
+  @media screen and (max-width: ${breakpoints.medium}) {
+    background: #fff;
+  }
 `;
 
 export const HeaderContainer = styled.div`
@@ -78,7 +81,17 @@ export const HeaderContainer = styled.div`
   align-items: center;
   margin: 0 auto;
   @media screen and (max-width: ${breakpoints.x_large}) {
-    max-width: 80%;
+    max-width: 100%;
+    padding: 0 120px;
+  }
+  @media screen and (max-width: ${breakpoints.large}) {
+    max-width: 100%;
+    padding: 0 105px;
+  }
+  @media screen and (max-width: ${breakpoints.medium}) {
+    max-width: 100%;
+    height 80px;
+    padding: 0 30px;
   }
 `;
 
@@ -108,7 +121,7 @@ export const Menu = styled.ul`
   margin-right: 32px;
   @media screen and (max-width: ${breakpoints.large}) {
     position: fixed;
-    left: 0;
+    left: 100%;
     top: 70px;
     flex-direction: column;
     background: #fff;
@@ -116,9 +129,10 @@ export const Menu = styled.ul`
     text-align: left;
   }
 
-  ${({active}) => active && `
+  &.active {
     left: 0;
-`}
+  }
+  
   @media screen and (max-width: ${breakpoints.large}) {
     gap: 24px;
     padding: 12px 0;

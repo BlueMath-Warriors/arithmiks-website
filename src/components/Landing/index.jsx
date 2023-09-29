@@ -1,4 +1,4 @@
-import React, {useRef} from "react";
+import React, {useRef, useState} from "react";
 import {
   Background,
   ComingSoon,
@@ -22,17 +22,16 @@ import {
   MenuIcon,
 } from "./index.styled";
 import { StaticImage, getSrc } from "gatsby-plugin-image";
-import heroBG from "../../images/hero-bg.png";
 import u_icon from "../../images/u-icon.svg";
 import * as containerStyles from "../../styles/global.module.css";
 import EngagementModel from "./Engagement-Model";
 import menu_icon from "../../images/hamburger_icon.svg"
 const LandingPage = () => {
-  const hamburger = useRef(null);
   const navMenu = useRef(null);
+
   const closeMenu = () => {
-    navMenu.current.remove("active");
-  }
+    navMenu.current.classList.remove("active");
+  };
   return (
     // <Background>
     //   <Content>
@@ -61,11 +60,10 @@ const LandingPage = () => {
             <MenuItem onClick={closeMenu}>Case Study</MenuItem>
             <MenuItem onClick={closeMenu}>Company</MenuItem>
             <MenuItem hidden onClick={closeMenu}>Get in Touch</MenuItem>
-
           </Menu>
           <CtaBtn fill>Get In Touch</CtaBtn>
-          <Hamburger ref={hamburger} onClick={(e)=>{
-            e.target.toggle("active");
+          <Hamburger onClick={(e)=>{
+              navMenu.current.classList.toggle("active");
           }}>
             <MenuIcon src={menu_icon} />
           </Hamburger>
