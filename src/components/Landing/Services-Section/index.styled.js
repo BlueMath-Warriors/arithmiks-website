@@ -85,6 +85,7 @@ export const ViewButton = styled.button`
   border-radius: 6px;
   border: 1px solid #E7EAEE;
   background: #FFF;
+  height: 49px;
 
   color: #07090D;
   font-variant-numeric: stacked-fractions;

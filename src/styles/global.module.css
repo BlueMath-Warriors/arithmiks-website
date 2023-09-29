@@ -162,6 +162,35 @@ button {
   flex-direction: column;
 }
 
+.about{
+  background-color: #FFF;
+  height: 704px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@media screen and (max-width: 1040px) {
+  .about {
+    background-color: #FFF;
+    height: 503px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 17px;  
+  }
+}
+
+@media screen and (max-width: 820px) {
+  .about {
+    background-color: #FFF;
+    height: 715px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
 @media screen and (max-width: 1440px) {
   .services{
     background-color: #FFF;

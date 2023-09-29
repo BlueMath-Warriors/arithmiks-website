@@ -19,7 +19,7 @@ import {
   CardBodyText,
 } from "./index.styled";
 import * as containerStyles from "../../../styles/global.module.css";
-import ArrowCricleRight from "../../../images/arrow-right-circle-line.svg";
+import ArrowCricleRight from "../../../images/arrow-right-circle-black.svg";
 import ArrowRight from "../../../images/arrow-right-black.svg";
 import ArrowRightWhite from "../../../images/ArrowRight.svg";
 import ArrowRightBold from "../../../images/arrow-right-bold.svg";
