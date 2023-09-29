@@ -21,6 +21,7 @@ import EngagementModel from "./Engagement-Model";
 import Services from "./Services-Section";
 import About from "./About-Section";
 import ContactUs from "./Contact-Us";
+import Footer from "./Footer";
 
 const LandingPage = () => {
   return (
@@ -89,6 +90,7 @@ const LandingPage = () => {
       <Services/>
       <EngagementModel/>
       <ContactUs/>
+      <Footer/>
     </>
   );
 };
