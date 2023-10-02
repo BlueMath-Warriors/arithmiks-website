@@ -1,18 +1,12 @@
 import { styled } from "styled-components";
-
-const breakpoints = {
-  small: "820px",
-  medium: "820px",
-  large: "1040px",
-  x_large: "1440px",
-};
+import {breakpoints} from "../index.styled"
 
 export const FooterContent = styled.div`
   display: flex;
   justify-content: center;
   align-items: flex-start;
 
-  @media screen and (max-width: ${breakpoints.x_large}) {
+  @media screen and (max-width: ${breakpoints.large}) {
     gap: 16px;
     flex-wrap: wrap;
   }
@@ -20,6 +14,7 @@ export const FooterContent = styled.div`
   @media screen and (max-width: ${breakpoints.medium}) {
     gap: 32px;
     flex-wrap: wrap;
+    width: 382px;
   }
 `
 
@@ -32,7 +27,7 @@ export const Arithmiks = styled.div`
   gap: 32px;
   margin-right: 117px;
 
-  @media screen and (max-width: ${breakpoints.x_large}) {
+  @media screen and (max-width: ${breakpoints.large}) {
     flex-direction: row;
     justify-content: center;
     align-items: center;
@@ -83,7 +78,7 @@ export const Heading = styled.h1`
   line-height: 150%; /* 30px */
   letter-spacing: -0.4px;
   margin-bottom: 16px;
-  @media screen and (max-width: ${breakpoints.x_large}) {
+  @media screen and (max-width: ${breakpoints.large}) {
     margin-right: 0px;
   }
   @media screen and (max-width: ${breakpoints.medium}) {
@@ -106,7 +101,7 @@ export const Text = styled.p`
   line-height: 150%;
   letter-spacing: -0.36px;
   cursor: pointer;
-  @media screen and (max-width: ${breakpoints.x_large}) {
+  @media screen and (max-width: ${breakpoints.large}) {
     color: #596780;
     font-family: Plus Jakarta Sans;
     font-size: 14px;
@@ -131,7 +126,7 @@ export const Moto = styled.p`
   line-height: 150%;
   letter-spacing: -0.36px;
   cursor: pointer;
-  @media screen and (max-width: ${breakpoints.x_large}) {
+  @media screen and (max-width: ${breakpoints.large}) {
     width: 434px;
   }
   @media screen and (max-width: ${breakpoints.medium}) {
@@ -147,7 +142,7 @@ export const Services = styled.div`
   align-items: flex-start;
   gap: 16px;
   margin-right: 50px;
-  @media screen and (max-width: ${breakpoints.x_large}) {
+  @media screen and (max-width: ${breakpoints.large}) {
     width: 176px;
     margin-right: 0px;
   }
@@ -167,7 +162,7 @@ export const Technologies = styled.div`
   align-items: flex-start;
   gap: 24px;
   margin-right: 61.5px;
-  @media screen and (max-width: ${breakpoints.x_large}) {
+  @media screen and (max-width: ${breakpoints.large}) {
     width: 176px;
     margin-right: 0px;
   }
@@ -187,7 +182,7 @@ export const Industries = styled.div`
   align-items: flex-start;
   gap: 24px;
   margin-right: 88px;
-  @media screen and (max-width: ${breakpoints.x_large}) {
+  @media screen and (max-width: ${breakpoints.large}) {
     width: 176px;
     margin-right: 0px;
   }
@@ -206,7 +201,7 @@ export const Experties = styled.div`
   flex-direction: column;
   align-items: flex-start;
   gap: 24px;
-  @media screen and (max-width: ${breakpoints.x_large}) {
+  @media screen and (max-width: ${breakpoints.large}) {
     width: 176px;
     margin-right: 0px;
   }
@@ -224,7 +219,7 @@ export const Divider =  styled.hr`
   margin-top: 48px;
   border-color: #0B63E5;
 
-  @media screen and (max-width: ${breakpoints.x_large}) {
+  @media screen and (max-width: ${breakpoints.large}) {
     width: 760px;
   }
 
@@ -240,7 +235,7 @@ export const FooterBottom = styled.div`
   align-items: center;
   margin-top: 32px;
 
-  @media screen and (max-width: ${breakpoints.x_large}) {
+  @media screen and (max-width: ${breakpoints.large}) {
     width: 760px;
   }
   @media screen and (max-width: ${breakpoints.medium}) {

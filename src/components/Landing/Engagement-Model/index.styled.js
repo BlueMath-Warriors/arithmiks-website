@@ -1,11 +1,5 @@
 import { styled } from "styled-components";
-
-const breakpoints = {
-  small: "820px",
-  medium: "820px",
-  large: "1040px",
-  x_large: "1440px",
-};
+import {breakpoints} from "../index.styled";
 
 export const TextContainer = styled.div`
   display: flex;
@@ -59,7 +53,7 @@ export const ModelCard = styled.div`
   box-shadow: 0px 16px 48px 0px rgba(0, 0, 0, 0.04);
   margin-bottom: 32px;
 
-  @media screen and (max-width: ${breakpoints.x_large}) {
+  @media screen and (max-width: ${breakpoints.large}) {
     width: 760px;
     padding: 24px;
     gap: 16px;
@@ -85,7 +79,7 @@ export const CardText = styled.div`
   flex-direction: column;
   padding-right: ${props => (props.right ? '63px' : '')};
   padding-left: ${props => (props.right ? '' : '63px')};
-  @media screen and (max-width: ${breakpoints.x_large}) {
+  @media screen and (max-width: ${breakpoints.large}) {
     margin: 24px 0;
     padding: 0;
   }
@@ -100,7 +94,7 @@ export const CardImg = styled.img`
   height: 312px;
   border-radius: 16px;
 
-  @media screen and (max-width: ${breakpoints.x_large}) {
+  @media screen and (max-width: ${breakpoints.large}) {
     width: 283px;
     height: 180px;
     border-radius: 8px;
@@ -146,7 +140,7 @@ export const MainHead = styled.h1`
   letter-spacing: -0.96px;
   margin-bottom: 72px;
 
-  @media screen and (max-width: ${breakpoints.x_large}) {
+  @media screen and (max-width: ${breakpoints.large}) {
     font-size: 48px;
     line-height: 62px;
     letter-spacing: -0.72px;

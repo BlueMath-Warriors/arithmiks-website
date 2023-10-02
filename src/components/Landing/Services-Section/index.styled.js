@@ -1,11 +1,5 @@
 import { styled } from "styled-components";
-
-const breakpoints = {
-  small: "820px",
-  medium: "820px",
-  large: "1040px",
-  x_large: "1440px",
-};
+import {breakpoints} from "../index.styled"
 
 export const Header = styled.div`
   height: 92px;
@@ -15,7 +9,7 @@ export const Header = styled.div`
   align-items: space-between;
   margin-bottom: 35px;
 
-  @media screen and (max-width: ${breakpoints.x_large}) {
+  @media screen and (max-width: ${breakpoints.large}) {
     height: 62px;
     margin-bottom: 38px;
     width: 760px;
@@ -62,7 +56,7 @@ export const HeaderText = styled.h1`
   line-height: 60px;
   letter-spacing: -0.66px;
   width: 430px;
-  @media screen and (max-width: ${breakpoints.x_large}) {
+  @media screen and (max-width: ${breakpoints.large}) {
     font-size: 32px;
     line-height: 30px;
     letter-spacing: -0.48px;
@@ -110,7 +104,7 @@ export const CardContainer = styled.div`
   height: 987px;
   flex-shrink: 0;
   gap: 32px;
-  @media screen and (max-width: ${breakpoints.x_large}) {
+  @media screen and (max-width: ${breakpoints.large}) {
     width: 760px;
     height: 670px;
     gap: 16px;
@@ -131,7 +125,7 @@ export const CardCol = styled.div`
   flex-shrink: 0;
   gap: 32px;
   margin-top: ${props => (props.down ? '35px' : '0px')};
-  @media screen and (max-width: ${breakpoints.x_large}) {
+  @media screen and (max-width: ${breakpoints.large}) {
     gap: 22px;
     margin-top: ${props => (props.down ? '24px' : '0px')};
   }
@@ -154,7 +148,7 @@ export const Card = styled.div`
     'border-radius: 0px'
   )};
 
-  @media screen and (max-width: ${breakpoints.x_large}) {
+  @media screen and (max-width: ${breakpoints.large}) {
     width: 372px;
     height: 312px;
   }
@@ -176,7 +170,7 @@ export const CardHeader = styled.div`
   padding-top: 64px;
   padding-left: 32px;
   margin-bottom: 24px;
-  @media screen and (max-width: ${breakpoints.x_large}) {
+  @media screen and (max-width: ${breakpoints.large}) {
     padding-top: 30px;
     padding-left: 22px;
     }
@@ -189,7 +183,7 @@ export const CardIcon = styled.img`
   height: 52px;
   margin: 12px;
 
-  @media screen and (max-width: ${breakpoints.x_large}) {
+  @media screen and (max-width: ${breakpoints.large}) {
     width: 32px;
     height: 32px;
     margin: 0 16px 0 0;
@@ -204,7 +198,7 @@ export const CardHeaderText = styled.h1`
   line-height: 30px;
   letter-spacing: 0.32px;
 
-  @media screen and (max-width: ${breakpoints.x_large}) {
+  @media screen and (max-width: ${breakpoints.large}) {
     font-size: 22px;
     font-weight: 700;
     letter-spacing: 0.22px;
@@ -223,7 +217,7 @@ export const CardBodyDetail = styled.div`
   padding-left: 56px;
   color: #1D1D1FCC;
   margin-bottom: 8px;
-  @media screen and (max-width: ${breakpoints.x_large}) {
+  @media screen and (max-width: ${breakpoints.large}) {
     padding-left: 24px;
     margin-bottom: 0px;
     align-items: center;
@@ -244,7 +238,7 @@ color: ${props =>
   letter-spacing: 0.48px;
   text-decoration-line: ${props => props.bold ? 'underline' : 'none'};
 
-  @media screen and (max-width: ${breakpoints.x_large}) {
+  @media screen and (max-width: ${breakpoints.large}) {
     font-size: 18px;
     letter-spacing: 0.36px;
   }

@@ -1,10 +1,9 @@
 import { styled } from "styled-components";
 
-const breakpoints = {
+export const breakpoints = {
   small: "430px",
   medium: "820px",
-  large: "1040px",
-  x_large: "1440px",
+  large: "1200px",
 };
 
 export const Background = styled.div`
@@ -78,18 +77,12 @@ export const HeaderContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   margin: 0 auto;
-  @media screen and (max-width: ${breakpoints.x_large}) {
-    max-width: 100%;
-    padding: 0 120px;
-  }
+
   @media screen and (max-width: ${breakpoints.large}) {
-    max-width: 100%;
-    padding: 0 105px;
+    width: 760px
   }
   @media screen and (max-width: ${breakpoints.medium}) {
-    max-width: 100%;
-    height 80px;
-    padding: 0 30px;
+    width: 382px;
   }
 `;
 
@@ -202,7 +195,7 @@ export const CtaBtn = styled.button`
 
 export const TextContainer = styled.div`
   display: flex;
-  max-width: 1190px;
+  max-width: 1120px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -220,7 +213,7 @@ export const MainHead = styled.h1`
   color: #000;
   text-align: center;
   font-family: Poppins;
-  font-size: 70px;
+  font-size: 66px;
   font-style: normal;
   font-weight: 600;
   line-height: 80px;
