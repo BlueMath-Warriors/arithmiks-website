@@ -29,7 +29,9 @@ import Services from "./Services-Section";
 import About from "./About-Section";
 import ContactUs from "./Contact-Us";
 import Footer from "./Footer";
+import CaseStudy from "./Case-Study";
 import menu_icon from "../../images/hamburger_icon.svg"
+
 const LandingPage = () => {
   const navMenu = useRef(null);
   const [showMenu, setShowMenu] = useState(false);
@@ -100,6 +102,7 @@ const LandingPage = () => {
       <About/>
       <Services/>
       <EngagementModel/>
+      <CaseStudy/>
       <ContactUs/>
       <Footer/>
     </>
