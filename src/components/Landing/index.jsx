@@ -32,6 +32,7 @@ import ContactUs from "./Contact-Us";
 import Footer from "./Footer";
 import CaseStudy from "./Case-Study";
 import menu_icon from "../../images/hamburger_icon.svg"
+import HowItWorks from "./How-it-Works";
 
 const LandingPage = () => {
   const navMenu = useRef(null);
@@ -102,6 +103,7 @@ const LandingPage = () => {
       </div>
       <About/>
       <Services/>
+      <HowItWorks/>
       <EngagementModel/>
       <CaseStudy/>
       <ContactUs/>
