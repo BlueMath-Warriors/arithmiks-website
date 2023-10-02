@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
-import {breakpoints} from "../index.styled"
+import { breakpoints } from "../index.styled";
 
 export const TextCard = styled.div`
   display: flex;
