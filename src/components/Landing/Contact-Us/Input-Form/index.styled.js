@@ -1,11 +1,5 @@
 import { styled } from "styled-components";
-
-const breakpoints = {
-  small: "820px",
-  medium: "820px",
-  large: "1040px",
-  x_large: "1440px",
-};
+import { breakpoints } from "../../index.styled";
 
 export const FormSection = styled.div`
   z-index: 10;

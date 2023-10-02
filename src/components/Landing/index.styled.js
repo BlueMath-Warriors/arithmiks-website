@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
 
-const breakpoints = {
+export const breakpoints = {
   small: "430px",
   medium: "820px",
   large: "1040px",
