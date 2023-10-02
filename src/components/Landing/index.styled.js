@@ -60,16 +60,14 @@ export const ComingSoon = styled.div`
 `;
 
 export const Header = styled.header`
-  background: rgba(255, 255, 255, 0.80);
+  background: ${(props) => (props.white ? 'white' : 'rgba(255, 255, 255, 0.80)')};
+  position: ${(props) => (props.white ? 'fixed' : 'absolute')};
+
   box-shadow: none;
   left: 0;
-  position: absolute;
   right: 0;
   top: 0;
-  z-index: 2;
-  @media screen and (max-width: ${breakpoints.medium}) {
-    background: #fff;
-  }
+  z-index: 11;
 `;
 
 export const HeaderContainer = styled.div`
@@ -131,6 +129,8 @@ export const Menu = styled.ul`
 
   &.active {
     left: 0;
+    margin-top: 18px;
+    border-top: 1px solid #C2C2C2; 
   }
   
   @media screen and (max-width: ${breakpoints.large}) {
@@ -173,9 +173,9 @@ export const Buttons = styled.div`
 
 export const CtaBtn = styled.button`
   display: flex;
-  width: ${props => (props.fixed ? '134px' : '')};
+  width: ${props => (props.fixed ? '134px' : '144px')};
   height: 52px;
-  padding: 13px 24px;
+  padding: 13px auto;
   justify-content: center;
   align-items: center;
   gap: 10px;

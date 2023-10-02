@@ -133,7 +133,7 @@ export const NameInput = styled.input`
 
 export const EmailInput = styled.input`
   height: 48px;
-  width: 580px;
+  width: 544px;
   display: flex;
   padding: 12px 18px;
   align-items: center;
@@ -166,7 +166,7 @@ export const EmailInput = styled.input`
 
 export const DropDownInput = styled.select`
   height: 48px;
-  width: 580px;
+  width: 544px;
   display: flex;
   padding: 12px 18px;
   align-items: center;
@@ -190,6 +190,10 @@ export const DropDownInput = styled.select`
     font-style: normal;
     font-weight: 400;
     line-height: 24px;
+  }
+  @media screen and (max-width: ${breakpoints.large}) {
+    width: 630px;
+    height: 44px;
   }
   @media screen and (max-width: ${breakpoints.medium}) {
     width: 350px;

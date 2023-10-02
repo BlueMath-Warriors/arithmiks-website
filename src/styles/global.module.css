@@ -74,104 +74,23 @@ button {
 
 .services{
   background-color: #FFF;
-  height: 1340px;
+  height: auto;
   padding-top: 90px;
-  padding-bottom: 65px;
+  padding-bottom: 90px;
 
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-}
-
-@media screen and (max-width: 1440px) {
-  .engagement_model {
-    padding-top: 90px;
-    padding-bottom: 65px;
-  }
 }
 
 @media screen and (max-width: 820px) {
-  .engagement_model {
+  .services {
     padding-top: 60px;
-    padding-bottom: 45px;
+    padding-bottom: 60px;
   }
 }
 
-@media screen and (max-width: 1440px) {
-  .services{
-    background-color: #FFF;
-    height: 960px;
-    padding-top: 90px;
-
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    flex-direction: column;
-  }
-}
-
-@media screen and (max-width: 820px) {
-  .services{
-    background-color: #FFF;
-    height: 1640px;
-    padding-top: 60px;
-
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    flex-direction: column;
-  }
-}
-
-
-.services{
-  background-color: #FFF;
-  height: 1340px;
-  padding-top: 90px;
-  padding-bottom: 65px;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
-@media screen and (max-width: 1440px) {
-  .engagement_model {
-    padding-top: 90px;
-    padding-bottom: 65px;
-  }
-}
-
-@media screen and (max-width: 820px) {
-  .engagement_model {
-    padding-top: 60px;
-    padding-bottom: 45px;
-  }
-}
-
-.services{
-  background-color: #FFF;
-  height: 1340px;
-  padding-top: 90px;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
-.services{
-  background-color: #FFF;
-  height: 1340px;
-  padding-top: 90px;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
 
 .footer {
   background-color: #FFF;
@@ -263,31 +182,5 @@ button {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-  }
-}
-
-@media screen and (max-width: 1440px) {
-  .services{
-    background-color: #FFF;
-    height: 960px;
-    padding-top: 90px;
-
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    flex-direction: column;
-  }
-}
-
-@media screen and (max-width: 820px) {
-  .services{
-    background-color: #FFF;
-    height: 1640px;
-    padding-top: 60px;
-
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    flex-direction: column;
   }
 }

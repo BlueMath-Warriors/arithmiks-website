@@ -32,7 +32,6 @@ import fb_icon from "../../../images/social-icons/fb.svg";
 import in_icon from "../../../images/social-icons/in.svg";
 import insta_icon from "../../../images/social-icons/insta.svg";
 import twitter_icon from "../../../images/social-icons/twitter.svg";
-import dribble_icon from "../../../images/social-icons/dribble.svg";
 import bg_img from "../../../images/contact-left-bg.svg"
 
 import InputForm from "./Input-Form";
@@ -108,12 +107,6 @@ const ContactUs = () => {
                     <SocialIcon src={insta_icon}/>
                   </SocialContainer>
                 </a>
-                <a href="/landing">
-                  <SocialContainer>
-                    <SocialIcon src={dribble_icon}/>
-                  </SocialContainer>
-                </a>
-
               </FooterBottom>
             </CardFooter>
           </CardLeft>

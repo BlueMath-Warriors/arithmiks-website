@@ -69,7 +69,7 @@ export const MainCard = styled.div`
   }
   @media screen and (max-width: ${breakpoints.medium}) {
     flex-direction: column;
-    height: 1000px;
+    height: 1015px;
   }
 `
 
@@ -82,6 +82,7 @@ export const CardLeft = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  overflow: hidden;
 
   @media screen and (max-width: ${breakpoints.large}) {
     order: 2;
@@ -96,16 +97,28 @@ export const CardLeft = styled.div`
     order: 1;
     width: 382px; 
     height: 584px;
-    padding: 24px;
+    padding: 24px 0;
     border-radius: 0px 0px 24px 24px;
   }
 `
 
 export const BackImage = styled.img`
   position: absolute;
-  height: 225px;
-  right: 0;
-  top: 0;
+  height: 270px;
+  right: -90px;
+  top: -45px;
+  @media screen and (max-width: ${breakpoints.large}) {
+    height: 300px;
+    right: 35px;
+    top: -117px;
+  }
+
+  @media screen and (max-width: ${breakpoints.medium}) {
+    height: 300px;
+    right: -82px;
+    top: -120px;
+  }
+
 `
 
 export const LeftCardHeader = styled.h1`
@@ -204,14 +217,14 @@ export const CardFooter = styled.div`
   margin-top: 78px;
   margin-left: 96px;
   @media screen and (max-width: ${breakpoints.large}) {
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     margin: 0;
   }
 
   @media screen and (max-width: ${breakpoints.medium}) {
     align-items: flex-start;
-    // justify-content: center;
+    justify-content: center;
     margin: 0;
     padding-left: 24px;
   }
@@ -240,7 +253,7 @@ export const FooterText = styled.p`
 export const FooterBottom = styled.div`
   display: flex;
   align-items: flex-start;
-  gap: 8px;
+  gap: 16px;
 `
 export const SocialContainer =styled.div`
   display: flex;
@@ -277,12 +290,8 @@ export const CardRight = styled.div`
 `
 
 export const CardDetails = styled.div`
-  padding; 0;
+  padding: 0;
   margin: 0;
   display: flex;
   flex-direction: column;
-  @media screen and (max-width: ${breakpoints.large}) {
-    margin-bottom:  6px;
-  }
-
 `

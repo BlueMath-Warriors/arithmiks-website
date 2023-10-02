@@ -32,9 +32,11 @@ import Footer from "./Footer";
 import menu_icon from "../../images/hamburger_icon.svg"
 const LandingPage = () => {
   const navMenu = useRef(null);
+  const [showMenu, setShowMenu] = useState(false);
 
   const closeMenu = () => {
     navMenu.current.classList.remove("active");
+    setShowMenu(false);
   };
   return (
     // <Background>
@@ -48,7 +50,7 @@ const LandingPage = () => {
     //   </Content>
     // </Background>
     <>
-      <Header>
+      <Header white={showMenu}>
         <HeaderContainer>
           <a href="https://arithmiks.com">
             <CompanyLogo>
@@ -68,6 +70,10 @@ const LandingPage = () => {
           <CtaBtn fill>Get In Touch</CtaBtn>
           <Hamburger onClick={(e)=>{
               navMenu.current.classList.toggle("active");
+              if(navMenu.current.classList.contains("active"))
+                setShowMenu(true);
+              else
+                setShowMenu(false);
           }}>
             <MenuIcon src={menu_icon} />
           </Hamburger>
