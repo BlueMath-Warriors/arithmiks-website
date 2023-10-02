@@ -134,13 +134,15 @@ export const Menu = styled.ul`
 `;
 
 export const MenuItem = styled.li`
-  color: ${props => (props.hidden ? '#1355FF' : 'var(--secondary80)')};
-  font-family: Roboto;
+  color: ${props => (props.hidden ? '#1355FF' : '#170F49')};
+  font-family: Poppins;
   font-size: 18px;
   font-style: normal;
   font-weight: ${props => (props.hidden ? '700' : '400')};
   line-height: normal;
+  letter-spacing: -0.36px;
   cursor: pointer;
+
   display: ${props => (props.hidden ? 'none' : '')};
   ${({active}) => active && `
     background: var(--button-gradient, linear-gradient(230deg, #BC4E9B 19.66%, #0957DE 115.46%));
@@ -164,11 +166,21 @@ export const Buttons = styled.div`
   gap: 32px;
 `
 
+export const HeaderButtonTxt = styled.p`
+  color: #FFF;
+  text-align: center;
+  font-feature-settings: 'clig' off, 'liga' off;
+  font-family: DM Sans;
+  font-size: 15.999px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 17.999px;
+`
+
 export const CtaBtn = styled.button`
   display: flex;
   width: ${props => (props.fixed ? '134px' : '144px')};
   height: 52px;
-  padding: 13px auto;
   justify-content: center;
   align-items: center;
   gap: 10px;
@@ -183,7 +195,7 @@ export const CtaBtn = styled.button`
   font-weight: 600;
   line-height: 150%;
 
-  border: ${props => (props.fill ? '' : '1px solid #1355FF; ')};
+  border: ${props => (props.fill ? 'none' : '1px solid #1355FF; ')};
   @media screen and (max-width: ${breakpoints.large}) {
     margin-left: ${props => (props.fixed ? '' : 'auto')};
     margin-right: ${props => (props.fixed ? '' : '16px')};

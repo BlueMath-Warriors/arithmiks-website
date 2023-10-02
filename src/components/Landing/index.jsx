@@ -20,6 +20,7 @@ import {
   LogoIcon,
   Hamburger,
   MenuIcon,
+  HeaderButtonTxt,
 } from "./index.styled";
 import { StaticImage, getSrc } from "gatsby-plugin-image";
 import u_icon from "../../images/u-icon.svg";
@@ -69,7 +70,7 @@ const LandingPage = () => {
             <MenuItem onClick={closeMenu}>Company</MenuItem>
             <MenuItem hidden onClick={closeMenu}>Get in Touch</MenuItem>
           </Menu>
-          <CtaBtn fill>Get In Touch</CtaBtn>
+          <CtaBtn fill> <HeaderButtonTxt>Get In Touch</HeaderButtonTxt></CtaBtn>
           <Hamburger onClick={(e)=>{
               navMenu.current.classList.toggle("active");
               if(navMenu.current.classList.contains("active"))
