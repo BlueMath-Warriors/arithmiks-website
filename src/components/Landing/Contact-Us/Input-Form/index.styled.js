@@ -42,6 +42,7 @@ export const HeaderText = styled.label`
     @media screen and (max-width: ${breakpoints.large}) {
     height: 44px;
     width: 307px;
+    }
   `
 ;
 
@@ -196,7 +197,7 @@ export const DropDownInput = styled.select`
 `;
 
 export const MessageInput = styled.textarea`
-  height: 132px;
+  min-height: 132px;
   width: 100%;
   display: flex;
   padding: 12px 18px;

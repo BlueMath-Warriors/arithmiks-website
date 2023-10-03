@@ -5,22 +5,12 @@ import {
   Content,
   CtaBtn,
   Description,
-  Header,
-  HeaderContainer,
   Hero,
   Logo,
   MainHead,
-  Menu,
-  MenuItem,
   TextContainer,
   ImageIcon,
   Buttons,
-  CompanyLogo,
-  LogoText,
-  LogoIcon,
-  Hamburger,
-  MenuIcon,
-  HeaderButtonTxt,
 } from "./index.styled";
 import { StaticImage, getSrc } from "gatsby-plugin-image";
 import u_icon from "../../images/u-icon.svg";
@@ -31,17 +21,11 @@ import About from "./About-Section";
 import ContactUs from "./Contact-Us";
 import Footer from "./Footer";
 import CaseStudy from "./Case-Study";
-import menu_icon from "../../images/hamburger_icon.svg"
+import Header from "../Landing/Header"
 import HowItWorks from "./How-it-Works";
 
 const LandingPage = () => {
   const navMenu = useRef(null);
-  const [showMenu, setShowMenu] = useState(false);
-
-  const closeMenu = () => {
-    navMenu.current.classList.remove("active");
-    setShowMenu(false);
-  };
   return (
     // <Background>
     //   <Content>
@@ -54,35 +38,7 @@ const LandingPage = () => {
     //   </Content>
     // </Background>
     <>
-      <Header white={showMenu}>
-        <HeaderContainer>
-          <a href="https://arithmiks.com">
-            <CompanyLogo>
-              <LogoIcon>
-                <StaticImage src="../../images/favicon.png" alt="arithmiks logo" />
-              </LogoIcon>
-              <LogoText>Arithmiks</LogoText>
-            </CompanyLogo>
-          </a>
-          <Menu ref={navMenu}>
-            <MenuItem onClick={closeMenu}>Home</MenuItem>
-            <MenuItem onClick={closeMenu}>Service</MenuItem>
-            <MenuItem onClick={closeMenu}>Case Study</MenuItem>
-            <MenuItem onClick={closeMenu}>Company</MenuItem>
-            <MenuItem hidden onClick={closeMenu}>Get in Touch</MenuItem>
-          </Menu>
-          <CtaBtn fill> <HeaderButtonTxt>Get In Touch</HeaderButtonTxt></CtaBtn>
-          <Hamburger onClick={(e)=>{
-              navMenu.current.classList.toggle("active");
-              if(navMenu.current.classList.contains("active"))
-                setShowMenu(true);
-              else
-                setShowMenu(false);
-          }}>
-            <MenuIcon src={menu_icon} />
-          </Hamburger>
-        </HeaderContainer>
-      </Header>
+    <Header/>
       <div className={containerStyles.main_hero}>
         <TextContainer>
           <MainHead>
