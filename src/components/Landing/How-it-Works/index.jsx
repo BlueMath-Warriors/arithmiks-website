@@ -23,37 +23,36 @@ import CardArrow from "../../../images/arrow.svg";
 import MeetingIcon from "../../../images/card-meeting.svg";
 
 const HowItWorks = () => {
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [windowWidth, setWindowWidth] = useState(1450);
   const [offset, setOffset] = useState(0);
   const [cardGap, setCardGap] = useState(111);
   const [width, setWidth] = useState(326);
   const [currentIndex, setCurrentIndex] = useState(1);
   const cardsRef = useRef([]);
   const containerRef = useRef(null);
-
   useEffect(() => {
-    const handleWindowResize = () => {
-      setWindowWidth(window.innerWidth);
-      setOffset(5 - Math.floor((window.innerWidth - 50) / (cardGap + width)));
+    if (typeof window !== 'undefined') {
+      const handleWindowResize = () => {
+        setWindowWidth(window.innerWidth);
+        setOffset(5 - Math.floor((window.innerWidth - 50) / (cardGap + width)));
+        if (window.innerWidth < 830) {
+          setCardGap(32);
+          setWidth(270);
+        } else if (window.innerWidth < 1200) {
+          setCardGap(52);
+        } else {
+          setWidth(326);
+          setCardGap(111);
+        }
+      };
+      handleWindowResize();
 
-      if (window.innerWidth < 830) {
-        setCardGap(32);
-        setWidth(270);
-      } else if (window.innerWidth < 1200) {
-        setCardGap(52);
-      } else {
-        setWidth(326);
-        setCardGap(111);
-      }
-    };
-
-    handleWindowResize();
-
-    window.addEventListener("resize", handleWindowResize);
-    return () => {
-      window.removeEventListener("resize", handleWindowResize);
-    };
-  }, []);
+      window.addEventListener("resize", handleWindowResize);
+      return () => {
+        window.removeEventListener("resize", handleWindowResize);
+      };
+    }
+  }, [cardGap, width]);
 
   const Data = [
     {

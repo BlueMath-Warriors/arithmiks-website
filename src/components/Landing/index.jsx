@@ -25,7 +25,6 @@ import Header from "../Landing/Header"
 import HowItWorks from "./How-it-Works";
 
 const LandingPage = () => {
-  const navMenu = useRef(null);
   return (
     // <Background>
     //   <Content>
