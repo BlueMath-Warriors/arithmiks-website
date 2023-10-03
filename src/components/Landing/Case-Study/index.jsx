@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React from "react";
 import {
   SmallTxt,
   Header,
@@ -23,19 +23,6 @@ import CaseStudy_1 from "../../../images/case-study-1.png";
 import CaseStudy_2 from "../../../images/case-study-2.png";
 
 const CaseStudy = () => {
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-
-  useEffect(() => {
-    const handleWindowResize = () => {
-      setWindowWidth(window.innerWidth);
-    };
-
-    window.addEventListener('resize', handleWindowResize);
-
-    return () => {
-      window.removeEventListener('resize', handleWindowResize);
-    };
-  });
   return (
     <>
       <div className={containerStyles.case_study}>
@@ -46,7 +33,7 @@ const CaseStudy = () => {
           </Left>
           <Right>
             <ViewButton>
-              {windowWidth > 820 ? "View All Case Study" : "View All"}
+              {"View All"}
               <BtnIcon src={ArrowCricleRight} />
             </ViewButton>
           </Right>
