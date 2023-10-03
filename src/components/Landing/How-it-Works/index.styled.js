@@ -10,11 +10,14 @@ export const Header = styled.div`
   margin-bottom: 80px;
 
   @media screen and (max-width: ${breakpoints.large}) {
+    margin-bottom: 48px;
+    width: 760px
+  }
+  @media screen and (max-width: ${breakpoints.medium}) {
+    margin-bottom: 24px;
+    width: 382px;
   }
 
-  @media screen and (max-width: ${breakpoints.medium}) {
-    
-  }
 `
 export const HeaderLeft = styled.div`
   text-align: left;
@@ -31,6 +34,13 @@ export const HeaderTitle = styled.h1`
   font-style: normal;
   font-weight: 600;
   line-height: normal;
+  @media screen and (max-width: ${breakpoints.large}) {
+    font-size: 38px;
+  }
+
+  @media screen and (max-width: ${breakpoints.medium}) {
+    font-size: 20px;
+  }
 `
 export const HeaderDescription = styled.p`
   color: #4F4F4F;
@@ -39,6 +49,13 @@ export const HeaderDescription = styled.p`
   font-style: normal;
   font-weight: 400;
   line-height: 150%;
+  @media screen and (max-width: ${breakpoints.large}) {
+    font-size: 18px;
+  }
+
+  @media screen and (max-width: ${breakpoints.medium}) {
+    font-size: 14px;
+  }
 `
 
 export const CarouselButtons = styled.div`
@@ -86,12 +103,22 @@ export const SmallTxt = styled.p`
 export const CarouselContainer = styled.div`
   display: flex;
   position: relative;
-  left: 380px;
+  margin-left: auto;
+  margin-right: auto;
+  left: 50px;
   justify-content: flex-start;
   align-items: center;
   gap: 111px;
   width: 2190px;
-  overflow-x: auto !important;
+  transition: left 0.8s ease;
+  @media screen and (max-width: ${breakpoints.large}) {
+    left:50px;
+    gap: 52px;
+  }
+  @media screen and (max-width: ${breakpoints.medium}) {
+    width: 1550px;
+    gap: 32px;
+  }
 `
 
 export const CarouselCard = styled.div`
@@ -102,6 +129,13 @@ export const CarouselCard = styled.div`
   background: #FFF;
   padding: 32px 32px 38px 32px;
   flex-direction: column;
+  @media screen and (max-width: ${breakpoints.medium}) {
+    width: 270px;
+    height: 304px;
+    border-radius: 16px;
+    padding: 16px 34px 16px 16px;
+  }
+
 `
 
 export const CardTitle = styled.h1`
@@ -112,7 +146,10 @@ export const CardTitle = styled.h1`
   font-weight: 600;
   line-height: normal;
   margin-bottom: 8px;
-  white-space: normal;
+  max-width: 220px;
+  @media screen and (max-width: ${breakpoints.medium}) {
+    font-size: 18px;
+  }
 `
 
 export const CardDetails = styled.h1`
@@ -132,9 +169,42 @@ export const ImgContainer = styled.div`
   background: #E8EEFF;
   padding: 34px;
   margin-bottom: 44px;
+  @media screen and (max-width: ${breakpoints.medium}) {
+    width: 73px;
+    height: 73px;
+    padding: 19px;
+    margin-bottom: 16px;
+  }
 `
 
 export const CardImg = styled.img`
   width: 42px;
   height: 42px;
+  @media screen and (max-width: ${breakpoints.medium}) {
+    width: 34.5px;
+    height: 34.5px;
+  }
+`
+
+export const ArrowImage = styled.img`
+  width: 250px;
+  height: 45px;
+  position: relative;
+  right: ${props => (props.up ? '-220px' : '-195px')};
+  bottom: ${props => (props.up ? '135px' : '240px')};
+  transform: ${props => (props.up ? '' : 'scaley(-1)')};
+  
+
+  @media screen and (max-width: ${breakpoints.large}) {
+    right: ${props => (props.up ? '-160px' : '-165px')};
+    bottom: ${props => (props.up ? '130px' : '255px')};
+  }
+
+  @media screen and (max-width: ${breakpoints.medium}) {
+    width: 80px;
+    height: 30px;
+    right: ${props => (props.up ? '-215px' : '-200px')};
+    bottom: ${props => (props.up ? '95px' : '210px')};
+  }
+
 `
