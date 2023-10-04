@@ -257,3 +257,7 @@ button {
   align-items: center;
   flex-direction: column;
 }
+
+.header_div{
+  height: 90px !important;
+}
