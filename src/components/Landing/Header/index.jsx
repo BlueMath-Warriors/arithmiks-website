@@ -69,6 +69,7 @@ const Header = () => {
   const [showServices, setShowServices] = useState(false);
   const [heroHeight, setHeroHeight] = useState(840);
   const [isFixed, setIsFixed] = useState(false);
+  const [hideNav, setHideNav] = useState(false);
 
   const toggle_service = () => {
     setShowServices(!showServices);
@@ -120,10 +121,14 @@ const Header = () => {
 
   if (typeof window !== "undefined") {
     window.addEventListener("scroll", () => {
-      const scrollY = window.scrollY || window.pageYOffset;
+      const scrollY = window.scrollY;
       if (scrollY >= heroHeight) {
+        setHideNav(false);
         setIsFixed(true);
-      } else {
+      } else if(scrollY < heroHeight && scrollY > 90) {
+        setHideNav(true);
+      }else {
+        setHideNav(false);
         setIsFixed(false);
       }
     });
@@ -131,7 +136,7 @@ const Header = () => {
 
   return (
     <>
-      <Headerr white={showMenu} fixed={isFixed}>
+      <Headerr white={showMenu} fixed={isFixed} hide={hideNav} >
         <HeaderContainer>
           <a href="https://arithmiks.com">
             <CompanyLogo>
