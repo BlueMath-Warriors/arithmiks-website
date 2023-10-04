@@ -62,7 +62,7 @@ const ServicesMenu = ({ menu_ref }) => {
   );
 };
 
-const Header = () => {
+const Header = ({white}) => {
   const navMenu = useRef(null);
   const servicesRef = useRef(null);
   const [showMenu, setShowMenu] = useState(false);
@@ -71,9 +71,6 @@ const Header = () => {
   const [isFixed, setIsFixed] = useState(false);
   const [hideNav, setHideNav] = useState(false);
 
-  const toggle_service = () => {
-    setShowServices(!showServices);
-  };
   const closeMenu = () => {
     navMenu.current.classList.remove("active");
     setShowMenu(false);
@@ -84,7 +81,9 @@ const Header = () => {
       servicesRef.current &&
       !servicesRef.current.contains(event.target)
     ) {
-      setShowServices(false);
+      setTimeout(()=>{
+        setShowServices(false);
+      }, 200)
     }
   };
 
@@ -127,6 +126,8 @@ const Header = () => {
         setIsFixed(true);
       } else if(scrollY < heroHeight && scrollY > 90) {
         setHideNav(true);
+        setShowMenu(false);
+        setShowServices(false);
       }else {
         setHideNav(false);
         setIsFixed(false);
@@ -136,7 +137,7 @@ const Header = () => {
 
   return (
     <>
-      <Headerr white={showMenu} fixed={isFixed} hide={hideNav} >
+      <Headerr white={(showMenu || showServices || white)} fixed={isFixed} hide={hideNav} >
         <HeaderContainer>
           <a href="https://arithmiks.com">
             <CompanyLogo>
@@ -154,8 +155,7 @@ const Header = () => {
             <MenuItem
               blue={showServices}
               onClick={() => {
-                closeMenu();
-                toggle_service();
+                setShowServices((prev) => !prev);
               }}
             >
               Services
@@ -184,8 +184,8 @@ const Header = () => {
             <MenuIcon src={menu_icon} />
           </Hamburger>
         </HeaderContainer>
+        {showServices && <ServicesMenu menu_ref={servicesRef} />}
       </Headerr>
-      {showServices && <ServicesMenu menu_ref={servicesRef} />}
     </>
   );
 };

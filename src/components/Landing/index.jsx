@@ -37,7 +37,7 @@ const LandingPage = () => {
     //   </Content>
     // </Background>
     <>
-    <Header/>
+    <Header white={false}/>
       <div className={containerStyles.main_hero}>
         <TextContainer>
           <MainHead>

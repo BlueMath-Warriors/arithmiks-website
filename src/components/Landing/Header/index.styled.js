@@ -213,7 +213,10 @@ export const ServiceContainer = styled.div`
   @media screen and (max-width: ${breakpoints.large}) {
     display: none;
   }
-
+  
+  &.hide {
+    display: none;
+  }
 `
 
 export const ServiceRow = styled.div`
