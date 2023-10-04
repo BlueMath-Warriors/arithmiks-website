@@ -67,6 +67,9 @@ const Header = () => {
   const servicesRef = useRef(null);
   const [showMenu, setShowMenu] = useState(false);
   const [showServices, setShowServices] = useState(false);
+  const [heroHeight, setHeroHeight] = useState(840);
+  const [isFixed, setIsFixed] = useState(false);
+
   const toggle_service = () => {
     setShowServices(!showServices);
   };
@@ -83,6 +86,7 @@ const Header = () => {
       setShowServices(false);
     }
   };
+
   useEffect(() => {
     if (showServices) {
       document.addEventListener("mousedown", handleClickOutside);
@@ -94,9 +98,38 @@ const Header = () => {
     };
   }, [showServices]);
 
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const handleWindowResize = () => {
+        if (window.innerWidth > 1200) {
+          setHeroHeight(840);
+        } else if (window.innerWidth > 820) {
+          setHeroHeight(553);
+        } else {
+          setHeroHeight(445);
+        }
+      };
+      handleWindowResize();
+
+      window.addEventListener("resize", handleWindowResize);
+      return () => {
+        window.removeEventListener("resize", handleWindowResize);
+      };
+    }
+  }, []);
+
+  window.addEventListener("scroll", () => {
+    const scrollY = window.scrollY || window.pageYOffset;
+      if (scrollY >= heroHeight) {
+        setIsFixed(true);
+    } else {
+      setIsFixed(false);
+    }
+  });
+
   return (
     <>
-      <Headerr white={showMenu}>
+      <Headerr white={showMenu} fixed={isFixed}>
         <HeaderContainer>
           <a href="https://arithmiks.com">
             <CompanyLogo>

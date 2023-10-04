@@ -8,13 +8,12 @@ export const breakpoints = {
 
 export const Headerr = styled.header`
   background: ${(props) => (props.white ? 'white' : 'rgba(255, 255, 255, 0.80)')};
-  position: ${(props) => (props.white ? 'fixed' : 'absolute')};
-
+  position: ${(props) => (props.fixed ? 'fixed' : (props.white ? 'fixed' : 'absolute'))};
   box-shadow: none;
   left: 0;
   right: 0;
   top: 0;
-  z-index: 11;
+  z-index: 15;
 `;
 
 export const HeaderContainer = styled.div`
