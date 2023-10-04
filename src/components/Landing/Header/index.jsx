@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import {
   CtaBtn,
   Headerr,
@@ -23,9 +23,9 @@ import menu_icon from "../../../images/hamburger_icon.svg";
 import down_arrow from "../../../images/header-arrow-down.svg";
 import up_arrow from "../../../images/header-arrow-up.svg";
 
-const ServicesMenu = () => {
+const ServicesMenu = ({ menu_ref }) => {
   return (
-    <ServiceContainer>
+    <ServiceContainer ref={menu_ref}>
       <ServiceRow>
         <ServiceHeader>Software Development</ServiceHeader>
         <ServiceText>Web App Development</ServiceText>
@@ -59,11 +59,12 @@ const ServicesMenu = () => {
         <ServiceText>Software Re-engineering</ServiceText>
       </ServiceRow>
     </ServiceContainer>
-  )
-}
+  );
+};
 
 const Header = () => {
   const navMenu = useRef(null);
+  const servicesRef = useRef(null);
   const [showMenu, setShowMenu] = useState(false);
   const [showServices, setShowServices] = useState(false);
   const toggle_service = () => {
@@ -73,6 +74,26 @@ const Header = () => {
     navMenu.current.classList.remove("active");
     setShowMenu(false);
   };
+  const handleClickOutside = (event) => {
+    if (
+      showServices &&
+      servicesRef.current &&
+      !servicesRef.current.contains(event.target)
+    ) {
+      setShowServices(false);
+    }
+  };
+  useEffect(() => {
+    if (showServices) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [showServices]);
+
   return (
     <>
       <Headerr white={showMenu}>
@@ -99,7 +120,7 @@ const Header = () => {
             >
               Services
               <DownIcon>
-                <IconImg src={showServices ? up_arrow : down_arrow}/>
+                <IconImg src={showServices ? up_arrow : down_arrow} />
               </DownIcon>
             </MenuItem>
             <MenuItem onClick={closeMenu}>Case Study</MenuItem>
@@ -124,8 +145,7 @@ const Header = () => {
           </Hamburger>
         </HeaderContainer>
       </Headerr>
-      {showServices && <ServicesMenu/>}
-
+      {showServices && <ServicesMenu menu_ref={servicesRef} />}
     </>
   );
 };
