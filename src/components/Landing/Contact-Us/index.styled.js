@@ -64,7 +64,7 @@ export const MainCard = styled.div`
   }
   @media screen and (max-width: ${breakpoints.medium}) {
     flex-direction: column;
-    height: 1035px;
+    height: 1040px;
     width: 382px;
   }
 `
@@ -93,7 +93,6 @@ export const CardLeft = styled.div`
     order: 1;
     width: 382px; 
     height: 584px;
-    padding: 24px 0;
     border-radius: 0px 0px 24px 24px;
   }
 `

@@ -17,7 +17,7 @@ export const FormSection = styled.div`
   }
   @media screen and (max-width: ${breakpoints.medium}) {
     width: 382px; 
-    height: 584px;
+    height: 615px;
     padding: 16px;
   }
 `
