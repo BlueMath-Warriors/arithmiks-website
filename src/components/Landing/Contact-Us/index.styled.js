@@ -60,10 +60,12 @@ export const MainCard = styled.div`
   @media screen and (max-width: ${breakpoints.large}) {
     flex-direction: column;
     height: 900px;
+    width: 760px;
   }
   @media screen and (max-width: ${breakpoints.medium}) {
     flex-direction: column;
     height: 1035px;
+    width: 382px;
   }
 `
 
