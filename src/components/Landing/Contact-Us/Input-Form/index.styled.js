@@ -263,11 +263,52 @@ export const BtnIcon = styled.img`
 export const InputRow = styled.div`
   display: flex;
   gap: 32px;
+  .react-tel-input {
+    width: 256px;
+  }
   @media screen and (max-width: ${breakpoints.large}) {
     gap: 16px;
+    .react-tel-input {
+      width: 307px !important;
+    }
   }
   @media screen and (max-width: ${breakpoints.medium}) {
     flex-direction: column;
     gap: 20px;
+    .react-tel-input {
+      width: 350px !important;
+    }
   }
 `
+
+export const phoneContainer = {
+  height: '44px',
+  width: '256px',
+  display: 'flex',
+  padding: '10px 16px 10px 8px',
+  alignItems: 'center',
+  borderRadius: '5px',
+  border: '1px solid #E6E8EC',
+  background: '#FFF',
+}
+
+export const inputStyle = {
+  color: '#838E9E',
+  fontFamily: 'Inter',
+  fontSize: '16px',
+  fontStyle: 'normal',
+  fontWeight: '400',
+  lineHeight: '24px',
+  border: 'none', 
+  width: "245px",
+};
+
+export const phoneDropdown = {
+  backgroundColor: '#fff',
+  border: 'none',
+  borderRadius: '0',
+}
+
+export const countryList = {
+  color: '#838E9E !important',
+}
