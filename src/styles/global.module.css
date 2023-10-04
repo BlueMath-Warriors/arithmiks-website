@@ -224,3 +224,36 @@ button {
     padding-bottom: 28px;
   }
 }
+
+
+.easybar_hero{
+  background-color: #fff;
+  padding-top: 138px;
+  height: 1010px;
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+}
+
+.easybar_overview{
+  background-color: #fff;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.easybar_testimonial{
+  background-color: #000;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
