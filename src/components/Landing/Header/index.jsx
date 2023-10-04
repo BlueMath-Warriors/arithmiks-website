@@ -118,14 +118,16 @@ const Header = () => {
     }
   }, []);
 
-  window.addEventListener("scroll", () => {
-    const scrollY = window.scrollY || window.pageYOffset;
+  if (typeof window !== "undefined") {
+    window.addEventListener("scroll", () => {
+      const scrollY = window.scrollY || window.pageYOffset;
       if (scrollY >= heroHeight) {
         setIsFixed(true);
-    } else {
-      setIsFixed(false);
-    }
-  });
+      } else {
+        setIsFixed(false);
+      }
+    });
+  }
 
   return (
     <>
