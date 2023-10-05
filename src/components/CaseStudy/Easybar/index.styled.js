@@ -11,7 +11,15 @@ export const GradientContainer = styled.div`
   position: absolute;
   left: -80px;
   top: -260px;
-
+  @media screen and (max-width: ${breakpoints.medium}) {
+    display: inline-flex;
+    width: 306px;
+    height: 306px;
+    padding: 141px 12px 0px 0px;
+    align-items: center;
+    top: -90px;
+    left: 60px;
+  }
 `
 export const GradiantImg = styled.img`
 `
@@ -49,6 +57,10 @@ export const StudyTitle = styled.h1`
   font-style: normal;
   font-weight: 700;
   line-height: 100%;
+
+  @media screen and (max-width: ${breakpoints.medium}) {
+    font-size: 44px;
+  }
 `
 
 export const StudyCaption = styled.p`
@@ -59,6 +71,10 @@ export const StudyCaption = styled.p`
   font-style: normal;
   font-weight: 600;
   line-height: normal;
+
+  @media screen and (max-width: ${breakpoints.medium}) {
+    font-size: 24px;
+  }
 `
 
 export const MoreButton = styled.button`
@@ -90,10 +106,8 @@ export const BtnIcon = styled.img`
 `
 
 export const ImgContainer = styled.div`
-  width: 929.029px;
-  height: 712.629px;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
   padding: 23px;
   border-radius: 22px;
@@ -103,23 +117,45 @@ export const ImgContainer = styled.div`
   stroke-width: 1px;
   stroke: #FFF;
   position: relative;
-  z-index:10;
-
+  
+  @media screen and (max-width: ${breakpoints.large}) {
+    margin-top: 30px;
+  }
+  @media screen and (max-width: ${breakpoints.medium}) {
+    margin-top: 47px;
+  }
 `
 
 export const HeroImg = styled.img`
   position: relative;
-  z-index:11;
+  z-index: 10;
   width: 881.23px;
   height: 664.863px;
   border-radius: 20.776px;
+  @media screen and (max-width: ${breakpoints.large}) {
+    width: 597.586px;
+    height: 450.625px;
+  }
+  @media screen and (max-width: ${breakpoints.medium}) {
+    width: 362.346px;
+    height: 272.428px;
+  }
+
 `
 
 export const HeroShade = styled.div`
   width: 100%;
-  min-height: 249px;
+  height: 249px;
   background: linear-gradient(0deg, #FFF 10.64%, rgba(255, 255, 255, 0.00) 88.02%);
   position: absolute;
   bottom: -2px;
   z-index: 12;
+  @media screen and (max-width: ${breakpoints.large}) {
+    height: 141px;
+  }
+  @media screen and (max-width: ${breakpoints.medium}) {
+    height: 70px;
+  }
+
+
 `
