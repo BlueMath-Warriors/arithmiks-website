@@ -4,7 +4,7 @@ export const breakpoints = {
   x_small: "820px",
   small: "940px",
   medium: "1040px",
-  large: "1350px",
+  large: "1440px",
   x_large: "1550px",
 };
 
@@ -106,9 +106,9 @@ export const FeatureImgContainer = styled.div`
 `;
 export const GradientContainer = styled.div`
   display: flex;
-  width: 740px;
-  height: 740px;
-  padding: 0px 25.16px 0px 140.6px;
+  width: 800px;
+  height: 800px;
+  padding: 0px 27.2px 0px 152px;
   justify-content: flex-end;
   align-items: center;
 
@@ -122,24 +122,35 @@ export const GradientContainer = styled.div`
   }
   @media screen and (max-width: ${breakpoints.large}) {
     ${(props) =>
-      props.left ? "right: -310px; top: 40px;" : "left: 35px; top: 115px;"};
+      props.left ? "right: -50px; top: 50px;" : "left: -100px; top: 65px;"};
+    width: 527px;
+    height: 373.229px;
+    padding: 0px 12.648px 3.732px 12.648px;
+    justify-content: center;
   }
   @media screen and (max-width: ${breakpoints.small}) {
     ${(props) =>
-      props.left ? "right: -310px; top: 40px;" : "left: 35px; top: 115px;"};
+      props.left ? "right: 0; top: 100px;" : "left: 35px; top: 115px;"};
+    width: 353px;
+    height: 250px;
+    padding: 0px 8.472px 2.5px 8.472px;
+    justify-content: center;
   }
   @media screen and (max-width: ${breakpoints.x_small}) {
     ${(props) =>
       props.left ? "right: -310px; top: 40px;" : "left: 35px; top: 115px;"};
+    width: 353px;
+    padding-bottom: 0px;
+    justify-content: center;
+    align-items: center;
   }
 `;
 
 export const GradiantImg = styled.img``;
 
 export const FeatureImg = styled.div`
-  height: 660px;
-  width: 762px;
-
+  width: 766px;
+  height: 612px;
   border-radius: ${(props) =>
     props.left ? " 0 21px 21px 0 " : "21px 0 0 21px"};
   background-image: url(${(props) => props.src});
@@ -147,22 +158,24 @@ export const FeatureImg = styled.div`
   background-repeat: no-repeat;
   position: relative;
   z-index: 10;
+  ${(props) =>
+    props.left ? "background-position: right top" : "background-position: left top"};
 
   @media screen and (max-width: ${breakpoints.x_large}) {
-    height: 520px;
     width: 594px;
+    height: 518px;
   }
   @media screen and (max-width: ${breakpoints.large}) {
-    height: 386px;
     width: 433px;
+    height: 386px;
   }
   @media screen and (max-width: ${breakpoints.small}) {
-    height: 296px;
     width: 327px;
+    height: 296px;
   }
   @media screen and (max-width: ${breakpoints.x_small}) {
-    height: 394px;
-    width: 330px;
+    width: 394px;
+    height: 330px;
   }
 `;
 
