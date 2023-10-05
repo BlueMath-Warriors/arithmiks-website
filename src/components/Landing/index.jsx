@@ -1,4 +1,4 @@
-import React, {useRef, useState} from "react";
+import React, { useRef, useState } from "react";
 import {
   Background,
   ComingSoon,
@@ -21,48 +21,42 @@ import About from "./About-Section";
 import ContactUs from "./Contact-Us";
 import Footer from "./Footer";
 import CaseStudy from "./Case-Study";
-import Header from "../Landing/Header"
+import Header from "../Landing/Header";
 import HowItWorks from "./How-it-Works";
 
 const LandingPage = () => {
   return (
-    // <Background>
-    //   <Content>
-    //     <Logo>
-    //       <StaticImage src="../../images/logo.png" alt="arithmiks logo" />
-    //     </Logo>
-    //     <ComingSoon>
-    //       <p>Coming Soon</p>
-    //     </ComingSoon>
-    //   </Content>
-    // </Background>
     <>
-    <Header white={false}/>
-      <div className={containerStyles.main_hero}>
+      <Header white={false} />
+      <section className={containerStyles.main_hero}>
         <TextContainer>
           <MainHead>
             Grow Your Start
-              <ImageIcon src={u_icon} alt="U icon" />
-            p At An Early Stage or Scale Your Development Team With US
+            <ImageIcon src={u_icon} alt="U icon" />p At An Early Stage or Scale
+            Your Development Team With US
           </MainHead>
           <Description>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry’s standard dummy text
-            ever since the 1500s, when an unknown
+            We are a custom software development company that assists you in
+            converting your ideas into wonderful software solutions. With our
+            customer centeric approch we build products that matters to users.
           </Description>
           <Buttons>
-            <CtaBtn fill fixed>Lets Talk</CtaBtn>
-            <CtaBtn fixed>Learn More</CtaBtn>
+            <a href="#contact-form">
+              <CtaBtn fill fixed>
+                Lets Talk
+              </CtaBtn>
+            </a>
+            {/* <CtaBtn fixed>Learn More</CtaBtn> */}
           </Buttons>
         </TextContainer>
-      </div>
-      <About/>
-      <Services/>
-      <HowItWorks/>
-      <EngagementModel/>
-      <CaseStudy/>
-      <ContactUs/>
-      <Footer/>
+      </section>
+      <About />
+      <Services />
+      <HowItWorks />
+      <EngagementModel />
+      <CaseStudy landing={true} />
+      <ContactUs />
+      <Footer />
     </>
   );
 };

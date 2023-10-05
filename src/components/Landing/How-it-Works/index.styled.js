@@ -27,7 +27,7 @@ export const HeaderLeft = styled.div`
   align-items: flex-start;
 `
 
-export const HeaderTitle = styled.h1`
+export const HeaderTitle = styled.h2`
   color: #1D1D1F;
   font-family: Poppins;
   font-size: 48px;
@@ -138,7 +138,7 @@ export const CarouselCard = styled.div`
 
 `
 
-export const CardTitle = styled.h1`
+export const CardTitle = styled.p`
   color: #454749;
   font-family: Poppins;
   font-size: 22px;
@@ -152,7 +152,7 @@ export const CardTitle = styled.h1`
   }
 `
 
-export const CardDetails = styled.h1`
+export const CardDetails = styled.p`
   color: #4F4F4F;
   font-family: Poppins;
   font-size: 16px;

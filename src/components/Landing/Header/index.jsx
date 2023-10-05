@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
+import { navigate } from "gatsby";
 import {
   CtaBtn,
   Headerr,
@@ -62,7 +63,7 @@ const ServicesMenu = ({ menu_ref }) => {
   );
 };
 
-const Header = ({white}) => {
+const Header = ({ white }) => {
   const navMenu = useRef(null);
   const servicesRef = useRef(null);
   const [showMenu, setShowMenu] = useState(false);
@@ -81,9 +82,9 @@ const Header = ({white}) => {
       servicesRef.current &&
       !servicesRef.current.contains(event.target)
     ) {
-      setTimeout(()=>{
+      setTimeout(() => {
         setShowServices(false);
-      }, 200)
+      }, 200);
     }
   };
 
@@ -124,11 +125,11 @@ const Header = ({white}) => {
       if (scrollY >= heroHeight) {
         setHideNav(false);
         setIsFixed(true);
-      } else if(scrollY < heroHeight && scrollY > 90) {
+      } else if (scrollY < heroHeight && scrollY > 90) {
         setHideNav(true);
         setShowMenu(false);
         setShowServices(false);
-      }else {
+      } else {
         setHideNav(false);
         setIsFixed(false);
       }
@@ -137,9 +138,13 @@ const Header = ({white}) => {
 
   return (
     <>
-      <Headerr white={(showMenu || showServices || white)} fixed={isFixed} hide={hideNav} >
+      <Headerr
+        white={showMenu || showServices || white}
+        fixed={isFixed}
+        hide={hideNav}
+      >
         <HeaderContainer>
-          <a href="https://arithmiks.com">
+          <a href="/">
             <CompanyLogo>
               <LogoIcon>
                 <StaticImage
@@ -151,7 +156,14 @@ const Header = ({white}) => {
             </CompanyLogo>
           </a>
           <Menu ref={navMenu}>
-            <MenuItem onClick={closeMenu}>Home</MenuItem>
+            <MenuItem
+              onClick={() => {
+                closeMenu();
+                navigate("/");
+              }}
+            >
+              Home
+            </MenuItem>
             <MenuItem
               blue={showServices}
               onClick={() => {
@@ -163,13 +175,27 @@ const Header = ({white}) => {
                 <IconImg src={showServices ? up_arrow : down_arrow} />
               </DownIcon>
             </MenuItem>
-            <MenuItem onClick={closeMenu}>Case Study</MenuItem>
-            <MenuItem onClick={closeMenu}>Company</MenuItem>
-            <MenuItem hidden blue onClick={closeMenu}>
+            <MenuItem
+              onClick={() => {
+                closeMenu();
+                navigate("/case-studies");
+              }}
+            >
+              Case Studies
+            </MenuItem>
+            <a href="#company"><MenuItem onClick={closeMenu}>Company</MenuItem></a>
+            <MenuItem
+              hidden
+              blue
+              onClick={() => {
+                closeMenu();
+                navigate("/contact-us");
+              }}
+            >
               Get in Touch
             </MenuItem>
           </Menu>
-          <CtaBtn fill>
+          <CtaBtn fill onClick={() => navigate("/contact-us")}>
             {" "}
             <HeaderButtonTxt>Get In Touch</HeaderButtonTxt>
           </CtaBtn>

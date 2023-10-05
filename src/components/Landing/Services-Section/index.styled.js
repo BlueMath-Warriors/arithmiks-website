@@ -45,7 +45,7 @@ export const SmallTxt = styled.p`
   text-transform: uppercase;
   margin-bottom: 8px;
 `
-export const HeaderText = styled.h1`
+export const HeaderText = styled.h2`
   color: #061237;
   font-variant-numeric: lining-nums proportional-nums;
   font-feature-settings: 'cpsp' on, 'cv06' on, 'cv09' on, 'cv04' on, 'cv03' on, 'case' on, 'ss03' on;

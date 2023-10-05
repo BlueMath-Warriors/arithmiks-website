@@ -31,7 +31,7 @@ const HowItWorks = () => {
   const cardsRef = useRef([]);
   const containerRef = useRef(null);
   useEffect(() => {
-    if (typeof window !== 'undefined') {
+    if (typeof window !== "undefined") {
       const handleWindowResize = () => {
         setWindowWidth(window.innerWidth);
         setOffset(5 - Math.floor((window.innerWidth - 50) / (cardGap + width)));
@@ -59,31 +59,31 @@ const HowItWorks = () => {
       id: 1,
       title: "Introductory Meeting",
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt",
+        "All the stakeholders attend the meeting to brainstorm the idea.",
     },
     {
       id: 2,
       title: "Highlight Scope & Requirements",
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt",
+        "Our team will prepare SRS document and highltight the product scope.",
     },
     {
       id: 3,
       title: "Choose Engagement Model",
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt",
+        "You will choose an engagement model which suits you.",
     },
     {
       id: 4,
-      title: "Project Plan & Estimation",
+      title: "Project Plan & Protyping",
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt",
+        "We will plan product roadmap and create a rapid clickable prototype for you.",
     },
     {
       id: 5,
       title: "Development & launch",
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt",
+        "We will design, develop and test your application to ensure a smooth luanch.",
     },
   ];
 
@@ -118,38 +118,38 @@ const HowItWorks = () => {
   }, []);
 
   return (
-    <>
-      <div className={containerStyles.how_it_works}>
-        <Header>
-          <HeaderLeft>
-            <HeaderTitle>Let’s See How it Works</HeaderTitle>
-            <HeaderDescription>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit
-            </HeaderDescription>
-          </HeaderLeft>
-          <CarouselButtons>
-            <CarouselButton onClick={handleScrollLeft}>
-              <BtnIcon src={ArrowLeft} />
-            </CarouselButton>
-            <CarouselButton blue onClick={handleScrollRight}>
-              <BtnIcon src={ArrowRight} />
-            </CarouselButton>
-          </CarouselButtons>
-        </Header>
-        <CarouselContainer ref={containerRef}>
-          {Data.map((card, index) => (
-            <CarouselCard id={`card_${card.id}`} ref={cardsRef[1]}>
-              <ImgContainer>
-                <CardImg src={MeetingIcon} />
-              </ImgContainer>
-              <CardTitle>{card.title}</CardTitle>
-              <CardDetails>{card.description}</CardDetails>
-              {index < Data.length - 1 && <ArrowImage src={CardArrow} up={index % 2 === 0} />}
-            </CarouselCard>
-          ))}
-        </CarouselContainer>
-      </div>
-    </>
+    <section className={containerStyles.how_it_works}>
+      <Header>
+        <HeaderLeft>
+          <HeaderTitle>How it Works</HeaderTitle>
+          <HeaderDescription>
+            Our foolproof process ensures you receive a reliable solution.
+          </HeaderDescription>
+        </HeaderLeft>
+        <CarouselButtons>
+          <CarouselButton onClick={handleScrollLeft}>
+            <BtnIcon src={ArrowLeft} />
+          </CarouselButton>
+          <CarouselButton blue onClick={handleScrollRight}>
+            <BtnIcon src={ArrowRight} />
+          </CarouselButton>
+        </CarouselButtons>
+      </Header>
+      <CarouselContainer ref={containerRef}>
+        {Data.map((card, index) => (
+          <CarouselCard id={`card_${card.id}`} ref={cardsRef[1]}>
+            <ImgContainer>
+              <CardImg src={MeetingIcon} />
+            </ImgContainer>
+            <CardTitle>{card.title}</CardTitle>
+            <CardDetails>{card.description}</CardDetails>
+            {index < Data.length - 1 && (
+              <ArrowImage src={CardArrow} up={index % 2 === 0} />
+            )}
+          </CarouselCard>
+        ))}
+      </CarouselContainer>
+    </section>
   );
 };
 
