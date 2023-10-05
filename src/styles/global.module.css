@@ -251,7 +251,7 @@ button {
   align-items: center;
   overflow: hidden;
   position: relative;
-  height: 864px;
+  height: auto;
 }
 
 .easybar_testimonial{

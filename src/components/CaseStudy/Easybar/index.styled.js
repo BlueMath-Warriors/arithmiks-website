@@ -120,6 +120,6 @@ export const HeroShade = styled.div`
   min-height: 249px;
   background: linear-gradient(0deg, #FFF 10.64%, rgba(255, 255, 255, 0.00) 88.02%);
   position: absolute;
-  bottom: 0;
+  bottom: -2px;
   z-index: 12;
 `

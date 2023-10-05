@@ -22,7 +22,7 @@ const EasybarFeature = (props) => {
   return (
     <>
       <div className={containerStyles.easybar_overview}>
-        <FeatureOuterContainer>
+        <FeatureOuterContainer left={left}>
           {!left ? (
             <>
               <FeatureContainer>
