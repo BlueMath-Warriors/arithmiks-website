@@ -1,16 +1,27 @@
 import * as React from "react";
-import LandingPage from "../components/Landing";
+import Header from "../components/Landing/Header";
+import ContactUs from "../components/Landing/Contact-Us";
+import Footer from "../components/Landing/Footer";
+import * as containerStyles from "../styles/global.module.css";
 
 const IndexPage = () => {
-  return <LandingPage />;
+  return (
+    <>
+      <div className={containerStyles.header_div}>
+        <Header white={true} />
+      </div>
+      <ContactUs />
+      <Footer />
+    </>
+  );
 };
 
 export default IndexPage;
 
 export const Head = () => (
   <>
-    <title>Arithmiks - Software Development Company</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+    <title>Contact Us - Arithmiks</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="stylesheet"
