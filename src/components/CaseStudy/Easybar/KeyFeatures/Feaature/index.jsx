@@ -28,7 +28,7 @@ const EasybarFeature = (props) => {
               <FeatureContainer>
                 <FeatureTitle overview={isOverview}>{title}</FeatureTitle>
                 {caption && <FeatureCaption>{caption}</FeatureCaption>}
-                <FeatureDetail>{detail}</FeatureDetail>
+                <FeatureDetail overview={isOverview}>{detail}</FeatureDetail>
               </FeatureContainer>
               <FeatureImgContainer>
                 <FeatureImg src={img} />
