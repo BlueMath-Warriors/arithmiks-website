@@ -21,21 +21,21 @@ export const FeatureCaption = styled.p`
   max-width: 400px;
 `
 export const FeatureDetail = styled.p`
-  color: rgba(0, 0, 0, 0.60);
-  font-family: Poppins;
-  font-size: 20px;
+  color: ${props => (props.overview ? 'color: rgba(0, 0, 0, 0.60)' : 'rgba(0, 0, 0, 0.70)')};
+  font-size: ${props => (props.overview ? '20px' : '24px')};
   font-style: normal;
   font-weight: 400;
-  line-height: 34px;
+  line-height: ${props => (props.overview ? '34px' : '36px')};
 `
 export const FeatureTitle = styled.h1`
   color: rgba(0, 0, 0, 0.87);
   font-family: Poppins;
-  font-size: 64px;
+  font-size: ${props => (props.overview ? '64px' : '50px')};
   font-style: normal;
   font-weight: ${props => (props.overview ? '600px' : '700px')};
-  line-height: 100%;
+  line-height: ${props => (props.overview ? '100%' : 'normal')};
 `;
+
 
 export const FeatureImgContainer = styled.div`
   background: rgba(235, 235, 235, 0.60); 

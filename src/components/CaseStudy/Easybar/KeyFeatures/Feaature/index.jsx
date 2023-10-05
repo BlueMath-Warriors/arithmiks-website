@@ -17,7 +17,8 @@ import Gradiant_2 from "../../../../../images/gradiants/gradiant-2.svg";
 import Gradiant_4 from "../../../../../images/gradiants/gradiant-4.svg";
 
 const EasybarFeature = (props) => {
-  const { left, title, caption, detail, img } = props;
+  const { overview, left, title, caption, detail, img } = props;
+  const isOverview = overview !== undefined ? overview : false;
   return (
     <>
       <div className={containerStyles.easybar_overview}>
@@ -25,7 +26,7 @@ const EasybarFeature = (props) => {
           {!left ? (
             <>
               <FeatureContainer>
-                <FeatureTitle>{title}</FeatureTitle>
+                <FeatureTitle overview={isOverview}>{title}</FeatureTitle>
                 {caption && <FeatureCaption>{caption}</FeatureCaption>}
                 <FeatureDetail>{detail}</FeatureDetail>
               </FeatureContainer>
