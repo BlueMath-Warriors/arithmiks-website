@@ -8,7 +8,7 @@ const IndexPage = () => {
   return (
     <>
       <div className={containerStyles.header_div}>
-        <Header white={true}/>
+        <Header white={true} fixed={true}/>
       </div>
       <CaseStudy />
       <ContactUs />

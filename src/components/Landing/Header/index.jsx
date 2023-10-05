@@ -17,6 +17,7 @@ import {
   ServiceRow,
   ServiceHeader,
   ServiceText,
+  TwoRows,
 } from "./index.styled";
 import { StaticImage } from "gatsby-plugin-image";
 import menu_icon from "../../../images/hamburger_icon.svg";
@@ -26,45 +27,50 @@ import up_arrow from "../../../images/header-arrow-up.svg";
 const ServicesMenu = ({ menu_ref }) => {
   return (
     <ServiceContainer ref={menu_ref}>
-      <ServiceRow>
-        <ServiceHeader>Software Development</ServiceHeader>
-        <ServiceText>Web App Development</ServiceText>
-        <ServiceText>Mobile App Development</ServiceText>
-        <ServiceText>Custom Software Development</ServiceText>
-        <ServiceText>UI/UX Design</ServiceText>
-        <ServiceText>Software Quality Assurance</ServiceText>
-        <ServiceText>DevOps </ServiceText>
-      </ServiceRow>
+      <TwoRows>
+        <ServiceRow>
+          <ServiceHeader>Software Development</ServiceHeader>
+          <ServiceText>Web App Development</ServiceText>
+          <ServiceText>Mobile App Development</ServiceText>
+          <ServiceText>Custom Software Development</ServiceText>
+          <ServiceText>UI/UX Design</ServiceText>
+          <ServiceText>Software Quality Assurance</ServiceText>
+          <ServiceText>DevOps </ServiceText>
+        </ServiceRow>
 
-      <ServiceRow>
-        <ServiceHeader>Solution</ServiceHeader>
-        <ServiceText>Cloud Infrastructure Management</ServiceText>
-        <ServiceText>Project Management</ServiceText>
-        <ServiceText>Technical Support</ServiceText>
-        <ServiceText>Digital Transformation</ServiceText>
-      </ServiceRow>
+        <ServiceRow>
+          <ServiceHeader>Solution</ServiceHeader>
+          <ServiceText>Cloud Infrastructure Management</ServiceText>
+          <ServiceText>Project Management</ServiceText>
+          <ServiceText>Technical Support</ServiceText>
+          <ServiceText>Digital Transformation</ServiceText>
+        </ServiceRow>
+      </TwoRows>
 
-      <ServiceRow>
-        <ServiceHeader>Data and AI</ServiceHeader>
-        <ServiceText>Data Pre-Processing</ServiceText>
-        <ServiceText>Data Modeling</ServiceText>
-        <ServiceText>Results and Visualization</ServiceText>
-      </ServiceRow>
+      <TwoRows>
+        <ServiceRow>
+          <ServiceHeader>Data and AI</ServiceHeader>
+          <ServiceText>Data Pre-Processing</ServiceText>
+          <ServiceText>Data Modeling</ServiceText>
+          <ServiceText>Results and Visualization</ServiceText>
+        </ServiceRow>
 
-      <ServiceRow>
-        <ServiceHeader>Product Engineering</ServiceHeader>
-        <ServiceText>Product Discovery</ServiceText>
-        <ServiceText>Interactive Prototyping</ServiceText>
-        <ServiceText>MVP</ServiceText>
-        <ServiceText>Software Re-engineering</ServiceText>
-      </ServiceRow>
+        <ServiceRow>
+          <ServiceHeader>Product Engineering</ServiceHeader>
+          <ServiceText>Product Discovery</ServiceText>
+          <ServiceText>Interactive Prototyping</ServiceText>
+          <ServiceText>MVP</ServiceText>
+          <ServiceText>Software Re-engineering</ServiceText>
+        </ServiceRow>
+      </TwoRows>
     </ServiceContainer>
   );
 };
 
-const Header = ({white}) => {
+const Header = ({ white, fixed_bar }) => {
   const navMenu = useRef(null);
   const servicesRef = useRef(null);
+  const menuRef = useRef(null);
   const [showMenu, setShowMenu] = useState(false);
   const [showServices, setShowServices] = useState(false);
   const [heroHeight, setHeroHeight] = useState(840);
@@ -73,6 +79,7 @@ const Header = ({white}) => {
 
   const closeMenu = () => {
     navMenu.current.classList.remove("active");
+    navMenu.current.classList.add("hide");
     setShowMenu(false);
   };
   const handleClickOutside = (event) => {
@@ -81,14 +88,25 @@ const Header = ({white}) => {
       servicesRef.current &&
       !servicesRef.current.contains(event.target)
     ) {
-      setTimeout(()=>{
+      setTimeout(() => {
         setShowServices(false);
-      }, 200)
+      }, 200);
+    }
+  
+    if (
+      heroHeight < 840 &&
+      showMenu &&
+      navMenu.current &&
+      !navMenu.current.contains(event.target)
+    ) {
+      setTimeout(() => {
+        closeMenu(false);
+      }, 200);
     }
   };
-
+  
   useEffect(() => {
-    if (showServices) {
+    if (showServices || showMenu) {
       document.addEventListener("mousedown", handleClickOutside);
     } else {
       document.removeEventListener("mousedown", handleClickOutside);
@@ -96,7 +114,7 @@ const Header = ({white}) => {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [showServices]);
+  }, [showServices, showMenu]);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -118,26 +136,31 @@ const Header = ({white}) => {
     }
   }, []);
 
-  if (typeof window !== "undefined") {
+  if (typeof window !== "undefined" && !fixed_bar) {
     window.addEventListener("scroll", () => {
       const scrollY = window.scrollY;
       if (scrollY >= heroHeight) {
         setHideNav(false);
         setIsFixed(true);
-      } else if(scrollY < heroHeight && scrollY > 90) {
+      } else if (scrollY < heroHeight && scrollY > heroHeight-10) {
         setHideNav(true);
         setShowMenu(false);
         setShowServices(false);
-      }else {
+      } else {
         setHideNav(false);
         setIsFixed(false);
+        closeMenu();
       }
     });
   }
 
   return (
     <>
-      <Headerr white={(showMenu || showServices || white)} fixed={isFixed} hide={hideNav} >
+      <Headerr
+        white={showMenu || showServices || white}
+        fixed={isFixed || fixed_bar}
+        hide={hideNav}
+      >
         <HeaderContainer>
           <a href="https://arithmiks.com">
             <CompanyLogo>
@@ -176,8 +199,10 @@ const Header = ({white}) => {
           <Hamburger
             onClick={(e) => {
               navMenu.current.classList.toggle("active");
-              if (navMenu.current.classList.contains("active"))
+              if (navMenu.current.classList.contains("active")){
+                navMenu.current.classList.remove("hide");
                 setShowMenu(true);
+              }
               else setShowMenu(false);
             }}
           >
