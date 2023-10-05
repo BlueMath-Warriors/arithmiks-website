@@ -51,7 +51,7 @@ export const StudyTitle = styled.h1`
   line-height: 100%;
 `
 
-export const StudyCaption = styled.h1`
+export const StudyCaption = styled.p`
   color: rgba(0, 0, 0, 0.80);
   text-align: center;
   font-family: Poppins;

@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
 
-export const PrimaryHeading = styled.h1`
+export const PrimaryHeading = styled.h2`
   color: rgba(0, 0, 0, 0.87);
   font-family: Poppins;
   font-size: 64px;
@@ -16,7 +16,7 @@ export const Secondary = styled.span`
   color: #1355FF; 
 `
 
-export const MainCaption = styled.h1`
+export const MainCaption = styled.p`
   color: rgba(0, 0, 0, 0.60);
   text-align: center;
   font-family: DM Sans;

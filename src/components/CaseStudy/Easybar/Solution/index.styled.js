@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
 
-export const Title = styled.h1`
+export const Title = styled.h2`
   color: rgba(0, 0, 0, 0.87);
   font-family: Poppins;
   font-size: 64px;
@@ -51,7 +51,7 @@ export const Card = styled.div`
   backdrop-filter: blur(2px);
 `
 
-export const CardTitle = styled.h1`
+export const CardTitle = styled.h3`
   color: #1355FF;
   font-family: Poppins;
   font-size: 20px;
