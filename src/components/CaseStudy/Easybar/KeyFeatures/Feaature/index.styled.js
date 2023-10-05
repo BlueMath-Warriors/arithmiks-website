@@ -1,18 +1,17 @@
 import { styled } from "styled-components";
-import { breakpoints } from "../../../Landing/index.styled";
-import EasybarCatalog from "../../../../images/easybar-overview.png";
+import { breakpoints } from "../../../../Landing/index.styled";
 
-export const OverviewContainer = styled.div`
+export const FeatureContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: flex-start;
   flex-direction: column;
   gap: 24px;
   margin: 216px 116px 216px 152px;
-  width: 560px;
+  max-width: 560px;
 `
 
-export const OverviewCaption = styled.p`
+export const FeatureCaption = styled.p`
   color: rgba(0, 0, 0, 0.60);
   font-family: Poppins;
   font-size: 34px;
@@ -21,7 +20,7 @@ export const OverviewCaption = styled.p`
   line-height: 120%;
   max-width: 400px;
 `
-export const OverviewDetail = styled.p`
+export const FeatureDetail = styled.p`
   color: rgba(0, 0, 0, 0.60);
   font-family: Poppins;
   font-size: 20px;
@@ -38,16 +37,14 @@ export const FeatureTitle = styled.h1`
   line-height: 100%;
 `;
 
-export const OverViewImgContainer = styled.div`
-  self-align: flex-end;
-  width: 612px;
+export const FeatureImgContainer = styled.div`
   background: rgba(235, 235, 235, 0.60); 
-  padding: 18px 0 18px 18px;
-  border-radius: 22px;
+  padding: ${props => (props.left ? '18px 18px 18px 0' : '18px 0 18px 18px')};
+  border-radius:  ${props => (props.left ? ' 0 22px 22px 0' : '22px 0 0 22px')};
   position: relative;
 `
 export const GradientContainer = styled.div`
-  display: flex;
+  display: flex;  
   width: 740px;
   height: 740px;
   padding: 0px 25.16px 0px 140.6px;
@@ -55,23 +52,29 @@ export const GradientContainer = styled.div`
   align-items: center;
 
   position: absolute;
-  left: 35px;
-  top: 115px;
+  ${props => (props.left ? 'right: -310px; top: 40px;' : 'left: 35px; top: 115px;')};
+  
 `
 
-export const Gradiant2 = styled.img`
-  ${'' /* width: 740px;
-  height: 740px; 
-  position: relative;
-  left: 100px;
-  top: 100px; */}
+export const GradiantImg = styled.img`
 `
 
-export const BackImage = styled.div`
-  height: 518.446px;
+export const FeatureImg = styled.div`
+  height: 520px;
   width: 594px;
-  background-image: url(${EasybarCatalog});
+
+  border-radius: ${props => (props.left ? ' 0 21px 21px 0 ' : '21px 0 0 21px')}; 
+  background-image: url(${(props) => props.src});
   background-size: cover;
+  background-repeat: no-repeat;
   position: relative;
   z-index: 10;
+`
+
+export const FeatureOuterContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 0;
+  max-width: 1440px;
 `

@@ -9,14 +9,11 @@ export const GradientContainer = styled.div`
   align-items: center;
 
   position: absolute;
-  left: -165px;
-  top: -290px;
+  left: -80px;
+  top: -260px;
 
 `
 export const GradiantImg = styled.img`
-  position: relative;
-  width: 800px;
-  height: 800px;
 `
 
 export const HeroContent = styled.div`

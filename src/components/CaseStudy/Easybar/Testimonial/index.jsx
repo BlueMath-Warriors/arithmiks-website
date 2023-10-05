@@ -10,13 +10,15 @@ import {
   NameContainer,
   ClientImage,
   InnerContainer,
+  TestimonialContainer,
 } from "./index.styled";
 
 const EasybarTestimonial = () => {
   return (
     <>
       <div className={containerStyles.easybar_testimonial}>
-        <TextContainer>
+      <TestimonialContainer>
+      <TextContainer>
           <Quotes/>
           <Quotes top/>
           {/* <Quotes inverse/> */}
@@ -35,6 +37,8 @@ const EasybarTestimonial = () => {
             <NameCaption>Founder of Lightswap</NameCaption>
           </InnerContainer>
         </NameContainer>
+
+      </TestimonialContainer>
       </div>
     </>
   );

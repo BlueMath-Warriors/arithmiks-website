@@ -1,10 +1,13 @@
 import { styled } from "styled-components";
 import quotes from "../../../../images/quotes.svg";
 
-export const TextContainer = styled.div`
+export const TestimonialContainer = styled.div`
   margin-top: 220px;
-  margin-bottom: 67px;
   max-width: 1130px;
+  position: relative;
+`
+
+export const TextContainer = styled.div`
   position: relative;
 `
 
@@ -19,9 +22,11 @@ export const TestimonalText = styled.h1`
 export const NameContainer = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 24px;
   self-align: flex-start;
+  margin-top: 67px;
+  margin-bottom: 180px;
 `
 export const Name = styled.h1`
   color: #FFF;

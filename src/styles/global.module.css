@@ -247,6 +247,7 @@ button {
   align-items: center;
   overflow: hidden;
   position: relative;
+  height: 864px;
 }
 
 .easybar_testimonial{
@@ -256,4 +257,26 @@ button {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+}
+
+.easybar_solution{
+  background-color: #FFF;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.key_feature{
+  background-color: #FFF;
+  height: auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
 }
