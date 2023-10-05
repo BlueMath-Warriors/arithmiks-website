@@ -9,7 +9,7 @@
   box-sizing: border-box;
   /* font-family: "Poppins", sans-serif; */
   /* font-family: 'Roboto', sans-serif; */
-  color: #fff;
+  color: #000;
 }
 
 body {
@@ -237,6 +237,10 @@ button {
   flex-direction: column;
   overflow: hidden;
   position: relative;
+}
+
+.header_div{
+  height: 90px !important;
 }
 
 .easybar_overview{

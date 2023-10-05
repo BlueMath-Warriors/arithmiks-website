@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import {
   CtaBtn,
   Headerr,
@@ -23,9 +23,9 @@ import menu_icon from "../../../images/hamburger_icon.svg";
 import down_arrow from "../../../images/header-arrow-down.svg";
 import up_arrow from "../../../images/header-arrow-up.svg";
 
-const ServicesMenu = () => {
+const ServicesMenu = ({ menu_ref }) => {
   return (
-    <ServiceContainer>
+    <ServiceContainer ref={menu_ref}>
       <ServiceRow>
         <ServiceHeader>Software Development</ServiceHeader>
         <ServiceText>Web App Development</ServiceText>
@@ -59,23 +59,85 @@ const ServicesMenu = () => {
         <ServiceText>Software Re-engineering</ServiceText>
       </ServiceRow>
     </ServiceContainer>
-  )
-}
+  );
+};
 
-const Header = () => {
+const Header = ({white}) => {
   const navMenu = useRef(null);
+  const servicesRef = useRef(null);
   const [showMenu, setShowMenu] = useState(false);
   const [showServices, setShowServices] = useState(false);
-  const toggle_service = () => {
-    setShowServices(!showServices);
-  };
+  const [heroHeight, setHeroHeight] = useState(840);
+  const [isFixed, setIsFixed] = useState(false);
+  const [hideNav, setHideNav] = useState(false);
+
   const closeMenu = () => {
     navMenu.current.classList.remove("active");
     setShowMenu(false);
   };
+  const handleClickOutside = (event) => {
+    if (
+      showServices &&
+      servicesRef.current &&
+      !servicesRef.current.contains(event.target)
+    ) {
+      setTimeout(()=>{
+        setShowServices(false);
+      }, 200)
+    }
+  };
+
+  useEffect(() => {
+    if (showServices) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [showServices]);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const handleWindowResize = () => {
+        if (window.innerWidth > 1200) {
+          setHeroHeight(840);
+        } else if (window.innerWidth > 820) {
+          setHeroHeight(553);
+        } else {
+          setHeroHeight(445);
+        }
+      };
+      handleWindowResize();
+
+      window.addEventListener("resize", handleWindowResize);
+      return () => {
+        window.removeEventListener("resize", handleWindowResize);
+      };
+    }
+  }, []);
+
+  if (typeof window !== "undefined") {
+    window.addEventListener("scroll", () => {
+      const scrollY = window.scrollY;
+      if (scrollY >= heroHeight) {
+        setHideNav(false);
+        setIsFixed(true);
+      } else if(scrollY < heroHeight && scrollY > 90) {
+        setHideNav(true);
+        setShowMenu(false);
+        setShowServices(false);
+      }else {
+        setHideNav(false);
+        setIsFixed(false);
+      }
+    });
+  }
+
   return (
     <>
-      <Headerr white={showMenu}>
+      <Headerr white={(showMenu || showServices || white)} fixed={isFixed} hide={hideNav} >
         <HeaderContainer>
           <a href="https://arithmiks.com">
             <CompanyLogo>
@@ -93,13 +155,12 @@ const Header = () => {
             <MenuItem
               blue={showServices}
               onClick={() => {
-                closeMenu();
-                toggle_service();
+                setShowServices((prev) => !prev);
               }}
             >
               Services
               <DownIcon>
-                <IconImg src={showServices ? up_arrow : down_arrow}/>
+                <IconImg src={showServices ? up_arrow : down_arrow} />
               </DownIcon>
             </MenuItem>
             <MenuItem onClick={closeMenu}>Case Study</MenuItem>
@@ -123,9 +184,8 @@ const Header = () => {
             <MenuIcon src={menu_icon} />
           </Hamburger>
         </HeaderContainer>
+        {showServices && <ServicesMenu menu_ref={servicesRef} />}
       </Headerr>
-      {showServices && <ServicesMenu/>}
-
     </>
   );
 };

@@ -104,6 +104,7 @@ export const CaseStudyCard = styled.div`
     margin-bottom: 24px;
   }
   @media screen and (max-width: ${breakpoints.medium}) {
+    width: 382px;
     flex-direction: column;
     gap: 16px;
     margin-bottom: 32px;

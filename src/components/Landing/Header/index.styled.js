@@ -1,4 +1,4 @@
-import { styled } from "styled-components";
+import { styled, keyframes } from "styled-components";
 
 export const breakpoints = {
   small: "430px",
@@ -6,15 +6,25 @@ export const breakpoints = {
   large: "1200px",
 };
 
+const slideInFromTop = keyframes`
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+`;
+
 export const Headerr = styled.header`
   background: ${(props) => (props.white ? 'white' : 'rgba(255, 255, 255, 0.80)')};
-  position: ${(props) => (props.white ? 'fixed' : 'absolute')};
-
+  position: ${(props) => (props.fixed ? 'fixed' : (props.white ? 'fixed' : 'absolute'))};
+  display: ${(props) => (props.hide ? 'none' : '')};
   box-shadow: none;
   left: 0;
   right: 0;
   top: 0;
-  z-index: 11;
+  z-index: 15;
+  animation: ${slideInFromTop} 0.5s ease-in-out;
 `;
 
 export const HeaderContainer = styled.div`
@@ -203,7 +213,10 @@ export const ServiceContainer = styled.div`
   @media screen and (max-width: ${breakpoints.large}) {
     display: none;
   }
-
+  
+  &.hide {
+    display: none;
+  }
 `
 
 export const ServiceRow = styled.div`
