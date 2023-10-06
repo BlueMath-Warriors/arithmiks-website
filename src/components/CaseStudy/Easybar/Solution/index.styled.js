@@ -1,4 +1,5 @@
 import { styled } from "styled-components";
+import { breakpoints } from "../../../Landing/index.styled";
 
 export const Title = styled.h2`
   color: rgba(0, 0, 0, 0.87);
@@ -37,6 +38,14 @@ export const CardContainer = styled.div`
   max-width: 944px;
   position: relative;
   margin-bottom: 119px;
+  @media screen and (max-width: ${breakpoints.large}) {
+    max-width: 760px;
+    margin-bottom: 108px;
+  }
+  @media screen and (max-width: ${breakpoints.medium}) {
+    flex-direction: column;
+    margin-bottom: 29px;
+  }
 `
 export const Card = styled.div`
   display: flex;
@@ -49,6 +58,14 @@ export const Card = styled.div`
   border-radius: 36px;
   background: rgba(245, 245, 245, 0.60);
   backdrop-filter: blur(2px);
+
+  @media screen and (max-width: ${breakpoints.large}) {
+    width: 372px;
+    height: 260px;
+    padding: 32px 16px 52px 16px;
+    gap: 21px;
+  }
+
 `
 
 export const CardTitle = styled.h3`
@@ -59,6 +76,9 @@ export const CardTitle = styled.h3`
   font-weight: 400;
   line-height: 120%;
   text-transform: uppercase;
+  @media screen and (max-width: ${breakpoints.large}) {
+    font-size: 16px;
+  }
 `
 export const CardDetail = styled.p`
   color: #202020;
@@ -67,6 +87,9 @@ export const CardDetail = styled.p`
   font-style: normal;
   font-weight: 700;
   line-height: normal;
+  @media screen and (max-width: ${breakpoints.large}) {
+    font-size: 26px;
+  }
 `
 
 export const GradiantContainer = styled.div`
@@ -82,6 +105,10 @@ export const GradiantContainer = styled.div`
   left: 0;
   right: 0;
   top: -30px;
+  @media screen and (max-width: ${breakpoints.large}) {
+    width: 452px;
+    height: 452px;
+  }
 `
 
 export const Gradiant3 = styled.img`
