@@ -28,7 +28,7 @@ export const SmallTxt = styled.p`
     text-transform: uppercase;
 `;
 
-export const CardHeader = styled.h1`
+export const CardHeader = styled.h2`
     color: #061237;
     font-variant-numeric: lining-nums proportional-nums;
     font-feature-settings: 'cpsp' on, 'cv06' on, 'cv09' on, 'cv04' on, 'cv03' on, 'case' on, 'ss03' on;
@@ -70,7 +70,7 @@ export const CardBody = styled.p`
     }
 `;
 
-export const CardBtn = styled.button`
+export const CardBtn = styled.a`
   display: flex;
   padding: 0px 32px;
   justify-content: center;

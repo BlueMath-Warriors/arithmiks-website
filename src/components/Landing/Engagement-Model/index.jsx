@@ -18,47 +18,46 @@ import model_2_img from "../../../images/model_2.jpg";
 
 const EngagementModel = () => {
   return (
-    <>
-      <div className={containerStyles.engagement_model}>
-        <TextContainer>
-          <MainHead>
-            Engagement<br/>
-            <SecondaryText>Model</SecondaryText>
-          </MainHead>
-        </TextContainer>
-        <ModelCard>
-          <CardImg src={model_1_img} />
-          <CardText right>
-            <CardHeader>Build Your Dedicated Team</CardHeader>
-            <CardBody>
-              Aenean interdum arcu sit amet nulla lacinia suscipit. Vivamus at
-              laoreet mi. Fusce pulvinar commodo ligula, et egestas dolor. Ut
-              hendrerit blandit neque in tempor.
-            </CardBody>
-            <CardBtn>
-              Read More
-              <BtnIcon src={ArrowRigth} />
-            </CardBtn>
-          </CardText>
-        </ModelCard>
+    <section className={containerStyles.engagement_model}>
+      <TextContainer>
+        <MainHead>
+          Engagement
+          <br />
+          <SecondaryText>Model</SecondaryText>
+        </MainHead>
+      </TextContainer>
+      <ModelCard>
+        <CardImg src={model_1_img} />
+        <CardText right>
+          <CardHeader>Build Your Dedicated Team</CardHeader>
+          <CardBody>
+            Build your dedicated team for your projects. Experience the power of
+            highly talented engineers working delicately on a project to unleash
+            the excellence and deliverence.
+          </CardBody>
+          <CardBtn>
+            Read More
+            <BtnIcon src={ArrowRigth} />
+          </CardBtn>
+        </CardText>
+      </ModelCard>
 
-        <ModelCard right>
-          <CardText>
-            <CardHeader>Fix Price Project</CardHeader>
-            <CardBody>
-              Aenean interdum arcu sit amet nulla lacinia suscipit. Vivamus at
-              laoreet mi. Fusce pulvinar commodo ligula, et egestas dolor. Ut
-              hendrerit blandit neque in tempor.
-            </CardBody>
-            <CardBtn>
-              Read More
-              <BtnIcon src={ArrowRigth} />
-            </CardBtn>
-          </CardText>
-          <CardImg src={model_2_img} />
-        </ModelCard>
-      </div>
-    </>
+      <ModelCard right>
+        <CardText>
+          <CardHeader>Fix Price Project</CardHeader>
+          <CardBody>
+            Delivering Quality, Crafted to Perfection: Your Vision, Our
+            Fixed-Price Precision. It is well-suited for projects with clear requirements and short
+            time-to-market.
+          </CardBody>
+          <CardBtn>
+            Read More
+            <BtnIcon src={ArrowRigth} />
+          </CardBtn>
+        </CardText>
+        <CardImg src={model_2_img} />
+      </ModelCard>
+    </section>
   );
 };
 

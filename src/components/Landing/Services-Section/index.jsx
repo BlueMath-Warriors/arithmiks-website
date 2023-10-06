@@ -26,27 +26,26 @@ import setting_icon_hover from "../../../images/setting-icon-hover.svg";
 
 const Services = () => {
   return (
-    <>
-      <div className={containerStyles.services}>
-        <Header>
-          <Left>
-            <SmallTxt>Services</SmallTxt>
-            <HeaderText>
-              What We <SecondaryColor>Do</SecondaryColor>
-            </HeaderText>
-          </Left>
-          <Right>
-            <ViewButton>
-              View All
-              <BtnIcon src={ArrowCricleRight} />
-            </ViewButton>
-          </Right>
-        </Header>
+    <section className={containerStyles.services}>
+      <Header>
+        <Left>
+          <SmallTxt>Services</SmallTxt>
+          <HeaderText>
+            What We <SecondaryColor>Do</SecondaryColor>
+          </HeaderText>
+        </Left>
+        {/* <Right>
+          <ViewButton>
+            View All
+            <BtnIcon src={ArrowCricleRight} />
+          </ViewButton>
+        </Right> */}
+      </Header>
 
-        <CardContainer>
-          <CardCol>
+      <CardContainer>
+        <CardCol>
           <ServiceCard
-            position = "topleft"
+            position="topleft"
             basicIcon={code_circle}
             hoverIcon={code_circle_hover}
             header="Software Development"
@@ -60,7 +59,7 @@ const Services = () => {
             ]}
           />
           <ServiceCard
-            position = "bottomleft"
+            position="bottomleft"
             basicIcon={cpu_icon}
             hoverIcon={cpu_icon_hover}
             header="Data and AI"
@@ -70,36 +69,35 @@ const Services = () => {
               "Results and Visualizations",
             ]}
           />
-          </CardCol>
-          <CardCol down>
-            <ServiceCard
-              position = "topright"
-              basicIcon={lamp_icon}
-              hoverIcon={lamp_icon_hover}
-              header="Data and AI"
-              points={[
-                "Cloud Infrastructure Managment",
-                "Project Managment",
-                "Technical Support",
-                "Digital Transformation",
-              ]}
-            />
-            <ServiceCard
-              position = "bottomright"
-              basicIcon={setting_icon}
-              hoverIcon={setting_icon_hover}
-              header="Data and AI"
-              points={[
-                "Product Discovery",
-                "Interactive Prototyping",
-                "MVP",
-                "Software Re-engineering",
-              ]}
-            />
-          </CardCol>
-        </CardContainer>
-      </div>
-    </>
+        </CardCol>
+        <CardCol down>
+          <ServiceCard
+            position="topright"
+            basicIcon={lamp_icon}
+            hoverIcon={lamp_icon_hover}
+            header="Data and AI"
+            points={[
+              "Cloud Infrastructure Managment",
+              "Project Managment",
+              "Technical Support",
+              "Digital Transformation",
+            ]}
+          />
+          <ServiceCard
+            position="bottomright"
+            basicIcon={setting_icon}
+            hoverIcon={setting_icon_hover}
+            header="Data and AI"
+            points={[
+              "Product Discovery",
+              "Interactive Prototyping",
+              "MVP",
+              "Software Re-engineering",
+            ]}
+          />
+        </CardCol>
+      </CardContainer>
+    </section>
   );
 };
 

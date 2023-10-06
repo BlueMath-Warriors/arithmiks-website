@@ -64,7 +64,7 @@ export const CardIcon = styled.img`
     margin: 0 16px 0 0;
   }
 `;
-export const CardHeaderText = styled.h1`
+export const CardHeaderText = styled.h3`
   color: ${(props) => (props.white ? "#FFF" : "#1D1D1F")};
   font-family: Urbanist;
   font-size: 32px;

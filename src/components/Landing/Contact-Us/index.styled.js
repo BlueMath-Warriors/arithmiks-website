@@ -16,7 +16,7 @@ export const SmallTxt = styled.p`
   text-transform: uppercase;
   margin-bottom: 8px;
 `
-export const HeaderText = styled.h1`
+export const HeaderText = styled.h2`
   color: #061237;
   font-variant-numeric: lining-nums proportional-nums;
   font-feature-settings: 'cpsp' on, 'cv06' on, 'cv09' on, 'cv04' on, 'cv03' on, 'case' on, 'ss03' on;
@@ -116,7 +116,7 @@ export const BackImage = styled.img`
 
 `
 
-export const LeftCardHeader = styled.h1`
+export const LeftCardHeader = styled.h3`
   color: #333;
   font-family: Inter;
   font-size: 36px;
@@ -255,7 +255,11 @@ export const SocialContainer =styled.div`
   padding: 12px;
   align-items: center;
   border-radius: 5px;
-  background: ${props => (props.blue ? '#0B63E5' : 'rgba(11, 99, 229, 0.20)')};
+  background: rgba(11, 99, 229, 0.20);
+
+  &:hover {
+    background-color: #0B63E5;
+  }
 
 `
 

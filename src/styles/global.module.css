@@ -7,15 +7,16 @@
   padding: 0px;
   margin: 0px;
   box-sizing: border-box;
-  /* font-family: "Poppins", sans-serif; */
-  /* font-family: 'Roboto', sans-serif; */
   color: #000;
 }
 
+a {
+  text-decoration: none;
+}
+
 body {
-  /* font-family: "Poppins";
-  font-family: 'Roboto', sans-serif; */
   overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 button {
