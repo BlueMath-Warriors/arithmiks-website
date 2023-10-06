@@ -16,14 +16,18 @@ import gradiant_3 from "../../../../images/gradiants/gradiant-3.svg";
 import gradiant_5 from "../../../../images/gradiants/gradiant-5.svg";
 
 const EasybarSolution = () => {
-  const [smallGradiant, setSmallGradient] = useState(false);
+  const [smallGradiant, setSmallGradient] = useState(isSmallGradient());
+  function isSmallGradient() {
+    if (typeof window !== "undefined") {
+      return window.innerWidth < 1200;
+    }
+    return false;
+  }
+  
   useEffect(() => {
     if (typeof window !== "undefined") {
       const handleWindowResize = () => {
-        if(window.innerWidth < 1200)
-          setSmallGradient(true);
-        else
-          setSmallGradient(false);
+        setSmallGradient(isSmallGradient());
       };
       handleWindowResize();
 
