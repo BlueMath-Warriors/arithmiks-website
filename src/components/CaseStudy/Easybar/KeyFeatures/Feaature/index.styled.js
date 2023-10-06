@@ -22,6 +22,10 @@ export const FeatureContainer = styled.div`
   }
   @media screen and (max-width: ${breakpoints.x_small}) {
     order: 2;
+    padding-bottom: 62px;
+    align-self: ${(props) => (props.left ? "flex-end" : "flex-start")};
+    ${(props) => (props.left ? "padding-right: 24px" : "padding-left: 24px")};
+    
   }
 `;
 
@@ -98,7 +102,7 @@ export const FeatureImgContainer = styled.div`
       props.left ? "10px 10px 10px 0 " : "10px 0 10px 10px"};
   }
   @media screen and (max-width: ${breakpoints.x_small}) {
-    margin: 32px 0;
+    margin: 32px 0 43px 0;
     padding: ${(props) =>
       props.left ? "11px 11px 11px 0 " : "11px 0 11px 11px"};
     order: 1;
@@ -138,7 +142,7 @@ export const GradientContainer = styled.div`
   }
   @media screen and (max-width: ${breakpoints.x_small}) {
     ${(props) =>
-      props.left ? "right: -310px; top: 40px;" : "left: 35px; top: 115px;"};
+      props.left ? "right: 30px; top: 100px;" : "left: 35px; top: 115px;"};
     width: 353px;
     padding-bottom: 0px;
     justify-content: center;

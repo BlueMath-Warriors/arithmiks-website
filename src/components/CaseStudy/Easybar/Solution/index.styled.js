@@ -109,6 +109,11 @@ export const GradiantContainer = styled.div`
     width: 452px;
     height: 452px;
   }
+  @media screen and (max-width: ${breakpoints.medium}) {
+    left: unset;
+    right: -55px;
+    top: 87px;
+  }
 `
 
 export const Gradiant3 = styled.img`

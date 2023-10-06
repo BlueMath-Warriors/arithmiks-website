@@ -19,17 +19,19 @@ import Gradiant_Small from "../../../../../images/gradiants/gradiant-small.svg"
 
 const EasybarFeature = (props) => {
   const { overview, left, title, caption, detail, img } = props;
-  const [smallGradient, setSmallGradient] = useState(false);
+  const [smallGradient, setSmallGradient] = useState(isSmallGradient());
   const isOverview = overview !== undefined ? overview : false;
-  const [gradiant, swtgradiant] = useState(0);
-
+  function isSmallGradient() {
+    if (typeof window !== "undefined") {
+      return window.innerWidth < 1440;
+    }
+    return false;
+  }
+  
   useEffect(() => {
     if (typeof window !== "undefined") {
       const handleWindowResize = () => {
-        if(window.innerWidth < 1440)
-          setSmallGradient(true);
-        else
-          setSmallGradient(false);
+        setSmallGradient(isSmallGradient());
       };
       handleWindowResize();
 

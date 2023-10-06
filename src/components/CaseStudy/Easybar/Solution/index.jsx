@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import * as containerStyles from "../../../../styles/global.module.css";
 import {
   Title,
@@ -13,7 +13,27 @@ import {
 } from "./index.styled";
 import { HeroShade } from "../index.styled";
 import gradiant_3 from "../../../../images/gradiants/gradiant-3.svg";
+import gradiant_5 from "../../../../images/gradiants/gradiant-5.svg";
+
 const EasybarSolution = () => {
+  const [smallGradiant, setSmallGradient] = useState(false);
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const handleWindowResize = () => {
+        if(window.innerWidth < 1200)
+          setSmallGradient(true);
+        else
+          setSmallGradient(false);
+      };
+      handleWindowResize();
+
+      window.addEventListener("resize", handleWindowResize);
+      return () => {
+        window.removeEventListener("resize", handleWindowResize);
+      };
+    }
+  }, []);
+
   return (
     <>
       <div className={containerStyles.easybar_solution}>
@@ -25,7 +45,7 @@ const EasybarSolution = () => {
         </TitelCaption>
         <CardContainer>
           <GradiantContainer>
-            <Gradiant3 src={gradiant_3} />
+            <Gradiant3 src={smallGradiant ? gradiant_5 : gradiant_3} />
           </GradiantContainer>
           <Card>
             <CardTitle>Geo-Targeted Business Search</CardTitle>

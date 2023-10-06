@@ -1,4 +1,5 @@
 import { styled } from "styled-components";
+import { breakpoints } from "../../../Landing/index.styled";
 
 export const PrimaryHeading = styled.h2`
   color: rgba(0, 0, 0, 0.87);
@@ -10,6 +11,10 @@ export const PrimaryHeading = styled.h2`
 
   margin-top: 79px;
   margin-bottom: 16px;
+
+  @media screen and (max-width: ${breakpoints.large}) {
+    font-size: 44px;
+  }
 `
 
 export const Secondary = styled.span`
@@ -19,12 +24,17 @@ export const Secondary = styled.span`
 export const MainCaption = styled.p`
   color: rgba(0, 0, 0, 0.60);
   text-align: center;
-  font-family: DM Sans;
+  font-family: Poppins;
   font-size: 30px;
   font-style: normal;
-  font-weight: 500;
+  font-weight: 400;
   line-height: 120%;
   max-width: 600px;
   text-align: center;
   margin-bottom: 79px;
+
+  @media screen and (max-width: ${breakpoints.large}) {
+    font-size: 20px;
+    max-width: 600px;
+  }
 `
