@@ -1,7 +1,5 @@
 import * as React from "react";
-import EasyBar from "../components/CaseStudy/Easybar";
-import LandingPage from "../components/Landing";
-
+import EasyBar from "../../components/CaseStudy/Easybar"
 const IndexPage = () => {
   return (
     <EasyBar/>
