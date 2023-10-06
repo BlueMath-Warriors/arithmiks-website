@@ -69,7 +69,7 @@ export const CompanyName = styled.h1`
   width: 123px;
   letter-spacing: -0.72px;
 `
-export const Heading = styled.h1`
+export const Heading = styled.p`
   color: #1A202C;
   font-family: Plus Jakarta Sans;
   font-size: 20px;
@@ -92,7 +92,7 @@ export const Heading = styled.h1`
 
 `
 
-export const Text = styled.p`
+export const Text = styled.a`
   color: #596780;
   font-family: Plus Jakarta Sans;
   font-size: 16px;

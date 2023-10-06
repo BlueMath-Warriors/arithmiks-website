@@ -107,7 +107,7 @@ export const CardImg = styled.img`
     order: 1;
   }
 `;
-export const CardHeader = styled.h1`
+export const CardHeader = styled.h3`
   color: #fff;
   font-family: Inter;
   font-size: 20px;
@@ -126,7 +126,7 @@ export const CardBody = styled.p`
   font-weight: 400;
   line-height: 24px;
 `;
-export const MainHead = styled.h1`
+export const MainHead = styled.h2`
   color: #fff;
   text-align: center;
   font-variant-numeric: lining-nums proportional-nums;

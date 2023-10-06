@@ -30,7 +30,7 @@ export const Left = styled.div`
   align-items: flex-start;
 `
 export const Right = styled.div`
-  display: flex;
+  display: ${({show}) => show ? 'flex' : 'none'};
   `
 export const SmallTxt = styled.p`
   color: #1355FF;
@@ -45,7 +45,7 @@ export const SmallTxt = styled.p`
   text-transform: uppercase;
   margin-bottom: 8px;
 `
-export const HeaderText = styled.h1`
+export const HeaderText = styled.h2`
   color: #1D1D1F;
   font-variant-numeric: lining-nums proportional-nums;
   font-feature-settings: 'cpsp' on, 'cv06' on, 'cv09' on, 'cv04' on, 'cv03' on, 'case' on, 'ss03' on;
@@ -133,7 +133,7 @@ export const Tags = styled.div`
 	margin-bottom: 12px;
 `
 
-export const Tag = styled.p`
+export const Tag = styled.span`
 	color: #061C3D;
 	font-family: Inter;
 	font-size: 14px;
@@ -161,7 +161,7 @@ export const Tag = styled.p`
   }
 	`
 
-export const CaseStudyName = styled.h1`
+export const CaseStudyName = styled.p`
 	color: #061C3D;
 	font-family: Inter;
 	font-size: 32px;

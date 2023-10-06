@@ -249,8 +249,8 @@ export const ServiceRow = styled.div`
   justify-content: center;
   align-items: flex-start;
   gap: 16px;
-`;
-export const ServiceHeader = styled.h1`
+`
+export const ServiceHeader = styled.h2`
   color: #111928;
   font-family: Inter;
   font-size: 16px;
@@ -259,8 +259,8 @@ export const ServiceHeader = styled.h1`
   line-height: 16px;
 `;
 
-export const ServiceText = styled.h1`
-  color: #6b7280;
+export const ServiceText = styled.p`
+  color: #6B7280;
   font-family: Inter;
   font-size: 14px;
   font-style: normal;

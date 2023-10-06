@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Caption,
   CardLeft,
@@ -20,7 +20,7 @@ import {
   SocialContainer,
   SocialIcon,
   BackImage,
-  CardDetails
+  CardDetails,
 } from "./index.styled";
 import * as containerStyles from "../../../styles/global.module.css";
 import Envelope from "../../../images/envelop-icon.svg";
@@ -30,90 +30,104 @@ import GreyLine from "../../../images/grey-line.svg";
 
 import fb_icon from "../../../images/social-icons/fb.svg";
 import in_icon from "../../../images/social-icons/in.svg";
+import in_white_icon from "../../../images/social-icons/in-white.svg";
 import insta_icon from "../../../images/social-icons/insta.svg";
 import twitter_icon from "../../../images/social-icons/twitter.svg";
-import bg_img from "../../../images/contact-left-bg.svg"
+import bg_img from "../../../images/contact-left-bg.svg";
 
 import InputForm from "./Input-Form";
 
 const ContactUs = () => {
+  const [inIcon, setInIcon] = useState(false);
+
   return (
-    <>
-      <div className={containerStyles.contact_us}>
-        <SmallTxt>CONTACT US</SmallTxt>
-        <HeaderText>
-          How can we <SecondaryColor>help you?</SecondaryColor>
-        </HeaderText>
-        <MainCard>
-          <CardLeft>
-            <CardDetails>
-              <BackImage src={bg_img}/>
-              <LeftCardHeader>Get in touch</LeftCardHeader>
-              <SubCard>
-                <Circle>
-                  <CircleIcon src={Envelope} />
-                </Circle>
-                <CardContent>
-                  <Caption>Email us</Caption>
+    <section id="contact-form" className={containerStyles.contact_us}>
+      <SmallTxt>CONTACT US</SmallTxt>
+      <HeaderText>
+        How can we <SecondaryColor>help you?</SecondaryColor>
+      </HeaderText>
+      <MainCard>
+        <CardLeft>
+          <CardDetails>
+            <BackImage src={bg_img} />
+            <LeftCardHeader>Get in touch</LeftCardHeader>
+
+            <SubCard>
+              <Circle>
+                <CircleIcon src={Envelope} />
+              </Circle>
+              <CardContent>
+                <Caption>Email us</Caption>
+                <a href="mailto: info@arithmiks.com">
                   <ContentText>info@arithmiks.com</ContentText>
-                </CardContent>
-              </SubCard>
-
-              <SubCard>
-                <Circle>
-                  <CircleIcon src={PhoneCall} />
-                </Circle>
-                <CardContent>
-                  <Caption>Phone number</Caption>
-                  <ContentText>+1-202-555-0138</ContentText>
-                </CardContent>
-              </SubCard>
-
-
-              <SubCard>
-                <Circle>
-                  <CircleIcon src={Map} />
-                </Circle>
-                <CardContent>
-                  <ContentText medium>901 N Pitt Str., Suite 170<br/>Alexandria, VA 22314, USA</ContentText>
-                </CardContent>
-              </SubCard>
-            </CardDetails>
-            
-
-            <CardFooter>
-              <FooterTop>
-                <FooterLine src={GreyLine}/>
-                <FooterText>Connect with us:</FooterText>
-              </FooterTop>
-              <FooterBottom>
-                <a href="/landing">
-                  <SocialContainer>
-                    <SocialIcon src={fb_icon}/>
-                  </SocialContainer>
                 </a>
-                <a href="/landing">
-                  <SocialContainer blue>
-                    <SocialIcon src={twitter_icon}/>
-                  </SocialContainer>
+              </CardContent>
+            </SubCard>
+
+            <SubCard>
+              <Circle>
+                <CircleIcon src={PhoneCall} />
+              </Circle>
+              <CardContent>
+                <Caption>Phone number</Caption>
+                <a href="tel: +92 324 9640277">
+                  <ContentText>+92-324-9640277</ContentText>
                 </a>
-                <a href="/landing">
-                  <SocialContainer>
-                    <SocialIcon src={in_icon}/>
-                  </SocialContainer>
-                </a>
-                <a href="/landing">
-                  <SocialContainer>
-                    <SocialIcon src={insta_icon}/>
-                  </SocialContainer>
-                </a>
-              </FooterBottom>
-            </CardFooter>
-          </CardLeft>
-          <InputForm/>
-        </MainCard>
-      </div>
-    </>
+              </CardContent>
+            </SubCard>
+
+            <SubCard>
+              <Circle>
+                <CircleIcon src={Map} />
+              </Circle>
+              <CardContent>
+                <ContentText medium>
+                  537, C Block, Faisal Town
+                  <br />
+                  Lahore, Pakistan
+                </ContentText>
+              </CardContent>
+            </SubCard>
+          </CardDetails>
+
+          <CardFooter>
+            <FooterTop>
+              <FooterLine src={GreyLine} />
+              <FooterText>Connect with us:</FooterText>
+            </FooterTop>
+            <FooterBottom>
+              {/* <a href="/landing">
+                <SocialContainer>
+                  <SocialIcon src={fb_icon} />
+                </SocialContainer>
+              </a>
+              <a href="/landing">
+                <SocialContainer blue>
+                  <SocialIcon src={twitter_icon} />
+                </SocialContainer>
+              </a> */}
+              <a
+                href="https://www.linkedin.com/company/arithmiks/"
+                target="_blank"
+              >
+                <SocialContainer
+                  onMouseLeave={() => setInIcon(false)}
+                  onMouseEnter={() => setInIcon(true)}
+                >
+                  <SocialIcon src={inIcon ? in_white_icon : in_icon} />
+                </SocialContainer>
+              </a>
+              {/* <a href="/landing">
+                <SocialContainer>
+                  <SocialIcon src={insta_icon} />
+                </SocialContainer>
+              </a> */}
+            </FooterBottom>
+          </CardFooter>
+        </CardLeft>
+        <InputForm />
+      </MainCard>
+    </section>
   );
 };
 

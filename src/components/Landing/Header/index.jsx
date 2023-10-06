@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
+import { navigate } from "gatsby";
 import {
   CtaBtn,
   Headerr,
@@ -162,7 +163,7 @@ const Header = ({ white, fixed_bar }) => {
         hide={hideNav}
       >
         <HeaderContainer>
-          <a href="https://arithmiks.com">
+          <a href="/">
             <CompanyLogo>
               <LogoIcon>
                 <StaticImage
@@ -174,7 +175,14 @@ const Header = ({ white, fixed_bar }) => {
             </CompanyLogo>
           </a>
           <Menu ref={navMenu}>
-            <MenuItem onClick={closeMenu}>Home</MenuItem>
+            <MenuItem
+              onClick={() => {
+                closeMenu();
+                navigate("/");
+              }}
+            >
+              Home
+            </MenuItem>
             <MenuItem
               blue={showServices}
               onClick={() => {
@@ -186,13 +194,27 @@ const Header = ({ white, fixed_bar }) => {
                 <IconImg src={showServices ? up_arrow : down_arrow} />
               </DownIcon>
             </MenuItem>
-            <MenuItem onClick={closeMenu}>Case Study</MenuItem>
-            <MenuItem onClick={closeMenu}>Company</MenuItem>
-            <MenuItem hidden blue onClick={closeMenu}>
+            <MenuItem
+              onClick={() => {
+                closeMenu();
+                navigate("/case-studies");
+              }}
+            >
+              Case Studies
+            </MenuItem>
+            <a href="#company"><MenuItem onClick={closeMenu}>Company</MenuItem></a>
+            <MenuItem
+              hidden
+              blue
+              onClick={() => {
+                closeMenu();
+                navigate("/contact-us");
+              }}
+            >
               Get in Touch
             </MenuItem>
           </Menu>
-          <CtaBtn fill>
+          <CtaBtn fill onClick={() => navigate("/contact-us")}>
             {" "}
             <HeaderButtonTxt>Get In Touch</HeaderButtonTxt>
           </CtaBtn>
