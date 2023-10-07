@@ -80,7 +80,9 @@ const Header = ({ white, fixed_bar }) => {
   const [hideNav, setHideNav] = useState(false);
 
   const closeMenu = () => {
-    navMenu.current.classList.remove("active");
+    if (navMenu && navMenu.current) {
+      navMenu.current.classList.remove("active");
+    }
     setShowMenu(false);
   };
   const handleClickOutside = (event) => {
