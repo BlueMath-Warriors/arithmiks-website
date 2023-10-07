@@ -71,7 +71,8 @@ const ServicesMenu = ({ menu_ref }) => {
 const Header = ({ white, fixed_bar }) => {
   const navMenu = useRef(null);
   const servicesRef = useRef(null);
-  const menuRef = useRef(null);
+  const servicebtnRef = useRef(null);
+  const menuButtonRef = useRef(null);
   const [showMenu, setShowMenu] = useState(false);
   const [showServices, setShowServices] = useState(false);
   const [heroHeight, setHeroHeight] = useState(840);
@@ -79,33 +80,36 @@ const Header = ({ white, fixed_bar }) => {
   const [hideNav, setHideNav] = useState(false);
 
   const closeMenu = () => {
-    navMenu.current.classList.remove("active");
-    navMenu.current.classList.add("hide");
+    if (navMenu && navMenu.current) {
+      navMenu.current.classList.remove("active");
+    }
     setShowMenu(false);
   };
   const handleClickOutside = (event) => {
     if (
       showServices &&
       servicesRef.current &&
-      !servicesRef.current.contains(event.target)
+      !(
+        servicesRef.current.contains(event.target) ||
+        servicebtnRef.current.contains(event.target)
+      )
     ) {
-      setTimeout(() => {
-        setShowServices(false);
-      }, 200);
+      setShowServices(false);
     }
-  
+
     if (
       heroHeight < 840 &&
       showMenu &&
       navMenu.current &&
-      !navMenu.current.contains(event.target)
+      !(
+        navMenu.current.contains(event.target) ||
+        menuButtonRef.current.contains(event.target)
+      )
     ) {
-      setTimeout(() => {
-        closeMenu(false);
-      }, 200);
+      closeMenu(false);
     }
   };
-  
+
   useEffect(() => {
     if (showServices || showMenu) {
       document.addEventListener("mousedown", handleClickOutside);
@@ -143,7 +147,7 @@ const Header = ({ white, fixed_bar }) => {
       if (scrollY >= heroHeight) {
         setHideNav(false);
         setIsFixed(true);
-      } else if (scrollY < heroHeight && scrollY > heroHeight-10) {
+      } else if (scrollY < heroHeight && scrollY > heroHeight - 10) {
         setHideNav(true);
         setShowMenu(false);
         setShowServices(false);
@@ -184,9 +188,10 @@ const Header = ({ white, fixed_bar }) => {
               Home
             </MenuItem>
             <MenuItem
+              ref={servicebtnRef}
               blue={showServices}
               onClick={() => {
-                setShowServices((prev) => !prev);
+                setShowServices(!showServices);
               }}
             >
               Services
@@ -202,7 +207,9 @@ const Header = ({ white, fixed_bar }) => {
             >
               Case Studies
             </MenuItem>
-            <a href="#company"><MenuItem onClick={closeMenu}>Company</MenuItem></a>
+            <a href="#company">
+              <MenuItem onClick={closeMenu}>Company</MenuItem>
+            </a>
             <MenuItem
               hidden
               blue
@@ -219,13 +226,12 @@ const Header = ({ white, fixed_bar }) => {
             <HeaderButtonTxt>Get In Touch</HeaderButtonTxt>
           </CtaBtn>
           <Hamburger
+            ref={menuButtonRef}
             onClick={(e) => {
               navMenu.current.classList.toggle("active");
-              if (navMenu.current.classList.contains("active")){
-                navMenu.current.classList.remove("hide");
+              if (navMenu.current.classList.contains("active")) {
                 setShowMenu(true);
-              }
-              else setShowMenu(false);
+              } else setShowMenu(false);
             }}
           >
             <MenuIcon src={menu_icon} />
