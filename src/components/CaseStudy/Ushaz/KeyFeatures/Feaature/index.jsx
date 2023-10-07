@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import * as containerStyles from "../../../../../styles/global.module.css";
 
 import {
@@ -11,23 +11,29 @@ import {
   GradientContainer,
   FeatureImg,
   FeatureOuterContainer,
-} from "./index.styled";
-import { HeroShade } from "../../index.styled";
+} from "../../../Easybar/KeyFeatures/Feaature/index.styled";
+import {
+  MobileImg,
+  MobileImgContainer,
+  MobileGradientContainer
+} from "./index.styled"
+import { HeroShade } from "../../../Easybar/index.styled";
 import Gradiant_2 from "../../../../../images/gradiants/gradiant-2.svg";
 import Gradiant_4 from "../../../../../images/gradiants/gradiant-4.svg";
-import Gradiant_Small from "../../../../../images/gradiants/gradiant-small.svg"
+import Gradiant_Small from "../../../../../images/gradiants/gradiant-small.svg";
 
-const EasybarFeature = (props) => {
-  const { overview, left, title, caption, detail, img } = props;
+const UshazFeature = (props) => {
+  const { overview, left, title, caption, detail, img, mobile } = props;
   const [smallGradient, setSmallGradient] = useState(isSmallGradient());
   const isOverview = overview !== undefined ? overview : false;
+  const isMobile = mobile !== undefined ? mobile : false;
   function isSmallGradient() {
     if (typeof window !== "undefined") {
       return window.innerWidth < 1440;
     }
     return false;
   }
-  
+
   useEffect(() => {
     if (typeof window !== "undefined") {
       const handleWindowResize = () => {
@@ -42,7 +48,6 @@ const EasybarFeature = (props) => {
     }
   }, []);
 
-
   return (
     <>
       <div className={containerStyles.easybar_overview}>
@@ -54,19 +59,35 @@ const EasybarFeature = (props) => {
                 {caption && <FeatureCaption>{caption}</FeatureCaption>}
                 <FeatureDetail overview={isOverview}>{detail}</FeatureDetail>
               </FeatureContainer>
-              <FeatureImgContainer>
-                <FeatureImg src={img} />
-                <GradientContainer>
-                  <GradiantImg src={smallGradient ? Gradiant_Small : Gradiant_2} />
-                </GradientContainer>
-              </FeatureImgContainer>
+              {isMobile ? (
+                <MobileImgContainer>
+                  <MobileImg src={img} />
+                  <MobileGradientContainer>
+                    <GradiantImg
+                      src={smallGradient ? Gradiant_Small : Gradiant_2}
+                    />
+                  </MobileGradientContainer>
+                </MobileImgContainer>
+              ) : (
+                <FeatureImgContainer>
+                  <FeatureImg src={img} />
+                  <GradientContainer>
+                    <GradiantImg
+                      src={smallGradient ? Gradiant_Small : Gradiant_2}
+                    />
+                  </GradientContainer>
+                </FeatureImgContainer>
+              )}
             </>
           ) : (
             <>
               <FeatureImgContainer left>
                 <FeatureImg left src={img} />
                 <GradientContainer left>
-                  <GradiantImg src={smallGradient ? Gradiant_Small : Gradiant_4} left />
+                  <GradiantImg
+                    src={smallGradient ? Gradiant_Small : Gradiant_4}
+                    left
+                  />
                 </GradientContainer>
               </FeatureImgContainer>
               <FeatureContainer left>
@@ -83,4 +104,4 @@ const EasybarFeature = (props) => {
   );
 };
 
-export default EasybarFeature;
+export default UshazFeature;

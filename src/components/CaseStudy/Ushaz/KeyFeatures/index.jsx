@@ -1,15 +1,13 @@
 import React from "react";
 import * as containerStyles from "../../../../styles/global.module.css";
-import { MainCaption, PrimaryHeading, Secondary } from "./index.styled";
-import EasybarFeature from "./Feaature";
+import { MainCaption, PrimaryHeading, Secondary } from "../../Easybar/KeyFeatures/index.styled";
+import UshazFeature from "./Feaature";
 import Feature_1 from "../../../../images/ushaz-feature-1.png";
 import Feature_2 from "../../../../images/ushaz-feature-2.png";
 import Feature_3 from "../../../../images/ushaz-feature-3.png";
 import Feature_4 from "../../../../images/ushaz-feature-4.png";
-import Feature_5 from "../../../../images/easybar-feature-5.png";
-import Feature_6 from "../../../../images/easybar-feature-6.png";
 
-const EasybarKeyFeatures = () => {
+const UshazKeyFeatures = () => {
   return (
     <>
       <div className={containerStyles.easybar_solution}>
@@ -20,18 +18,18 @@ const EasybarKeyFeatures = () => {
           Unlocking the Power of Easybar & Exploring Our Core Features
         </MainCaption>
       </div>
-      <EasybarFeature
+      <UshazFeature
         left={false}
-        title={"Design Dynamic Rebars"}
+        title={"Redesigned the Store's Front"}
         caption={""}
         detail={
           "aLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
         }
         img={Feature_1}
       />
-      <EasybarFeature
+      <UshazFeature
         left={true}
-        title={"Design Dynamic Nets"}
+        title={"Table Sale Flow"}
         caption={""}
         detail={
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam."
@@ -39,9 +37,10 @@ const EasybarKeyFeatures = () => {
         img={Feature_2}
       />
 
-      <EasybarFeature
+      <UshazFeature
         left={false}
-        title={"Design Dynamic Cages"}
+        mobile={true}
+        title={"View in your space"}
         caption={""}
         detail={
           "aLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. "
@@ -49,9 +48,9 @@ const EasybarKeyFeatures = () => {
         img={Feature_3}
       />
 
-      <EasybarFeature
+      <UshazFeature
         left={true}
-        title={"Easy-to-Use Ordering Interface "}
+        title={"3D modeling"}
         caption={""}
         detail={
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam."
@@ -63,4 +62,4 @@ const EasybarKeyFeatures = () => {
   );
 };
 
-export default EasybarKeyFeatures;
+export default UshazKeyFeatures;

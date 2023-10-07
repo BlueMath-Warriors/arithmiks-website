@@ -11,9 +11,9 @@ import {
   ClientImage,
   InnerContainer,
   TestimonialContainer,
-} from "./index.styled";
+} from "../../Easybar/Testimonial/index.styled";
 
-const EasybarTestimonial = () => {
+const UshazTestimonial = () => {
   return (
     <>
       <div className={containerStyles.easybar_testimonial}>
@@ -44,4 +44,4 @@ const EasybarTestimonial = () => {
   );
 };
 
-export default EasybarTestimonial;
+export default UshazTestimonial;

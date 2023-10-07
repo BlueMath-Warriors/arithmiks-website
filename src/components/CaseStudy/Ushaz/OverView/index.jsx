@@ -3,16 +3,16 @@ import React from "react";
 import EasybarFeature from "../KeyFeatures/Feaature";
 import UshazOverview from "../../../../images/ushaz-overview.png";
 
-const EasyBarOverView = () => {
+const UshazOverView = () => {
   return (
     <>
       <EasybarFeature
         left={false}
         overview={true}
         title={"Overview"}
-        caption={"The Challenge of Efficient Outreach"}
+        caption={"Celebrating Artistry Around the World"}
         detail={
-          "In the vast digital landscape, the ability to connect with the right people is paramount. Whether it's for sales, marketing, or networking, having access to accurate and relevant email addresses can make all the difference. While many tools existed, they often catered to larger corporations with a focus on LinkedIn data or were cumbersome and costly."
+          "Discover the essence of global craftsmanship at Ushaz. Our mission is to bridge cultures by showcasing the intricate artistry of traditional artisans. Explore a world of creativity and heritage, where each piece tells a story of generations past."
         }
         img={UshazOverview}
       />
@@ -20,4 +20,4 @@ const EasyBarOverView = () => {
   );
 };
 
-export default EasyBarOverView;
+export default UshazOverView;
