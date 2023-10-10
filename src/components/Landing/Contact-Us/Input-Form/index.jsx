@@ -31,10 +31,35 @@ const InputForm = () => {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [phone, setPhone] = useState("");
+  const apiEndpoint = process.env.REACT_APP_API_ENDPOINT;
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append("option", selectedValue);
+    formData.append("name", name);
+    formData.append("email", email);
+    formData.append("organization", organization);
+    formData.append("phone", phone);
+    formData.append("message", message);
+  
+    try {
+      const response = await fetch(apiEndpoint, {
+        method: "POST",
+        body: formData,
+      });
+  
+      if (response.ok) {
+        const responseData = await response.json();
+      } else {
+      }
+    } catch (error) {
+    }
+  };
+  
 
   return (
     <FormSection>
-      <Form>
+      <Form onSubmit={handleSubmit}>
         <HeaderText>Requirements</HeaderText>
 
         <DropDownInput
@@ -46,6 +71,9 @@ const InputForm = () => {
           }}
         >
           <option value="" disabled selected>How can we help you?</option>
+          <option value="Dedicated Team" selected>Dedicated Team</option>
+          <option value="Fixed Price Project" selected>Fixed Price Project</option>
+
         </DropDownInput>
         <InputRow>
             <NameInput
@@ -82,7 +110,7 @@ const InputForm = () => {
           />
 
           <NameInput
-            type="email"
+            type="text"
             placeholder="Organization"
             value={organization}
             onChange={(e) => {
