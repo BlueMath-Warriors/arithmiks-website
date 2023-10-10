@@ -21,6 +21,18 @@ import ArrowLeft from "../../../images/btn-arrow-left.svg";
 import ArrowRight from "../../../images/btn-arrow-right.svg";
 import CardArrow from "../../../images/arrow.svg";
 import MeetingIcon from "../../../images/card-meeting.svg";
+import RequirementIcon from "../../../images/card-requirement.svg";
+import EngagementIcon from "../../../images/card-engagement.svg";
+import PlanIcon from "../../../images/card-plan.svg";
+import DevelopmentIcon from "../../../images/card-development.svg";
+
+const iconImages = {
+  1: MeetingIcon,
+  2: RequirementIcon,
+  3: EngagementIcon,
+  4: PlanIcon,
+  5: DevelopmentIcon,
+};
 
 const HowItWorks = () => {
   const [windowWidth, setWindowWidth] = useState(1450);
@@ -139,7 +151,7 @@ const HowItWorks = () => {
         {Data.map((card, index) => (
           <CarouselCard id={`card_${card.id}`} ref={cardsRef[1]}>
             <ImgContainer>
-              <CardImg src={MeetingIcon} />
+              <CardImg src={iconImages[card.id]} alt="card_icon"/>
             </ImgContainer>
             <CardTitle>{card.title}</CardTitle>
             <CardDetails>{card.description}</CardDetails>
