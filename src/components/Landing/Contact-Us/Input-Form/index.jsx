@@ -32,6 +32,26 @@ const InputForm = () => {
   const [message, setMessage] = useState("");
   const [phone, setPhone] = useState("");
   const apiEndpoint = process.env.REACT_APP_API_ENDPOINT;
+
+  const services = [
+    "Web App Development",
+    "Mobile App Development",
+    "Custom Software Development",
+    "UI/UX Design",
+    "Software Quality Assurance",
+    "DevOps",
+    "Cloud Infrastructure Managment",
+    "Project Managment",
+    "Technical Support",
+    "Digital Transformation",
+    "Data Pre-Processing",
+    "Data Modeling",
+    "Results and Visualizations",
+    "Product Discovery",
+    "Interactive Prototyping",
+    "MVP",
+    "Software Re-engineering",
+  ]
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
@@ -71,8 +91,9 @@ const InputForm = () => {
           }}
         >
           <option value="" disabled selected>How can we help you?</option>
-          <option value="Dedicated Team" selected>Dedicated Team</option>
-          <option value="Fixed Price Project" selected>Fixed Price Project</option>
+          {services.map((service) => (
+            <option value={service} selected>{service}</option>
+          ))}
 
         </DropDownInput>
         <InputRow>
