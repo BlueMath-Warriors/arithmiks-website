@@ -291,6 +291,7 @@ button {
   align-items: center;
   overflow: hidden;
   flex-direction: column;
+  position: relative;
 }
 
 .process_section{

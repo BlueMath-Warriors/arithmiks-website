@@ -56,6 +56,7 @@ export const CardContainer = styled.div`
   align-items: center;
   gap: 32px;
   margin-bottom: 130px;
+  position: relative;
   @media screen and (max-width: ${breakpoints.medium}) {
     flex-direction: column;
   }
@@ -71,6 +72,7 @@ export const Card = styled.div`
   background: rgba(245, 245, 245, 0.50);
   backdrop-filter: blur(75px);
   height: 256px;
+  z-index: 10;
   @media screen and (max-width: ${breakpoints.large}) {
     height: 342px;
     width: 243px;
@@ -113,4 +115,33 @@ export const CardDetail = styled.div`
   justify-content: flex-start;
   align-items: flex-start;
   gap: 12px;
+`
+
+export const GradiantContainer = styled.div`
+  display: flex;
+  width: 1440px;
+  height: 651px;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  opacity: 0.6;
+
+  position: absolute;
+  top: -175px;
+  left: -180px;
+
+  @media screen and (max-width: ${breakpoints.large}) {
+    top: -50px;
+    left: -300px;
+  }
+  @media screen and (max-width: ${breakpoints.medium}) {
+    height: 615px;
+    width: 430px;
+    top: 130px;
+    left: -30px;
+    align-items: center;
+  }
+`
+
+export const GradiantImg = styled.img`
 `

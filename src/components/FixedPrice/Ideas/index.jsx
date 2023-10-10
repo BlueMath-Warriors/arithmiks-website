@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import {
   Card,
   CardContainer,
@@ -8,11 +8,48 @@ import {
   List,
   ListItem,
   CardDetail,
+  GradiantContainer,
+  GradiantImg
 } from "./index.styled";
 import * as containerStyles from "../../../styles/global.module.css";
 import { Caption, PrimaryText } from "../index.styled";
+import Gradiant from "../../../images/gradiant-7.svg"
+import SmallGradiant from "../../../images/gradiant-8.svg"
 
+import { HeroShade } from "../index.styled";
 const Ideas = () => {
+  const [showSmall, setShowSmall] = useState(true);
+  function isSmallGradient() {
+    if (typeof window !== "undefined") {
+      return window.innerWidth < 830;
+    }
+    return false;
+  }
+  
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      // Introduce a small delay to ensure window properties are ready
+      const initialShowSmallTimeout = setTimeout(() => {
+        const initialShowSmall = isSmallGradient();
+        setShowSmall(initialShowSmall);
+      }, 100); // Adjust the delay time as needed
+
+      const handleWindowResize = () => {
+        setShowSmall(isSmallGradient());
+      };
+
+      handleWindowResize();
+
+      window.addEventListener('resize', handleWindowResize);
+
+      return () => {
+        window.removeEventListener('resize', handleWindowResize);
+        clearTimeout(initialShowSmallTimeout); // Clear the timeout if the component unmounts
+      };
+    }
+  }, []);
+
+
   return (
     <section className={containerStyles.idea_section}>
       <SectionHeader>
@@ -64,7 +101,11 @@ const Ideas = () => {
             </List>
           </CardDetail>
         </Card>
+        <GradiantContainer showSmall={showSmall}>
+          <GradiantImg src={showSmall ? SmallGradiant : Gradiant}/>
+        </GradiantContainer>
       </CardContainer>
+      <HeroShade/>
     </section>
   );
 };
