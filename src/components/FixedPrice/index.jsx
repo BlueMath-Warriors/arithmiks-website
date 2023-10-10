@@ -19,6 +19,7 @@ import Footer from "..//Landing/Footer";
 import Ideas from "./Ideas";
 import Process from "./Process";
 import Experience from "./Experience";
+import Questions from "./Questions";
 
 import ArrowRight from "../../images/ArrowRight.svg";
 import PriceTag from "../../images/price-tag-logo.png";
@@ -53,6 +54,7 @@ const FixedPrice = () => {
       <Ideas />
       <Process />
       <Experience />
+      <Questions />
       <ContactUs />
       <Footer />
     </>

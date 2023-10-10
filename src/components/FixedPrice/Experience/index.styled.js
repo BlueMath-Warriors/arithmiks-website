@@ -134,9 +134,9 @@ export const CarouselCard = styled.div`
   flex-direction: column;
   @media screen and (max-width: ${breakpoints.medium}) {
     width: 270px;
-    height: 304px;
+    height: 370px;
     border-radius: 16px;
-    padding: 16px 34px 16px 16px;
+    padding: 16px 24px 16px 16px;
   }
 
 `
