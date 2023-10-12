@@ -29,11 +29,11 @@ import PhoneCall from "../../../images/phone-call.svg";
 import GreyLine from "../../../images/grey-line.svg";
 
 import fb_icon from "../../../images/social-icons/fb.svg";
-import in_icon from "../../../images/social-icons/in.svg";
-import in_white_icon from "../../../images/social-icons/in-white.svg";
+import InIcon from "../../../images/social-icons/in.svg";
+import InWhiteIcon from "../../../images/social-icons/in-white.svg";
 import insta_icon from "../../../images/social-icons/insta.svg";
 import twitter_icon from "../../../images/social-icons/twitter.svg";
-import bg_img from "../../../images/contact-left-bg.svg";
+import BgImg from "../../../images/contact-left-bg.svg";
 
 import InputForm from "./Input-Form";
 
@@ -49,12 +49,14 @@ const ContactUs = () => {
       <MainCard>
         <CardLeft>
           <CardDetails>
-            <BackImage src={bg_img} />
+            <BackImage>
+              <BgImg/>
+            </BackImage>
             <LeftCardHeader>Get in touch</LeftCardHeader>
 
             <SubCard>
               <Circle>
-                <CircleIcon src={Envelope} />
+                <Envelope />
               </Circle>
               <CardContent>
                 <Caption>Email us</Caption>
@@ -66,7 +68,7 @@ const ContactUs = () => {
 
             <SubCard>
               <Circle>
-                <CircleIcon src={PhoneCall} />
+                <PhoneCall />
               </Circle>
               <CardContent>
                 <Caption>Phone number</Caption>
@@ -78,7 +80,7 @@ const ContactUs = () => {
 
             <SubCard>
               <Circle>
-                <CircleIcon src={Map} />
+                <Map />
               </Circle>
               <CardContent>
                 <ContentText medium>
@@ -92,7 +94,7 @@ const ContactUs = () => {
 
           <CardFooter>
             <FooterTop>
-              <FooterLine src={GreyLine} />
+              <GreyLine />
               <FooterText>Connect with us:</FooterText>
             </FooterTop>
             <FooterBottom>
@@ -114,7 +116,7 @@ const ContactUs = () => {
                   onMouseLeave={() => setInIcon(false)}
                   onMouseEnter={() => setInIcon(true)}
                 >
-                  <SocialIcon src={inIcon ? in_white_icon : in_icon} />
+                  {inIcon ? <InWhiteIcon/> : <InIcon/>}
                 </SocialContainer>
               </a>
               {/* <a href="/landing">

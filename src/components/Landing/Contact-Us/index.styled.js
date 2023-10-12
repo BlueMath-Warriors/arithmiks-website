@@ -97,7 +97,7 @@ export const CardLeft = styled.div`
   }
 `
 
-export const BackImage = styled.img`
+export const BackImage = styled.div`
   position: absolute;
   height: 270px;
   right: -90px;

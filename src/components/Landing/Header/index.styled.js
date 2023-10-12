@@ -1,4 +1,5 @@
 import { styled, keyframes } from "styled-components";
+import { Link } from "gatsby";
 
 export const breakpoints = {
   small: "430px",
@@ -70,11 +71,6 @@ export const Hamburger = styled.div`
   }
 `;
 
-export const MenuIcon = styled.img`
-  width: 33px;
-  height: 33px;
-`;
-
 export const Menu = styled.ul`
   display: flex;
   justify-content: center;
@@ -137,6 +133,18 @@ export const MenuItem = styled.li`
     display: ${(props) => (props.hidden ? "block" : "")};
     padding-left: 24px;
   }
+
+  .down-icon {
+    transition: .5s all;
+    rotate: 180deg;
+    path {
+      stroke: #1355FF;
+    }
+  }
+
+  .up-icon {
+    transition: .5s all;
+  }
 `;
 
 export const HeaderButtonTxt = styled.p`
@@ -150,7 +158,7 @@ export const HeaderButtonTxt = styled.p`
   line-height: 17.999px;
 `;
 
-export const CtaBtn = styled.button`
+export const CtaBtn = styled(Link)`
   display: flex;
   width: ${(props) => (props.fixed ? "134px" : "144px")};
   height: 52px;
@@ -179,9 +187,13 @@ export const CtaBtn = styled.button`
 `;
 
 export const CompanyLogo = styled.div`
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
+  width: 190px;
+  height: 37px;
+
+  img {
+    width: 100%;
+    height: auto;
+  }
 `;
 
 export const LogoIcon = styled.div`
@@ -266,6 +278,8 @@ export const ServiceText = styled.p`
   font-style: normal;
   font-weight: 400;
   line-height: 14px;
+  cursor: pointer;
+
   &:hover {
     color: #1355ff;
     font-weight: 700;

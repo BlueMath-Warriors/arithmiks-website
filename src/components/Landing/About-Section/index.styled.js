@@ -155,7 +155,7 @@ export const ImageBottom = styled.img`
 
 `;
 
-export const BgCircle = styled.img`
+export const BgCircle = styled.div`
   position: absolute;
   width: 103.818px;
   height: 104.05px;
@@ -177,7 +177,7 @@ export const BgCircle = styled.img`
   }
 `;
 
-export const BgRectabgle = styled.img`
+export const BgRectabgle = styled.div`
   position: absolute;
   left: 206px;
   top: -17px;
