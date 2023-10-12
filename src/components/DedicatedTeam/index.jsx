@@ -23,7 +23,7 @@ import TeamWork from "./TeamWork";
 import TeamStructure from "./TeamStructure";
 
 import ArrowRight from "../../images/ArrowRight.svg";
-import TeamIcon from "../../images/team-icon.png";
+import TeamIcon from "../../images/team-icon.svg";
 import Gradiant from "../../images/gradiant-6.svg";
 const DedicatedTeam = () => {
   return (
@@ -49,7 +49,9 @@ const DedicatedTeam = () => {
             </GradiantImg>
           </GradiantContainer>
           <ImgBackground>
-            <HeroImage src={TeamIcon} />
+            <HeroImage>
+              <TeamIcon />
+            </HeroImage>
           </ImgBackground>
         </OuterContainer>
         {/* <HeroShade /> */}

@@ -122,7 +122,7 @@ export const ImgBackground = styled.div`
   }
 `
 
-export const HeroImage = styled.img`
+export const HeroImage = styled.div`
   width: 448px;
   height: 325px;
 `
