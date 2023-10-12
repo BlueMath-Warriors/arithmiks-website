@@ -55,7 +55,7 @@ export const AnswerText = styled.p`
 
 `
 
-export const ArrowImg = styled.img`
-  margin: 8px;
+export const ArrowImg = styled.div`
+  padding: 8px;
   cursor: pointer;
 `

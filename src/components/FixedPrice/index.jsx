@@ -39,11 +39,13 @@ const FixedPrice = () => {
               Fixed price projects will follow WaterFall Methodology
             </Caption>
             <MoreButton>
-              Tell Us More <BtnIcon src={ArrowRight} />
+              Tell Us More <ArrowRight/>
             </MoreButton>
           </TextContainer>
           <GradiantContainer>
-            <GradiantImg src={Gradiant} />
+            <GradiantImg >
+              <Gradiant/>
+            </GradiantImg>
           </GradiantContainer>
           <ImgBackground>
             <PriceImage src={PriceTag} />

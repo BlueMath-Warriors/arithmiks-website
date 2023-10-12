@@ -143,5 +143,5 @@ export const GradiantContainer = styled.div`
   }
 `
 
-export const GradiantImg = styled.img`
+export const GradiantImg = styled.div`
 `
