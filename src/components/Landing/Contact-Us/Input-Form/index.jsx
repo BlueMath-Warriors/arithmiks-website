@@ -84,7 +84,6 @@ const InputForm = () => {
 
         <DropDownInput
           type="text"
-          placeholder="How can we help you?"
           value={selectedValue}
           onChange={(e) => {
             setSelectedValue(e.target.value);
@@ -117,7 +116,7 @@ const InputForm = () => {
 
         <InputRow>
           <PhoneInput
-            country={'pk'}
+            country={'us'}
             inputProps={{
               placeholder: 'Enter phone number',
               style: inputStyle,
@@ -149,7 +148,7 @@ const InputForm = () => {
           />
 
         <SubmitButton>
-          Send Message <BtnIcon src={ArrowRight} />
+          Send Message <ArrowRight />
         </SubmitButton>
       </Form>
     </FormSection>

@@ -17,13 +17,7 @@ export const Card = styled.div`
       : "border-radius: 0px"};
 
   &:hover {
-    background-color: #1355ff;
-    h1 {
-      color: #fff;
-    }
-    p {
-      color: #fff;
-    }
+    box-shadow: 0 4px 28px rgba(0,0,0,.04);
   }
 
   @media screen and (max-width: ${breakpoints.large}) {

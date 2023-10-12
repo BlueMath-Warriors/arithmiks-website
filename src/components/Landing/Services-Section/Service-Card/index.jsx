@@ -25,9 +25,7 @@ const CardDescription = (props) => {
         setIsHovered(false);
       }}
     >
-      <CardDetailIcon
-        src={isHovered ? ArrowRightBold : white ? ArrowRightWhite : ArrowRight}
-      />
+      {isHovered ? <ArrowRightBold/> : <ArrowRight/>}
       <CardBodyText bold={isHovered}>{point}</CardBodyText>
     </CardBodyDetail>
   );
@@ -35,28 +33,17 @@ const CardDescription = (props) => {
 
 const ServiceCard = (props) => {
   const { position, basicIcon, hoverIcon, header, points } = props;
-  const [isHovered, setIsHovered] = useState(false);
 
   return (
     <Card
       position={position}
-      onMouseEnter={() => {
-        setIsHovered(true);
-      }}
-      onMouseLeave={() => {
-        setIsHovered(false);
-      }}
     >
       <CardHeader>
-        {isHovered ? (
-          <CardIcon src={hoverIcon} />
-        ) : (
-          <CardIcon src={basicIcon} />
-        )}
-        <CardHeaderText>Software Development</CardHeaderText>
+        {basicIcon}
+        <CardHeaderText>{header}</CardHeaderText>
       </CardHeader>
       {points.map((point) => (
-        <CardDescription white={isHovered} point={point} key={point} />
+        <CardDescription point={point} key={point} />
       ))}
     </Card>
   );

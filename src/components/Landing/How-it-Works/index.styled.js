@@ -186,7 +186,7 @@ export const CardImg = styled.img`
   }
 `
 
-export const ArrowImage = styled.img`
+export const ArrowImage = styled.div`
   width: 250px;
   height: 45px;
   position: relative;

@@ -101,20 +101,19 @@ export const NameInput = styled.input`
   border: 1px solid #E6E8EC;
   background: #FFF;
 
-  color: #838E9E;
   font-family: Inter;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
   line-height: 24px;
 
-  ::placeholder {
+  &::placeholder {
     color: #838E9E;
-    font-family: Inter;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 24px;
+    opacity: 1; /* Firefox */
+  }
+
+  &::-ms-input-placeholder { /* Edge 12 -18 */
+    color: #838E9E;
   }
   @media screen and (max-width: ${breakpoints.large}) {
     height: 44px;
@@ -145,13 +144,8 @@ export const EmailInput = styled.input`
   font-weight: 400;
   line-height: 24px;
 
-  ::placeholder {
+  &::placeholder {
     color: #838E9E;
-    font-family: Inter;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 24px;
   }
   @media screen and (max-width: ${breakpoints.medium}) {
     width: 350px;
@@ -171,21 +165,12 @@ export const DropDownInput = styled.select`
   border: 1px solid #E6E8EC;
   background: #FFF;
   
-  color: #838E9E;
   font-family: Inter;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
   line-height: 24px;
 
-  ::placeholder {
-    color: #838E9E;
-    font-family: Inter;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 24px;
-  }
   @media screen and (max-width: ${breakpoints.large}) {
     width: 630px;
     height: 44px;
@@ -209,20 +194,14 @@ export const MessageInput = styled.textarea`
   background: #FFF;
   resize: none;
 
-  color: #838E9E;
   font-family: Inter;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
   line-height: 24px;
 
-  ::placeholder {
+  &::placeholder {
     color: #838E9E;
-    font-family: Inter;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 24px;
   }
 
   @media screen and (max-width: ${breakpoints.large}) {
@@ -293,7 +272,6 @@ export const phoneContainer = {
 }
 
 export const inputStyle = {
-  color: '#838E9E',
   fontFamily: 'Inter',
   fontSize: '16px',
   fontStyle: 'normal',

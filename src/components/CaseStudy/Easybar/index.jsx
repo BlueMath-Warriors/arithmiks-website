@@ -20,7 +20,7 @@ const EasyBar = () => {
           <SmallTxt>Web Application</SmallTxt>
           <StudyTitle>Easybar</StudyTitle>
           <StudyCaption>Marketplace for Rebars</StudyCaption>
-          <MoreButton>Tell Us More <BtnIcon src={BtnArrow}/></MoreButton>
+          <MoreButton>Tell Us More <BtnArrow/></MoreButton>
           <ImgContainer>
             <HeroImg src={HeroImage}/>
             <GradientContainer>

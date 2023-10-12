@@ -12,23 +12,13 @@ module.exports = {
   },
   plugins: [
     "gatsby-plugin-styled-components",
-    "gatsby-plugin-image",
+    "gatsby-plugin-react-svg",
     "gatsby-plugin-sitemap",
-    "gatsby-plugin-sharp",
-    "gatsby-transformer-sharp",
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
         icon: 'src/images/favicon.png',
       },
-    },
-    {
-      resolve: "gatsby-source-filesystem",
-      options: {
-        name: "images",
-        path: "./src/images/",
-      },
-      __key: "images",
     },
     {
       resolve: `gatsby-plugin-google-gtag`,

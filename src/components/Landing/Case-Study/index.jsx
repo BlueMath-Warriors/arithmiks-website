@@ -34,7 +34,7 @@ const CaseStudy = ({ landing = false }) => {
         <Right show={landing}>
           <ViewButton onClick={() => navigate("/case-studies")}>
             {"View All"}
-            <BtnIcon src={ArrowCricleRight} />
+            <ArrowCricleRight />
           </ViewButton>
         </Right>
       </Header>
@@ -55,7 +55,7 @@ const CaseStudy = ({ landing = false }) => {
           </CaseStudyDetails>
           <CardBtn onClick={()=>{navigate("/case-studies/easybar")}}>
             View Case Study
-            <BtnIcon src={ArrowBlue} />
+            <ArrowBlue />
           </CardBtn>
         </CardDetails>
       </CaseStudyCard>
@@ -75,7 +75,7 @@ const CaseStudy = ({ landing = false }) => {
           </CaseStudyDetails>
           <CardBtn onClick={()=>{navigate("/case-studies/ushaz")}}>
             View Case Study
-            <BtnIcon src={ArrowBlue} />
+            <ArrowBlue />
           </CardBtn>
         </CardDetails>
         <CaseStudyImg src={CaseStudy_2} />

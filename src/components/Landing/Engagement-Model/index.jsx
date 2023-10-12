@@ -37,7 +37,7 @@ const EngagementModel = () => {
           </CardBody>
           <CardBtn>
             Read More
-            <BtnIcon src={ArrowRigth} />
+            <ArrowRigth/>
           </CardBtn>
         </CardText>
       </ModelCard>
@@ -52,7 +52,7 @@ const EngagementModel = () => {
           </CardBody>
           <CardBtn>
             Read More
-            <BtnIcon src={ArrowRigth} />
+            <ArrowRigth />
           </CardBtn>
         </CardText>
         <CardImg src={model_2_img} />

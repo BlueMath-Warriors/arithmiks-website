@@ -1,19 +1,12 @@
-import React, { useRef, useState } from "react";
+import React from "react";
 import {
-  Background,
-  ComingSoon,
-  Content,
   CtaBtn,
   Description,
-  Hero,
-  Logo,
   MainHead,
   TextContainer,
-  ImageIcon,
   Buttons,
 } from "./index.styled";
-import { StaticImage, getSrc } from "gatsby-plugin-image";
-import u_icon from "../../images/u-icon.svg";
+import Uicon from "../../images/u-icon.svg";
 import * as containerStyles from "../../styles/global.module.css";
 import EngagementModel from "./Engagement-Model";
 import Services from "./Services-Section";
@@ -32,8 +25,8 @@ const LandingPage = () => {
         <TextContainer>
           <MainHead>
             Grow Your Start
-            <ImageIcon src={u_icon} alt="U icon" />p At An Early Stage or Scale
-            Your Development Team With US
+            <Uicon />
+            p At An Early Stage or Scale Your Development Team With US
           </MainHead>
           <Description>
             We are a custom software development company that assists you in

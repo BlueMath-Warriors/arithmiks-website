@@ -27,11 +27,11 @@ import PlanIcon from "../../../images/card-plan.svg";
 import DevelopmentIcon from "../../../images/card-development.svg";
 
 const iconImages = {
-  1: MeetingIcon,
-  2: RequirementIcon,
-  3: EngagementIcon,
-  4: PlanIcon,
-  5: DevelopmentIcon,
+  1: <MeetingIcon/>,
+  2: <RequirementIcon/>,
+  3: <EngagementIcon/>,
+  4: <PlanIcon/>,
+  5: <DevelopmentIcon/>,
 };
 
 const HowItWorks = () => {
@@ -140,10 +140,10 @@ const HowItWorks = () => {
         </HeaderLeft>
         <CarouselButtons>
           <CarouselButton onClick={handleScrollLeft}>
-            <BtnIcon src={ArrowLeft} />
+            <ArrowLeft/>
           </CarouselButton>
           <CarouselButton blue onClick={handleScrollRight}>
-            <BtnIcon src={ArrowRight} />
+            <ArrowRight />
           </CarouselButton>
         </CarouselButtons>
       </Header>
@@ -151,12 +151,14 @@ const HowItWorks = () => {
         {Data.map((card, index) => (
           <CarouselCard id={`card_${card.id}`} ref={cardsRef[1]}>
             <ImgContainer>
-              <CardImg src={iconImages[card.id]} alt="card_icon"/>
+              {iconImages[card.id]}
             </ImgContainer>
             <CardTitle>{card.title}</CardTitle>
             <CardDetails>{card.description}</CardDetails>
             {index < Data.length - 1 && (
-              <ArrowImage src={CardArrow} up={index % 2 === 0} />
+              <ArrowImage up={index % 2 === 0}>
+                <CardArrow/>
+              </ArrowImage>
             )}
           </CarouselCard>
         ))}

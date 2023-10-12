@@ -17,16 +17,17 @@ import * as containerStyles from "../../../styles/global.module.css";
 import ArrowRight from "../../../images/arrow-right-circle-line.svg";
 import img_1 from "../../../images/about_img_1.jpg";
 import img_2 from "../../../images/about_img_2.jpg";
-import circle from "../../../images/circle.svg";
-import rectangle from "../../../images/rectangle.svg";
+import Circle from "../../../images/circle.svg";
+import Rectangle from "../../../images/rectangle.svg";
+
 const About = () => {
   return (
     <section id="company" className={containerStyles.about}>
       <ImageSection>
         <ImageTop src={img_1} />
         <ImageBottom src={img_2} />
-        <BgCircle src={circle} />
-        <BgRectabgle src={rectangle} />
+        <BgCircle><Circle/></BgCircle>
+        <BgRectabgle><Rectangle/></BgRectabgle>
       </ImageSection>
       <TextCard>
         <SmallTxt>About</SmallTxt>
@@ -39,7 +40,7 @@ const About = () => {
         </CardBody>
         <CardBtn href="#contact-form">
           Learn More
-          <BtnIcon src={ArrowRight} />
+          <ArrowRight/>
         </CardBtn>
       </TextCard>
     </section>

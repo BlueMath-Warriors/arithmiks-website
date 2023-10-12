@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
-import { navigate } from "gatsby";
+import { navigate, Link } from "gatsby";
 import {
   CtaBtn,
   Headerr,
@@ -10,7 +10,6 @@ import {
   LogoText,
   LogoIcon,
   Hamburger,
-  MenuIcon,
   HeaderButtonTxt,
   DownIcon,
   IconImg,
@@ -20,10 +19,10 @@ import {
   ServiceText,
   TwoRows,
 } from "./index.styled";
-import { StaticImage } from "gatsby-plugin-image";
-import menu_icon from "../../../images/hamburger_icon.svg";
-import down_arrow from "../../../images/header-arrow-down.svg";
+import MenuIcon from "../../../images/hamburger_icon.svg";
+import DownArrow from "../../../images/header-arrow-down.svg";
 import up_arrow from "../../../images/header-arrow-up.svg";
+import logo from "../../../images/logo.png";
 
 const ServicesMenu = ({ menu_ref }) => {
   return (
@@ -167,17 +166,11 @@ const Header = ({ white, fixed_bar }) => {
         hide={hideNav}
       >
         <HeaderContainer>
-          <a href="/">
+          <Link href="/">
             <CompanyLogo>
-              <LogoIcon>
-                <StaticImage
-                  src="../../../images/favicon.png"
-                  alt="arithmiks logo"
-                />
-              </LogoIcon>
-              <LogoText>Arithmiks</LogoText>
+              <img src={logo} alt="arithmiks logo" />
             </CompanyLogo>
-          </a>
+          </Link>
           <Menu ref={navMenu}>
             <MenuItem
               onClick={() => {
@@ -195,9 +188,7 @@ const Header = ({ white, fixed_bar }) => {
               }}
             >
               Services
-              <DownIcon>
-                <IconImg src={showServices ? up_arrow : down_arrow} />
-              </DownIcon>
+              <DownArrow className={showServices ? "down-icon" : "up-icon"} />
             </MenuItem>
             <MenuItem
               onClick={() => {
@@ -221,7 +212,7 @@ const Header = ({ white, fixed_bar }) => {
               Get in Touch
             </MenuItem>
           </Menu>
-          <CtaBtn fill onClick={() => navigate("/contact-us")}>
+          <CtaBtn fill href="/contact-us">
             {" "}
             <HeaderButtonTxt>Get In Touch</HeaderButtonTxt>
           </CtaBtn>
@@ -234,7 +225,7 @@ const Header = ({ white, fixed_bar }) => {
               } else setShowMenu(false);
             }}
           >
-            <MenuIcon src={menu_icon} />
+            <MenuIcon />
           </Hamburger>
         </HeaderContainer>
         {showServices && <ServicesMenu menu_ref={servicesRef} />}

@@ -14,10 +14,10 @@ import {
 } from "./index.styled";
 import * as containerStyles from "../../../styles/global.module.css";
 import ArrowCricleRight from "../../../images/arrow-right-circle-black.svg";
-import code_circle from "../../../images/code-circle.svg";
-import cpu_icon from "../../../images/cpu-icon.svg";
-import lamp_icon from "../../../images/lamp-icon.svg";
-import setting_icon from "../../../images/setting-icon.svg";
+import CodeCircle from "../../../images/code-circle.svg";
+import CpuIcon from "../../../images/cpu-icon.svg";
+import LampIcon from "../../../images/lamp-icon.svg";
+import SettingIcon from "../../../images/setting-icon.svg";
 
 import code_circle_hover from "../../../images/code-circle-hover.svg";
 import cpu_icon_hover from "../../../images/cpu-icon-hover.svg";
@@ -34,19 +34,19 @@ const Services = () => {
             What We <SecondaryColor>Do</SecondaryColor>
           </HeaderText>
         </Left>
-        {/* <Right>
-          <ViewButton>
-            View All
-            <BtnIcon src={ArrowCricleRight} />
+        <Right>
+          <ViewButton href="#contact-form">
+            Reach us
+            <ArrowCricleRight />
           </ViewButton>
-        </Right> */}
+        </Right>
       </Header>
 
       <CardContainer>
         <CardCol>
           <ServiceCard
             position="topleft"
-            basicIcon={code_circle}
+            basicIcon={<CodeCircle/>}
             hoverIcon={code_circle_hover}
             header="Software Development"
             points={[
@@ -60,7 +60,7 @@ const Services = () => {
           />
           <ServiceCard
             position="bottomleft"
-            basicIcon={cpu_icon}
+            basicIcon={<CpuIcon/>}
             hoverIcon={cpu_icon_hover}
             header="Data and AI"
             points={[
@@ -73,9 +73,9 @@ const Services = () => {
         <CardCol down>
           <ServiceCard
             position="topright"
-            basicIcon={lamp_icon}
+            basicIcon={<LampIcon/>}
             hoverIcon={lamp_icon_hover}
-            header="Data and AI"
+            header="Solutions"
             points={[
               "Cloud Infrastructure Managment",
               "Project Managment",
@@ -85,9 +85,9 @@ const Services = () => {
           />
           <ServiceCard
             position="bottomright"
-            basicIcon={setting_icon}
+            basicIcon={<SettingIcon/>}
             hoverIcon={setting_icon_hover}
-            header="Data and AI"
+            header="Product Engineering"
             points={[
               "Product Discovery",
               "Interactive Prototyping",
