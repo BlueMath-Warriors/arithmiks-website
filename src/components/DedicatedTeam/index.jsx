@@ -16,12 +16,10 @@ import * as containerStyles from "../../styles/global.module.css";
 import Header from "../Landing/Header";
 import ContactUs from "../Landing/Contact-Us";
 import Footer from "..//Landing/Footer";
-import Ideas from "./Ideas";
-import Process from "./Process";
-import Experience from "./Experience";
 import TeamNeed from "./TeamNeed";
 import Questions from "./Questions";
 import DediacatedPage from "./DedicatedPage";
+import TeamWork from "./TeamWork";
 
 import ArrowRight from "../../images/ArrowRight.svg";
 import TeamIcon from "../../images/team-icon.png";
@@ -55,6 +53,7 @@ const DedicatedTeam = () => {
       </section>
       <TeamNeed />
       <DediacatedPage />
+      <TeamWork />
       <Questions />
       <ContactUs />
       <Footer />

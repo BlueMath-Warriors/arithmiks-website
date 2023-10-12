@@ -379,3 +379,16 @@ button {
     gap: 24px;
   }
 }
+
+.team_work{
+  display: flex;
+  flex-direction: column;
+  padding: 90px 24px 62px 24px;
+  gap: 23px;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+
+  overflow: hidden;
+  position: relative;
+}
