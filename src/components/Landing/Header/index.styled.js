@@ -16,9 +16,11 @@ const slideInFromTop = keyframes`
 `;
 
 export const Headerr = styled.header`
-  background: ${(props) => (props.white ? 'white' : 'rgba(255, 255, 255, 0.80)')};
-  position: ${(props) => (props.fixed ? 'fixed' : (props.white ? 'fixed' : 'absolute'))};
-  display: ${(props) => (props.hide ? 'none' : '')};
+  background: ${(props) =>
+    props.white ? "white" : "rgba(255, 255, 255, 0.80)"};
+  position: ${(props) =>
+    props.fixed ? "fixed" : props.white ? "fixed" : "absolute"};
+  display: ${(props) => (props.hide ? "none" : "")};
   box-shadow: none;
   left: 0;
   right: 0;
@@ -28,7 +30,7 @@ export const Headerr = styled.header`
 `;
 
 export const HeaderContainer = styled.div`
-  display: flex;
+  display: flex !important;
   max-width: 1120px;
   height: 90px;
   padding: 19.5px 0px;
@@ -37,7 +39,7 @@ export const HeaderContainer = styled.div`
   margin: 0 auto;
 
   @media screen and (max-width: ${breakpoints.large}) {
-    width: 760px
+    width: 760px;
   }
   @media screen and (max-width: ${breakpoints.medium}) {
     width: 382px;
@@ -51,26 +53,26 @@ export const DownIcon = styled.div`
   padding: 0px 4.167px;
   justify-content: center;
   align-items: center;
-`
+`;
 export const IconImg = styled.img`
   width: 11.667px;
   height: 5.833px;
-`
+`;
 
 export const Hamburger = styled.div`
   display: none;
   @media screen and (max-width: ${breakpoints.large}) {
     display: block;
     width: 33px;
-    height: 33px; 
+    height: 33px;
     cursor: pointer;
     margin-left: 16px;
   }
-`
+`;
 
 export const MenuIcon = styled.img`
   width: 33px;
-  height: 33px; 
+  height: 33px;
 `;
 
 export const Menu = styled.ul`
@@ -94,68 +96,71 @@ export const Menu = styled.ul`
   &.active {
     left: 0;
     margin-top: 18px;
-    border-top: 1px solid #C2C2C2; 
+    border-top: 1px solid #c2c2c2;
   }
-  
   @media screen and (max-width: ${breakpoints.large}) {
     gap: 24px;
     padding: 12px 0;
+    &.hide {
+    display: none;
   }
-
+  }
 `;
 
 export const MenuItem = styled.li`
-  color: ${props => (props.blue ? '#1355FF' : '#170F49')};
+  color: ${(props) => (props.blue ? "#1355FF" : "#170F49")};
   font-family: Poppins;
   font-size: 18px;
   font-style: normal;
-  font-weight: ${props => (props.blue ? '600' : '400')};
+  font-weight: ${(props) => (props.blue ? "600" : "400")};
   line-height: normal;
   letter-spacing: -0.36px;
   cursor: pointer;
 
-  display: ${props => (props.hidden ? 'none' : 'flex')};
+  display: ${(props) => (props.hidden ? "none" : "flex")};
   align-items: center;
   justify-content: center;
   gap: 6px;
-  ${({active}) => active && `
+  ${({ active }) =>
+    active &&
+    `
     background: var(--button-gradient, linear-gradient(230deg, #BC4E9B 19.66%, #0957DE 115.46%));
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   `}
   @media screen and (max-width: ${breakpoints.large}) {
-    display: ${props => (props.hidden ? 'none' : '')};
-    padding-left:  24px;
+    display: ${(props) => (props.hidden ? "none" : "")};
+    padding-left: 24px;
   }
   @media screen and (max-width: ${breakpoints.medium}) {
-    display: ${props => (props.hidden ? 'block' : '')};
-    padding-left:  24px;
+    display: ${(props) => (props.hidden ? "block" : "")};
+    padding-left: 24px;
   }
 `;
 
 export const HeaderButtonTxt = styled.p`
-  color: #FFF;
+  color: #fff;
   text-align: center;
-  font-feature-settings: 'clig' off, 'liga' off;
+  font-feature-settings: "clig" off, "liga" off;
   font-family: DM Sans;
   font-size: 15.999px;
   font-style: normal;
   font-weight: 700;
   line-height: 17.999px;
-`
+`;
 
 export const CtaBtn = styled.button`
   display: flex;
-  width: ${props => (props.fixed ? '134px' : '144px')};
+  width: ${(props) => (props.fixed ? "134px" : "144px")};
   height: 52px;
   justify-content: center;
   align-items: center;
   gap: 10px;
   border-radius: 8px;
-  background: ${props => (props.fill ? '#1355FF' : 'transparent')};
+  background: ${(props) => (props.fill ? "#1355FF" : "transparent")};
 
-  color: ${props => (props.fill ? '#FFF' : '#1355FF')};
+  color: ${(props) => (props.fill ? "#FFF" : "#1355FF")};
   text-align: center;
   font-family: Plus Jakarta Sans;
   font-size: 16px;
@@ -163,13 +168,13 @@ export const CtaBtn = styled.button`
   font-weight: 600;
   line-height: 150%;
 
-  border: ${props => (props.fill ? 'none' : '1px solid #1355FF; ')};
+  border: ${(props) => (props.fill ? "none" : "1px solid #1355FF; ")};
   @media screen and (max-width: ${breakpoints.large}) {
-    margin-left: ${props => (props.fixed ? '' : 'auto')};
-    margin-right: ${props => (props.fixed ? '' : '16px')};
+    margin-left: ${(props) => (props.fixed ? "" : "auto")};
+    margin-right: ${(props) => (props.fixed ? "" : "16px")};
   }
   @media screen and (max-width: ${breakpoints.medium}) {
-    display: ${props => (props.fixed ? '' : 'none')};
+    display: ${(props) => (props.fixed ? "" : "none")};
   }
 `;
 
@@ -177,7 +182,7 @@ export const CompanyLogo = styled.div`
   display: inline-flex;
   align-items: center;
   gap: 10px;
-`
+`;
 
 export const LogoIcon = styled.div`
   width: 36px;
@@ -187,8 +192,8 @@ export const LogoIcon = styled.div`
 `;
 
 export const LogoText = styled.p`
-  color: #170F49;
-  font-feature-settings: 'clig' off, 'liga' off;
+  color: #170f49;
+  font-feature-settings: "clig" off, "liga" off;
   font-family: Poppins;
   font-size: 28.152px;
   font-style: normal;
@@ -199,7 +204,6 @@ export const LogoText = styled.p`
   }
 `;
 
-
 export const ServiceContainer = styled.div`
   display: flex;
   justify-content: center;
@@ -208,17 +212,36 @@ export const ServiceContainer = styled.div`
   position: absolute;
   width: 100%;
   top: 90px;
-  background: #FFF;
-  box-shadow: 0px 2px 4px -2px rgba(0, 0, 0, 0.05), 0px 4px 6px -1px rgba(0, 0, 0, 0.10);
+  background: #fff;
+  box-shadow: 0px 2px 4px -2px rgba(0, 0, 0, 0.05),
+    0px 4px 6px -1px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
   @media screen and (max-width: ${breakpoints.large}) {
-    display: none;
+    flex-direction: column;
+    gap: 32px;
+    align-items: center;
+    justify-content: center;
   }
-  
+  @media screen and (max-width: ${breakpoints.medium}) {
+    align-items: flex-start;
+    padding: 32px;
+  }
   &.hide {
     display: none;
   }
-`
-
+`;
+export const TwoRows = styled.div`
+  display: flex;
+  align-items: flex-start;
+  padding: 0;
+  margin: 0;
+  @media screen and (max-width: ${breakpoints.medium}) {
+    flex-direction: column;
+    gap: 32px;
+    align-items: center;
+    justify-content: center;
+  }
+`;
 export const ServiceRow = styled.div`
   display: flex;
   width: 256px;
@@ -234,7 +257,7 @@ export const ServiceHeader = styled.h2`
   font-style: normal;
   font-weight: 600;
   line-height: 16px;
-`
+`;
 
 export const ServiceText = styled.p`
   color: #6B7280;
@@ -243,8 +266,8 @@ export const ServiceText = styled.p`
   font-style: normal;
   font-weight: 400;
   line-height: 14px;
-  &:hover{
-    color: #1355FF;
+  &:hover {
+    color: #1355ff;
     font-weight: 700;
   }
-`
+`;
