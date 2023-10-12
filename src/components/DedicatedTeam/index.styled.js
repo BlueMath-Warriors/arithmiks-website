@@ -99,10 +99,6 @@ export const MoreButton = styled.button`
   text-transform: capitalize;
 
 `
-export const BtnIcon = styled.img`
-  width: 24px;
-  height: 24px;
-`
 
 export const ImgBackground = styled.div`
   display: flex;
@@ -161,7 +157,7 @@ export const GradiantContainer = styled.div`
   }
 `
 
-export const GradiantImg = styled.img`
+export const GradiantImg = styled.div`
 
 `
 

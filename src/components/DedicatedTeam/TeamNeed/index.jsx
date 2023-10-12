@@ -11,7 +11,7 @@ import {
 } from "./index.styled";
 import * as containerStyles from "../../../styles/global.module.css";
 import Gradiant from "../../../images/gradiant-7.svg";
-import  SmallGradiant from "../../../images/gradiant-8.svg";
+import SmallGradiant from "../../../images/gradiant-8.svg";
 
 import { HeroShade } from "../index.styled";
 const TeamNeed = () => {
@@ -25,11 +25,10 @@ const TeamNeed = () => {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
- 
       const initialShowSmallTimeout = setTimeout(() => {
         const initialShowSmall = isSmallGradient();
         setShowSmall(initialShowSmall);
-      }, 100); 
+      }, 100);
 
       const handleWindowResize = () => {
         setShowSmall(isSmallGradient());
@@ -41,7 +40,7 @@ const TeamNeed = () => {
 
       return () => {
         window.removeEventListener("resize", handleWindowResize);
-        clearTimeout(initialShowSmallTimeout); 
+        clearTimeout(initialShowSmallTimeout);
       };
     }
   }, []);
@@ -86,7 +85,7 @@ const TeamNeed = () => {
           </CardDetail>
         </Card>
         <GradiantContainer showSmall={showSmall}>
-          <GradiantImg src={showSmall ? SmallGradiant : Gradiant} />
+          <GradiantImg>{showSmall ? <SmallGradiant/> : <Gradiant/>}</GradiantImg>
         </GradiantContainer>
       </CardContainer>
       <HeroShade />

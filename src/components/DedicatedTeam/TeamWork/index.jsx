@@ -13,12 +13,15 @@ import {
   GradiantContainer,
   GradiantImg,
   HeroShade,
+  BgImageContainer,
 } from "./index.styled";
 import * as containerStyles from "../../../styles/global.module.css";
 import Gradiant from "../../../images/team-work-gradiant.svg";
 import SmallGradiant from "../../../images/team-work-small-gradiant.svg";
 import { PrimaryText } from "./index.styled";
-import ArrowGrye from "../../../images/arrow-right-grey.svg";
+import ArrowGrey from "../../../images/arrow-right-grey.svg";
+import BackgroundImage from "../../../images/team-work-bg.svg"
+
 
 const TeamWork = () => {
   const [showSmall, setShowSmall] = useState(true);
@@ -58,35 +61,38 @@ const TeamWork = () => {
         <Step>
           <Circle>1</Circle>
           <StepText>Welcome call</StepText>
-          <Arrow src={ArrowGrye} />
+          <Arrow><ArrowGrey/></Arrow>
         </Step>
 
         <Step>
           <Circle>2</Circle>
           <StepText>Scope Estimation</StepText>
-          <Arrow src={ArrowGrye} />
+          <Arrow><ArrowGrey/></Arrow>
         </Step>
 
         <Step>
           <Circle>3</Circle>
           <StepText>Talent Scelection</StepText>
-          <Arrow src={ArrowGrye} />
+          <Arrow><ArrowGrey/></Arrow>
         </Step>
 
         <Step>
           <Circle>4</Circle>
           <StepText>Proposition Call</StepText>
-          <Arrow src={ArrowGrye} />
+          <Arrow><ArrowGrey/></Arrow>
         </Step>
 
         <Step>
           <Circle>5</Circle>
           <StepText>Kick Off</StepText>
-          <Arrow src={ArrowGrye} />
+          <Arrow><ArrowGrey/></Arrow>
         </Step>
       </Steps>
 
       <ProcessContainer>
+        <BgImageContainer>
+          <BackgroundImage width="100%" height="100%" />
+        </BgImageContainer>
         <BlueBox left>
           <BoxText white>Team</BoxText>
         </BlueBox>
@@ -111,7 +117,9 @@ const TeamWork = () => {
         </GreyContainer>
 
         <GradiantContainer>
-          <GradiantImg src={showSmall ? SmallGradiant : Gradiant} />
+          <GradiantImg>
+            {showSmall ? <SmallGradiant/> : <Gradiant/>}
+          </GradiantImg>
         </GradiantContainer>
       </ProcessContainer>
       <HeroShade />

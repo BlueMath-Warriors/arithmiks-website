@@ -1,6 +1,5 @@
 import { styled } from "styled-components";
 import { breakpoints } from "../../Landing/index.styled";
-import bgimg from "../../../images/team-work-bg.svg"
 
 export const PrimaryText = styled.h2`
   color: rgba(0, 0, 0, 0.87);
@@ -86,7 +85,7 @@ export const Circle = styled.div`
 
 `
 
-export const Arrow = styled.img`
+export const Arrow = styled.div`
   width: 14px;
   height: 14px;
 `
@@ -98,7 +97,6 @@ export const ProcessContainer = styled.div`
   width: 800px;
   height: 474px;
 
-  background-image: url(${bgimg});
   background-size: cover;
   background-repeat: no-repeat;
 
@@ -130,6 +128,7 @@ export const BlueBox = styled.div`
   border-radius: 12px;
   background: #0B63E5;
   backdrop-filter: blur(75px);
+  z-index: 10;
 
   position: absolute;
   left: ${props => (props.left ? '-161px' : '800px')};
@@ -233,7 +232,7 @@ export const GradiantContainer = styled.div`
   }
 `
 
-export const GradiantImg = styled.img`
+export const GradiantImg = styled.div`
 
 `
 
@@ -251,3 +250,20 @@ export const HeroShade = styled.div`
     height: 70px;
   }
 `
+
+export const BgImageContainer = styled.div`
+
+  position : absolute;
+  width: 800px;
+  height: 474px;
+
+  @media screen and (max-width: ${breakpoints.large}) {
+    width: 543px;
+    height: 322px;
+  }
+  @media screen and (max-width: ${breakpoints.medium}) {
+    width: 272.856px;
+    height: 161.717px; 
+  }
+
+` 

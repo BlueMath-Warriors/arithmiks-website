@@ -10,7 +10,7 @@ import {
 } from "./index.styled";
 import * as containerStyles from "../../../styles/global.module.css";
 import Gradiant from "../../../images/team-structure-gradiant.svg";
-import SmallGradiant from "../../../images/team-work-small-gradiant.svg";
+import SmallGradiant from "../../../images/team-structure-small-gradiant.svg";
 import { PrimaryText } from "./index.styled";
 import CircleRight from "../../../images/team-structure-right-circle.svg";
 import CircleLeft from "../../../images/team-structure-left-circle.svg"
@@ -52,11 +52,21 @@ const TeamStructure = () => {
 
 
       <ProcessContainer>
-        <Left src={CircleLeft}/>
-        <ArrowImg src={Arrow} />
-        <Right src={CircleRight}/>
+        <Left>
+          <CircleLeft width="100%" height="100%" />
+        </Left>
+        <ArrowImg>
+          <Arrow width="100%" height="100%" />
+        </ArrowImg>
+        <Right>
+          <CircleRight width="100%" height="100%" />
+        </Right>
         <GradiantContainer>
-          <GradiantImg src={showSmall ? SmallGradiant : Gradiant} />
+          <GradiantImg>
+            {
+              showSmall ? <SmallGradiant/> : <Gradiant/>
+            }
+          </GradiantImg>
         </GradiantContainer>
       </ProcessContainer>
       <HeroShade />

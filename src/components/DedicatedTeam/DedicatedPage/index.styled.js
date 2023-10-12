@@ -89,12 +89,6 @@ export const MoreButton = styled.button`
   }
 `
 
-export const BtnIcon = styled.img`
-  width: 24px;
-  height: 24px;
-`
-
-
 
 export const CardContainer = styled.div`
   display: flex;
@@ -156,7 +150,7 @@ export const CardDetail = styled.p`
   line-height: 20px;
 `
 
-export const CardIcon = styled.img`
+export const CardIcon = styled.div`
   width: 64px;
   height: 64px;
 `

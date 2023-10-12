@@ -31,13 +31,15 @@ const DediacatedPage = () => {
           by acquiring the best talent to full fill the gap.
         </Caption>
         <MoreButton>
-          Tell us More <BtnIcon src={ArrowRight} />{" "}
+          Tell us More <ArrowRight/>
         </MoreButton>
       </TextContainer>
       <CardContainer>
         <CardCol>
           <Card>
-            <CardIcon src={FocusIcon} />
+            <CardIcon>
+              <FocusIcon />
+            </CardIcon>
             <CardTitle>Focus</CardTitle>
             <CardDetail>
               Dedicated teams remains focused on a specific project, enabling
@@ -47,7 +49,9 @@ const DediacatedPage = () => {
             </CardDetail>
           </Card>
           <Card>
-            <CardIcon src={ScallableIcon} />
+            <CardIcon>
+              <ScallableIcon />
+            </CardIcon>
             <CardTitle>Scalable</CardTitle>
             <CardDetail>
               Dedicated team ensures scalability of increasing or decreasing the
@@ -60,7 +64,9 @@ const DediacatedPage = () => {
 
         <CardCol>
           <Card>
-            <CardIcon src={MoneyIcon} />
+            <CardIcon>
+              <MoneyIcon />
+            </CardIcon>
             <CardTitle>Cost Efficient</CardTitle>
             <CardDetail>
               Our scalable team module, allows you to keep focus on the business
@@ -70,7 +76,9 @@ const DediacatedPage = () => {
             </CardDetail>
           </Card>
           <Card>
-            <CardIcon src={PackageIcon} />
+            <CardIcon>
+              <PackageIcon />
+            </CardIcon>
             <CardTitle>Productivity:</CardTitle>
             <CardDetail>
               In house team members are usually familiar with the ongoing
