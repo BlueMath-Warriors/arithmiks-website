@@ -392,3 +392,15 @@ button {
   overflow: hidden;
   position: relative;
 }
+
+.team_structure{
+  display: flex;
+  flex-direction: column;
+  padding: 127px 24px;
+  justify-content: center;
+  align-items: center;
+  background: #F5F5F7;
+
+  overflow: hidden;
+  position: relative;
+}

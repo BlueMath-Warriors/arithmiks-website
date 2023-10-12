@@ -20,6 +20,7 @@ import TeamNeed from "./TeamNeed";
 import Questions from "./Questions";
 import DediacatedPage from "./DedicatedPage";
 import TeamWork from "./TeamWork";
+import TeamStructure from "./TeamStructure";
 
 import ArrowRight from "../../images/ArrowRight.svg";
 import TeamIcon from "../../images/team-icon.png";
@@ -54,6 +55,7 @@ const DedicatedTeam = () => {
       <TeamNeed />
       <DediacatedPage />
       <TeamWork />
+      <TeamStructure />
       <Questions />
       <ContactUs />
       <Footer />

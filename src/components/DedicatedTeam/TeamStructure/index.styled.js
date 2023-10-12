@@ -4,163 +4,117 @@ import { breakpoints } from "../../Landing/index.styled";
 export const PrimaryText = styled.h2`
   color: rgba(0, 0, 0, 0.87);
   text-align: center;
-  font-family: 'DM Sans', sans-serif;
+  font-family: DM Sans;
   font-size: 48px;
   font-style: normal;
   font-weight: 700;
-  line-height: 100%;
-
-  margin-bottom: 16px;
-
-  @media screen and (max-width: ${breakpoints.large}) {
-    color: #040815;
-    font-family: Plus Jakarta Sans;
-    font-size: 30px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 150%;
-    letter-spacing: -0.9px;
-  }
-
-  @media screen and (max-width: ${breakpoints.medium}) {
-    text-align: left;
-    font-size: 24px;
-    letter-spacing: -0.72px;
-  }
-
+  line-height: normal;
+  
+  margin-bottom: 56px;
 `
 
-export const Caption = styled.p`
-color: rgba(0, 0, 0, 0.60);
-text-align: center;
-font-family: Poppins;
-font-size: 30px;
-font-style: normal;
-font-weight: 400;
-line-height: 120%;
 
-margin-bottom: 56px;
-
-@media screen and (max-width: ${breakpoints.large}) {
-  color: #596780;
-  font-family: Plus Jakarta Sans;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 150%;
-  letter-spacing: -0.4px;
-  margin-bottom: 32px;
-
-}
-
-
-@media screen and (max-width: ${breakpoints.medium}) {
-  text-align: left;
-  margin-bottom: 24px;
-}
-
-`
-
-export const CardContainer = styled.div`
+export const ProcessContainer = styled.div`
   display: flex;
   align-items: center;
-  gap: 32px;
+  justify-content: center;
+
+
+  margin-top: 142px;
+  margin-bottom: 42px;
+
   position: relative;
+
+  @media screen and (max-width: ${breakpoints.large}) {
+
+  }
   @media screen and (max-width: ${breakpoints.medium}) {
-    flex-direction: column;
+    margin-top: 48px;
+    margin-bottom: 60px;
+  
   }
 `
 
-export const Card = styled.div`
-  display: flex;
-  height: 420px;
-  width: 352px;
-  padding: 32px 24px;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 24px;
-  border-radius: 36px;
-  background: rgba(245, 245, 245, 0.60);
-  backdrop-filter: blur(2px);
-  z-index: 10;
-  @media screen and (max-width: ${breakpoints.large}) {
-    width: 243px;
-    height: 363px;
-    padding: 24px 8px;
-    gap: 8px;
-  }
-  @media screen and (max-width: ${breakpoints.medium}) {
-    width: 382px;
-    height: 256px;
-    padding: 24px;
-    gap: 16px;
-  }
-`
 
-export const CardTitle = styled.h3`
-  color: #1355FF;
-  font-family: Poppins;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 120%;
-  text-transform: uppercase;
-  @media screen and (max-width: ${breakpoints.large}) {
-    text-align: center;
-    height: 38px;
-    width: 227px;
-  }
-  @media screen and (max-width: ${breakpoints.medium}) {
-    text-align: left;
-    height: 19px;
-    width: 310px;
-  }
-`
-
-export const CardDetail = styled.div`
-  color: #202020;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 26px;
-  letter-spacing: -0.36px;
-  @media screen and (max-width: ${breakpoints.large}) {
-    font-family: Plus Jakarta Sans;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 150%;
-    letter-spacing: -0.28px;
-  }
-`
 
 export const GradiantContainer = styled.div`
+  position: absolute;
+  top: -160px;
+  left: 200px;
   display: flex;
-  width: 1440px;
-  height: 651px;
+  width: 800px;
+  height: 746px;
+  padding: 0px 19.2px 7.46px 19.2px;
   justify-content: center;
   align-items: center;
   flex-shrink: 0;
-  opacity: 0.9;
-
-  position: absolute;
-  top: -30px;
-  left: -140px;
 
   @media screen and (max-width: ${breakpoints.large}) {
-    top: -25px;
-    left: -300px;
+    width: 372px;
+    height: 471px;
+    padding: 30.144px 1.488px 0px 26.784px;
+
+    top: 35px;
+    left: 80px;
   }
+
   @media screen and (max-width: ${breakpoints.medium}) {
-    height: 615px;
-    width: 430px;
-    top: 130px;
-    left: -30px;
-    align-items: center;
-    opacity: 0.5;
+    width: 282px;
+    height: 357px;
+    padding: 22.848px 1.128px 0px 20.304px;
+    
+    top: 140px;
+    left: 0;
   }
 `
 
 export const GradiantImg = styled.img`
+
+`
+
+export const HeroShade = styled.div`
+  width: 100%;
+  height: 249px;
+  background: linear-gradient(0deg, #F5F5F7 10.64%, rgba(245, 245, 247, 0.00) 88.02%);
+  position: absolute;
+  bottom: -1px;
+  z-index: 12;
+  @media screen and (max-width: ${breakpoints.large}) {
+    height: 141px;
+  }
+  @media screen and (max-width: ${breakpoints.medium}) {
+    height: 70px;
+  }
+`
+
+export const Left = styled.img`
+  position: relative;
+  left: 95px;
+  z-index: 5;
+  @media screen and (max-width: ${breakpoints.large}) {
+    width: 240px;
+  }
+
+`
+
+export const Right = styled.img`
+  position: relative;
+  z-index: 5;
+  left: -85px;
+
+  @media screen and (max-width: ${breakpoints.large}) {
+    height: 355px;
+    width: 421.39;
+  }
+  @media screen and (max-width: ${breakpoints.medium}) {
+  }
+
+
+`
+
+export const ArrowImg = styled.img`
+position: relative;
+left: 88px;
+z-index: 6;
+
 `

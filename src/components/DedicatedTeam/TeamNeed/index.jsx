@@ -11,7 +11,7 @@ import {
 } from "./index.styled";
 import * as containerStyles from "../../../styles/global.module.css";
 import Gradiant from "../../../images/gradiant-7.svg";
-import SmallGradiant from "../../../images/gradiant-8.svg";
+import  SmallGradiant from "../../../images/gradiant-8.svg";
 
 import { HeroShade } from "../index.styled";
 const TeamNeed = () => {
@@ -25,11 +25,11 @@ const TeamNeed = () => {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      // Introduce a small delay to ensure window properties are ready
+ 
       const initialShowSmallTimeout = setTimeout(() => {
         const initialShowSmall = isSmallGradient();
         setShowSmall(initialShowSmall);
-      }, 100); // Adjust the delay time as needed
+      }, 100); 
 
       const handleWindowResize = () => {
         setShowSmall(isSmallGradient());
@@ -41,7 +41,7 @@ const TeamNeed = () => {
 
       return () => {
         window.removeEventListener("resize", handleWindowResize);
-        clearTimeout(initialShowSmallTimeout); // Clear the timeout if the component unmounts
+        clearTimeout(initialShowSmallTimeout); 
       };
     }
   }, []);
