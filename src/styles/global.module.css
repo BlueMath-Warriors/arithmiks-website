@@ -239,6 +239,20 @@ button {
   overflow: hidden;
   position: relative;
 }
+@media screen and (max-width: 1200px) {
+  .easybar_hero {
+    height: 728px;
+  }
+}
+@media screen and (max-width: 820px) {
+  .easybar_hero {
+    height: 555px;
+  }
+}
+
+.header_div{
+  height: 90px !important;
+}
 
 .easybar_overview{
   background-color: #fff;
@@ -248,6 +262,7 @@ button {
   align-items: center;
   overflow: hidden;
   position: relative;
+  height: auto;
 }
 
 .easybar_testimonial{
@@ -331,4 +346,26 @@ button {
   .process_section {
     padding: 56px 24px;
   }
+
+.easybar_solution{
+  background-color: #FFF;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.key_feature{
+  background-color: #FFF;
+  height: auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
 }

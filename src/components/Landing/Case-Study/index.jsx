@@ -53,7 +53,7 @@ const CaseStudy = ({ landing = false }) => {
             place orders for iron bars, while suppliers receive and print these
             orders for their automated machines.
           </CaseStudyDetails>
-          <CardBtn>
+          <CardBtn onClick={()=>{navigate("/case-studies/easybar")}}>
             View Case Study
             <BtnIcon src={ArrowBlue} />
           </CardBtn>
@@ -73,7 +73,7 @@ const CaseStudy = ({ landing = false }) => {
             world. It encompasses features for product sale flow, 3d models for
             products and view in your space using AR.
           </CaseStudyDetails>
-          <CardBtn>
+          <CardBtn onClick={()=>{navigate("/case-studies/ushaz")}}>
             View Case Study
             <BtnIcon src={ArrowBlue} />
           </CardBtn>
