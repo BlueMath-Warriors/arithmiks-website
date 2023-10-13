@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import * as containerStyles from "../../../../../styles/global.module.css";
 
 import {
@@ -7,15 +7,10 @@ import {
   FeatureDetail,
   FeatureTitle,
   FeatureImgContainer,
-  GradiantImg,
-  GradientContainer,
   FeatureImg,
   FeatureOuterContainer,
 } from "./index.styled";
 import { HeroShade } from "../../index.styled";
-import Gradiant_2 from "../../../../../images/gradiants/gradiant-2.svg";
-import Gradiant_4 from "../../../../../images/gradiants/gradiant-4.svg";
-import Gradiant_Small from "../../../../../images/gradiants/gradiant-small.svg"
 
 const EasybarFeature = (props) => {
   const { overview, left, title, caption, detail, img } = props;
@@ -27,7 +22,7 @@ const EasybarFeature = (props) => {
     }
     return false;
   }
-  
+
   useEffect(() => {
     if (typeof window !== "undefined") {
       const handleWindowResize = () => {
@@ -42,10 +37,13 @@ const EasybarFeature = (props) => {
     }
   }, []);
 
-
   return (
     <>
-      <div className={containerStyles.easybar_overview}>
+      <div
+        className={`${containerStyles.easybar_overview}  ${
+          left ? containerStyles.left : containerStyles.right
+        }`}
+      >
         <FeatureOuterContainer left={left}>
           {!left ? (
             <>
@@ -54,20 +52,14 @@ const EasybarFeature = (props) => {
                 {caption && <FeatureCaption>{caption}</FeatureCaption>}
                 <FeatureDetail overview={isOverview}>{detail}</FeatureDetail>
               </FeatureContainer>
-              <FeatureImgContainer>
+              <FeatureImgContainer className={containerStyles.easybar_feature_right}>
                 <FeatureImg src={img} />
-                <GradientContainer>
-                  <GradiantImg src={smallGradient ? Gradiant_Small : Gradiant_2} />
-                </GradientContainer>
               </FeatureImgContainer>
             </>
           ) : (
             <>
               <FeatureImgContainer left>
                 <FeatureImg left src={img} />
-                <GradientContainer left>
-                  <GradiantImg src={smallGradient ? Gradiant_Small : Gradiant_4} left />
-                </GradientContainer>
               </FeatureImgContainer>
               <FeatureContainer left>
                 <FeatureTitle left>{title}</FeatureTitle>

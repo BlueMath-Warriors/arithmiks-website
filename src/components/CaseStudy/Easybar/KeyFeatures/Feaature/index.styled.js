@@ -1,11 +1,11 @@
 import { styled } from "styled-components";
 
 export const breakpoints = {
-  x_small: "820px",
-  small: "940px",
-  medium: "1040px",
-  large: "1440px",
-  x_large: "1550px",
+  x_small: "819px",
+  small: "939px",
+  medium: "1039px",
+  large: "1439px",
+  x_large: "1549px",
 };
 
 export const FeatureContainer = styled.div`
@@ -82,10 +82,10 @@ export const FeatureImgContainer = styled.div`
   position: relative;
 
   margin: ${(props) =>
-    props.left ? "104px 110px 104px 0" : "104px 0 104px 110px"};
+    props.left ? "136px 110px 136px 0" : "136px 0 136px 110px"};
   @media screen and (max-width: ${breakpoints.large}) {
     margin: ${(props) =>
-      props.left ? "154px 116px 154px 0" : "154px 0 154px 116px"};
+      props.left ? "100px 116px 100px 0" : "100px 0 100px 116px"};
     padding: ${(props) =>
       props.left ? "18px 18px 18px 0 " : "18px 0 18px 18px"};
   }
@@ -96,8 +96,6 @@ export const FeatureImgContainer = styled.div`
       props.left ? "14px 14px 14px 0 " : "14px 0 14px 14px"};
   }
   @media screen and (max-width: ${breakpoints.small}) {
-    margin: ${(props) =>
-      props.left ? "103px 81px 103px 0" : "103px 0 103px 81px"};
     padding: ${(props) =>
       props.left ? "10px 10px 10px 0 " : "10px 0 10px 10px"};
   }
@@ -189,6 +187,8 @@ export const FeatureOuterContainer = styled.div`
   align-items: center;
   max-width: 1800px;
   width: 100%;
+
+
   @media screen and (max-width: ${breakpoints.x_small}) {
     flex-direction: column;
     justify-content: center;

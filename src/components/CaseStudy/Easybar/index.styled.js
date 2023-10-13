@@ -1,36 +1,23 @@
 import { styled } from "styled-components";
 import { breakpoints } from "../../Landing/index.styled";
 
-export const GradientContainer = styled.div`
-  display: flex;
-  width: 800px;
-  height: 800px;
-  justify-content: center;
-  align-items: center;
-
-  position: absolute;
-  left: -80px;
-  top: -260px;
-  @media screen and (max-width: ${breakpoints.medium}) {
-    display: inline-flex;
-    width: 306px;
-    height: 306px;
-    padding: 141px 12px 0px 0px;
-    align-items: center;
-    top: -90px;
-    left: 60px;
-  }
-`
-export const GradiantImg = styled.img`
-`
-
 export const HeroContent = styled.div`
   display: flex;
-  self-align: center;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   gap: 8px;
+
+  width: 929.029px;
+  position: relative;
+
+
+  @media screen and (max-width: ${breakpoints.large}) {
+    width: 597.586px;
+  }
+  @media screen and (max-width: ${breakpoints.small}) {
+    width: 362.346px;
+  }
 `
 
 export const SmallTxt = styled.p`
@@ -77,7 +64,7 @@ export const StudyCaption = styled.p`
   }
 `
 
-export const MoreButton = styled.button`
+export const MoreButton = styled.a`
   display: flex;
   padding: 0px 32px;
   justify-content: center;
@@ -95,52 +82,17 @@ export const MoreButton = styled.button`
   font-weight: 400;
   line-height: 48px;
   text-transform: capitalize;
-  border: none;
-
-
 `
 
 export const BtnIcon = styled.img`
   width: 24px;
   height: 24px;
-`
-
-export const ImgContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 23px;
-  border-radius: 22px;
-
-  margin-top: 50px;
-  background: rgba(235, 235, 235, 0.60);
-  stroke-width: 1px;
-  stroke: #FFF;
-  position: relative;
-  
-  @media screen and (max-width: ${breakpoints.large}) {
-    margin-top: 30px;
-  }
-  @media screen and (max-width: ${breakpoints.medium}) {
-    margin-top: 47px;
-  }
-`
+`;
 
 export const HeroImg = styled.img`
-  position: relative;
-  z-index: 10;
-  width: 881.23px;
-  height: 664.863px;
-  border-radius: 20.776px;
-  @media screen and (max-width: ${breakpoints.large}) {
-    width: 597.586px;
-    height: 450.625px;
-  }
-  @media screen and (max-width: ${breakpoints.medium}) {
-    width: 362.346px;
-    height: 272.428px;
-  }
-
+  margin-top: 46px;
+  width: 100%;
+  height: auto;
 `
 
 export const HeroShade = styled.div`
@@ -151,11 +103,9 @@ export const HeroShade = styled.div`
   bottom: -1px;
   z-index: 12;
   @media screen and (max-width: ${breakpoints.large}) {
-    height: 141px;
+    height: 143px;
   }
   @media screen and (max-width: ${breakpoints.medium}) {
     height: 70px;
   }
-
-
 `

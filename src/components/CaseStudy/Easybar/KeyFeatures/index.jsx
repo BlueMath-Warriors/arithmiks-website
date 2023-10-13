@@ -12,7 +12,7 @@ import Feature_6 from "../../../../images/easybar-feature-6.png";
 const EasybarKeyFeatures = () => {
   return (
     <>
-      <div className={containerStyles.easybar_solution}>
+      <div className={containerStyles.easybar_key_features}>
         <PrimaryHeading>
           Key <Secondary>Features</Secondary>
         </PrimaryHeading>

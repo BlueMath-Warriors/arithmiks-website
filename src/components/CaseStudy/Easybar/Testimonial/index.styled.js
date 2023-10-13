@@ -43,7 +43,6 @@ export const NameContainer = styled.div`
   align-items: center;
   justify-content: flex-start;
   gap: 24px;
-  self-align: flex-start;
   margin-top: 67px;
   margin-bottom: 180px;
   @media screen and (max-width: 1350px) {

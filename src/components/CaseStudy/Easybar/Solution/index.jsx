@@ -48,9 +48,9 @@ const EasybarSolution = () => {
           Tailoring Solutions to Meet Your Unique Needs
         </TitelCaption>
         <CardContainer>
-          <GradiantContainer>
+          {/* <GradiantContainer>
             <Gradiant3 src={smallGradiant ? gradiant_5 : gradiant_3} />
-          </GradiantContainer>
+          </GradiantContainer> */}
           <Card>
             <CardTitle>Geo-Targeted Business Search</CardTitle>
             <CardDetail>

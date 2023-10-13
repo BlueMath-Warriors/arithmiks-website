@@ -7,10 +7,17 @@ import EasyBarOverView from "./OverView";
 import EasybarTestimonial from "./Testimonial";
 import EasybarSolution from "./Solution";
 import EasybarKeyFeatures from "./KeyFeatures";
-import { GradientContainer, GradiantImg, HeroContent, SmallTxt, StudyTitle, StudyCaption, MoreButton, BtnIcon, ImgContainer, HeroImg, HeroShade } from "./index.styled";
-import Gradiant_1 from "../../../images/gradiants/gradiant-1.svg";
-import BtnArrow from "../../../images/arrow-right-blue.svg"
-import HeroImage from "../../../images/easybar-hero.png"
+import {
+  HeroContent,
+  SmallTxt,
+  StudyTitle,
+  StudyCaption,
+  MoreButton,
+  HeroImg,
+  HeroShade,
+} from "./index.styled";
+import BtnArrow from "../../../images/arrow-right-blue.svg";
+import HeroImage from "../../../images/easybar-hero.png";
 const EasyBar = () => {
   return (
     <>
@@ -20,15 +27,14 @@ const EasyBar = () => {
           <SmallTxt>Web Application</SmallTxt>
           <StudyTitle>Easybar</StudyTitle>
           <StudyCaption>Marketplace for Rebars</StudyCaption>
-          <MoreButton>Tell Us More <BtnArrow/></MoreButton>
-          <ImgContainer>
-            <HeroImg src={HeroImage}/>
-            <GradientContainer>
-              <GradiantImg src={Gradiant_1} />
-            </GradientContainer>
-          </ImgContainer>
+          <MoreButton href="#contact-form">
+            Tell Us More <BtnArrow />
+          </MoreButton>
+          <div style={{ position: "relative" }}>
+            <HeroImg src={HeroImage} />
+          </div>
         </HeroContent>
-        <HeroShade></HeroShade>
+        <HeroShade />
       </div>
       <EasyBarOverView />
       <EasybarTestimonial />

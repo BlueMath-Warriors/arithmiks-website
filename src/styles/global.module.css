@@ -154,7 +154,7 @@ button {
 }
 
 .how_it_works {
-  background: #F5F5F7;
+  background: #f5f5f7;
   height: auto;
   padding-top: 90px;
   padding-bottom: 108px;
@@ -163,15 +163,13 @@ button {
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
-  overflow-x: hidden; 
+  overflow-x: hidden;
 }
 
 @media screen and (max-width: 1200px) {
-
 }
 
 @media screen and (max-width: 820px) {
-
 }
 
 .about {
@@ -226,11 +224,15 @@ button {
   }
 }
 
-
-.easybar_hero{
+.easybar_hero {
   background-color: #fff;
-  padding-top: 138px;
-  height: 1010px;
+  background-image: url("../images/gradiants/gradient-neon-swapper.png");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  padding-top: 144px;
+  height: 980px;
 
   display: flex;
   justify-content: flex-start;
@@ -250,11 +252,11 @@ button {
   }
 }
 
-.header_div{
+.header_div {
   height: 90px !important;
 }
 
-.easybar_overview{
+.easybar_overview {
   background-color: #fff;
   height: auto;
   display: flex;
@@ -263,9 +265,53 @@ button {
   overflow: hidden;
   position: relative;
   height: auto;
+
+  background-size: 840px;
+  background-repeat: no-repeat;
 }
 
-.easybar_testimonial{
+.easybar_overview.right {
+  background-image: url(../images/gradiants/gradient-right.png);
+  background-position: right bottom;
+}
+
+.easybar_overview.left {
+  background-image: url(../images/gradiants/gradient-left.png);
+  background-position: left bottom;
+}
+
+@media screen and (max-width: 1439px) {
+  .easybar_overview {
+    background-size: 600px;
+  }
+}
+
+@media screen and (max-width: 939px) {
+  .easybar_overview {
+    background-size: 450px;
+  }
+}
+
+@media screen and (max-width: 819px) {
+  .easybar_overview {
+    background-size: 400px;
+  }
+  .easybar_overview.right {
+    background-position: right top;
+  }
+  
+  .easybar_overview.left {
+    background-position: left top;
+  }
+}
+
+@media screen and (max-width: 429px) {
+  .easybar_overview {
+    background-size: 450px;
+  }
+}
+
+.easybar_testimonial {
   background-color: #000;
   height: auto;
   display: flex;
@@ -274,11 +320,11 @@ button {
   flex-direction: column;
 }
 
-.header_div{
+.header_div {
   height: 90px !important;
 }
 
-.fixed_price{
+.fixed_price {
   background-color: #fff;
   height: 720px;
   margin: auto;
@@ -299,7 +345,7 @@ button {
   }
 }
 
-.idea_section{
+.idea_section {
   background-color: #fff;
   display: flex;
   justify-content: center;
@@ -309,13 +355,13 @@ button {
   position: relative;
 }
 
-.process_section{
+.process_section {
   display: flex;
   padding: 124px 160px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 47px;  
+  gap: 47px;
 
   background: #000;
   color: #fff;
@@ -332,7 +378,7 @@ button {
   }
 }
 
-.questions_section{
+.questions_section {
   display: flex;
   padding: 120px 0;
   flex-direction: column;
@@ -346,9 +392,27 @@ button {
   .process_section {
     padding: 56px 24px;
   }
+}
 
-.easybar_solution{
-  background-color: #FFF;
+.easybar_solution {
+  background-color: #fff;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+
+  background-color: #fff;
+  background-image: url(../images/gradiants/gradient-3.png);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.easybar_key_features {
+  background-color: #fff;
   height: auto;
   display: flex;
   justify-content: center;
@@ -358,8 +422,14 @@ button {
   overflow: hidden;
 }
 
-.key_feature{
-  background-color: #FFF;
+@media screen and (max-width: 820px) {
+  .easybar_solution {
+    background-image: url(../images/gradiants/gradient-5.png);
+  }
+}
+
+.key_feature {
+  background-color: #fff;
   height: auto;
   display: flex;
   justify-content: flex-start;
@@ -368,4 +438,39 @@ button {
   position: relative;
   overflow: hidden;
 }
+
+.quotes {
+  width: 92.7px;
+  height: 78px;
+  background-image: url(../images/quotes.png);
+  background-size: cover;
+  position: absolute;
+}
+
+.quotes.top {
+  top: -39px;
+  left: -62px;
+}
+
+.quotes.bottom {
+  bottom: -39px;
+  right: -62px;
+  transform: scaleX(-1) scaleY(-1);
+}
+
+@media screen and (max-width: 1350px) {
+  .quotes {
+    width: 48px;
+    height: 40px;
+  }
+
+  .quotes.top {
+    top: -20px;
+    left: 0px;
+  }
+
+  .quotes.bottom {
+    bottom: -20px;
+    right: 0px;
+  }
 }
