@@ -100,7 +100,6 @@ export const MoreButton = styled.button`
 
 `
 
-
 export const ImgBackground = styled.div`
   display: flex;
   width: 448px;
@@ -123,9 +122,9 @@ export const ImgBackground = styled.div`
   }
 `
 
-export const PriceImage = styled.img`
-  width: 186px;
-  height: 186px;
+export const HeroImage = styled.div`
+  width: 448px;
+  height: 325px;
 `
 
 export const GradiantContainer = styled.div`
@@ -136,8 +135,8 @@ export const GradiantContainer = styled.div`
   justify-content: flex-end;
   align-items: center;
   position: absolute;
-  top: 290px;
-  right: -325px;
+  top: 190px;
+  right: -410px;
   opacity: 0.3;
   overflow-hidden;
 

@@ -1,4 +1,5 @@
 import React from "react";
+import { navigate } from "gatsby";
 import {
   MainHead,
   SecondaryText,
@@ -35,7 +36,7 @@ const EngagementModel = () => {
             highly talented engineers working delicately on a project to unleash
             the excellence and deliverence.
           </CardBody>
-          <CardBtn>
+          <CardBtn onClick={()=>{navigate('/dedicated-team')}}>
             Read More
             <ArrowRigth/>
           </CardBtn>
@@ -50,7 +51,7 @@ const EngagementModel = () => {
             Fixed-Price Precision. It is well-suited for projects with clear requirements and short
             time-to-market.
           </CardBody>
-          <CardBtn>
+          <CardBtn onClick={()=>{navigate('/fixed-price')}}>
             Read More
             <ArrowRigth />
           </CardBtn>
