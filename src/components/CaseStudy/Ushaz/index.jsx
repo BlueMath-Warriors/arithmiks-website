@@ -15,7 +15,6 @@ import {
   StudyCaption,
   MoreButton,
   BtnIcon,
-  ImgContainer,
   HeroImg,
   HeroShade,
 } from "../Easybar/index.styled";
@@ -31,15 +30,12 @@ const Ushaz = () => {
           <SmallTxt>Web Application</SmallTxt>
           <StudyTitle>Ushaz</StudyTitle>
           <StudyCaption>Artisan Treasures Unleashed</StudyCaption>
-          <MoreButton>
-            Tell Us More <BtnIcon src={BtnArrow} />
+          <MoreButton href="#contact-form">
+            Tell Us More <BtnArrow/>
           </MoreButton>
-          <ImgContainer>
+          <div style={{ position: "relative" }}>
             <HeroImg src={HeroImage} />
-            <GradientContainer>
-              <GradiantImg src={Gradiant_1} />
-            </GradientContainer>
-          </ImgContainer>
+          </div>
         </HeroContent>
         <HeroShade></HeroShade>
       </div>

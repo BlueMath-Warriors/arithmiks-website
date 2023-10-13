@@ -10,7 +10,7 @@ import Feature_4 from "../../../../images/ushaz-feature-4.png";
 const UshazKeyFeatures = () => {
   return (
     <>
-      <div className={containerStyles.easybar_solution}>
+      <div className={containerStyles.easybar_key_features}>
         <PrimaryHeading>
           Key <Secondary>Features</Secondary>
         </PrimaryHeading>
