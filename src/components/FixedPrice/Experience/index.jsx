@@ -34,6 +34,7 @@ const iconImages = {
   4: peopleIcon,
 };
 
+
 const Experience = () => {
   const [windowWidth, setWindowWidth] = useState(1450);
   const [offset, setOffset] = useState(0);
@@ -130,10 +131,14 @@ const Experience = () => {
         </HeaderLeft>
         <CarouselButtons>
           <CarouselButton onClick={handleScrollLeft}>
-            <BtnIcon src={ArrowLeft} />
+            <BtnIcon>
+              <ArrowLeft/>
+            </BtnIcon>
           </CarouselButton>
           <CarouselButton blue onClick={handleScrollRight}>
-            <BtnIcon src={ArrowRight} />
+            <BtnIcon>
+              <ArrowRight/>
+            </BtnIcon>
           </CarouselButton>
         </CarouselButtons>
       </Header>
@@ -141,12 +146,16 @@ const Experience = () => {
         {Data.map((card, index) => (
           <CarouselCard id={`card_${card.id}`} ref={cardsRef[1]}>
             <ImgContainer>
-              <CardImg src={iconImages[card.id]} alt="card_icon"/>
+              <CardImg>
+                {iconImages[card.id] && iconImages[card.id]()}
+              </CardImg>
             </ImgContainer>
             <CardTitle>{card.title}</CardTitle>
             <CardDetails>{card.description}</CardDetails>
             {index < Data.length - 1 && (
-              <ArrowImage src={CardArrow} up={index % 2 === 0} />
+              <ArrowImage up={index % 2 === 0}>
+                <CardArrow/>
+              </ArrowImage>
             )}
           </CarouselCard>
         ))}

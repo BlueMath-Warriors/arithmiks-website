@@ -102,7 +102,9 @@ const Ideas = () => {
           </CardDetail>
         </Card>
         <GradiantContainer showSmall={showSmall}>
-          <GradiantImg src={showSmall ? SmallGradiant : Gradiant}/>
+          <GradiantImg>
+            <Gradiant/>
+          </GradiantImg>
         </GradiantContainer>
       </CardContainer>
       <HeroShade/>

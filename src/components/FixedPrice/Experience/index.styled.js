@@ -84,7 +84,7 @@ export const CarouselButton = styled.button`
   }
 `
 
-export const BtnIcon = styled.img`
+export const BtnIcon = styled.div`
   width: 18px;
   height: 18px;
 `
@@ -180,7 +180,7 @@ export const ImgContainer = styled.div`
   }
 `
 
-export const CardImg = styled.img`
+export const CardImg = styled.div`
   width: 42px;
   height: 42px;
   @media screen and (max-width: ${breakpoints.medium}) {
@@ -189,7 +189,7 @@ export const CardImg = styled.img`
   }
 `
 
-export const ArrowImage = styled.img`
+export const ArrowImage = styled.div`
   width: 250px;
   height: 45px;
   position: relative;

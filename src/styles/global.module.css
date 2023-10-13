@@ -343,8 +343,30 @@ button {
 }
 
 @media screen and (max-width: 820px) {
-  .process_section {
+  .process_section { 
     padding: 56px 24px;
+  }
+
+  .easybar_solution{
+    background-color: #FFF;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .key_feature{
+    background-color: #FFF;
+    height: auto;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
   }
 
 .easybar_solution{
@@ -368,4 +390,148 @@ button {
   position: relative;
   overflow: hidden;
 }
+}
+
+.team_need{
+  display: flex;
+  padding: 173px 24px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+@media screen and (max-width: 1200px) {
+  .team_need { 
+    padding-top: 52px;
+    padding-bottom: 72px;
+  }
+}
+
+
+.dedicated_page{
+  display: flex;
+  padding: 120px 24px;
+  gap: 23px;
+  justify-content: center;
+  align-items: center;
+  background: #000;
+
+  overflow: hidden;
+}
+
+@media screen and (max-width: 1200px) {
+  .dedicated_page { 
+    flex-direction: column;
+    padding: 60px 28px;
+    gap: 56px;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .dedicated_page { 
+    flex-direction: column;
+    padding: 57px 24px;
+    gap: 24px;
+  }
+}
+
+.team_work{
+  display: flex;
+  flex-direction: column;
+  padding: 90px 24px 62px 24px;
+  gap: 23px;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+
+  overflow: hidden;
+  position: relative;
+}
+
+.team_structure{
+  display: flex;
+  flex-direction: column;
+  padding: 127px 24px;
+  justify-content: center;
+  align-items: center;
+  background: #F5F5F7;
+
+  overflow: hidden;
+  position: relative;
+}
+
+@media screen and (max-width: 1200px) {
+  .team_structure { 
+    padding: 78px 24px 160px 24px;
+  }
+}
+
+@media screen and (max-width: 820px) {
+  .team_structure { 
+    padding: 90px 24px 90px 24px;
+  }
+}
+
+.team_need{
+  display: flex;
+  padding: 173px 24px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+@media screen and (max-width: 1200px) {
+  .team_need { 
+    padding-top: 52px;
+    padding-bottom: 72px;
+  }
+}
+
+
+.dedicated_page{
+  display: flex;
+  padding: 120px 24px;
+  gap: 23px;
+  justify-content: center;
+  align-items: center;
+  background: #000;
+
+  overflow: hidden;
+}
+
+@media screen and (max-width: 1200px) {
+  .dedicated_page { 
+    flex-direction: column;
+    padding: 60px 28px;
+    gap: 56px;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .dedicated_page { 
+    flex-direction: column;
+    padding: 57px 24px;
+    gap: 24px;
+  }
+}
+
+.team_work{
+  display: flex;
+  flex-direction: column;
+  padding: 90px 24px 62px 24px;
+  gap: 23px;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+
+  overflow: hidden;
+  position: relative;
 }

@@ -6,7 +6,7 @@ import {
   PrimaryText,
   BtnIcon,
   ImgBackground,
-  PriceImage,
+  HeroImage,
   GradiantContainer,
   GradiantImg,
   HeroShade,
@@ -16,15 +16,16 @@ import * as containerStyles from "../../styles/global.module.css";
 import Header from "../Landing/Header";
 import ContactUs from "../Landing/Contact-Us";
 import Footer from "..//Landing/Footer";
-import Ideas from "./Ideas";
-import Process from "./Process";
-import Experience from "./Experience";
+import TeamNeed from "./TeamNeed";
 import Questions from "./Questions";
+import DediacatedPage from "./DedicatedPage";
+import TeamWork from "./TeamWork";
+import TeamStructure from "./TeamStructure";
 
 import ArrowRight from "../../images/ArrowRight.svg";
-import PriceTag from "../../images/price-tag-logo.png";
+import TeamIcon from "../../images/team-icon.svg";
 import Gradiant from "../../images/gradiant-6.svg";
-const FixedPrice = () => {
+const DedicatedTeam = () => {
   return (
     <>
       <Header white={false} />
@@ -39,23 +40,26 @@ const FixedPrice = () => {
               Fixed price projects will follow WaterFall Methodology
             </Caption>
             <MoreButton>
-              Tell Us More <ArrowRight/>
+              Tell Us More <ArrowRight />
             </MoreButton>
           </TextContainer>
           <GradiantContainer>
-            <GradiantImg >
-              <Gradiant/>
+            <GradiantImg>
+              <Gradiant />
             </GradiantImg>
           </GradiantContainer>
           <ImgBackground>
-            <PriceImage src={PriceTag} />
+            <HeroImage>
+              <TeamIcon />
+            </HeroImage>
           </ImgBackground>
         </OuterContainer>
         {/* <HeroShade /> */}
       </section>
-      <Ideas />
-      <Process />
-      <Experience />
+      <TeamNeed />
+      <DediacatedPage />
+      <TeamWork />
+      <TeamStructure />
       <Questions />
       <ContactUs />
       <Footer />
@@ -63,4 +67,4 @@ const FixedPrice = () => {
   );
 };
 
-export default FixedPrice;
+export default DedicatedTeam;
