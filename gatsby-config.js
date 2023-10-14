@@ -5,15 +5,68 @@
 require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
 })
+
+const siteUrl = process.env.URL || `https://arithmiks.com`
+
 module.exports = {
   siteMetadata: {
-    title: `arithmiks`,
+    title: `Arithmiks - Software Development Company`,
     siteUrl: `https://arithmiks.com`,
+    description: `We are a custom software development company that assists you in converting your ideas into wonderful software solutions. With our customer centeric approch we build products that matters to users.`,
+    image: `/arithmiks-home-meta.png`,
+    twitterUsername: 'arithmiks',
   },
   plugins: [
     "gatsby-plugin-styled-components",
     "gatsby-plugin-react-svg",
-    "gatsby-plugin-sitemap",
+    {
+      resolve: "gatsby-plugin-sitemap",
+      options: {
+        query: `
+        {
+          allSitePage {
+            nodes {
+              path
+            }
+          }
+          allWpContentNode(filter: {nodeType: {in: ["Post", "Page"]}}) {
+            nodes {
+              ... on WpPost {
+                uri
+                modifiedGmt
+              }
+              ... on WpPage {
+                uri
+                modifiedGmt
+              }
+            }
+          }
+        }
+      `,
+        resolveSiteUrl: () => siteUrl,
+        resolvePages: ({
+          allSitePage: { nodes: allPages },
+          allWpContentNode: { nodes: allWpNodes },
+        }) => {
+          const wpNodeMap = allWpNodes.reduce((acc, node) => {
+            const { uri } = node
+            acc[uri] = node
+
+            return acc
+          }, {})
+
+          return allPages.map(page => {
+            return { ...page, ...wpNodeMap[page.path] }
+          })
+        },
+        serialize: ({ path, modifiedGmt }) => {
+          return {
+            url: path,
+            lastmod: modifiedGmt,
+          }
+        },
+      },
+    },
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
