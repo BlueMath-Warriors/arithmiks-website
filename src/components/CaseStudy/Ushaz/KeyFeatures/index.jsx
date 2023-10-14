@@ -23,16 +23,16 @@ const UshazKeyFeatures = () => {
         title={"Redesigned the Store's Front"}
         caption={""}
         detail={
-          "aLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+          "Redesigned store's front, created a more engaging and welcoming shopping experience for customers. improve page load times, accessibility, and search engine optimization for better visibility and usability."
         }
         img={Feature_1}
       />
       <UshazFeature
         left={true}
-        title={"Table Sale Flow"}
+        title={"Product Sale Flow"}
         caption={""}
         detail={
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam."
+          "Enhancing the product sale flow involves reducing steps, simplifying checkout, and implementing personalized shopping experiences to boost conversions."
         }
         img={Feature_2}
       />
@@ -43,17 +43,17 @@ const UshazKeyFeatures = () => {
         title={"View in your space"}
         caption={""}
         detail={
-          "aLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. "
+          "3D models allow users to visualize products or objects in their real environment through augmented reality (AR)."
         }
         img={Feature_3}
       />
 
       <UshazFeature
         left={true}
-        title={"3D modeling"}
+        title={"Payment Integrations"}
         caption={""}
         detail={
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam."
+          "Multiple payment options and integrations enable diverse and secure payment methods, ensuring a smooth checkout process for customers while maintaining data security."
         }
         img={Feature_4}
       />
