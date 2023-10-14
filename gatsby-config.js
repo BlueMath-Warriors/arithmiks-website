@@ -20,35 +20,6 @@ module.exports = {
     "gatsby-plugin-styled-components",
     "gatsby-plugin-react-svg",
     {
-      resolve: `gatsby-plugin-sitemap`,
-      options: {
-        query: `{
-          site {
-            siteMetadata {
-              siteUrl
-            }
-          }
-          allSitePage {
-            nodes {
-              path
-            }
-          }
-        }`,
-        resolveSiteUrl: () => siteUrl,
-        serialize: ({ site, allSitePage }) => {
-          let pages = [];
-          allSitePage.nodes.map(path => {
-            pages.push({
-              url: path,
-              changefreq: `daily`,
-              priority: 0.7,
-            })
-          });
-          return pages;
-        },
-      },
-    },
-    {
       resolve: 'gatsby-plugin-manifest',
       options: {
         icon: 'src/images/favicon.png',
