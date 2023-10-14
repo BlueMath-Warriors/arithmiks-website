@@ -23,7 +23,7 @@ const DediacatedPage = () => {
   return (
     <section className={containerStyles.dedicated_page}>
       <TextContainer>
-        <PrimaryText>Dedicated page content</PrimaryText>
+        <PrimaryText>Dedicated Team</PrimaryText>
         <Caption>
           Want to Elevate your current team or hand over your project to highly
           skilled dedicated engineers from Arithmiks. We got you covered. Hire
