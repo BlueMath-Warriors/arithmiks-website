@@ -171,6 +171,11 @@ export const DropDownInput = styled.select`
   font-weight: 400;
   line-height: 24px;
 
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+ 
+
   @media screen and (max-width: ${breakpoints.large}) {
     width: 630px;
     height: 48px !important;
