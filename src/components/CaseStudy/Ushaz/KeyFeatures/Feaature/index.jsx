@@ -64,7 +64,7 @@ const UshazFeature = (props) => {
                   <MobileImg src={img} />
                   <MobileGradientContainer>
                     <GradiantImg>
-                      {smallGradient ? <smallGradient /> : <Gradiant_2 />}
+                      {smallGradient ? <Gradiant_Small /> : <Gradiant_2 />}
                     </GradiantImg>{" "}
                   </MobileGradientContainer>
                 </MobileImgContainer>
@@ -73,7 +73,7 @@ const UshazFeature = (props) => {
                   <FeatureImg src={img} />
                   <GradientContainer>
                     <GradiantImg>
-                      {smallGradient ? <smallGradient /> : <Gradiant_2 />}
+                      {smallGradient ? <Gradiant_Small /> : <Gradiant_2 />}
                     </GradiantImg>
                   </GradientContainer>
                 </FeatureImgContainer>
@@ -85,7 +85,7 @@ const UshazFeature = (props) => {
                 <FeatureImg left src={img} />
                 <GradientContainer left>
                   <GradiantImg left>
-                    {smallGradient ? <smallGradient /> : <Gradiant_4 />}
+                    {smallGradient ? <Gradiant_Small /> : <Gradiant_4 />}
                   </GradiantImg>
                 </GradientContainer>
               </FeatureImgContainer>
