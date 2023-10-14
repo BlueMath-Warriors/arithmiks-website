@@ -29,25 +29,22 @@ module.exports = {
             }
           }
           allSitePage {
-            edges {
-              node {
-                path
-              }
+            nodes {
+              path
             }
           }
         }`,
         resolveSiteUrl: () => siteUrl,
         serialize: ({ site, allSitePage }) => {
-          let pages = []
-          allSitePage.edges.map(edge => {
+          let pages = [];
+          allSitePage.nodes.map(path => {
             pages.push({
-              url: site.siteMetadata.siteUrlNoSlash + edge.node.path,
+              url: path,
               changefreq: `daily`,
               priority: 0.7,
             })
-          })
-
-          return pages
+          });
+          return pages;
         },
       },
     },
