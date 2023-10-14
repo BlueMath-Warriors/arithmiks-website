@@ -148,7 +148,7 @@ export const GradientContainer = styled.div`
   }
 `;
 
-export const GradiantImg = styled.img``;
+export const GradiantImg = styled.div``;
 
 export const FeatureImg = styled.div`
   width: 766px;
