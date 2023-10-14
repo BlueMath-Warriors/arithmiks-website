@@ -1,6 +1,7 @@
 import React from "react";
 import * as containerStyles from "../../../../styles/global.module.css";
 import quotes from "../../../../images/quotes.svg";
+import hamza from "../../../../images/hamza.png";
 import {
   TestimonalText,
   Name,
@@ -19,21 +20,17 @@ const UshazTestimonial = () => {
       <div className={containerStyles.easybar_testimonial}>
         <TestimonialContainer>
           <TextContainer>
-          <div className={`${containerStyles.quotes} ${containerStyles.bottom}`} />
+            <div className={`${containerStyles.quotes} ${containerStyles.bottom}`} />
             <div className={`${containerStyles.quotes} ${containerStyles.top}`} />
             <TestimonalText>
-              Jellypepper understood my brief, customer base and goals better
-              than any other design studio. They explained their design process
-              and kept me informed every step of the way. I’m love the way the
-              entire process was managed and the final work delivered exceeded
-              my expectations.
+              Arithmiks understood my brief, customer base and goals. Team is very helpful, skilled, professional and responsive. Project is delivered with the best quality. Recommended!
             </TestimonalText>
           </TextContainer>
           <NameContainer>
-            <ClientImage />
+            <ClientImage src={hamza}/>
             <InnerContainer>
-              <Name>Yousuf Saymon</Name>
-              <NameCaption>Founder of Lightswap</NameCaption>
+              <Name>Hamza Malik</Name>
+              <NameCaption>Director USHAZ LTD</NameCaption>
             </InnerContainer>
           </NameContainer>
         </TestimonialContainer>
