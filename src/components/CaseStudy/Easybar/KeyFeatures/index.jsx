@@ -25,7 +25,7 @@ const EasybarKeyFeatures = () => {
         title={"Design Dynamic Rebars"}
         caption={""}
         detail={
-          "aLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+          "Focused feature of EasyBar for its users. It offers the ability to define various parameters, such as bar size, spacing, and bending shapes, all while providing real-time feedback of rebar design. This helps reducing errors, and facilitates collaboration among project stakeholders, ultimately contributing to the safety and efficiency of the construction process."
         }
         img={Feature_1}
       />
@@ -34,7 +34,7 @@ const EasybarKeyFeatures = () => {
         title={"Design Dynamic Nets"}
         caption={""}
         detail={
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam."
+          "This feature allows users to create and manipulate nets within a 2D digital model, adapting them to the specific requirements of a construction project. This dynamic approach enhances precision and gaps in between the bars."
         }
         img={Feature_2}
       />
@@ -44,7 +44,7 @@ const EasybarKeyFeatures = () => {
         title={"Design Dynamic Cages"}
         caption={""}
         detail={
-          "aLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. "
+          "Designing Dynamic Cages feature enables real-time creation and manipulation of 2D reinforcement cage structures, enhancing precision, compliance, and collaboration in construction projects."
         }
         img={Feature_3}
       />
@@ -54,7 +54,7 @@ const EasybarKeyFeatures = () => {
         title={"Easy-to-Use Ordering Interface "}
         caption={""}
         detail={
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam."
+          "A user-friendly ordering interface provides a seamless and intuitive experience for customers."
         }
         img={Feature_4}
       />
@@ -64,7 +64,7 @@ const EasybarKeyFeatures = () => {
         title={"EasyBar Admin Panel"}
         caption={""}
         detail={
-          "aLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+          "EasyBar Admin Panel simplifies data visualization and reporting, enabling informed decision-making and optimization for online platforms"
         }
         img={Feature_5}
       />
@@ -74,7 +74,7 @@ const EasybarKeyFeatures = () => {
         title={"Order Management"}
         caption={""}
         detail={
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. "
+          "The Order Management  feature provides users with a convenient platform to track and manage their past orders, enhancing transparency and making reordering a breeze."
         }
         img={Feature_6}
       />
