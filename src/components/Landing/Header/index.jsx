@@ -161,7 +161,7 @@ const Header = ({ white, fixed_bar }) => {
   return (
     <>
       <Headerr
-        white={showMenu || showServices || white}
+        white={showMenu || showServices || white || isFixed}
         fixed={isFixed || fixed_bar}
         hide={hideNav}
       >
@@ -198,16 +198,14 @@ const Header = ({ white, fixed_bar }) => {
             >
               Case Studies
             </MenuItem>
-            <a href="#company">
             <MenuItem
-                onClick={() => {
-                  closeMenu();
-                  navigate("/company");
-                }}
-              >
-                Company
-              </MenuItem>
-            </a>
+              onClick={() => {
+                closeMenu();
+                navigate("/company");
+              }}
+            >
+              Company
+            </MenuItem>
             <MenuItem
               hidden
               blue

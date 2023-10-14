@@ -7,15 +7,6 @@ export const breakpoints = {
   large: "1200px",
 };
 
-const slideInFromTop = keyframes`
-  0% {
-    transform: translateY(-100%);
-  }
-  100% {
-    transform: translateY(0);
-  }
-`;
-
 export const Headerr = styled.header`
   background: ${(props) =>
     props.white ? "white" : "rgba(255, 255, 255, 0.80)"};
@@ -27,7 +18,17 @@ export const Headerr = styled.header`
   right: 0;
   top: 0;
   z-index: 15;
-  animation: ${slideInFromTop} 0.5s ease-in-out;
+  ${({ fixed }) =>
+    fixed ? "animation: slide-in-from-top 0.5s ease-in-out;" : ""}
+
+  @keyframes slide-in-from-top {
+    0% {
+      transform: translateY(-100%);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
 `;
 
 export const HeaderContainer = styled.div`
@@ -98,8 +99,8 @@ export const Menu = styled.ul`
     gap: 24px;
     padding: 12px 0;
     &.hide {
-    display: none;
-  }
+      display: none;
+    }
   }
 `;
 
@@ -135,15 +136,15 @@ export const MenuItem = styled.li`
   }
 
   .down-icon {
-    transition: .5s all;
+    transition: 0.5s all;
     rotate: 180deg;
     path {
-      stroke: #1355FF;
+      stroke: #1355ff;
     }
   }
 
   .up-icon {
-    transition: .5s all;
+    transition: 0.5s all;
   }
 `;
 
@@ -261,7 +262,7 @@ export const ServiceRow = styled.div`
   justify-content: center;
   align-items: flex-start;
   gap: 16px;
-`
+`;
 export const ServiceHeader = styled.h2`
   color: #111928;
   font-family: Inter;
@@ -272,7 +273,7 @@ export const ServiceHeader = styled.h2`
 `;
 
 export const ServiceText = styled.p`
-  color: #6B7280;
+  color: #6b7280;
   font-family: Inter;
   font-size: 14px;
   font-style: normal;
