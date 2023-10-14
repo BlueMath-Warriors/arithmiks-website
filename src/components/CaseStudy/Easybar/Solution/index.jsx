@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import * as containerStyles from "../../../../styles/global.module.css";
 import {
   Title,
@@ -23,7 +23,7 @@ const EasybarSolution = () => {
     }
     return false;
   }
-  
+
   useEffect(() => {
     if (typeof window !== "undefined") {
       const handleWindowResize = () => {
@@ -45,41 +45,40 @@ const EasybarSolution = () => {
           Our <Secondary>Solution</Secondary>
         </Title>
         <TitelCaption>
-          Tailoring Solutions to Meet Your Unique Needs
+          MAKING ORDER OUT OF CHAOS
         </TitelCaption>
         <CardContainer>
           {/* <GradiantContainer>
             <Gradiant3 src={smallGradiant ? gradiant_5 : gradiant_3} />
           </GradiantContainer> */}
           <Card>
-            <CardTitle>Geo-Targeted Business Search</CardTitle>
+            <CardTitle>Keep evolving</CardTitle>
             <CardDetail>
-              Dive deep into specific locations and discover businesses that
-              align with your target audience.
+              EasyBar collaborated with the Suppliers to absorb the real users' needs,
+              and Arithmiks was on their back to make it happen.
             </CardDetail>
           </Card>
 
           <Card>
-            <CardTitle>Comprehensive Contact Data</CardTitle>
+            <CardTitle>Working Together</CardTitle>
             <CardDetail>
-              Gain direct access to crucial email addresses and phone numbers,
-              streamlining your outreach efforts.
+              Arithmiks team collaborated with the EasyBar to absorb the real users' needs.
+              Improves user stories, all aimed to create an excellent customer experience.
             </CardDetail>
           </Card>
 
           <Card>
-            <CardTitle>Domain Lookup</CardTitle>
+            <CardTitle>Team Work</CardTitle>
             <CardDetail>
-              Delve into specific domains to unearth related emails and trace
-              their online presence.
+              We put trust and teamwork at the center of our collaboration,
+              which resulted in a top-notch product with a smooth user experience.
             </CardDetail>
           </Card>
 
           <Card>
-            <CardTitle>Efficient Data Management</CardTitle>
+            <CardTitle>Build Fast and Reliable</CardTitle>
             <CardDetail>
-              Export your findings effortlessly, integrating the data into
-              popular CRMs for a seamless workflow.
+              We helped to build EasyBar from scratch, which means we needed to build fast and launch fast.
             </CardDetail>
           </Card>
         </CardContainer>

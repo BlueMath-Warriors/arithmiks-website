@@ -19,14 +19,12 @@ const EasybarTestimonial = () => {
       <div className={containerStyles.easybar_testimonial}>
         <TestimonialContainer>
           <TextContainer>
-          <div className={`${containerStyles.quotes} ${containerStyles.bottom}`} />
+            <div className={`${containerStyles.quotes} ${containerStyles.bottom}`} />
             <div className={`${containerStyles.quotes} ${containerStyles.top}`} />
             <TestimonalText>
-              Jellypepper understood my brief, customer base and goals better
-              than any other design studio. They explained their design process
-              and kept me informed every step of the way. I’m love the way the
-              entire process was managed and the final work delivered exceeded
-              my expectations.
+              Omer is a professional, reliable, and kind person. Working with him was great!
+              Omer was available for any question, gave professional answers,
+              was patient with the project and the results are beautiful. I highly recommend working with him.
             </TestimonalText>
           </TextContainer>
           <NameContainer>

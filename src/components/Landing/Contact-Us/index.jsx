@@ -60,8 +60,8 @@ const ContactUs = () => {
               </Circle>
               <CardContent>
                 <Caption>Email us</Caption>
-                <a href="mailto: info@arithmiks.com">
-                  <ContentText>info@arithmiks.com</ContentText>
+                <a href="mailto: services@arithmiks.com">
+                  <ContentText>services@arithmiks.com</ContentText>
                 </a>
               </CardContent>
             </SubCard>
@@ -84,8 +84,6 @@ const ContactUs = () => {
               </Circle>
               <CardContent>
                 <ContentText medium>
-                  537, C Block, Faisal Town
-                  <br />
                   Lahore, Pakistan
                 </ContentText>
               </CardContent>
