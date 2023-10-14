@@ -15,8 +15,8 @@ import {
 import {
   MobileImg,
   MobileImgContainer,
-  MobileGradientContainer
-} from "./index.styled"
+  MobileGradientContainer,
+} from "./index.styled";
 import { HeroShade } from "../../../Easybar/index.styled";
 import Gradiant_2 from "../../../../../images/gradiants/gradiant-2.svg";
 import Gradiant_4 from "../../../../../images/gradiants/gradiant-4.svg";
@@ -63,18 +63,18 @@ const UshazFeature = (props) => {
                 <MobileImgContainer>
                   <MobileImg src={img} />
                   <MobileGradientContainer>
-                    <GradiantImg
-                      src={smallGradient ? Gradiant_Small : Gradiant_2}
-                    />
+                    <GradiantImg>
+                      {smallGradient ? <smallGradient /> : <Gradiant_2 />}
+                    </GradiantImg>{" "}
                   </MobileGradientContainer>
                 </MobileImgContainer>
               ) : (
                 <FeatureImgContainer>
                   <FeatureImg src={img} />
                   <GradientContainer>
-                    <GradiantImg
-                      src={smallGradient ? Gradiant_Small : Gradiant_2}
-                    />
+                    <GradiantImg>
+                      {smallGradient ? <smallGradient /> : <Gradiant_2 />}
+                    </GradiantImg>
                   </GradientContainer>
                 </FeatureImgContainer>
               )}
@@ -84,10 +84,9 @@ const UshazFeature = (props) => {
               <FeatureImgContainer left>
                 <FeatureImg left src={img} />
                 <GradientContainer left>
-                  <GradiantImg
-                    src={smallGradient ? Gradiant_Small : Gradiant_4}
-                    left
-                  />
+                  <GradiantImg left>
+                    {smallGradient ? <smallGradient /> : <Gradiant_4 />}
+                  </GradiantImg>
                 </GradientContainer>
               </FeatureImgContainer>
               <FeatureContainer left>
