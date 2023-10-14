@@ -4,5 +4,5 @@ package = "@netlify/plugin-sitemap"
   [plugins.inputs]
   buildDir = "public"
   exclude = [
-    './public/_gatsby/slices/_gatsby-scripts-1',
+    './public/_gatsby/slices/_gatsby-scripts-1.html',
   ]
