@@ -154,7 +154,7 @@ export const EmailInput = styled.input`
 `;
 
 export const DropDownInput = styled.select`
-  height: 48px;
+  height: 48px !important;
   width: 544px;
   display: flex;
   padding: 12px 18px;
@@ -171,13 +171,18 @@ export const DropDownInput = styled.select`
   font-weight: 400;
   line-height: 24px;
 
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+ 
+
   @media screen and (max-width: ${breakpoints.large}) {
     width: 630px;
-    height: 44px;
+    height: 48px !important;
   }
   @media screen and (max-width: ${breakpoints.medium}) {
     width: 350px;
-    height: 44px;
+    height: 48px !important;
   }
 `;
 

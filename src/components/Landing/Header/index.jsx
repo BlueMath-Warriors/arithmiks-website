@@ -199,7 +199,14 @@ const Header = ({ white, fixed_bar }) => {
               Case Studies
             </MenuItem>
             <a href="#company">
-              <MenuItem onClick={closeMenu}>Company</MenuItem>
+            <MenuItem
+                onClick={() => {
+                  closeMenu();
+                  navigate("/company");
+                }}
+              >
+                Company
+              </MenuItem>
             </a>
             <MenuItem
               hidden
