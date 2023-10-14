@@ -45,6 +45,7 @@ module.exports = {
             }
           }
         }`,
+        resolveSiteUrl: () => siteUrl,
         serialize: ({ site, allSitePage, allMarkdownRemark }) => {
           let pages = []
           allSitePage.edges.map(edge => {
