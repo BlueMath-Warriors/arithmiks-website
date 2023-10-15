@@ -27,7 +27,12 @@ const EasyBar = () => {
           <SmallTxt>Web Application</SmallTxt>
           <StudyTitle>Easybar</StudyTitle>
           <StudyCaption>Marketplace for Rebars</StudyCaption>
-          <MoreButton href="#contact-form">
+          <MoreButton 
+            onClick={() => {
+              document
+                .getElementById("contact-form")
+                .scrollIntoView({ behavior: "smooth" });
+            }}>
             Tell Us More <BtnArrow />
           </MoreButton>
           <div style={{ position: "relative" }}>

@@ -30,7 +30,12 @@ const DediacatedPage = () => {
           dedicate resources to meet demands on time, increase working capacity
           by acquiring the best talent to full fill the gap.
         </Caption>
-        <MoreButton>
+        <MoreButton           
+          onClick={() => {
+            document
+              .getElementById("contact-form")
+              .scrollIntoView({ behavior: "smooth" });
+          }}>
           Tell us More <ArrowRight/>
         </MoreButton>
       </TextContainer>
