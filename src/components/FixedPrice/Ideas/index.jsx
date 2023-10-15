@@ -26,25 +26,17 @@ const Ideas = () => {
     return false;
   }
   
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      // Introduce a small delay to ensure window properties are ready
-      const initialShowSmallTimeout = setTimeout(() => {
-        const initialShowSmall = isSmallGradient();
-        setShowSmall(initialShowSmall);
-      }, 100); // Adjust the delay time as needed
 
+  useEffect(() => {
+    if (typeof window !== "undefined") {
       const handleWindowResize = () => {
         setShowSmall(isSmallGradient());
       };
-
       handleWindowResize();
 
-      window.addEventListener('resize', handleWindowResize);
-
+      window.addEventListener("resize", handleWindowResize);
       return () => {
-        window.removeEventListener('resize', handleWindowResize);
-        clearTimeout(initialShowSmallTimeout); // Clear the timeout if the component unmounts
+        window.removeEventListener("resize", handleWindowResize);
       };
     }
   }, []);
@@ -103,7 +95,9 @@ const Ideas = () => {
         </Card>
         <GradiantContainer showSmall={showSmall}>
           <GradiantImg>
-            <Gradiant/>
+            {
+              showSmall ? <SmallGradiant/> : <Gradiant/>
+            }
           </GradiantImg>
         </GradiantContainer>
       </CardContainer>
