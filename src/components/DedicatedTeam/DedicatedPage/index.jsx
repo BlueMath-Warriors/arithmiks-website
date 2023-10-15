@@ -29,12 +29,10 @@ function DedicatedCard({title, SimpleIcon, HoverIcon, detail}) {
 
   const handleMouseEnter = () => {
     setIsHovered(true);
-    console.log("hovered");
   };
 
   const handleMouseLeave = () => {
     setIsHovered(false);
-    console.log("not hovered");
   };
 
   return (
