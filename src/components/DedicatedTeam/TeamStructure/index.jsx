@@ -26,19 +26,14 @@ const TeamStructure = () => {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      const initialShowSmallTimeout = setTimeout(() => {
-        const initialShowSmall = isSmallGradient();
-        setShowSmall(initialShowSmall);
-      }, 100);
-
       const handleWindowResize = () => {
         setShowSmall(isSmallGradient());
       };
       handleWindowResize();
+
       window.addEventListener("resize", handleWindowResize);
       return () => {
         window.removeEventListener("resize", handleWindowResize);
-        clearTimeout(initialShowSmallTimeout);
       };
     }
   }, []);
