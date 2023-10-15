@@ -77,6 +77,7 @@ const Header = ({ white, fixed_bar }) => {
   const [heroHeight, setHeroHeight] = useState(840);
   const [isFixed, setIsFixed] = useState(false);
   const [hideNav, setHideNav] = useState(false);
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
 
   const closeMenu = () => {
     if (navMenu && navMenu.current) {
@@ -153,7 +154,7 @@ const Header = ({ white, fixed_bar }) => {
       } else {
         setHideNav(false);
         setIsFixed(false);
-        closeMenu();
+        // closeMenu();
       }
     });
   }
@@ -185,6 +186,8 @@ const Header = ({ white, fixed_bar }) => {
               blue={showServices}
               onClick={() => {
                 setShowServices(!showServices);
+                navMenu.current.classList.remove("active");
+                setShowMenu(false);
               }}
             >
               Services
