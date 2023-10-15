@@ -35,7 +35,12 @@ const Services = () => {
           </HeaderText>
         </Left>
         <Right>
-          <ViewButton href="#contact-form">
+          <ViewButton
+            onClick={() => {
+              document
+                .getElementById("contact-form")
+                .scrollIntoView({ behavior: "smooth" });
+            }}>
             Reach us
             <ArrowCricleRight />
           </ViewButton>

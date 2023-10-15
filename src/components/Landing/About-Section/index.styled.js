@@ -87,6 +87,7 @@ export const CardBtn = styled.a`
   font-weight: 700;
   line-height: 48px;
   text-transform: capitalize;
+  cursor: pointer;
 `;
 
 export const BtnIcon = styled.img`

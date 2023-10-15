@@ -151,6 +151,8 @@ export const CardDetail = styled.p`
 `
 
 export const CardIcon = styled.div`
-  width: 64px;
-  height: 64px;
+  padding: 16px;
+  background: ${props => (props.hover ? '#FFF' : 'rgba(255, 255, 255, 0.20)')};
+  border-radius: 8px;
+
 `

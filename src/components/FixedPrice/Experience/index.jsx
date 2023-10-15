@@ -47,7 +47,7 @@ const Experience = () => {
     if (typeof window !== "undefined") {
       const handleWindowResize = () => {
         setWindowWidth(window.innerWidth);
-        setOffset(5 - Math.floor((window.innerWidth - 50) / (cardGap + width)));
+        setOffset(4 - Math.floor((window.innerWidth - 50) / (cardGap + width)));
         if (window.innerWidth < 830) {
           setCardGap(32);
           setWidth(270);
@@ -154,7 +154,7 @@ const Experience = () => {
             <CardDetails>{card.description}</CardDetails>
             {index < Data.length - 1 && (
               <ArrowImage up={index % 2 === 0}>
-                <CardArrow/>
+                <CardArrow width="100%" height="100%"/>
               </ArrowImage>
             )}
           </CarouselCard>

@@ -2,9 +2,10 @@ import { styled } from "styled-components";
 import { breakpoints } from "../../index.styled";
 
 export const FormSection = styled.div`
+  padding-top: 99px;
+  padding-bottom: 99px;
   z-index: 10;
   width: 672px;
-  height: 654px;
   border-radius: 0px 24px 24px 0px;
   background: #fff;
   display: flex;
@@ -17,7 +18,6 @@ export const FormSection = styled.div`
   }
   @media screen and (max-width: ${breakpoints.medium}) {
     width: 382px; 
-    height: 615px;
     padding: 16px;
   }
 `
@@ -45,40 +45,6 @@ export const HeaderText = styled.label`
     }
   `
 ;
-
-export const RadioLabel = styled.label`
-  color: #1F2937;
-  font-family: Inter;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 24px;
-  letter-spacing: 0.07px;
-`
-
-export const RadioContainer = styled.div`
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 16px;
-`
-
-export const RadioInputs = styled.div`
-  display: flex;
-  width: 522px;
-  align-items: flex-start;
-  align-content: flex-start;
-  gap: 20px;
-  flex-wrap: wrap;
-`
-
-export const RadioInput = styled.input`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 16px;
-  height: 16px;
-`;
 
 export const InputLabel = styled.label`
   color: #061C3D;
@@ -188,6 +154,7 @@ export const DropDownInput = styled.select`
 
 export const MessageInput = styled.textarea`
   min-height: 132px;
+  max-height: 132px;
   width: 100%;
   display: flex;
   padding: 12px 18px;
