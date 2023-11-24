@@ -50,7 +50,6 @@ export const SecondaryColor = styled.span`
 
 export const MainCard = styled.div`
   width: 1120px;
-  height: 654px;
   border-radius: 24px;
   background: #F5F5F7;
   display: flex;
@@ -59,12 +58,10 @@ export const MainCard = styled.div`
   
   @media screen and (max-width: ${breakpoints.large}) {
     flex-direction: column;
-    height: 900px;
     width: 760px;
   }
   @media screen and (max-width: ${breakpoints.medium}) {
     flex-direction: column;
-    height: 1040px;
     width: 382px;
   }
 `
@@ -72,7 +69,6 @@ export const MainCard = styled.div`
 export const CardLeft = styled.div`
   position: relative;
   width: 448px;
-  height: 654px;
   border-radius: 24px 0px 0px 24px;
   background: #FFF;
   display: flex;
@@ -92,7 +88,6 @@ export const CardLeft = styled.div`
     justify-content: flex-start;
     order: 1;
     width: 382px; 
-    height: 584px;
     border-radius: 0px 0px 24px 24px;
   }
 `
@@ -103,8 +98,7 @@ export const BackImage = styled.div`
   right: -90px;
   top: -45px;
   @media screen and (max-width: ${breakpoints.large}) {
-    height: 300px;
-    right: 35px;
+     right: 35px;
     top: -117px;
   }
 
@@ -211,6 +205,7 @@ export const CardFooter = styled.div`
   gap: 16px;
   margin-top: 78px;
   margin-left: 96px;
+  margin-bottom: 72px;
   @media screen and (max-width: ${breakpoints.large}) {
     align-items: flex-start;
     justify-content: center;
@@ -220,7 +215,7 @@ export const CardFooter = styled.div`
   @media screen and (max-width: ${breakpoints.medium}) {
     align-items: flex-start;
     justify-content: center;
-    margin: 0;
+    margin: 0 0 24px 0;
     padding-left: 24px;
   }
 
@@ -268,28 +263,8 @@ export const SocialIcon = styled.img`
   height: 20px;
 `
 
-export const CardRight = styled.div`
-  z-index: 10;
-  width: 672px;
-  border-radius: 0px 24px 24px 0px;
-  background: #000;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  @media screen and (max-width: ${breakpoints.large}) {
-    order: 1;
-    width: 760px;
-    border-radius: 24px 24px 0px 0px;
-  }
-  @media screen and (max-width: ${breakpoints.medium}) {
-    order: 2;
-    width: 382px;
-    height: 616px; 
-  }
-`
-
 export const CardDetails = styled.div`
-  padding: 0;
+  padding: 0 0 8px 0;
   margin: 0;
   display: flex;
   flex-direction: column;

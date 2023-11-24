@@ -29,6 +29,11 @@ export const Headerr = styled.header`
       transform: translateY(0);
     }
   }
+
+  @media screen and (max-width: ${breakpoints.medium}) {
+    position: absolute;
+    display: block !important;
+  }
 `;
 
 export const HeaderContainer = styled.div`
@@ -91,6 +96,8 @@ export const Menu = styled.ul`
   }
 
   &.active {
+    top: 70px;
+    position: absolute;
     left: 0;
     margin-top: 18px;
     border-top: 1px solid #c2c2c2;

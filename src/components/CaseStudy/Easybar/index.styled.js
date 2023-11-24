@@ -82,6 +82,7 @@ export const MoreButton = styled.a`
   font-weight: 400;
   line-height: 48px;
   text-transform: capitalize;
+  cursor: pointer;
 `
 
 export const BtnIcon = styled.img`

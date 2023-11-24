@@ -38,7 +38,12 @@ const About = () => {
           Software Development Company That Vows Your Success. We Provide
           Professional IT Solutions For Your Business
         </CardBody>
-        <CardBtn href="#contact-form">
+        <CardBtn             
+          onClick={() => {
+            document
+              .getElementById("contact-form")
+              .scrollIntoView({ behavior: "smooth" });
+          }}>
           Learn More
           <ArrowRight/>
         </CardBtn>

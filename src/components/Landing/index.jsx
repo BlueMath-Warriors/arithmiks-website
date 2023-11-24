@@ -33,8 +33,14 @@ const LandingPage = () => {
             converting your ideas into wonderful software solutions. With our
             customer centeric approch we build products that matters to users.
           </Description>
-          <Buttons>
-            <a href="#contact-form">
+          <Buttons
+            onClick={() => {
+              document
+                .getElementById("contact-form")
+                .scrollIntoView({ behavior: "smooth" });
+            }}
+          >
+            <a>
               <CtaBtn fill fixed>
                 Lets Talk
               </CtaBtn>

@@ -38,7 +38,12 @@ const FixedPrice = () => {
             <Caption>
               Fixed price projects will follow WaterFall Methodology
             </Caption>
-            <MoreButton>
+            <MoreButton           
+              onClick={() => {
+              document
+                .getElementById("contact-form")
+                .scrollIntoView({ behavior: "smooth" });
+            }}>
               Tell Us More <ArrowRight/>
             </MoreButton>
           </TextContainer>

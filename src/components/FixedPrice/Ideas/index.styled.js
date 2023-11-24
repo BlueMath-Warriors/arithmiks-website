@@ -135,11 +135,14 @@ export const GradiantContainer = styled.div`
     left: -300px;
   }
   @media screen and (max-width: ${breakpoints.medium}) {
-    height: 615px;
     width: 430px;
-    top: 130px;
-    left: -30px;
+    height: 615px;
+    padding: 31.98px 44.721px 0px 44.719px;
+    flex-direction: column;
+    justify-content: flex-end;
     align-items: center;
+    top: 490px;
+    left: -20px;
   }
 `
 

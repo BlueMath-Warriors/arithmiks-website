@@ -109,7 +109,7 @@ export const CarouselContainer = styled.div`
   justify-content: flex-start;
   align-items: center;
   gap: 111px;
-  width: 2190px;
+  width: 2075px;
   transition: left 0.8s ease;
   @media screen and (max-width: ${breakpoints.large}) {
     left:50px;

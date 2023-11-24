@@ -72,6 +72,10 @@ export const SEO = ({ title, description, pathname, children }) => {
         href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,700&display=swap"
         rel="stylesheet"
       ></link>
+      <link 
+        href="https://fonts.googleapis.com/css2?family=Lexend:wght@600&display=swap" 
+        rel="stylesheet"
+      ></link>
       {children}
     </>
   );

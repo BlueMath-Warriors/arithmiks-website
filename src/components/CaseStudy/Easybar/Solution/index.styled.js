@@ -39,7 +39,7 @@ export const CardContainer = styled.div`
   position: relative;
   margin-bottom: 119px;
   @media screen and (max-width: ${breakpoints.large}) {
-    max-width: 760px;
+    max-width: 780px;
     margin-bottom: 108px;
   }
   @media screen and (max-width: ${breakpoints.medium}) {
@@ -50,7 +50,7 @@ export const CardContainer = styled.div`
 export const Card = styled.div`
   display: flex;
   width: 464px;
-  height: 324px;
+  height: 330px;
   padding: 42px 42px 86px 32px;
   flex-direction: column;
   align-items: flex-start;
@@ -60,8 +60,15 @@ export const Card = styled.div`
   backdrop-filter: blur(2px);
 
   @media screen and (max-width: ${breakpoints.large}) {
-    width: 372px;
-    height: 260px;
+    width: 382px;
+    height: 330px;
+    padding: 32px 16px 52px 16px;
+    gap: 21px;
+  }
+
+  @media screen and (max-width: ${breakpoints.medium}) {
+    width: 382px;
+    height: auto;
     padding: 32px 16px 52px 16px;
     gap: 21px;
   }
@@ -89,6 +96,14 @@ export const CardDetail = styled.p`
   line-height: normal;
   @media screen and (max-width: ${breakpoints.large}) {
     font-size: 26px;
+  }
+  @media screen and (max-width: ${breakpoints.medium}) {
+    color: #202020;
+    font-family: DM Sans;
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
   }
 `
 

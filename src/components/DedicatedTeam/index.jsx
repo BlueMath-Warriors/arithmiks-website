@@ -38,7 +38,12 @@ const DedicatedTeam = () => {
             <Caption>
               Experience the power of highly talented engineers working delicately on a project to unleash the excellence and deliverence.
             </Caption>
-            <MoreButton>
+            <MoreButton           
+              onClick={() => {
+              document
+                .getElementById("contact-form")
+                .scrollIntoView({ behavior: "smooth" });
+            }}>
               Tell Us More <ArrowRight />
             </MoreButton>
           </TextContainer>

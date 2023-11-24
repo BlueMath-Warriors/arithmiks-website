@@ -90,6 +90,7 @@ export const ViewButton = styled.a`
   font-weight: 500;
   line-height: 24px;
   letter-spacing: -0.09px;
+  cursor: pointer;
 `
 export const BtnIcon = styled.img`
   width: 24px;
