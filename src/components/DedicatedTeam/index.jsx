@@ -33,11 +33,10 @@ const DedicatedTeam = () => {
         <OuterContainer>
           <TextContainer>
             <PrimaryText>
-              Delivering Quality, Crafted to Perfection: Your Vision, Our
-              Fixed-Price Precision
+              Your dedicated team partner
             </PrimaryText>
             <Caption>
-              Fixed price projects will follow WaterFall Methodology
+              Experience the power of highly talented engineers working delicately on a project to unleash the excellence and deliverence.
             </Caption>
             <MoreButton>
               Tell Us More <ArrowRight />
