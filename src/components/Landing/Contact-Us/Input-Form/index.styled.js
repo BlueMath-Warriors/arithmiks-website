@@ -1,9 +1,21 @@
 import { styled } from "styled-components";
 import { breakpoints } from "../../index.styled";
 
+export const FormContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height :662px;
+  background-color: #fff;
+  @media screen and (max-width: ${breakpoints.large}) {
+    height :100%;
+  }
+  @media screen and (max-width: ${breakpoints.medium}) {
+    height :100%;
+  }
+`
+
 export const FormSection = styled.div`
-  padding-top: 99px;
-  padding-bottom: 99px;
   z-index: 10;
   width: 672px;
   border-radius: 0px 24px 24px 0px;
@@ -53,6 +65,21 @@ export const InputLabel = styled.label`
   font-style: normal;
   font-weight: 400;
   line-height: 20px;
+`
+
+export const InputContainer = styled.div`
+  position: relative;
+  width: 100%;
+`
+
+export const FormErrorText = styled.p`
+  position: relative;
+  font-family: Inter;
+  left: 10px;
+  top: 5px;
+  color: #FF3333;
+  display: ${props => (props.show ? 'block' : 'none')};
+  font-size: 14px;
 `
 
 export const NameInput = styled.input`

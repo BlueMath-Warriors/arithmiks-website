@@ -1,20 +1,16 @@
 import React, { useState } from "react";
 import {
   InputRow,
+  FormContainer,
   FormSection,
   Form,
   HeaderText,
-  RadioLabel,
-  RadioInput,
-  RadioInputs,
-  RadioContainer,
-  InputLabel,
+  InputContainer,
   NameInput,
+  FormErrorText,
   DropDownInput,
-  EmailInput,
   MessageInput,
   SubmitButton,
-  BtnIcon,
   inputStyle,
   phoneContainer,
   phoneDropdown,
@@ -31,6 +27,7 @@ const InputForm = () => {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [phone, setPhone] = useState("");
+  const [showWarnings, setShowWarnings] = useState(false);
   const apiEndpoint = process.env.REACT_APP_API_ENDPOINT;
 
   const services = [
@@ -54,104 +51,126 @@ const InputForm = () => {
   ]
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const formData = new FormData();
-    formData.append("option", selectedValue);
-    formData.append("name", name);
-    formData.append("email", email);
-    formData.append("organization", organization);
-    formData.append("phone", phone);
-    formData.append("message", message);
-  
-    try {
-      const response = await fetch(apiEndpoint, {
-        method: "POST",
-        body: formData,
-      });
-  
-      if (response.ok) {
-        const responseData = await response.json();
-      } else {
+
+    if(selectedValue === "" || name === "" || email === "" || message === ""){
+      setShowWarnings(true);
+      setTimeout(()=>{
+        setShowWarnings(false);
+      }, [1500])
+    }
+    else{
+      const formData = new FormData();
+      formData.append("category", selectedValue);
+      formData.append("full_name", name);
+      formData.append("email", email);
+      formData.append("organization", organization);
+      formData.append("phone_number", phone);
+      formData.append("message", message);
+      try {
+        const response = await fetch(apiEndpoint, {
+          method: "POST",
+          body: formData,
+        });
+    
+        if (response.ok) {
+          const responseData = await response.json();
+        }
+      } catch (error) {
       }
-    } catch (error) {
     }
   };
   
 
   return (
-    <FormSection>
-      <Form onSubmit={handleSubmit}>
-        <HeaderText>Requirements</HeaderText>
+    <FormContainer>
+      <FormSection>
+        <Form onSubmit={handleSubmit}>
+          <HeaderText>Requirements</HeaderText>
 
-        <DropDownInput
-          type="text"
-          value={selectedValue}
-          onChange={(e) => {
-            setSelectedValue(e.target.value);
-          }}
-        >
-          <option value="" disabled selected>How can we help you?</option>
-          {services.map((service) => (
-            <option value={service} selected>{service}</option>
-          ))}
+          <InputContainer>
+            <DropDownInput
+              type="text"
+              value={selectedValue}
+              onChange={(e) => {
+                setSelectedValue(e.target.value);
+              }}
+            >
+              <option value="" disabled selected>How can we help you? *</option>
+              {services.map((service) => (
+                <option value={service} selected>{service}</option>
+              ))}
 
-        </DropDownInput>
-        <InputRow>
+            </DropDownInput>
+            <FormErrorText show={showWarnings && selectedValue === ""}>This field is required</FormErrorText>
+          </InputContainer>
+
+          <InputRow>
+              <InputContainer>
+                <NameInput
+                  type="text"
+                  placeholder="Your Name *"
+                  value={name}
+                  onChange={(e) => {
+                    setName(e.target.value);
+                  }}
+                />
+                <FormErrorText show={showWarnings && name === ""}>This field is required</FormErrorText>
+              </InputContainer>
+              <InputContainer>
+                <NameInput
+                  type="email"
+                  placeholder="Your Email *"
+                  value={email}
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                  }}
+                />
+                <FormErrorText show={showWarnings && email === ""}>This field is required</FormErrorText>
+              </InputContainer>
+          </InputRow>
+
+          <InputRow>
+            <PhoneInput
+              country={'us'}
+              inputProps={{
+                placeholder: 'Enter phone number',
+                style: inputStyle,
+              }}
+              countryCodeEditable={false}
+              containerStyle={phoneContainer}
+              buttonStyle={phoneDropdown}
+              dropdownStyle ={countryList}
+              value={phone}
+              onChange={phone => setPhone(phone)}
+            />
+
             <NameInput
               type="text"
-              placeholder="Your Name"
-              value={name}
+              placeholder="Organization"
+              value={organization}
               onChange={(e) => {
-                setName(e.target.value);
+                setOrganization(e.target.value);
               }}
             />
-            <NameInput
-              type="email"
-              placeholder="Your Email"
-              value={email}
-              onChange={(e) => {
-                setEmail(e.target.value);
-              }}
-            />
-        </InputRow>
+          </InputRow>
+          
+            <InputContainer>
+              <MessageInput
+                placeholder="Tell us about your project... *"
+                value={message}
+                onChange={(e) => {
+                  setMessage(e.target.value);
+                }}
+              />
+              <FormErrorText show={showWarnings && message === ""}>This field is required</FormErrorText>
+            </InputContainer>
 
-        <InputRow>
-          <PhoneInput
-            country={'us'}
-            inputProps={{
-              placeholder: 'Enter phone number',
-              style: inputStyle,
-            }}
-            countryCodeEditable={false}
-            containerStyle={phoneContainer}
-            buttonStyle={phoneDropdown}
-            dropdownStyle ={countryList}
-            value={phone}
-            onChange={phone => setPhone(phone)}
-          />
-
-          <NameInput
-            type="text"
-            placeholder="Organization"
-            value={organization}
-            onChange={(e) => {
-              setOrganization(e.target.value);
-            }}
-          />
-        </InputRow>
-        
-          <MessageInput
-            placeholder="Tell us about your project..."
-            value={message}
-            onChange={(e) => {
-              setMessage(e.target.value);
-            }}
-          />
-
-        <SubmitButton>
-          Send Message <ArrowRight />
-        </SubmitButton>
-      </Form>
-    </FormSection>
+          <SubmitButton>
+            Send Message <ArrowRight />
+          </SubmitButton>
+        </Form>
+      </FormSection>
+    </FormContainer>
   );
 };
 
