@@ -47,7 +47,7 @@ const Experience = () => {
     if (typeof window !== "undefined") {
       const handleWindowResize = () => {
         setWindowWidth(window.innerWidth);
-        setOffset(4 - Math.floor((window.innerWidth - 50) / (cardGap + width)));
+        setOffset(3 - Math.floor((window.innerWidth - 50) / (cardGap + width)));
         if (window.innerWidth < 830) {
           setCardGap(32);
           setWidth(270);
@@ -85,12 +85,12 @@ const Experience = () => {
       title: "Expertise",
       description: "Our team of expert professionals is capable of building an idea into reality by keenly looking into the requirements from designing a solution to giving the product into the hands of users..",
     },
-    {
-      id: 4,
-      title: "Partner",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
-    },
+    // {
+    //   id: 4,
+    //   title: "Partner",
+    //   description:
+    //     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
+    // },
   ];
 
   const handleScrollLeft = () => {
