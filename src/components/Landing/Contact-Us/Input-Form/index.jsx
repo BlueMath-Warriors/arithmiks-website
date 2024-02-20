@@ -62,12 +62,13 @@ const InputForm = () => {
       const formData = new FormData();
       formData.append("category", selectedValue);
       formData.append("full_name", name);
-      formData.append("email", email);
+      formData.append("sender_email", email);
       formData.append("organization", organization);
       formData.append("phone_number", phone);
       formData.append("message", message);
       try {
-        const response = await fetch(apiEndpoint, {
+        const apiFormSubmission = apiEndpoint + 'form-submission'
+        const response = await fetch(apiFormSubmission, {
           method: "POST",
           body: formData,
         });
