@@ -28,7 +28,7 @@ const InputForm = () => {
   const [message, setMessage] = useState("");
   const [phone, setPhone] = useState("");
   const [showWarnings, setShowWarnings] = useState(false);
-  const apiEndpoint = process.env.REACT_APP_API_ENDPOINT;
+  const apiEndpoint = process.env.GATSBY_API_ENDPOINT;
 
   const services = [
     "Web App Development",
