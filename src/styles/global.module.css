@@ -75,7 +75,7 @@ button {
 
   animation: fade-in linear;
   animation-timeline: view();
-  animation-range-start: contain;
+  animation-range-start: contain 150px;
   
 }
 
