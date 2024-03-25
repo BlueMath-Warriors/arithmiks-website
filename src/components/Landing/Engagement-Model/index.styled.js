@@ -1,4 +1,4 @@
-import { styled } from "styled-components";
+import { styled, keyframes } from "styled-components";
 import { breakpoints } from "../index.styled";
 
 export const TextContainer = styled.div`
@@ -28,6 +28,13 @@ export const CardBtn = styled.button`
   font-weight: 700;
   line-height: 48px;
   text-transform: capitalize;
+  transition: linear 150ms;
+
+  &:hover {
+    transform: translateY(-10%);
+    transition: linear 250ms;
+    opacity: 0.7;
+  }
 
   @media screen and (max-width: ${breakpoints.medium}) {
     margin-top: 16px;

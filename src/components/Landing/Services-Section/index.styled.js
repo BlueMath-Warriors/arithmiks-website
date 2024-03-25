@@ -1,5 +1,14 @@
-import { styled } from "styled-components";
+import { styled, keyframes } from "styled-components";
 import { breakpoints } from "../index.styled";
+
+const fadeIn = keyframes`
+from {
+  scale: 0.5; opacity: 0;
+}
+to {
+  scale: 1; opacity: 1;
+}
+`
 
 export const Header = styled.div`
   height: 92px;
@@ -105,6 +114,9 @@ export const CardContainer = styled.div`
   height: 987px;
   flex-shrink: 0;
   gap: 32px;
+
+  animation: ${fadeIn} 3s linear;
+  animation-timeline: view();
   @media screen and (max-width: ${breakpoints.large}) {
     width: 760px;
     height: 670px;

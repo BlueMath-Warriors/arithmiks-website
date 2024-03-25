@@ -86,6 +86,20 @@ export const ViewButton = styled.button`
   font-weight: 500;
   line-height: 24px;
   letter-spacing: -0.09px;
+  transition: 0.3s all ease-in-out;
+  background: linear-gradient(to right, black 50%, white 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+  transition: all .5s ease-out;
+
+  &:hover {
+    background-position: left bottom;
+    transform: translateY(-10%);
+    transition: linear 250ms;
+    color: white;
+    font-weight: bold;
+  }
+
 `
 export const BtnIcon = styled.img`
   width: 24px;

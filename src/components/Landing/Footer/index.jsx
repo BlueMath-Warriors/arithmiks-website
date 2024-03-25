@@ -22,6 +22,7 @@ import * as containerStyles from "../../../styles/global.module.css";
 import favicon from "../../../images/favicon.png";
 
 const Footer = () => {
+  const currentYear = new Date().getFullYear();
   return (
     <footer className={containerStyles.footer}>
       <FooterContent>
@@ -92,7 +93,7 @@ const Footer = () => {
           <Link divider>Terms & Conditions</Link>
           <Link>Cookie Policy</Link>
         </FooterLinks>
-        <CopyRightText>© arithmiks 2023</CopyRightText>
+        <CopyRightText>{`© arithmiks ${currentYear}`} </CopyRightText>
       </FooterBottom>
     </footer>
   );
