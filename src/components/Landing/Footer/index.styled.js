@@ -16,7 +16,11 @@ export const FooterContent = styled.div`
     flex-wrap: wrap;
     width: 382px;
   }
-`
+
+  @media screen and (max-width: ${breakpoints.xsmall}) {
+    width: 95%;
+  }
+`;
 
 export const Arithmiks = styled.div`
   display: flex;
@@ -240,7 +244,7 @@ export const FooterBottom = styled.div`
   }
   @media screen and (max-width: ${breakpoints.medium}) {
     margin-top: 16px;
-    width: 90%;
+    width: 95%;
     flex-direction: column;
     gap: 8px;
   }

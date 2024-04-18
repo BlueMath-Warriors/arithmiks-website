@@ -51,11 +51,11 @@ export const SecondaryColor = styled.span`
 export const MainCard = styled.div`
   width: 1120px;
   border-radius: 24px;
-  background: #F5F5F7;
+  background: #f5f5f7;
   display: flex;
   justify-content: center;
   align-items: center;
-  
+
   @media screen and (max-width: ${breakpoints.large}) {
     flex-direction: column;
     width: 760px;
@@ -64,13 +64,16 @@ export const MainCard = styled.div`
     flex-direction: column;
     width: 382px;
   }
-`
+  @media screen and (max-width: ${breakpoints.xsmall}) {
+    width: 95%;
+  }
+`;
 
 export const CardLeft = styled.div`
   position: relative;
   width: 448px;
   border-radius: 24px 0px 0px 24px;
-  background: #FFF;
+  background: #fff;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -87,10 +90,14 @@ export const CardLeft = styled.div`
     flex-direction: column;
     justify-content: flex-start;
     order: 1;
-    width: 382px; 
+    width: 382px;
     border-radius: 0px 0px 24px 24px;
   }
-`
+
+  @media screen and (max-width: ${breakpoints.xsmall}) {
+    width: 95%;
+  }
+`;
 
 export const BackImage = styled.div`
   position: absolute;
@@ -193,11 +200,15 @@ export const Caption = styled.h1`
 export const ContentText = styled.p`
   color: #333;
   font-family: Inter;
-  font-size: ${props => (props.medium ? '16px' : '20px')};
+  font-size: ${(props) => (props.medium ? "16px" : "20px")};
   font-style: normal;
   font-weight: 400;
   line-height: 28px;
-`
+
+  @media screen and (max-width: ${breakpoints.xsmall}) {
+    font-size: 18px;
+  }
+`;
 export const CardFooter = styled.div`
   display: inline-flex;
   flex-direction: column;

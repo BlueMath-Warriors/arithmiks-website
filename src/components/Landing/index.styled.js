@@ -1,6 +1,7 @@
 import { styled } from "styled-components";
 
 export const breakpoints = {
+  xsmall: "385px",
   small: "430px",
   medium: "820px",
   large: "1200px",
@@ -52,6 +53,10 @@ export const TextContainer = styled.div`
   @media screen and (max-width: ${breakpoints.medium}) {
     max-width: 382px;
     gap: 16px;
+  }
+
+  @media screen and (max-width: ${breakpoints.xsmall}) {
+    max-width: 95%;
   }
 `;
 

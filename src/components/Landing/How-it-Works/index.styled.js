@@ -11,14 +11,17 @@ export const Header = styled.div`
 
   @media screen and (max-width: ${breakpoints.large}) {
     margin-bottom: 48px;
-    width: 760px
+    width: 760px;
   }
   @media screen and (max-width: ${breakpoints.medium}) {
     margin-bottom: 24px;
     width: 382px;
   }
 
-`
+  @media screen and (max-width: ${breakpoints.xsmall}) {
+    width: 95%;
+  }
+`;
 export const HeaderLeft = styled.div`
   text-align: left;
   display: flex;

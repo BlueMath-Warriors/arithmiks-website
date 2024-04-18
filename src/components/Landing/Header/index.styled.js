@@ -49,7 +49,7 @@ export const HeaderContainer = styled.div`
     width: 760px;
   }
   @media screen and (max-width: ${breakpoints.medium}) {
-    width: 382px;
+    width: 90%;
   }
 `;
 

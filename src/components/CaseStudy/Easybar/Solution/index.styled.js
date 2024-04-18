@@ -12,7 +12,11 @@ export const Title = styled.h2`
   max-width: 600px;
   margin-top: 119px;
   margin-bottom: 16px;
-`
+
+  @media screen and (max-width: ${breakpoints.xsmall}) {
+    font-size: 56px;
+  }
+`;
 
 export const Secondary = styled.span`
   color: #1355FF;

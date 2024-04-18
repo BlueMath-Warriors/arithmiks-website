@@ -5,15 +5,18 @@ export const FormContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  height :662px;
+  height: 662px;
   background-color: #fff;
   @media screen and (max-width: ${breakpoints.large}) {
-    height :100%;
+    height: 100%;
   }
   @media screen and (max-width: ${breakpoints.medium}) {
-    height :100%;
+    height: 100%;
   }
-`
+  @media screen and (max-width: ${breakpoints.xsmall}) {
+    width: 95%;
+  }
+`;
 
 export const FormSection = styled.div`
   z-index: 10;
@@ -29,10 +32,13 @@ export const FormSection = styled.div`
     padding: 32px 65px;
   }
   @media screen and (max-width: ${breakpoints.medium}) {
-    width: 382px; 
+    width: 382px;
     padding: 16px;
   }
-`
+  @media screen and (max-width: ${breakpoints.xsmall}) {
+    width: 95%;
+  }
+`;
 
 export const Form = styled.form`
   display: flex;
@@ -41,6 +47,9 @@ export const Form = styled.form`
   justify-content: center;
   gap: 20px;
   background-color: #fff;
+  @media screen and (max-width: ${breakpoints.xsmall}) {
+    width: 95%;
+  }
 `;
 
 export const HeaderText = styled.label`
@@ -85,14 +94,14 @@ export const FormErrorText = styled.p`
 export const NameInput = styled.input`
   height: 44px;
   width: 256px;
-  display: flex;    
+  display: flex;
   padding: 10px 16px;
   align-items: center;
   flex: 1 0 0;
   align-self: stretch;
   border-radius: 5px;
-  border: 1px solid #E6E8EC;
-  background: #FFF;
+  border: 1px solid #e6e8ec;
+  background: #fff;
 
   font-family: Inter;
   font-size: 16px;
@@ -101,12 +110,13 @@ export const NameInput = styled.input`
   line-height: 24px;
 
   &::placeholder {
-    color: #838E9E;
+    color: #838e9e;
     opacity: 1; /* Firefox */
   }
 
-  &::-ms-input-placeholder { /* Edge 12 -18 */
-    color: #838E9E;
+  &::-ms-input-placeholder {
+    /* Edge 12 -18 */
+    color: #838e9e;
   }
   @media screen and (max-width: ${breakpoints.large}) {
     height: 44px;
@@ -115,6 +125,9 @@ export const NameInput = styled.input`
   @media screen and (max-width: ${breakpoints.medium}) {
     width: 350px;
     height: 44px;
+  }
+  @media screen and (max-width: ${breakpoints.xsmall}) {
+    width: 100%;
   }
 `;
 
@@ -127,10 +140,10 @@ export const EmailInput = styled.input`
   flex: 1 0 0;
   align-self: stretch;
   border-radius: 5px;
-  border: 1px solid #E6E8EC;
-  background: #FFF;
-  
-  color: #838E9E;
+  border: 1px solid #e6e8ec;
+  background: #fff;
+
+  color: #838e9e;
   font-family: Inter;
   font-size: 16px;
   font-style: normal;
@@ -138,11 +151,15 @@ export const EmailInput = styled.input`
   line-height: 24px;
 
   &::placeholder {
-    color: #838E9E;
+    color: #838e9e;
   }
   @media screen and (max-width: ${breakpoints.medium}) {
     width: 350px;
     height: 44px;
+  }
+
+  @media screen and (max-width: ${breakpoints.xsmall}) {
+    width: 100%;
   }
 `;
 
@@ -155,9 +172,9 @@ export const DropDownInput = styled.select`
   flex: 1 0 0;
   align-self: stretch;
   border-radius: 5px;
-  border: 1px solid #E6E8EC;
-  background: #FFF;
-  
+  border: 1px solid #e6e8ec;
+  background: #fff;
+
   font-family: Inter;
   font-size: 16px;
   font-style: normal;
@@ -167,7 +184,6 @@ export const DropDownInput = styled.select`
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
- 
 
   @media screen and (max-width: ${breakpoints.large}) {
     width: 630px;
@@ -176,6 +192,9 @@ export const DropDownInput = styled.select`
   @media screen and (max-width: ${breakpoints.medium}) {
     width: 350px;
     height: 48px !important;
+  }
+  @media screen and (max-width: ${breakpoints.xsmall}) {
+    width: 100%;
   }
 `;
 
@@ -189,8 +208,8 @@ export const MessageInput = styled.textarea`
   flex: 1 0 0;
   align-self: stretch;
   border-radius: 5px;
-  border: 1px solid #E6E8EC;
-  background: #FFF;
+  border: 1px solid #e6e8ec;
+  background: #fff;
   resize: none;
 
   font-family: Inter;
@@ -200,7 +219,7 @@ export const MessageInput = styled.textarea`
   line-height: 24px;
 
   &::placeholder {
-    color: #838E9E;
+    color: #838e9e;
   }
 
   @media screen and (max-width: ${breakpoints.large}) {
@@ -209,6 +228,9 @@ export const MessageInput = styled.textarea`
   @media screen and (max-width: ${breakpoints.medium}) {
     width: 350px;
     height: 132px;
+  }
+  @media screen and (max-width: ${breakpoints.xsmall}) {
+    width: 100%;
   }
 `;
 
@@ -257,7 +279,13 @@ export const InputRow = styled.div`
       width: 350px !important;
     }
   }
-`
+  @media screen and (max-width: ${breakpoints.xsmall}) {
+    width: 100%;
+    .react-tel-input {
+      width: 100% !important;
+    }
+  }
+`;
 
 export const phoneContainer = {
   height: '44px',

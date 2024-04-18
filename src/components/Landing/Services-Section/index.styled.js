@@ -21,7 +21,10 @@ export const Header = styled.div`
     width: 382px;
   }
 
-`
+  @media screen and (max-width: ${breakpoints.xsmall}) {
+    width: 95%;
+  }
+`;
 export const Left = styled.div`
   text-align: left;
   display: flex;
@@ -116,7 +119,11 @@ export const CardContainer = styled.div`
     gap: 0px;
     flex-direction: column;
   }
-`
+
+  @media screen and (max-width: ${breakpoints.medium}) { 
+    width: 95%;
+  }
+`;
 
 export const CardCol = styled.div`
   display: flex;
