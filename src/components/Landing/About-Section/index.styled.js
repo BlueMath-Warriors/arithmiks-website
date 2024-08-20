@@ -5,13 +5,17 @@ export const TextCard = styled.div`
   display: flex;
   max-width: 543px;
   flex-direction: column;
-	justify-content: center;
+  justify-content: center;
   align-items: flex-start;
   gap: 24px;
-  
+
   @media screen and (max-width: ${breakpoints.large}) {
     width: 372px;
     gap: 16px;
+  }
+
+  @media screen and (max-width: ${breakpoints.xsmall}) {
+    width: 95%;
   }
 `;
 
@@ -52,22 +56,26 @@ export const SecondaryColor = styled.span`
 `
 
 export const CardBody = styled.p`
-    color: #3C4353;
-    font-variant-numeric: stacked-fractions;
-    font-feature-settings: 'cv09' on, 'cv04' on, 'ss01' on, 'cv03' on, 'ss03' on, 'cv06' on;
-    font-family: Inter;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 28px;
-    letter-spacing: -0.18px;
-		width: 448px;
+  color: #3c4353;
+  font-variant-numeric: stacked-fractions;
+  font-feature-settings: "cv09" on, "cv04" on, "ss01" on, "cv03" on, "ss03" on,
+    "cv06" on;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 28px;
+  letter-spacing: -0.18px;
+  width: 448px;
 
-    @media screen and (max-width: ${breakpoints.large}) {
-      font-size: 14px;
-      font-style: normal;
-      width: 372px;
-    }
+  @media screen and (max-width: ${breakpoints.large}) {
+    font-size: 14px;
+    font-style: normal;
+    width: 372px;
+  }
+  @media screen and (max-width: ${breakpoints.xsmall}) {
+    width: 95%;
+  }
 `;
 
 export const CardBtn = styled.a`
@@ -104,8 +112,10 @@ export const ImageSection = styled.div`
     width: 371px;
     height: 323px;
   }
-
-`
+  @media screen and (max-width: ${breakpoints.xsmall}) {
+    width: 95%;
+  }
+`;
 
 export const ImageTop = styled.img`
   position: relative;
@@ -113,7 +123,7 @@ export const ImageTop = styled.img`
   width: 270px;
   height: 370.824px;
   border-radius: 16px;
-  border: 0px solid var(--White, #FFF);
+  border: 0px solid var(--White, #fff);
   z-index: 5;
 
   @media screen and (max-width: ${breakpoints.large}) {
@@ -128,6 +138,10 @@ export const ImageTop = styled.img`
     left: 22px;
     top: -10px;
   }
+
+  @media screen and (max-width: ${breakpoints.xsmall}) {
+    width: 170px;
+  }
 `;
 
 export const ImageBottom = styled.img`
@@ -137,23 +151,26 @@ export const ImageBottom = styled.img`
   width: 270px;
   height: 370.824px;
   border-radius: 16px;
-  border: 0px solid var(--White, #FFF);
+  border: 0px solid var(--White, #fff);
   z-index: 5;
 
   @media screen and (max-width: ${breakpoints.large}) {
     width: 194px;
     height: 266px;
     top: 5px;
-    right: 30px;  
+    right: 30px;
   }
 
   @media screen and (max-width: ${breakpoints.small}) {
     width: 194px;
     height: 266px;
     top: 35px;
-    right: 30px;  
+    right: 30px;
   }
 
+  @media screen and (max-width: ${breakpoints.xsmall}) {
+    width: 170px;
+  }
 `;
 
 export const BgCircle = styled.div`

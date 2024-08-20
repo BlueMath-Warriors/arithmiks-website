@@ -21,7 +21,10 @@ export const Header = styled.div`
     width: 382px;
   }
 
-`
+  @media screen and (max-width: ${breakpoints.xsmall}) {
+    width: 95%;
+  }
+`;
 export const Left = styled.div`
   text-align: left;
   display: flex;
@@ -46,9 +49,10 @@ export const SmallTxt = styled.p`
   margin-bottom: 8px;
 `
 export const HeaderText = styled.h2`
-  color: #1D1D1F;
+  color: #1d1d1f;
   font-variant-numeric: lining-nums proportional-nums;
-  font-feature-settings: 'cpsp' on, 'cv06' on, 'cv09' on, 'cv04' on, 'cv03' on, 'case' on, 'ss03' on;
+  font-feature-settings: "cpsp" on, "cv06" on, "cv09" on, "cv04" on, "cv03" on,
+    "case" on, "ss03" on;
   font-family: Poppins;
   font-size: 44px;
   font-style: normal;
@@ -60,7 +64,12 @@ export const HeaderText = styled.h2`
     line-height: 40px;
     letter-spacing: -0.48px;
   }
-`
+
+  @media screen and (max-width: ${breakpoints.xsmall}) {
+    font-size: 28px;
+    line-height: 36px;
+  }
+`;
 
 export const SecondaryColor = styled.span`
     color: #1355FF;
@@ -95,9 +104,9 @@ export const BtnIcon = styled.img`
 
 export const CaseStudyCard = styled.div`
   display: flex;
-	width: 1120px;
-	justify-content: space-between;
-	align-items:center;
+  width: 1120px;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 64px;
   @media screen and (max-width: ${breakpoints.large}) {
     width: 760px;
@@ -110,23 +119,29 @@ export const CaseStudyCard = styled.div`
     margin-bottom: 32px;
   }
 
-`
+  @media screen and (max-width: ${breakpoints.xsmall}) {
+    width: 95%;
+  }
+`;
 
 export const CardDetails = styled.div`
-	display: flex;
-	flex-direction: column;
-	align-items: flex-start;
-	justify-content: center;
-	width: 560px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  width: 560px;
   @media screen and (max-width: ${breakpoints.large}) {
     width: 437px;
   }
   @media screen and (max-width: ${breakpoints.medium}) {
     width: 382px;
-    order: ${props => (props.order ? '2' : '')};
+    order: ${(props) => (props.order ? "2" : "")};
   }
 
-`
+  @media screen and (max-width: ${breakpoints.xsmall}) {
+    width: 95%;
+  }
+`;
 
 export const Tags = styled.div`
 	display: flex;
@@ -217,13 +232,17 @@ export const CardBtn = styled.button`
 `
 
 export const CaseStudyImg = styled.img`
-	width: 522px;
-	height: 424px;
+  width: 522px;
+  height: 424px;
   @media screen and (max-width: ${breakpoints.large}) {
     width: 307px;
-    height: 248px; 
+    height: 248px;
   }
   @media screen and (max-width: ${breakpoints.medium}) {
     width: 382px;
   }
-`
+
+  @media screen and (max-width: ${breakpoints.xsmall}) {
+    width: 100%;
+  }
+`;

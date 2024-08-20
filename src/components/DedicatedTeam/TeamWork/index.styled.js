@@ -173,7 +173,7 @@ export const GreyContainer = styled.div`
   flex-direction: column;
 
   gap: 74px;
-  z-index: 15;
+  z-index: 14;
 
   @media screen and (max-width: ${breakpoints.large}) {
     height: 378px;

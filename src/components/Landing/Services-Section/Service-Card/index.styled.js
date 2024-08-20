@@ -17,7 +17,7 @@ export const Card = styled.div`
       : "border-radius: 0px"};
 
   &:hover {
-    box-shadow: 0 4px 28px rgba(0,0,0,.04);
+    box-shadow: 0 4px 28px rgba(0, 0, 0, 0.04);
   }
 
   @media screen and (max-width: ${breakpoints.large}) {
@@ -33,6 +33,10 @@ export const Card = styled.div`
         : props.bottomright
         ? "border-radius: 0px 0px 50px 50px"
         : "border-radius: 0px"};
+  }
+
+  @media screen and (max-width: ${breakpoints.xsmall}) {
+    width: 100%;
   }
 `;
 

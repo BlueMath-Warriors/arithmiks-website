@@ -46,7 +46,7 @@ export const ModelCard = styled.div`
   height: auto;
   padding: 24px;
   align-items: center;
-  justify-content: ${props => (props.right ? 'flex-end' : 'flex-start')};
+  justify-content: ${(props) => (props.right ? "flex-end" : "flex-start")};
   gap: 48px;
   border-radius: 32px;
   background: #181818;
@@ -59,7 +59,7 @@ export const ModelCard = styled.div`
     gap: 16px;
     border-radius: 16px;
     margin-bottom: 24px;
-  }  
+  }
 
   @media screen and (max-width: ${breakpoints.medium}) {
     flex-direction: column;
@@ -69,7 +69,11 @@ export const ModelCard = styled.div`
     border-radius: 16px;
     margin-bottom: 25px;
     justify-content: flex-start;
-  }  
+  }
+
+  @media screen and (max-width: ${breakpoints.xsmall}) {
+    width: 95%;
+  }
 `;
 
 export const CardText = styled.div`
@@ -98,13 +102,17 @@ export const CardImg = styled.img`
     width: 283px;
     height: 180px;
     border-radius: 8px;
-  }  
+  }
 
   @media screen and (max-width: ${breakpoints.medium}) {
     width: 350px;
-    height: 211px; 
+    height: 211px;
     border-radius: 8px;
     order: 1;
+  }
+
+  @media screen and (max-width: ${breakpoints.xsmall}) {
+    width: 100%;
   }
 `;
 export const CardHeader = styled.h3`
