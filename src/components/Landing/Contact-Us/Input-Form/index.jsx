@@ -137,10 +137,11 @@ const InputForm = () => {
                 placeholder: 'Enter phone number',
                 style: inputStyle,
               }}
-              countryCodeEditable={false}
+              countryCodeEditable={true}
               containerStyle={phoneContainer}
               buttonStyle={phoneDropdown}
               dropdownStyle ={countryList}
+              enableSearch={true}
               value={phone}
               onChange={phone => setPhone(phone)}
             />
