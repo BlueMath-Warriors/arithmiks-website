@@ -8,6 +8,7 @@ import {
   InputContainer,
   NameInput,
   FormErrorText,
+  FormSuccessText,
   DropDownInput,
   MessageInput,
   SubmitButton,
@@ -16,9 +17,9 @@ import {
   phoneDropdown,
   countryList,
 } from "./index.styled";
-import PhoneInput from 'react-phone-input-2'
+import PhoneInput from "react-phone-input-2";
 import ArrowRight from "../../../../images/ArrowRight.svg";
-import 'react-phone-input-2/lib/high-res.css'
+import "react-phone-input-2/lib/high-res.css";
 
 const InputForm = () => {
   const [selectedValue, setSelectedValue] = useState("");
@@ -28,6 +29,7 @@ const InputForm = () => {
   const [message, setMessage] = useState("");
   const [phone, setPhone] = useState("");
   const [showWarnings, setShowWarnings] = useState(false);
+  const [formSubmitted, setFormSubmitted] = useState(false);
   const apiEndpoint = process.env.GATSBY_API_ENDPOINT;
 
   const services = [
@@ -48,17 +50,16 @@ const InputForm = () => {
     "Interactive Prototyping",
     "MVP",
     "Software Re-engineering",
-  ]
+  ];
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if(selectedValue === "" || name === "" || email === "" || message === ""){
+    if (selectedValue === "" || name === "" || email === "" || message === "") {
       setShowWarnings(true);
-      setTimeout(()=>{
+      setTimeout(() => {
         setShowWarnings(false);
-      }, [1500])
-    }
-    else{
+      }, 1500);
+    } else {
       const formData = new FormData();
       formData.append("category", selectedValue);
       formData.append("full_name", name);
@@ -67,25 +68,40 @@ const InputForm = () => {
       formData.append("phone_number", phone);
       formData.append("message", message);
       try {
-        const apiFormSubmission = apiEndpoint + 'form-submission'
+        const apiFormSubmission = apiEndpoint + "form-submission";
         const response = await fetch(apiFormSubmission, {
           method: "POST",
           body: formData,
         });
-    
+
         if (response.ok) {
           const responseData = await response.json();
+          // Clear form
+          setSelectedValue("");
+          setName("");
+          setOrganization("");
+          setEmail("");
+          setPhone("");
+          setMessage("");
+          setFormSubmitted(true);
+
+          setTimeout(() => {
+            setFormSubmitted(false);
+          }, 4000);
         }
       } catch (error) {
       }
     }
   };
-  
 
   return (
     <FormContainer>
       <FormSection>
         <Form onSubmit={handleSubmit}>
+          <FormSuccessText show={formSubmitted}>
+            We have received your inquiry. Our team will get back to you soon.
+          </FormSuccessText>
+
           <HeaderText>Requirements</HeaderText>
 
           <InputContainer>

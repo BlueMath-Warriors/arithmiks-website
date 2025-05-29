@@ -43,7 +43,7 @@ export const FormSection = styled.div`
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
   gap: 20px;
   background-color: #fff;
@@ -59,6 +59,7 @@ export const HeaderText = styled.label`
   font-style: normal;
   font-weight: 600;
   line-height: 44px;
+  margin-right: auto;
   letter-spacing: -0.52px;
     @media screen and (max-width: ${breakpoints.large}) {
     height: 44px;
@@ -90,6 +91,21 @@ export const FormErrorText = styled.p`
   display: ${props => (props.show ? 'block' : 'none')};
   font-size: 14px;
 `
+
+export const FormSuccessText = styled.p`
+  font-family: Inter;
+  color: #28a745; 
+  border: 1px solid #28a745;
+  font-size: 14px;
+  background-color: #e6f4ea; 
+  padding: 8px 12px;
+  text-align: center;
+  border-radius: 4px;
+  display: ${props => (props.show ? 'block' : 'none')};
+  width: fit-content;
+  transition: all 0.3s ease-in-out;
+`;
+
 
 export const NameInput = styled.input`
   height: 44px;
@@ -252,6 +268,7 @@ export const SubmitButton = styled.button`
   font-weight: 700;
   line-height: 48px;
   text-transform: capitalize;
+  margin-right: auto;
 
 `
 
