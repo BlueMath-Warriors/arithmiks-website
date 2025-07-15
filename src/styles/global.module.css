@@ -94,7 +94,7 @@ button {
 
 .footer {
   background-color: #fff;
-  height: 820px;
+  height: 985px;
   padding-top: 120px;
 
   display: flex;
@@ -105,7 +105,7 @@ button {
 @media screen and (max-width: 1200px) {
   .footer {
     background-color: #fff;
-    height: 780px;
+    height: 945px;
     padding-top: 90px;
 
     display: flex;
@@ -118,7 +118,7 @@ button {
 @media screen and (max-width: 820px) {
   .footer {
     background-color: #fff;
-    height: 1773px;
+    height: 1938px;
     padding-top: 60px;
 
     display: flex;
