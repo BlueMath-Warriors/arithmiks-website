@@ -68,18 +68,6 @@ const ContactUs = () => {
 
             <SubCard>
               <Circle>
-                <PhoneCall />
-              </Circle>
-              <CardContent>
-                <Caption>Phone number</Caption>
-                <a href="tel: +92 324 9640277">
-                  <ContentText>+92-324-9640277</ContentText>
-                </a>
-              </CardContent>
-            </SubCard>
-
-            <SubCard>
-              <Circle>
                 <Map />
               </Circle>
               <CardContent>

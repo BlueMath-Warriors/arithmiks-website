@@ -18,6 +18,13 @@ import {
   Link,
   CopyRightText,
 } from "./index.styled";
+import {
+  Caption,
+  Circle,
+  SubCard,
+  CardContent,
+  ContentText,
+} from "../Contact-Us/index.styled";
 import * as containerStyles from "../../../styles/global.module.css";
 import favicon from "../../../images/favicon.png";
 
@@ -86,13 +93,28 @@ const Footer = () => {
 
       <Divider />
 
+      <SubCard>
+        <Circle>
+          <Envelope />
+        </Circle>
+        <CardContent>
+          <Caption>Career</Caption>
+          <a href="mailto: hr@arithmiks.com">
+            <ContentText>hr@arithmiks.com</ContentText>
+          </a>
+        </CardContent>
+      </SubCard>
+
+      <Divider />
+
+
       <FooterBottom>
         <FooterLinks>
           <Link divider>Privacy Policy</Link>
           <Link divider>Terms & Conditions</Link>
           <Link>Cookie Policy</Link>
         </FooterLinks>
-        <CopyRightText>© arithmiks 2023</CopyRightText>
+        <CopyRightText>© arithmiks 2025</CopyRightText>
       </FooterBottom>
     </footer>
   );
