@@ -94,20 +94,21 @@ const Footer = () => {
 
       <Divider />
 
-      <SubCard>
-        <Circle>
-          <Envelope />
-        </Circle>
-        <CardContent>
-          <Caption>Career</Caption>
-          <a href="mailto: hr@arithmiks.com">
-            <ContentText>hr@arithmiks.com</ContentText>
-          </a>
-        </CardContent>
-      </SubCard>
+      <div style={{marginTop: '48px'}}>
+        <SubCard>
+          <Circle>
+            <Envelope />
+          </Circle>
+          <CardContent>
+            <Caption>Career</Caption>
+            <a href="mailto: hr@arithmiks.com">
+              <ContentText>hr@arithmiks.com</ContentText>
+            </a>
+          </CardContent>
+        </SubCard>
+      </div>
 
       <Divider />
-
 
       <FooterBottom>
         <FooterLinks>

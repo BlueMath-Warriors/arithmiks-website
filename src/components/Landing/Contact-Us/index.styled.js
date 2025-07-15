@@ -78,12 +78,14 @@ export const CardLeft = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   overflow: hidden;
+  height: 662px;
 
   @media screen and (max-width: ${breakpoints.large}) {
     order: 2;
     width: 760px;
     border-radius: 0px 0px 24px 24px;
     flex-direction: row;
+    height: 100%;
   }
 
   @media screen and (max-width: ${breakpoints.medium}) {
@@ -92,6 +94,7 @@ export const CardLeft = styled.div`
     order: 1;
     width: 382px;
     border-radius: 0px 0px 24px 24px;
+    height: 100%;
   }
 
   @media screen and (max-width: ${breakpoints.xsmall}) {
