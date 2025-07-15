@@ -27,6 +27,7 @@ import {
 } from "../Contact-Us/index.styled";
 import * as containerStyles from "../../../styles/global.module.css";
 import favicon from "../../../images/favicon.png";
+import Envelope from "../../../images/envelop-icon.svg";
 
 const Footer = () => {
   return (
