@@ -2,10 +2,9 @@ import { styled } from "styled-components";
 import {breakpoints} from "../index.styled"
 
 export const Header = styled.div`
-  height: 92px;
   width: 1120px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   margin-bottom: 72px;
 
@@ -26,11 +25,11 @@ export const Header = styled.div`
   }
 `;
 export const Left = styled.div`
-  text-align: left;
+  text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
 `
 export const Right = styled.div`
   display: ${({show}) => show ? 'flex' : 'none'};
@@ -59,6 +58,7 @@ export const HeaderText = styled.h2`
   font-weight: 500;
   line-height: 60px;
   letter-spacing: -0.66px;
+  margin-bottom: 16px;
   @media screen and (max-width: ${breakpoints.large}) {
     font-size: 32px;
     line-height: 40px;
@@ -68,6 +68,24 @@ export const HeaderText = styled.h2`
   @media screen and (max-width: ${breakpoints.xsmall}) {
     font-size: 28px;
     line-height: 36px;
+  }
+`;
+
+export const DescriptionText = styled.p`
+  color: #42526B;
+  font-family: Inter;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 26px;
+  margin: 0;
+  @media screen and (max-width: ${breakpoints.large}) {
+    font-size: 16px;
+    line-height: 24px;
+  }
+  @media screen and (max-width: ${breakpoints.medium}) {
+    font-size: 14px;
+    line-height: 20px;
   }
 `;
 
@@ -231,18 +249,163 @@ export const CardBtn = styled.button`
 	text-transform: capitalize;
 `
 
-export const CaseStudyImg = styled.img`
-  width: 522px;
-  height: 424px;
+export const CaseStudiesGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 120px;
+  row-gap: 0px;
+  width: 1120px;
+  margin: 0 auto;
+  margin-top: 96px;
+
   @media screen and (max-width: ${breakpoints.large}) {
-    width: 307px;
-    height: 248px;
+    width: 760px;
+    column-gap: 56px;
+    row-gap: 0px;
+    margin-top: 72px;
   }
+
   @media screen and (max-width: ${breakpoints.medium}) {
     width: 382px;
+    grid-template-columns: 1fr;
+    column-gap: 0;
+    row-gap: 12px;
+    margin-top: 56px;
   }
 
   @media screen and (max-width: ${breakpoints.xsmall}) {
-    width: 100%;
+    width: 95%;
+    row-gap: 12px;
+    margin-top: 48px;
   }
+`;
+
+export const NewCaseStudyCard = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+
+  &:nth-child(2n) {
+    margin-top: 120px;
+  }
+
+  @media screen and (max-width: ${breakpoints.large}) {
+    &:nth-child(2n) {
+      margin-top: 100px;
+    }
+  }
+
+  @media screen and (max-width: ${breakpoints.medium}) {
+    &:nth-child(2n) {
+      margin-top: 0;
+    }
+  }
+`;
+
+export const CaseStudyImgWrapper = styled.div`
+  width: 100%;
+  margin-bottom: 24px;
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: #F2F4F4;
+  border:  #F2F4F4;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  svg {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  @media screen and (max-width: ${breakpoints.large}) {
+    margin-bottom: 20px;
+    padding: 16px;
+  }
+
+  @media screen and (max-width: ${breakpoints.medium}) {
+    margin-bottom: 16px;
+    padding: 12px;
+  }
+`;
+
+export const LogoAndTagWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 16px;
+
+  @media screen and (max-width: ${breakpoints.medium}) {
+    margin-bottom: 12px;
+  }
+`;
+
+export const CompanyLogo = styled.img`
+  height: 32px;
+  width: auto;
+  object-fit: contain;
+  filter: grayscale(100%) brightness(0.4);
+  opacity: 0.8;
+
+  @media screen and (max-width: ${breakpoints.medium}) {
+    height: 28px;
+  }
+`;
+
+export const CaseStudyTitle = styled.h3`
+  color: #1d1d1f;
+  font-family: Inter;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 32px;
+  letter-spacing: -0.48px;
+  margin-bottom: 12px;
+
+  @media screen and (max-width: ${breakpoints.large}) {
+    font-size: 20px;
+    line-height: 28px;
+  }
+
+  @media screen and (max-width: ${breakpoints.medium}) {
+    font-size: 18px;
+    line-height: 24px;
+  }
+`;
+
+export const CaseStudyDescription = styled.p`
+  color: #42526B;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  margin-bottom: 16px;
+
+  @media screen and (max-width: ${breakpoints.large}) {
+    font-size: 14px;
+    line-height: 22px;
+  }
+
+  @media screen and (max-width: ${breakpoints.medium}) {
+    font-size: 14px;
+    line-height: 20px;
+  }
+`;
+
+export const CaseStudyTag = styled.span`
+  display: inline-block;
+  padding: 6px 12px;
+  background: #F5F5F5;
+  border-radius: 6px;
+  color: #1d1d1f;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
 `;

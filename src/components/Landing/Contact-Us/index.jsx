@@ -21,19 +21,23 @@ import {
   SocialIcon,
   BackImage,
   CardDetails,
+  DescriptionText,
+  LinkedInButton,
+  LinkedInIconWrapper,
+  LinkedInButtonText,
 } from "./index.styled";
 import * as containerStyles from "../../../styles/global.module.css";
-import Envelope from "../../../images/envelop-icon.svg";
-import Map from "../../../images/map-icon.svg";
-import PhoneCall from "../../../images/phone-call.svg";
-import GreyLine from "../../../images/grey-line.svg";
+import EmailIcon from "../../../images/email.svg";
+import OfficeIcon from "../../../images/office.svg";
+import CareerIcon from "../../../images/career.svg";
 
 import fb_icon from "../../../images/social-icons/fb.svg";
 import InIcon from "../../../images/social-icons/in.svg";
 import InWhiteIcon from "../../../images/social-icons/in-white.svg";
 import insta_icon from "../../../images/social-icons/insta.svg";
 import twitter_icon from "../../../images/social-icons/twitter.svg";
-import BgImg from "../../../images/contact-left-bg.svg";
+import LinkedInIcon from "../../../images/social-icons/linkedin.svg";
+import BgImg from "../../../images/bgImg.svg";
 
 import InputForm from "./Input-Form";
 
@@ -44,23 +48,26 @@ const ContactUs = () => {
     <section id="contact-form" className={containerStyles.contact_us}>
       <SmallTxt>CONTACT US</SmallTxt>
       <HeaderText>
-        How can we <SecondaryColor>help you?</SecondaryColor>
+        Get In <SecondaryColor>Touch</SecondaryColor>
       </HeaderText>
+      <DescriptionText>
+        Have a project in mind? We'd love to hear from you. Send us a message and we'll respond as soon as possible.
+      </DescriptionText>
       <MainCard>
         <CardLeft>
           <CardDetails>
             <BackImage>
               <BgImg/>
             </BackImage>
-            <LeftCardHeader>Get in touch</LeftCardHeader>
+            <LeftCardHeader>Contact Information</LeftCardHeader>
 
             <SubCard>
               <Circle>
-                <Envelope />
+                <EmailIcon />
               </Circle>
               <CardContent>
-                <Caption>Email us</Caption>
-                <a href="mailto: services@arithmiks.com">
+                <Caption>Email</Caption>
+                <a href="mailto: hello@arithmiks.com">
                   <ContentText>services@arithmiks.com</ContentText>
                 </a>
               </CardContent>
@@ -68,48 +75,46 @@ const ContactUs = () => {
 
             <SubCard>
               <Circle>
-                <Map />
+                <OfficeIcon />
               </Circle>
               <CardContent>
+                <Caption>Office</Caption>
                 <ContentText medium>
-                  Lahore, Pakistan
+                Lahore, Pakistan
                 </ContentText>
+              </CardContent>
+            </SubCard>
+
+            <SubCard>
+              <Circle>
+                <CareerIcon />
+              </Circle>
+              <CardContent>
+                <Caption>Careers</Caption>
+                <a href="mailto: hr@arithmiks.com">
+                  <ContentText>hr@arithmiks.com</ContentText>
+                </a>
               </CardContent>
             </SubCard>
           </CardDetails>
 
           <CardFooter>
             <FooterTop>
-              <GreyLine />
-              <FooterText>Connect with us:</FooterText>
+              <FooterText>Connect with us</FooterText>
             </FooterTop>
             <FooterBottom>
-              {/* <a href="/landing">
-                <SocialContainer>
-                  <SocialIcon src={fb_icon} />
-                </SocialContainer>
-              </a>
-              <a href="/landing">
-                <SocialContainer blue>
-                  <SocialIcon src={twitter_icon} />
-                </SocialContainer>
-              </a> */}
               <a
                 href="https://www.linkedin.com/company/arithmiks/"
                 target="_blank"
+                rel="noopener noreferrer"
               >
-                <SocialContainer
-                  onMouseLeave={() => setInIcon(false)}
-                  onMouseEnter={() => setInIcon(true)}
-                >
-                  {inIcon ? <InWhiteIcon/> : <InIcon/>}
-                </SocialContainer>
+                <LinkedInButton>
+                  <LinkedInIconWrapper>
+                    <LinkedInIcon />
+                  </LinkedInIconWrapper>
+                  <LinkedInButtonText>Follow us on LinkedIn</LinkedInButtonText>
+                </LinkedInButton>
               </a>
-              {/* <a href="/landing">
-                <SocialContainer>
-                  <SocialIcon src={insta_icon} />
-                </SocialContainer>
-              </a> */}
             </FooterBottom>
           </CardFooter>
         </CardLeft>

@@ -6,30 +6,37 @@ import {
   Left,
   Right,
   HeaderText,
+  DescriptionText,
   ViewButton,
   BtnIcon,
-  CaseStudyCard,
-  CardDetails,
-  Tag,
-  Tags,
-  CaseStudyName,
-  CaseStudyDetails,
-  CardBtn,
-  CaseStudyImg,
+  CaseStudiesGrid,
+  NewCaseStudyCard,
+  CaseStudyImgWrapper,
+  LogoAndTagWrapper,
+  CompanyLogo,
+  CaseStudyTitle,
+  CaseStudyDescription,
+  CaseStudyTag,
 } from "./index.styled";
+import CollaboratedWith from "./Collaborated-With";
 import * as containerStyles from "../../../styles/global.module.css";
 import ArrowCricleRight from "../../../images/arrow-right-circle-black.svg";
-import ArrowBlue from "../../../images/arrow-right-blue.svg";
-import CaseStudy_1 from "../../../images/case-study-1.png";
-import CaseStudy_2 from "../../../images/case-study-2.png";
+import SwervDashboardImg from "../../../images/swervDashboard.svg";
+import TogatherDashboardImg from "../../../images/togatherDashboard.svg";
+import SbaloansDashboardImg from "../../../images/sbaloansDashboard.svg";
+import EasybarDashboardImg from "../../../images/easybarDashboard.svg";
+import LfgoDashboardImg from "../../../images/lfgoDashboard.svg";
 
 const CaseStudy = ({ landing = false }) => {
   return (
     <section className={containerStyles.case_study}>
       <Header>
         <Left>
-          <SmallTxt>Case Study</SmallTxt>
-          <HeaderText>Our Case Study</HeaderText>
+          <SmallTxt>CASE STUDIES</SmallTxt>
+          <HeaderText>Our Case Studies</HeaderText>
+          <DescriptionText>
+            Problems are guidelines, not 'Stop' signs. Check our success stories in custom software.
+          </DescriptionText>
         </Left>
         <Right show={landing}>
           <ViewButton onClick={() => navigate("/case-studies")}>
@@ -39,47 +46,79 @@ const CaseStudy = ({ landing = false }) => {
         </Right>
       </Header>
 
-      <CaseStudyCard>
-        <CaseStudyImg src={CaseStudy_1} />
-        <CardDetails>
-          <Tags>
-            <Tag divider>UI/UX</Tag>
-            <Tag divider>Web Application</Tag>
-            <Tag>Software Integration</Tag>
-          </Tags>
-          <CaseStudyName>Easybar — Marketplace for Rebars</CaseStudyName>
-          <CaseStudyDetails>
-            Easybar serves as a marketplace that allows buyers to design and
-            place orders for iron bars, while suppliers receive and print these
-            orders for their automated machines.
-          </CaseStudyDetails>
-          <CardBtn onClick={()=>{navigate("/case-studies/easybar")}}>
-            View Case Study
-            <ArrowBlue />
-          </CardBtn>
-        </CardDetails>
-      </CaseStudyCard>
+      <CollaboratedWith />
 
-      <CaseStudyCard>
-        <CardDetails order>
-          <Tags>
-            <Tag divider>Creative Direction</Tag>
-            <Tag divider>UI/UX</Tag>
-            <Tag>Website Design</Tag>
-          </Tags>
-          <CaseStudyName>Ushaz — Online eCommerce</CaseStudyName>
-          <CaseStudyDetails>
-            Ushaz is an online store which is bringing traditional art to modern
-            world. It encompasses features for product sale flow, 3d models for
-            products and view in your space using AR.
-          </CaseStudyDetails>
-          <CardBtn onClick={()=>{navigate("/case-studies/ushaz")}}>
-            View Case Study
-            <ArrowBlue />
-          </CardBtn>
-        </CardDetails>
-        <CaseStudyImg src={CaseStudy_2} />
-      </CaseStudyCard>
+      <CaseStudiesGrid>
+        <NewCaseStudyCard>
+          <CaseStudyImgWrapper>
+            <SwervDashboardImg />
+          </CaseStudyImgWrapper>
+          <LogoAndTagWrapper>
+            <CompanyLogo src="/static/swerv.svg" alt="Swerv Automotive" />
+            <CaseStudyTag>SaaS</CaseStudyTag>
+          </LogoAndTagWrapper>
+          <CaseStudyTitle>Automates smart vehicle acquisitions</CaseStudyTitle>
+          <CaseStudyDescription>
+            A SaaS platform for car dealerships to automate acquisitions, centralize data, and optimize sales.
+          </CaseStudyDescription>
+        </NewCaseStudyCard>
+
+        <NewCaseStudyCard>
+          <CaseStudyImgWrapper>
+            <TogatherDashboardImg />
+          </CaseStudyImgWrapper>
+          <LogoAndTagWrapper>
+            <CompanyLogo src="/static/togather.svg" alt="Togather" />
+            <CaseStudyTag>Software</CaseStudyTag>
+          </LogoAndTagWrapper>
+          <CaseStudyTitle>Unifies community engagement, events, and donations</CaseStudyTitle>
+          <CaseStudyDescription>
+            Togather is a platform for churches and NGOs to connect communities through events, donations, and engagement.
+          </CaseStudyDescription>
+        </NewCaseStudyCard>
+
+        <NewCaseStudyCard>
+          <CaseStudyImgWrapper>
+            <SbaloansDashboardImg />
+          </CaseStudyImgWrapper>
+          <LogoAndTagWrapper>
+            <CompanyLogo src="/static/sbaloans.svg" alt="sbaloansHQ" />
+            <CaseStudyTag>SaaS</CaseStudyTag>
+          </LogoAndTagWrapper>
+          <CaseStudyTitle>Streamlines and automates loan processing</CaseStudyTitle>
+          <CaseStudyDescription>
+            SBA Loans HQ streamlines SBA loans with centralized documents, tracking, and communication.
+          </CaseStudyDescription>
+        </NewCaseStudyCard>
+
+        <NewCaseStudyCard>
+          <CaseStudyImgWrapper>
+            <EasybarDashboardImg />
+          </CaseStudyImgWrapper>
+          <LogoAndTagWrapper>
+            <CompanyLogo src="/static/easybar.svg" alt="EASY-BAR" />
+            <CaseStudyTag>Software</CaseStudyTag>
+          </LogoAndTagWrapper>
+          <CaseStudyTitle>Automates rebar design and ordering</CaseStudyTitle>
+          <CaseStudyDescription>
+          Easybar lets buyers design iron bars and suppliers print the orders for automated production.
+          </CaseStudyDescription>
+        </NewCaseStudyCard>
+
+        <NewCaseStudyCard>
+          <CaseStudyImgWrapper>
+            <LfgoDashboardImg />
+          </CaseStudyImgWrapper>
+          <LogoAndTagWrapper>
+            <CompanyLogo src="/static/lfgo.svg" alt="LFGO" />
+            <CaseStudyTag>Web3</CaseStudyTag>
+          </LogoAndTagWrapper>
+          <CaseStudyTitle>Simplifies cross-chain token creation</CaseStudyTitle>
+          <CaseStudyDescription>
+          A Web3 platform to create, launch, and trade tokens with seamless minting and wallet integration.
+          </CaseStudyDescription>
+        </NewCaseStudyCard>
+      </CaseStudiesGrid>
     </section>
   );
 };
