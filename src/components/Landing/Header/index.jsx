@@ -78,6 +78,20 @@ const Header = ({ white, fixed_bar }) => {
   const [isFixed, setIsFixed] = useState(false);
   const [hideNav, setHideNav] = useState(false);
   const [isSmallScreen, setIsSmallScreen] = useState(false);
+  const [activePage, setActivePage] = useState("");
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const path = window.location.pathname;
+      if (path === "/") {
+        setActivePage("home");
+      } else if (path.startsWith("/case-studies")) {
+        setActivePage("case-studies");
+      } else if (path.startsWith("/company")) {
+        setActivePage("company");
+      }
+    }
+  }, []);
 
   const closeMenu = () => {
     if (navMenu && navMenu.current) {
@@ -174,7 +188,9 @@ const Header = ({ white, fixed_bar }) => {
           </Link>
           <Menu ref={navMenu}>
             <MenuItem
+              active={activePage === "home"}
               onClick={() => {
+                setActivePage("home");
                 closeMenu();
                 navigate("/");
               }}
@@ -194,7 +210,9 @@ const Header = ({ white, fixed_bar }) => {
               <DownArrow className={showServices ? "down-icon" : "up-icon"} />
             </MenuItem>
             <MenuItem
+              active={activePage === "case-studies"}
               onClick={() => {
+                setActivePage("case-studies");
                 closeMenu();
                 navigate("/case-studies");
               }}
@@ -202,7 +220,9 @@ const Header = ({ white, fixed_bar }) => {
               Case Studies
             </MenuItem>
             <MenuItem
+              active={activePage === "company"}
               onClick={() => {
+                setActivePage("company");
                 closeMenu();
                 navigate("/company");
               }}

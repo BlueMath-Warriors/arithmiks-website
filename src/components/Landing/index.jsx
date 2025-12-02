@@ -14,6 +14,7 @@ import About from "./About-Section";
 import ContactUs from "./Contact-Us";
 import Footer from "./Footer";
 import CaseStudy from "./Case-Study";
+import ClientLogos from "./Featured-Clients";
 import Header from "../Landing/Header";
 import HowItWorks from "./How-it-Works";
 
@@ -24,14 +25,13 @@ const LandingPage = () => {
       <section className={containerStyles.main_hero}>
         <TextContainer>
           <MainHead>
-            Grow Your Start
+            Transform Your Start
             <Uicon />
-            p At An Early Stage or Scale Your Development Team With US
+            p With Al-Powered Solutions or Accelerate Your Development Team With Us
           </MainHead>
           <Description>
-            We are a custom software development company that assists you in
-            converting your ideas into wonderful software solutions. With our
-            customer centeric approch we build products that matters to users.
+            We combine Al and custom software development to transform your ideas into smart, scalable<br />
+            solutions. Our customer-centric approach ensures we build products that deliver real value to users.
           </Description>
           <Buttons
             onClick={() => {
@@ -42,12 +42,13 @@ const LandingPage = () => {
           >
             <a>
               <CtaBtn fill fixed>
-                Lets Talk
+                Talk to an Al Expert
               </CtaBtn>
             </a>
             {/* <CtaBtn fixed>Learn More</CtaBtn> */}
           </Buttons>
         </TextContainer>
+        <ClientLogos />
       </section>
       <About />
       <Services />
