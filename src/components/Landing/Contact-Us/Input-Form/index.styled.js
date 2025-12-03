@@ -68,6 +68,31 @@ export const HeaderText = styled.label`
   `
 ;
 
+export const IntroText = styled.p`
+  color: #42526B;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: center;
+  margin: 0;
+  margin-bottom: 24px;
+  width: 100%;
+
+  @media screen and (max-width: ${breakpoints.large}) {
+    font-size: 14px;
+    line-height: 22px;
+    margin-bottom: 20px;
+  }
+
+  @media screen and (max-width: ${breakpoints.medium}) {
+    font-size: 14px;
+    line-height: 20px;
+    margin-bottom: 16px;
+  }
+`;
+
 export const InputLabel = styled.label`
   color: #061C3D;
   font-family: Inter;
@@ -80,6 +105,20 @@ export const InputLabel = styled.label`
 export const InputContainer = styled.div`
   position: relative;
   width: 100%;
+`
+
+export const DropdownWrapper = styled.div`
+  position: relative;
+  width: 100%;
+  
+  svg {
+    position: absolute;
+    right: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    z-index: 1;
+  }
 `
 
 export const FormErrorText = styled.p`
@@ -181,15 +220,17 @@ export const EmailInput = styled.input`
 
 export const DropDownInput = styled.select`
   height: 48px !important;
-  width: 544px;
+  width: 100%;
   display: flex;
-  padding: 12px 18px;
+  padding: 12px 40px 12px 18px;
   align-items: center;
   flex: 1 0 0;
   align-self: stretch;
   border-radius: 5px;
   border: 1px solid #e6e8ec;
   background: #fff;
+  color: #838e9e;
+  cursor: pointer;
 
   font-family: Inter;
   font-size: 16px;
@@ -201,12 +242,22 @@ export const DropDownInput = styled.select`
   -moz-appearance: none;
   appearance: none;
 
+  &.has-value {
+    color: #1d1d1f;
+  }
+
+  option {
+    color: #1d1d1f;
+  }
+
+  option:first-child {
+    color: #838e9e;
+  }
+
   @media screen and (max-width: ${breakpoints.large}) {
-    width: 630px;
     height: 48px !important;
   }
   @media screen and (max-width: ${breakpoints.medium}) {
-    width: 350px;
     height: 48px !important;
   }
   @media screen and (max-width: ${breakpoints.xsmall}) {
@@ -283,15 +334,26 @@ export const InputRow = styled.div`
   .react-tel-input {
     width: 256px;
   }
+  
+  ${InputContainer} {
+    width: 256px;
+  }
+  
   @media screen and (max-width: ${breakpoints.large}) {
     gap: 16px;
     .react-tel-input {
       width: 307px !important;
     }
+    ${InputContainer} {
+      width: 307px;
+    }
   }
   @media screen and (max-width: ${breakpoints.medium}) {
     flex-direction: column;
     gap: 20px;
+    ${InputContainer} {
+      width: 100%;
+    }
     .react-tel-input {
       width: 350px !important;
     }

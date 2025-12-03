@@ -26,17 +26,16 @@ export const HeaderText = styled.h2`
   font-weight: 600;
   line-height: 60px;
   letter-spacing: -0.66px;
-  margin-bottom: 72px;
+  margin-bottom: 16px;
   @media screen and (max-width: ${breakpoints.large}) {
-    margin-bottom: 48px;
+    margin-bottom: 12px;
     font-size: 32px;
     font-weight: 500;
     line-height: 40px;
     letter-spacing: -0.48px;
   }
   @media screen and (max-width: ${breakpoints.medium}) {
-    margin-bottom: 17px;
-    margin-bottom: 48px;
+    margin-bottom: 12px;
     font-size: 32px;
     font-weight: 500;
     line-height: 40px;
@@ -46,6 +45,33 @@ export const HeaderText = styled.h2`
 
 export const SecondaryColor = styled.span`
     color: #1355FF;
+`
+
+export const DescriptionText = styled.p`
+  color: #42526B;
+  text-align: center;
+  font-family: Inter;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 26px;
+  margin: 0 auto;
+  margin-bottom: 72px;
+  max-width: 600px;
+
+  @media screen and (max-width: ${breakpoints.large}) {
+    font-size: 16px;
+    line-height: 24px;
+    margin-bottom: 48px;
+    max-width: 500px;
+  }
+
+  @media screen and (max-width: ${breakpoints.medium}) {
+    font-size: 14px;
+    line-height: 22px;
+    margin-bottom: 32px;
+    padding: 0 20px;
+  }
 `
 
 export const MainCard = styled.div`
@@ -73,7 +99,7 @@ export const CardLeft = styled.div`
   position: relative;
   width: 448px;
   border-radius: 24px 0px 0px 24px;
-  background: #fff;
+  background: #0957DE;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -105,23 +131,26 @@ export const CardLeft = styled.div`
 export const BackImage = styled.div`
   position: absolute;
   height: 270px;
-  right: -90px;
-  top: -45px;
+  right: -20px;
+  bottom: 100px;
+  top: auto;
   @media screen and (max-width: ${breakpoints.large}) {
-     right: 35px;
-    top: -117px;
+     right: 0px;
+    bottom: 80px;
+    top: auto;
   }
 
   @media screen and (max-width: ${breakpoints.medium}) {
     height: 300px;
-    right: -82px;
-    top: -120px;
+    right: -22px;
+    bottom: 60px;
+    top: auto;
   }
 
 `
 
 export const LeftCardHeader = styled.h3`
-  color: #333;
+  color: #fff;
   font-family: Inter;
   font-size: 36px;
   font-style: normal;
@@ -130,9 +159,9 @@ export const LeftCardHeader = styled.h3`
   letter-spacing: -0.72px;
   margin-top: 72px;
   margin-bottom: 40px;
-  margin-left:  96px;
+  margin-left:  48px;
   @media screen and (max-width: ${breakpoints.large}) {
-    margin-left:  65px;
+    margin-left:  32px;
     margin-top: 32px;
   }
   @media screen and (max-width: ${breakpoints.medium}) {
@@ -150,9 +179,9 @@ export const SubCard = styled.div`
   align-items: center;
   gap: 16px;
   margin-bottom: 24px;
-  margin-left:  96px;
+  margin-left:  48px;
   @media screen and (max-width: ${breakpoints.large}) {
-    margin-left:  65px;
+    margin-left:  32px;
   }
   @media screen and (max-width: ${breakpoints.medium}) {
     margin-left:  24px;
@@ -189,7 +218,7 @@ export const CardContent = styled.div`
 `
 
 export const Caption = styled.h1`
-  color: #8E8E8F;
+  color: #fff;
   font-family: Inter;
   font-size: 14px;
   font-style: normal;
@@ -201,7 +230,7 @@ export const Caption = styled.h1`
 `
 
 export const ContentText = styled.p`
-  color: #333;
+  color: #fff;
   font-family: Inter;
   font-size: ${(props) => (props.medium ? "16px" : "20px")};
   font-style: normal;
@@ -217,13 +246,14 @@ export const CardFooter = styled.div`
   flex-direction: column;
   align-items: flex-start;
   gap: 16px;
-  margin-top: 78px;
-  margin-left: 96px;
+  margin-top: 40px;
+  margin-left: 48px;
   margin-bottom: 72px;
   @media screen and (max-width: ${breakpoints.large}) {
     align-items: flex-start;
     justify-content: center;
-    margin: 0;
+    margin-left: 32px;
+    margin-top: 32px;
   }
 
   @media screen and (max-width: ${breakpoints.medium}) {
@@ -237,16 +267,18 @@ export const CardFooter = styled.div`
 
 export const FooterTop = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   gap: 12px;
 `
-export const FooterLine = styled.img`
+export const FooterLine = styled.div`
   width: 32px;
+  height: 1px;
+  background-color: #3A79E5;
 `
 
 export const FooterText = styled.p`
-  color: #8E8E8F;
+  color: #fff;
   font-family: Inter;
   font-size: 16px;
   font-style: normal;
@@ -258,7 +290,53 @@ export const FooterBottom = styled.div`
   display: flex;
   align-items: flex-start;
   gap: 16px;
+
+  a {
+    display: inline-block;
+    text-decoration: none;
+  }
 `
+
+export const LinkedInButton = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 24px;
+  background: #fff;
+  border-radius: 24px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.9);
+  }
+`
+
+export const LinkedInIconWrapper = styled.div`
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+`
+
+export const LinkedInButtonText = styled.span`
+  color: #0957DE;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+  white-space: nowrap;
+`
+
 export const SocialContainer =styled.div`
   display: flex;
   padding: 12px;
