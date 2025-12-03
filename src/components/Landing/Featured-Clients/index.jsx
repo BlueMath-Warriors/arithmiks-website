@@ -9,11 +9,11 @@ import {
 
 const ClientLogos = () => {
   const logos = [
-    { name: "togather", path: "/static/togather.svg" },
-    { name: "swerv", path: "/static/swerv.svg" },
-    { name: "sbaloans", path: "/static/sbaloans.svg" },
-    { name: "easybar", path: "/static/easybar.svg" },
-    { name: "lfgo", path: "/static/lfgo.svg" },
+    { name: "togather", path: "/togather.svg" },
+    { name: "swerv", path: "/swerv.svg" },
+    { name: "sbaloans", path: "/sbaloans.svg" },
+    { name: "easybar", path: "/easybar.svg" },
+    { name: "lfgo", path: "/lfgo.svg" },
   ];
 
   return (
