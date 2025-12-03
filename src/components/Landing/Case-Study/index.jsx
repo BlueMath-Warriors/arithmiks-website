@@ -54,7 +54,7 @@ const CaseStudy = ({ landing = false }) => {
             <SwervDashboardImg />
           </CaseStudyImgWrapper>
           <LogoAndTagWrapper>
-            <CompanyLogo src="/static/swerv.svg" alt="Swerv Automotive" />
+            <CompanyLogo src="/swerv.svg" alt="Swerv Automotive" />
             <CaseStudyTag>SaaS</CaseStudyTag>
           </LogoAndTagWrapper>
           <CaseStudyTitle>Automates smart vehicle acquisitions</CaseStudyTitle>
@@ -68,7 +68,7 @@ const CaseStudy = ({ landing = false }) => {
             <TogatherDashboardImg />
           </CaseStudyImgWrapper>
           <LogoAndTagWrapper>
-            <CompanyLogo src="/static/togather.svg" alt="Togather" />
+            <CompanyLogo src="/togather.svg" alt="Togather" />
             <CaseStudyTag>Software</CaseStudyTag>
           </LogoAndTagWrapper>
           <CaseStudyTitle>Unifies community engagement, events, and donations</CaseStudyTitle>
@@ -82,7 +82,7 @@ const CaseStudy = ({ landing = false }) => {
             <SbaloansDashboardImg />
           </CaseStudyImgWrapper>
           <LogoAndTagWrapper>
-            <CompanyLogo src="/static/sbaloans.svg" alt="sbaloansHQ" />
+            <CompanyLogo src="/sbaloans.svg" alt="sbaloansHQ" />
             <CaseStudyTag>SaaS</CaseStudyTag>
           </LogoAndTagWrapper>
           <CaseStudyTitle>Streamlines and automates loan processing</CaseStudyTitle>
@@ -96,7 +96,7 @@ const CaseStudy = ({ landing = false }) => {
             <EasybarDashboardImg />
           </CaseStudyImgWrapper>
           <LogoAndTagWrapper>
-            <CompanyLogo src="/static/easybar.svg" alt="EASY-BAR" />
+            <CompanyLogo src="/easybar.svg" alt="EASY-BAR" />
             <CaseStudyTag>Software</CaseStudyTag>
           </LogoAndTagWrapper>
           <CaseStudyTitle>Automates rebar design and ordering</CaseStudyTitle>
@@ -110,7 +110,7 @@ const CaseStudy = ({ landing = false }) => {
             <LfgoDashboardImg />
           </CaseStudyImgWrapper>
           <LogoAndTagWrapper>
-            <CompanyLogo src="/static/lfgo.svg" alt="LFGO" />
+            <CompanyLogo src="/lfgo.svg" alt="LFGO" />
             <CaseStudyTag>Web3</CaseStudyTag>
           </LogoAndTagWrapper>
           <CaseStudyTitle>Simplifies cross-chain token creation</CaseStudyTitle>

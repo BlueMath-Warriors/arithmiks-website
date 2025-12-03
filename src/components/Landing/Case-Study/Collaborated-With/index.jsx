@@ -10,14 +10,14 @@ import {
 
 const CollaboratedWith = () => {
   const logos = [
-    { name: "lfgo", path: "/static/lfgo.svg" },
-    { name: "go", path: "/static/go.svg" },
-    { name: "togather", path: "/static/togather.svg" },
-    { name: "easybar", path: "/static/easybar.svg" },
-    { name: "almani", path: "/static/almani.svg" },
-    { name: "sbaloans", path: "/static/sbaloans.svg" },
-    { name: "hakro", path: "/static/hakro.svg" },
-    { name: "swerv", path: "/static/swerv.svg" },
+    { name: "lfgo", path: "/lfgo.svg" },
+    { name: "go", path: "/go.svg" },
+    { name: "togather", path: "/togather.svg" },
+    { name: "easybar", path: "/easybar.svg" },
+    { name: "almani", path: "/almani.svg" },
+    { name: "sbaloans", path: "/sbaloans.svg" },
+    { name: "hakro", path: "/hakro.svg" },
+    { name: "swerv", path: "/swerv.svg" },
   ];
 
   const duplicatedLogos = [...logos, ...logos, ...logos];
