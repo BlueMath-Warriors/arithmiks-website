@@ -25,7 +25,7 @@ export const FooterContent = styled.div`
 export const Arithmiks = styled.div`
   display: flex;
   flex-direction: column;
-  width: 188px;
+  width: 260px;
   flex-direction: column;
   align-items: flex-start;
   gap: 32px;
@@ -247,19 +247,19 @@ export const ContactInfoContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  gap: 48px;
+  gap: 240px;
   margin-top: 48px;
   width: 1120px;
 
   @media screen and (max-width: ${breakpoints.large}) {
     width: 760px;
-    gap: 32px;
+    gap: 180px;
   }
 
   @media screen and (max-width: ${breakpoints.medium}) {
     flex-direction: column;
     width: 100%;
-    gap: 24px;
+    gap: 40px;
     padding: 0 16px;
   }
 `
