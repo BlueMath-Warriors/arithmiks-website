@@ -285,6 +285,17 @@ export const NewCaseStudyCard = styled.div`
   flex-direction: column;
   align-items: flex-start;
   width: 100%;
+  cursor: ${(props) => (props.clickable ? "pointer" : "default")};
+  transition: transform 0.2s ease, opacity 0.2s ease;
+
+  ${(props) =>
+    props.clickable &&
+    `
+    &:hover {
+      transform: translateY(-4px);
+      opacity: 0.9;
+    }
+  `}
 
   &:nth-child(2n) {
     margin-top: 120px;
