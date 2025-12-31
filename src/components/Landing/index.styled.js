@@ -14,13 +14,14 @@ export const Buttons = styled.div`
 
 export const CtaBtn = styled.button`
   display: flex;
-  width: ${(props) => (props.fixed ? "134px" : "144px")};
+  width: ${(props) => (props.fixed ? "220px" : "144px")};
   height: 52px;
   justify-content: center;
   align-items: center;
   gap: 10px;
   border-radius: 8px;
   background: ${(props) => (props.fill ? "#1355FF" : "transparent")};
+  white-space: nowrap;
 
   color: ${(props) => (props.fill ? "#FFF" : "#1355FF")};
   text-align: center;
@@ -44,9 +45,10 @@ export const TextContainer = styled.div`
   display: flex;
   max-width: 1120px;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-start;
+  align-items: flex-start;
   gap: 30px;
+  margin-top: 140px;
   @media screen and (max-width: ${breakpoints.large}) {
     max-width: 760px;
   }
@@ -62,12 +64,12 @@ export const TextContainer = styled.div`
 
 export const MainHead = styled.h1`
   color: #000;
-  text-align: center;
+  text-align: left;
   font-family: Poppins;
-  font-size: 66px;
+  font-size: 50px;
   font-style: normal;
   font-weight: 600;
-  line-height: 80px;
+  line-height: 65px;
 
   svg {
     width: 45px;
@@ -97,7 +99,7 @@ export const MainHead = styled.h1`
 
 export const Description = styled.p`
   color: #5c5c5c;
-  text-align: center;
+  text-align: left;
   font-family: Roboto;
   font-size: 18px;
   font-style: normal;

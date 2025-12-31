@@ -112,11 +112,15 @@ export const Menu = styled.ul`
 `;
 
 export const MenuItem = styled.li`
-  color: ${(props) => (props.blue ? "#1355FF" : "#170F49")};
+  color: ${(props) => {
+    if (props.active) return "#0957DE";
+    if (props.blue) return "#1355FF";
+    return "#170F49";
+  }};
   font-family: Poppins;
   font-size: 18px;
   font-style: normal;
-  font-weight: ${(props) => (props.blue ? "600" : "400")};
+  font-weight: ${(props) => (props.active || props.blue ? "600" : "400")};
   line-height: normal;
   letter-spacing: -0.36px;
   cursor: pointer;
@@ -125,14 +129,6 @@ export const MenuItem = styled.li`
   align-items: center;
   justify-content: center;
   gap: 6px;
-  ${({ active }) =>
-    active &&
-    `
-    background: var(--button-gradient, linear-gradient(230deg, #BC4E9B 19.66%, #0957DE 115.46%));
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  `}
   @media screen and (max-width: ${breakpoints.large}) {
     display: ${(props) => (props.hidden ? "none" : "")};
     padding-left: 24px;
