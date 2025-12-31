@@ -8,26 +8,32 @@ import {
   LogoHeading,
   Text,
   Moto,
+  CompanyTextHighlight,
   Services,
   Technologies,
   Industries,
   Experties,
   Divider,
+  ContactInfoContainer,
   FooterBottom,
   FooterLinks,
   Link,
   CopyRightText,
 } from "./index.styled";
 import {
-  Caption,
-  Circle,
   SubCard,
   CardContent,
-  ContentText,
 } from "../Contact-Us/index.styled";
+import {
+  FooterCaption,
+  FooterContentText,
+  FooterCircle,
+} from "./index.styled";
 import * as containerStyles from "../../../styles/global.module.css";
 import favicon from "../../../images/favicon.png";
-import Envelope from "../../../images/envelop-icon.svg";
+import EmailIcon from "../../../images/email.svg";
+import OfficeIcon from "../../../images/office.svg";
+import CareerIcon from "../../../images/career.svg";
 
 const Footer = () => {
   return (
@@ -39,7 +45,8 @@ const Footer = () => {
             <CompanyName>Arithmiks</CompanyName>
           </LogoHeading>
           <Moto>
-            Software Development Company. We offer digital solutions to your problems.
+            <CompanyTextHighlight>Software Development</CompanyTextHighlight> <span style={{color: '#0957DE'}}>Company</span>.<br />
+            We offer digital solutions to your problems.
           </Moto>
         </Arithmiks>
 
@@ -94,19 +101,43 @@ const Footer = () => {
 
       <Divider />
 
-      <div style={{marginTop: '48px'}}>
+      <ContactInfoContainer>
         <SubCard>
-          <Circle>
-            <Envelope />
-          </Circle>
+          <FooterCircle>
+            <EmailIcon />
+          </FooterCircle>
           <CardContent>
-            <Caption>Career</Caption>
-            <a href="mailto: hr@arithmiks.com">
-              <ContentText>hr@arithmiks.com</ContentText>
+            <FooterCaption>Email</FooterCaption>
+            <a href="mailto: services@arithmiks.com">
+              <FooterContentText>services@arithmiks.com</FooterContentText>
             </a>
           </CardContent>
         </SubCard>
-      </div>
+
+        <SubCard>
+          <FooterCircle>
+            <OfficeIcon />
+          </FooterCircle>
+          <CardContent>
+            <FooterCaption>Office</FooterCaption>
+            <FooterContentText medium>
+              Lahore, Pakistan
+            </FooterContentText>
+          </CardContent>
+        </SubCard>
+
+        <SubCard>
+          <FooterCircle>
+            <CareerIcon />
+          </FooterCircle>
+          <CardContent>
+            <FooterCaption>Careers</FooterCaption>
+            <a href="mailto: hr@arithmiks.com">
+              <FooterContentText>hr@arithmiks.com</FooterContentText>
+            </a>
+          </CardContent>
+        </SubCard>
+      </ContactInfoContainer>
 
       <Divider />
 

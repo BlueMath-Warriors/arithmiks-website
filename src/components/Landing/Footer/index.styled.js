@@ -25,7 +25,7 @@ export const FooterContent = styled.div`
 export const Arithmiks = styled.div`
   display: flex;
   flex-direction: column;
-  width: 188px;
+  width: 260px;
   flex-direction: column;
   align-items: flex-start;
   gap: 32px;
@@ -138,6 +138,13 @@ export const Moto = styled.p`
   }
 `
 
+export const CompanyTextHighlight = styled.span`
+  background: linear-gradient(90deg, #0957DE 0%, #BC4E9B 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+`
+
 export const Services = styled.div`
   display: flex;
   flex-direction: column;
@@ -218,18 +225,94 @@ export const Experties = styled.div`
 `
 
 export const Divider =  styled.hr`
-  width: 1120px;
+  width: 100vw;
+  max-width: 100%;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
   border-width: 1px; 
   margin-top: 48px;
+  margin-bottom: 0;
   border-color: #0B63E5;
+  border-top: 1px solid #0B63E5;
+  border-bottom: none;
+
+  @media screen and (max-width: ${breakpoints.medium}) {
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+  }  
+`
+
+export const ContactInfoContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 240px;
+  margin-top: 48px;
+  width: 1120px;
 
   @media screen and (max-width: ${breakpoints.large}) {
     width: 760px;
+    gap: 180px;
   }
 
   @media screen and (max-width: ${breakpoints.medium}) {
-    width: 90%;
-  }  
+    flex-direction: column;
+    width: 100%;
+    gap: 40px;
+    padding: 0 16px;
+  }
+`
+
+export const FooterCaption = styled.h1`
+  color: #1A202C;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 100%;
+  letter-spacing: 0.14px;
+  text-transform: uppercase;
+  margin: 0;
+`
+
+export const FooterContentText = styled.p`
+  color: #596780;
+  font-family: Inter;
+  font-size: ${(props) => (props.medium ? "16px" : "20px")};
+  font-style: normal;
+  font-weight: 400;
+  line-height: 28px;
+  margin: 0;
+
+  a {
+    color: #596780;
+    text-decoration: none;
+    
+    &:hover {
+      color: #0957DE;
+    }
+  }
+
+  @media screen and (max-width: ${breakpoints.xsmall}) {
+    font-size: 18px;
+  }
+`
+
+export const FooterCircle = styled.div`
+  display: flex;
+  padding: 0;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: fit-content;
+  height: fit-content;
+
+  svg {
+    width: 48px;
+    height: 48px;
+    display: block;
+  }
 `
 
 export const FooterBottom = styled.div`
