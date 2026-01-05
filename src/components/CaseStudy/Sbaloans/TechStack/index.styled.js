@@ -8,9 +8,11 @@ export const TechStackSection = styled.section`
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 
   @media screen and (max-width: ${breakpoints.medium}) {
     padding: 20px 0;
+    justify-content: flex-start;
   }
 `;
 
@@ -23,15 +25,23 @@ export const TechStackContainer = styled.div`
   max-width: 1440px;
   width: 100%;
   padding: 0 24px;
-  overflow-x: auto;
 
   @media screen and (max-width: ${breakpoints.large}) {
     gap: 64px;
   }
 
   @media screen and (max-width: ${breakpoints.medium}) {
-    gap: 48px;
+    gap: 40px;
     padding: 0 16px;
+    justify-content: flex-start;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
 
   @media screen and (max-width: ${breakpoints.small}) {
@@ -49,8 +59,12 @@ export const TechItem = styled.div`
   flex-shrink: 0;
 
   @media screen and (max-width: ${breakpoints.medium}) {
-    min-width: 70px;
+    min-width: 60px;
     gap: 4px;
+  }
+
+  @media screen and (max-width: ${breakpoints.small}) {
+    min-width: 50px;
   }
 `;
 

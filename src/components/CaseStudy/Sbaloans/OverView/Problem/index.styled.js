@@ -10,10 +10,14 @@ export const ProblemSection = styled.section`
   align-items: center;
   margin-top: -300px;
 
+  @media screen and (max-width: ${breakpoints.large}) {
+    margin-top: -200px;
+  }
+
   @media screen and (max-width: ${breakpoints.medium}) {
     padding: 0 16px 30px 16px;
     justify-content: center;
-    margin-top: -300px;
+    margin-top: 20px;
   }
 `;
 
@@ -56,14 +60,17 @@ export const ProblemContent = styled.div`
 
   @media screen and (max-width: ${breakpoints.large}) {
     padding: 35px 40px;
+    left: 50px;
   }
 
   @media screen and (max-width: ${breakpoints.medium}) {
     padding: 30px 32px;
+    left: 40px;
   }
 
   @media screen and (max-width: ${breakpoints.small}) {
-    padding: 24px 20px;
+    padding: 20px 16px;
+    left: 30px;
   }
 `;
 
@@ -77,11 +84,11 @@ export const ProblemTitle = styled.h2`
   margin: 0;
 
   @media screen and (max-width: ${breakpoints.medium}) {
-    font-size: 22px;
+    font-size: 20px;
   }
 
   @media screen and (max-width: ${breakpoints.small}) {
-    font-size: 20px;
+    font-size: 18px;
   }
 `;
 
@@ -96,7 +103,12 @@ export const ProblemText = styled.p`
 
   @media screen and (max-width: ${breakpoints.medium}) {
     font-size: 14px;
-    line-height: 22px;
+    line-height: 20px;
+  }
+
+  @media screen and (max-width: ${breakpoints.small}) {
+    font-size: 12px;
+    line-height: 18px;
   }
 `;
 
