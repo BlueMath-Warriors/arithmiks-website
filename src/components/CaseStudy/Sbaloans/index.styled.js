@@ -15,7 +15,9 @@ export const HeroContent = styled.div`
     width: 597.586px;
   }
   @media screen and (max-width: ${breakpoints.small}) {
-    width: 362.346px;
+    width: 100%;
+    max-width: 362.346px;
+    padding: 0 16px;
   }
 `
 

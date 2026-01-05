@@ -225,10 +225,8 @@ export const Experties = styled.div`
 `
 
 export const Divider =  styled.hr`
-  width: 100vw;
+  width: 100%;
   max-width: 100%;
-  margin-left: calc(-50vw + 50%);
-  margin-right: calc(-50vw + 50%);
   border-width: 1px; 
   margin-top: 48px;
   margin-bottom: 0;
@@ -237,9 +235,7 @@ export const Divider =  styled.hr`
   border-bottom: none;
 
   @media screen and (max-width: ${breakpoints.medium}) {
-    width: 100vw;
-    margin-left: calc(-50vw + 50%);
-    margin-right: calc(-50vw + 50%);
+    width: 100%;
   }  
 `
 

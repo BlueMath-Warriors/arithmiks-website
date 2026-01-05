@@ -131,9 +131,10 @@ export const CardLeft = styled.div`
 export const BackImage = styled.div`
   position: absolute;
   height: 270px;
-  right: -20px;
+  right: 0px;
   bottom: 100px;
   top: auto;
+  overflow: hidden;
   @media screen and (max-width: ${breakpoints.large}) {
      right: 0px;
     bottom: 80px;
@@ -142,7 +143,7 @@ export const BackImage = styled.div`
 
   @media screen and (max-width: ${breakpoints.medium}) {
     height: 300px;
-    right: -22px;
+    right: 0px;
     bottom: 60px;
     top: auto;
   }
