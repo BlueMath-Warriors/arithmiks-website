@@ -105,10 +105,10 @@ const CaseStudy = ({ landing = false }) => {
         </Right>
       </Header>
 
-      <CollaboratedWith />
+      {!landing && <CollaboratedWith />}
 
       <CaseStudiesGrid>
-        {caseStudies.map((study, index) => {
+        {(landing ? caseStudies.slice(0, 3) : caseStudies).map((study, index) => {
           const DashboardImg = study.dashboardImg;
           return (
             <NewCaseStudyCard
