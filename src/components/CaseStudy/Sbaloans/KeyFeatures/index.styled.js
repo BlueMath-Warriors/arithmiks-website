@@ -40,8 +40,9 @@ export const SubHeadingContainer = styled.div`
 
   @media screen and (max-width: ${breakpoints.medium}) {
     padding-left: 0;
-    margin-left: -32px;
+    margin-left: 0;
     align-self: flex-start;
+    width: 100%;
   }
 `;
 
