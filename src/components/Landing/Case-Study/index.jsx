@@ -28,6 +28,65 @@ import EasybarDashboardImg from "../../../images/easybarDashboard.svg";
 import LfgoDashboardImg from "../../../images/lfgoDashboard.svg";
 
 const CaseStudy = ({ landing = false }) => {
+  const caseStudies = [
+    {
+      slug: "swerv",
+      dashboardImg: SwervDashboardImg,
+      logo: "/swerv.svg",
+      logoAlt: "Swerv Automotive",
+      tag: "SaaS",
+      title: "Automates smart vehicle acquisitions",
+      description: "A SaaS platform for car dealerships to automate acquisitions, centralize data, and optimize sales.",
+      hasDetailPage: false,
+    },
+    {
+      slug: "togather",
+      dashboardImg: TogatherDashboardImg,
+      logo: "/togather.svg",
+      logoAlt: "Togather",
+      tag: "Software",
+      title: "Unifies community engagement, events, and donations",
+      description: "Togather is a platform for churches and NGOs to connect communities through events, donations, and engagement.",
+      hasDetailPage: false,
+    },
+    {
+      slug: "sbaloans",
+      dashboardImg: SbaloansDashboardImg,
+      logo: "/sbaloans.svg",
+      logoAlt: "sbaloansHQ",
+      tag: "SaaS",
+      title: "Streamlines and automates loan processing",
+      description: "SBA Loans HQ streamlines SBA loans with centralized documents, tracking, and communication.",
+      hasDetailPage: true,
+    },
+    {
+      slug: "easybar",
+      dashboardImg: EasybarDashboardImg,
+      logo: "/easybar.svg",
+      logoAlt: "EASY-BAR",
+      tag: "Software",
+      title: "Automates rebar design and ordering",
+      description: "Easybar lets buyers design iron bars and suppliers print the orders for automated production.",
+      hasDetailPage: false,
+    },
+    {
+      slug: "lfgo",
+      dashboardImg: LfgoDashboardImg,
+      logo: "/lfgo.svg",
+      logoAlt: "LFGO",
+      tag: "Web3",
+      title: "Simplifies cross-chain token creation",
+      description: "A Web3 platform to create, launch, and trade tokens with seamless minting and wallet integration.",
+      hasDetailPage: false,
+    },
+  ];
+
+  const handleCardClick = (slug, hasDetailPage) => {
+    if (hasDetailPage) {
+      navigate(`/case-studies/${slug}`);
+    }
+  };
+
   return (
     <section className={containerStyles.case_study}>
       <Header>
@@ -46,78 +105,29 @@ const CaseStudy = ({ landing = false }) => {
         </Right>
       </Header>
 
-      <CollaboratedWith />
+      {!landing && <CollaboratedWith />}
 
       <CaseStudiesGrid>
-        <NewCaseStudyCard>
-          <CaseStudyImgWrapper>
-            <SwervDashboardImg />
-          </CaseStudyImgWrapper>
-          <LogoAndTagWrapper>
-            <CompanyLogo src="/swerv.svg" alt="Swerv Automotive" />
-            <CaseStudyTag>SaaS</CaseStudyTag>
-          </LogoAndTagWrapper>
-          <CaseStudyTitle>Automates smart vehicle acquisitions</CaseStudyTitle>
-          <CaseStudyDescription>
-            A SaaS platform for car dealerships to automate acquisitions, centralize data, and optimize sales.
-          </CaseStudyDescription>
-        </NewCaseStudyCard>
-
-        <NewCaseStudyCard>
-          <CaseStudyImgWrapper>
-            <TogatherDashboardImg />
-          </CaseStudyImgWrapper>
-          <LogoAndTagWrapper>
-            <CompanyLogo src="/togather.svg" alt="Togather" />
-            <CaseStudyTag>Software</CaseStudyTag>
-          </LogoAndTagWrapper>
-          <CaseStudyTitle>Unifies community engagement, events, and donations</CaseStudyTitle>
-          <CaseStudyDescription>
-            Togather is a platform for churches and NGOs to connect communities through events, donations, and engagement.
-          </CaseStudyDescription>
-        </NewCaseStudyCard>
-
-        <NewCaseStudyCard>
-          <CaseStudyImgWrapper>
-            <SbaloansDashboardImg />
-          </CaseStudyImgWrapper>
-          <LogoAndTagWrapper>
-            <CompanyLogo src="/sbaloans.svg" alt="sbaloansHQ" />
-            <CaseStudyTag>SaaS</CaseStudyTag>
-          </LogoAndTagWrapper>
-          <CaseStudyTitle>Streamlines and automates loan processing</CaseStudyTitle>
-          <CaseStudyDescription>
-            SBA Loans HQ streamlines SBA loans with centralized documents, tracking, and communication.
-          </CaseStudyDescription>
-        </NewCaseStudyCard>
-
-        <NewCaseStudyCard>
-          <CaseStudyImgWrapper>
-            <EasybarDashboardImg />
-          </CaseStudyImgWrapper>
-          <LogoAndTagWrapper>
-            <CompanyLogo src="/easybar.svg" alt="EASY-BAR" />
-            <CaseStudyTag>Software</CaseStudyTag>
-          </LogoAndTagWrapper>
-          <CaseStudyTitle>Automates rebar design and ordering</CaseStudyTitle>
-          <CaseStudyDescription>
-          Easybar lets buyers design iron bars and suppliers print the orders for automated production.
-          </CaseStudyDescription>
-        </NewCaseStudyCard>
-
-        <NewCaseStudyCard>
-          <CaseStudyImgWrapper>
-            <LfgoDashboardImg />
-          </CaseStudyImgWrapper>
-          <LogoAndTagWrapper>
-            <CompanyLogo src="/lfgo.svg" alt="LFGO" />
-            <CaseStudyTag>Web3</CaseStudyTag>
-          </LogoAndTagWrapper>
-          <CaseStudyTitle>Simplifies cross-chain token creation</CaseStudyTitle>
-          <CaseStudyDescription>
-          A Web3 platform to create, launch, and trade tokens with seamless minting and wallet integration.
-          </CaseStudyDescription>
-        </NewCaseStudyCard>
+        {(landing ? caseStudies.slice(0, 3) : caseStudies).map((study, index) => {
+          const DashboardImg = study.dashboardImg;
+          return (
+            <NewCaseStudyCard
+              key={study.slug}
+              onClick={() => handleCardClick(study.slug, study.hasDetailPage)}
+              clickable={study.hasDetailPage}
+            >
+              <CaseStudyImgWrapper>
+                <DashboardImg />
+              </CaseStudyImgWrapper>
+              <LogoAndTagWrapper>
+                <CompanyLogo src={study.logo} alt={study.logoAlt} />
+                <CaseStudyTag>{study.tag}</CaseStudyTag>
+              </LogoAndTagWrapper>
+              <CaseStudyTitle>{study.title}</CaseStudyTitle>
+              <CaseStudyDescription>{study.description}</CaseStudyDescription>
+            </NewCaseStudyCard>
+          );
+        })}
       </CaseStudiesGrid>
     </section>
   );
