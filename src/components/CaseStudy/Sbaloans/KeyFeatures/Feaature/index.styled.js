@@ -22,6 +22,8 @@ export const FeatureOuterContainer = styled.div`
     flex-direction: column;
     gap: 40px;
     padding: 40px 16px;
+    max-width: 100%;
+    overflow: hidden;
   }
 `;
 
@@ -124,8 +126,10 @@ export const OverviewImgContainer = styled.div`
   @media screen and (max-width: ${breakpoints.medium}) {
     justify-content: center;
     width: 100%;
+    max-width: 100%;
     margin-left: 0;
     padding-top: 0;
+    overflow: hidden;
   }
 `;
 
@@ -171,6 +175,7 @@ export const FeatureImgTag = styled.img`
 
   @media screen and (max-width: ${breakpoints.medium}) {
     max-width: 100%;
+    width: 100%;
     margin-left: 0;
     margin-right: 0;
   }
