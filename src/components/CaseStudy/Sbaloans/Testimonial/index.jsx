@@ -25,7 +25,7 @@ const SbaloansTestimonial = () => {
             </TestimonalText>
           </TextContainer>
           <NameContainer>
-            <ClientImage src="/sbaOwner.svg" alt="Zachary Renta" />
+            <ClientImage src="/sbaOwner.jpeg" alt="Zachary Renta" />
             <InnerContainer>
               <Name>Zachary Renta</Name>
               <NameCaption>SBA Loans Founder & CEO</NameCaption>

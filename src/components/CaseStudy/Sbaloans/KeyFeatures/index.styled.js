@@ -246,8 +246,8 @@ export const CarouselContainer = styled.div`
   }
 
   @media screen and (max-width: ${breakpoints.medium}) {
-    padding: 0;
-    gap: 20px;
+    padding: 0 16px;
+    gap: 16px;
   }
 `;
 
@@ -264,7 +264,8 @@ export const CarouselSlide = styled.div`
   }
 
   @media screen and (max-width: ${breakpoints.medium}) {
-    min-width: 100%;
+    min-width: calc(100vw - 32px);
+    max-width: calc(100vw - 32px);
   }
 `;
 
@@ -274,9 +275,14 @@ export const DashboardImage = styled.img`
   object-fit: contain;
   display: block;
 
+  @media screen and (max-width: ${breakpoints.large}) {
+    width: 500px;
+    height: auto;
+  }
+
   @media screen and (max-width: ${breakpoints.medium}) {
     width: 100%;
-    max-width: 684px;
+    max-width: 100%;
     height: auto;
   }
 `;

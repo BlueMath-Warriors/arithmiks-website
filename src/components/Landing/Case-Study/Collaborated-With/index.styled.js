@@ -57,6 +57,7 @@ export const ScrollingContainer = styled.div`
   flex-direction: column;
   gap: 24px;
   position: relative;
+  padding: 12px 0;
 `;
 
 export const ScrollingRow = styled.div`
