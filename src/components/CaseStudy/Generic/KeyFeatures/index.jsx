@@ -19,47 +19,32 @@ import {
   Dot,
 } from "./index.styled";
 
-const SbaloansKeyFeatures = () => {
-  const [currentSlide, setCurrentSlide] = useState(0); 
+/**
+ * @param {Object} props
+ * @param {string} props.label 
+ * @param {string} props.heading 
+ * @param {Array} props.features 
+ * @param {string} props.features[].title 
+ * @param {string} props.features[].description 
+ * @param {string} props.features[].image 
+ * @param {string} props.leftIconSrc 
+ * @param {string} props.rightIconSrc 
+ */
+const KeyFeatures = ({
+  label = "HIGHLIGHTS",
+  heading = "Key Features",
+  features = [],
+  leftIconSrc = "/leftIcon.svg",
+  rightIconSrc = "/rightIcon.svg",
+}) => {
+  const [currentSlide, setCurrentSlide] = useState(0);
   const carouselRef = useRef(null);
   const slideRefs = useRef([]);
-  const totalSlides = 6;
+  const totalSlides = features.length;
 
-  const dashboardImages = [
-    "/Sba Key Features/sbaKeyFeature1.svg",
-    "/Sba Key Features/sbaKeyFeature2.svg",
-    "/Sba Key Features/sbaKeyFeature3.svg",
-    "/Sba Key Features/sbaKeyFeature4.svg",
-    "/Sba Key Features/sbaKeyFeature5.svg",
-    "/Sba Key Features/sbaKeyFeature6.svg",
-  ];
-
-  const featureDescriptions = [
-    {
-      title: "1. Lead and Deal Management:",
-      description: "Unified dashboard for tracking loan applications and client progress."
-    },
-    {
-      title: "2. User Management:",
-      description: "Easily manage roles, permissions, and access levels for lenders, brokers, and internal teams."
-    },
-    {
-      title: "3. Chat System:",
-      description: "Enable secure, real-time communication between applicants and loan officers to speed up decision-making."
-    },
-    {
-      title: "4. Memorandum Section:",
-      description: "Enable secure, real-time communication between applicants and loan officers to speed up decision-making."
-    },
-    {
-      title: "5. Lead Filtering and Scoring:",
-      description: "Prioritize high-quality applicants using intelligent scoring based on eligibility, financial strength, and readiness."
-    },
-    {
-      title: "6. AI-Generated Reports:",
-      description: "Automatically generate SBA-documents reports with insights, summaries, and analysis in seconds."
-    }
-  ];
+  const headingParts = heading.split(" ");
+  const lastWord = headingParts.pop();
+  const firstPart = headingParts.join(" ");
 
   const handlePrev = () => {
     setCurrentSlide((prev) => (prev === 0 ? totalSlides - 1 : prev - 1));
@@ -73,13 +58,13 @@ const SbaloansKeyFeatures = () => {
     if (carouselRef.current && slideRefs.current[currentSlide]) {
       const container = carouselRef.current;
       const slideElement = slideRefs.current[currentSlide];
-      
+
       const slideLeft = slideElement.offsetLeft;
       const containerWidth = container.offsetWidth;
       const slideWidth = slideElement.offsetWidth;
-      
-      const scrollPosition = slideLeft - (containerWidth / 2) + (slideWidth / 2);
-      
+
+      const scrollPosition = slideLeft - containerWidth / 2 + slideWidth / 2;
+
       container.scrollTo({
         left: Math.max(0, scrollPosition),
         behavior: "smooth",
@@ -87,27 +72,29 @@ const SbaloansKeyFeatures = () => {
     }
   }, [currentSlide]);
 
+  if (totalSlides === 0) return null;
+
   return (
     <>
       <div className={containerStyles.easybar_key_features}>
         <KeyFeaturesHeader>
-          <KeyFeaturesLabel>HIGHLIGHTS</KeyFeaturesLabel>
+          <KeyFeaturesLabel>{label}</KeyFeaturesLabel>
           <PrimaryHeading>
-            Key <Secondary>Features</Secondary>
+            {firstPart} <Secondary>{lastWord}</Secondary>
           </PrimaryHeading>
           <SubHeadingContainer>
             <SubHeading>
-              <SubHeadingTitle>{featureDescriptions[currentSlide].title}</SubHeadingTitle>
+              <SubHeadingTitle>{features[currentSlide]?.title}</SubHeadingTitle>
               <br />
-              {featureDescriptions[currentSlide].description}
+              {features[currentSlide]?.description}
             </SubHeading>
           </SubHeadingContainer>
           <CarouselButtons>
             <CarouselButton onClick={handlePrev}>
-              <img src="/leftIcon.svg" alt="Previous" />
+              <img src={leftIconSrc} alt="Previous" />
             </CarouselButton>
             <CarouselButton onClick={handleNext}>
-              <img src="/rightIcon.svg" alt="Next" />
+              <img src={rightIconSrc} alt="Next" />
             </CarouselButton>
           </CarouselButtons>
         </KeyFeaturesHeader>
@@ -115,12 +102,15 @@ const SbaloansKeyFeatures = () => {
           <FadeOverlay side="left" />
           <FadeOverlay side="right" />
           <CarouselContainer ref={carouselRef}>
-            {dashboardImages.map((img, index) => (
-              <CarouselSlide 
+            {features.map((feature, index) => (
+              <CarouselSlide
                 key={index}
                 ref={(el) => (slideRefs.current[index] = el)}
               >
-                <DashboardImage src={img} alt={`Dashboard view ${index + 1}`} />
+                <DashboardImage
+                  src={feature.image}
+                  alt={`Dashboard view ${index + 1}`}
+                />
               </CarouselSlide>
             ))}
           </CarouselContainer>
@@ -139,5 +129,4 @@ const SbaloansKeyFeatures = () => {
   );
 };
 
-export default SbaloansKeyFeatures;
-
+export default KeyFeatures;

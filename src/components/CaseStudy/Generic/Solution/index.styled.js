@@ -94,24 +94,6 @@ export const SolutionDescription = styled.p`
   }
 `;
 
-export const TitelCaption = styled.p`
-  color: #42526B;
-  text-align: center;
-  font-family: Inter;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  margin: 0 0 48px 0;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-
-  @media screen and (max-width: ${breakpoints.medium}) {
-    font-size: 14px;
-    margin-bottom: 32px;
-  }
-`;
-
 export const CardContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -196,21 +178,3 @@ export const CardDetail = styled.p`
     line-height: 22px;
   }
 `;
-
-export const GradiantContainer = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  pointer-events: none;
-  z-index: 0;
-`;
-
-export const Gradiant3 = styled.img`
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0.1;
-`;
-

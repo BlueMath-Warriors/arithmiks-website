@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
-import { breakpoints } from "../../../../Landing/index.styled";
+import { breakpoints } from "../../../Landing/index.styled";
 
 export const FeatureOuterContainer = styled.div`
   display: flex;
@@ -181,3 +181,16 @@ export const FeatureImgTag = styled.img`
   }
 `;
 
+export const HeroShade = styled.div`
+  width: 100%;
+  height: 249px;
+  position: absolute;
+  bottom: -1px;
+  z-index: 12;
+  @media screen and (max-width: ${breakpoints.large}) {
+    height: 143px;
+  }
+  @media screen and (max-width: ${breakpoints.medium}) {
+    height: 70px;
+  }
+`;

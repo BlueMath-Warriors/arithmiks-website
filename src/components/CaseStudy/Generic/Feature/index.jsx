@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import * as containerStyles from "../../../../../styles/global.module.css";
+import * as containerStyles from "../../../../styles/global.module.css";
 
 import {
   FeatureContainer,
@@ -11,10 +11,19 @@ import {
   FeatureImg,
   FeatureImgTag,
   FeatureOuterContainer,
+  HeroShade,
 } from "./index.styled";
-import { HeroShade } from "../../index.styled";
 
-const SbaloansFeature = (props) => {
+/**
+ * @param {Object} props
+ * @param {boolean} props.overview 
+ * @param {boolean} props.left 
+ * @param {string} props.title
+ * @param {React.ReactNode} props.caption 
+ * @param {string} props.detail 
+ * @param {string|React.ReactNode} props.img 
+ */
+const Feature = (props) => {
   const { overview, left, title, caption, detail, img } = props;
   const isOverview = overview !== undefined ? overview : false;
   const [smallGradient, setSmallGradient] = useState(isSmallGradient());
@@ -103,5 +112,4 @@ const SbaloansFeature = (props) => {
   );
 };
 
-export default SbaloansFeature;
-
+export default Feature;

@@ -36,7 +36,7 @@ export const Quotes = styled.div`
   opacity: 0.1;
 `;
 
-export const TestimonalText = styled.p`
+export const TestimonialText = styled.p`
   color: #0957DE;
   text-align: left;
   font-family: Inter;
@@ -118,4 +118,3 @@ export const NameCaption = styled.p`
     font-size: 14px;
   }
 `;
-

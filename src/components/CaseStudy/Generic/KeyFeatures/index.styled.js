@@ -46,22 +46,6 @@ export const SubHeadingContainer = styled.div`
   }
 `;
 
-export const HeaderTitleContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  margin-bottom: 24px;
-`;
-
-export const HeaderSubHeadingContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  width: 100%;
-  max-width: 800px;
-`;
-
 export const KeyFeaturesLabel = styled.p`
   color: #0957DE;
   font-family: Inter;
@@ -324,4 +308,3 @@ export const Dot = styled.button`
     height: 10px;
   }
 `;
-

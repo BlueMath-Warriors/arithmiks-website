@@ -1,18 +1,29 @@
 import React from "react";
 import * as containerStyles from "../../../../styles/global.module.css";
 import {
-  TestimonalText,
+  TestimonialText,
   Name,
   NameCaption,
   TextContainer,
-  Quotes,
   NameContainer,
   ClientImage,
   InnerContainer,
   TestimonialContainer,
 } from "./index.styled";
 
-const SbaloansTestimonial = () => {
+/**
+ * @param {Object} props
+ * @param {string} props.text 
+ * @param {string} props.clientImageSrc 
+ * @param {string} props.clientName 
+ * @param {string} props.clientTitle 
+ */
+const Testimonial = ({
+  text,
+  clientImageSrc,
+  clientName,
+  clientTitle,
+}) => {
   return (
     <>
       <div className={containerStyles.easybar_testimonial}>
@@ -20,15 +31,13 @@ const SbaloansTestimonial = () => {
           <TextContainer>
             <div className={`${containerStyles.quotes} ${containerStyles.bottom}`} />
             <div className={`${containerStyles.quotes} ${containerStyles.top}`} />
-            <TestimonalText>
-              Omer is a professional, reliable, and kind person. Working with him was great! Omer was available for any question, gave professional answers, was patient with the project and the results are beautiful. I highly recommend working with him.
-            </TestimonalText>
+            <TestimonialText>{text}</TestimonialText>
           </TextContainer>
           <NameContainer>
-            <ClientImage src="/sbaOwner.jpeg" alt="Zachary Renta" />
+            <ClientImage src={clientImageSrc} alt={clientName} />
             <InnerContainer>
-              <Name>Zachary Renta</Name>
-              <NameCaption>SBA Loans Founder & CEO</NameCaption>
+              <Name>{clientName}</Name>
+              <NameCaption>{clientTitle}</NameCaption>
             </InnerContainer>
           </NameContainer>
         </TestimonialContainer>
@@ -37,5 +46,4 @@ const SbaloansTestimonial = () => {
   );
 };
 
-export default SbaloansTestimonial;
-
+export default Testimonial;

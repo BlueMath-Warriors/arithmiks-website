@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
-import { breakpoints } from "../../Landing/index.styled";
+import { breakpoints } from "../../../Landing/index.styled";
 
 export const HeroContent = styled.div`
   display: flex;
@@ -56,32 +56,6 @@ export const StudyCaption = styled.p`
   }
 `
 
-export const MoreButton = styled.a`
-  display: flex;
-  padding: 0px 32px;
-  justify-content: center;
-  align-items: center;
-  gap: 12px;
-
-  border-radius: 7px;
-  border: 1px solid #1355FF;
-  background: rgba(11, 99, 229, 0.10);
-
-  color: #1355FF;
-  font-family: Poppins;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 48px;
-  text-transform: capitalize;
-  cursor: pointer;
-`
-
-export const BtnIcon = styled.img`
-  width: 24px;
-  height: 24px;
-`;
-
 export const HeroImg = styled.img`
   margin-top: 46px;
   width: 100%;
@@ -102,4 +76,3 @@ export const HeroShade = styled.div`
     height: 70px;
   }
 `
-

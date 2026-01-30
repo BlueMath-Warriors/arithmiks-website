@@ -86,7 +86,7 @@ export const TechIcon = styled.img`
   }
 `;
 
-export const PostmarkIcon = styled.img`
+export const SpecialIcon = styled.img`
   width: 40px;
   height: 40px;
   object-fit: contain;
@@ -112,4 +112,3 @@ export const TechName = styled.span`
     font-size: 12px;
   }
 `;
-

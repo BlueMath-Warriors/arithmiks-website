@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
-import { breakpoints } from "../../../../Landing/index.styled";
+import { breakpoints } from "../../../Landing/index.styled";
 
 export const ProblemSection = styled.section`
   width: 100%;
@@ -111,4 +111,3 @@ export const ProblemText = styled.p`
     line-height: 18px;
   }
 `;
-
