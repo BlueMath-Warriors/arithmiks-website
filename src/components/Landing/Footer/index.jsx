@@ -45,8 +45,12 @@ const Footer = () => {
             <CompanyName>Arithmiks</CompanyName>
           </LogoHeading>
           <Moto>
-            <CompanyTextHighlight>Software Development</CompanyTextHighlight> <span style={{color: '#0957DE'}}>Company</span>.<br />
-            We offer digital solutions to your problems.
+            <div>
+              <CompanyTextHighlight>Software Development</CompanyTextHighlight> <span style={{color: '#0957DE'}}>Company</span>.
+            </div>
+            <div style={{marginTop: '9px', color: '#596780'}}>
+              We offer digital solutions to your problems.
+            </div>
           </Moto>
         </Arithmiks>
 
