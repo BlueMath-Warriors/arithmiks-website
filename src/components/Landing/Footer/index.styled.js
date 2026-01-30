@@ -268,18 +268,18 @@ export const FooterCaption = styled.h1`
   font-weight: 500;
   line-height: 100%;
   letter-spacing: 0.14px;
-  text-transform: uppercase;
   margin: 0;
 `
 
 export const FooterContentText = styled.p`
   color: #596780;
   font-family: Inter;
-  font-size: ${(props) => (props.medium ? "16px" : "20px")};
+  font-size: ${(props) => (props.medium ? "14px" : "16px")};
   font-style: normal;
   font-weight: 400;
   line-height: 28px;
   margin: 0;
+  white-space: nowrap;
 
   a {
     color: #596780;
@@ -291,7 +291,7 @@ export const FooterContentText = styled.p`
   }
 
   @media screen and (max-width: ${breakpoints.xsmall}) {
-    font-size: 18px;
+    font-size: 14px;
   }
 `
 

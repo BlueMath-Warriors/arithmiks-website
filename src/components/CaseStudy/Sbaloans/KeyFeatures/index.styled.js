@@ -259,6 +259,8 @@ export const CarouselSlide = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 8px;
+  overflow: hidden;
 
   @media screen and (max-width: ${breakpoints.large}) {
     min-width: 500px;
@@ -273,18 +275,19 @@ export const CarouselSlide = styled.div`
 export const DashboardImage = styled.img`
   width: 684px;
   height: 573px;
-  object-fit: contain;
+  object-fit: cover;
   display: block;
 
   @media screen and (max-width: ${breakpoints.large}) {
     width: 500px;
-    height: auto;
+    height: 418px;
   }
 
   @media screen and (max-width: ${breakpoints.medium}) {
     width: 100%;
     max-width: 100%;
     height: auto;
+    aspect-ratio: 684 / 573;
   }
 `;
 

@@ -38,7 +38,7 @@ export const Quotes = styled.div`
 
 export const TestimonalText = styled.p`
   color: #0957DE;
-  text-align: center;
+  text-align: left;
   font-family: Inter;
   font-size: 24px;
   font-style: normal;

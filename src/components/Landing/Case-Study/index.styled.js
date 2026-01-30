@@ -357,6 +357,7 @@ export const LogoAndTagWrapper = styled.div`
 
 export const CompanyLogo = styled.img`
   height: 32px;
+  max-width: 150px;
   width: auto;
   object-fit: contain;
   filter: grayscale(100%) brightness(0.4);
@@ -364,6 +365,7 @@ export const CompanyLogo = styled.img`
 
   @media screen and (max-width: ${breakpoints.medium}) {
     height: 28px;
+    max-width: 130px;
   }
 `;
 

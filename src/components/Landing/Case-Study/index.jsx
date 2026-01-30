@@ -26,6 +26,9 @@ import TogatherDashboardImg from "../../../images/togatherDashboard.svg";
 import SbaloansDashboardImg from "../../../images/sbaloansDashboard.svg";
 import EasybarDashboardImg from "../../../images/easybarDashboard.svg";
 import LfgoDashboardImg from "../../../images/lfgoDashboard.svg";
+import EhhDashboardImg from "../../../images/ehhDashboard.svg";
+import GoDashboardImg from "../../../images/goDashboard.svg";
+import OfertasDashboardImg from "../../../images/ofertasDashboard.svg";
 
 const CaseStudy = ({ landing = false }) => {
   const caseStudies = [
@@ -77,6 +80,36 @@ const CaseStudy = ({ landing = false }) => {
       tag: "Web3",
       title: "Simplifies cross-chain token creation",
       description: "A Web3 platform to create, launch, and trade tokens with seamless minting and wallet integration.",
+      hasDetailPage: false,
+    },
+    {
+      slug: "expat",
+      dashboardImg: EhhDashboardImg,
+      logo: "/ehh.svg",
+      logoAlt: "Expat Haven Hub",
+      tag: "Web App",
+      title: "AI-Powered Marketing Automation Platform",
+      description: "AI-powered, gamified platform that centralizes essential lifestyle insights for digital nomads and expats.",
+      hasDetailPage: false,
+    },
+    {
+      slug: "go",
+      dashboardImg: GoDashboardImg,
+      logo: "/go.svg",
+      logoAlt: "GO",
+      tag: "Machine Learning",
+      title: "AI-Powered Marketing Automation Platform",
+      description: "An AI-powered platform that automates digital marketing—handling content, publishing, and ads to help agencies grow.",
+      hasDetailPage: false,
+    },
+    {
+      slug: "ofertas",
+      dashboardImg: OfertasDashboardImg,
+      logo: "/ofertas.svg",
+      logoAlt: "Ofertas",
+      tag: "Affiliation Market",
+      title: "Community-Driven Deal & Coupon Discovery Platform",
+      description: "Platform showcasing the best affiliate deals and offers to help users save more and shop smarter.",
       hasDetailPage: false,
     },
   ];

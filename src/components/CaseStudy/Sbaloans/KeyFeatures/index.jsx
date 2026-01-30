@@ -23,14 +23,42 @@ const SbaloansKeyFeatures = () => {
   const [currentSlide, setCurrentSlide] = useState(0); 
   const carouselRef = useRef(null);
   const slideRefs = useRef([]);
-  const totalSlides = 5;
+  const totalSlides = 6;
 
   const dashboardImages = [
-    "/sbaloansMemorandum.svg",
-    "/sbaloansMemorandum.svg",
-    "/sbaloansMemorandum.svg",
-    "/sbaloansMemorandum.svg",
-    "/sbaloansMemorandum.svg",
+    "/Sba Key Features/sbaKeyFeature1.svg",
+    "/Sba Key Features/sbaKeyFeature2.svg",
+    "/Sba Key Features/sbaKeyFeature3.svg",
+    "/Sba Key Features/sbaKeyFeature4.svg",
+    "/Sba Key Features/sbaKeyFeature5.svg",
+    "/Sba Key Features/sbaKeyFeature6.svg",
+  ];
+
+  const featureDescriptions = [
+    {
+      title: "1. Lead and Deal Management:",
+      description: "Unified dashboard for tracking loan applications and client progress."
+    },
+    {
+      title: "2. User Management:",
+      description: "Easily manage roles, permissions, and access levels for lenders, brokers, and internal teams."
+    },
+    {
+      title: "3. Chat System:",
+      description: "Enable secure, real-time communication between applicants and loan officers to speed up decision-making."
+    },
+    {
+      title: "4. Memorandum Section:",
+      description: "Enable secure, real-time communication between applicants and loan officers to speed up decision-making."
+    },
+    {
+      title: "5. Lead Filtering and Scoring:",
+      description: "Prioritize high-quality applicants using intelligent scoring based on eligibility, financial strength, and readiness."
+    },
+    {
+      title: "6. AI-Generated Reports:",
+      description: "Automatically generate SBA-documents reports with insights, summaries, and analysis in seconds."
+    }
   ];
 
   const handlePrev = () => {
@@ -69,9 +97,9 @@ const SbaloansKeyFeatures = () => {
           </PrimaryHeading>
           <SubHeadingContainer>
             <SubHeading>
-              <SubHeadingTitle>1. Lead and Deal Management:</SubHeadingTitle>
+              <SubHeadingTitle>{featureDescriptions[currentSlide].title}</SubHeadingTitle>
               <br />
-              Unified dashboard for tracking loan applications and client progress.
+              {featureDescriptions[currentSlide].description}
             </SubHeading>
           </SubHeadingContainer>
           <CarouselButtons>
