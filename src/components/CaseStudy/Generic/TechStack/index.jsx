@@ -3,6 +3,7 @@ import {
   TechStackSection,
   TechStackContainer,
   TechStackTrack,
+  TechStackGroup,
   TechItem,
   TechIcon,
   SpecialIcon,
@@ -22,30 +23,25 @@ const TechStack = ({
 }) => {
   const isSpecialIcon = (name) => specialIconNames.includes(name);
 
+  const renderItems = (keyPrefix) =>
+    technologies.map((tech, index) => (
+      <TechItem key={`${keyPrefix}-${index}`}>
+        {isSpecialIcon(tech.name) ? (
+          <SpecialIcon src={tech.icon} alt={tech.name} />
+        ) : (
+          <TechIcon src={tech.icon} alt={tech.name} />
+        )}
+        <TechName>{tech.name}</TechName>
+      </TechItem>
+    ));
+
   return (
     <TechStackSection>
       <TechStackContainer>
         <TechStackTrack>
-          {technologies.map((tech, index) => (
-            <TechItem key={`first-${index}`}>
-              {isSpecialIcon(tech.name) ? (
-                <SpecialIcon src={tech.icon} alt={tech.name} />
-              ) : (
-                <TechIcon src={tech.icon} alt={tech.name} />
-              )}
-              <TechName>{tech.name}</TechName>
-            </TechItem>
-          ))}
-          {technologies.map((tech, index) => (
-            <TechItem key={`second-${index}`}>
-              {isSpecialIcon(tech.name) ? (
-                <SpecialIcon src={tech.icon} alt={tech.name} />
-              ) : (
-                <TechIcon src={tech.icon} alt={tech.name} />
-              )}
-              <TechName>{tech.name}</TechName>
-            </TechItem>
-          ))}
+          <TechStackGroup>{renderItems("a")}</TechStackGroup>
+          <TechStackGroup aria-hidden="true">{renderItems("b")}</TechStackGroup>
+          <TechStackGroup aria-hidden="true">{renderItems("c")}</TechStackGroup>
         </TechStackTrack>
       </TechStackContainer>
     </TechStackSection>

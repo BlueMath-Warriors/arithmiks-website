@@ -2,11 +2,11 @@ import { styled, keyframes } from "styled-components";
 import { breakpoints } from "../../../Landing/index.styled";
 
 const scroll = keyframes`
-  0% {
+  from {
     transform: translateX(0);
   }
-  100% {
-    transform: translateX(-50%);
+  to {
+    transform: translateX(-33.33%);
   }
 `;
 
@@ -14,9 +14,6 @@ export const TechStackSection = styled.section`
   width: 100%;
   background-color: #0957DE;
   padding: 24px 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   overflow: hidden;
 
   @media screen and (max-width: ${breakpoints.medium}) {
@@ -25,33 +22,40 @@ export const TechStackSection = styled.section`
 `;
 
 export const TechStackContainer = styled.div`
-  display: flex;
   width: 100%;
   overflow: hidden;
-  position: relative;
 `;
 
 export const TechStackTrack = styled.div`
   display: flex;
-  align-items: center;
-  gap: 80px;
+  width: fit-content;
   animation: ${scroll} 20s linear infinite;
-  will-change: transform;
 
   &:hover {
     animation-play-state: paused;
   }
+`;
+
+export const TechStackGroup = styled.div`
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  gap: 80px;
+  padding-right: 80px;
 
   @media screen and (max-width: ${breakpoints.large}) {
     gap: 64px;
+    padding-right: 64px;
   }
 
   @media screen and (max-width: ${breakpoints.medium}) {
     gap: 40px;
+    padding-right: 40px;
   }
 
   @media screen and (max-width: ${breakpoints.small}) {
     gap: 32px;
+    padding-right: 32px;
   }
 `;
 

@@ -80,7 +80,7 @@ const CaseStudy = ({ landing = false }) => {
       tag: "Web3",
       title: "Simplifies cross-chain token creation",
       description: "A Web3 platform to create, launch, and trade tokens with seamless minting and wallet integration.",
-      hasDetailPage: false,
+      hasDetailPage: true,
     },
     {
       slug: "expat",
