@@ -50,7 +50,7 @@ const CaseStudy = ({ landing = false }) => {
       tag: "Software",
       title: "Unifies community engagement, events, and donations",
       description: "Togather is a platform for churches and NGOs to connect communities through events, donations, and engagement.",
-      hasDetailPage: false,
+      hasDetailPage: true,
     },
     {
       slug: "sbaloans",
