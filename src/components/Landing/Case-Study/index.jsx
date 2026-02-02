@@ -40,7 +40,7 @@ const CaseStudy = ({ landing = false }) => {
       tag: "SaaS",
       title: "Automates smart vehicle acquisitions",
       description: "A SaaS platform for car dealerships to automate acquisitions, centralize data, and optimize sales.",
-      hasDetailPage: false,
+      hasDetailPage: true,
     },
     {
       slug: "togather",
