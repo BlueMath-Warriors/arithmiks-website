@@ -90,7 +90,7 @@ const CaseStudy = ({ landing = false }) => {
       tag: "Web App",
       title: "AI-Powered Marketing Automation Platform",
       description: "AI-powered, gamified platform that centralizes essential lifestyle insights for digital nomads and expats.",
-      hasDetailPage: false,
+      hasDetailPage: true,
     },
     {
       slug: "go",
