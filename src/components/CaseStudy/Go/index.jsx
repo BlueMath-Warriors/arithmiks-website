@@ -10,6 +10,7 @@ import {
   Testimonial,
   Solution,
   KeyFeatures,
+  MoreCaseStudies,
 } from "../Generic";
 
 import {
@@ -31,6 +32,7 @@ const Go = () => {
       <Testimonial {...testimonialData} />
       <Solution {...solutionData} />
       <KeyFeatures {...keyFeaturesData} />
+      <MoreCaseStudies currentSlug="go" />
       <ContactUs />
       <Footer />
     </>

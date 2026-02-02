@@ -6,3 +6,4 @@ export { default as KeyFeatures } from "./KeyFeatures";
 export { default as TechStack } from "./TechStack";
 export { default as Testimonial } from "./Testimonial";
 export { default as Feature } from "./Feature";
+export { default as MoreCaseStudies } from "./MoreCaseStudies";

@@ -10,6 +10,7 @@ import {
   Testimonial,
   Solution,
   KeyFeatures,
+  MoreCaseStudies,
 } from "../Generic";
 
 import {
@@ -31,6 +32,7 @@ const Swerv = () => {
       <Testimonial {...testimonialData} />
       <Solution {...solutionData} />
       <KeyFeatures {...keyFeaturesData} />
+      <MoreCaseStudies currentSlug="swerv" />
       <ContactUs />
       <Footer />
     </>
