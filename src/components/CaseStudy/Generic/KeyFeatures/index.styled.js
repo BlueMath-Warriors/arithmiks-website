@@ -189,13 +189,13 @@ export const FadeOverlay = styled.div`
   position: absolute;
   top: 0;
   bottom: 0;
-  width: 200px;
+  width: 60px;
   pointer-events: none;
   z-index: 10;
   background: ${(props) =>
     props.side === "left"
-      ? "linear-gradient(to right, #E6EEFC 0%, rgba(230, 238, 252, 0) 100%)"
-      : "linear-gradient(to left, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%)"};
+      ? "linear-gradient(to right, rgba(230, 238, 252, 0.5) 0%, rgba(230, 238, 252, 0) 100%)"
+      : "linear-gradient(to left, rgba(230, 238, 252, 0.5) 0%, rgba(230, 238, 252, 0) 100%)"};
   ${(props) => (props.side === "left" ? "left: 0;" : "right: 0;")}
 
   @media screen and (max-width: ${breakpoints.large}) {
@@ -243,8 +243,6 @@ export const CarouselSlide = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 8px;
-  overflow: hidden;
 
   @media screen and (max-width: ${breakpoints.large}) {
     min-width: 500px;
@@ -258,20 +256,21 @@ export const CarouselSlide = styled.div`
 
 export const DashboardImage = styled.img`
   width: 684px;
-  height: 573px;
-  object-fit: cover;
+  height: 500px;
+  object-fit: contain;
   display: block;
+  border-radius: 12px;
 
   @media screen and (max-width: ${breakpoints.large}) {
     width: 500px;
-    height: 418px;
+    height: 380px;
   }
 
   @media screen and (max-width: ${breakpoints.medium}) {
     width: 100%;
-    max-width: 100%;
+    max-width: calc(100vw - 32px);
     height: auto;
-    aspect-ratio: 684 / 573;
+    min-height: 250px;
   }
 `;
 

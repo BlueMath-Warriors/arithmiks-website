@@ -425,7 +425,7 @@ button {
 }
 
 .easybar_key_features {
-  background: linear-gradient(to right, #E6EEFC 0%, #FFFFFF 100%);
+  background: linear-gradient(to bottom, #E6EEFC 0%, #FFFFFF 50%);
   height: auto;
   display: flex;
   justify-content: center;
