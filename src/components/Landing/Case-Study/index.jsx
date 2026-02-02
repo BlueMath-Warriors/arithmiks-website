@@ -100,7 +100,7 @@ const CaseStudy = ({ landing = false }) => {
       tag: "Machine Learning",
       title: "AI-Powered Marketing Automation Platform",
       description: "An AI-powered platform that automates digital marketing—handling content, publishing, and ads to help agencies grow.",
-      hasDetailPage: false,
+      hasDetailPage: true,
     },
     {
       slug: "ofertas",
