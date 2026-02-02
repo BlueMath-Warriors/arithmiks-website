@@ -1,54 +1,40 @@
 import React from "react";
-import * as containerStyles from "../../../styles/global.module.css";
 import ContactUs from "../../Landing/Contact-Us";
 import Footer from "../../Landing/Footer";
 import Header from "../../Landing/Header";
-import EasyBarOverView from "./OverView";
-import EasybarTestimonial from "./Testimonial";
-import EasybarSolution from "./Solution";
-import EasybarKeyFeatures from "./KeyFeatures";
+
 import {
-  HeroContent,
-  SmallTxt,
-  StudyTitle,
-  StudyCaption,
-  MoreButton,
-  HeroImg,
-  HeroShade,
-} from "./index.styled";
-import BtnArrow from "../../../images/arrow-right-blue.svg";
-import HeroImage from "../../../images/easybar-hero.png";
-const EasyBar = () => {
+  Hero,
+  TechStack,
+  Overview,
+  Testimonial,
+  Solution,
+  KeyFeatures,
+} from "../Generic";
+
+import {
+  heroData,
+  techStackData,
+  overviewData,
+  testimonialData,
+  solutionData,
+  keyFeaturesData,
+} from "./data";
+
+const Easybar = () => {
   return (
     <>
       <Header />
-      <div className={containerStyles.easybar_hero}>
-        <HeroContent>
-          <SmallTxt>Web Application</SmallTxt>
-          <StudyTitle>Easybar</StudyTitle>
-          <StudyCaption>Marketplace for Rebars</StudyCaption>
-          <MoreButton 
-            onClick={() => {
-              document
-                .getElementById("contact-form")
-                .scrollIntoView({ behavior: "smooth" });
-            }}>
-            Tell Us More <BtnArrow />
-          </MoreButton>
-          <div style={{ position: "relative" }}>
-            <HeroImg src={HeroImage} />
-          </div>
-        </HeroContent>
-        <HeroShade />
-      </div>
-      <EasyBarOverView />
-      <EasybarTestimonial />
-      <EasybarSolution />
-      <EasybarKeyFeatures />
+      <Hero {...heroData} />
+      <TechStack {...techStackData} />
+      <Overview {...overviewData} />
+      <Testimonial {...testimonialData} />
+      <Solution {...solutionData} />
+      <KeyFeatures {...keyFeaturesData} />
       <ContactUs />
       <Footer />
     </>
   );
 };
 
-export default EasyBar;
+export default Easybar;

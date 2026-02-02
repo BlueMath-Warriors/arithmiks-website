@@ -1,16 +1,9 @@
 import * as React from "react";
-import EasyBar from "../../components/CaseStudy/Easybar"
+import Easybar from "../../components/CaseStudy/Easybar";
 import { SEO } from "../../components/seo";
-const IndexPage = () => {
-  return (
-    <EasyBar/>
-  );
-};
 
-export default IndexPage;
+const EasybarPage = () => <Easybar />;
 
-export const Head = () => (
-  <SEO
-    title={"Easybar - Arithmiks"}
-  />
-);
+export default EasybarPage;
+
+export const Head = () => <SEO title={"Easybar - Arithmiks"} />;
