@@ -29,6 +29,7 @@ import LfgoDashboardImg from "../../../images/lfgoDashboard.svg";
 import EhhDashboardImg from "../../../images/ehhDashboard.svg";
 import GoDashboardImg from "../../../images/goDashboard.svg";
 import OfertasDashboardImg from "../../../images/ofertasDashboard.svg";
+import HakroDashboardImg from "../../../images/hakroDashboard.svg";
 
 const CaseStudy = ({ landing = false }) => {
   const caseStudies = [
@@ -110,6 +111,16 @@ const CaseStudy = ({ landing = false }) => {
       tag: "Affiliation Market",
       title: "Community-Driven Deal & Coupon Discovery Platform",
       description: "Platform showcasing the best affiliate deals and offers to help users save more and shop smarter.",
+      hasDetailPage: true,
+    },
+    {
+      slug: "hakro",
+      dashboardImg: HakroDashboardImg,
+      logo: "/hakro.svg",
+      logoAlt: "HAKRO",
+      tag: "E-Commerce",
+      title: "Embedded E-commerce Platform for Seller Networks",
+      description: "Platform enabling dealers to buy bulk products directly from website sessions.",
       hasDetailPage: true,
     },
   ];
