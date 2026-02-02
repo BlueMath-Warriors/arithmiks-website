@@ -110,7 +110,7 @@ const CaseStudy = ({ landing = false }) => {
       tag: "Affiliation Market",
       title: "Community-Driven Deal & Coupon Discovery Platform",
       description: "Platform showcasing the best affiliate deals and offers to help users save more and shop smarter.",
-      hasDetailPage: false,
+      hasDetailPage: true,
     },
   ];
 
