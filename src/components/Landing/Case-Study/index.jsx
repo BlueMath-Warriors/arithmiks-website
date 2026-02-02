@@ -70,7 +70,7 @@ const CaseStudy = ({ landing = false }) => {
       tag: "Software",
       title: "Automates rebar design and ordering",
       description: "Easybar lets buyers design iron bars and suppliers print the orders for automated production.",
-      hasDetailPage: false,
+      hasDetailPage: true,
     },
     {
       slug: "lfgo",

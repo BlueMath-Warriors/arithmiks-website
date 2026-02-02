@@ -272,6 +272,16 @@ button {
   background-repeat: no-repeat;
 }
 
+.left {
+  --easybar-layout-side: left;
+}
+.right {
+  --easybar-layout-side: right;
+}
+.easybar_feature_right {
+  --easybar-feature-right: 1;
+}
+
 .easybar_overview.right {
   background-image: url(../images/gradiants/gradient-right.png);
   background-position: right bottom;
