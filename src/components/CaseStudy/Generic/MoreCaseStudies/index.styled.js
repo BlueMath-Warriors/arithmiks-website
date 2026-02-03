@@ -1,4 +1,5 @@
 import { styled } from "styled-components";
+import { Link } from "gatsby";
 import { breakpoints } from "../../../Landing/index.styled";
 
 export const Section = styled.section`
@@ -61,7 +62,7 @@ export const DividerLine = styled.div`
 export const Heading = styled.p`
   margin: 0;
   color: #858585;
-  font-family: Inter;
+  font-family: Poppins;
   font-size: 14px;
   font-style: normal;
   font-weight: 600;
@@ -168,7 +169,7 @@ export const CaseStudyTag = styled.span`
   background: #f5f5f5;
   border-radius: 6px;
   color: #1d1d1f;
-  font-family: Inter;
+  font-family: Poppins;
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
@@ -177,7 +178,7 @@ export const CaseStudyTag = styled.span`
 
 export const CaseStudyTitle = styled.h3`
   color: #1d1d1f;
-  font-family: Inter;
+  font-family: Poppins;
   font-size: 24px;
   font-style: normal;
   font-weight: 700;
@@ -198,7 +199,7 @@ export const CaseStudyTitle = styled.h3`
 
 export const CaseStudyDescription = styled.p`
   color: #42526b;
-  font-family: Inter;
+  font-family: Poppins;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -238,7 +239,48 @@ export const ViewMoreButton = styled.button`
   transition: box-shadow 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
 
   color: #0957de;
-  font-family: Inter;
+  font-family: Poppins;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: -0.09px;
+
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0px 8px 24px rgba(7, 9, 13, 0.08);
+  }
+`;
+
+export const CardLink = styled(Link)`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    opacity: 0.92;
+  }
+`;
+
+export const ViewMoreButtonLink = styled(Link)`
+  display: inline-flex;
+  padding: 12px 18px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  border: 1px solid #ceddf8;
+  background: #ceddf8;
+  cursor: pointer;
+  text-decoration: none;
+  transition: box-shadow 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
+
+  color: #0957de;
+  font-family: Poppins;
   font-size: 14px;
   font-style: normal;
   font-weight: 600;

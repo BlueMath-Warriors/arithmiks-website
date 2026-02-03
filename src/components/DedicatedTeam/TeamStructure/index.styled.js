@@ -4,7 +4,7 @@ import { breakpoints } from "../../Landing/index.styled";
 export const PrimaryText = styled.h2`
   color: rgba(0, 0, 0, 0.87);
   text-align: center;
-  font-family: DM Sans;
+  font-family: Poppins;
   font-size: 48px;
   font-style: normal;
   font-weight: 700;

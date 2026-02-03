@@ -85,7 +85,7 @@ export const generateContactResponseEmail = (formData, firstName) => {
         }
         .thanks-text p{
             color: #384860;
-            font-family: Inter;
+            font-family: Poppins;
             font-size: 16px;
             font-style: normal;
             font-weight: 400;
@@ -173,7 +173,7 @@ export const generateContactResponseEmail = (formData, firstName) => {
 
         .footer-text{
         color: #202B3C;
-        font-family: Inter;
+        font-family: Poppins;
         font-size: 16px;
         font-style: normal;
         font-weight: 400;

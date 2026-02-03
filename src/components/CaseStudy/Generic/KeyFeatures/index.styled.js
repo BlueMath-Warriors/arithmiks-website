@@ -48,7 +48,7 @@ export const SubHeadingContainer = styled.div`
 
 export const KeyFeaturesLabel = styled.p`
   color: #0957DE;
-  font-family: Inter;
+  font-family: Poppins;
   font-size: 14px;
   font-style: normal;
   font-weight: 600;
@@ -86,7 +86,7 @@ export const Secondary = styled.span`
 export const SubHeading = styled.p`
   color: #42526B;
   text-align: left;
-  font-family: Inter;
+  font-family: Poppins;
   font-size: 18px;
   font-style: normal;
   font-weight: 400;

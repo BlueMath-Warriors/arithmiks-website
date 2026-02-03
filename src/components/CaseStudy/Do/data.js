@@ -11,7 +11,7 @@ export const heroData = {
       more and shop smarter.
     </>
   ),
-  heroImageSrc: "/d&oMemorandum.svg",
+  heroImageSrc: "/d&oMemorandum.png",
   heroImageAlt: "D&O Memorandum",
 };
 
@@ -38,7 +38,7 @@ export const overviewData = {
   ),
   detail:
     "A platform that helps users discover, share, and manage verified deals and coupons through a centralized, community-driven marketplace experience.",
-  imageSrc: "/d&oFinancialSummary.svg",
+  imageSrc: "/d&oFinancialSummary.png",
   problemData: {
     title: "The Problem",
     text: "Deal discovery relied on fragmented, unreliable sources, while admins struggled to effectively moderate user submissions at scale. The platform solves this by centralizing deals, community validation, and structured approval workflows into one trusted system.",
@@ -86,43 +86,43 @@ export const keyFeaturesData = {
       title: "1. Deal & Coupon Discovery (Hot, Trending, Personalized)",
       description:
         "Easily discover the best deals through hot picks, trending offers, and personalized recommendations.",
-      image: "/D&O Key Features/d&oKeyFeature1.svg",
+      image: "/D&O Key Features/d&oKeyFeature1.png",
     },
     {
       title: "2. User-submitted Deals, Coupons & Store Suggestions",
       description:
         "Allow users to submit new deals, coupons, and suggest stores to expand the platform organically.",
-      image: "/D&O Key Features/d&oKeyFeature2.svg",
+      image: "/D&O Key Features/d&oKeyFeature2.png",
     },
     {
       title: "3. Role-based Access Control (Guest, User, Admin)",
       description:
         "Control platform access and actions based on clearly defined user roles and permissions.",
-      image: "/D&O Key Features/d&oKeyFeature3.svg",
+      image: "/D&O Key Features/d&oKeyFeature3.png",
     },
     {
       title: "4. Deal Lifecycle Management with Expiration Handling",
       description:
         "Automatically manage deal statuses with expiry tracking to ensure only valid offers are shown.",
-      image: "/D&O Key Features/d&oKeyFeature4.svg",
+      image: "/D&O Key Features/d&oKeyFeature4.png",
     },
     {
       title: "5. Community Engagement (Likes, Dislikes, Comments, Ratings)",
       description:
         "Enable users to interact with deals and help surface the most valuable offers through feedback.",
-      image: "/D&O Key Features/d&oKeyFeature5.svg",
+      image: "/D&O Key Features/d&oKeyFeature5.png",
     },
     {
       title: "6. Wishlist & Notification System",
       description:
         "Let users save favorite deals and receive alerts when prices drop or new offers appear.",
-      image: "/D&O Key Features/d&oKeyFeature6.svg",
+      image: "/D&O Key Features/d&oKeyFeature6.png",
     },
     {
       title: "7. Strong Admin Moderation & Approval Workflows",
       description:
         "Empower admins to review, approve, edit, or reject submissions to maintain quality and trust.",
-      image: "/D&O Key Features/d&oKeyFeature7.svg",
+      image: "/D&O Key Features/d&oKeyFeature7.png",
     },
   ],
   leftIconSrc: "/leftIcon.svg",

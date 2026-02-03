@@ -7,7 +7,7 @@ export const SmallTxt = styled.p`
   font-variant-numeric: stacked-fractions;
   font-feature-settings: 'cv09' on, 'cv04' on, 'ss01' on, 'cv03' on, 'ss03' on, 'cv06' on;
   /* Content/Subheading */
-  font-family: Inter;
+  font-family: Poppins;
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
@@ -50,7 +50,7 @@ export const SecondaryColor = styled.span`
 export const DescriptionText = styled.p`
   color: #42526B;
   text-align: center;
-  font-family: Inter;
+  font-family: Poppins;
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
@@ -152,7 +152,7 @@ export const BackImage = styled.div`
 
 export const LeftCardHeader = styled.h3`
   color: #fff;
-  font-family: Inter;
+  font-family: Poppins;
   font-size: 36px;
   font-style: normal;
   font-weight: 700;
@@ -220,7 +220,7 @@ export const CardContent = styled.div`
 
 export const Caption = styled.h1`
   color: #fff;
-  font-family: Inter;
+  font-family: Poppins;
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
@@ -232,7 +232,7 @@ export const Caption = styled.h1`
 
 export const ContentText = styled.p`
   color: #fff;
-  font-family: Inter;
+  font-family: Poppins;
   font-size: ${(props) => (props.medium ? "16px" : "20px")};
   font-style: normal;
   font-weight: 400;
@@ -280,7 +280,7 @@ export const FooterLine = styled.div`
 
 export const FooterText = styled.p`
   color: #fff;
-  font-family: Inter;
+  font-family: Poppins;
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
@@ -330,7 +330,7 @@ export const LinkedInIconWrapper = styled.div`
 
 export const LinkedInButtonText = styled.span`
   color: #0957DE;
-  font-family: Inter;
+  font-family: Poppins;
   font-size: 16px;
   font-style: normal;
   font-weight: 500;

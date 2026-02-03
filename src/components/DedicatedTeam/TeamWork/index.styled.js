@@ -4,7 +4,7 @@ import { breakpoints } from "../../Landing/index.styled";
 export const PrimaryText = styled.h2`
   color: rgba(0, 0, 0, 0.87);
   text-align: center;
-  font-family: DM Sans;
+  font-family: Poppins;
   font-size: 48px;
   font-style: normal;
   font-weight: 700;
@@ -43,7 +43,7 @@ export const StepText = styled.p`
   color: #1F2937;
   text-align: center;
 
-  font-family: Inter;
+  font-family: Poppins;
   font-size: 16px;
   font-style: normal;
   font-weight: 600;
@@ -53,7 +53,7 @@ export const StepText = styled.p`
   @media screen and (max-width: ${breakpoints.medium}) {
     color: var(--gray-800, #1F2937);
     text-align: center;
-    font-family: Inter;
+    font-family: Poppins;
     font-size: 10px;
     font-style: normal;
     font-weight: 600;
@@ -71,7 +71,7 @@ export const Circle = styled.div`
   background: #3B82F6;
   color: #fff;
 
-  font-family: Inter;
+  font-family: Poppins;
   font-size: 14px;
   font-style: normal;
   font-weight: 600;
@@ -149,7 +149,7 @@ export const BoxText = styled.p`
   color: ${props => (props.white ? '#FFF' : '#040815')};
   text-align: center;
 
-  font-family: Plus Jakarta Sans;
+  font-family: Poppins;
   font-size: 24px;
   font-style: normal;
   font-weight: 600;

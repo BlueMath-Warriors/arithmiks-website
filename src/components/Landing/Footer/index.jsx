@@ -151,7 +151,7 @@ const Footer = () => {
           <Link divider>Terms & Conditions</Link>
           <Link>Cookie Policy</Link>
         </FooterLinks>
-        <CopyRightText>© arithmiks 2025</CopyRightText>
+        <CopyRightText>© Arithmiks {new Date().getFullYear()}</CopyRightText>
       </FooterBottom>
     </footer>
   );

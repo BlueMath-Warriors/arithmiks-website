@@ -11,7 +11,7 @@ export const heroData = {
       and Solana with seamless minting and wallet.
     </>
   ),
-  heroImageSrc: "/lfgoMemorandum.svg",
+  heroImageSrc: "/lfgoMemorandum.png",
   heroImageAlt: "LFGO Memorandum",
 };
 
@@ -37,7 +37,7 @@ export const overviewData = {
   ),
   detail:
     "LFGO is a Web3 platform that simplifies creating, launching, and trading custom tokens across multiple blockchains through an intuitive, guided experience.",
-  imageSrc: "/lfgoFinancialSummary.svg",
+  imageSrc: "/lfgoFinancialSummary.png",
   problemData: {
     title: "The Problem",
     text: "Token creation and trading required complex, fragmented tools and deep technical knowledge, limiting accessibility and efficiency. LFGO addresses this by unifying minting, management, and marketplace trading into one easy-to-use, cross-chain platform.",
@@ -85,31 +85,31 @@ export const keyFeaturesData = {
       title: "1. Multi-Chain Token Creation:",
       description:
         "Seamless minting and trading on Ethereum and Solana blockchains.",
-      image: "/Lfgo Key Features/lfgoKeyFeature1.svg",
+      image: "/Lfgo Key Features/lfgoKeyFeature1.png",
     },
     {
       title: "2. Real-Time NFT Marketplace",
       description:
         "Discover NFT prices, new drops, and liquidity updates in real time, powered by WebSocket streaming.",
-      image: "/Lfgo Key Features/lfgoKeyFeature2.svg",
+      image: "/Lfgo Key Features/lfgoKeyFeature2.png",
     },
     {
       title: "3. One Dashboard, Any Wallet",
       description:
         "Connect MetaMask or Phantom to manage all your multi-chain assets from one dashboard.",
-      image: "/Lfgo Key Features/lfgoKeyFeature3.svg",
+      image: "/Lfgo Key Features/lfgoKeyFeature3.png",
     },
     {
       title: "4. Fail-Safe Token Launches",
       description:
         "Missed liquidity goals? Users get automatic or on-demand refunds.",
-      image: "/Lfgo Key Features/lfgoKeyFeature4.svg",
+      image: "/Lfgo Key Features/lfgoKeyFeature4.png",
     },
     {
       title: "5. Smart Reward Contracts",
       description:
         "Automated contracts validate requirements, apply boosts, and convert rewards into platform tokens.",
-      image: "/Lfgo Key Features/lfgoKeyFeature5.svg",
+      image: "/Lfgo Key Features/lfgoKeyFeature5.png",
     },
   ],
   leftIconSrc: "/leftIcon.svg",

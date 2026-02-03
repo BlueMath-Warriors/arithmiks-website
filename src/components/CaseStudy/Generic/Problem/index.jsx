@@ -21,7 +21,14 @@ const Problem = ({
   return (
     <ProblemSection>
       <ProblemFrame>
-        <img src={frameImageSrc} alt="Problem Frame" />
+        <img 
+          src={frameImageSrc} 
+          alt={`Visual representation of ${title}`}
+          width={600}
+          height={400}
+          loading="lazy"
+          style={{ width: '100%', height: 'auto' }}
+        />
         <ProblemContent>
           <ProblemTitle>{title}</ProblemTitle>
           <ProblemText>{text}</ProblemText>

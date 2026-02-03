@@ -1,11 +1,11 @@
-import React, { useRef, useState, useEffect } from "react";
-import { navigate, Link } from "gatsby";
+import React, { useRef, useState, useEffect, useCallback } from "react";
+import { Link } from "gatsby";
 import {
   CtaBtn,
   Headerr,
   HeaderContainer,
   Menu,
-  MenuItem,
+  MenuItemLink,
   CompanyLogo,
   LogoText,
   LogoIcon,
@@ -18,6 +18,7 @@ import {
   ServiceHeader,
   ServiceText,
   TwoRows,
+  ServiceMenuItem,
 } from "./index.styled";
 import MenuIcon from "../../../images/hamburger_icon.svg";
 import DownArrow from "../../../images/header-arrow-down.svg";
@@ -77,15 +78,15 @@ const Header = ({ white, fixed_bar }) => {
   const [heroHeight, setHeroHeight] = useState(840);
   const [isFixed, setIsFixed] = useState(false);
   const [hideNav, setHideNav] = useState(false);
-  const [isSmallScreen, setIsSmallScreen] = useState(false);
 
-  const closeMenu = () => {
+  const closeMenu = useCallback(() => {
     if (navMenu && navMenu.current) {
       navMenu.current.classList.remove("active");
     }
     setShowMenu(false);
-  };
-  const handleClickOutside = (event) => {
+  }, []);
+
+  const handleClickOutside = useCallback((event) => {
     if (
       showServices &&
       servicesRef.current &&
@@ -106,9 +107,9 @@ const Header = ({ white, fixed_bar }) => {
         menuButtonRef.current.contains(event.target)
       )
     ) {
-      closeMenu(false);
+      closeMenu();
     }
-  };
+  }, [showServices, showMenu, heroHeight, closeMenu]);
 
   useEffect(() => {
     if (showServices || showMenu) {
@@ -119,11 +120,15 @@ const Header = ({ white, fixed_bar }) => {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [showServices, showMenu]);
+  }, [showServices, showMenu, handleClickOutside]);
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      const handleWindowResize = () => {
+    if (typeof window === "undefined") return;
+    
+    let timeoutId;
+    const handleWindowResize = () => {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => {
         if (window.innerWidth > 1200) {
           setHeroHeight(840);
         } else if (window.innerWidth > 820) {
@@ -131,18 +136,21 @@ const Header = ({ white, fixed_bar }) => {
         } else {
           setHeroHeight(445);
         }
-      };
-      handleWindowResize();
+      }, 100);
+    };
+    handleWindowResize();
 
-      window.addEventListener("resize", handleWindowResize);
-      return () => {
-        window.removeEventListener("resize", handleWindowResize);
-      };
-    }
+    window.addEventListener("resize", handleWindowResize);
+    return () => {
+      clearTimeout(timeoutId);
+      window.removeEventListener("resize", handleWindowResize);
+    };
   }, []);
 
-  if (typeof window !== "undefined" && !fixed_bar) {
-    window.addEventListener("scroll", () => {
+  useEffect(() => {
+    if (typeof window === "undefined" || fixed_bar) return;
+
+    const handleScroll = () => {
       const scrollY = window.scrollY;
       if (scrollY >= heroHeight) {
         setHideNav(false);
@@ -154,10 +162,14 @@ const Header = ({ white, fixed_bar }) => {
       } else {
         setHideNav(false);
         setIsFixed(false);
-        // closeMenu();
       }
-    });
-  }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [heroHeight, fixed_bar]);
 
   return (
     <>
@@ -167,21 +179,16 @@ const Header = ({ white, fixed_bar }) => {
         hide={hideNav}
       >
         <HeaderContainer>
-          <Link href="/">
+          <Link to="/" aria-label="Go to homepage">
             <CompanyLogo>
-              <img src={logo} alt="arithmiks logo" />
+              <img src={logo} alt="Arithmiks logo" width={190} height={37} />
             </CompanyLogo>
           </Link>
           <Menu ref={navMenu}>
-            <MenuItem
-              onClick={() => {
-                closeMenu();
-                navigate("/");
-              }}
-            >
+            <MenuItemLink to="/" onClick={closeMenu}>
               Home
-            </MenuItem>
-            <MenuItem
+            </MenuItemLink>
+            <ServiceMenuItem
               ref={servicebtnRef}
               blue={showServices}
               onClick={() => {
@@ -189,39 +196,23 @@ const Header = ({ white, fixed_bar }) => {
                 navMenu.current.classList.remove("active");
                 setShowMenu(false);
               }}
+              aria-expanded={showServices}
+              aria-haspopup="true"
             >
               Services
               <DownArrow className={showServices ? "down-icon" : "up-icon"} />
-            </MenuItem>
-            <MenuItem
-              onClick={() => {
-                closeMenu();
-                navigate("/case-studies");
-              }}
-            >
+            </ServiceMenuItem>
+            <MenuItemLink to="/case-studies" onClick={closeMenu}>
               Case Studies
-            </MenuItem>
-            <MenuItem
-              onClick={() => {
-                closeMenu();
-                navigate("/company");
-              }}
-            >
+            </MenuItemLink>
+            <MenuItemLink to="/company" onClick={closeMenu}>
               Company
-            </MenuItem>
-            <MenuItem
-              hidden
-              blue
-              onClick={() => {
-                closeMenu();
-                navigate("/contact-us");
-              }}
-            >
+            </MenuItemLink>
+            <MenuItemLink to="/contact-us" onClick={closeMenu} className="mobile-only" blue="true">
               Get in Touch
-            </MenuItem>
+            </MenuItemLink>
           </Menu>
-          <CtaBtn fill href="/contact-us">
-            {" "}
+          <CtaBtn fill="true" to="/contact-us">
             <HeaderButtonTxt>Get In Touch</HeaderButtonTxt>
           </CtaBtn>
           <Hamburger
@@ -232,6 +223,8 @@ const Header = ({ white, fixed_bar }) => {
                 setShowMenu(true);
               } else setShowMenu(false);
             }}
+            aria-label="Toggle menu"
+            aria-expanded={showMenu}
           >
             <MenuIcon />
           </Hamburger>

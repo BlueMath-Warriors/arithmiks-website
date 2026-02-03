@@ -11,7 +11,7 @@ export const heroData = {
       insights for digital nomads and expats.
     </>
   ),
-  heroImageSrc: "/ehhMemorandum.svg",
+  heroImageSrc: "/ehhMemorandum.png",
   heroImageAlt: "EHH Memorandum",
 };
 
@@ -38,7 +38,7 @@ export const overviewData = {
   ),
   detail:
     "Expat Haven Hub is a lifestyle platform that helps digital nomads and expats plan, explore, and manage life abroad using centralized, personalized insights.",
-  imageSrc: "/ehhFinancialSummary.svg",
+  imageSrc: "/ehhFinancialSummary.png",
   problemData: {
     title: "The Problem",
     text: "Expats relied on fragmented sources for housing, visas, and cost-of-living data, leading to time-consuming research and inconsistent experiences. Expat Haven Hub solves this by centralizing information and enhancing engagement through personalization, AI-driven content, and gamified discovery.",
@@ -86,37 +86,37 @@ export const keyFeaturesData = {
       title: "1. Cost-of-Living Ticker",
       description:
         "A stock-ticker-inspired interface showing live cost comparisons with color-coded affordability insights.",
-      image: "/EHH Key Features/ehhKeyFeature1.svg",
+      image: "/EHH Key Features/ehhKeyFeature1.png",
     },
     {
       title: "2. Nomad Type Identifier Quiz",
       description:
         "A gamified quiz that uses AI to identify user archetypes and generate shareable result cards.",
-      image: "/EHH Key Features/ehhKeyFeature2.svg",
+      image: "/EHH Key Features/ehhKeyFeature2.png",
     },
     {
       title: "3. Personalized News Feed",
       description:
         "An AI-curated feed filtered by user preferences and archetype, with summaries and infinite scrolling.",
-      image: "/EHH Key Features/ehhKeyFeature3.svg",
+      image: "/EHH Key Features/ehhKeyFeature3.png",
     },
     {
       title: "4. Country Taxation Overview",
       description:
         "Clear, visual taxation insights across 25 countries with AI-generated summaries and comparisons.",
-      image: "/EHH Key Features/ehhKeyFeature4.svg",
+      image: "/EHH Key Features/ehhKeyFeature4.png",
     },
     {
       title: "5. Housing Aggregator",
       description:
         "A unified housing search that aggregates multiple providers and delivers personalized recommendations.",
-      image: "/EHH Key Features/ehhKeyFeature5.svg",
+      image: "/EHH Key Features/ehhKeyFeature5.png",
     },
     {
       title: "6. Visa & Residency Program Overview",
       description:
         "A searchable, AI-summarized visa catalog with comparison tools and shortlisting across 25 countries.",
-      image: "/EHH Key Features/ehhKeyFeature6.svg",
+      image: "/EHH Key Features/ehhKeyFeature6.png",
     },
   ],
   leftIconSrc: "/leftIcon.svg",

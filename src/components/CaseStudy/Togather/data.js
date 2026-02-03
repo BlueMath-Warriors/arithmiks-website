@@ -11,7 +11,7 @@ export const heroData = {
       through events, donations, and engagement.
     </>
   ),
-  heroImageSrc: "/togatherMemorandum.svg",
+  heroImageSrc: "/togatherMemorandum.png",
   heroImageAlt: "Togather Memorandum",
 };
 
@@ -45,7 +45,7 @@ export const overviewData = {
   ),
   detail:
     "Togather is a community engagement platform that helps churches and NGOs connect members, manage activities, and drive participation through a centralized digital hub.",
-  imageSrc: "/togatherFinancialSummary.svg",
+  imageSrc: "/togatherFinancialSummary.png",
   problemData: {
     title: "The Problem",
     text: "Community organizations relied on scattered tools for communication, events, and donations, resulting in low engagement and poor visibility. Togather solves this by unifying community management into one accessible and easy-to-use platform.",
@@ -93,7 +93,7 @@ export const keyFeaturesData = {
       title: "1. Member Management:",
       description:
         "Tools for adding, tracking, and communicating with members and groups.",
-      image: "/Togather Key Features/togartherKeyFeature1.svg",
+      image: "/Togather Key Features/togartherKeyFeature1.png",
     },
   ],
   leftIconSrc: "/leftIcon.svg",

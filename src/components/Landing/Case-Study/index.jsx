@@ -1,5 +1,5 @@
 import React from "react";
-import { navigate } from "gatsby";
+import { Link } from "gatsby";
 import {
   SmallTxt,
   Header,
@@ -7,10 +7,10 @@ import {
   Right,
   HeaderText,
   DescriptionText,
-  ViewButton,
+  ViewButtonLink,
   BtnIcon,
   CaseStudiesGrid,
-  NewCaseStudyCard,
+  CaseStudyCardLink,
   CaseStudyImgWrapper,
   LogoAndTagWrapper,
   CompanyLogo,
@@ -24,12 +24,6 @@ import ArrowCricleRight from "../../../images/arrow-right-circle-black.svg";
 import { caseStudies } from "./caseStudies";
 
 const CaseStudy = ({ landing = false }) => {
-  const handleCardClick = (slug, hasDetailPage) => {
-    if (hasDetailPage) {
-      navigate(`/case-studies/${slug}`);
-    }
-  };
-
   return (
     <section className={containerStyles.case_study}>
       <Header>
@@ -41,10 +35,10 @@ const CaseStudy = ({ landing = false }) => {
           </DescriptionText>
         </Left>
         <Right show={landing}>
-          <ViewButton onClick={() => navigate("/case-studies")}>
+          <ViewButtonLink to="/case-studies">
             {"View All"}
             <ArrowCricleRight />
-          </ViewButton>
+          </ViewButtonLink>
         </Right>
       </Header>
 
@@ -52,23 +46,54 @@ const CaseStudy = ({ landing = false }) => {
 
       <CaseStudiesGrid>
         {(landing ? caseStudies.slice(0, 3) : caseStudies).map((study, index) => {
-          const DashboardImg = study.dashboardImg;
+          if (study.hasDetailPage) {
+            return (
+              <CaseStudyCardLink
+                key={study.slug}
+                to={`/case-studies/${study.slug}`}
+              >
+                <CaseStudyImgWrapper>
+                  <img 
+                    src={study.dashboardImg} 
+                    alt={`${study.logoAlt} dashboard preview`}
+                    width={500}
+                    height={300}
+                    loading="lazy"
+                    style={{ width: '100%', height: 'auto' }}
+                  />
+                </CaseStudyImgWrapper>
+                <LogoAndTagWrapper>
+                  <CompanyLogo src={study.logo} alt={study.logoAlt} width={40} height={40} />
+                  <CaseStudyTag>{study.tag}</CaseStudyTag>
+                </LogoAndTagWrapper>
+                <CaseStudyTitle>{study.title}</CaseStudyTitle>
+                <CaseStudyDescription>{study.description}</CaseStudyDescription>
+              </CaseStudyCardLink>
+            );
+          }
+          
           return (
-            <NewCaseStudyCard
+            <div
               key={study.slug}
-              onClick={() => handleCardClick(study.slug, study.hasDetailPage)}
-              clickable={study.hasDetailPage}
+              style={{ cursor: 'default' }}
             >
               <CaseStudyImgWrapper>
-                <DashboardImg />
+                <img 
+                  src={study.dashboardImg} 
+                  alt={`${study.logoAlt} dashboard preview`}
+                  width={500}
+                  height={300}
+                  loading="lazy"
+                  style={{ width: '100%', height: 'auto' }}
+                />
               </CaseStudyImgWrapper>
               <LogoAndTagWrapper>
-                <CompanyLogo src={study.logo} alt={study.logoAlt} />
+                <CompanyLogo src={study.logo} alt={study.logoAlt} width={40} height={40} />
                 <CaseStudyTag>{study.tag}</CaseStudyTag>
               </LogoAndTagWrapper>
               <CaseStudyTitle>{study.title}</CaseStudyTitle>
               <CaseStudyDescription>{study.description}</CaseStudyDescription>
-            </NewCaseStudyCard>
+            </div>
           );
         })}
       </CaseStudiesGrid>

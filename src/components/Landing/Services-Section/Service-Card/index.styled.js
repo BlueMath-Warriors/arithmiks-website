@@ -64,7 +64,7 @@ export const CardIcon = styled.img`
 `;
 export const CardHeaderText = styled.h3`
   color: ${(props) => (props.white ? "#FFF" : "#1D1D1F")};
-  font-family: Urbanist;
+  font-family: Poppins;
   font-size: 32px;
   font-style: normal;
   font-weight: 600;
@@ -104,7 +104,7 @@ export const CardBodyText = styled.p`
       : props.bold
       ? "#000 !important"
       : "rgba(29, 29, 31, 0.80)"};
-  font-family: Inter;
+  font-family: Poppins;
   font-size: 24px;
   font-style: normal;
   font-weight: ${(props) => (props.bold ? "700" : "500")};

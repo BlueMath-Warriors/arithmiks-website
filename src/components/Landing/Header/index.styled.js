@@ -155,11 +155,86 @@ export const MenuItem = styled.li`
   }
 `;
 
+export const MenuItemLink = styled(Link)`
+  color: ${(props) => (props.blue === "true" ? "#1355FF" : "#170F49")};
+  font-family: Poppins;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: ${(props) => (props.blue === "true" ? "600" : "400")};
+  line-height: normal;
+  letter-spacing: -0.36px;
+  cursor: pointer;
+  text-decoration: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  
+  &:hover {
+    color: #1355FF;
+  }
+  
+  &.mobile-only {
+    display: none;
+  }
+
+  @media screen and (max-width: ${breakpoints.large}) {
+    padding-left: 24px;
+    justify-content: flex-start;
+  }
+  @media screen and (max-width: ${breakpoints.medium}) {
+    padding-left: 24px;
+    justify-content: flex-start;
+    
+    &.mobile-only {
+      display: block;
+    }
+  }
+`;
+
+export const ServiceMenuItem = styled.li`
+  color: ${(props) => (props.blue ? "#1355FF" : "#170F49")};
+  font-family: Poppins;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: ${(props) => (props.blue ? "600" : "400")};
+  line-height: normal;
+  letter-spacing: -0.36px;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+
+  @media screen and (max-width: ${breakpoints.large}) {
+    padding-left: 24px;
+    justify-content: flex-start;
+  }
+  @media screen and (max-width: ${breakpoints.medium}) {
+    padding-left: 24px;
+    justify-content: flex-start;
+  }
+
+  .down-icon {
+    transition: 0.5s all;
+    rotate: 180deg;
+    path {
+      stroke: #1355ff;
+    }
+  }
+
+  .up-icon {
+    transition: 0.5s all;
+  }
+`;
+
 export const HeaderButtonTxt = styled.p`
   color: #fff;
   text-align: center;
   font-feature-settings: "clig" off, "liga" off;
-  font-family: DM Sans;
+  font-family: Poppins;
   font-size: 15.999px;
   font-style: normal;
   font-weight: 700;
@@ -178,7 +253,7 @@ export const CtaBtn = styled(Link)`
 
   color: ${(props) => (props.fill ? "#FFF" : "#1355FF")};
   text-align: center;
-  font-family: Plus Jakarta Sans;
+  font-family: Poppins;
   font-size: 16px;
   font-style: normal;
   font-weight: 600;
@@ -272,7 +347,7 @@ export const ServiceRow = styled.div`
 `;
 export const ServiceHeader = styled.h2`
   color: #111928;
-  font-family: Inter;
+  font-family: Poppins;
   font-size: 16px;
   font-style: normal;
   font-weight: 600;
@@ -281,7 +356,7 @@ export const ServiceHeader = styled.h2`
 
 export const ServiceText = styled.p`
   color: #6b7280;
-  font-family: Inter;
+  font-family: Poppins;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;

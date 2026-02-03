@@ -11,7 +11,7 @@ export const heroData = {
       online ordering.
     </>
   ),
-  heroImageSrc: "/easybarMemorandum.svg",
+  heroImageSrc: "/easybarMemorandum.png",
   heroImageAlt: "Easybar Memorandum",
 };
 
@@ -40,7 +40,7 @@ export const overviewData = {
   ),
   detail:
     "EasyBar is a web-based platform that digitizes and automates the design, quotation, and ordering of iron rebars, connecting buyers and vendors in one streamlined workflow.",
-  imageSrc: "/easybarFinancialSummary.svg",
+  imageSrc: "/easybarFinancialSummary.png",
   problemData: {
     title: "The Problem",
     text: "Rebar procurement relied on manual, fragmented processes that caused delays, limited design flexibility, and poor coordination between buyers and vendors. EasyBar solves this by centralizing sketches, quotations, and orders into a single, efficient digital system.",
@@ -88,7 +88,7 @@ export const keyFeaturesData = {
       title: "1. Dynamic Bar, Net, and Cage Design Tools:",
       description:
         "2D sketch editor with adjustable parameters for precision and speed.",
-      image: "/Easybar Key Features/easybarKeyFeature1.svg",
+      image: "/Easybar Key Features/easybarKeyFeature1.png",
     },
   ],
   leftIconSrc: "/leftIcon.svg",
