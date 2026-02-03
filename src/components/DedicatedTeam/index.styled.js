@@ -91,7 +91,7 @@ export const MoreButton = styled.button`
   background: #0B63E5;
 
   color: #FFF;
-  font-family: Inter;
+  font-family: Poppins;
   font-size: 16px;
   font-style: normal;
   font-weight: 700;

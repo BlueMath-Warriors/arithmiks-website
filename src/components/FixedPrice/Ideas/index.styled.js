@@ -26,7 +26,7 @@ export const SectionHeader = styled.div`
 export const PrimaryText = styled.h2`
   color: #040815;
 
-  font-family: Plus Jakarta Sans;
+  font-family: Poppins;
   font-size: 40px;
   font-style: normal;
   font-weight: 700;
@@ -40,7 +40,7 @@ export const Secondary = styled.span`
 
 export const Caption = styled.p`
   color: #596780;
-  font-family: Plus Jakarta Sans;
+  font-family: Poppins;
   font-size: 20px;
   font-style: normal;
   font-weight: 400;
@@ -87,7 +87,7 @@ export const Card = styled.div`
 
 export const CardTitle = styled.h3`
   color: #040815;
-  font-family: Plus Jakarta Sans;
+  font-family: Poppins;
   font-size: 24px;
   font-style: normal;
   font-weight: 600;
@@ -102,7 +102,7 @@ export const List = styled.ul`
 `
 export const ListItem = styled.li`  
   color: #596780;
-  font-family: Plus Jakarta Sans;
+  font-family: Poppins;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;

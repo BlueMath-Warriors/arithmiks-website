@@ -94,7 +94,7 @@ export const ProblemTitle = styled.h2`
 
 export const ProblemText = styled.p`
   color: #42526B;
-  font-family: Inter;
+  font-family: Poppins;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;

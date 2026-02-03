@@ -11,7 +11,7 @@ export const heroData = {
       documents, tracking, and communication.
     </>
   ),
-  heroImageSrc: "/sbaloansMemorandum.svg",
+  heroImageSrc: "/sbaloansMemorandum.png",
   heroImageAlt: "Sbaloans Memorandum",
 };
 
@@ -40,7 +40,7 @@ export const overviewData = {
   ),
   detail:
     "SBA Loans HQ is a SaaS platform that centralizes loan consulting workflows, giving brokers and clients a fast, organized, and transparent way to manage small business loan applications.",
-  imageSrc: "/sbaloansFinancialSummary.svg",
+  imageSrc: "/sbaloansFinancialSummary.png",
   problemData: {
     title: "The Problem",
     text: "Traditional loan processing is scattered across emails, spreadsheets, and separate storage tools, leading to lost documents, miscommunication, and slow approvals. SBA Loans HQ solves this by unifying the entire workflow into one efficient digital system.",
@@ -88,37 +88,37 @@ export const keyFeaturesData = {
       title: "1. Lead and Deal Management:",
       description:
         "Unified dashboard for tracking loan applications and client progress.",
-      image: "/Sba Key Features/sbaKeyFeature1.svg",
+      image: "/Sba Key Features/sbaKeyFeature1.png",
     },
     {
       title: "2. User Management:",
       description:
         "Easily manage roles, permissions, and access levels for lenders, brokers, and internal teams.",
-      image: "/Sba Key Features/sbaKeyFeature2.svg",
+      image: "/Sba Key Features/sbaKeyFeature2.png",
     },
     {
       title: "3. Chat System:",
       description:
         "Enable secure, real-time communication between applicants and loan officers to speed up decision-making.",
-      image: "/Sba Key Features/sbaKeyFeature3.svg",
+      image: "/Sba Key Features/sbaKeyFeature3.png",
     },
     {
       title: "4. Memorandum Section:",
       description:
         "Enable secure, real-time communication between applicants and loan officers to speed up decision-making.",
-      image: "/Sba Key Features/sbaKeyFeature4.svg",
+      image: "/Sba Key Features/sbaKeyFeature4.png",
     },
     {
       title: "5. Lead Filtering and Scoring:",
       description:
         "Prioritize high-quality applicants using intelligent scoring based on eligibility, financial strength, and readiness.",
-      image: "/Sba Key Features/sbaKeyFeature5.svg",
+      image: "/Sba Key Features/sbaKeyFeature5.png",
     },
     {
       title: "6. AI-Generated Reports:",
       description:
         "Automatically generate SBA-documents reports with insights, summaries, and analysis in seconds.",
-      image: "/Sba Key Features/sbaKeyFeature6.svg",
+      image: "/Sba Key Features/sbaKeyFeature6.png",
     },
   ],
   leftIconSrc: "/leftIcon.svg",

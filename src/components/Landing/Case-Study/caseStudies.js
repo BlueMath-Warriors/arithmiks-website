@@ -1,17 +1,17 @@
-import SwervDashboardImg from "../../../images/swervDashboard.svg";
-import TogatherDashboardImg from "../../../images/togatherDashboard.svg";
-import SbaloansDashboardImg from "../../../images/sbaloansDashboard.svg";
-import EasybarDashboardImg from "../../../images/easybarDashboard.svg";
-import LfgoDashboardImg from "../../../images/lfgoDashboard.svg";
-import EhhDashboardImg from "../../../images/ehhDashboard.svg";
-import GoDashboardImg from "../../../images/goDashboard.svg";
-import OfertasDashboardImg from "../../../images/ofertasDashboard.svg";
-import HakroDashboardImg from "../../../images/hakroDashboard.svg";
+import swervDashboard from "../../../images/swervDashboard.png";
+import togatherDashboard from "../../../images/togatherDashboard.png";
+import sbaloansDashboard from "../../../images/sbaloansDashboard.png";
+import easybarDashboard from "../../../images/easybarDashboard.png";
+import lfgoDashboard from "../../../images/lfgoDashboard.png";
+import ehhDashboard from "../../../images/ehhDashboard.png";
+import goDashboard from "../../../images/goDashboard.png";
+import ofertasDashboard from "../../../images/ofertasDashboard.png";
+import hakroDashboard from "../../../images/hakroDasboard.png";
 
 export const caseStudies = [
   {
     slug: "swerv",
-    dashboardImg: SwervDashboardImg,
+    dashboardImg: swervDashboard,
     logo: "/swerv.svg",
     logoAlt: "Swerv Automotive",
     tag: "SaaS",
@@ -22,7 +22,7 @@ export const caseStudies = [
   },
   {
     slug: "togather",
-    dashboardImg: TogatherDashboardImg,
+    dashboardImg: togatherDashboard,
     logo: "/togather.svg",
     logoAlt: "Togather",
     tag: "Software",
@@ -33,7 +33,7 @@ export const caseStudies = [
   },
   {
     slug: "sbaloans",
-    dashboardImg: SbaloansDashboardImg,
+    dashboardImg: sbaloansDashboard,
     logo: "/sbaloans.svg",
     logoAlt: "sbaloansHQ",
     tag: "SaaS",
@@ -44,7 +44,7 @@ export const caseStudies = [
   },
   {
     slug: "easybar",
-    dashboardImg: EasybarDashboardImg,
+    dashboardImg: easybarDashboard,
     logo: "/easybar.svg",
     logoAlt: "EASY-BAR",
     tag: "Software",
@@ -55,7 +55,7 @@ export const caseStudies = [
   },
   {
     slug: "lfgo",
-    dashboardImg: LfgoDashboardImg,
+    dashboardImg: lfgoDashboard,
     logo: "/lfgo.svg",
     logoAlt: "LFGO",
     tag: "Web3",
@@ -66,7 +66,7 @@ export const caseStudies = [
   },
   {
     slug: "expat",
-    dashboardImg: EhhDashboardImg,
+    dashboardImg: ehhDashboard,
     logo: "/ehh.svg",
     logoAlt: "Expat Haven Hub",
     tag: "Web App",
@@ -77,7 +77,7 @@ export const caseStudies = [
   },
   {
     slug: "go",
-    dashboardImg: GoDashboardImg,
+    dashboardImg: goDashboard,
     logo: "/go.svg",
     logoAlt: "GO",
     tag: "Machine Learning",
@@ -88,7 +88,7 @@ export const caseStudies = [
   },
   {
     slug: "ofertas",
-    dashboardImg: OfertasDashboardImg,
+    dashboardImg: ofertasDashboard,
     logo: "/ofertas.svg",
     logoAlt: "Ofertas",
     tag: "Affiliation Market",
@@ -99,7 +99,7 @@ export const caseStudies = [
   },
   {
     slug: "hakro",
-    dashboardImg: HakroDashboardImg,
+    dashboardImg: hakroDashboard,
     logo: "/hakro.svg",
     logoAlt: "HAKRO",
     tag: "E-Commerce",

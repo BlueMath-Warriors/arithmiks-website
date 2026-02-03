@@ -65,7 +65,7 @@ export const Logo = styled.img`
 export const CompanyName = styled.h1`
   color: #1A202C;
   text-align: justify;
-  font-family: Space Grotesk;
+  font-family: Poppins;
   font-size: 24px;
   font-style: normal;
   font-weight: 700;
@@ -75,7 +75,7 @@ export const CompanyName = styled.h1`
 `
 export const Heading = styled.p`
   color: #1A202C;
-  font-family: Plus Jakarta Sans;
+  font-family: Poppins;
   font-size: 20px;
   font-style: normal;
   font-weight: 600;
@@ -98,7 +98,7 @@ export const Heading = styled.p`
 
 export const Text = styled.a`
   color: #596780;
-  font-family: Plus Jakarta Sans;
+  font-family: Poppins;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -107,7 +107,7 @@ export const Text = styled.a`
   cursor: pointer;
   @media screen and (max-width: ${breakpoints.large}) {
     color: #596780;
-    font-family: Plus Jakarta Sans;
+    font-family: Poppins;
     font-size: 14px;
     font-style: normal;
     font-weight: 400;
@@ -123,7 +123,7 @@ export const Text = styled.a`
 
 export const Moto = styled.p`
   color: #596780;
-  font-family: Plus Jakarta Sans;
+  font-family: Poppins;
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
@@ -262,7 +262,7 @@ export const ContactInfoContainer = styled.div`
 
 export const FooterCaption = styled.h1`
   color: #1A202C;
-  font-family: Inter;
+  font-family: Poppins;
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
@@ -273,7 +273,7 @@ export const FooterCaption = styled.h1`
 
 export const FooterContentText = styled.p`
   color: #596780;
-  font-family: Inter;
+  font-family: Poppins;
   font-size: ${(props) => (props.medium ? "14px" : "16px")};
   font-style: normal;
   font-weight: 400;
@@ -345,7 +345,7 @@ export const FooterLinks = styled.div`
 
 export const Link = styled.a`
   color:#1A202C;
-  font-family: Plus Jakarta Sans;
+  font-family: Poppins;
   font-size: 18px;
   font-style: normal;
   font-weight: 600;
@@ -387,7 +387,7 @@ export const CopyRightText = styled.p`
   color: #596780;
   text-align: right;
 
-  font-family: Plus Jakarta Sans;
+  font-family: Poppins;
   font-size: 16px;
   font-style: normal;
   font-weight: 500;

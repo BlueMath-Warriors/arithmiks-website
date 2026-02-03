@@ -1,5 +1,4 @@
 import React, { useMemo } from "react";
-import { navigate } from "gatsby";
 import { caseStudies } from "../../../Landing/Case-Study/caseStudies";
 
 import {
@@ -9,7 +8,7 @@ import {
   DividerLine,
   Heading,
   CardsGrid,
-  Card,
+  CardLink,
   CaseStudyImgWrapper,
   LogoAndTagWrapper,
   CompanyLogo,
@@ -17,7 +16,7 @@ import {
   CaseStudyTitle,
   CaseStudyDescription,
   ButtonRow,
-  ViewMoreButton,
+  ViewMoreButtonLink,
 } from "./index.styled";
 
 const getNextTwoCaseStudies = (currentSlug) => {
@@ -54,37 +53,36 @@ const MoreCaseStudies = ({ currentSlug }) => {
 
         <CardsGrid>
           {nextTwo.map((study) => {
-            const DashboardImg = study.dashboardImg;
             return (
-              <Card
+              <CardLink
                 key={study.slug}
-                onClick={() => navigate(`/case-studies/${study.slug}`)}
-                role="link"
-                tabIndex={0}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter" || e.key === " ") {
-                    navigate(`/case-studies/${study.slug}`);
-                  }
-                }}
+                to={`/case-studies/${study.slug}`}
               >
                 <CaseStudyImgWrapper>
-                  <DashboardImg />
+                  <img 
+                    src={study.dashboardImg} 
+                    alt={`${study.logoAlt} dashboard preview`}
+                    width={500}
+                    height={300}
+                    loading="lazy"
+                    style={{ width: '100%', height: 'auto' }}
+                  />
                 </CaseStudyImgWrapper>
                 <LogoAndTagWrapper>
-                  <CompanyLogo src={study.logo} alt={study.logoAlt} />
+                  <CompanyLogo src={study.logo} alt={study.logoAlt} width={40} height={40} />
                   <CaseStudyTag>{study.tag}</CaseStudyTag>
                 </LogoAndTagWrapper>
                 <CaseStudyTitle>{study.title}</CaseStudyTitle>
                 <CaseStudyDescription>{study.description}</CaseStudyDescription>
-              </Card>
+              </CardLink>
             );
           })}
         </CardsGrid>
 
         <ButtonRow>
-          <ViewMoreButton onClick={() => navigate("/case-studies")}>
+          <ViewMoreButtonLink to="/case-studies">
             View More Case Studies
-          </ViewMoreButton>
+          </ViewMoreButtonLink>
         </ButtonRow>
       </Container>
     </Section>

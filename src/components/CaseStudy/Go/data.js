@@ -11,7 +11,7 @@ export const heroData = {
       publishing, and ads to help agencies grow.
     </>
   ),
-  heroImageSrc: "/goMemorandum.svg",
+  heroImageSrc: "/goMemorandum.png",
   heroImageAlt: "GO Memorandum",
 };
 
@@ -47,7 +47,7 @@ export const overviewData = {
   ),
   detail:
     "GoAgents is an AI-powered SaaS platform that automates end-to-end digital marketing workflows, enabling teams to scale campaigns with speed and efficiency.",
-  imageSrc: "/goFinancialSummary.svg",
+  imageSrc: "/goFinancialSummary.png",
   problemData: {
     title: "The Problem",
     text: "Marketing teams relied on manual, fragmented tools to manage content, ads, and reporting, making it difficult to scale without errors or high overhead. GoAgents solves this by unifying and automating the entire marketing workflow in one intelligent platform.",
@@ -95,29 +95,29 @@ export const keyFeaturesData = {
       title: "1. Full Marketing Automation:",
       description:
         "AI-driven workflows for keyword research, content generation, WordPress publishing, and ad management.",
-      image: "/Go Key Features/goKeyFeature1.svg",
+      image: "/Go Key Features/goKeyFeature1.png",
     },
     {
       title: "2. Multi-Agent System:",
       description:
         "Independent AI agents handling discovery, generation, classification, and reporting tasks simultaneously.",
-      image: "/Go Key Features/goKeyFeature2.svg",
+      image: "/Go Key Features/goKeyFeature2.png",
     },
     {
       title: "3. Bulk Campaign Generation:",
       description: "CSV uploads processed via Kafka pipelines for high-volume automation.",
-      image: "/Go Key Features/goKeyFeature3.svg",
+      image: "/Go Key Features/goKeyFeature3.png",
     },
     {
       title: "4. Performance Monitoring:",
       description:
         "Real-time logging with Elasticsearch and an admin dashboard for analytics and troubleshooting.",
-      image: "/Go Key Features/goKeyFeature4.svg",
+      image: "/Go Key Features/goKeyFeature4.png",
     },
     {
       title: "5. Scalable Multi-Tenant Architecture:",
       description: "Secure separation of client organizations, users, and data streams.",
-      image: "/Go Key Features/goKeyFeature5.svg",
+      image: "/Go Key Features/goKeyFeature5.png",
     },
   ],
   leftIconSrc: "/leftIcon.svg",

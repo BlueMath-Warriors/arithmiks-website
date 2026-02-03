@@ -1,4 +1,5 @@
 import { styled } from "styled-components";
+import { Link } from "gatsby";
 import { breakpoints } from "../index.styled";
 
 export const TextContainer = styled.div`
@@ -22,7 +23,7 @@ export const CardBtn = styled.button`
   margin-top: 24px;
 
   color: var(--gray-00, #fff);
-  font-family: Inter;
+  font-family: Poppins;
   font-size: 16px;
   font-style: normal;
   font-weight: 700;
@@ -117,7 +118,7 @@ export const CardImg = styled.img`
 `;
 export const CardHeader = styled.h3`
   color: #fff;
-  font-family: Inter;
+  font-family: Poppins;
   font-size: 20px;
   font-style: normal;
   font-weight: 600;
@@ -128,7 +129,7 @@ export const CardHeader = styled.h3`
 
 export const CardBody = styled.p`
   color: rgba(255, 255, 255, 0.6);
-  font-family: Inter;
+  font-family: Poppins;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -164,4 +165,33 @@ export const MainHead = styled.h2`
 
 export const SecondaryText = styled.span`
   color: #1355ff;
+`;
+
+export const CardBtnLink = styled(Link)`
+  display: flex;
+  padding: 0px 32px;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  border-radius: 7px;
+  background: #0b63e5;
+  border: none;
+  margin-top: 24px;
+  text-decoration: none;
+
+  color: var(--gray-00, #fff);
+  font-family: Poppins;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 48px;
+  text-transform: capitalize;
+
+  &:hover {
+    background: #0a56c9;
+  }
+
+  @media screen and (max-width: ${breakpoints.medium}) {
+    margin-top: 16px;
+  }  
 `;

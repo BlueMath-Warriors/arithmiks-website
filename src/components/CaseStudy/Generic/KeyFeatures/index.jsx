@@ -89,12 +89,18 @@ const KeyFeatures = ({
               {features[currentSlide]?.description}
             </SubHeading>
           </SubHeadingContainer>
-          <CarouselButtons>
-            <CarouselButton onClick={handlePrev}>
-              <img src={leftIconSrc} alt="Previous" />
+          <CarouselButtons role="group" aria-label="Carousel navigation">
+            <CarouselButton 
+              onClick={handlePrev}
+              aria-label="Previous feature"
+            >
+              <img src={leftIconSrc} alt="" width={24} height={24} aria-hidden="true" />
             </CarouselButton>
-            <CarouselButton onClick={handleNext}>
-              <img src={rightIconSrc} alt="Next" />
+            <CarouselButton 
+              onClick={handleNext}
+              aria-label="Next feature"
+            >
+              <img src={rightIconSrc} alt="" width={24} height={24} aria-hidden="true" />
             </CarouselButton>
           </CarouselButtons>
         </KeyFeaturesHeader>
@@ -114,12 +120,21 @@ const KeyFeatures = ({
               </CarouselSlide>
             ))}
           </CarouselContainer>
-          <PaginationDots>
+          <PaginationDots role="tablist" aria-label="Feature slides">
             {Array.from({ length: totalSlides }).map((_, index) => (
               <Dot
                 key={index}
                 active={index === currentSlide}
                 onClick={() => setCurrentSlide(index)}
+                role="tab"
+                aria-selected={index === currentSlide}
+                aria-label={`Go to feature ${index + 1}`}
+                tabIndex={0}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    setCurrentSlide(index);
+                  }
+                }}
               />
             ))}
           </PaginationDots>

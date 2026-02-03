@@ -39,7 +39,7 @@ export const Quotes = styled.div`
 export const TestimonialText = styled.p`
   color: #0957DE;
   text-align: left;
-  font-family: Inter;
+  font-family: Poppins;
   font-size: 24px;
   font-style: normal;
   font-weight: 400;
@@ -107,7 +107,7 @@ export const Name = styled.h3`
 export const NameCaption = styled.p`
   color: #ADADAD;
   text-align: left;
-  font-family: Inter;
+  font-family: Poppins;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;

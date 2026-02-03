@@ -88,7 +88,7 @@ export const FeatureCaption = styled.p`
 
 export const FeatureDetail = styled.p`
   color: #42526B;
-  font-family: Inter;
+  font-family: Poppins;
   font-size: ${(props) => (props.overview ? "18px" : "16px")};
   font-style: normal;
   font-weight: 400;

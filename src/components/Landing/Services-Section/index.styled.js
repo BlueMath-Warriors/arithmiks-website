@@ -39,7 +39,7 @@ export const SmallTxt = styled.p`
   color: #1355FF;
   font-variant-numeric: stacked-fractions;
   font-feature-settings: 'cv09' on, 'cv04' on, 'ss01' on, 'cv03' on, 'ss03' on, 'cv06' on;
-  font-family: Inter;
+  font-family: Poppins;
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
@@ -87,7 +87,7 @@ export const ViewButton = styled.a`
   color: #07090D;
   font-variant-numeric: stacked-fractions;
   font-feature-settings: 'cv09' on, 'cv04' on, 'ss01' on, 'cv03' on, 'ss03' on, 'cv06' on;
-  font-family: Inter;
+  font-family: Poppins;
   font-size: 14px;
   font-style: normal;
   font-weight: 500;

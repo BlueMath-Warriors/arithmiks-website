@@ -24,7 +24,7 @@ export const CtaBtn = styled.button`
 
   color: ${(props) => (props.fill ? "#FFF" : "#1355FF")};
   text-align: center;
-  font-family: Plus Jakarta Sans;
+  font-family: Poppins;
   font-size: 16px;
   font-style: normal;
   font-weight: 600;
@@ -98,7 +98,7 @@ export const MainHead = styled.h1`
 export const Description = styled.p`
   color: #5c5c5c;
   text-align: center;
-  font-family: Roboto;
+  font-family: Poppins;
   font-size: 18px;
   font-style: normal;
   font-weight: 400;

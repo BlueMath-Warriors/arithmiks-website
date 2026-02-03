@@ -31,7 +31,7 @@ export const QuestionText = styled.p`
   font-variant-numeric: lining-nums proportional-nums;
   font-feature-settings: 'cpsp' on, 'cv06' on, 'cv09' on, 'cv04' on, 'cv03' on, 'case' on, 'ss03' on;
 
-  font-family: Inter;
+  font-family: Poppins;
   font-size: 18px;
   font-style: normal;
   font-weight: 700;
@@ -46,7 +46,7 @@ export const QuestionText = styled.p`
 export const AnswerText = styled.p`
   color: #3C4353;
 
-  font-family: Inter;
+  font-family: Poppins;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;

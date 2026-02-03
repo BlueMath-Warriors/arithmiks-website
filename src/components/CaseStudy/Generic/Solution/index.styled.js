@@ -41,7 +41,7 @@ export const SolutionRight = styled.div`
 
 export const SolutionLabel = styled.p`
   color: #0957DE;
-  font-family: Inter;
+  font-family: Poppins;
   font-size: 14px;
   font-style: normal;
   font-weight: 600;
@@ -76,7 +76,7 @@ export const Secondary = styled.span`
 
 export const SolutionDescription = styled.p`
   color: #42526B;
-  font-family: Inter;
+  font-family: Poppins;
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
@@ -166,7 +166,7 @@ export const CardTitle = styled.h3`
 
 export const CardDetail = styled.p`
   color: #42526B;
-  font-family: Inter;
+  font-family: Poppins;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;

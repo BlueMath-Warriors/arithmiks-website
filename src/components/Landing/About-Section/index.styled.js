@@ -23,7 +23,7 @@ export const SmallTxt = styled.p`
     color: #1355FF;
     font-variant-numeric: stacked-fractions;
     font-feature-settings: 'cv09' on, 'cv04' on, 'ss01' on, 'cv03' on, 'ss03' on, 'cv06' on;
-    font-family: Inter;
+    font-family: Poppins;
     font-size: 14px;
     font-style: normal;
     font-weight: 500;
@@ -60,7 +60,7 @@ export const CardBody = styled.p`
   font-variant-numeric: stacked-fractions;
   font-feature-settings: "cv09" on, "cv04" on, "ss01" on, "cv03" on, "ss03" on,
     "cv06" on;
-  font-family: Inter;
+  font-family: Poppins;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -89,7 +89,7 @@ export const CardBtn = styled.a`
   border: none;
 
   color: var(--gray-00, #fff);
-  font-family: Inter;
+  font-family: Poppins;
   font-size: 16px;
   font-style: normal;
   font-weight: 700;

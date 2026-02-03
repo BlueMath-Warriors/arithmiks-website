@@ -11,7 +11,7 @@ export const heroData = {
       data, and optimize sales.
     </>
   ),
-  heroImageSrc: "/swervMemorandum.svg",
+  heroImageSrc: "/swervMemorandum.png",
   heroImageAlt: "Swerv Memorandum",
 };
 
@@ -40,7 +40,7 @@ export const overviewData = {
   ),
   detail:
     "Swerv Auto is a SaaS platform that helps automotive dealerships acquire vehicles faster by combining real-time market data, automation, and actionable insights in one system.",
-  imageSrc: "/swervFinancialSummary.svg",
+  imageSrc: "/swervFinancialSummary.png",
   problemData: {
     title: "The Problem",
     text: "Dealerships relied on fragmented tools and manual processes to manage inventory and vehicle acquisitions, leading to slow decisions and limited market visibility. Swerv Auto addresses this by centralizing data and automating workflows to enable faster, data-driven acquisitions.",
@@ -88,31 +88,31 @@ export const keyFeaturesData = {
       title: "1. Inventory Intelligence:",
       description:
         "Smart analytics for comparing and prioritizing acquisition opportunities.",
-      image: "/Swerv Key Features/swervKeyFeature1.svg",
+      image: "/Swerv Key Features/swervKeyFeature1.png",
     },
     {
       title: "2. OCD Data Integration:",
       description:
         "Real-time synchronization of Open Car Data to provide instant insights into vehicle trends and market performance.",
-      image: "/Swerv Key Features/swervKeyFeature2.svg",
+      image: "/Swerv Key Features/swervKeyFeature2.png",
     },
     {
       title: "3. Automated Workflows:",
       description:
         "AWS Lambda and Selenium-driven automations for lead syncing and campaign execution.",
-      image: "/Swerv Key Features/swervKeyFeature3.svg",
+      image: "/Swerv Key Features/swervKeyFeature3.png",
     },
     {
       title: "4. Dealer Dashboard:",
       description:
         "Centralized interface for tracking performance metrics, acquisitions, and ROI.",
-      image: "/Swerv Key Features/swervKeyFeature4.svg",
+      image: "/Swerv Key Features/swervKeyFeature4.png",
     },
     {
       title: "5. CRM Integration:",
       description:
         "GoHighLevel and SendGrid for automated communication and marketing.",
-      image: "/Swerv Key Features/swervKeyFeature5.svg",
+      image: "/Swerv Key Features/swervKeyFeature5.png",
     },
   ],
   leftIconSrc: "/leftIcon.svg",

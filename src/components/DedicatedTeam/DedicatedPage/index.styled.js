@@ -18,14 +18,14 @@ export const TextContainer = styled.div`
 
 export const PrimaryText = styled.h3`
   color: #FFF;
-  font-family: Lexend;
+  font-family: Poppins;
   font-size: 46px;
   font-style: normal;
   font-weight: 600;
   line-height: 60px;
 
   @media screen and (max-width: ${breakpoints.large}) {
-    font-family: Plus Jakarta Sans;
+    font-family: Poppins;
     font-size: 40px;
     font-style: normal;
     font-weight: 700;
@@ -43,14 +43,14 @@ export const PrimaryText = styled.h3`
 export const Caption = styled.p`
   color: #FFF;
   color: rgba(255, 255, 255, 0.60);
-  font-family: Inter;
+  font-family: Poppins;
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
   line-height: 30px;
 
   @media screen and (max-width: ${breakpoints.large}) {
-    font-family: Plus Jakarta Sans;
+    font-family: Poppins;
     font-size: 20px;
     font-style: normal;
     font-weight: 400;
@@ -78,7 +78,7 @@ export const MoreButton = styled.button`
   background: #0B63E5;
   margin-top: 24px;
   color: #FFF;
-  font-family: Inter;
+  font-family: Poppins;
   font-size: 16px;
   font-style: normal;
   font-weight: 700;
@@ -133,7 +133,7 @@ export const Card = styled.div`
 
 export const CardTitle = styled.h4`
   color: #FFF;
-  font-family: Inter;
+  font-family: Poppins;
   font-size: 18px;
   font-style: normal;
   font-weight: 500;
@@ -143,7 +143,7 @@ export const CardTitle = styled.h4`
 export const CardDetail = styled.p`
   color: rgba(255, 255, 255, 0.50);
 
-  font-family: Inter;
+  font-family: Poppins;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;

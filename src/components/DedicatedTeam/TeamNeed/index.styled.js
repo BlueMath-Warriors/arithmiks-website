@@ -14,7 +14,7 @@ export const PrimaryText = styled.h2`
 
   @media screen and (max-width: ${breakpoints.large}) {
     color: #040815;
-    font-family: Plus Jakarta Sans;
+    font-family: Poppins;
     font-size: 30px;
     font-style: normal;
     font-weight: 700;
@@ -43,7 +43,7 @@ margin-bottom: 56px;
 
 @media screen and (max-width: ${breakpoints.large}) {
   color: #596780;
-  font-family: Plus Jakarta Sans;
+  font-family: Poppins;
   font-size: 20px;
   font-style: normal;
   font-weight: 400;
@@ -126,7 +126,7 @@ export const CardDetail = styled.div`
   line-height: 26px;
   letter-spacing: -0.36px;
   @media screen and (max-width: ${breakpoints.large}) {
-    font-family: Plus Jakarta Sans;
+    font-family: Poppins;
     font-size: 14px;
     font-style: normal;
     font-weight: 400;

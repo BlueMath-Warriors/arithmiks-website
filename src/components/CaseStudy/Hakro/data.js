@@ -10,7 +10,7 @@ export const heroData = {
       <br />from website sessions.
     </>
   ),
-  heroImageSrc: "/hakroMemorandum.svg",
+  heroImageSrc: "/hakroMemorandum.png",
   heroImageAlt: "Hakro Memorandum",
 };
 
@@ -37,7 +37,7 @@ export const overviewData = {
   ),
   detail:
     "Hakro is an embedded e-commerce platform that enables organizations to deliver consistent, scalable product experiences across large retailer networks",
-  imageSrc: "/hakroFinancialSummary.svg",
+  imageSrc: "/hakroFinancialSummary.png",
   problemData: {
     title: "The Problem",
     text: "Organizations managed product catalogs across hundreds of retailer websites using manual, fragmented processes, leading to delays and inconsistent user experiences. Hakro addresses this by centralizing catalog management and embedding a unified, brand-consistent storefront across partner sites.",
@@ -85,25 +85,25 @@ export const keyFeaturesData = {
       title: "1. Responsive E-commerce Interface:",
       description:
         "Browsing, search, filtering, and checkout optimized for all devices.",
-      image: "/Hakro Key Features/hakroKeyFeature1.svg",
+      image: "/Hakro Key Features/hakroKeyFeature1.png",
     },
     {
       title: "2. Adaptive UI Design:",
       description:
         "Automatically aligns with host-site structure for consistent UX.",
-      image: "/Hakro Key Features/hakroKeyFeature2.svg",
+      image: "/Hakro Key Features/hakroKeyFeature2.png",
     },
     {
       title: "3. Centralized Product Management:",
       description:
         "XML-driven data source enabling real-time updates.",
-      image: "/Hakro Key Features/hakroKeyFeature3.svg",
+      image: "/Hakro Key Features/hakroKeyFeature3.png",
     },
     {
       title: "4. Embedded Cart & Inquiry",
       description:
         "An in-widget cart that allows retailers to review products and send purchase inquiries without leaving their site.",
-      image: "/Hakro Key Features/hakroKeyFeature4.svg",
+      image: "/Hakro Key Features/hakroKeyFeature4.png",
     },
   ],
   leftIconSrc: "/leftIcon.svg",

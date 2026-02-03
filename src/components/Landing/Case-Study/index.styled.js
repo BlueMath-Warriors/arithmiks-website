@@ -1,4 +1,5 @@
 import { styled } from "styled-components";
+import { Link } from "gatsby";
 import {breakpoints} from "../index.styled"
 
 export const Header = styled.div`
@@ -38,7 +39,7 @@ export const SmallTxt = styled.p`
   color: #1355FF;
   font-variant-numeric: stacked-fractions;
   font-feature-settings: 'cv09' on, 'cv04' on, 'ss01' on, 'cv03' on, 'ss03' on, 'cv06' on;
-  font-family: Inter;
+  font-family: Poppins;
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
@@ -73,7 +74,7 @@ export const HeaderText = styled.h2`
 
 export const DescriptionText = styled.p`
   color: #42526B;
-  font-family: Inter;
+  font-family: Poppins;
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
@@ -107,7 +108,7 @@ export const ViewButton = styled.button`
   color: #07090D;
   font-variant-numeric: stacked-fractions;
   font-feature-settings: 'cv09' on, 'cv04' on, 'ss01' on, 'cv03' on, 'ss03' on, 'cv06' on;
-  font-family: Inter;
+  font-family: Poppins;
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
@@ -168,7 +169,7 @@ export const Tags = styled.div`
 
 export const Tag = styled.span`
 	color: #061C3D;
-	font-family: Inter;
+	font-family: Poppins;
 	font-size: 14px;
 	font-style: normal;
 	font-weight: 400;
@@ -178,7 +179,7 @@ export const Tag = styled.span`
     ` &::after {
       content: "/"; 
       color: #838E9E;
-      font-family: Inter;
+      font-family: Poppins;
       font-size: 12px;
       font-style: normal;
       font-weight: 400;
@@ -196,7 +197,7 @@ export const Tag = styled.span`
 
 export const CaseStudyName = styled.p`
 	color: #061C3D;
-	font-family: Inter;
+	font-family: Poppins;
 	font-size: 32px;
 	font-style: normal;
 	font-weight: 700;
@@ -215,7 +216,7 @@ export const CaseStudyName = styled.p`
 
 export const CaseStudyDetails = styled.p`
 	color: #42526B;
-	font-family: Inter;
+	font-family: Poppins;
 	font-size: 18px;
 	font-style: normal;
 	font-weight: 400;
@@ -241,7 +242,7 @@ export const CardBtn = styled.button`
 	background: #F0F5FF; 
 	border: none;
 
-	font-family: Inter;
+	font-family: Poppins;
 	font-size: 16px;
 	font-style: normal;
 	font-weight: 700;
@@ -371,7 +372,7 @@ export const CompanyLogo = styled.img`
 
 export const CaseStudyTitle = styled.h3`
   color: #1d1d1f;
-  font-family: Inter;
+  font-family: Poppins;
   font-size: 24px;
   font-style: normal;
   font-weight: 700;
@@ -392,7 +393,7 @@ export const CaseStudyTitle = styled.h3`
 
 export const CaseStudyDescription = styled.p`
   color: #42526B;
-  font-family: Inter;
+  font-family: Poppins;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -416,9 +417,67 @@ export const CaseStudyTag = styled.span`
   background: #F5F5F5;
   border-radius: 6px;
   color: #1d1d1f;
-  font-family: Inter;
+  font-family: Poppins;
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
   line-height: 20px;
+`;
+
+export const ViewButtonLink = styled(Link)`
+  display: inline-flex;
+  padding: 8px 12px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border-radius: 6px;
+  border: 1px solid #E7EAEE;
+  background: #FFF;
+  height: 49px;
+  text-decoration: none;
+
+  color: #07090D;
+  font-variant-numeric: stacked-fractions;
+  font-feature-settings: 'cv09' on, 'cv04' on, 'ss01' on, 'cv03' on, 'ss03' on, 'cv06' on;
+  font-family: Poppins;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: -0.09px;
+  
+  &:hover {
+    background: #F5F5F5;
+  }
+`;
+
+export const CaseStudyCardLink = styled(Link)`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    opacity: 0.9;
+  }
+
+  &:nth-child(2n) {
+    margin-top: 120px;
+  }
+
+  @media screen and (max-width: ${breakpoints.large}) {
+    &:nth-child(2n) {
+      margin-top: 100px;
+    }
+  }
+
+  @media screen and (max-width: ${breakpoints.medium}) {
+    &:nth-child(2n) {
+      margin-top: 0;
+    }
+  }
 `;

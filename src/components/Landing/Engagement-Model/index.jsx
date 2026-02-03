@@ -1,5 +1,4 @@
 import React from "react";
-import { navigate } from "gatsby";
 import {
   MainHead,
   SecondaryText,
@@ -9,7 +8,7 @@ import {
   CardText,
   CardHeader,
   CardBody,
-  CardBtn,
+  CardBtnLink,
   BtnIcon,
 } from "./index.styled";
 import * as containerStyles from "../../../styles/global.module.css";
@@ -28,7 +27,7 @@ const EngagementModel = () => {
         </MainHead>
       </TextContainer>
       <ModelCard>
-        <CardImg src={model_1_img} />
+        <CardImg src={model_1_img} alt="Dedicated team collaboration" width={560} height={374} loading="lazy" />
         <CardText right>
           <CardHeader>Build Your Dedicated Team</CardHeader>
           <CardBody>
@@ -36,10 +35,10 @@ const EngagementModel = () => {
             highly talented engineers working delicately on a project to unleash
             the excellence and deliverence.
           </CardBody>
-          <CardBtn onClick={()=>{navigate('/dedicated-team')}}>
+          <CardBtnLink to="/dedicated-team">
             Read More
             <ArrowRigth/>
-          </CardBtn>
+          </CardBtnLink>
         </CardText>
       </ModelCard>
 
@@ -51,12 +50,12 @@ const EngagementModel = () => {
             Fixed-Price Precision. It is well-suited for projects with clear requirements and short
             time-to-market.
           </CardBody>
-          <CardBtn onClick={()=>{navigate('/fixed-price')}}>
+          <CardBtnLink to="/fixed-price">
             Read More
             <ArrowRigth />
-          </CardBtn>
+          </CardBtnLink>
         </CardText>
-        <CardImg src={model_2_img} />
+        <CardImg src={model_2_img} alt="Fixed price project delivery" width={560} height={374} loading="lazy" />
       </ModelCard>
     </section>
   );

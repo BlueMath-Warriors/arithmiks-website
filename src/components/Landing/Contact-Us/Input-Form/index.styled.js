@@ -54,7 +54,7 @@ export const Form = styled.form`
 
 export const HeaderText = styled.label`
   color: #333;
-  font-family: Inter;
+  font-family: Poppins;
   font-size: 26px;
   font-style: normal;
   font-weight: 600;
@@ -70,7 +70,7 @@ export const HeaderText = styled.label`
 
 export const IntroText = styled.p`
   color: #42526B;
-  font-family: Inter;
+  font-family: Poppins;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -95,7 +95,7 @@ export const IntroText = styled.p`
 
 export const InputLabel = styled.label`
   color: #061C3D;
-  font-family: Inter;
+  font-family: Poppins;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -123,7 +123,7 @@ export const DropdownWrapper = styled.div`
 
 export const FormErrorText = styled.p`
   position: relative;
-  font-family: Inter;
+  font-family: Poppins;
   left: 10px;
   top: 5px;
   color: #FF3333;
@@ -132,7 +132,7 @@ export const FormErrorText = styled.p`
 `
 
 export const FormSuccessText = styled.p`
-  font-family: Inter;
+  font-family: Poppins;
   color: #28a745; 
   border: 1px solid #28a745;
   font-size: 14px;
@@ -158,7 +158,7 @@ export const NameInput = styled.input`
   border: 1px solid #e6e8ec;
   background: #fff;
 
-  font-family: Inter;
+  font-family: Poppins;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -199,7 +199,7 @@ export const EmailInput = styled.input`
   background: #fff;
 
   color: #838e9e;
-  font-family: Inter;
+  font-family: Poppins;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -232,7 +232,7 @@ export const DropDownInput = styled.select`
   color: #838e9e;
   cursor: pointer;
 
-  font-family: Inter;
+  font-family: Poppins;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -279,7 +279,7 @@ export const MessageInput = styled.textarea`
   background: #fff;
   resize: none;
 
-  font-family: Inter;
+  font-family: Poppins;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -313,7 +313,7 @@ export const SubmitButton = styled.button`
   background: #0B63E5;
 
   color: #FFF;
-  font-family: Inter;
+  font-family: Poppins;
   font-size: 16px;
   font-style: normal;
   font-weight: 700;
