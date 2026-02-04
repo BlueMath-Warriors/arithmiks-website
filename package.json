@@ -15,6 +15,7 @@
     "clean": "gatsby clean"
   },
   "dependencies": {
+    "@gsap/react": "^2.1.2",
     "@sendgrid/mail": "^8.1.5",
     "babel-plugin-styled-components": "^2.1.4",
     "dotenv": "^16.3.2",
@@ -29,6 +30,7 @@
     "gatsby-plugin-styled-components": "^6.12.0",
     "gatsby-source-filesystem": "^5.16.0",
     "gatsby-transformer-sharp": "^5.16.0",
+    "gsap": "^3.14.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-phone-input-2": "^2.15.1",

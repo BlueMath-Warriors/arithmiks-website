@@ -13,7 +13,7 @@ import {
 
 /**
  * @param {Object} props
- * @param {string} props.text 
+ * @param {string|string[]} props.text
  * @param {string} props.clientImageSrc 
  * @param {string} props.clientName 
  * @param {string} props.clientTitle 
@@ -24,6 +24,8 @@ const Testimonial = ({
   clientName,
   clientTitle,
 }) => {
+  const paragraphs = Array.isArray(text) ? text : [text];
+  
   return (
     <>
       <div className={containerStyles.easybar_testimonial}>
@@ -31,7 +33,14 @@ const Testimonial = ({
           <TextContainer>
             <div className={`${containerStyles.quotes} ${containerStyles.bottom}`} />
             <div className={`${containerStyles.quotes} ${containerStyles.top}`} />
-            <TestimonialText>{text}</TestimonialText>
+            <TestimonialText>
+              {paragraphs.map((paragraph, index) => (
+                <React.Fragment key={index}>
+                  {paragraph}
+                  {index < paragraphs.length - 1 && <><br /><br /></>}
+                </React.Fragment>
+              ))}
+            </TestimonialText>
           </TextContainer>
           <NameContainer>
             <ClientImage src={clientImageSrc} alt={clientName} />

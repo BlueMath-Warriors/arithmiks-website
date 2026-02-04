@@ -6,9 +6,9 @@ export const heroData = {
   logoAlt: "Expat Haven Hub",
   caption: (
     <>
-      AI-powered, gamified platform that centralizes essential lifestyle
+      AI-powered, gamified platform that centralizes essential
       <br />
-      insights for digital nomads and expats.
+      lifestyle insights for digital nomads and expats.
     </>
   ),
   heroImageSrc: "/ehhMemorandum.png",
@@ -125,7 +125,7 @@ export const keyFeaturesData = {
 
 export const testimonialData = {
   text: "Omer is a professional, reliable, and kind person. Working with him was great! Omer was available for any question, gave professional answers, was patient with the project and the results are beautiful. I highly recommend working with him.",
-  clientImageSrc: "/sbaOwner.jpeg",
+  clientImageSrc: "/dummyOwner.png",
   clientName: "Zachary Renta",
   clientTitle: "SBA Loans Founder & CEO",
 };

@@ -31,6 +31,21 @@ export const CtaBtn = styled.button`
   line-height: 150%;
 
   border: ${(props) => (props.fill ? "none" : "1px solid #1355FF; ")};
+  
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: ${(props) => (props.fill ? "0 10px 30px rgba(19, 85, 255, 0.35)" : "0 8px 25px rgba(19, 85, 255, 0.2)")};
+    background: ${(props) => (props.fill ? "#0040E0" : "rgba(19, 85, 255, 0.05)")};
+  }
+  
+  &:active {
+    transform: translateY(-1px);
+    box-shadow: ${(props) => (props.fill ? "0 5px 15px rgba(19, 85, 255, 0.3)" : "0 4px 12px rgba(19, 85, 255, 0.15)")};
+  }
+
   @media screen and (max-width: ${breakpoints.large}) {
     margin-left: ${(props) => (props.fixed ? "" : "auto")};
     margin-right: ${(props) => (props.fixed ? "" : "16px")};

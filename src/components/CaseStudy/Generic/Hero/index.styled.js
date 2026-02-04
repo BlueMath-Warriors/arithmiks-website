@@ -27,11 +27,11 @@ export const SmallTxt = styled.p`
   border-radius: 8px;
   background: #E8ECF3;
 
-  color: rgba(0, 0, 0, 0.87);
+  color: #5C5C5C;
   font-family: Poppins;
   font-size: 12px;
   font-style: normal;
-  font-weight: 600;
+  font-weight: 500;
   line-height: 16px;
 `
 

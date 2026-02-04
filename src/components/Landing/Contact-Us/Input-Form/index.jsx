@@ -105,7 +105,7 @@ const InputForm = () => {
   };
 
   return (
-    <FormContainer>
+    <FormContainer className="contact-form">
       <FormSection>
         <Form onSubmit={handleSubmit}>
           <FormSuccessText show={formSubmitted}>

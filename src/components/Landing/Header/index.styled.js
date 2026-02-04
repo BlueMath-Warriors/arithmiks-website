@@ -165,14 +165,31 @@ export const MenuItemLink = styled(Link)`
   letter-spacing: -0.36px;
   cursor: pointer;
   text-decoration: none;
+  position: relative;
 
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 6px;
+  transition: color 0.3s ease;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #1355FF;
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
   
   &:hover {
     color: #1355FF;
+    
+    &::after {
+      width: 100%;
+    }
   }
   
   &.mobile-only {
@@ -243,7 +260,7 @@ export const HeaderButtonTxt = styled.p`
 
 export const CtaBtn = styled(Link)`
   display: flex;
-  width: ${(props) => (props.fixed ? "134px" : "144px")};
+  width: ${(props) => (props.fixed ? "134px" : "182px")};
   height: 52px;
   justify-content: center;
   align-items: center;

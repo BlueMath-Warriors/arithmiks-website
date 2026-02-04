@@ -6,9 +6,9 @@ export const heroData = {
   logoAlt: "Swerv Automotive",
   caption: (
     <>
-      A SaaS platform for car dealerships to automate acquisitions, centralize
-      <br />
-      data, and optimize sales.
+      A SaaS platform for car dealerships to automate
+       <br />
+       acquisitions, centralize data, and optimize sales.
     </>
   ),
   heroImageSrc: "/swervMemorandum.png",
@@ -121,7 +121,7 @@ export const keyFeaturesData = {
 
 export const testimonialData = {
   text: "Omer is a professional, reliable, and kind person. Working with him was great! Omer was available for any question, gave professional answers, was patient with the project and the results are beautiful. I highly recommend working with him.",
-  clientImageSrc: "/sbaOwner.jpeg",
+  clientImageSrc: "/dummyOwner.png",
   clientName: "Zachary Renta",
   clientTitle: "SBA Loans Founder & CEO",
 };

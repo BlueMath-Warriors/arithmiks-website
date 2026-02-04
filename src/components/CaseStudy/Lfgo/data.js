@@ -117,9 +117,9 @@ export const keyFeaturesData = {
 };
 
 export const testimonialData = {
-  text: "Omer is a professional, reliable, and kind person. Working with him was great! Omer was available for any question, gave professional answers, was patient with the project and the results are beautiful. I highly recommend working with him.",
-  clientImageSrc: "/sbaOwner.jpeg",
-  clientName: "Zachary Renta",
-  clientTitle: "SBA Loans Founder & CEO",
+  text: "Highly effective and helpful both on the implementation side and at the strategic level.",
+  clientImageSrc: "/lfgoOwner.png",
+  clientName: "Louis-Antoine",
+  clientTitle: "GoAgents Loans Founder & CEO",
 };
 
