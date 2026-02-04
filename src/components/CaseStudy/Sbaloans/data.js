@@ -53,9 +53,7 @@ export const solutionData = {
   heading: "Our Solution",
   description: (
     <>
-      <strong>Arithmiks</strong> delivered a unified, automated loan management
-      platform that streamlined broker workflows, improved client visibility,
-      and ensured secure, scalable operations.
+      <strong>Arithmiks</strong> delivered a unified, automated loan management platform that streamlined broker workflows, improved client visibility, and ensured secure, scalable operations.
     </>
   ),
   solutions: [
@@ -126,8 +124,12 @@ export const keyFeaturesData = {
 };
 
 export const testimonialData = {
-  text: "Omer is a professional, reliable, and kind person. Working with him was great! Omer was available for any question, gave professional answers, was patient with the project and the results are beautiful. I highly recommend working with him.",
-  clientImageSrc: "/sbaOwner.jpeg",
+  text: [
+    "I have been working with the Arithmiks team and Usama for almost a year with ongoing development projects. They are almost always available, and give notice if there will be a delay.",
+    "Additionally they all take time to explain certain things about the project, rather than just telling me what I want to hear.",
+    "I've worked with some other developers / software teams in the past and Arithmiks is top notch."
+  ],
+  clientImageSrc: "/sbaOwner.png",
   clientName: "Zachary Renta",
   clientTitle: "SBA Loans Founder & CEO",
 };

@@ -27,6 +27,24 @@ export const TextContainer = styled.div`
   position: relative;
   width: 100%;
   max-width: 800px;
+  padding: 30px 0;
+
+  @media screen and (max-width: ${breakpoints.large}) {
+    padding: 25px 0;
+  }
+
+  @media screen and (max-width: ${breakpoints.medium}) {
+    padding: 20px 0;
+  }
+
+  @media screen and (max-width: 480px) {
+    padding: 15px 0;
+  }
+
+  /* Hide the old absolute positioned quotes */
+  > div {
+    display: none;
+  }
 `;
 
 export const Quotes = styled.div`
@@ -42,21 +60,92 @@ export const TestimonialText = styled.p`
   font-family: Poppins;
   font-size: 24px;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 600;
   line-height: 36px;
   margin: 0;
-  padding: 0 40px;
+  padding: 0 20px 0 80px;
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: -10px;
+    width: 50px;
+    height: 50px;
+    background-image: url('/quotes.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.25;
+  }
+
+  &::after {
+    content: "";
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    background-image: url('/quotes.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.25;
+    transform: scaleX(-1) scaleY(-1);
+    vertical-align: middle;
+    margin-left: 10px;
+    margin-bottom: -10px;
+  }
 
   @media screen and (max-width: ${breakpoints.large}) {
     font-size: 20px;
     line-height: 32px;
-    padding: 0 30px;
+    padding: 0 20px 0 60px;
+
+    &::before {
+      width: 45px;
+      height: 45px;
+      top: -5px;
+    }
+
+    &::after {
+      width: 45px;
+      height: 45px;
+      margin-left: 8px;
+    }
   }
 
   @media screen and (max-width: ${breakpoints.medium}) {
     font-size: 18px;
     line-height: 28px;
-    padding: 0 20px;
+    padding: 0 16px 0 50px;
+
+    &::before {
+      width: 38px;
+      height: 38px;
+      top: -5px;
+    }
+
+    &::after {
+      width: 38px;
+      height: 38px;
+      margin-left: 6px;
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    font-size: 16px;
+    line-height: 26px;
+    padding: 0 12px 0 40px;
+
+    &::before {
+      width: 30px;
+      height: 30px;
+      top: 0;
+    }
+
+    &::after {
+      width: 30px;
+      height: 30px;
+      margin-left: 5px;
+    }
   }
 `;
 
@@ -67,6 +156,20 @@ export const NameContainer = styled.div`
   gap: 16px;
   width: 100%;
   max-width: 800px;
+  padding-left: 80px;
+
+  @media screen and (max-width: ${breakpoints.large}) {
+    padding-left: 60px;
+  }
+
+  @media screen and (max-width: ${breakpoints.medium}) {
+    padding-left: 50px;
+    gap: 12px;
+  }
+
+  @media screen and (max-width: 480px) {
+    padding-left: 40px;
+  }
 `;
 
 export const ClientImage = styled.img`

@@ -16,8 +16,12 @@ export const Card = styled.div`
       ? "border-radius: 0px 0px 50px 0px"
       : "border-radius: 0px"};
 
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  
   &:hover {
-    box-shadow: 0 4px 28px rgba(0, 0, 0, 0.04);
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+    background: #fff;
   }
 
   @media screen and (max-width: ${breakpoints.large}) {

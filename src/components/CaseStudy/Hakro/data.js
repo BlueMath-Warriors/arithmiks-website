@@ -50,9 +50,7 @@ export const solutionData = {
   heading: "Our Solution",
   description: (
     <>
-      <strong>Arithmiks</strong> built a scalable embedded e-commerce system that
-      centralized product control while delivering a consistent, adaptive
-      shopping experience across thousands of retailer websites.
+      <strong>Arithmiks</strong> built a scalable embedded e-commerce system that centralized product control while delivering a consistent, adaptive shopping experience across thousands of retailer websites.
     </>
   ),
   solutions: [
@@ -112,7 +110,7 @@ export const keyFeaturesData = {
 
 export const testimonialData = {
   text: "Omer is a professional, reliable, and kind person. Working with him was great! Omer was available for any question, gave professional answers, was patient with the project and the results are beautiful. I highly recommend working with him.",
-  clientImageSrc: "/sbaOwner.jpeg",
+  clientImageSrc: "/dummyOwner.png",
   clientName: "Zachary Renta",
   clientTitle: "SBA Loans Founder & CEO",
 };

@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useEffect, useRef } from "react";
 import {
   CtaBtn,
   Description,
@@ -10,6 +10,8 @@ import Uicon from "../../images/u-icon.svg";
 import * as containerStyles from "../../styles/global.module.css";
 import Header from "../Landing/Header";
 import About from "./About-Section";
+import { gsap } from "gsap";
+import { prefersReducedMotion } from "../../utils/animations";
 
 const Services = lazy(() => import("./Services-Section"));
 const HowItWorks = lazy(() => import("./How-it-Works"));
@@ -43,6 +45,8 @@ const SectionLoader = () => (
 );
 
 const LandingPage = () => {
+  const heroRef = useRef(null);
+
   const scrollToContact = () => {
     const contactForm = document.getElementById("contact-form");
     if (contactForm) {
@@ -50,22 +54,53 @@ const LandingPage = () => {
     }
   };
 
+  useEffect(() => {
+    if (typeof window === "undefined" || !heroRef.current) return;
+    if (prefersReducedMotion()) return;
+
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({ delay: 0.2 });
+
+      tl.fromTo(
+        ".hero-headline",
+        { opacity: 0, y: 60 },
+        { opacity: 1, y: 0, duration: 0.9, ease: "power3.out" }
+      );
+
+      tl.fromTo(
+        ".hero-description",
+        { opacity: 0, y: 40 },
+        { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" },
+        "-=0.5"
+      );
+
+      tl.fromTo(
+        ".hero-cta",
+        { opacity: 0, y: 30, scale: 0.95 },
+        { opacity: 1, y: 0, scale: 1, duration: 0.6, ease: "back.out(1.5)" },
+        "-=0.4"
+      );
+    }, heroRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
     <>
       <Header white={false} />
-      <section className={containerStyles.main_hero}>
+      <section className={containerStyles.main_hero} ref={heroRef}>
         <TextContainer>
-          <MainHead>
+          <MainHead className="hero-headline">
             Grow Your Start
             <Uicon />
             p At An Early Stage or Scale Your Development Team With US
           </MainHead>
-          <Description>
+          <Description className="hero-description">
             We are a custom software development company that assists you in
             converting your ideas into wonderful software solutions. With our
             customer centric approach we build products that matter to users.
           </Description>
-          <Buttons onClick={scrollToContact}>
+          <Buttons onClick={scrollToContact} className="hero-cta">
             <CtaBtn as="button" fill="true" type="button">
               Let's Talk
             </CtaBtn>

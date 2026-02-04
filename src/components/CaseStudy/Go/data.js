@@ -6,9 +6,9 @@ export const heroData = {
   logoAlt: "GO",
   caption: (
     <>
-      An AI-powered platform that automates digital marketing—handling content,
+      An AI-powered platform that automates digital marketing—handling
       <br />
-      publishing, and ads to help agencies grow.
+      content, publishing, and ads to help agencies grow.
     </>
   ),
   heroImageSrc: "/goMemorandum.png",
@@ -60,9 +60,7 @@ export const solutionData = {
   heading: "Our Solution",
   description: (
     <>
-      <strong>Arithmiks</strong> built an end-to-end AI automation platform that
-      replaced manual marketing operations with intelligent, scalable, and
-      multi-tenant workflows.
+      <strong>Arithmiks</strong> built an end-to-end AI automation platform that replaced manual marketing operations with intelligent, scalable, and multi-tenant workflows.
     </>
   ),
   solutions: [
@@ -92,32 +90,37 @@ export const keyFeaturesData = {
   heading: "Key Features",
   features: [
     {
-      title: "1. Full Marketing Automation:",
+      title: "1. AI-Powered Marketing Engine:",
       description:
-        "AI-driven workflows for keyword research, content generation, WordPress publishing, and ad management.",
+        "Seamlessly manage keywords, content, WordPress publishing, and ad campaigns with AI-driven automation.",
       image: "/Go Key Features/goKeyFeature1.png",
     },
     {
-      title: "2. Multi-Agent System:",
+      title: "2. Smart Control System:",
       description:
-        "Independent AI agents handling discovery, generation, classification, and reporting tasks simultaneously.",
+        "Self-learning agents continuously analyze data, identify opportunities, and turn them into fully automated, high-performing campaigns.",
       image: "/Go Key Features/goKeyFeature2.png",
     },
     {
-      title: "3. Bulk Campaign Generation:",
-      description: "CSV uploads processed via Kafka pipelines for high-volume automation.",
+      title: "3. Campaign Control Center:",
+      description: "Monitor, manage, and evaluate every ad, rule, and performance signal from a single dashboard—without relying on Facebook Ads Manager.",
       image: "/Go Key Features/goKeyFeature3.png",
     },
     {
-      title: "4. Performance Monitoring:",
+      title: "4. Real-Time & Historical Performance at a Glance:",
       description:
-        "Real-time logging with Elasticsearch and an admin dashboard for analytics and troubleshooting.",
+        "Real-time and historical insights across daily, hourly, and filtered views. Track platform activity and explore detailed campaign metrics — all in one interactive dashboard.",
       image: "/Go Key Features/goKeyFeature4.png",
     },
     {
-      title: "5. Scalable Multi-Tenant Architecture:",
-      description: "Secure separation of client organizations, users, and data streams.",
+      title: "5. Multi-Org RBAC Engine:",
+      description: "Manage organizations, projects, users, Facebook ad accounts, and WordPress domains — securely orchestrated in one place.",
       image: "/Go Key Features/goKeyFeature5.png",
+    },
+    {
+      title: "6. Continuous Optimization Engine:",
+      description: "Always-running data pipelines watch performance, adjust campaigns by time of day, and track competitor activity—so optimization happens automatically.",
+      image: "/Go Key Features/goKeyFeature6.png",
     },
   ],
   leftIconSrc: "/leftIcon.svg",
@@ -125,9 +128,9 @@ export const keyFeaturesData = {
 };
 
 export const testimonialData = {
-  text: "Omer is a professional, reliable, and kind person. Working with him was great! Omer was available for any question, gave professional answers, was patient with the project and the results are beautiful. I highly recommend working with him.",
-  clientImageSrc: "/sbaOwner.jpeg",
-  clientName: "Zachary Renta",
-  clientTitle: "SBA Loans Founder & CEO",
+  text: "Omer and his team put in significant effort and delivered many positive contributions.",
+  clientImageSrc: "/lfgoOwner.png",
+  clientName: "Louis-Antoine",
+  clientTitle: "GoAgents Loans Founder & CEO",
 };
 

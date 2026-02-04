@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   Caption,
   CardLeft,
@@ -40,21 +40,84 @@ import LinkedInIcon from "../../../images/social-icons/in.svg";
 import BgImg from "../../../images/bgImg.svg";
 
 import InputForm from "./Input-Form";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { prefersReducedMotion } from "../../../utils/animations";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 const ContactUs = () => {
   const [inIcon, setInIcon] = useState(false);
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    if (typeof window === "undefined" || !sectionRef.current) return;
+    if (prefersReducedMotion()) return;
+
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        ".contact-header",
+        { opacity: 0, y: 40 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.7,
+          ease: "power3.out",
+          stagger: 0.1,
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 80%",
+          },
+        }
+      );
+
+      gsap.fromTo(
+        ".contact-left",
+        { opacity: 0, x: -60 },
+        {
+          opacity: 1,
+          x: 0,
+          duration: 0.8,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: ".contact-card",
+            start: "top 80%",
+          },
+        }
+      );
+
+      gsap.fromTo(
+        ".contact-form",
+        { opacity: 0, x: 60 },
+        {
+          opacity: 1,
+          x: 0,
+          duration: 0.8,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: ".contact-card",
+            start: "top 80%",
+          },
+        }
+      );
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
 
   return (
-    <section id="contact-form" className={containerStyles.contact_us}>
-      <SmallTxt>CONTACT US</SmallTxt>
-      <HeaderText>
+    <section id="contact-form" className={containerStyles.contact_us} ref={sectionRef}>
+      <SmallTxt className="contact-header">CONTACT US</SmallTxt>
+      <HeaderText className="contact-header">
         Get In <SecondaryColor>Touch</SecondaryColor>
       </HeaderText>
-      <DescriptionText>
+      <DescriptionText className="contact-header">
         Have a project in mind? We'd love to hear from you. Send us a message and we'll respond as soon as possible.
       </DescriptionText>
-      <MainCard>
-        <CardLeft>
+      <MainCard className="contact-card">
+        <CardLeft className="contact-left">
           <CardDetails>
             <BackImage>
               <BgImg/>

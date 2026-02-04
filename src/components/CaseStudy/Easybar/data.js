@@ -6,9 +6,9 @@ export const heroData = {
   logoAlt: "EASY-BAR",
   caption: (
     <>
-      A web platform that simplifies rebar design, vendor quoting, and seamless
+      A web platform that simplifies rebar design, vendor
       <br />
-      online ordering.
+      quoting, and seamless online ordering.
     </>
   ),
   heroImageSrc: "/easybarMemorandum.png",
@@ -53,9 +53,7 @@ export const solutionData = {
   heading: "Our Solution",
   description: (
     <>
-      <strong>Arithmiks</strong> rebuilt EasyBar into a fully automated,
-      design-to-order platform that digitized rebar sketching, streamlined vendor
-      collaboration, and scaled manufacturing workflows end-to-end.
+      <strong>Arithmiks</strong> rebuilt EasyBar into a fully automated, design-to-order platform that digitized rebar sketching, streamlined vendor collaboration, and scaled manufacturing workflows end-to-end.
     </>
   ),
   solutions: [
@@ -97,8 +95,8 @@ export const keyFeaturesData = {
 
 export const testimonialData = {
   text: "Omer is a professional, reliable, and kind person. Working with him was great! Omer was available for any question, gave professional answers, was patient with the project and the results are beautiful. I highly recommend working with him.",
-  clientImageSrc: "/sbaOwner.jpeg",
-  clientName: "Zachary Renta",
-  clientTitle: "SBA Loans Founder & CEO",
+  clientImageSrc: "/easyBarOwner.png",
+  clientName: "Ron Balmas",
+  clientTitle: "EasyBar Loans Founder & CEO",
 };
 

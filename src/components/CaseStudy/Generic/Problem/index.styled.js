@@ -3,7 +3,7 @@ import { breakpoints } from "../../../Landing/index.styled";
 
 export const ProblemSection = styled.section`
   width: 100%;
-  background-color: #fff;
+  background-color: transparent;
   padding: 0 0 40px 20px;
   display: flex;
   justify-content: flex-start;
@@ -15,7 +15,7 @@ export const ProblemSection = styled.section`
   }
 
   @media screen and (max-width: ${breakpoints.medium}) {
-    padding: 0 16px 30px 16px;
+    padding: 0 16px 40px 16px;
     justify-content: center;
     margin-top: 20px;
   }
@@ -28,6 +28,8 @@ export const ProblemFrame = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  background-color: #fff;
+  border-radius: 0 20px 20px 0;
 
   img {
     width: 100%;
@@ -42,6 +44,8 @@ export const ProblemFrame = styled.div`
   @media screen and (max-width: ${breakpoints.medium}) {
     max-width: 100%;
     justify-content: center;
+    min-height: auto;
+    border-radius: 12px;
   }
 `;
 
@@ -64,13 +68,21 @@ export const ProblemContent = styled.div`
   }
 
   @media screen and (max-width: ${breakpoints.medium}) {
-    padding: 30px 32px;
-    left: 40px;
+    padding: 25px 28px;
+    left: 35px;
+    gap: 8px;
   }
 
   @media screen and (max-width: ${breakpoints.small}) {
-    padding: 20px 16px;
-    left: 30px;
+    padding: 18px 14px;
+    left: 25px;
+    gap: 6px;
+  }
+
+  @media screen and (max-width: 375px) {
+    padding: 14px 10px;
+    left: 20px;
+    gap: 4px;
   }
 `;
 
@@ -102,12 +114,17 @@ export const ProblemText = styled.p`
   margin: 0;
 
   @media screen and (max-width: ${breakpoints.medium}) {
-    font-size: 14px;
-    line-height: 20px;
+    font-size: 13px;
+    line-height: 19px;
   }
 
   @media screen and (max-width: ${breakpoints.small}) {
-    font-size: 12px;
-    line-height: 18px;
+    font-size: 11px;
+    line-height: 16px;
+  }
+
+  @media screen and (max-width: 375px) {
+    font-size: 10px;
+    line-height: 15px;
   }
 `;

@@ -326,11 +326,16 @@ export const CaseStudyImgWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  
+  img {
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
 
   svg {
     width: 100%;
     height: auto;
     display: block;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   @media screen and (max-width: ${breakpoints.large}) {
@@ -445,9 +450,18 @@ export const ViewButtonLink = styled(Link)`
   font-weight: 500;
   line-height: 24px;
   letter-spacing: -0.09px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   
   &:hover {
-    background: #F5F5F5;
+    background: #1355FF;
+    color: #FFF;
+    border-color: #1355FF;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(19, 85, 255, 0.25);
+    
+    svg {
+      filter: brightness(0) invert(1);
+    }
   }
 `;
 
@@ -458,11 +472,17 @@ export const CaseStudyCardLink = styled(Link)`
   width: 100%;
   cursor: pointer;
   text-decoration: none;
-  transition: transform 0.2s ease, opacity 0.2s ease;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 16px;
+  padding: 8px;
+  margin: -8px;
 
   &:hover {
-    transform: translateY(-4px);
-    opacity: 0.9;
+    transform: translateY(-10px);
+    
+    img {
+      transform: scale(1.03);
+    }
   }
 
   &:nth-child(2n) {

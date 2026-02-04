@@ -37,6 +37,7 @@ const ServiceCard = (props) => {
   return (
     <Card
       position={position}
+      className="service-card"
     >
       <CardHeader>
         {basicIcon}

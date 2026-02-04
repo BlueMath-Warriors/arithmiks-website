@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { Link } from "gatsby";
 import {
   SmallTxt,
@@ -22,11 +22,60 @@ import CollaboratedWith from "./Collaborated-With";
 import * as containerStyles from "../../../styles/global.module.css";
 import ArrowCricleRight from "../../../images/arrow-right-circle-black.svg";
 import { caseStudies } from "./caseStudies";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { prefersReducedMotion } from "../../../utils/animations";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 const CaseStudy = ({ landing = false }) => {
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    if (typeof window === "undefined" || !sectionRef.current) return;
+    if (prefersReducedMotion()) return;
+
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        ".cs-header",
+        { opacity: 0, y: 40 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.7,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 80%",
+          },
+        }
+      );
+
+      gsap.fromTo(
+        ".cs-card",
+        { opacity: 0, y: 60 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.7,
+          ease: "power3.out",
+          stagger: 0.15,
+          scrollTrigger: {
+            trigger: ".cs-grid",
+            start: "top 85%",
+          },
+        }
+      );
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section className={containerStyles.case_study}>
-      <Header>
+    <section className={containerStyles.case_study} ref={sectionRef}>
+      <Header className="cs-header">
         <Left>
           <SmallTxt>CASE STUDIES</SmallTxt>
           <HeaderText>Our Case Studies</HeaderText>
@@ -44,13 +93,14 @@ const CaseStudy = ({ landing = false }) => {
 
       {!landing && <CollaboratedWith />}
 
-      <CaseStudiesGrid>
+      <CaseStudiesGrid className="cs-grid">
         {(landing ? caseStudies.slice(0, 3) : caseStudies).map((study, index) => {
           if (study.hasDetailPage) {
             return (
               <CaseStudyCardLink
                 key={study.slug}
                 to={`/case-studies/${study.slug}`}
+                className="cs-card"
               >
                 <CaseStudyImgWrapper>
                   <img 
@@ -76,6 +126,7 @@ const CaseStudy = ({ landing = false }) => {
             <div
               key={study.slug}
               style={{ cursor: 'default' }}
+              className="cs-card"
             >
               <CaseStudyImgWrapper>
                 <img 

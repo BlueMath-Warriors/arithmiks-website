@@ -25,6 +25,13 @@ import RequirementIcon from "../../../images/card-requirement.svg";
 import EngagementIcon from "../../../images/card-engagement.svg";
 import PlanIcon from "../../../images/card-plan.svg";
 import DevelopmentIcon from "../../../images/card-development.svg";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { prefersReducedMotion } from "../../../utils/animations";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 const iconImages = {
   1: <MeetingIcon/>,
@@ -123,15 +130,57 @@ const HowItWorks = () => {
     }
   };
 
+  const sectionRef = useRef(null);
+
   useEffect(() => {
     if (containerRef.current) {
       containerRef.current.scrollLeft = 0;
     }
   }, []);
 
+  useEffect(() => {
+    if (typeof window === "undefined" || !sectionRef.current) return;
+    if (prefersReducedMotion()) return;
+
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        ".hiw-header",
+        { opacity: 0, y: 40 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.7,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 80%",
+          },
+        }
+      );
+
+      gsap.fromTo(
+        ".hiw-card",
+        { opacity: 0, y: 50 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          ease: "power3.out",
+          stagger: 0.12,
+          scrollTrigger: {
+            trigger: ".hiw-carousel",
+            start: "top 85%",
+          },
+        }
+      );
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section className={containerStyles.how_it_works}>
-      <Header>
+    <section className={containerStyles.how_it_works} ref={sectionRef}>
+      <Header className="hiw-header">
         <HeaderLeft>
           <HeaderTitle>How it Works</HeaderTitle>
           <HeaderDescription>
@@ -147,9 +196,9 @@ const HowItWorks = () => {
           </CarouselButton>
         </CarouselButtons>
       </Header>
-      <CarouselContainer ref={containerRef}>
+      <CarouselContainer ref={containerRef} className="hiw-carousel">
         {Data.map((card, index) => (
-          <CarouselCard id={`card_${card.id}`} ref={cardsRef[1]}>
+          <CarouselCard id={`card_${card.id}`} ref={cardsRef[1]} className="hiw-card">
             <ImgContainer>
               {iconImages[card.id]}
             </ImgContainer>
