@@ -51,9 +51,7 @@ export const solutionData = {
   heading: "Our Solution",
   description: (
     <>
-      <strong>Arithmiks</strong> designed a trusted, community-driven deals
-      platform that centralized discovery, enforced quality through moderation,
-      and scaled engagement with automation.
+      <strong>Arithmiks</strong> designed a trusted, community-driven deals platform that centralized discovery, enforced quality through moderation, and scaled engagement with automation.
     </>
   ),
   solutions: [

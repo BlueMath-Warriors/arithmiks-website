@@ -60,9 +60,7 @@ export const solutionData = {
   heading: "Our Solution",
   description: (
     <>
-      <strong>Arithmiks</strong> built an end-to-end AI automation platform that
-      replaced manual marketing operations with intelligent, scalable, and
-      multi-tenant workflows.
+      <strong>Arithmiks</strong> built an end-to-end AI automation platform that replaced manual marketing operations with intelligent, scalable, and multi-tenant workflows.
     </>
   ),
   solutions: [

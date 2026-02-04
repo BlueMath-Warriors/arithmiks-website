@@ -58,9 +58,7 @@ export const solutionData = {
   heading: "Our Solution",
   description: (
     <>
-      <strong>Arithmiks</strong> designed a unified community engagement platform
-      that centralized communication, simplified participation, and strengthened
-      digital connections for organizations at scale.
+      <strong>Arithmiks</strong> designed a unified community engagement platform that centralized communication, simplified participation, and strengthened digital connections for organizations at scale.
     </>
   ),
   solutions: [

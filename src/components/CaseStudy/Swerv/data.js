@@ -53,9 +53,7 @@ export const solutionData = {
   heading: "Our Solution",
   description: (
     <>
-      <strong>Arithmiks</strong> designed and delivered a centralized, data-driven
-      platform that unified dealership workflows, automated acquisitions, and
-      enabled faster, smarter decision-making.
+      <strong>Arithmiks</strong> designed and delivered a centralized, data-driven platform that unified dealership workflows, automated acquisitions, and enabled faster, smarter decision-making.
     </>
   ),
   solutions: [

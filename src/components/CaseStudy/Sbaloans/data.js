@@ -53,9 +53,7 @@ export const solutionData = {
   heading: "Our Solution",
   description: (
     <>
-      <strong>Arithmiks</strong> delivered a unified, automated loan management
-      platform that streamlined broker workflows, improved client visibility,
-      and ensured secure, scalable operations.
+      <strong>Arithmiks</strong> delivered a unified, automated loan management platform that streamlined broker workflows, improved client visibility, and ensured secure, scalable operations.
     </>
   ),
   solutions: [

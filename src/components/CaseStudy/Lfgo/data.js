@@ -50,9 +50,7 @@ export const solutionData = {
   heading: "Our Solution",
   description: (
     <>
-      <strong>Arithmiks</strong> designed a unified Web3 platform that simplified
-      token creation, enabled cross-chain trading, and delivered real-time
-      marketplace transparency.
+      <strong>Arithmiks</strong> designed a unified Web3 platform that simplified token creation, enabled cross-chain trading, and delivered real-time marketplace transparency.
     </>
   ),
   solutions: [

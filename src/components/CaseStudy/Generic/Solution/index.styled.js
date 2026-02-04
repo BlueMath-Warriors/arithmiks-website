@@ -5,7 +5,7 @@ export const SolutionHeader = styled.div`
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  gap: 80px;
+  gap: 4px;
   width: 100%;
   max-width: 1120px;
   margin: 80px auto 64px auto;
@@ -13,13 +13,13 @@ export const SolutionHeader = styled.div`
 
   @media screen and (max-width: ${breakpoints.large}) {
     max-width: 760px;
-    gap: 60px;
+    gap: 4px;
     margin-top: 60px;
   }
 
   @media screen and (max-width: ${breakpoints.medium}) {
     flex-direction: column;
-    gap: 32px;
+    gap: 4px;
     margin-top: 48px;
     margin-bottom: 48px;
   }

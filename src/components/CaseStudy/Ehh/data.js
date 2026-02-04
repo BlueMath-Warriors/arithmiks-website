@@ -51,9 +51,7 @@ export const solutionData = {
   heading: "Our Solution",
   description: (
     <>
-      <strong>Arithmiks</strong> designed a centralized, personalized lifestyle
-      platform that transformed fragmented expat data into an engaging,
-      AI-powered planning experience.
+      <strong>Arithmiks</strong> designed a centralized, personalized lifestyle platform that transformed fragmented expat data into an engaging, AI-powered planning experience.
     </>
   ),
   solutions: [

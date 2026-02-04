@@ -50,9 +50,7 @@ export const solutionData = {
   heading: "Our Solution",
   description: (
     <>
-      <strong>Arithmiks</strong> built a scalable embedded e-commerce system that
-      centralized product control while delivering a consistent, adaptive
-      shopping experience across thousands of retailer websites.
+      <strong>Arithmiks</strong> built a scalable embedded e-commerce system that centralized product control while delivering a consistent, adaptive shopping experience across thousands of retailer websites.
     </>
   ),
   solutions: [

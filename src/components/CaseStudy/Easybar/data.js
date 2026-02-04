@@ -53,9 +53,7 @@ export const solutionData = {
   heading: "Our Solution",
   description: (
     <>
-      <strong>Arithmiks</strong> rebuilt EasyBar into a fully automated,
-      design-to-order platform that digitized rebar sketching, streamlined vendor
-      collaboration, and scaled manufacturing workflows end-to-end.
+      <strong>Arithmiks</strong> rebuilt EasyBar into a fully automated, design-to-order platform that digitized rebar sketching, streamlined vendor collaboration, and scaled manufacturing workflows end-to-end.
     </>
   ),
   solutions: [

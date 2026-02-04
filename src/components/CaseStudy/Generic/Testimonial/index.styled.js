@@ -60,7 +60,7 @@ export const TestimonialText = styled.p`
   font-family: Poppins;
   font-size: 24px;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 600;
   line-height: 36px;
   margin: 0;
   padding: 0 20px 0 80px;
@@ -156,9 +156,19 @@ export const NameContainer = styled.div`
   gap: 16px;
   width: 100%;
   max-width: 800px;
+  padding-left: 80px;
+
+  @media screen and (max-width: ${breakpoints.large}) {
+    padding-left: 60px;
+  }
 
   @media screen and (max-width: ${breakpoints.medium}) {
+    padding-left: 50px;
     gap: 12px;
+  }
+
+  @media screen and (max-width: 480px) {
+    padding-left: 40px;
   }
 `;
 
