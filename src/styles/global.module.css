@@ -110,8 +110,9 @@ button {
 
 .footer {
   background-color: #fff;
-  height: 985px;
+  min-height: auto;
   padding-top: 120px;
+  padding-bottom: 40px;
 
   display: flex;
   justify-content: flex-start;
@@ -122,8 +123,9 @@ button {
 @media screen and (max-width: 1200px) {
   .footer {
     background-color: #fff;
-    height: 945px;
+    min-height: auto;
     padding-top: 90px;
+    padding-bottom: 40px;
 
     display: flex;
     justify-content: flex-start;
@@ -135,8 +137,9 @@ button {
 @media screen and (max-width: 820px) {
   .footer {
     background-color: #fff;
-    height: 1938px;
+    min-height: auto;
     padding-top: 60px;
+    padding-bottom: 40px;
 
     display: flex;
     justify-content: flex-start;

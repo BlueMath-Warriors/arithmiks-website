@@ -72,6 +72,54 @@ const KeyFeatures = ({
     }
   }, [currentSlide]);
 
+  useEffect(() => {
+    const container = carouselRef.current;
+    if (!container) return;
+
+    const handleScroll = () => {
+      if (!container || slideRefs.current.length === 0) return;
+
+      const containerRect = container.getBoundingClientRect();
+      const containerCenter = containerRect.left + containerRect.width / 2;
+
+      let closestSlide = 0;
+      let closestDistance = Infinity;
+
+      slideRefs.current.forEach((slide, index) => {
+        if (!slide) return;
+        const slideRect = slide.getBoundingClientRect();
+        const slideCenter = slideRect.left + slideRect.width / 2;
+        const distance = Math.abs(containerCenter - slideCenter);
+
+        if (distance < closestDistance) {
+          closestDistance = distance;
+          closestSlide = index;
+        }
+      });
+
+      if (closestSlide !== currentSlide) {
+        setCurrentSlide(closestSlide);
+      }
+    };
+
+    let scrollTimeout;
+    const throttledHandleScroll = () => {
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(handleScroll, 100);
+    };
+
+    container.addEventListener('scroll', throttledHandleScroll);
+    container.addEventListener('touchmove', throttledHandleScroll);
+    container.addEventListener('touchend', handleScroll);
+
+    return () => {
+      container.removeEventListener('scroll', throttledHandleScroll);
+      container.removeEventListener('touchmove', throttledHandleScroll);
+      container.removeEventListener('touchend', handleScroll);
+      clearTimeout(scrollTimeout);
+    };
+  }, [currentSlide, totalSlides]);
+
   if (totalSlides === 0) return null;
 
   return (

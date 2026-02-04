@@ -228,14 +228,23 @@ export const Divider =  styled.hr`
   width: 100%;
   max-width: 100%;
   border-width: 1px; 
-  margin-top: 48px;
+  margin-top: 24px;
   margin-bottom: 0;
   border-color: #0B63E5;
   border-top: 1px solid #0B63E5;
   border-bottom: none;
 
+  &:nth-of-type(2) {
+    margin-top: 6px;
+  }
+
   @media screen and (max-width: ${breakpoints.medium}) {
     width: 100%;
+    margin-top: 20px;
+    
+    &:nth-of-type(2) {
+      margin-top: 6px;
+    }
   }  
 `
 
@@ -244,7 +253,8 @@ export const ContactInfoContainer = styled.div`
   justify-content: center;
   align-items: flex-start;
   gap: 240px;
-  margin-top: 48px;
+  margin-top: 24px;
+  margin-bottom: 6px;
   width: 1120px;
 
   @media screen and (max-width: ${breakpoints.large}) {
@@ -257,6 +267,8 @@ export const ContactInfoContainer = styled.div`
     width: 100%;
     gap: 40px;
     padding: 0 16px;
+    margin-top: 20px;
+    margin-bottom: 6px;
   }
 `
 
@@ -316,13 +328,14 @@ export const FooterBottom = styled.div`
   width: 1120px;
   justify-content: space-between;
   align-items: center;
-  margin-top: 32px;
+  margin-top: 16px;
+  margin-bottom: 0;
 
   @media screen and (max-width: ${breakpoints.large}) {
     width: 760px;
   }
   @media screen and (max-width: ${breakpoints.medium}) {
-    margin-top: 16px;
+    margin-top: 12px;
     width: 95%;
     flex-direction: column;
     gap: 8px;
