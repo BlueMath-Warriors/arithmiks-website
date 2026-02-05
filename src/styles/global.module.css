@@ -45,11 +45,11 @@ button {
   background-size: cover;
   background-position: center;
   height: 850px;
-  padding-top: 90px;
+  padding-top: 150px;
 
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
 }
 
 @media screen and (max-width: 1200px) {

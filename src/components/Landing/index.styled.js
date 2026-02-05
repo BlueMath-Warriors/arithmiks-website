@@ -58,9 +58,10 @@ export const TextContainer = styled.div`
   display: flex;
   max-width: 1120px;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: flex-start;
   gap: 30px;
+  margin-top: 40px;
   @media screen and (max-width: ${breakpoints.large}) {
     max-width: 760px;
   }
