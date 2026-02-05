@@ -10,11 +10,17 @@ export const breakpoints = {
 export const Buttons = styled.div`
   display: inline-flex;
   gap: 32px;
+  width: 100%;
+  
+  @media screen and (max-width: ${breakpoints.medium}) {
+    width: 100%;
+    justify-content: flex-start;
+  }
 `;
 
 export const CtaBtn = styled.button`
   display: flex;
-  width: ${(props) => (props.fixed ? "134px" : "144px")};
+  width: ${(props) => (props.fixed ? "134px" : "234px")};
   height: 52px;
   justify-content: center;
   align-items: center;
@@ -47,11 +53,13 @@ export const CtaBtn = styled.button`
   }
 
   @media screen and (max-width: ${breakpoints.large}) {
-    margin-left: ${(props) => (props.fixed ? "" : "auto")};
+    width: ${(props) => (props.fixed ? "134px" : "200px")};
     margin-right: ${(props) => (props.fixed ? "" : "16px")};
   }
   @media screen and (max-width: ${breakpoints.medium}) {
-    display: ${(props) => (props.fixed ? "" : "none")};
+    width: ${(props) => (props.fixed ? "134px" : "100%")};
+    font-size: 14px;
+    height: 48px;
   }
 `;
 
@@ -59,27 +67,34 @@ export const TextContainer = styled.div`
   display: flex;
   max-width: 1120px;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-start;
+  align-items: flex-start;
   gap: 30px;
+  margin-top: 40px;
+  padding: 0 20px;
   @media screen and (max-width: ${breakpoints.large}) {
     max-width: 760px;
+    margin-top: 30px;
+    gap: 24px;
   }
   @media screen and (max-width: ${breakpoints.medium}) {
     max-width: 382px;
     gap: 16px;
+    margin-top: 20px;
+    padding: 0 16px;
   }
 
   @media screen and (max-width: ${breakpoints.xsmall}) {
     max-width: 95%;
+    padding: 0 12px;
   }
 `;
 
 export const MainHead = styled.h1`
-  color: #000;
-  text-align: center;
+  color: #333333;
+  text-align: left;
   font-family: Poppins;
-  font-size: 66px;
+  font-size: 45px;
   font-style: normal;
   font-weight: 600;
   line-height: 80px;
@@ -98,28 +113,41 @@ export const MainHead = styled.h1`
   }
 
   @media screen and (max-width: ${breakpoints.large}) {
-    font-size: 44px;
+    font-size: 30px;
     line-height: 60px;
   }
 
   @media screen and (max-width: ${breakpoints.medium}) {
-    font-size: 26px;
-    line-height: 60px;
+    font-size: 18px;
     line-height: 34px;
     letter-spacing: -0.52px;
+  }
+  
+  @media screen and (max-width: ${breakpoints.xsmall}) {
+    font-size: 16px;
+    line-height: 28px;
   }
 `;
 
 export const Description = styled.p`
-  color: #5c5c5c;
-  text-align: center;
+  color: #5C5C5C;
+  text-align: left;
   font-family: Poppins;
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
   line-height: 150.5%;
 
+  @media screen and (max-width: ${breakpoints.large}) {
+    font-size: 16px;
+  }
+
   @media screen and (max-width: ${breakpoints.medium}) {
+    font-size: 14px;
+    line-height: 140%;
+  }
+  
+  @media screen and (max-width: ${breakpoints.xsmall}) {
     font-size: 12px;
   }
 `;

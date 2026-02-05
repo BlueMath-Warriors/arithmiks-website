@@ -10,6 +10,7 @@ import Uicon from "../../images/u-icon.svg";
 import * as containerStyles from "../../styles/global.module.css";
 import Header from "../Landing/Header";
 import About from "./About-Section";
+import FeaturedClients from "./Featured-Clients";
 import { gsap } from "gsap";
 import { prefersReducedMotion } from "../../utils/animations";
 
@@ -80,6 +81,13 @@ const LandingPage = () => {
         { opacity: 1, y: 0, scale: 1, duration: 0.6, ease: "back.out(1.5)" },
         "-=0.4"
       );
+
+      tl.fromTo(
+        ".hero-featured-clients",
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" },
+        "-=0.3"
+      );
     }, heroRef);
 
     return () => ctx.revert();
@@ -91,20 +99,23 @@ const LandingPage = () => {
       <section className={containerStyles.main_hero} ref={heroRef}>
         <TextContainer>
           <MainHead className="hero-headline">
-            Grow Your Start
+            Transform Your Start
             <Uicon />
-            p At An Early Stage or Scale Your Development Team With US
+            p With AI-Powered Solutions or Accelerate Your Development
+            <br />
+            Team With Us
           </MainHead>
           <Description className="hero-description">
-            We are a custom software development company that assists you in
-            converting your ideas into wonderful software solutions. With our
-            customer centric approach we build products that matter to users.
+            We combine AI and custom software development to transform your ideas into smart, scalable
+            <br />
+            solutions. Our customer-centric approach ensures we build products that deliver real value to users.
           </Description>
           <Buttons onClick={scrollToContact} className="hero-cta">
             <CtaBtn as="button" fill="true" type="button">
-              Let's Talk
+              Talk to an AI Expert
             </CtaBtn>
           </Buttons>
+          <FeaturedClients />
         </TextContainer>
       </section>
       
