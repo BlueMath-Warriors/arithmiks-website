@@ -156,11 +156,13 @@ export const MenuItem = styled.li`
 `;
 
 export const MenuItemLink = styled(Link)`
-  color: ${(props) => (props.blue === "true" ? "#1355FF" : "#170F49")};
+  color: ${(props) => 
+    props.active || props.blue === "true" ? "#1355FF" : "#170F49"};
   font-family: Poppins;
   font-size: 18px;
   font-style: normal;
-  font-weight: ${(props) => (props.blue === "true" ? "600" : "400")};
+  font-weight: ${(props) => 
+    props.active || props.blue === "true" ? "600" : "400"};
   line-height: normal;
   letter-spacing: -0.36px;
   cursor: pointer;
@@ -173,23 +175,8 @@ export const MenuItemLink = styled(Link)`
   gap: 6px;
   transition: color 0.3s ease;
   
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: -4px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: #1355FF;
-    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-  
   &:hover {
     color: #1355FF;
-    
-    &::after {
-      width: 100%;
-    }
   }
   
   &.mobile-only {

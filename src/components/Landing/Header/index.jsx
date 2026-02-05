@@ -78,6 +78,7 @@ const Header = ({ white, fixed_bar }) => {
   const [heroHeight, setHeroHeight] = useState(840);
   const [isFixed, setIsFixed] = useState(false);
   const [hideNav, setHideNav] = useState(false);
+  const [currentPath, setCurrentPath] = useState("");
 
   const closeMenu = useCallback(() => {
     if (navMenu && navMenu.current) {
@@ -121,6 +122,33 @@ const Header = ({ white, fixed_bar }) => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [showServices, showMenu, handleClickOutside]);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    
+    const updatePath = () => {
+      setCurrentPath(window.location.pathname);
+    };
+    
+    updatePath();
+    
+    window.addEventListener("popstate", updatePath);
+    
+    const handleRouteChange = () => {
+      setTimeout(updatePath, 0);
+    };
+    
+    const interval = setInterval(() => {
+      if (window.location.pathname !== currentPath) {
+        updatePath();
+      }
+    }, 200);
+    
+    return () => {
+      window.removeEventListener("popstate", updatePath);
+      clearInterval(interval);
+    };
+  }, [currentPath]);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -185,7 +213,11 @@ const Header = ({ white, fixed_bar }) => {
             </CompanyLogo>
           </Link>
           <Menu ref={navMenu}>
-            <MenuItemLink to="/" onClick={closeMenu}>
+            <MenuItemLink 
+              to="/" 
+              onClick={closeMenu}
+              active={currentPath === "/"}
+            >
               Home
             </MenuItemLink>
             <ServiceMenuItem
@@ -202,13 +234,26 @@ const Header = ({ white, fixed_bar }) => {
               Services
               <DownArrow className={showServices ? "down-icon" : "up-icon"} />
             </ServiceMenuItem>
-            <MenuItemLink to="/case-studies" onClick={closeMenu}>
+            <MenuItemLink 
+              to="/case-studies" 
+              onClick={closeMenu}
+              active={currentPath.startsWith("/case-studies")}
+            >
               Case Studies
             </MenuItemLink>
-            <MenuItemLink to="/company" onClick={closeMenu}>
+            <MenuItemLink 
+              to="/company" 
+              onClick={closeMenu}
+              active={currentPath === "/company"}
+            >
               Company
             </MenuItemLink>
-            <MenuItemLink to="/contact-us" onClick={closeMenu} className="mobile-only" blue="true">
+            <MenuItemLink 
+              to="/contact-us" 
+              onClick={closeMenu} 
+              className="mobile-only" 
+              active={currentPath === "/contact-us"}
+            >
               Get in Touch
             </MenuItemLink>
           </Menu>

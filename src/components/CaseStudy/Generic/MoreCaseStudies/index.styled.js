@@ -120,10 +120,17 @@ export const CaseStudyImgWrapper = styled.div`
   align-items: center;
   justify-content: center;
 
+  img {
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    width: 100%;
+    height: auto;
+  }
+
   svg {
     width: 100%;
     height: auto;
     display: block;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   @media screen and (max-width: ${breakpoints.large}) {
@@ -156,6 +163,7 @@ export const CompanyLogo = styled.img`
   object-fit: contain;
   filter: grayscale(100%) brightness(0.4);
   opacity: 0.8;
+  transform: none !important;
 
   @media screen and (max-width: ${breakpoints.medium}) {
     height: 28px;
@@ -259,11 +267,12 @@ export const CardLink = styled(Link)`
   width: 100%;
   cursor: pointer;
   text-decoration: none;
-  transition: transform 0.2s ease, opacity 0.2s ease;
+  position: relative;
 
   &:hover {
-    transform: translateY(-4px);
-    opacity: 0.92;
+    ${CaseStudyImgWrapper} img {
+      transform: scale(1.03);
+    }
   }
 `;
 

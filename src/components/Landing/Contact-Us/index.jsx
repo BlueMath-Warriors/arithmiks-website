@@ -142,7 +142,7 @@ const ContactUs = () => {
               </Circle>
               <CardContent>
                 <Caption>Office</Caption>
-                <ContentText medium>
+                <ContentText>
                 Lahore, Pakistan
                 </ContentText>
               </CardContent>
