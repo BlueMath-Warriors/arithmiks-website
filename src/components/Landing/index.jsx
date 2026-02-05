@@ -10,6 +10,7 @@ import Uicon from "../../images/u-icon.svg";
 import * as containerStyles from "../../styles/global.module.css";
 import Header from "../Landing/Header";
 import About from "./About-Section";
+import FeaturedClients from "./Featured-Clients";
 import { gsap } from "gsap";
 import { prefersReducedMotion } from "../../utils/animations";
 
@@ -80,6 +81,13 @@ const LandingPage = () => {
         { opacity: 1, y: 0, scale: 1, duration: 0.6, ease: "back.out(1.5)" },
         "-=0.4"
       );
+
+      tl.fromTo(
+        ".hero-featured-clients",
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" },
+        "-=0.3"
+      );
     }, heroRef);
 
     return () => ctx.revert();
@@ -107,6 +115,7 @@ const LandingPage = () => {
               Talk to an AI Expert
             </CtaBtn>
           </Buttons>
+          <FeaturedClients />
         </TextContainer>
       </section>
       
