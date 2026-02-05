@@ -91,18 +91,20 @@ const LandingPage = () => {
       <section className={containerStyles.main_hero} ref={heroRef}>
         <TextContainer>
           <MainHead className="hero-headline">
-            Grow Your Start
+            Transform Your Start
             <Uicon />
-            p At An Early Stage or Scale Your Development Team With US
+            p With AI-Powered Solutions or Accelerate Your Development
+            <br />
+            Team With Us
           </MainHead>
           <Description className="hero-description">
-            We are a custom software development company that assists you in
-            converting your ideas into wonderful software solutions. With our
-            customer centric approach we build products that matter to users.
+            We combine AI and custom software development to transform your ideas into smart, scalable
+            <br />
+            solutions. Our customer-centric approach ensures we build products that deliver real value to users.
           </Description>
           <Buttons onClick={scrollToContact} className="hero-cta">
             <CtaBtn as="button" fill="true" type="button">
-              Let's Talk
+              Talk to an AI Expert
             </CtaBtn>
           </Buttons>
         </TextContainer>

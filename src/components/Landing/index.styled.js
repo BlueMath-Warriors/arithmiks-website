@@ -14,7 +14,7 @@ export const Buttons = styled.div`
 
 export const CtaBtn = styled.button`
   display: flex;
-  width: ${(props) => (props.fixed ? "134px" : "144px")};
+  width: ${(props) => (props.fixed ? "134px" : "234px")};
   height: 52px;
   justify-content: center;
   align-items: center;
@@ -47,7 +47,6 @@ export const CtaBtn = styled.button`
   }
 
   @media screen and (max-width: ${breakpoints.large}) {
-    margin-left: ${(props) => (props.fixed ? "" : "auto")};
     margin-right: ${(props) => (props.fixed ? "" : "16px")};
   }
   @media screen and (max-width: ${breakpoints.medium}) {
@@ -60,7 +59,7 @@ export const TextContainer = styled.div`
   max-width: 1120px;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   gap: 30px;
   @media screen and (max-width: ${breakpoints.large}) {
     max-width: 760px;
@@ -76,10 +75,10 @@ export const TextContainer = styled.div`
 `;
 
 export const MainHead = styled.h1`
-  color: #000;
-  text-align: center;
+  color: #333333;
+  text-align: left;
   font-family: Poppins;
-  font-size: 66px;
+  font-size: 45px;
   font-style: normal;
   font-weight: 600;
   line-height: 80px;
@@ -98,12 +97,12 @@ export const MainHead = styled.h1`
   }
 
   @media screen and (max-width: ${breakpoints.large}) {
-    font-size: 44px;
+    font-size: 30px;
     line-height: 60px;
   }
 
   @media screen and (max-width: ${breakpoints.medium}) {
-    font-size: 26px;
+    font-size: 18px;
     line-height: 60px;
     line-height: 34px;
     letter-spacing: -0.52px;
@@ -111,8 +110,8 @@ export const MainHead = styled.h1`
 `;
 
 export const Description = styled.p`
-  color: #5c5c5c;
-  text-align: center;
+  color: #5C5C5C;
+  text-align: left;
   font-family: Poppins;
   font-size: 18px;
   font-style: normal;
