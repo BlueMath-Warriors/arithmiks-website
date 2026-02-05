@@ -2,27 +2,34 @@ import { styled } from "styled-components";
 import { breakpoints } from "../index.styled";
 
 export const Header = styled.div`
-  height: 92px;
+  height: auto;
+  min-height: 92px;
   width: 1120px;
   display: flex;
   justify-content: space-between;
-  align-items: space-between;
+  align-items: flex-start;
   margin-bottom: 35px;
+  gap: 24px;
 
   @media screen and (max-width: ${breakpoints.large}) {
-    height: 62px;
+    min-height: auto;
     margin-bottom: 38px;
     width: 760px;
+    gap: 20px;
   }
 
   @media screen and (max-width: ${breakpoints.medium}) {
-    height: 62px;
-    margin-bottom: 68px;
+    flex-direction: column;
+    align-items: flex-start;
+    min-height: auto;
+    margin-bottom: 32px;
     width: 382px;
+    gap: 20px;
   }
 
   @media screen and (max-width: ${breakpoints.xsmall}) {
     width: 95%;
+    gap: 16px;
   }
 `;
 export const Left = styled.div`
@@ -31,10 +38,23 @@ export const Left = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
+  flex: 1;
+  min-width: 0;
+  
+  @media screen and (max-width: ${breakpoints.medium}) {
+    width: 100%;
+  }
 `
 export const Right = styled.div`
   display: flex;
-  `
+  align-items: center;
+  flex-shrink: 0;
+  
+  @media screen and (max-width: ${breakpoints.medium}) {
+    width: 100%;
+    align-items: flex-start;
+  }
+`
 export const SmallTxt = styled.p`
   color: #1355FF;
   font-variant-numeric: stacked-fractions;
@@ -59,13 +79,26 @@ export const HeaderText = styled.h2`
   line-height: 60px;
   letter-spacing: -0.66px;
   width: 430px;
+  margin: 0;
+  
   @media screen and (max-width: ${breakpoints.large}) {
     font-size: 32px;
-    line-height: 30px;
+    line-height: 40px;
     letter-spacing: -0.48px;
+    width: auto;
+    max-width: 430px;
   }
+  
   @media screen and (max-width: ${breakpoints.medium}) {
-    width: 200px;
+    width: 100%;
+    font-size: 28px;
+    line-height: 36px;
+    letter-spacing: -0.42px;
+  }
+  
+  @media screen and (max-width: ${breakpoints.xsmall}) {
+    font-size: 24px;
+    line-height: 32px;
   }
 `
 
@@ -82,7 +115,10 @@ export const ViewButton = styled.a`
   border-radius: 6px;
   border: 1px solid #E7EAEE;
   background: #FFF;
-  height: 49px;
+  min-height: 49px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  white-space: nowrap;
 
   color: #07090D;
   font-variant-numeric: stacked-fractions;
@@ -94,6 +130,38 @@ export const ViewButton = styled.a`
   line-height: 24px;
   letter-spacing: -0.09px;
   cursor: pointer;
+  
+  &:hover {
+    border-color: #1355FF;
+    background: #F5F7FA;
+  }
+  
+  &:active {
+    transform: scale(0.98);
+  }
+  
+  svg {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+  }
+  
+  @media screen and (max-width: ${breakpoints.medium}) {
+    width: 100%;
+    justify-content: flex-start;
+    padding: 12px 20px;
+  }
+  
+  @media screen and (max-width: ${breakpoints.xsmall}) {
+    padding: 10px 16px;
+    min-height: 44px;
+    font-size: 13px;
+    
+    svg {
+      width: 18px;
+      height: 18px;
+    }
+  }
 `
 export const BtnIcon = styled.img`
   width: 24px;
