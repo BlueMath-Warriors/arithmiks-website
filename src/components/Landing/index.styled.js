@@ -10,6 +10,12 @@ export const breakpoints = {
 export const Buttons = styled.div`
   display: inline-flex;
   gap: 32px;
+  width: 100%;
+  
+  @media screen and (max-width: ${breakpoints.medium}) {
+    width: 100%;
+    justify-content: flex-start;
+  }
 `;
 
 export const CtaBtn = styled.button`
@@ -47,10 +53,13 @@ export const CtaBtn = styled.button`
   }
 
   @media screen and (max-width: ${breakpoints.large}) {
+    width: ${(props) => (props.fixed ? "134px" : "200px")};
     margin-right: ${(props) => (props.fixed ? "" : "16px")};
   }
   @media screen and (max-width: ${breakpoints.medium}) {
-    display: ${(props) => (props.fixed ? "" : "none")};
+    width: ${(props) => (props.fixed ? "134px" : "100%")};
+    font-size: 14px;
+    height: 48px;
   }
 `;
 
@@ -62,16 +71,22 @@ export const TextContainer = styled.div`
   align-items: flex-start;
   gap: 30px;
   margin-top: 40px;
+  padding: 0 20px;
   @media screen and (max-width: ${breakpoints.large}) {
     max-width: 760px;
+    margin-top: 30px;
+    gap: 24px;
   }
   @media screen and (max-width: ${breakpoints.medium}) {
     max-width: 382px;
     gap: 16px;
+    margin-top: 20px;
+    padding: 0 16px;
   }
 
   @media screen and (max-width: ${breakpoints.xsmall}) {
     max-width: 95%;
+    padding: 0 12px;
   }
 `;
 
@@ -104,9 +119,13 @@ export const MainHead = styled.h1`
 
   @media screen and (max-width: ${breakpoints.medium}) {
     font-size: 18px;
-    line-height: 60px;
     line-height: 34px;
     letter-spacing: -0.52px;
+  }
+  
+  @media screen and (max-width: ${breakpoints.xsmall}) {
+    font-size: 16px;
+    line-height: 28px;
   }
 `;
 
@@ -119,7 +138,16 @@ export const Description = styled.p`
   font-weight: 400;
   line-height: 150.5%;
 
+  @media screen and (max-width: ${breakpoints.large}) {
+    font-size: 16px;
+  }
+
   @media screen and (max-width: ${breakpoints.medium}) {
+    font-size: 14px;
+    line-height: 140%;
+  }
+  
+  @media screen and (max-width: ${breakpoints.xsmall}) {
     font-size: 12px;
   }
 `;
