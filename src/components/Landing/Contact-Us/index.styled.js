@@ -203,7 +203,7 @@ export const LeftCardHeader = styled.h3`
 export const SubCard = styled.div`
   display: flex;
   width: 376px;
-  align-items: flex-start;
+  align-items: center;
   gap: 16px;
   margin-bottom: 24px;
   margin-left: 48px;
@@ -263,11 +263,19 @@ export const CircleIcon = styled.img`
 `
 
 export const CardContent = styled.div`
-  diplay: flex;
+  display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
-  gap: 6px;
+  gap: 4px;
+  flex: 1;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  
+  @media screen and (max-width: ${breakpoints.xsmall}) {
+    gap: 4px;
+  }
 `
 
 export const Caption = styled.h1`
