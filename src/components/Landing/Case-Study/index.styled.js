@@ -368,6 +368,7 @@ export const CompanyLogo = styled.img`
   object-fit: contain;
   filter: grayscale(100%) brightness(0.4);
   opacity: 0.8;
+  transform: none !important;
 
   @media screen and (max-width: ${breakpoints.medium}) {
     height: 28px;
@@ -472,15 +473,13 @@ export const CaseStudyCardLink = styled(Link)`
   width: 100%;
   cursor: pointer;
   text-decoration: none;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   border-radius: 16px;
   padding: 8px;
   margin: -8px;
+  position: relative;
 
   &:hover {
-    transform: translateY(-10px);
-    
-    img {
+    ${CaseStudyImgWrapper} img {
       transform: scale(1.03);
     }
   }
