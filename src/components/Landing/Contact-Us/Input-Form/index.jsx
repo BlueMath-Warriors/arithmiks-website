@@ -116,27 +116,6 @@ const InputForm = () => {
             Fill out the form and our team will get back to you within 24 hours.
           </IntroText>
 
-          <InputContainer>
-            <DropdownWrapper>
-              <DropDownInput
-                type="text"
-                value={selectedValue}
-                className={selectedValue ? "has-value" : ""}
-                onChange={(e) => {
-                  setSelectedValue(e.target.value);
-                }}
-              >
-                <option value="" disabled selected>Select a Service or Technology *</option>
-                {services.map((service) => (
-                  <option value={service} key={service}>{service}</option>
-                ))}
-
-              </DropDownInput>
-              <DownArrow />
-            </DropdownWrapper>
-            <FormErrorText show={showWarnings && selectedValue === ""}>This field is required</FormErrorText>
-          </InputContainer>
-
           <InputRow>
               <InputContainer>
                 <NameInput
@@ -161,6 +140,27 @@ const InputForm = () => {
                 <FormErrorText show={showWarnings && email === ""}>This field is required</FormErrorText>
               </InputContainer>
           </InputRow>
+
+          <InputContainer>
+            <DropdownWrapper>
+              <DropDownInput
+                type="text"
+                value={selectedValue}
+                className={selectedValue ? "has-value" : ""}
+                onChange={(e) => {
+                  setSelectedValue(e.target.value);
+                }}
+              >
+                <option value="" disabled selected>Select a Service or Technology *</option>
+                {services.map((service) => (
+                  <option value={service} key={service}>{service}</option>
+                ))}
+
+              </DropDownInput>
+              <DownArrow />
+            </DropdownWrapper>
+            <FormErrorText show={showWarnings && selectedValue === ""}>This field is required</FormErrorText>
+          </InputContainer>
 
           <InputRow>
             <InputContainer>

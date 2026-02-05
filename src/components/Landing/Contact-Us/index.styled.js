@@ -153,9 +153,9 @@ export const BackImage = styled.div`
 export const LeftCardHeader = styled.h3`
   color: #fff;
   font-family: Poppins;
-  font-size: 36px;
+  font-size: 22px;
   font-style: normal;
-  font-weight: 700;
+  font-weight: 500;
   line-height: 44px; /* 122.222% */
   letter-spacing: -0.72px;
   margin-top: 72px;
@@ -169,7 +169,7 @@ export const LeftCardHeader = styled.h3`
     margin-left:  24px;
     margin-top: 24px;
     margin-bottom: 16px;
-    font-size: 26px;
+    font-size: 18px;
     letter-spacing: -0.52px;
   }
 `
@@ -219,27 +219,26 @@ export const CardContent = styled.div`
 `
 
 export const Caption = styled.h1`
-  color: #fff;
+  color: #CEDDF8;
   font-family: Poppins;
-  font-size: 14px;
+  font-size: 16px;
   font-style: normal;
   font-weight: 500;
   line-height: 100%;
   letter-spacing: 0.14px;
-  text-transform: uppercase;
 
 `
 
 export const ContentText = styled.p`
   color: #fff;
   font-family: Poppins;
-  font-size: ${(props) => (props.medium ? "16px" : "20px")};
+  font-size: 14px;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 500;
   line-height: 28px;
 
   @media screen and (max-width: ${breakpoints.xsmall}) {
-    font-size: 18px;
+    font-size: 14px;
   }
 `;
 export const CardFooter = styled.div`
