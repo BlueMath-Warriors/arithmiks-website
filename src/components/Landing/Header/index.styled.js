@@ -87,12 +87,13 @@ export const Menu = styled.ul`
   margin-right: 32px;
   @media screen and (max-width: ${breakpoints.large}) {
     position: fixed;
-    left: 100%;
+    left: 0;
     top: 70px;
     flex-direction: column;
     background: #fff;
     width: 100%;
     text-align: left;
+    transform: translateX(100%);
   }
 
   &.active {
@@ -101,6 +102,7 @@ export const Menu = styled.ul`
     left: 0;
     margin-top: 18px;
     border-top: 1px solid #c2c2c2;
+    transform: translateX(0);
   }
   @media screen and (max-width: ${breakpoints.large}) {
     gap: 24px;
@@ -156,12 +158,12 @@ export const MenuItem = styled.li`
 `;
 
 export const MenuItemLink = styled(Link)`
-  color: ${(props) => 
+  color: ${(props) =>
     props.active || props.blue === "true" ? "#1355FF" : "#170F49"};
   font-family: Poppins;
   font-size: 18px;
   font-style: normal;
-  font-weight: ${(props) => 
+  font-weight: ${(props) =>
     props.active || props.blue === "true" ? "600" : "400"};
   line-height: normal;
   letter-spacing: -0.36px;
