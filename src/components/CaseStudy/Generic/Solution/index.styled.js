@@ -4,24 +4,25 @@ import { breakpoints } from "../../../Landing/index.styled";
 export const SolutionHeader = styled.div`
   display: flex;
   align-items: flex-start;
-  justify-content: space-between;
-  gap: 4px;
+  justify-content: flex-start;
+  gap: 120px;
   width: 100%;
   max-width: 1120px;
-  margin: 80px auto 64px auto;
-  padding: 0 20px;
+  margin: 80px 0 64px 0;
+  padding: 0 20px 0 20px;
 
   @media screen and (max-width: ${breakpoints.large}) {
     max-width: 760px;
-    gap: 4px;
+    gap: 80px;
     margin-top: 60px;
   }
 
   @media screen and (max-width: ${breakpoints.medium}) {
     flex-direction: column;
-    gap: 4px;
+    gap: 24px;
     margin-top: 48px;
     margin-bottom: 48px;
+    padding: 0 16px;
   }
 `;
 
@@ -29,7 +30,12 @@ export const SolutionLeft = styled.div`
   display: flex;
   flex-direction: column;
   gap: 8px;
-  flex: 1;
+  flex: 0 0 auto;
+  padding-left: 12px;
+
+  @media screen and (max-width: ${breakpoints.medium}) {
+    padding-left: 12px;
+  }
 `;
 
 export const SolutionRight = styled.div`
@@ -37,6 +43,16 @@ export const SolutionRight = styled.div`
   flex-direction: column;
   flex: 1;
   align-items: flex-start;
+  max-width: 500px;
+  margin-left: -40px;
+
+  @media screen and (max-width: ${breakpoints.large}) {
+    margin-left: -30px;
+  }
+
+  @media screen and (max-width: ${breakpoints.medium}) {
+    margin-left: 0;
+  }
 `;
 
 export const SolutionLabel = styled.p`
@@ -59,9 +75,9 @@ export const Title = styled.h2`
   color: #1d1d1f;
   text-align: left;
   font-family: Poppins;
-  font-size: 48px;
+  font-size: 45px;
   font-style: normal;
-  font-weight: 700;
+  font-weight: 600;
   line-height: normal;
   margin: 0;
 
@@ -100,7 +116,7 @@ export const CardContainer = styled.div`
   gap: 32px;
   width: 100%;
   max-width: 1120px;
-  margin: 0 auto;
+  margin: 0;
   padding: 0 20px;
   position: relative;
 
