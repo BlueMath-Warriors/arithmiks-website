@@ -499,7 +499,6 @@ button {
   background-size: contain;
   background-repeat: no-repeat;
   position: absolute;
-  opacity: 0.25;
 }
 
 .quotes.top {
