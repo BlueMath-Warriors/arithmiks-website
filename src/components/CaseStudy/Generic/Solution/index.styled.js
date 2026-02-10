@@ -31,27 +31,33 @@ export const SolutionLeft = styled.div`
   flex-direction: column;
   gap: 8px;
   flex: 0 0 auto;
-  padding-left: 12px;
+  padding-left: 0;
 
   @media screen and (max-width: ${breakpoints.medium}) {
-    padding-left: 12px;
+    padding-left: 0;
   }
 `;
 
 export const SolutionRight = styled.div`
   display: flex;
   flex-direction: column;
-  flex: 1;
   align-items: flex-start;
-  max-width: 500px;
-  margin-left: -40px;
+  width: 100%;
+  max-width: calc(1120px - 40px);
+  margin-top: 24px;
+  margin-left: -20px;
+  padding-left: 0;
 
   @media screen and (max-width: ${breakpoints.large}) {
-    margin-left: -30px;
+    max-width: calc(760px - 40px);
+    margin-top: 20px;
+    margin-left: -16px;
   }
 
   @media screen and (max-width: ${breakpoints.medium}) {
+    margin-top: 16px;
     margin-left: 0;
+    max-width: 100%;
   }
 `;
 
