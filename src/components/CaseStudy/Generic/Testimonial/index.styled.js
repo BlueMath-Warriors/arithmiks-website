@@ -63,7 +63,7 @@ export const TestimonialText = styled.p`
   font-weight: 600;
   line-height: 36px;
   margin: 0;
-  padding: 0 20px 0 80px;
+  padding: 0 20px 0 55px;
   position: relative;
 
   &::before {
@@ -76,7 +76,6 @@ export const TestimonialText = styled.p`
     background-image: url('/quotes.png');
     background-size: contain;
     background-repeat: no-repeat;
-    opacity: 0.25;
   }
 
   &::after {
@@ -87,7 +86,6 @@ export const TestimonialText = styled.p`
     background-image: url('/quotes.png');
     background-size: contain;
     background-repeat: no-repeat;
-    opacity: 0.25;
     transform: scaleX(-1) scaleY(-1);
     vertical-align: middle;
     margin-left: 10px;
@@ -97,7 +95,7 @@ export const TestimonialText = styled.p`
   @media screen and (max-width: ${breakpoints.large}) {
     font-size: 20px;
     line-height: 32px;
-    padding: 0 20px 0 60px;
+    padding: 0 20px 0 50px;
 
     &::before {
       width: 45px;
@@ -115,7 +113,7 @@ export const TestimonialText = styled.p`
   @media screen and (max-width: ${breakpoints.medium}) {
     font-size: 18px;
     line-height: 28px;
-    padding: 0 16px 0 50px;
+    padding: 0 16px 0 45px;
 
     &::before {
       width: 38px;
@@ -133,7 +131,7 @@ export const TestimonialText = styled.p`
   @media screen and (max-width: 480px) {
     font-size: 16px;
     line-height: 26px;
-    padding: 0 12px 0 40px;
+    padding: 0 12px 0 35px;
 
     &::before {
       width: 30px;
@@ -156,19 +154,19 @@ export const NameContainer = styled.div`
   gap: 16px;
   width: 100%;
   max-width: 800px;
-  padding-left: 80px;
+  padding-left: 55px;
 
   @media screen and (max-width: ${breakpoints.large}) {
-    padding-left: 60px;
+    padding-left: 50px;
   }
 
   @media screen and (max-width: ${breakpoints.medium}) {
-    padding-left: 50px;
+    padding-left: 45px;
     gap: 12px;
   }
 
   @media screen and (max-width: 480px) {
-    padding-left: 40px;
+    padding-left: 35px;
   }
 `;
 
