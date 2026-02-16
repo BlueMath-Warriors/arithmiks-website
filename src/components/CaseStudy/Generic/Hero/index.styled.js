@@ -58,6 +58,7 @@ export const StudyCaption = styled.p`
 
 export const HeroImg = styled.img`
   margin-top: 46px;
+  margin-bottom: -45px;
   width: 100%;
   height: auto;
   display: block;

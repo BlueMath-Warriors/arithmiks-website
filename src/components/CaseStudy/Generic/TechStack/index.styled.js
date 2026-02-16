@@ -15,6 +15,9 @@ export const TechStackSection = styled.section`
   background-color: #0957DE;
   padding: 24px 0;
   overflow: hidden;
+  margin-top: -1px;
+  position: relative;
+  z-index: 1;
 
   @media screen and (max-width: ${breakpoints.medium}) {
     padding: 20px 0;
