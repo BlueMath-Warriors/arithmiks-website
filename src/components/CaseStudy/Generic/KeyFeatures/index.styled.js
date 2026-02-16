@@ -215,7 +215,7 @@ export const CarouselContainer = styled.div`
   width: 100%;
   max-width: 100%;
   margin: 0;
-  padding: 0 calc(50% - 342px);
+  padding: 0 calc(50% - 415px);
   scrollbar-width: none; 
   -ms-overflow-style: none; 
   gap: 32px;
@@ -226,7 +226,7 @@ export const CarouselContainer = styled.div`
   }
 
   @media screen and (max-width: ${breakpoints.large}) {
-    padding: 0 calc(50% - 250px);
+    padding: 0 calc(50% - 300px);
     gap: 24px;
   }
 
@@ -237,7 +237,7 @@ export const CarouselContainer = styled.div`
 `;
 
 export const CarouselSlide = styled.div`
-  min-width: 684px;
+  min-width: 831px;
   flex-shrink: 0;
   scroll-snap-align: center;
   display: flex;
@@ -245,7 +245,7 @@ export const CarouselSlide = styled.div`
   align-items: center;
 
   @media screen and (max-width: ${breakpoints.large}) {
-    min-width: 500px;
+    min-width: 600px;
   }
 
   @media screen and (max-width: ${breakpoints.medium}) {
@@ -255,15 +255,15 @@ export const CarouselSlide = styled.div`
 `;
 
 export const DashboardImage = styled.img`
-  width: 684px;
-  height: 500px;
+  width: 831px;
+  height: 573px;
   object-fit: contain;
   display: block;
   border-radius: 12px;
 
   @media screen and (max-width: ${breakpoints.large}) {
-    width: 500px;
-    height: 380px;
+    width: 600px;
+    height: 414px;
   }
 
   @media screen and (max-width: ${breakpoints.medium}) {
