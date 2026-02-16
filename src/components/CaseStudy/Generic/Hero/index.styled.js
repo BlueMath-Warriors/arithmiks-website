@@ -62,6 +62,21 @@ export const HeroImg = styled.img`
   width: 100%;
   height: auto;
   display: block;
+
+  @media screen and (max-width: ${breakpoints.large}) {
+    margin-top: 32px;
+    margin-bottom: -30px;
+  }
+
+  @media screen and (max-width: ${breakpoints.medium}) {
+    margin-top: 24px;
+    margin-bottom: -20px;
+  }
+
+  @media screen and (max-width: ${breakpoints.small}) {
+    margin-top: 20px;
+    margin-bottom: -15px;
+  }
 `
 
 export const HeroShade = styled.div`
