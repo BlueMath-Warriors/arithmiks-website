@@ -176,7 +176,7 @@ export const CaseStudyTag = styled.span`
   padding: 6px 12px;
   background: #f5f5f5;
   border-radius: 6px;
-  color: #1d1d1f;
+  color: #5C5C5C;
   font-family: Poppins;
   font-size: 14px;
   font-style: normal;
