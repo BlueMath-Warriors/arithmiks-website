@@ -6,7 +6,7 @@ export const heroData = {
   logoAlt: "Togather",
   caption: (
     <>
-      Togather is a platform for churches and NGOs to connect 
+      Togather is a platform for churches and NGOs to connect
       <br />
       communities through events, donations, and engagement.
     </>
@@ -99,9 +99,9 @@ export const keyFeaturesData = {
 };
 
 export const testimonialData = {
-  text: "Omer is a professional, reliable, and kind person. Working with him was great! Omer was available for any question, gave professional answers, was patient with the project and the results are beautiful. I highly recommend working with him.",
-  clientImageSrc: "/dummyOwner.png",
-  clientName: "Zachary Renta",
-  clientTitle: "SBA Loans Founder & CEO",
+  text: "Omer has been a critical part of the Togather team for some time and has been directly responsible for the development, management, and oversight of a multi-faceted and complex product ecosystem. I appreciate his attention to design details and thoroughness of work. He's reliable and committed. I highly recommend him to any team.",
+  clientImageSrc: "/togatherOwner.png",
+  clientName: "Will Lenzen",
+  clientTitle: "Togather CEO",
 };
 

@@ -109,7 +109,7 @@ export const keyFeaturesData = {
 };
 
 export const testimonialData = {
-  text: "Omer is a professional, reliable, and kind person. Working with him was great! Omer was available for any question, gave professional answers, was patient with the project and the results are beautiful. I highly recommend working with him.",
+  text: "Omer provided us with excellent support for our Next.js projects. I continue to work with him on other projects. Best regards from Germany!",
   clientImageSrc: "/dummyOwner.png",
   clientName: "Zachary Renta",
   clientTitle: "SBA Loans Founder & CEO",
