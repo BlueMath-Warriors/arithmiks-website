@@ -6,7 +6,7 @@ export const HeroContent = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  gap: 8px;
+  gap: 0;
 
   width: 929.029px;
   position: relative;
@@ -23,6 +23,7 @@ export const HeroContent = styled.div`
 
 export const SmallTxt = styled.p`
   padding: 6px 12px;
+  margin-bottom: 20px;
   
   border-radius: 8px;
   background: #E8ECF3;
@@ -33,13 +34,21 @@ export const SmallTxt = styled.p`
   font-style: normal;
   font-weight: 500;
   line-height: 16px;
+
+  @media screen and (max-width: ${breakpoints.medium}) {
+    margin-bottom: 16px;
+  }
 `
 
 export const LogoImage = styled.img`
   width: 285.047607421875px;
   height: 70.64580535888672px;
   display: block;
-  margin: 0 auto;
+  margin: 0 auto 20px auto;
+
+  @media screen and (max-width: ${breakpoints.medium}) {
+    margin-bottom: 16px;
+  }
 `
 
 export const StudyCaption = styled.p`
@@ -57,24 +66,24 @@ export const StudyCaption = styled.p`
 `
 
 export const HeroImg = styled.img`
-  margin-top: 46px;
+  margin-top: 12px;
   margin-bottom: -45px;
   width: 100%;
   height: auto;
   display: block;
 
   @media screen and (max-width: ${breakpoints.large}) {
-    margin-top: 32px;
+    margin-top: 10px;
     margin-bottom: -30px;
   }
 
   @media screen and (max-width: ${breakpoints.medium}) {
-    margin-top: 24px;
+    margin-top: 8px;
     margin-bottom: -20px;
   }
 
   @media screen and (max-width: ${breakpoints.small}) {
-    margin-top: 20px;
+    margin-top: 6px;
     margin-bottom: -15px;
   }
 `
