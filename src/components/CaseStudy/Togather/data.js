@@ -88,10 +88,34 @@ export const keyFeaturesData = {
   heading: "Key Features",
   features: [
     {
-      title: "1. Member Management:",
+      title: "1. Community Feed",
       description:
-        "Tools for adding, tracking, and communicating with members and groups.",
-      image: "/Togather Key Features/togartherKeyFeature1.png",
+        "Stay updated and connected through a shared homefeed and inbox.",
+      image: "/Togather Key Features/togatherKeyFeature1.png",
+    },
+    {
+      title: "2. Groups & Events",
+      description:
+        "Manage church groups and organize events with ease.",
+      image: "/Togather Key Features/togatherKeyFeature2.png",
+    },
+    {
+      title: "3. Leader Dashboard",
+      description:
+        "Tools for leaders to guide, communicate, and manage communities.",
+      image: "/Togather Key Features/togatherKeyFeature3.png",
+    },
+    {
+      title: "4. Admin Control",
+      description:
+        "Centralized tools for managing members, donations, and operations.",
+      image: "/Togather Key Features/togatherKeyFeature4.png",
+    },
+    {
+      title: "5. Live Insights",
+      description:
+        "Real-time report analytics to track engagement and community growth.",
+      image: "/Togather Key Features/togatherKeyFeature5.png",
     },
   ],
   leftIconSrc: "/leftIcon.svg",
