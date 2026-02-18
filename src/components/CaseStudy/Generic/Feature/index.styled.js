@@ -10,20 +10,24 @@ export const FeatureOuterContainer = styled.div`
   max-width: ${(props) => (props.overview ? "100%" : "1120px")};
   margin: 0 auto;
   padding: ${(props) => (props.overview ? "0 0 0 20px" : "80px 20px")};
+  padding-bottom: ${(props) => (props.overview ? "0px" : "80px")};
   flex-direction: ${(props) => (props.left ? "row-reverse" : "row")};
 
   @media screen and (max-width: ${breakpoints.large}) {
     max-width: ${(props) => (props.overview ? "100%" : "760px")};
     gap: 60px;
     padding: ${(props) => (props.overview ? "0 0 0 20px" : "60px 20px")};
+    padding-bottom: ${(props) => (props.overview ? "0px" : "60px")};
   }
 
   @media screen and (max-width: ${breakpoints.medium}) {
     flex-direction: column;
-    gap: 40px;
-    padding: 40px 16px;
+    gap: 24px;
+    padding: ${(props) => (props.overview ? "24px 16px" : "40px 16px")};
+    padding-bottom: ${(props) => (props.overview ? "24px" : "40px")};
     max-width: 100%;
     overflow: hidden;
+    align-items: stretch;
   }
 `;
 
@@ -35,11 +39,14 @@ export const FeatureContainer = styled.div`
   align-items: ${(props) => (props.left ? "flex-end" : "flex-start")};
   text-align: ${(props) => (props.left ? "right" : "left")};
   margin-left: ${(props) => (props.overview ? "120px" : "0")};
-  padding-top: ${(props) => (props.overview ? "60px" : "0")};
+  padding-top: ${(props) => (props.overview ? "40px" : "0")};
+  margin-top: ${(props) => (props.overview ? "60px" : "0")};
+  margin-bottom: 0;
 
   @media screen and (max-width: ${breakpoints.large}) {
     margin-left: ${(props) => (props.overview ? "80px" : "0")};
-    padding-top: ${(props) => (props.overview ? "40px" : "0")};
+    padding-top: ${(props) => (props.overview ? "30px" : "0")};
+    margin-top: ${(props) => (props.overview ? "50px" : "0")};
   }
 
   @media screen and (max-width: ${breakpoints.medium}) {
@@ -47,6 +54,7 @@ export const FeatureContainer = styled.div`
     text-align: left;
     margin-left: 0;
     padding-top: 0;
+    margin-top: ${(props) => (props.overview ? "40px" : "0")};
   }
 `;
 
