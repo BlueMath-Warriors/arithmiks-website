@@ -24,12 +24,14 @@ import {
  * @param {string} props.solutions[].icon 
  * @param {string} props.solutions[].title 
  * @param {string} props.solutions[].detail 
+ * @param {boolean} props.hasTestimonial 
  */
 const Solution = ({
   label = "SOLUTION",
   heading = "Our Solution",
   description,
   solutions = [],
+  hasTestimonial = true,
 }) => {
   const headingParts = heading.split(" ");
   const lastWord = headingParts.pop();
@@ -37,7 +39,10 @@ const Solution = ({
 
   return (
     <>
-      <div className={containerStyles.easybar_solution}>
+      <div 
+        className={containerStyles.easybar_solution}
+        style={{ backgroundColor: hasTestimonial ? '#fff' : '#F5F5F7' }}
+      >
         <SolutionHeader>
           <SolutionLeft>
             <SolutionLabel>{label}</SolutionLabel>

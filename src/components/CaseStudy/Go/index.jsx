@@ -30,7 +30,7 @@ const Go = () => {
       <TechStack {...techStackData} />
       <Overview {...overviewData} />
       <Testimonial {...testimonialData} />
-      <Solution {...solutionData} />
+      <Solution {...solutionData} hasTestimonial={true} />
       <KeyFeatures {...keyFeaturesData} />
       <MoreCaseStudies currentSlug="go" />
       <ContactUs />
