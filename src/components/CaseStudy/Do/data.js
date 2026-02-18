@@ -51,7 +51,7 @@ export const solutionData = {
   heading: "Our Solution",
   description: (
     <>
-      <strong>Arithmiks</strong> designed a trusted, community-driven deals platform that centralized discovery, enforced quality through moderation, and scaled engagement with automation.
+      <strong>Arithmiks</strong> designed a community-driven deals platform that centralized discovery, enforced quality through moderation, and scaled engagement with automation — fully built in Spanish for its target audience and regional behavior.
     </>
   ),
   solutions: [
@@ -65,7 +65,7 @@ export const solutionData = {
       icon: "/d&osolution2.svg",
       title: "Community Validation & Engagement",
       detail:
-        "Likes, comments, ratings, and wishlists were introduced to crowd-validate deals, increase transparency, and surface high-quality offers.",
+        "Likes, comments, ratings, and wishlists enabled Spanish-speaking users to crowd-validate deals, improving transparency and surfacing the most reliable offers.",
     },
     {
       icon: "/d&osolution3.svg",
