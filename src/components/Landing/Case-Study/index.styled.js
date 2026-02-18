@@ -466,6 +466,42 @@ export const ViewButtonLink = styled(Link)`
   }
 `;
 
+export const ButtonRow = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 56px;
+
+  @media screen and (max-width: ${breakpoints.medium}) {
+    margin-top: 40px;
+  }
+`;
+
+export const ViewMoreButtonLink = styled(Link)`
+  display: inline-flex;
+  padding: 12px 18px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  border: 1px solid #ceddf8;
+  background: #ceddf8;
+  cursor: pointer;
+  text-decoration: none;
+  transition: box-shadow 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
+
+  color: #0957de;
+  font-family: Poppins;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: -0.09px;
+
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0px 8px 24px rgba(7, 9, 13, 0.08);
+  }
+`;
+
 export const CaseStudyCardLink = styled(Link)`
   display: flex;
   flex-direction: column;
