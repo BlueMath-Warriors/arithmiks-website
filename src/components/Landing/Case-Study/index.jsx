@@ -4,11 +4,8 @@ import {
   SmallTxt,
   Header,
   Left,
-  Right,
   HeaderText,
   DescriptionText,
-  ViewButtonLink,
-  BtnIcon,
   CaseStudiesGrid,
   CaseStudyCardLink,
   CaseStudyImgWrapper,
@@ -17,10 +14,11 @@ import {
   CaseStudyTitle,
   CaseStudyDescription,
   CaseStudyTag,
+  ButtonRow,
+  ViewMoreButtonLink,
 } from "./index.styled";
 import CollaboratedWith from "./Collaborated-With";
 import * as containerStyles from "../../../styles/global.module.css";
-import ArrowCricleRight from "../../../images/arrow-right-circle-black.svg";
 import { caseStudies } from "./caseStudies";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -83,18 +81,12 @@ const CaseStudy = ({ landing = false }) => {
             Problems are guidelines, not 'Stop' signs. Check our success stories in custom software.
           </DescriptionText>
         </Left>
-        <Right show={landing}>
-          <ViewButtonLink to="/case-studies">
-            {"View All"}
-            <ArrowCricleRight />
-          </ViewButtonLink>
-        </Right>
       </Header>
 
       {!landing && <CollaboratedWith />}
 
       <CaseStudiesGrid className="cs-grid">
-        {(landing ? caseStudies.slice(0, 3) : caseStudies).map((study, index) => {
+        {(landing ? caseStudies.slice(0, 4) : caseStudies).map((study, index) => {
           if (study.hasDetailPage) {
             return (
               <CaseStudyCardLink
@@ -148,6 +140,14 @@ const CaseStudy = ({ landing = false }) => {
           );
         })}
       </CaseStudiesGrid>
+
+      {landing && (
+        <ButtonRow>
+          <ViewMoreButtonLink to="/case-studies">
+            View More Case Studies
+          </ViewMoreButtonLink>
+        </ButtonRow>
+      )}
     </section>
   );
 };

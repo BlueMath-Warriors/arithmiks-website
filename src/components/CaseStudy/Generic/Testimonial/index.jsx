@@ -24,6 +24,13 @@ const Testimonial = ({
   clientName,
   clientTitle,
 }) => {
+  // Hide testimonial if it's dummy data or missing required fields
+  const isDummyTestimonial = clientImageSrc && clientImageSrc.includes('dummyOwner');
+  
+  if (isDummyTestimonial || !text || !clientName || !clientImageSrc) {
+    return null;
+  }
+
   const paragraphs = Array.isArray(text) ? text : [text];
   
   return (

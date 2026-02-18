@@ -29,8 +29,10 @@ const Ehh = () => {
       <Hero {...heroData} />
       <TechStack {...techStackData} />
       <Overview {...overviewData} />
-      <Testimonial {...testimonialData} />
-      <Solution {...solutionData} />
+      {testimonialData && testimonialData.clientImageSrc && !testimonialData.clientImageSrc.includes('dummyOwner') && (
+        <Testimonial {...testimonialData} />
+      )}
+      <Solution {...solutionData} hasTestimonial={testimonialData && testimonialData.clientImageSrc && !testimonialData.clientImageSrc.includes('dummyOwner')} />
       <KeyFeatures {...keyFeaturesData} />
       <MoreCaseStudies currentSlug="expat" />
       <ContactUs />

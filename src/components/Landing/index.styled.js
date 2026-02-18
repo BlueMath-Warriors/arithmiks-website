@@ -97,35 +97,35 @@ export const MainHead = styled.h1`
   font-size: 45px;
   font-style: normal;
   font-weight: 600;
-  line-height: 80px;
+  line-height: 1.35;
 
   svg {
-    width: 45px;
-    height: 53px;
+    width: 28px;
+    height: 33px;
     @media screen and (max-width: ${breakpoints.large}) {
-      width: 31px;
-      height: 37px;
+      width: 20px;
+      height: 24px;
     }
     @media screen and (max-width: ${breakpoints.medium}) {
-      width: 19px;
-      height: 22px;
+      width: 12px;
+      height: 14px;
     }
   }
 
   @media screen and (max-width: ${breakpoints.large}) {
     font-size: 30px;
-    line-height: 60px;
+    line-height: 1.35;
   }
 
   @media screen and (max-width: ${breakpoints.medium}) {
     font-size: 18px;
-    line-height: 34px;
+    line-height: 1.35;
     letter-spacing: -0.52px;
   }
   
   @media screen and (max-width: ${breakpoints.xsmall}) {
     font-size: 16px;
-    line-height: 28px;
+    line-height: 1.35;
   }
 `;
 

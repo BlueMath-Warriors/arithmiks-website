@@ -7,19 +7,19 @@ export const FeaturedClientsSection = styled.div`
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
-  margin-top: 60px;
+  margin-top: 90px;
   overflow: hidden;
 
   @media screen and (max-width: ${breakpoints.large}) {
-    margin-top: 48px;
+    margin-top: 72px;
   }
 
   @media screen and (max-width: ${breakpoints.medium}) {
-    margin-top: 40px;
+    margin-top: 60px;
   }
 
   @media screen and (max-width: ${breakpoints.xsmall}) {
-    margin-top: 32px;
+    margin-top: 48px;
   }
 `;
 

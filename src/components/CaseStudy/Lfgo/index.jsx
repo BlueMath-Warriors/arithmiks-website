@@ -30,7 +30,7 @@ const Lfgo = () => {
       <TechStack {...techStackData} />
       <Overview {...overviewData} />
       <Testimonial {...testimonialData} />
-      <Solution {...solutionData} />
+      <Solution {...solutionData} hasTestimonial={true} />
       <KeyFeatures {...keyFeaturesData} />
       <MoreCaseStudies currentSlug="lfgo" />
       <ContactUs />
