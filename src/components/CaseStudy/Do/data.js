@@ -1,6 +1,6 @@
 import React from "react";
 
-export const heroData = {
+export const getHeroData = (images) => ({
   category: "Web Application / Affiliation Market / UI/UX",
   logoSrc: "/ofertas.svg",
   logoAlt: "Ofertas",
@@ -11,9 +11,9 @@ export const heroData = {
       help users save more and shop smarter.
     </>
   ),
-  heroImageSrc: "/d&oMemorandum.png",
+  heroImageData: images?.heroImage,
   heroImageAlt: "D&O Memorandum",
-};
+});
 
 export const techStackData = {
   technologies: [
@@ -28,7 +28,7 @@ export const techStackData = {
   specialIconNames: [],
 };
 
-export const overviewData = {
+export const getOverviewData = (images) => ({
   title: "Overview",
   caption: (
     <>
@@ -38,13 +38,13 @@ export const overviewData = {
   ),
   detail:
     "A platform that helps users discover, share, and manage verified deals and coupons through a centralized, community-driven marketplace experience.",
-  imageSrc: "/d&oFinancialSummary.png",
+  imageSrc: images?.overviewImage,
   problemData: {
     title: "The Problem",
     text: "Deal discovery relied on fragmented, unreliable sources, while admins struggled to effectively moderate user submissions at scale. The platform solves this by centralizing deals, community validation, and structured approval workflows into one trusted system.",
     frameImageSrc: "/projectProblemFrame.svg",
   },
-};
+});
 
 export const solutionData = {
   label: "SOLUTION",
@@ -133,4 +133,3 @@ export const testimonialData = {
   clientName: "Zachary Renta",
   clientTitle: "SBA Loans Founder & CEO",
 };
-

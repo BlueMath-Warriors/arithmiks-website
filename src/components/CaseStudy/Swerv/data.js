@@ -1,19 +1,19 @@
 import React from "react";
 
-export const heroData = {
+export const getHeroData = (images) => ({
   category: "Web Application / SaaS",
   logoSrc: "/swerv.svg",
   logoAlt: "Swerv Automotive",
   caption: (
     <>
       A SaaS platform for car dealerships to automate
-       <br />
-       acquisitions, centralize data, and optimize sales.
+      <br />
+      acquisitions, centralize data, and optimize sales.
     </>
   ),
-  heroImageSrc: "/swervMemorandum.png",
+  heroImageData: images?.heroImage,
   heroImageAlt: "Swerv Memorandum",
-};
+});
 
 export const techStackData = {
   technologies: [
@@ -30,7 +30,7 @@ export const techStackData = {
   specialIconNames: [],
 };
 
-export const overviewData = {
+export const getOverviewData = (images) => ({
   title: "Overview",
   caption: (
     <>
@@ -40,13 +40,13 @@ export const overviewData = {
   ),
   detail:
     "Swerv Auto is a SaaS platform that helps automotive dealerships acquire vehicles faster by combining real-time market data, automation, and actionable insights in one system.",
-  imageSrc: "/swervFinancialSummary.png",
+  imageSrc: images?.overviewImage,
   problemData: {
     title: "The Problem",
     text: "Dealerships relied on fragmented tools and manual processes to manage inventory and vehicle acquisitions, leading to slow decisions and limited market visibility. Swerv Auto addresses this by centralizing data and automating workflows to enable faster, data-driven acquisitions.",
     frameImageSrc: "/projectProblemFrame.svg",
   },
-};
+});
 
 export const solutionData = {
   label: "SOLUTION",
@@ -123,4 +123,3 @@ export const testimonialData = {
   clientName: "Zachary Renta",
   clientTitle: "SBA Loans Founder & CEO",
 };
-
