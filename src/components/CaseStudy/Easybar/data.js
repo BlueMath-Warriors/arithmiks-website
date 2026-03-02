@@ -83,10 +83,40 @@ export const keyFeaturesData = {
   heading: "Key Features",
   features: [
     {
-      title: "1. Dynamic Bar, Net, and Cage Design Tools:",
+      title: "1. Interactive Steel Design Tool:",
       description:
-        "2D sketch editor with adjustable parameters for precision and speed.",
+        "A visual canvas-based editor for designing rebars, wire mesh, and pile cages with real-time preview, configurable dimensions, and support for multiple steel types and diameters.",
       image: "/Easybar Key Features/easybarKeyFeature1.png",
+    },
+    {
+      title: "2. Ticket Creator:",
+      description:
+        "Generate print-ready fabrication tickets with barcodes, enabling suppliers to streamline their production workflow.",
+      image: "/Easybar Key Features/easybarKeyFeature2.png",
+    },
+    {
+      title: "3. PDF & Document Generation:",
+      description:
+        "Generate branded PDF orders with RTL/LTR language support, barcode integration, and Excel export for seamless documentation.",
+      image: "/Easybar Key Features/easybarKeyFeature3.png",
+    },
+    {
+      title: "4. Order Management:",
+      description:
+        "Centralized order tracking from creation to delivery, with automatic calculations for weight, units, and project timelines.",
+      image: "/Easybar Key Features/easybarKeyFeature4.png",
+    },
+    {
+      title: "5. Bids Calculator:",
+      description:
+        "Compare supplier quotes side-by-side, apply custom fees, and generate professional pricing documents to support procurement decisions.",
+      image: "/Easybar Key Features/easybarKeyFeature5.png",
+    },
+    {
+      title: "6. Admin Analytics Dashboard:",
+      description:
+        "Track platform usage, monitor order volumes, and export business reports to measure performance and identify growth opportunities.",
+      image: "/Easybar Key Features/easybarKeyFeature6.png",
     },
   ],
   leftIconSrc: "/leftIcon.svg",
