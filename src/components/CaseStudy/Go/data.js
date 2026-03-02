@@ -1,6 +1,6 @@
 import React from "react";
 
-export const heroData = {
+export const getHeroData = (images) => ({
   category: "Web Application / Machine Learning / SaaS",
   logoSrc: "/go.svg",
   logoAlt: "GO",
@@ -11,9 +11,9 @@ export const heroData = {
       content, publishing, and ads to help agencies grow.
     </>
   ),
-  heroImageSrc: "/goMemorandum.png",
+  heroImageData: images?.heroImage,
   heroImageAlt: "GO Memorandum",
-};
+});
 
 export const techStackData = {
   technologies: [
@@ -37,7 +37,7 @@ export const techStackData = {
   specialIconNames: [],
 };
 
-export const overviewData = {
+export const getOverviewData = (images) => ({
   title: "Overview",
   caption: (
     <>
@@ -47,13 +47,13 @@ export const overviewData = {
   ),
   detail:
     "GoAgents is an AI-powered SaaS platform that automates end-to-end digital marketing workflows, enabling teams to scale campaigns with speed and efficiency.",
-  imageSrc: "/goFinancialSummary.png",
+  imageSrc: images?.overviewImage,
   problemData: {
     title: "The Problem",
     text: "Marketing teams relied on manual, fragmented tools to manage content, ads, and reporting, making it difficult to scale without errors or high overhead. GoAgents solves this by unifying and automating the entire marketing workflow in one intelligent platform.",
     frameImageSrc: "/projectProblemFrame.svg",
   },
-};
+});
 
 export const solutionData = {
   label: "SOLUTION",
@@ -133,4 +133,3 @@ export const testimonialData = {
   clientName: "Louis-Antoine",
   clientTitle: "GoAgents Loans Founder & CEO",
 };
-

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import * as containerStyles from "../../../../styles/global.module.css";
 
 import {
@@ -21,13 +22,13 @@ import {
  * @param {string} props.title
  * @param {React.ReactNode} props.caption 
  * @param {string} props.detail 
- * @param {string|React.ReactNode} props.img 
+ * @param {string|Object|React.ReactNode} props.img 
  */
 const Feature = (props) => {
   const { overview, left, title, caption, detail, img } = props;
   const isOverview = overview !== undefined ? overview : false;
   const [smallGradient, setSmallGradient] = useState(isSmallGradient());
-  
+
   function isSmallGradient() {
     if (typeof window !== "undefined") {
       return window.innerWidth < 1440;
@@ -49,12 +50,32 @@ const Feature = (props) => {
     }
   }, []);
 
+  const renderImage = (isLeft, isOv) => {
+    const gatsbyImageData = img && typeof img === 'object' && img.childImageSharp ? getImage(img) : null;
+    if (gatsbyImageData) {
+      return (
+        <GatsbyImage
+          image={gatsbyImageData}
+          alt={title}
+          style={{ width: "100%", height: "auto" }}
+        />
+      );
+    }
+    if (typeof img === 'string') {
+      return <FeatureImgTag src={img} alt={title} overview={isOv} />;
+    }
+    return (
+      <FeatureImg as="div" left={isLeft}>
+        {img}
+      </FeatureImg>
+    );
+  };
+
   return (
     <>
       <div
-        className={`${isOverview ? "" : containerStyles.easybar_overview}  ${
-          !isOverview && (left ? containerStyles.left : containerStyles.right)
-        }`}
+        className={`${isOverview ? "" : containerStyles.easybar_overview}  ${!isOverview && (left ? containerStyles.left : containerStyles.right)
+          }`}
         style={isOverview ? { backgroundColor: "#fff", backgroundImage: "none" } : {}}
       >
         <FeatureOuterContainer left={left} overview={isOverview}>
@@ -67,36 +88,18 @@ const Feature = (props) => {
               </FeatureContainer>
               {isOverview ? (
                 <OverviewImgContainer>
-                  {typeof img === 'string' ? (
-                    <FeatureImgTag src={img} alt={title} overview={isOverview} />
-                  ) : (
-                    <FeatureImg as="div">
-                      {img}
-                    </FeatureImg>
-                  )}
+                  {renderImage(false, isOverview)}
                 </OverviewImgContainer>
               ) : (
                 <FeatureImgContainer className={containerStyles.easybar_feature_right}>
-                  {typeof img === 'string' ? (
-                    <FeatureImgTag src={img} alt={title} />
-                  ) : (
-                    <FeatureImg as="div">
-                      {img}
-                    </FeatureImg>
-                  )}
+                  {renderImage(false, false)}
                 </FeatureImgContainer>
               )}
             </>
           ) : (
             <>
               <FeatureImgContainer left>
-                {typeof img === 'string' ? (
-                  <FeatureImgTag src={img} alt={title} />
-                ) : (
-                  <FeatureImg as="div" left>
-                    {img}
-                  </FeatureImg>
-                )}
+                {renderImage(true, false)}
               </FeatureImgContainer>
               <FeatureContainer left>
                 <FeatureTitle left>{title}</FeatureTitle>

@@ -14,15 +14,18 @@ import {
 } from "../Generic";
 
 import {
-  heroData,
+  getHeroData,
   techStackData,
-  overviewData,
+  getOverviewData,
   testimonialData,
   solutionData,
   keyFeaturesData,
 } from "./data";
 
-const Easybar = () => {
+const Easybar = ({ images }) => {
+  const heroData = getHeroData(images);
+  const overviewData = getOverviewData(images);
+
   return (
     <>
       <Header />

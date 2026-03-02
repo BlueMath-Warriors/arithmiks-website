@@ -1,6 +1,6 @@
 import React from "react";
 
-export const heroData = {
+export const getHeroData = (images) => ({
   category: "Web Application / SaaS",
   logoSrc: "/sbaloans.svg",
   logoAlt: "sbaloansHQ",
@@ -11,9 +11,9 @@ export const heroData = {
       documents, tracking, and communication.
     </>
   ),
-  heroImageSrc: "/sbaloansMemorandum.png",
+  heroImageData: images?.heroImage,
   heroImageAlt: "Sbaloans Memorandum",
-};
+});
 
 export const techStackData = {
   technologies: [
@@ -30,7 +30,7 @@ export const techStackData = {
   specialIconNames: ["Postmark"],
 };
 
-export const overviewData = {
+export const getOverviewData = (images) => ({
   title: "Overview",
   caption: (
     <>
@@ -40,13 +40,13 @@ export const overviewData = {
   ),
   detail:
     "SBA Loans HQ is a SaaS platform that centralizes loan consulting workflows, giving brokers and clients a fast, organized, and transparent way to manage small business loan applications.",
-  imageSrc: "/sbaloansFinancialSummary.png",
+  imageSrc: images?.overviewImage,
   problemData: {
     title: "The Problem",
     text: "Traditional loan processing is scattered across emails, spreadsheets, and separate storage tools, leading to lost documents, miscommunication, and slow approvals. SBA Loans HQ solves this by unifying the entire workflow into one efficient digital system.",
     frameImageSrc: "/projectProblemFrame.svg",
   },
-};
+});
 
 export const solutionData = {
   label: "SOLUTION",

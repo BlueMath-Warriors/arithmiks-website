@@ -14,15 +14,18 @@ import {
 } from "../Generic";
 
 import {
-  heroData,
+  getHeroData,
   techStackData,
-  overviewData,
+  getOverviewData,
   testimonialData,
   solutionData,
   keyFeaturesData,
 } from "./data";
 
-const Hakro = () => {
+const Hakro = ({ images }) => {
+  const heroData = getHeroData(images);
+  const overviewData = getOverviewData(images);
+
   return (
     <>
       <Header />
@@ -42,4 +45,3 @@ const Hakro = () => {
 };
 
 export default Hakro;
-

@@ -138,13 +138,13 @@ const KeyFeatures = ({
             </SubHeading>
           </SubHeadingContainer>
           <CarouselButtons role="group" aria-label="Carousel navigation">
-            <CarouselButton 
+            <CarouselButton
               onClick={handlePrev}
               aria-label="Previous feature"
             >
               <img src={leftIconSrc} alt="" width={24} height={24} aria-hidden="true" />
             </CarouselButton>
-            <CarouselButton 
+            <CarouselButton
               onClick={handleNext}
               aria-label="Next feature"
             >

@@ -1,6 +1,6 @@
 import React from "react";
 
-export const heroData = {
+export const getHeroData = (images) => ({
   category: "Web Application / UI/UX",
   logoSrc: "/ehh.svg",
   logoAlt: "Expat Haven Hub",
@@ -11,9 +11,9 @@ export const heroData = {
       lifestyle insights for digital nomads and expats.
     </>
   ),
-  heroImageSrc: "/ehhMemorandum.png",
+  heroImageData: images?.heroImage,
   heroImageAlt: "EHH Memorandum",
-};
+});
 
 export const techStackData = {
   technologies: [
@@ -28,7 +28,7 @@ export const techStackData = {
   specialIconNames: [],
 };
 
-export const overviewData = {
+export const getOverviewData = (images) => ({
   title: "Overview",
   caption: (
     <>
@@ -38,13 +38,13 @@ export const overviewData = {
   ),
   detail:
     "Expat Haven Hub is a lifestyle platform that helps digital nomads and expats plan, explore, and manage life abroad using centralized, personalized insights.",
-  imageSrc: "/ehhFinancialSummary.png",
+  imageSrc: images?.overviewImage,
   problemData: {
     title: "The Problem",
     text: "Expats relied on fragmented sources for housing, visas, and cost-of-living data, leading to time-consuming research and inconsistent experiences. Expat Haven Hub solves this by centralizing information and enhancing engagement through personalization, AI-driven content, and gamified discovery.",
     frameImageSrc: "/projectProblemFrame.svg",
   },
-};
+});
 
 export const solutionData = {
   label: "SOLUTION",
@@ -127,4 +127,3 @@ export const testimonialData = {
   clientName: "Zachary Renta",
   clientTitle: "SBA Loans Founder & CEO",
 };
-

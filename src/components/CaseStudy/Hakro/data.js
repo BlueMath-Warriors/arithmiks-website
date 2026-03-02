@@ -1,6 +1,6 @@
 import React from "react";
 
-export const heroData = {
+export const getHeroData = (images) => ({
   category: "Web Application / E-Commerce / UI/UX",
   logoSrc: "/hakro.svg",
   logoAlt: "HAKRO",
@@ -10,9 +10,9 @@ export const heroData = {
       <br />from website sessions.
     </>
   ),
-  heroImageSrc: "/hakroMemorandum.png",
+  heroImageData: images?.heroImage,
   heroImageAlt: "Hakro Memorandum",
-};
+});
 
 export const techStackData = {
   technologies: [
@@ -27,7 +27,7 @@ export const techStackData = {
   specialIconNames: [],
 };
 
-export const overviewData = {
+export const getOverviewData = (images) => ({
   title: "Overview",
   caption: (
     <>
@@ -37,13 +37,13 @@ export const overviewData = {
   ),
   detail:
     "Hakro is an embedded e-commerce platform that enables organizations to deliver consistent, scalable product experiences across large retailer networks",
-  imageSrc: "/hakroFinancialSummary.png",
+  imageSrc: images?.overviewImage,
   problemData: {
     title: "The Problem",
     text: "Organizations managed product catalogs across hundreds of retailer websites using manual, fragmented processes, leading to delays and inconsistent user experiences. Hakro addresses this by centralizing catalog management and embedding a unified, brand-consistent storefront across partner sites.",
     frameImageSrc: "/projectProblemFrame.svg",
   },
-};
+});
 
 export const solutionData = {
   label: "SOLUTION",
@@ -64,7 +64,7 @@ export const solutionData = {
       icon: "/hakrosolution2.svg",
       title: "Adaptive UI for Host-Site Compatibility",
       detail:
-        "The interface dynamically adjusted to each retailer’s layout, ensuring visual consistency and seamless user experience across diverse site structures.",
+        "The interface dynamically adjusted to each retailer's layout, ensuring visual consistency and seamless user experience across diverse site structures.",
     },
     {
       icon: "/hakrosolution3.svg",
@@ -114,4 +114,3 @@ export const testimonialData = {
   clientName: "Zachary Renta",
   clientTitle: "SBA Loans Founder & CEO",
 };
-

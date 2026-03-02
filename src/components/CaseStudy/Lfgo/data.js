@@ -1,6 +1,6 @@
 import React from "react";
 
-export const heroData = {
+export const getHeroData = (images) => ({
   category: "Web Application / Web3",
   logoSrc: "/lfgo.svg",
   logoAlt: "LFGO",
@@ -11,9 +11,9 @@ export const heroData = {
       and Solana with seamless minting and wallet.
     </>
   ),
-  heroImageSrc: "/lfgoMemorandum.png",
+  heroImageData: images?.heroImage,
   heroImageAlt: "LFGO Memorandum",
-};
+});
 
 export const techStackData = {
   technologies: [
@@ -27,7 +27,7 @@ export const techStackData = {
   specialIconNames: ["AWS"],
 };
 
-export const overviewData = {
+export const getOverviewData = (images) => ({
   title: "Overview",
   caption: (
     <>
@@ -37,13 +37,13 @@ export const overviewData = {
   ),
   detail:
     "LFGO is a Web3 platform that simplifies creating, launching, and trading custom tokens across multiple blockchains through an intuitive, guided experience.",
-  imageSrc: "/lfgoFinancialSummary.png",
+  imageSrc: images?.overviewImage,
   problemData: {
     title: "The Problem",
     text: "Token creation and trading required complex, fragmented tools and deep technical knowledge, limiting accessibility and efficiency. LFGO addresses this by unifying minting, management, and marketplace trading into one easy-to-use, cross-chain platform.",
     frameImageSrc: "/projectProblemFrame.svg",
   },
-};
+});
 
 export const solutionData = {
   label: "SOLUTION",
@@ -120,4 +120,3 @@ export const testimonialData = {
   clientName: "Louis-Antoine",
   clientTitle: "GoAgents Loans Founder & CEO",
 };
-

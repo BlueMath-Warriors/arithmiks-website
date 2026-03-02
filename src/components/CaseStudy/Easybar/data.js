@@ -1,6 +1,6 @@
 import React from "react";
 
-export const heroData = {
+export const getHeroData = (images) => ({
   category: "Web Application / Tool",
   logoSrc: "/easybar.svg",
   logoAlt: "EASY-BAR",
@@ -11,9 +11,9 @@ export const heroData = {
       quoting, and seamless online ordering.
     </>
   ),
-  heroImageSrc: "/easybarMemorandum.png",
+  heroImageData: images?.heroImage,
   heroImageAlt: "Easybar Memorandum",
-};
+});
 
 export const techStackData = {
   technologies: [
@@ -30,7 +30,7 @@ export const techStackData = {
   specialIconNames: [],
 };
 
-export const overviewData = {
+export const getOverviewData = (images) => ({
   title: "Overview",
   caption: (
     <>
@@ -40,13 +40,13 @@ export const overviewData = {
   ),
   detail:
     "EasyBar is a web-based platform that digitizes and automates the design, quotation, and ordering of iron rebars, connecting buyers and vendors in one streamlined workflow.",
-  imageSrc: "/easybarFinancialSummary.png",
+  imageSrc: images?.overviewImage,
   problemData: {
     title: "The Problem",
     text: "Rebar procurement relied on manual, fragmented processes that caused delays, limited design flexibility, and poor coordination between buyers and vendors. EasyBar solves this by centralizing sketches, quotations, and orders into a single, efficient digital system.",
     frameImageSrc: "/projectProblemFrame.svg",
   },
-};
+});
 
 export const solutionData = {
   label: "SOLUTION",
@@ -129,4 +129,3 @@ export const testimonialData = {
   clientName: "Ron Balmas",
   clientTitle: "EasyBar Loans Founder & CEO",
 };
-

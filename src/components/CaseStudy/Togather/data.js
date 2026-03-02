@@ -1,6 +1,6 @@
 import React from "react";
 
-export const heroData = {
+export const getHeroData = (images) => ({
   category: "Web Application / Tool / SaaS",
   logoSrc: "/togather.svg",
   logoAlt: "Togather",
@@ -11,9 +11,9 @@ export const heroData = {
       communities through events, donations, and engagement.
     </>
   ),
-  heroImageSrc: "/togatherMemorandum.png",
+  heroImageData: images?.heroImage,
   heroImageAlt: "Togather Memorandum",
-};
+});
 
 export const techStackData = {
   technologies: [
@@ -35,7 +35,7 @@ export const techStackData = {
   specialIconNames: [],
 };
 
-export const overviewData = {
+export const getOverviewData = (images) => ({
   title: "Overview",
   caption: (
     <>
@@ -45,13 +45,13 @@ export const overviewData = {
   ),
   detail:
     "Togather is a community engagement platform that helps churches and NGOs connect members, manage activities, and drive participation through a centralized digital hub.",
-  imageSrc: "/togatherFinancialSummary.png",
+  imageSrc: images?.overviewImage,
   problemData: {
     title: "The Problem",
     text: "Community organizations relied on scattered tools for communication, events, and donations, resulting in low engagement and poor visibility. Togather solves this by unifying community management into one accessible and easy-to-use platform.",
     frameImageSrc: "/projectProblemFrame.svg",
   },
-};
+});
 
 export const solutionData = {
   label: "SOLUTION",
@@ -128,4 +128,3 @@ export const testimonialData = {
   clientName: "Will Lenzen",
   clientTitle: "Togather CEO",
 };
-
