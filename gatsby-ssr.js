@@ -4,6 +4,11 @@ export const onRenderBody = ({ setHtmlAttributes, setHeadComponents, setPreBodyC
   setHtmlAttributes({ lang: "en" });
 
   setHeadComponents([
+    <meta
+      key="google-site-verification"
+      name="google-site-verification"
+      content="-vSMxD4PrE6GOok0ajvRRpkns32Bgucy-d92OMsgR1Q"
+    />,
     <link
       key="preconnect-google-fonts"
       rel="preconnect"

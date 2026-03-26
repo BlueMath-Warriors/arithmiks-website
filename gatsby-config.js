@@ -8,6 +8,13 @@ require("dotenv").config({
 
 const siteUrl = process.env.URL || `https://arithmiks.com`
 
+const toAbsoluteUrl = (path) => {
+  if (!path) return siteUrl;
+  if (path === "/") return siteUrl;
+  const normalizedPath = path.endsWith("/") ? path.slice(0, -1) : path;
+  return new URL(normalizedPath, siteUrl).toString();
+};
+
 module.exports = {
   siteMetadata: {
     title: `Arithmiks - Software Development Company`,
@@ -78,7 +85,7 @@ module.exports = {
           }
         `,
         serialize: ({ path }) => ({
-          url: path,
+          url: toAbsoluteUrl(path),
           changefreq: 'weekly',
           priority: path === '/' ? 1.0 : 0.7,
         }),
