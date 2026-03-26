@@ -205,7 +205,7 @@ export const Industries = styled.div`
 
 `
 
-export const Experties = styled.div`
+export const Expertise = styled.div`
   display: flex;
   flex-direction: column;
   width: 128px;

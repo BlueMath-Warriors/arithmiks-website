@@ -16,7 +16,7 @@ export const Head = () => (
   <SEO
     title={"Dedicated Teams - Arithmiks"}
     description={
-      "Experience the power of highly talented engineers working delicately on a project to unleash the excellence and deliverence."
+      "Experience the power of highly talented engineers working delicately on a project to unleash the excellence and delivery."
     }
   />
 );

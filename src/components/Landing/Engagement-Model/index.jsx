@@ -96,7 +96,7 @@ const EngagementModel = () => {
           <CardBody>
             Build your dedicated team for your projects. Experience the power of
             highly talented engineers working delicately on a project to unleash
-            the excellence and deliverence.
+            the excellence and delivery.
           </CardBody>
           <CardBtnLink to="/dedicated-team">
             Read More

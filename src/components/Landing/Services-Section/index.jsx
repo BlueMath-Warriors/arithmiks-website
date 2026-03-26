@@ -132,8 +132,8 @@ const Services = () => {
             hoverIcon={lamp_icon_hover}
             header="Solutions"
             points={[
-              "Cloud Infrastructure Managment",
-              "Project Managment",
+              "Cloud Infrastructure Management",
+              "Project Management",
               "Technical Support",
               "Digital Transformation",
             ]}

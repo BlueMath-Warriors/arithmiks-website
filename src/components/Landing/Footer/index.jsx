@@ -12,7 +12,7 @@ import {
   Services,
   Technologies,
   Industries,
-  Experties,
+  Expertise,
   Divider,
   ContactInfoContainer,
   FooterBottom,
@@ -92,15 +92,15 @@ const Footer = () => {
           <Text>Con-tech</Text>
         </Industries>
 
-        <Experties>
-          <Heading mb8>Experties</Heading>
+        <Expertise>
+          <Heading mb8>Expertise</Heading>
           <Text>Cloud</Text>
           <Text>DevOps</Text>
           <Text>Machine Learning</Text>
           <Text>Mobile</Text>
           <Text>UI/UX Service</Text>
           <Text>QA & Testing</Text>
-        </Experties>
+        </Expertise>
       </FooterContent>
 
       <Divider />
