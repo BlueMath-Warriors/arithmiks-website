@@ -98,8 +98,7 @@ module.exports = {
         host: 'https://arithmiks.com',
         sitemap: 'https://arithmiks.com/sitemap-index.xml',
         policy: [
-          { userAgent: '*', allow: '/' },
-          { userAgent: '*', disallow: ['/404'] },
+          { userAgent: '*', allow: '/', disallow: ['/404'] },
         ],
       },
     },
