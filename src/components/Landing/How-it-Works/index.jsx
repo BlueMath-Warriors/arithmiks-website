@@ -84,7 +84,7 @@ const HowItWorks = () => {
       id: 2,
       title: "Highlight Scope & Requirements",
       description:
-        "Our team will prepare SRS document and highltight the product scope.",
+        "Our team will prepare SRS document and highlight the product scope.",
     },
     {
       id: 3,
@@ -94,7 +94,7 @@ const HowItWorks = () => {
     },
     {
       id: 4,
-      title: "Project Plan & Protyping",
+      title: "Project Plan & Prototyping",
       description:
         "We will plan product roadmap and create a rapid clickable prototype for you.",
     },
@@ -102,7 +102,7 @@ const HowItWorks = () => {
       id: 5,
       title: "Development & launch",
       description:
-        "We will design, develop and test your application to ensure a smooth luanch.",
+        "We will design, develop and test your application to ensure a smooth launch.",
     },
   ];
 

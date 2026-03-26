@@ -67,7 +67,7 @@ const TeamWork = () => {
 
         <Step>
           <Circle>3</Circle>
-          <StepText>Talent Scelection</StepText>
+          <StepText>Talent Selection</StepText>
           <Arrow><ArrowGrey/></Arrow>
         </Step>
 

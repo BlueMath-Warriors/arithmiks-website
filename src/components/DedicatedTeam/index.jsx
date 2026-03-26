@@ -36,7 +36,7 @@ const DedicatedTeam = () => {
               Your dedicated team partner
             </PrimaryText>
             <Caption>
-              Experience the power of highly talented engineers working delicately on a project to unleash the excellence and deliverence.
+              Experience the power of highly talented engineers working delicately on a project to unleash the excellence and delivery.
             </Caption>
             <MoreButton           
               onClick={() => {
