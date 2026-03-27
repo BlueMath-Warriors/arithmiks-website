@@ -23,5 +23,6 @@ export const Head = () => (
   <SEO
     title={"Contact Us - Arithmiks"}
     description={"If you have any questions, please e-mail us at services@arithmiks.com"}
+    pathname="/contact-us"
   />
 );

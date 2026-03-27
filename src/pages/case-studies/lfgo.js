@@ -12,6 +12,7 @@ export default LfgoPage;
 export const Head = () => (
   <SEO
     title={"LFGO - Arithmiks"}
+    pathname="/case-studies/lfgo"
   />
 );
 

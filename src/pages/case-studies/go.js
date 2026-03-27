@@ -9,7 +9,7 @@ const GoPage = ({ data }) => {
 
 export default GoPage;
 
-export const Head = () => <SEO title={"GO - Arithmiks"} />;
+export const Head = () => <SEO title={"GO - Arithmiks"} pathname="/case-studies/go" />;
 
 export const query = graphql`
   query {

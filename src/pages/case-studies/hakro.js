@@ -9,7 +9,7 @@ const HakroPage = ({ data }) => {
 
 export default HakroPage;
 
-export const Head = () => <SEO title={"Hakro - Arithmiks"} />;
+export const Head = () => <SEO title={"Hakro - Arithmiks"} pathname="/case-studies/hakro" />;
 
 export const query = graphql`
   query {

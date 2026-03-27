@@ -9,7 +9,7 @@ const OfertasPage = ({ data }) => {
 
 export default OfertasPage;
 
-export const Head = () => <SEO title={"Ofertas - Arithmiks"} />;
+export const Head = () => <SEO title={"Ofertas - Arithmiks"} pathname="/case-studies/ofertas" />;
 
 export const query = graphql`
   query {

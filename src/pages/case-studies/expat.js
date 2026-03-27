@@ -9,7 +9,7 @@ const ExpatPage = ({ data }) => {
 
 export default ExpatPage;
 
-export const Head = () => <SEO title={"Expat Haven Hub - Arithmiks"} />;
+export const Head = () => <SEO title={"Expat Haven Hub - Arithmiks"} pathname="/case-studies/expat" />;
 
 export const query = graphql`
   query {

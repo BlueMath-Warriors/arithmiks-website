@@ -9,7 +9,7 @@ const TogatherPage = ({ data }) => {
 
 export default TogatherPage;
 
-export const Head = () => <SEO title={"Togather - Arithmiks"} />;
+export const Head = () => <SEO title={"Togather - Arithmiks"} pathname="/case-studies/togather" />;
 
 export const query = graphql`
   query {

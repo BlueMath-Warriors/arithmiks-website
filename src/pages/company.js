@@ -25,5 +25,6 @@ export default IndexPage;
 export const Head = () => (
   <SEO
     title={"Company - Arithmiks"}
+    pathname="/company"
   />
 );
