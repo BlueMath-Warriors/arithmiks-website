@@ -9,7 +9,7 @@ const SwervPage = ({ data }) => {
 
 export default SwervPage;
 
-export const Head = () => <SEO title={"Swerv - Arithmiks"} />;
+export const Head = () => <SEO title={"Swerv - Arithmiks"} pathname="/case-studies/swerv" />;
 
 export const query = graphql`
   query {

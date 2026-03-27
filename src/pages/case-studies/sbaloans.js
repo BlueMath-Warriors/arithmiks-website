@@ -12,6 +12,7 @@ export default SbaloansPage;
 export const Head = () => (
   <SEO
     title={"sbaloansHQ - Arithmiks"}
+    pathname="/case-studies/sbaloans"
   />
 );
 

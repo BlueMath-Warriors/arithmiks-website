@@ -18,5 +18,6 @@ export const Head = () => (
     description={
       "Your Vision, Our Fixed-Price Precision. It is well-suited for projects with clear requirements and short time-to-market."
     }
+    pathname="/fixed-price"
   />
 );

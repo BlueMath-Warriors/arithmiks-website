@@ -23,5 +23,6 @@ export default IndexPage;
 export const Head = () => (
   <SEO
     title={"Case Studies - Arithmiks"}
+    pathname="/case-studies"
   />
 );

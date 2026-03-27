@@ -7,7 +7,7 @@ const EasybarPage = ({ data }) => <Easybar images={data} />;
 
 export default EasybarPage;
 
-export const Head = () => <SEO title={"Easybar - Arithmiks"} />;
+export const Head = () => <SEO title={"Easybar - Arithmiks"} pathname="/case-studies/easybar" />;
 
 export const query = graphql`
   query {
