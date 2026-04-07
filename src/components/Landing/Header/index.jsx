@@ -7,12 +7,8 @@ import {
   Menu,
   MenuItemLink,
   CompanyLogo,
-  LogoText,
-  LogoIcon,
   Hamburger,
   HeaderButtonTxt,
-  DownIcon,
-  IconImg,
   ServiceContainer,
   ServiceRow,
   ServiceHeader,
@@ -22,7 +18,6 @@ import {
 } from "./index.styled";
 import MenuIcon from "../../../images/hamburger_icon.svg";
 import DownArrow from "../../../images/header-arrow-down.svg";
-import up_arrow from "../../../images/header-arrow-up.svg";
 import logo from "../../../images/logo.png";
 
 const ServicesMenu = ({ menu_ref }) => {
