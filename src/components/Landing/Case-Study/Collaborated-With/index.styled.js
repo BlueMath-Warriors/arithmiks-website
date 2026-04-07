@@ -23,7 +23,7 @@ export const CollaboratedSection = styled.div`
   }
 `;
 
-export const CollaboratedTitle = styled.h3`
+export const CollaboratedTitle = styled.h2`
   color: #1d1d1f;
   font-family: Poppins;
   font-size: 20px;

@@ -9,10 +9,11 @@ import {
   ListItem,
   CardDetail,
   GradiantContainer,
-  GradiantImg
+  GradiantImg,
+  PrimaryText,
+  Caption,
 } from "./index.styled";
 import * as containerStyles from "../../../styles/global.module.css";
-import { Caption, PrimaryText } from "../index.styled";
 import Gradiant from "../../../images/gradiant-7.svg"
 import SmallGradiant from "../../../images/gradiant-8.svg"
 

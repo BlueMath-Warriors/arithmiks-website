@@ -278,7 +278,7 @@ export const CardContent = styled.div`
   }
 `
 
-export const Caption = styled.h1`
+export const Caption = styled.h4`
   color: #CEDDF8;
   font-family: Poppins;
   font-size: 16px;

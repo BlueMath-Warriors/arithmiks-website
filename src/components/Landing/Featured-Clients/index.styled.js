@@ -23,7 +23,7 @@ export const FeaturedClientsSection = styled.div`
   }
 `;
 
-export const FeaturedClientsTitle = styled.h3`
+export const FeaturedClientsTitle = styled.h2`
   color: #858585;
   font-family: Poppins;
   font-size: 18px;

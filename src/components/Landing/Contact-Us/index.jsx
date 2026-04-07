@@ -48,7 +48,10 @@ if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-const ContactUs = () => {
+/**
+ * @param {{ primaryTitleAs?: "h1" | "h2" }} props
+ */
+const ContactUs = ({ primaryTitleAs = "h2" }) => {
   const [inIcon, setInIcon] = useState(false);
   const sectionRef = useRef(null);
 
@@ -110,7 +113,7 @@ const ContactUs = () => {
   return (
     <section id="contact-form" className={containerStyles.contact_us} ref={sectionRef}>
       <SmallTxt className="contact-header">CONTACT US</SmallTxt>
-      <HeaderText className="contact-header">
+      <HeaderText as={primaryTitleAs} className="contact-header">
         Get In <SecondaryColor>Touch</SecondaryColor>
       </HeaderText>
       <DescriptionText className="contact-header">
