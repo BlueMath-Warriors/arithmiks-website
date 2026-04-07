@@ -11,7 +11,7 @@ const ContactPage = () => {
       <div className={containerStyles.header_div}>
         <Header white={true} />
       </div>
-      <ContactUs />
+      <ContactUs primaryTitleAs="h1" />
       <Footer />
     </>
   );

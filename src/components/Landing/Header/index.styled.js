@@ -351,7 +351,7 @@ export const ServiceRow = styled.div`
   align-items: flex-start;
   gap: 16px;
 `;
-export const ServiceHeader = styled.h2`
+export const ServiceHeader = styled.div`
   color: #111928;
   font-family: Poppins;
   font-size: 16px;

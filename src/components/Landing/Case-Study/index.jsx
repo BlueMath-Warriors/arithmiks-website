@@ -28,7 +28,10 @@ if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-const CaseStudy = ({ landing = false }) => {
+/**
+ * @param {{ landing?: boolean; titleAs?: "h1" | "h2" }} props
+ */
+const CaseStudy = ({ landing = false, titleAs = "h2" }) => {
   const sectionRef = useRef(null);
 
   useEffect(() => {
@@ -76,7 +79,7 @@ const CaseStudy = ({ landing = false }) => {
       <Header className="cs-header">
         <Left>
           <SmallTxt>CASE STUDIES</SmallTxt>
-          <HeaderText>Our Case Studies</HeaderText>
+          <HeaderText as={titleAs}>Our Case Studies</HeaderText>
           <DescriptionText>
             Problems are guidelines, not 'Stop' signs. Check our success stories in custom software.
           </DescriptionText>

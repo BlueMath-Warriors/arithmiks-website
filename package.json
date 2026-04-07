@@ -12,7 +12,8 @@
     "start": "gatsby develop",
     "build": "gatsby build",
     "serve": "gatsby serve",
-    "clean": "gatsby clean"
+    "clean": "gatsby clean",
+    "check:headings": "node scripts/check-heading-h1-count.mjs"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",

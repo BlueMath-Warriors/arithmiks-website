@@ -51,7 +51,7 @@ export const LogoImage = styled.img`
   }
 `
 
-export const StudyCaption = styled.p`
+export const StudyCaption = styled.h1`
   color: rgba(0, 0, 0, 0.80);
   text-align: center;
   font-family: Poppins;
@@ -59,6 +59,7 @@ export const StudyCaption = styled.p`
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  margin: 0;
 
   @media screen and (max-width: ${breakpoints.medium}) {
     font-size: 16px;
