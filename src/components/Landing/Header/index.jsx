@@ -236,23 +236,23 @@ const Header = ({ white, fixed_bar }) => {
             >
               Case Studies
             </MenuItemLink>
-            <MenuItemLink 
-              to="/company" 
+            <MenuItemLink
+              to="/about"
               onClick={closeMenu}
-              active={currentPath === "/company"}
+              active={currentPath === "/about"}
             >
               Company
             </MenuItemLink>
-            <MenuItemLink 
-              to="/contact-us" 
-              onClick={closeMenu} 
-              className="mobile-only" 
-              active={currentPath === "/contact-us"}
+            <MenuItemLink
+              to="/contact"
+              onClick={closeMenu}
+              className="mobile-only"
+              active={currentPath === "/contact"}
             >
               Get in Touch
             </MenuItemLink>
           </Menu>
-          <CtaBtn fill="true" to="/contact-us">
+          <CtaBtn fill="true" to="/contact">
             <HeaderButtonTxt>Get In Touch</HeaderButtonTxt>
           </CtaBtn>
           <Hamburger

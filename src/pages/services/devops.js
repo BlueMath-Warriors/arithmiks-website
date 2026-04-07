@@ -17,5 +17,10 @@ export const Head = () => (
     title={service.seoTitle}
     description={service.seoDescription}
     pathname={servicePath(slug)}
+    breadcrumbItems={[
+      { name: "Home", pathname: "/" },
+      { name: "Services", pathname: "/services" },
+      { name: service.label, pathname: servicePath(slug) },
+    ]}
   />
 );

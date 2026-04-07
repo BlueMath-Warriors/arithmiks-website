@@ -2,6 +2,10 @@ import * as React from "react";
 import { graphql } from "gatsby";
 import Go from "../../components/CaseStudy/Go";
 import { SEO } from "../../components/seo";
+import { getCaseStudySeo } from "../../constants/caseStudySeo";
+
+const slug = "go";
+const pageSeo = getCaseStudySeo(slug);
 
 const GoPage = ({ data }) => {
   return <Go images={data} />;
@@ -9,7 +13,18 @@ const GoPage = ({ data }) => {
 
 export default GoPage;
 
-export const Head = () => <SEO title={"GO - Arithmiks"} pathname="/case-studies/go" />;
+export const Head = () => (
+  <SEO
+    title={pageSeo.title}
+    description={pageSeo.description}
+    pathname="/case-studies/go"
+    breadcrumbItems={[
+      { name: "Home", pathname: "/" },
+      { name: "Case Studies", pathname: "/case-studies" },
+      { name: pageSeo.breadcrumbName, pathname: "/case-studies/go" },
+    ]}
+  />
+);
 
 export const query = graphql`
   query {

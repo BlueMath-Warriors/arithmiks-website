@@ -1,33 +1,36 @@
 import * as React from "react";
 import * as containerStyles from "../styles/global.module.css";
 import Header from "../components/Landing/Header";
-import CaseStudy from "../components/Landing/Case-Study";
+import About from "../components/Landing/About-Section";
+import Services from "../components/Landing/Services-Section";
 import ContactUs from "../components/Landing/Contact-Us";
 import Footer from "../components/Landing/Footer";
 import { SEO } from "../components/seo";
-const IndexPage = () => {
+
+const AboutPage = () => {
   return (
     <>
       <div className={containerStyles.header_div}>
-        <Header white={true} fixed={true}/>
+        <Header white={true} fixed={true} />
       </div>
-      <CaseStudy />
+      <About />
+      <Services />
       <ContactUs />
       <Footer />
     </>
   );
 };
 
-export default IndexPage;
+export default AboutPage;
 
 export const Head = () => (
   <SEO
-    title="Case Studies - Arithmiks"
-    description="Selected client work from Arithmiks: case studies across fintech, automotive, marketplaces, and internal platforms—discovery through delivery."
-    pathname="/case-studies"
+    title="About Arithmiks"
+    description="Learn how Arithmiks builds customer-centric software—from product discovery to delivery—and explore our services, culture, and how we partner with teams worldwide."
+    pathname="/about"
     breadcrumbItems={[
       { name: "Home", pathname: "/" },
-      { name: "Case Studies", pathname: "/case-studies" },
+      { name: "About", pathname: "/about" },
     ]}
   />
 );

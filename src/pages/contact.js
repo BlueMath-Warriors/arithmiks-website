@@ -5,11 +5,11 @@ import Footer from "../components/Landing/Footer";
 import * as containerStyles from "../styles/global.module.css";
 import { SEO } from "../components/seo";
 
-const IndexPage = () => {
+const ContactPage = () => {
   return (
     <>
       <div className={containerStyles.header_div}>
-      <Header white={true} />
+        <Header white={true} />
       </div>
       <ContactUs />
       <Footer />
@@ -17,12 +17,16 @@ const IndexPage = () => {
   );
 };
 
-export default IndexPage;
+export default ContactPage;
 
 export const Head = () => (
   <SEO
-    title={"Contact Us - Arithmiks"}
-    description={"If you have any questions, please e-mail us at services@arithmiks.com"}
-    pathname="/contact-us"
+    title="Contact - Arithmiks"
+    description="If you have any questions, please e-mail us at services@arithmiks.com"
+    pathname="/contact"
+    breadcrumbItems={[
+      { name: "Home", pathname: "/" },
+      { name: "Contact", pathname: "/contact" },
+    ]}
   />
 );
