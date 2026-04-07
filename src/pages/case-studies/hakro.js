@@ -2,6 +2,10 @@ import * as React from "react";
 import { graphql } from "gatsby";
 import Hakro from "../../components/CaseStudy/Hakro";
 import { SEO } from "../../components/seo";
+import { getCaseStudySeo } from "../../constants/caseStudySeo";
+
+const slug = "hakro";
+const pageSeo = getCaseStudySeo(slug);
 
 const HakroPage = ({ data }) => {
   return <Hakro images={data} />;
@@ -9,7 +13,18 @@ const HakroPage = ({ data }) => {
 
 export default HakroPage;
 
-export const Head = () => <SEO title={"Hakro - Arithmiks"} pathname="/case-studies/hakro" />;
+export const Head = () => (
+  <SEO
+    title={pageSeo.title}
+    description={pageSeo.description}
+    pathname="/case-studies/hakro"
+    breadcrumbItems={[
+      { name: "Home", pathname: "/" },
+      { name: "Case Studies", pathname: "/case-studies" },
+      { name: pageSeo.breadcrumbName, pathname: "/case-studies/hakro" },
+    ]}
+  />
+);
 
 export const query = graphql`
   query {

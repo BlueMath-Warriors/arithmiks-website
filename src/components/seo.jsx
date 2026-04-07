@@ -2,7 +2,22 @@ import React from "react";
 import { useSiteMetadata } from "../hooks/use-site-metadata";
 
 
-export const SEO = ({ title, description, pathname, children, article = false }) => {
+/**
+ * @param {object} props
+ * @param {string} [props.title]
+ * @param {string} [props.description]
+ * @param {string} [props.pathname]
+ * @param {{ name: string; pathname: string }[]} [props.breadcrumbItems] Ordered trail including the current page; URLs built with siteUrl + pathname.
+ * @param {boolean} [props.article]
+ */
+export const SEO = ({
+  title,
+  description,
+  pathname,
+  breadcrumbItems,
+  children,
+  article = false,
+}) => {
   const {
     title: defaultTitle,
     description: defaultDescription,
@@ -10,6 +25,13 @@ export const SEO = ({ title, description, pathname, children, article = false })
     siteUrl,
     twitterUsername,
   } = useSiteMetadata();
+
+  const baseUrl = siteUrl.endsWith("/") ? siteUrl.slice(0, -1) : siteUrl;
+  const absolutePathUrl = (p) => {
+    if (!p || p === "/") return baseUrl;
+    const path = p.startsWith("/") ? p : `/${p}`;
+    return `${baseUrl}${path}`;
+  };
 
   const seo = {
     title: title || defaultTitle,
@@ -72,24 +94,42 @@ export const SEO = ({ title, description, pathname, children, article = false })
     },
   };
 
-  const breadcrumbSchema = pathname && pathname !== "/" ? {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      {
+  let breadcrumbSchema = null;
+  if (
+    breadcrumbItems &&
+    Array.isArray(breadcrumbItems) &&
+    breadcrumbItems.length > 0
+  ) {
+    breadcrumbSchema = {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: breadcrumbItems.map((item, index) => ({
         "@type": "ListItem",
-        position: 1,
-        name: "Home",
-        item: siteUrl,
-      },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: seo.title,
-        item: seo.url,
-      },
-    ],
-  } : null;
+        position: index + 1,
+        name: item.name,
+        item: absolutePathUrl(item.pathname),
+      })),
+    };
+  } else if (pathname && pathname !== "/") {
+    breadcrumbSchema = {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: baseUrl,
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: seo.title,
+          item: seo.url,
+        },
+      ],
+    };
+  }
 
   return (
     <>

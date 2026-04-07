@@ -2,6 +2,10 @@ import * as React from "react";
 import { graphql } from "gatsby";
 import Do from "../../components/CaseStudy/Do";
 import { SEO } from "../../components/seo";
+import { getCaseStudySeo } from "../../constants/caseStudySeo";
+
+const slug = "ofertas";
+const pageSeo = getCaseStudySeo(slug);
 
 const OfertasPage = ({ data }) => {
   return <Do images={data} />;
@@ -9,7 +13,18 @@ const OfertasPage = ({ data }) => {
 
 export default OfertasPage;
 
-export const Head = () => <SEO title={"Ofertas - Arithmiks"} pathname="/case-studies/ofertas" />;
+export const Head = () => (
+  <SEO
+    title={pageSeo.title}
+    description={pageSeo.description}
+    pathname="/case-studies/ofertas"
+    breadcrumbItems={[
+      { name: "Home", pathname: "/" },
+      { name: "Case Studies", pathname: "/case-studies" },
+      { name: pageSeo.breadcrumbName, pathname: "/case-studies/ofertas" },
+    ]}
+  />
+);
 
 export const query = graphql`
   query {

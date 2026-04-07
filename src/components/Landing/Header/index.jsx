@@ -7,12 +7,8 @@ import {
   Menu,
   MenuItemLink,
   CompanyLogo,
-  LogoText,
-  LogoIcon,
   Hamburger,
   HeaderButtonTxt,
-  DownIcon,
-  IconImg,
   ServiceContainer,
   ServiceRow,
   ServiceHeader,
@@ -22,7 +18,6 @@ import {
 } from "./index.styled";
 import MenuIcon from "../../../images/hamburger_icon.svg";
 import DownArrow from "../../../images/header-arrow-down.svg";
-import up_arrow from "../../../images/header-arrow-up.svg";
 import logo from "../../../images/logo.png";
 
 const ServicesMenu = ({ menu_ref }) => {
@@ -241,23 +236,23 @@ const Header = ({ white, fixed_bar }) => {
             >
               Case Studies
             </MenuItemLink>
-            <MenuItemLink 
-              to="/company" 
+            <MenuItemLink
+              to="/about"
               onClick={closeMenu}
-              active={currentPath === "/company"}
+              active={currentPath === "/about"}
             >
               Company
             </MenuItemLink>
-            <MenuItemLink 
-              to="/contact-us" 
-              onClick={closeMenu} 
-              className="mobile-only" 
-              active={currentPath === "/contact-us"}
+            <MenuItemLink
+              to="/contact"
+              onClick={closeMenu}
+              className="mobile-only"
+              active={currentPath === "/contact"}
             >
               Get in Touch
             </MenuItemLink>
           </Menu>
-          <CtaBtn fill="true" to="/contact-us">
+          <CtaBtn fill="true" to="/contact">
             <HeaderButtonTxt>Get In Touch</HeaderButtonTxt>
           </CtaBtn>
           <Hamburger
