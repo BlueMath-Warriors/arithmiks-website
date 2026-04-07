@@ -11,7 +11,7 @@ const IndexPage = () => {
       <div className={containerStyles.header_div}>
         <Header white={true} fixed={true}/>
       </div>
-      <CaseStudy />
+      <CaseStudy titleAs="h1" />
       <ContactUs />
       <Footer />
     </>

@@ -22,7 +22,7 @@ import logo from "../../../images/logo.png";
 
 const ServicesMenu = ({ menu_ref }) => {
   return (
-    <ServiceContainer ref={menu_ref}>
+    <ServiceContainer ref={menu_ref} role="group" aria-label="Service categories">
       <TwoRows>
         <ServiceRow>
           <ServiceHeader>Software Development</ServiceHeader>

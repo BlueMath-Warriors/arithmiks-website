@@ -82,7 +82,9 @@ const Feature = (props) => {
           {!left ? (
             <>
               <FeatureContainer overview={isOverview}>
-                <FeatureTitle overview={isOverview}>{title}</FeatureTitle>
+                <FeatureTitle as={isOverview ? "h2" : "h3"} overview={isOverview}>
+                  {title}
+                </FeatureTitle>
                 {caption && <FeatureCaption overview={isOverview}>{caption}</FeatureCaption>}
                 <FeatureDetail overview={isOverview}>{detail}</FeatureDetail>
               </FeatureContainer>
@@ -102,7 +104,9 @@ const Feature = (props) => {
                 {renderImage(true, false)}
               </FeatureImgContainer>
               <FeatureContainer left>
-                <FeatureTitle left>{title}</FeatureTitle>
+                <FeatureTitle as="h3" left>
+                  {title}
+                </FeatureTitle>
                 {caption && <FeatureCaption left overview={isOverview}>{caption}</FeatureCaption>}
                 <FeatureDetail>{detail}</FeatureDetail>
               </FeatureContainer>

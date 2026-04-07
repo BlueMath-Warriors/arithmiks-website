@@ -62,7 +62,7 @@ export const Logo = styled.img`
   height: 32px;
 `
 
-export const CompanyName = styled.h1`
+export const CompanyName = styled.p`
   color: #1A202C;
   text-align: justify;
   font-family: Poppins;
@@ -72,6 +72,7 @@ export const CompanyName = styled.h1`
   line-height: 80%;
   width: 123px;
   letter-spacing: -0.72px;
+  margin: 0;
 `
 export const Heading = styled.p`
   color: #1A202C;
@@ -272,7 +273,7 @@ export const ContactInfoContainer = styled.div`
   }
 `
 
-export const FooterCaption = styled.h1`
+export const FooterCaption = styled.p`
   color: #1A202C;
   font-family: Poppins;
   font-size: 14px;
