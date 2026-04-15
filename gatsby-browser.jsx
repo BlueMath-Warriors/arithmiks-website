@@ -1,5 +1,7 @@
 import "./src/styles/global.module.css";
+import React from "react";
 import { gsap } from "gsap";
+import ChatWidget from "./src/components/ChatWidget";
 
 const prefersReducedMotion = () => {
   if (typeof window === "undefined") return false;
@@ -44,3 +46,10 @@ export const onServiceWorkerUpdateReady = () => {
     window.location.reload();
   }
 };
+
+export const wrapPageElement = ({ element }) => (
+  <>
+    {element}
+    <ChatWidget />
+  </>
+);

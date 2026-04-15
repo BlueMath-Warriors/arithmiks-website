@@ -1,4 +1,5 @@
 import React from "react";
+import ChatWidget from "./src/components/ChatWidget";
 
 export const onRenderBody = ({ setHtmlAttributes, setHeadComponents, setPreBodyComponents }) => {
   setHtmlAttributes({ lang: "en" });
@@ -47,6 +48,9 @@ export const onRenderBody = ({ setHtmlAttributes, setHeadComponents, setPreBodyC
   ]);
 };
 
-export const wrapPageElement = ({ element }) => {
-  return element;
-};
+export const wrapPageElement = ({ element }) => (
+  <>
+    {element}
+    <ChatWidget />
+  </>
+);

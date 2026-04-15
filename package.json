@@ -34,6 +34,7 @@
     "gsap": "^3.14.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-markdown": "^8.0.7",
     "react-phone-input-2": "^2.15.1",
     "styled-components": "^6.0.7"
   }
