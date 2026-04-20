@@ -4,8 +4,10 @@ import {
   DropzoneIcon,
   DropzoneHeading,
   DropzoneSub,
+  DropzoneHint,
   HiddenInput,
 } from "./index.styled";
+import { UploadCloudIcon, LockIcon } from "./icons";
 
 /**
  * @param {{ onPick: (file: File) => void }} props
@@ -49,13 +51,19 @@ const UploadDropzone = ({ onPick }) => {
       onDragLeave={() => setDragOver(false)}
       onDrop={handleDrop}
     >
-      <DropzoneIcon aria-hidden="true" />
+      <DropzoneIcon aria-hidden="true">
+        <UploadCloudIcon />
+      </DropzoneIcon>
       <DropzoneHeading>
         {dragOver ? "Drop to start scanning" : "Drop a file or click to browse"}
       </DropzoneHeading>
       <DropzoneSub>
         Up to 1 GB · any file type · scanned in memory, deleted after
       </DropzoneSub>
+      <DropzoneHint>
+        <LockIcon />
+        Your file is private — never stored, never shared
+      </DropzoneHint>
       <HiddenInput
         ref={inputRef}
         type="file"

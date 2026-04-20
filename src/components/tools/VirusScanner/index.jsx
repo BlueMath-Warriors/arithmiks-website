@@ -16,12 +16,8 @@ import {
   GhostBtn,
   FileMeta,
 } from "./index.styled";
-import { useScanUpload } from "../../hooks/useScanUpload";
-import {
-  validateFile,
-  deriveVerdict,
-  formatBytes,
-} from "../../utils/scanFormat";
+import { useScanUpload } from "./useScanUpload";
+import { validateFile, deriveVerdict, formatBytes } from "./scanFormat";
 
 const initial = {
   status: "idle",

@@ -1,6 +1,6 @@
 import React from "react";
 import { Banner, BannerIcon, PrimaryBtn } from "./index.styled";
-import { errorCopy } from "../../utils/scanFormat";
+import { errorCopy } from "./scanFormat";
 
 /**
  * @param {{ error: object; onRetry: () => void }} props

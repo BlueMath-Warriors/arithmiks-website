@@ -3,12 +3,16 @@ import { Link } from "gatsby";
 import {
   Section,
   SectionInner,
+  SectionHead,
+  SectionEyebrow,
   SectionHeading,
+  SectionSub,
   RelatedGrid,
   RelatedCard,
   ComingSoonPill,
 } from "./index.styled";
 import { TOOL_ROUTES, toolPath } from "../../constants/toolRoutes";
+import { ToolIcon, ArrowRightIcon } from "./icons";
 
 /**
  * @param {{ currentSlug?: string }} props
@@ -20,7 +24,14 @@ const RelatedTools = ({ currentSlug }) => {
   return (
     <Section>
       <SectionInner>
-        <SectionHeading>More free tools</SectionHeading>
+        <SectionHead>
+          <SectionEyebrow>More tools</SectionEyebrow>
+          <SectionHeading>Explore the Arithmiks toolbox</SectionHeading>
+          <SectionSub>
+            Hand-built utilities from our engineering team — each one free, with
+            no signup and no tracking.
+          </SectionSub>
+        </SectionHead>
         <RelatedGrid>
           {others.map((tool) => {
             const isLive = tool.status === "live";
@@ -29,11 +40,22 @@ const RelatedTools = ({ currentSlug }) => {
               : { as: "div", role: "group", "aria-disabled": true };
             return (
               <RelatedCard key={tool.slug} {...cardProps}>
+                <div className="cardTop">
+                  <div className="cardIcon" aria-hidden="true">
+                    <ToolIcon slug={tool.slug} />
+                  </div>
+                </div>
                 <h3>
                   {tool.label}
                   {!isLive && <ComingSoonPill>Coming soon</ComingSoonPill>}
                 </h3>
                 <p>{tool.tagline}</p>
+                {isLive && (
+                  <span className="cardCta">
+                    Open tool
+                    <ArrowRightIcon />
+                  </span>
+                )}
               </RelatedCard>
             );
           })}

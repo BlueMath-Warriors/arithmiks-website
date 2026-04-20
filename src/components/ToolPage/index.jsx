@@ -8,6 +8,7 @@ import {
   ToolShell,
   ToolHero,
   ToolHeroInner,
+  Eyebrow,
   ToolH1,
   ToolIntro,
   TrustRow,
@@ -23,6 +24,7 @@ import {
  * @param {string} props.slug
  * @param {string} props.headline
  * @param {string} props.intro
+ * @param {string} [props.eyebrow]
  * @param {string[]} [props.trustBadges]
  * @param {{ question: string; answer: string }[]} [props.faq]
  * @param {React.ReactNode} props.children  The interactive tool surface.
@@ -31,6 +33,7 @@ const ToolPage = ({
   slug,
   headline,
   intro,
+  eyebrow = "Free online tool",
   trustBadges = [],
   faq = [],
   children,
@@ -43,6 +46,7 @@ const ToolPage = ({
       <ToolShell>
         <ToolHero>
           <ToolHeroInner>
+            {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
             <ToolH1>{headline}</ToolH1>
             <ToolIntro>{intro}</ToolIntro>
             {trustBadges.length > 0 && (

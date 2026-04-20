@@ -25,6 +25,23 @@ export const TOOL_ROUTES = [
       "online malware detection",
       "upload file check virus",
     ],
+    schema: {
+      appName: "Arithmiks Virus Scanner",
+      applicationCategory: "SecurityApplication",
+      featureList: [
+        "ClamAV signature scanning",
+        "YARA behavioral rule matching",
+        "AI-assisted threat analysis",
+        "Archive inspection with nested paths",
+        "Files deleted after scan",
+      ],
+      howToName: "How to scan a file for viruses online",
+      howToDescription:
+        "Step-by-step guide to check any file for malware using the Arithmiks virus scanner.",
+      howToTotalTime: "PT1M",
+      howToSupplies: ["A file you want to scan"],
+      howToTools: ["A web browser"],
+    },
     faq: [
       {
         question: "Is this virus scanner free?",

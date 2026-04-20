@@ -5,10 +5,12 @@ import Footer from "../../components/Landing/Footer";
 import * as containerStyles from "../../styles/global.module.css";
 import { SEO } from "../../components/seo";
 import { TOOL_ROUTES, toolPath } from "../../constants/toolRoutes";
+import { ToolIcon, ArrowRightIcon } from "../../components/ToolPage/icons";
 import {
   ToolShell,
   ToolHero,
   ToolHeroInner,
+  Eyebrow,
   ToolH1,
   ToolIntro,
   Section,
@@ -18,6 +20,8 @@ import {
   ComingSoonPill,
 } from "../../components/ToolPage/index.styled";
 
+const liveCount = TOOL_ROUTES.filter((t) => t.status === "live").length;
+
 const ToolsIndexPage = () => (
   <>
     <div className={containerStyles.header_div}>
@@ -26,11 +30,12 @@ const ToolsIndexPage = () => (
     <ToolShell>
       <ToolHero>
         <ToolHeroInner>
-          <ToolH1>Free online tools by Arithmiks</ToolH1>
+          <Eyebrow>The Arithmiks toolbox</Eyebrow>
+          <ToolH1>Free online tools, built by our engineering team</ToolH1>
           <ToolIntro>
-            Practical, free-to-use tools built by our engineering team. No
-            signup, no tracking — just useful utilities you can reach for when
-            you need them.
+            Practical utilities you can reach for when you need them — {liveCount}{" "}
+            available today, with more rolling out every month. No signup, no
+            tracking, nothing to install.
           </ToolIntro>
         </ToolHeroInner>
       </ToolHero>
@@ -44,11 +49,22 @@ const ToolsIndexPage = () => (
                 : { as: "div", role: "group", "aria-disabled": true };
               return (
                 <RelatedCard key={tool.slug} {...cardProps}>
+                  <div className="cardTop">
+                    <div className="cardIcon" aria-hidden="true">
+                      <ToolIcon slug={tool.slug} />
+                    </div>
+                  </div>
                   <h3>
                     {tool.label}
                     {!isLive && <ComingSoonPill>Coming soon</ComingSoonPill>}
                   </h3>
                   <p>{tool.tagline}</p>
+                  {isLive && (
+                    <span className="cardCta">
+                      Open tool
+                      <ArrowRightIcon />
+                    </span>
+                  )}
                 </RelatedCard>
               );
             })}

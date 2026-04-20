@@ -10,7 +10,13 @@ import {
   Spinner,
   FileMeta,
 } from "./index.styled";
-import { formatBytes } from "../../utils/scanFormat";
+import { formatBytes } from "./scanFormat";
+
+const PHASES = [
+  { label: "ClamAV signatures" },
+  { label: "YARA rules" },
+  { label: "AI analysis" },
+];
 
 /**
  * @param {{ status: "uploading"|"scanning"; progress: number; file: File; onCancel: () => void }} props
@@ -53,9 +59,12 @@ const ScanProgress = ({ status, progress, file, onCancel }) => {
       )}
 
       <PhaseRow aria-label="Scan phases">
-        <PhasePill $active={!isUploading}>1. ClamAV signatures</PhasePill>
-        <PhasePill $active={!isUploading}>2. YARA rules</PhasePill>
-        <PhasePill $active={!isUploading}>3. AI analysis</PhasePill>
+        {PHASES.map((phase, i) => (
+          <PhasePill key={phase.label} $active={!isUploading}>
+            <span className="num">{i + 1}</span>
+            {phase.label}
+          </PhasePill>
+        ))}
       </PhaseRow>
 
       <div>

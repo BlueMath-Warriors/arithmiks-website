@@ -1,6 +1,12 @@
 import React from "react";
-import { HowItWorksGrid, HowCard } from "./index.styled";
-import { SectionHeading } from "../ToolPage/index.styled";
+import {
+  HowItWorksWrap,
+  HowHeader,
+  HowEyebrow,
+  HowHeading,
+  HowItWorksGrid,
+  HowCard,
+} from "./index.styled";
 
 /**
  * @param {{ steps: { name: string; text: string }[] }} props
@@ -8,8 +14,11 @@ import { SectionHeading } from "../ToolPage/index.styled";
 const HowItWorks = ({ steps }) => {
   if (!steps || steps.length === 0) return null;
   return (
-    <div style={{ marginTop: 48 }}>
-      <SectionHeading>How the virus scanner works</SectionHeading>
+    <HowItWorksWrap>
+      <HowHeader>
+        <HowEyebrow>How it works</HowEyebrow>
+        <HowHeading>Three detection layers, one clear verdict</HowHeading>
+      </HowHeader>
       <HowItWorksGrid>
         {steps.map((s, i) => (
           <HowCard key={s.name}>
@@ -21,7 +30,7 @@ const HowItWorks = ({ steps }) => {
           </HowCard>
         ))}
       </HowItWorksGrid>
-    </div>
+    </HowItWorksWrap>
   );
 };
 
