@@ -1,0 +1,65 @@
+{
+  "phase1": {
+    "infected": false,
+    "threat_name": null,
+    "raw_exit_code": 0,
+    "details": null
+  },
+  "yara": {
+    "enabled": true,
+    "skipped": false,
+    "skip_reason": null,
+    "match_count": 3,
+    "severity": "medium",
+    "severity_base": "low",
+    "severity_escalated": true,
+    "correlation_reason": "3_low_matches_cluster",
+    "rules_loaded": 9,
+    "matches": [
+      {
+        "rule": "BundledInstallerBehavior",
+        "namespace": "installer",
+        "tags": ["bundler", "installer"],
+        "severity": "low",
+        "description": "Installer bundles additional optional software.",
+        "source": ""
+      },
+      {
+        "rule": "AutoStartPersistence",
+        "namespace": "persistence",
+        "tags": ["persistence"],
+        "severity": "low",
+        "description": "Creates an auto-start entry on install.",
+        "source": ""
+      },
+      {
+        "rule": "OutboundTelemetry",
+        "namespace": "network",
+        "tags": ["telemetry", "network"],
+        "severity": "low",
+        "description": "Contacts a remote endpoint with usage telemetry.",
+        "source": ""
+      }
+    ],
+    "archive_scan": null
+  },
+  "phase2": {
+    "skipped": false,
+    "skip_reason": null,
+    "verdict": {
+      "risk_level": "medium",
+      "summary": "Likely a bundler or potentially unwanted program. Not malware, but behaviors may be undesirable.",
+      "indicators": [
+        "Bundled optional installs",
+        "Auto-start persistence",
+        "Outbound telemetry without opt-in"
+      ]
+    },
+    "analysis": "MEDIUM risk. Cluster of low-severity behaviors typical of PUP-class software.",
+    "risk_notes": []
+  },
+  "meta": {
+    "job_id": "00000000-0000-0000-0000-000000000005",
+    "original_filename": "setup-bundle.exe"
+  }
+}

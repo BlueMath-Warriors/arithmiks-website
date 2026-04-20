@@ -1,0 +1,56 @@
+{
+  "phase1": {
+    "infected": false,
+    "threat_name": null,
+    "raw_exit_code": 0,
+    "details": null
+  },
+  "yara": {
+    "enabled": true,
+    "skipped": false,
+    "skip_reason": null,
+    "match_count": 2,
+    "severity": "high",
+    "severity_base": "high",
+    "severity_escalated": false,
+    "correlation_reason": null,
+    "rules_loaded": 9,
+    "matches": [
+      {
+        "rule": "SuspiciousPowerShellLauncher",
+        "namespace": "scripting",
+        "tags": ["powershell", "launcher"],
+        "severity": "high",
+        "description": "Detects hidden PowerShell launch patterns commonly used to run second-stage code.",
+        "source": ""
+      },
+      {
+        "rule": "ObfuscatedStringsCluster",
+        "namespace": "obfuscation",
+        "tags": ["obfuscation", "packer"],
+        "severity": "medium",
+        "description": "Dense cluster of obfuscated string constructions consistent with packed content.",
+        "source": ""
+      }
+    ],
+    "archive_scan": null
+  },
+  "phase2": {
+    "skipped": false,
+    "skip_reason": null,
+    "verdict": {
+      "risk_level": "high",
+      "summary": "Behavioral patterns are consistent with a loader. Do not execute this file.",
+      "indicators": [
+        "Hidden process launch with encoded arguments",
+        "String obfuscation indicative of a packed payload"
+      ]
+    },
+    "analysis": "HIGH risk across 1 unit, 3 chunks. Multiple reinforcing indicators.",
+    "risk_notes": []
+  },
+  "meta": {
+    "job_id": "00000000-0000-0000-0000-000000000003",
+    "original_filename": "installer.js"
+  }
+}
