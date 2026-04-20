@@ -244,6 +244,13 @@ const Header = ({ white, fixed_bar }) => {
               Company
             </MenuItemLink>
             <MenuItemLink
+              to="/tools"
+              onClick={closeMenu}
+              active={currentPath.startsWith("/tools")}
+            >
+              Tools
+            </MenuItemLink>
+            <MenuItemLink
               to="/contact"
               onClick={closeMenu}
               className="mobile-only"

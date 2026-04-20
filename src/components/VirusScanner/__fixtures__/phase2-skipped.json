@@ -1,0 +1,36 @@
+{
+  "phase1": {
+    "infected": false,
+    "threat_name": null,
+    "raw_exit_code": 0,
+    "details": null
+  },
+  "yara": {
+    "enabled": true,
+    "skipped": false,
+    "skip_reason": null,
+    "match_count": 0,
+    "severity": "low",
+    "severity_base": "low",
+    "severity_escalated": false,
+    "correlation_reason": null,
+    "rules_loaded": 9,
+    "matches": [],
+    "archive_scan": null
+  },
+  "phase2": {
+    "skipped": true,
+    "skip_reason": "no_api_key",
+    "verdict": {
+      "risk_level": "low",
+      "summary": "",
+      "indicators": []
+    },
+    "analysis": "",
+    "risk_notes": []
+  },
+  "meta": {
+    "job_id": "00000000-0000-0000-0000-000000000006",
+    "original_filename": "presentation.pdf"
+  }
+}

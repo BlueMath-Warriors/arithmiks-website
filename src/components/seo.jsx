@@ -9,6 +9,7 @@ import { useSiteMetadata } from "../hooks/use-site-metadata";
  * @param {string} [props.pathname]
  * @param {{ name: string; pathname: string }[]} [props.breadcrumbItems] Ordered trail including the current page; URLs built with siteUrl + pathname.
  * @param {boolean} [props.article]
+ * @param {object[]} [props.extraSchemas] Additional JSON-LD objects emitted as script tags (e.g. FAQPage, HowTo, SoftwareApplication).
  */
 export const SEO = ({
   title,
@@ -17,6 +18,7 @@ export const SEO = ({
   breadcrumbItems,
   children,
   article = false,
+  extraSchemas,
 }) => {
   const {
     title: defaultTitle,
@@ -177,6 +179,12 @@ export const SEO = ({
           {JSON.stringify(breadcrumbSchema)}
         </script>
       )}
+      {Array.isArray(extraSchemas) &&
+        extraSchemas.map((schema, i) => (
+          <script key={`extra-schema-${i}`} type="application/ld+json">
+            {JSON.stringify(schema)}
+          </script>
+        ))}
 
       <link
         rel="stylesheet"
