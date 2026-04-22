@@ -3,25 +3,64 @@ import {
   ProgressShell,
   ProgressLabel,
   ProgressTrack,
-  ProgressFill,
+  IndeterminateFill,
   PhaseRow,
   PhasePill,
+  PhasePillSpinner,
   GhostBtn,
-  Spinner,
   FileMeta,
+  Spinner,
 } from "./index.styled";
 import { formatBytes } from "./scanFormat";
+import { CheckTinyIcon, SkipTinyIcon, FailTinyIcon } from "./icons";
+
+const SR_ONLY = {
+  position: "absolute",
+  width: 1,
+  height: 1,
+  padding: 0,
+  margin: -1,
+  overflow: "hidden",
+  clip: "rect(0, 0, 0, 0)",
+  whiteSpace: "nowrap",
+  border: 0,
+};
 
 const PHASES = [
-  { label: "ClamAV signatures" },
-  { label: "YARA rules" },
-  { label: "AI analysis" },
+  { id: "clamav", label: "ClamAV signatures" },
+  { id: "yara", label: "YARA rules" },
+  { id: "ai", label: "AI analysis" },
 ];
 
 /**
- * @param {{ status: "uploading"|"scanning"; progress: number; file: File; onCancel: () => void }} props
+ * @param {string} st
+ * @param {string} label
  */
-const ScanProgress = ({ status, progress, file, onCancel }) => {
+function phaseAriaLabel(st, label) {
+  switch (st) {
+    case "pending":
+      return `${label}, not started`;
+    case "running":
+      return `${label}, in progress`;
+    case "completed":
+      return `${label}, completed`;
+    case "skipped":
+      return `${label}, skipped`;
+    case "failed":
+      return `${label}, failed`;
+    default:
+      return label;
+  }
+}
+
+/**
+ * @param {object} props
+ * @param {string} props.status
+ * @param {Record<"clamav"|"yara"|"ai", string>} props.phases
+ * @param {File|null} props.file
+ * @param {() => void} props.onCancel
+ */
+const ScanProgress = ({ status, phases, file, onCancel }) => {
   const isUploading = status === "uploading";
 
   return (
@@ -37,16 +76,16 @@ const ScanProgress = ({ status, progress, file, onCancel }) => {
         <>
           <ProgressLabel>
             <span>Uploading your file…</span>
-            <strong>{progress}%</strong>
+            <span style={{ opacity: 0.75, fontSize: 13, fontWeight: 500 }}>
+              Sending…
+            </span>
           </ProgressLabel>
           <ProgressTrack
             role="progressbar"
-            aria-valuenow={progress}
-            aria-valuemin={0}
-            aria-valuemax={100}
-            aria-label="Upload progress"
+            aria-busy="true"
+            aria-label="Uploading file"
           >
-            <ProgressFill $pct={progress} />
+            <IndeterminateFill />
           </ProgressTrack>
         </>
       ) : (
@@ -58,14 +97,37 @@ const ScanProgress = ({ status, progress, file, onCancel }) => {
         </ProgressLabel>
       )}
 
-      <PhaseRow aria-label="Scan phases">
-        {PHASES.map((phase, i) => (
-          <PhasePill key={phase.label} $active={!isUploading}>
-            <span className="num">{i + 1}</span>
-            {phase.label}
-          </PhasePill>
-        ))}
-      </PhaseRow>
+      <div aria-live="polite" aria-atomic="false">
+        <PhaseRow role="list" aria-label="Scan phases">
+          {PHASES.map((phase, i) => {
+            const st = phases[phase.id] || "pending";
+            return (
+              <PhasePill
+                key={phase.id}
+                role="listitem"
+                $state={st}
+                aria-label={phaseAriaLabel(st, phase.label)}
+              >
+                <span className="phaseChip">
+                  {st === "pending" && <span>{i + 1}</span>}
+                  {st === "running" && (
+                    <>
+                      <span style={SR_ONLY} role="status">
+                        Running
+                      </span>
+                      <PhasePillSpinner aria-hidden="true" />
+                    </>
+                  )}
+                  {st === "completed" && <CheckTinyIcon />}
+                  {st === "skipped" && <SkipTinyIcon />}
+                  {st === "failed" && <FailTinyIcon />}
+                </span>
+                <span className="phaseLabel">{phase.label}</span>
+              </PhasePill>
+            );
+          })}
+        </PhaseRow>
+      </div>
 
       <div>
         <GhostBtn type="button" onClick={onCancel}>

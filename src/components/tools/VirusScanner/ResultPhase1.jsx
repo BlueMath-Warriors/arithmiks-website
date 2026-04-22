@@ -24,21 +24,11 @@ const ResultPhase1 = ({ phase1 }) => {
         </StatusPill>
       </h3>
       {skipped ? (
-        <DetailRow>
-          This engine was not run for this scan.
-        </DetailRow>
+        <DetailRow>This engine was not run for this scan.</DetailRow>
       ) : infected ? (
-        <>
-          <DetailRow>
-            <strong>Threat:</strong> {p1.threat_name || "Unknown"}
-          </DetailRow>
-          {typeof p1.raw_exit_code === "number" && (
-            <DetailRow>
-              <strong>Exit code:</strong> {p1.raw_exit_code}
-            </DetailRow>
-          )}
-          {p1.details && <DetailRow>{p1.details}</DetailRow>}
-        </>
+        <DetailRow>
+          <strong>Threat:</strong> {p1.threat_name || "Unknown"}
+        </DetailRow>
       ) : (
         <DetailRow>No known malware signatures matched this file.</DetailRow>
       )}

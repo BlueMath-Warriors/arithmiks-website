@@ -28,10 +28,12 @@ const DangerGlyph = () => (
 );
 
 /**
- * @param {{ verdict: "clean"|"suspicious"|"infected"; filename?: string }} props
+ * @param {{ verdict: "clean"|"suspicious"|"infected"; filename?: string; title?: string }} props
  */
-const ResultBanner = ({ verdict, filename }) => {
+const ResultBanner = ({ verdict, filename, title }) => {
   const copy = verdictCopy(verdict);
+  const heading =
+    typeof title === "string" && title.trim() ? title.trim() : copy.heading;
   const Icon =
     verdict === "infected"
       ? DangerGlyph
@@ -50,7 +52,7 @@ const ResultBanner = ({ verdict, filename }) => {
         <Icon />
       </BannerIcon>
       <div>
-        <h2>{copy.heading}</h2>
+        <h2>{heading}</h2>
         <p>
           {filename ? `${filename} — ` : ""}
           {copy.sub}
