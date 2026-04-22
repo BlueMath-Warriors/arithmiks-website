@@ -1,0 +1,48 @@
+{
+  "job_id": "00000000-0000-0000-0000-000000000001",
+  "filename": "vacation-photo.jpg",
+  "content_type": "image/jpeg",
+  "user_summary": "No serious issues found for this file\n\nClamAV did not flag known malware.\nYARA did not report high-severity matches.\nThe automated review suggests routine, low-risk content.",
+  "user_summary_structured": {
+    "headline": "No serious issues found for this file",
+    "bullets": [
+      "ClamAV did not flag known malware.",
+      "YARA did not report high-severity matches.",
+      "The automated review suggests routine, low-risk content."
+    ]
+  },
+  "phase1": {
+    "infected": false,
+    "threat_name": null,
+    "raw_exit_code": 0,
+    "details": null
+  },
+  "yara": {
+    "enabled": true,
+    "skipped": false,
+    "skip_reason": null,
+    "match_count": 0,
+    "severity": "low",
+    "severity_base": "low",
+    "severity_escalated": false,
+    "correlation_reason": null,
+    "rules_loaded": 9,
+    "matches": [],
+    "archive_scan": null
+  },
+  "phase2": {
+    "skipped": false,
+    "skip_reason": null,
+    "verdict": {
+      "risk_level": "low",
+      "summary": "File contents appear benign. No suspicious capabilities or obfuscation patterns were observed.",
+      "indicators": []
+    },
+    "analysis": "LOW risk across 1 unit, 1 chunk. File is consistent with ordinary user content.",
+    "risk_notes": []
+  },
+  "meta": {
+    "job_id": "00000000-0000-0000-0000-000000000001",
+    "original_filename": "vacation-photo.jpg"
+  }
+}
