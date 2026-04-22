@@ -223,6 +223,14 @@ export const ProgressFill = styled.div`
   transition: width 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 `;
 
+export const IndeterminateFill = styled.div`
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(90deg, #1355ff 0%, #3b7aff 50%, #1355ff 100%);
+  background-size: 200% 100%;
+  animation: ${shimmer} 1.2s linear infinite;
+`;
+
 export const PhaseRow = styled.ol`
   list-style: none;
   padding: 0;
@@ -236,57 +244,152 @@ export const PhaseRow = styled.ol`
   }
 `;
 
+const phasePillBase = (state) => {
+  switch (state) {
+    case "running":
+      return css`
+        background: #ffffff;
+        color: #061237;
+        border-color: #c7d2ff;
+        font-weight: 600;
+        box-shadow: 0 4px 16px rgba(19, 85, 255, 0.1);
+        &::after {
+          content: "";
+          position: absolute;
+          inset: 0;
+          border-radius: 11px;
+          background: linear-gradient(
+            90deg,
+            rgba(19, 85, 255, 0) 0%,
+            rgba(19, 85, 255, 0.08) 50%,
+            rgba(19, 85, 255, 0) 100%
+          );
+          background-size: 200% 100%;
+          animation: ${shimmer} 1.6s linear infinite;
+          pointer-events: none;
+        }
+      `;
+    case "completed":
+      return css`
+        background: #f0faf4;
+        color: #0f7a3a;
+        border-color: #bde3cb;
+        font-weight: 600;
+      `;
+    case "skipped":
+      return css`
+        background: #fafbff;
+        color: #8892a6;
+        border-color: #e7eaee;
+        font-style: italic;
+        font-weight: 500;
+      `;
+    case "failed":
+      return css`
+        background: #fdecec;
+        color: #c0261a;
+        border-color: #f3b4b0;
+        font-weight: 600;
+      `;
+    case "pending":
+    default:
+      return css`
+        background: #f5f7fa;
+        color: #8892a6;
+        border-color: #e7eaee;
+        font-weight: 600;
+      `;
+  }
+};
+
+const phaseChipBase = (state) => {
+  switch (state) {
+    case "running":
+      return css`
+        background: #1355ff;
+        color: #ffffff;
+        border: none;
+      `;
+    case "completed":
+      return css`
+        background: #0f7a3a;
+        color: #ffffff;
+        border: none;
+      `;
+    case "skipped":
+      return css`
+        background: #e7eaee;
+        color: #8892a6;
+        border: none;
+      `;
+    case "failed":
+      return css`
+        background: #c0261a;
+        color: #ffffff;
+        border: none;
+      `;
+    case "pending":
+    default:
+      return css`
+        background: #e7eaee;
+        color: #8892a6;
+        border: none;
+      `;
+  }
+};
+
 export const PhasePill = styled.li`
   position: relative;
-  background: ${(p) => (p.$active ? "#ffffff" : "#f5f7fa")};
-  color: ${(p) => (p.$active ? "#061237" : "#5c5c5c")};
-  border: 1px solid ${(p) => (p.$active ? "#c7d2ff" : "#e7eaee")};
+  border: 1px solid #e7eaee;
   border-radius: 12px;
   padding: 14px 16px;
   font-family: Poppins;
   font-size: 13px;
-  font-weight: 600;
   line-height: 20px;
   letter-spacing: -0.08px;
   overflow: hidden;
   display: flex;
   align-items: center;
   gap: 12px;
+  z-index: 0;
+  transition:
+    background 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+    color 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   ${siteFontFeatures}
 
-  .num {
+  ${(p) => phasePillBase(p.$state || "pending")}
+
+  .phaseChip {
+    position: relative;
+    z-index: 1;
     display: grid;
     place-items: center;
     width: 26px;
     height: 26px;
     border-radius: 50%;
-    background: ${(p) => (p.$active ? "#1355ff" : "#e7eaee")};
-    color: ${(p) => (p.$active ? "#ffffff" : "#8892a6")};
+    flex-shrink: 0;
     font-size: 12px;
     font-weight: 700;
-    flex-shrink: 0;
     font-variant-numeric: tabular-nums;
+    ${(p) => phaseChipBase(p.$state || "pending")}
   }
 
-  ${(p) =>
-    p.$active &&
-    css`
-      box-shadow: 0 8px 20px rgba(19, 85, 255, 0.12);
-      &::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(
-          90deg,
-          rgba(19, 85, 255, 0) 0%,
-          rgba(19, 85, 255, 0.08) 50%,
-          rgba(19, 85, 255, 0) 100%
-        );
-        background-size: 200% 100%;
-        animation: ${shimmer} 1.6s linear infinite;
-        pointer-events: none;
-      }
-    `}
+  .phaseLabel {
+    position: relative;
+    z-index: 1;
+  }
+`;
+
+export const PhasePillSpinner = styled.span`
+  display: block;
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: ${spin} 0.75s linear infinite;
 `;
 
 export const Spinner = styled.span`
@@ -429,10 +532,84 @@ export const ResultGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 16px;
-  margin-top: 20px;
+  margin-top: 0;
 
   @media screen and (max-width: ${breakpoints.large}) {
     grid-template-columns: 1fr;
+  }
+`;
+
+export const UserSummaryList = styled.ul`
+  margin: 0 0 4px;
+  padding-left: 1.35rem;
+  color: #061237;
+  font-family: Poppins;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 24px;
+  ${siteFontFeatures}
+
+  li {
+    margin: 0 0 10px;
+  }
+  li:last-child {
+    margin-bottom: 0;
+  }
+`;
+
+export const JobIdLine = styled.p`
+  margin: 0 0 16px;
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 12px;
+  line-height: 18px;
+  color: #5c6478;
+  ${siteFontFeatures}
+`;
+
+export const TechnicalDetails = styled.details`
+  margin-top: 16px;
+  border: 1px solid #e7eaee;
+  border-radius: 16px;
+  background: #fafbfc;
+  overflow: hidden;
+  ${siteFontFeatures}
+
+  summary {
+    cursor: pointer;
+    font-family: Poppins;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 24px;
+    color: #061237;
+    padding: 16px 20px;
+    list-style: none;
+    user-select: none;
+  }
+  summary::-webkit-details-marker {
+    display: none;
+  }
+  summary::before {
+    content: "";
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 6px solid #061237;
+    margin-right: 10px;
+    transform: translateY(-1px) rotate(-90deg);
+    transition: transform 0.2s ease;
+  }
+  &[open] summary::before {
+    transform: translateY(2px) rotate(0);
+  }
+  summary:focus-visible {
+    outline: 3px solid #1355ff;
+    outline-offset: -3px;
+  }
+
+  ${ResultGrid} {
+    margin: 0 20px 20px;
   }
 `;
 

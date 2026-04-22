@@ -4,8 +4,19 @@ import {
   StatusPill,
   DetailRow,
   IndicatorList,
-  MutedText,
 } from "./index.styled";
+
+const FRIENDLY_SKIP = {
+  clean_clamav: "Not needed — signatures and patterns already cleared this file.",
+  timeout: "Took too long to analyze this file.",
+  error: "AI analysis is temporarily unavailable.",
+};
+
+function friendlySkip(reason) {
+  if (!reason) return "AI analysis was not run for this file.";
+  if (FRIENDLY_SKIP[reason]) return FRIENDLY_SKIP[reason];
+  return "AI analysis was not run for this file.";
+}
 
 /**
  * @param {{ phase2: object }} props
@@ -17,7 +28,6 @@ const ResultPhase2 = ({ phase2 }) => {
   const indicators = Array.isArray(verdict.indicators)
     ? verdict.indicators
     : [];
-  const notes = Array.isArray(p2.risk_notes) ? p2.risk_notes : [];
 
   const pill = p2.skipped
     ? { label: "Not run", bg: "#f5f7fb", color: "#5c5c5c" }
@@ -36,17 +46,14 @@ const ResultPhase2 = ({ phase2 }) => {
         </StatusPill>
       </h3>
       {p2.skipped ? (
-        <DetailRow>
-          AI analysis was skipped
-          {p2.skip_reason ? ` — ${p2.skip_reason.replace(/_/g, " ")}` : ""}.
-        </DetailRow>
+        <DetailRow>{friendlySkip(p2.skip_reason)}</DetailRow>
       ) : (
         <>
           {verdict.summary && <DetailRow>{verdict.summary}</DetailRow>}
           {indicators.length > 0 && (
             <>
               <DetailRow style={{ marginTop: 8 }}>
-                <strong>Indicators</strong>
+                <strong>What the AI noticed</strong>
               </DetailRow>
               <IndicatorList>
                 {indicators.map((ind, i) => (
@@ -54,14 +61,6 @@ const ResultPhase2 = ({ phase2 }) => {
                 ))}
               </IndicatorList>
             </>
-          )}
-          {p2.analysis && <MutedText>{p2.analysis}</MutedText>}
-          {notes.length > 0 && (
-            <MutedText>
-              {notes.map((n, i) => (
-                <span key={i}>{n}</span>
-              ))}
-            </MutedText>
           )}
         </>
       )}

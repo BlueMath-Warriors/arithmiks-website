@@ -1,4 +1,16 @@
 {
+  "job_id": "00000000-0000-0000-0000-000000000001",
+  "filename": "vacation-photo.jpg",
+  "content_type": "image/jpeg",
+  "user_summary": "No serious issues found for this file\n\nClamAV did not flag known malware.\nYARA did not report high-severity matches.\nThe automated review suggests routine, low-risk content.",
+  "user_summary_structured": {
+    "headline": "No serious issues found for this file",
+    "bullets": [
+      "ClamAV did not flag known malware.",
+      "YARA did not report high-severity matches.",
+      "The automated review suggests routine, low-risk content."
+    ]
+  },
   "phase1": {
     "infected": false,
     "threat_name": null,

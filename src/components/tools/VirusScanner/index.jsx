@@ -1,7 +1,8 @@
-import React, { useCallback, useEffect, useReducer, useRef } from "react";
+import React, { useCallback, useEffect, useReducer, useRef, useState } from "react";
 import UploadDropzone from "./UploadDropzone";
 import ScanProgress from "./ScanProgress";
 import ResultBanner from "./ResultBanner";
+import UserReportSummary from "./UserReportSummary";
 import ResultPhase1 from "./ResultPhase1";
 import ResultYara from "./ResultYara";
 import ResultPhase2 from "./ResultPhase2";
@@ -11,38 +12,97 @@ import PrivacyNote from "./PrivacyNote";
 import {
   ScannerCard,
   ResultGrid,
+  TechnicalDetails,
   ActionsRow,
   PrimaryBtn,
   GhostBtn,
   FileMeta,
 } from "./index.styled";
 import { useScanUpload } from "./useScanUpload";
-import { validateFile, deriveVerdict, formatBytes } from "./scanFormat";
+import {
+  validateFile,
+  deriveVerdict,
+  formatBytes,
+  createInitialPhases,
+  reconcilePhasesFromResult,
+  markRunningPhasesFailed,
+  isPhaseId,
+  getUserSummaryParts,
+  getScanResultFilename,
+} from "./scanFormat";
+
+const CheckSmallIcon = () => (
+  <svg
+    viewBox="0 0 16 16"
+    width="16"
+    height="16"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+  >
+    <path d="m3 8 3.5 3.5L13 4.5" />
+  </svg>
+);
 
 const initial = {
   status: "idle",
   file: null,
-  progress: 0,
   result: null,
   error: null,
+  phases: createInitialPhases(),
 };
 
 function reducer(state, action) {
   switch (action.type) {
     case "PICK":
-      return { ...initial, status: "validating", file: action.file };
+      return {
+        ...initial,
+        status: "validating",
+        file: action.file,
+        phases: createInitialPhases(),
+      };
     case "VALIDATE_OK":
-      return { ...state, status: "uploading", progress: 0 };
+      return { ...state, status: "uploading" };
     case "VALIDATE_ERR":
-      return { ...state, status: "error", error: action.error };
-    case "PROGRESS":
-      return { ...state, progress: action.progress };
+      return {
+        ...state,
+        status: "error",
+        error: action.error,
+        phases: createInitialPhases(),
+      };
     case "SCANNING":
-      return { ...state, status: "scanning", progress: 100 };
+      return { ...state, status: "scanning" };
+    case "PHASE_START": {
+      if (!isPhaseId(action.phase)) return state;
+      return {
+        ...state,
+        phases: { ...state.phases, [action.phase]: "running" },
+      };
+    }
+    case "PHASE_COMPLETE": {
+      if (!isPhaseId(action.phase)) return state;
+      return {
+        ...state,
+        phases: { ...state.phases, [action.phase]: "completed" },
+      };
+    }
     case "RESULT":
-      return { ...state, status: "result", result: action.result };
+      return {
+        ...state,
+        status: "result",
+        result: action.result,
+        phases: reconcilePhasesFromResult(state.phases, action.result),
+      };
     case "ERROR":
-      return { ...state, status: "error", error: action.error };
+      return {
+        ...state,
+        status: "error",
+        error: action.error,
+        phases: markRunningPhasesFailed(state.phases),
+      };
     case "RESET":
       return initial;
     default:
@@ -68,11 +128,16 @@ const VirusScanner = ({ howToSteps = [] }) => {
   const [state, dispatch] = useReducer(reducer, initial);
   const dropzoneRef = useRef(null);
 
-  const onProgress = useCallback(
-    (p) => dispatch({ type: "PROGRESS", progress: p }),
+  const onUploading = useCallback(() => {}, []);
+  const onScanning = useCallback(() => dispatch({ type: "SCANNING" }), []);
+  const onPhaseStart = useCallback(
+    (phase) => dispatch({ type: "PHASE_START", phase }),
     []
   );
-  const onScanning = useCallback(() => dispatch({ type: "SCANNING" }), []);
+  const onPhaseComplete = useCallback(
+    (phase) => dispatch({ type: "PHASE_COMPLETE", phase }),
+    []
+  );
   const onResult = useCallback(
     (r) => dispatch({ type: "RESULT", result: r }),
     []
@@ -83,8 +148,10 @@ const VirusScanner = ({ howToSteps = [] }) => {
   );
 
   const { upload, abort } = useScanUpload({
-    onProgress,
+    onUploading,
     onScanning,
+    onPhaseStart,
+    onPhaseComplete,
     onResult,
     onError,
   });
@@ -98,7 +165,8 @@ const VirusScanner = ({ howToSteps = [] }) => {
     let cancelled = false;
     FIXTURES[mock]().then((mod) => {
       if (cancelled) return;
-      dispatch({ type: "RESULT", result: mod.default || mod });
+      const result = mod.default || mod;
+      dispatch({ type: "RESULT", result });
     });
     return () => {
       cancelled = true;
@@ -128,9 +196,40 @@ const VirusScanner = ({ howToSteps = [] }) => {
     dispatch({ type: "RESET" });
   }, []);
 
-  const { status, file, progress, result, error } = state;
+  const { status, file, result, error, phases } = state;
   const verdict = result ? deriveVerdict(result) : null;
-  const filename = file?.name || result?.meta?.original_filename;
+  const resolvedName = getScanResultFilename(result);
+  const filename = file?.name || resolvedName;
+  const summaryParts = result ? getUserSummaryParts(result) : { headline: null, bullets: [] };
+  const bannerTitle = summaryParts.headline || undefined;
+  const userSummaryText =
+    result && typeof result.user_summary === "string" ? result.user_summary.trim() : "";
+
+  const [copied, setCopied] = useState(null); // "summary" | "report" | null
+  const copyTimerRef = useRef(null);
+
+  const handleCopy = useCallback((kind, text) => {
+    if (!text) return;
+    const write =
+      navigator.clipboard && navigator.clipboard.writeText
+        ? navigator.clipboard.writeText(text)
+        : Promise.reject(new Error("clipboard unavailable"));
+    Promise.resolve(write)
+      .then(() => {
+        setCopied(kind);
+        if (copyTimerRef.current) clearTimeout(copyTimerRef.current);
+        copyTimerRef.current = setTimeout(() => setCopied(null), 1800);
+      })
+      .catch(() => {
+        /* silently swallow — user can retry */
+      });
+  }, []);
+
+  useEffect(() => {
+    return () => {
+      if (copyTimerRef.current) clearTimeout(copyTimerRef.current);
+    };
+  }, []);
 
   return (
     <>
@@ -144,7 +243,7 @@ const VirusScanner = ({ howToSteps = [] }) => {
         {(status === "uploading" || status === "scanning") && (
           <ScanProgress
             status={status}
-            progress={progress}
+            phases={phases}
             file={file}
             onCancel={handleCancel}
           />
@@ -156,30 +255,61 @@ const VirusScanner = ({ howToSteps = [] }) => {
 
         {status === "result" && result && (
           <div>
-            <ResultBanner verdict={verdict} filename={filename} />
-            {(file || result?.meta?.original_filename) && (
+            <ResultBanner
+              verdict={verdict}
+              filename={filename}
+              title={bannerTitle}
+            />
+            {(file || resolvedName) && (
               <FileMeta>
                 <strong>{filename}</strong>
                 {file && <span>{formatBytes(file.size)}</span>}
               </FileMeta>
             )}
-            <ResultGrid>
-              <ResultPhase1 phase1={result.phase1} />
-              <ResultYara yara={result.yara} />
-              <ResultPhase2 phase2={result.phase2} />
-            </ResultGrid>
+            <UserReportSummary bullets={summaryParts.bullets} />
+            <TechnicalDetails>
+              <summary>Technical details</summary>
+              <ResultGrid>
+                <ResultPhase1 phase1={result.phase1} />
+                <ResultYara yara={result.yara} />
+                <ResultPhase2 phase2={result.phase2} />
+              </ResultGrid>
+            </TechnicalDetails>
             <ActionsRow style={{ marginTop: 20 }}>
               <PrimaryBtn type="button" onClick={handleReset}>
                 Scan another file
               </PrimaryBtn>
+              {userSummaryText ? (
+                <GhostBtn
+                  type="button"
+                  aria-live="polite"
+                  onClick={() => handleCopy("summary", userSummaryText)}
+                >
+                  {copied === "summary" ? (
+                    <>
+                      <CheckSmallIcon />
+                      Summary copied
+                    </>
+                  ) : (
+                    "Copy summary"
+                  )}
+                </GhostBtn>
+              ) : null}
               <GhostBtn
                 type="button"
-                onClick={() => {
-                  const text = JSON.stringify(result, null, 2);
-                  navigator.clipboard && navigator.clipboard.writeText(text);
-                }}
+                aria-live="polite"
+                onClick={() =>
+                  handleCopy("report", JSON.stringify(result, null, 2))
+                }
               >
-                Copy full report
+                {copied === "report" ? (
+                  <>
+                    <CheckSmallIcon />
+                    Report copied
+                  </>
+                ) : (
+                  "Copy full report"
+                )}
               </GhostBtn>
             </ActionsRow>
           </div>

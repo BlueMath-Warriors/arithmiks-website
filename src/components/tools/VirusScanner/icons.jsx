@@ -45,3 +45,49 @@ export const ShieldCheckIcon = () => (
     <path d="m9 12 2 2 4-4" />
   </svg>
 );
+
+export const CheckTinyIcon = () => (
+  <svg
+    viewBox="0 0 12 12"
+    width="12"
+    height="12"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.6"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+  >
+    <path d="M2.5 6.2 4.8 8.5 9.5 3.5" />
+  </svg>
+);
+
+export const SkipTinyIcon = () => (
+  <svg
+    viewBox="0 0 12 12"
+    width="12"
+    height="12"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.5"
+    strokeLinecap="round"
+    aria-hidden="true"
+  >
+    <path d="M2.5 6h7" />
+  </svg>
+);
+
+export const FailTinyIcon = () => (
+  <svg
+    viewBox="0 0 12 12"
+    width="12"
+    height="12"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.5"
+    strokeLinecap="round"
+    aria-hidden="true"
+  >
+    <path d="M3.5 3.5 8.5 8.5M8.5 3.5 3.5 8.5" />
+  </svg>
+);

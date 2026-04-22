@@ -1,4 +1,15 @@
 {
+  "job_id": "00000000-0000-0000-0000-000000000002",
+  "filename": "download.bin",
+  "content_type": "application/octet-stream",
+  "user_summary": "Threat detected — do not run this file\n\nClamAV matched a known malicious signature.\nFurther analysis was skipped because the file is already unsafe.",
+  "user_summary_structured": {
+    "headline": "Threat detected — do not run this file",
+    "bullets": [
+      "ClamAV matched a known malicious signature.",
+      "Further analysis was skipped because the file is already unsafe."
+    ]
+  },
   "phase1": {
     "infected": true,
     "threat_name": "Test.SignatureMatch.Sample",
