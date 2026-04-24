@@ -1,0 +1,69 @@
+{
+  "phase1": {
+    "infected": false,
+    "threat_name": null,
+    "raw_exit_code": 0,
+    "details": null
+  },
+  "yara": {
+    "enabled": true,
+    "skipped": false,
+    "skip_reason": null,
+    "match_count": 3,
+    "severity": "high",
+    "severity_base": "medium",
+    "severity_escalated": true,
+    "correlation_reason": "3_medium_matches",
+    "rules_loaded": 9,
+    "matches": [
+      {
+        "rule": "OfficeMacroDownloader",
+        "namespace": "office",
+        "tags": ["office", "macro", "downloader"],
+        "severity": "high",
+        "description": "Office document macro that fetches remote content on open.",
+        "source": "bundle.zip::docs.zip::report.docm"
+      },
+      {
+        "rule": "SuspiciousPowerShellLauncher",
+        "namespace": "scripting",
+        "tags": ["powershell"],
+        "severity": "medium",
+        "description": "Hidden PowerShell launch pattern.",
+        "source": "bundle.zip::scripts.zip::run.ps1"
+      },
+      {
+        "rule": "ObfuscatedStringsCluster",
+        "namespace": "obfuscation",
+        "tags": ["obfuscation"],
+        "severity": "medium",
+        "description": "Obfuscated string cluster.",
+        "source": "bundle.zip::scripts.zip::run.ps1"
+      }
+    ],
+    "archive_scan": {
+      "members_scanned": 14,
+      "nested_archives": 2,
+      "max_depth": 2
+    }
+  },
+  "phase2": {
+    "skipped": false,
+    "skip_reason": null,
+    "verdict": {
+      "risk_level": "high",
+      "summary": "Archive contains a macro-enabled document paired with a hidden script launcher — a common delivery chain.",
+      "indicators": [
+        "Macro document inside nested archive",
+        "PowerShell launcher alongside obfuscated strings",
+        "Multiple reinforcing signals across archive members"
+      ]
+    },
+    "analysis": "HIGH risk across 14 units, 6 chunks. Delivery-chain pattern identified.",
+    "risk_notes": ["Escalated from medium after correlation."]
+  },
+  "meta": {
+    "job_id": "00000000-0000-0000-0000-000000000004",
+    "original_filename": "bundle.zip"
+  }
+}
