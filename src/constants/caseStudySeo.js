@@ -58,6 +58,12 @@ const CASE_STUDY_SEO = {
     description:
       "Case study: LFGO—building and shipping product capabilities together with Arithmiks.",
   },
+  qareeb: {
+    title: "Qareeb - Arithmiks",
+    breadcrumbName: "Qareeb",
+    description:
+      "Case study: how Arithmiks built a bilingual AI meeting intelligence platform for Qareeb, transforming fragmented transcripts into a searchable knowledge base.",
+  },
 };
 
 /** @param {string} slug */

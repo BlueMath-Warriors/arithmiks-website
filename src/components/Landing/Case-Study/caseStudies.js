@@ -7,6 +7,7 @@ import ehhDashboard from "../../../images/ehhDashboard.png";
 import goDashboard from "../../../images/goDashboard.png";
 import ofertasDashboard from "../../../images/ofertasDashboard.png";
 import hakroDashboard from "../../../images/hakroDasboard.png";
+import qareebDashboard from "../../../images/qareebDashboard.png";
 
 export const caseStudies = [
   {
@@ -106,6 +107,17 @@ export const caseStudies = [
     title: "Embedded E-commerce Platform for Seller Networks",
     description:
       "Platform enabling dealers to buy bulk products directly from website sessions.",
+    hasDetailPage: true,
+  },
+  {
+    slug: "qareeb",
+    dashboardImg: qareebDashboard,
+    logo: "/qareeb.svg",
+    logoAlt: "Qareeb",
+    tag: "SaaS",
+    title: "AI Meeting Intelligence Platform",
+    description:
+      "An AI meeting intelligence platform that records, transcribes, and turns every conversation into a searchable knowledge base.",
     hasDetailPage: true,
   },
 ];
