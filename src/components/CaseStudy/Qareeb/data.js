@@ -80,43 +80,43 @@ export const keyFeaturesData = {
   heading: "Key Features",
   features: [
     {
-      title: "AI-Generated Meeting Summary",
+      title: "1. AI-Generated Meeting Summary",
       description:
         "Auto-generates a structured summary after each meeting—topic outlines, category tags, plus Entities and Artifacts tabs.",
       image: "/Qareeb Key Features/qareebKeyFeature1.png",
     },
     {
-      title: "Meeting Artifacts",
+      title: "2. Meeting Artifacts",
       description:
         "One-click Decisions Log, Questions Raised, Key Quotes, Timeline, and Follow-up Email from the transcript—zero manual notes.",
       image: "/Qareeb Key Features/qareebKeyFeature2.png",
     },
     {
-      title: "Live Recording with Real-Time Transcription",
+      title: "3. Live Recording with Real-Time Transcription",
       description:
         "Records with live waveform, automatic speaker ID, playback speed control, and a real-time transcript as you talk.",
       image: "/Qareeb Key Features/qareebKeyFeature3.png",
     },
     {
-      title: "Transcript Editor",
+      title: "4. Transcript Editor",
       description:
         "Rename speakers, highlight, annotate, format text, navigate by timestamp, undo/redo, and save with keyboard shortcuts.",
       image: "/Qareeb Key Features/qareebKeyFeature4.png",
     },
     {
-      title: "Meeting Library",
+      title: "5. Meeting Library",
       description:
         "Searchable, sortable meeting table with speakers, status, duration, date, and language—supports GPT and Claude.",
       image: "/Qareeb Key Features/qareebKeyFeature5.png",
     },
     {
-      title: "Document Upload in Projects",
+      title: "6. Document Upload in Projects",
       description:
         "Upload PDFs, DOCX, XLSX, CSV, PPT, and more up to 500MB into any project—transcripts and references in one place.",
       image: "/Qareeb Key Features/qareebKeyFeature6.png",
     },
     {
-      title: "Bilingual UI with Full RTL Support",
+      title: "7. Bilingual UI with Full RTL Support",
       description:
         "Full English and Arabic variants across the product—Arabic is a fully adapted RTL interface, not a translation.",
       image: "/Qareeb Key Features/qareebKeyFeature7.png",
