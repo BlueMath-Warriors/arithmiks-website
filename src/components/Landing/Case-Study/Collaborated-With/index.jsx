@@ -19,6 +19,7 @@ const CollaboratedWith = () => {
     { name: "hakro", path: "/hakro.svg" },
     { name: "swerv", path: "/swerv.svg" },
     { name: "qareeb", path: "/qareeb.svg" },
+    { name: "mrsellernote", path: "/icons/msn-logo.svg" },
   ];
 
   const duplicatedLogos = [...logos, ...logos, ...logos];

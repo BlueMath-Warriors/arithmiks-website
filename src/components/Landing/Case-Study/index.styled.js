@@ -369,6 +369,7 @@ export const CompanyLogo = styled.img`
   filter: grayscale(100%) brightness(0.4);
   opacity: 0.8;
   transform: none !important;
+  transition: filter 0.2s ease, opacity 0.2s ease;
 
   @media screen and (max-width: ${breakpoints.medium}) {
     height: 28px;
@@ -517,6 +518,11 @@ export const CaseStudyCardLink = styled(Link)`
   &:hover {
     ${CaseStudyImgWrapper} img {
       transform: scale(1.03);
+    }
+
+    ${CompanyLogo} {
+      filter: grayscale(0%) brightness(1);
+      opacity: 1;
     }
   }
 

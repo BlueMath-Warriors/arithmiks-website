@@ -64,6 +64,12 @@ const CASE_STUDY_SEO = {
     description:
       "Case study: how Arithmiks built a bilingual AI meeting intelligence platform for Qareeb, transforming fragmented transcripts into a searchable knowledge base.",
   },
+  mrsellernote: {
+    title: "Mr. Seller Note - Arithmiks",
+    breadcrumbName: "Mr. Seller Note",
+    description:
+      "Case study: how Arithmiks built an automated, multi-party loan management platform for Mr. Seller Note, from note creation to final settlement.",
+  },
 };
 
 /** @param {string} slug */
