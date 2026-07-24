@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import * as containerStyles from "../../../../styles/global.module.css";
 import {
   KeyFeaturesHeader,
@@ -47,6 +47,9 @@ const KeyFeatures = ({
 }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const totalSlides = features.length;
+  const dragRef = useRef({ startX: 0, deltaX: 0, dragging: false, moved: false });
+  const SWIPE_THRESHOLD = 50;
+  const MOVE_THRESHOLD = 10;
 
   const headingParts = heading.split(" ");
   const lastWord = headingParts.pop();
@@ -58,6 +61,48 @@ const KeyFeatures = ({
 
   const handleNext = () => {
     setCurrentSlide((prev) => (prev === totalSlides - 1 ? 0 : prev + 1));
+  };
+
+  const handlePointerDown = (e) => {
+    if (e.pointerType === "mouse" && e.button !== 0) return;
+    dragRef.current = { startX: e.clientX, deltaX: 0, dragging: true, moved: false };
+  };
+
+  // Track move/up on window (not the container) so we never need
+  // setPointerCapture — capturing on an ancestor hijacks click routing for
+  // descendant buttons/images in most browsers, breaking normal clicks.
+  useEffect(() => {
+    const handlePointerMove = (e) => {
+      const drag = dragRef.current;
+      if (!drag.dragging) return;
+      drag.deltaX = e.clientX - drag.startX;
+      if (Math.abs(drag.deltaX) > MOVE_THRESHOLD) drag.moved = true;
+    };
+
+    const endDrag = () => {
+      const drag = dragRef.current;
+      if (!drag.dragging) return;
+      drag.dragging = false;
+      if (drag.deltaX > SWIPE_THRESHOLD) {
+        handlePrev();
+      } else if (drag.deltaX < -SWIPE_THRESHOLD) {
+        handleNext();
+      }
+    };
+
+    window.addEventListener("pointermove", handlePointerMove);
+    window.addEventListener("pointerup", endDrag);
+    window.addEventListener("pointercancel", endDrag);
+    return () => {
+      window.removeEventListener("pointermove", handlePointerMove);
+      window.removeEventListener("pointerup", endDrag);
+      window.removeEventListener("pointercancel", endDrag);
+    };
+  }, [totalSlides]);
+
+  const handleSlideClick = (index) => {
+    if (dragRef.current.moved) return;
+    setCurrentSlide(index);
   };
 
   if (totalSlides === 0) return null;
@@ -79,7 +124,7 @@ const KeyFeatures = ({
           </SubHeadingContainer>
         </KeyFeaturesHeader>
         <CarouselSection>
-          <CarouselContainer>
+          <CarouselContainer onPointerDown={handlePointerDown}>
             <CarouselButtons role="group" aria-label="Carousel navigation">
               <CarouselButton
                 side="left"
@@ -107,12 +152,13 @@ const KeyFeatures = ({
                   $offset={offset}
                   $active={isActive}
                   $isPeek={isPeek}
-                  onClick={isPeek ? () => setCurrentSlide(index) : undefined}
+                  onClick={isPeek ? () => handleSlideClick(index) : undefined}
                   aria-hidden={!isActive}
                 >
                   <DashboardImage
                     src={feature.image}
                     alt={`Dashboard view ${index + 1}`}
+                    draggable={false}
                   />
                 </CarouselSlide>
               );

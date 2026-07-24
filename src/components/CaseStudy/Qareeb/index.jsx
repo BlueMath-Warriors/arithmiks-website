@@ -25,10 +25,7 @@ import {
 const Qareeb = ({ images }) => {
   const heroData = getHeroData(images);
   const overviewData = getOverviewData(images);
-  const hasTestimonial =
-    testimonialData &&
-    testimonialData.clientImageSrc &&
-    !testimonialData.clientImageSrc.includes("dummyOwner");
+  const hasTestimonial = false;
 
   return (
     <>

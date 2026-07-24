@@ -189,6 +189,14 @@ export const CarouselContainer = styled.div`
   max-width: 100%;
   height: 690px;
   overflow: hidden;
+  cursor: grab;
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
+
+  &:active {
+    cursor: grabbing;
+  }
 
   @media screen and (max-width: ${breakpoints.large}) {
     height: 524px;
