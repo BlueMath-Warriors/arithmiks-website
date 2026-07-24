@@ -1,23 +1,26 @@
 import React from "react";
 
 export const getHeroData = (images) => ({
-  category: "Web Application / Affiliation Market / UI/UX",
+  category: "Web Application / Community Platform / UI/UX",
   logoSrc: "/ofertas.svg",
-  logoAlt: "Ofertas",
+  logoAlt: "Ofertas Perronas MX",
   caption: (
     <>
-      Platform showcasing the best affiliate deals and offers to
+      A community-driven deals platform where users publish, vote on,
       <br />
-      help users save more and shop smarter.
+      and validate offers, with moderation built in to keep quality high.
     </>
   ),
   heroImageData: images?.heroImage,
-  heroImageAlt: "D&O Memorandum",
+  heroImageAlt: "Ofertas Perronas MX Dashboard",
 });
 
 export const techStackData = {
   technologies: [
     { name: "Next JS", icon: "/Tech Stack/nextjs.svg" },
+    { name: "React", icon: "/Tech Stack/reactjs.svg" },
+    { name: "Redux", icon: "/Tech Stack/redux.svg" },
+    { name: "Tailwind CSS", icon: "/Tech Stack/tailwind.svg" },
     { name: "Django", icon: "/Tech Stack/django.svg" },
     { name: "AWS", icon: "/Tech Stack/aws.svg" },
     { name: "PostgreSQL", icon: "/Tech Stack/postgresql.svg" },
@@ -37,11 +40,11 @@ export const getOverviewData = (images) => ({
     </>
   ),
   detail:
-    "A platform that helps users discover, share, and manage verified deals and coupons through a centralized, community-driven marketplace experience.",
+    "On Ofertas Perronas MX, users find or post deals with pricing, coupons & images in one flow—the community votes and comments while moderation keeps it honest.",
   imageSrc: images?.overviewImage,
   problemData: {
     title: "The Problem",
-    text: "Deal discovery relied on fragmented, unreliable sources, while admins struggled to effectively moderate user submissions at scale. The platform solves this by centralizing deals, community validation, and structured approval workflows into one trusted system.",
+    text: "Users had no structured way to publish deals, no moderation visibility, and no engagement tools worth returning for. It's the tension every deal platform faces: open submissions drive engagement but demand quality control. Ofertas Perronas MX pairs both in one flow.",
     frameImageSrc: "/projectProblemFrame.svg",
   },
 });
@@ -51,27 +54,28 @@ export const solutionData = {
   heading: "Our Solution",
   description: (
     <>
-      <strong>Arithmiks</strong> designed a community-driven deals platform that centralized discovery, enforced quality through moderation, and scaled engagement with automation — fully built in Spanish for its target audience and regional behavior.
+      <strong>Arithmiks</strong> designed and delivered a community
+      publishing platform with moderation infrastructure at its core.
     </>
   ),
   solutions: [
     {
       icon: "/d&osolution1.svg",
-      title: "Centralized Deal Discovery Experience",
+      title: "Structured Deal Publishing",
       detail:
-        "Arithmiks unified deals, coupons, and store offers into a single marketplace with hot, trending, and personalized discovery flows.",
+        "One submission flow covering store, pricing, coupon codes, and up to six images, with every deal tracked through a clear moderation pipeline from pending to live.",
     },
     {
       icon: "/d&osolution2.svg",
-      title: "Community Validation & Engagement",
+      title: "Community-Driven Curation",
       detail:
-        "Likes, comments, ratings, and wishlists enabled Spanish-speaking users to crowd-validate deals, improving transparency and surfacing the most reliable offers.",
+        "Voting, comments, wishlists, and sharing on every approved deal, so the community itself surfaces the best offers instead of an editorial team.",
     },
     {
       icon: "/d&osolution3.svg",
-      title: "Robust Admin Moderation & Control",
+      title: "Full Admin and Store Infrastructure",
       detail:
-        "Role-based access, approval workflows, automated expirations, and reporting tools ensured content quality, trust, and platform integrity.",
+        "Verified stores, standalone coupon listings, and a dedicated admin panel for approvals, reports, and category management, with rule violators blocked from submitting.",
     },
   ],
 };
@@ -81,46 +85,40 @@ export const keyFeaturesData = {
   heading: "Key Features",
   features: [
     {
-      title: "1. Deal & Coupon Discovery (Hot, Trending, Personalized)",
+      title: "1. Deal Submission",
       description:
-        "Easily discover the best deals through hot picks, trending offers, and personalized recommendations.",
+        "Store, pricing, coupon, and media published in a single structured flow.",
       image: "/D&O Key Features/d&oKeyFeature1.png",
     },
     {
-      title: "2. User-submitted Deals, Coupons & Store Suggestions",
+      title: "2. Moderation Visibility",
       description:
-        "Allow users to submit new deals, coupons, and suggest stores to expand the platform organically.",
+        "Publishers see exactly where every submission stands, live, under review, or rejected.",
       image: "/D&O Key Features/d&oKeyFeature2.png",
     },
     {
-      title: "3. Role-based Access Control (Guest, User, Admin)",
+      title: "3. Community Engagement",
       description:
-        "Control platform access and actions based on clearly defined user roles and permissions.",
+        "Voting, comments, wishlists, and sharing on all approved listings.",
       image: "/D&O Key Features/d&oKeyFeature3.png",
     },
     {
-      title: "4. Deal Lifecycle Management with Expiration Handling",
+      title: "4. Stores and Coupons",
       description:
-        "Automatically manage deal statuses with expiry tracking to ensure only valid offers are shown.",
+        "Deals linked to verified stores, with coupons as standalone listings.",
       image: "/D&O Key Features/d&oKeyFeature4.png",
     },
     {
-      title: "5. Community Engagement (Likes, Dislikes, Comments, Ratings)",
+      title: "5. Social Login",
       description:
-        "Enable users to interact with deals and help surface the most valuable offers through feedback.",
+        "Email, Google, and Facebook sign-in with automatic session renewal.",
       image: "/D&O Key Features/d&oKeyFeature5.png",
     },
     {
-      title: "6. Wishlist & Notification System",
+      title: "6. Admin Panel",
       description:
-        "Let users save favorite deals and receive alerts when prices drop or new offers appear.",
+        "Deal approvals, store management, user reports, and category control in one place.",
       image: "/D&O Key Features/d&oKeyFeature6.png",
-    },
-    {
-      title: "7. Strong Admin Moderation & Approval Workflows",
-      description:
-        "Empower admins to review, approve, edit, or reject submissions to maintain quality and trust.",
-      image: "/D&O Key Features/d&oKeyFeature7.png",
     },
   ],
   leftIconSrc: "/leftIcon.svg",
