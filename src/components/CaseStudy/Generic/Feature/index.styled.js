@@ -1,4 +1,4 @@
-import { styled } from "styled-components";
+import { styled, css } from "styled-components";
 import { breakpoints } from "../../../Landing/index.styled";
 
 export const FeatureOuterContainer = styled.div`
@@ -13,11 +13,29 @@ export const FeatureOuterContainer = styled.div`
   padding-bottom: ${(props) => (props.overview ? "0px" : "80px")};
   flex-direction: ${(props) => (props.left ? "row-reverse" : "row")};
 
+  ${(props) =>
+    props.overview &&
+    css`
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-areas: "text image" "problem image";
+      align-items: start;
+      column-gap: 80px;
+      row-gap: 32px;
+    `}
+
   @media screen and (max-width: ${breakpoints.large}) {
     max-width: ${(props) => (props.overview ? "100%" : "760px")};
     gap: 60px;
     padding: ${(props) => (props.overview ? "0 0 0 20px" : "60px 20px")};
     padding-bottom: ${(props) => (props.overview ? "0px" : "60px")};
+
+    ${(props) =>
+      props.overview &&
+      css`
+        column-gap: 60px;
+        row-gap: 28px;
+      `}
   }
 
   @media screen and (max-width: ${breakpoints.medium}) {
@@ -28,6 +46,15 @@ export const FeatureOuterContainer = styled.div`
     max-width: 100%;
     overflow: hidden;
     align-items: stretch;
+
+    ${(props) =>
+      props.overview &&
+      css`
+        grid-template-columns: 1fr;
+        grid-template-areas: "text" "image" "problem";
+        column-gap: 0;
+        row-gap: 24px;
+      `}
   }
 `;
 
@@ -36,6 +63,7 @@ export const FeatureContainer = styled.div`
   flex-direction: column;
   gap: 16px;
   flex: 1;
+  grid-area: text;
   align-items: ${(props) => (props.left ? "flex-end" : "flex-start")};
   text-align: ${(props) => (props.left ? "right" : "left")};
   margin-left: ${(props) => (props.overview ? "120px" : "0")};
@@ -123,6 +151,7 @@ export const FeatureImgContainer = styled.div`
 
 export const OverviewImgContainer = styled.div`
   flex: 1;
+  grid-area: image;
   display: flex;
   align-items: flex-start;
   justify-content: flex-end;

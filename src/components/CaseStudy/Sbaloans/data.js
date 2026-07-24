@@ -6,9 +6,9 @@ export const getHeroData = (images) => ({
   logoAlt: "sbaloansHQ",
   caption: (
     <>
-      SBA Loans HQ streamlines SBA loans with centralized
+      A SaaS platform that automates SBA loan origination with AI-powered
       <br />
-      documents, tracking, and communication.
+      lead scoring, document processing, and deal summarization.
     </>
   ),
   heroImageData: images?.heroImage,
@@ -17,10 +17,16 @@ export const getHeroData = (images) => ({
 
 export const techStackData = {
   technologies: [
-    { name: "Next JS", icon: "/Tech Stack/nextjs.svg" },
+    { name: "Python", icon: "/Tech Stack/python.svg" },
     { name: "Django", icon: "/Tech Stack/django.svg" },
-    { name: "AWS S3", icon: "/Tech Stack/aws-s3.svg" },
     { name: "PostgreSQL", icon: "/Tech Stack/postgresql.svg" },
+    { name: "AWS", icon: "/Tech Stack/aws.svg" },
+    { name: "Google Gemini", icon: "/Tech Stack/gemini.svg" },
+    { name: "DocuSeal", icon: "/Tech Stack/docuseal.svg" },
+    { name: "Docker", icon: "/Tech Stack/docker.svg" },
+    { name: "GitHub Actions", icon: "/Tech Stack/github-actions.svg" },
+    { name: "Next JS", icon: "/Tech Stack/nextjs.svg" },
+    { name: "AWS S3", icon: "/Tech Stack/aws-s3.svg" },
     { name: "AWS RDS", icon: "/Tech Stack/aws-rds.svg" },
     { name: "Postmark", icon: "/Tech Stack/postmark.svg" },
     { name: "Vercel", icon: "/Tech Stack/vercel.svg" },
@@ -39,11 +45,11 @@ export const getOverviewData = (images) => ({
     </>
   ),
   detail:
-    "SBA Loans HQ is a SaaS platform that centralizes loan consulting workflows, giving brokers and clients a fast, organized, and transparent way to manage small business loan applications.",
+    "SBALoansHQ is multi-tenant SaaS running the full SBA loan lifecycle—AI handles lead scoring, doc reading & credit memos, cutting overhead 60%, 30% faster.",
   imageSrc: images?.overviewImage,
   problemData: {
     title: "The Problem",
-    text: "Traditional loan processing is scattered across emails, spreadsheets, and separate storage tools, leading to lost documents, miscommunication, and slow approvals. SBA Loans HQ solves this by unifying the entire workflow into one efficient digital system.",
+    text: "Loan brokers ran everything through email threads and spreadsheets—every lead reviewed by hand, every document read manually, underwriters piecing deal summaries together from scattered files. SBALoansHQ centralizes the workflow and lets AI handle the repetitive work.",
     frameImageSrc: "/projectProblemFrame.svg",
   },
 });
@@ -53,27 +59,29 @@ export const solutionData = {
   heading: "Our Solution",
   description: (
     <>
-      <strong>Arithmiks</strong> delivered a unified, automated loan management platform that streamlined broker workflows, improved client visibility, and ensured secure, scalable operations.
+      <strong>Arithmiks</strong> designed and delivered an AI-driven
+      platform that automates the loan lifecycle from lead intake to lender
+      review.
     </>
   ),
   solutions: [
     {
       icon: "/sbasolution1.svg",
-      title: "Centralized Workflow System",
+      title: "AI-Powered Deal Intelligence",
       detail:
-        "We built an integrated platform that consolidated deal tracking, communication, and document handling into one intuitive workspace.",
+        "Every lead is scored and filtered before a human sees it, and every document is automatically classified, extracted, and synthesized into an underwriting-ready credit memo.",
     },
     {
       icon: "/sbasolution2.svg",
-      title: "Automated Client & Broker Updates",
+      title: "Centralized Document Workflows",
       detail:
         "Milestone-based email triggers and status tracking were implemented to keep all stakeholders informed in real time, reducing manual follow-ups.",
     },
     {
       icon: "/sbasolution3.svg",
-      title: "Secure & Scalable Infrastructure",
+      title: "Multi-Tenant, Scalable Architecture",
       detail:
-        "The team optimized backend operations and migrated document storage to AWS to ensure high performance, data integrity, and long-term scalability.",
+        "Built to serve borrowers, partners, lenders, and staff from a single system, with white-label support and strict role-based access across every organization.",
     },
   ],
 };
@@ -83,39 +91,39 @@ export const keyFeaturesData = {
   heading: "Key Features",
   features: [
     {
-      title: "1. Lead and Deal Management:",
+      title: "1. AI Lead Scoring",
       description:
-        "Unified dashboard for tracking loan applications and client progress.",
+        "Gemini-powered spam filtering and configurable per-partner qualification rules.",
       image: "/Sba Key Features/sbaKeyFeature1.png",
     },
     {
-      title: "2. User Management:",
+      title: "2. AI Document Pipeline",
       description:
-        "Easily manage roles, permissions, and access levels for lenders, brokers, and internal teams.",
+        "OCR and two-phase extraction turning every upload into structured summaries and audit findings.",
       image: "/Sba Key Features/sbaKeyFeature2.png",
     },
     {
-      title: "3. Chat System:",
+      title: "3. AI Credit Memos",
       description:
-        "Enable secure, real-time communication between applicants and loan officers to speed up decision-making.",
+        "Deal-level synthesis producing underwriting-style memos automatically.",
       image: "/Sba Key Features/sbaKeyFeature3.png",
     },
     {
-      title: "4. Memorandum Section:",
+      title: "4. Document Collection & E-Signature",
       description:
-        "Enable secure, real-time communication between applicants and loan officers to speed up decision-making.",
+        "Structured requests and DocuSeal signing in one place.",
       image: "/Sba Key Features/sbaKeyFeature4.png",
     },
     {
-      title: "5. Lead Filtering and Scoring:",
+      title: "5. Lender Marketplace",
       description:
-        "Prioritize high-quality applicants using intelligent scoring based on eligibility, financial strength, and readiness.",
+        "Controlled deal access through approval workflows and referral agreements.",
       image: "/Sba Key Features/sbaKeyFeature5.png",
     },
     {
-      title: "6. AI-Generated Reports:",
+      title: "6. Deal Chat & Notifications",
       description:
-        "Automatically generate SBA-documents reports with insights, summaries, and analysis in seconds.",
+        "Isolated threads per party with batched notification digests.",
       image: "/Sba Key Features/sbaKeyFeature6.png",
     },
   ],
