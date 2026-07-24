@@ -1,29 +1,29 @@
 import React from "react";
 
 export const getHeroData = (images) => ({
-  category: "Web Application / UI/UX",
+  category: "Web Application / Community Platform",
   logoSrc: "/ehh.svg",
   logoAlt: "Expat Haven Hub",
   caption: (
     <>
-      AI-powered, gamified platform that centralizes essential
+      A relocation platform that combines AI-powered research, country
       <br />
-      lifestyle insights for digital nomads and expats.
+      comparisons, and a verified expat community in one product.
     </>
   ),
   heroImageData: images?.heroImage,
-  heroImageAlt: "EHH Memorandum",
+  heroImageAlt: "Global Cost of Living Index Dashboard",
 });
 
 export const techStackData = {
   technologies: [
     { name: "Next JS", icon: "/Tech Stack/nextjs.svg" },
+    { name: "React", icon: "/Tech Stack/reactjs.svg" },
+    { name: "TypeScript", icon: "/Tech Stack/typescript.svg" },
     { name: "FastAPI", icon: "/Tech Stack/fastapi.svg" },
     { name: "PostgreSQL", icon: "/Tech Stack/postgresql.svg" },
-    { name: "AWS", icon: "/Tech Stack/aws.svg" },
-    { name: "Figma", icon: "/Tech Stack/figma.svg" },
     { name: "Payload CMS", icon: "/Tech Stack/payloadcms.svg" },
-    { name: "Open AI", icon: "/Tech Stack/openai.svg" },
+    { name: "Google Gemini", icon: "/Tech Stack/gemini.svg" },
   ],
   specialIconNames: [],
 };
@@ -37,11 +37,11 @@ export const getOverviewData = (images) => ({
     </>
   ),
   detail:
-    "Expat Haven Hub is a lifestyle platform that helps digital nomads and expats plan, explore, and manage life abroad using centralized, personalized insights.",
+    "Expat Haven Hub is your entire relocation journey in one place—AI research across 20+ countries, tools to compare destinations & a trust-based city community.",
   imageSrc: images?.overviewImage,
   problemData: {
     title: "The Problem",
-    text: "Expats relied on fragmented sources for housing, visas, and cost-of-living data, leading to time-consuming research and inconsistent experiences. Expat Haven Hub solves this by centralizing information and enhancing engagement through personalization, AI-driven content, and gamified discovery.",
+    text: "Relocation research was scattered across dozens of tabs—government sites, cost-of-living tools, tax blogs, Facebook groups—with no place to decide. Country data went stale, and communities ran on unverified groups full of cold-DM noise. Expat Haven Hub unifies research, decisions, and community into one continuous journey.",
     frameImageSrc: "/projectProblemFrame.svg",
   },
 });
@@ -51,27 +51,28 @@ export const solutionData = {
   heading: "Our Solution",
   description: (
     <>
-      <strong>Arithmiks</strong> designed a centralized, personalized lifestyle platform that transformed fragmented expat data into an engaging, AI-powered planning experience.
+      <strong>Arithmiks</strong> delivered the full stack, from LLM data
+      pipelines to the entire community feature suite.
     </>
   ),
   solutions: [
     {
       icon: "/ehhsolution1.svg",
-      title: "Unified Global Lifestyle Intelligence",
+      title: "AI-Powered Country Research",
       detail:
-        "Arithmiks aggregated cost-of-living data, housing, visa programs, taxation insights, and news into a single, searchable ecosystem.",
+        "Per-country hubs with visa, tax & cost-of-living data—built via a multi-provider LLM pipeline, human-reviewed and current across 20+ countries.",
     },
     {
       icon: "/ehhsolution2.svg",
-      title: "AI-Driven Personalization & Gamification",
+      title: "Smart Decision-Making Tools",
       detail:
-        "Interactive quizzes, archetype-based profiles, and AI-summarized content were used to deliver personalized insights and increase long-term user engagement.",
+        "A psychographic archetype quiz matches destinations to each user's lifestyle, budget, and priorities, backed by side-by-side country comparisons and saved shortlists.",
     },
     {
       icon: "/ehhsolution3.svg",
-      title: "Scalable, Modular Platform Architecture",
+      title: "Trust-Based Community Design",
       detail:
-        "The phase one MVP was built with a modular, API-ready architecture and CMS-driven content management to support rapid iteration and future premium features.",
+        "Members climb a four-level trust ladder via verified events, and DMs stay locked until two people meet in person—making cold-DM abuse impossible.",
     },
   ],
 };
@@ -81,40 +82,40 @@ export const keyFeaturesData = {
   heading: "Key Features",
   features: [
     {
-      title: "1. Cost-of-Living Ticker",
+      title: "1. Expat Archetype Quiz",
       description:
-        "A stock-ticker-inspired interface showing live cost comparisons with color-coded affordability insights.",
-      image: "/EHH Key Features/ehhKeyFeature1.png",
-    },
-    {
-      title: "2. Nomad Type Identifier Quiz",
-      description:
-        "A gamified quiz that uses AI to identify user archetypes and generate shareable result cards.",
+        "Personalized destination recommendations based on lifestyle, budget, and priorities.",
       image: "/EHH Key Features/ehhKeyFeature2.png",
     },
     {
-      title: "3. Personalized News Feed",
+      title: "2. LLM-Generated Country Pages",
       description:
-        "An AI-curated feed filtered by user preferences and archetype, with summaries and infinite scrolling.",
-      image: "/EHH Key Features/ehhKeyFeature3.png",
+        "Visa, tax, and cost data across 20+ countries, human-reviewed and always current.",
+      image: "/EHH Key Features/ehhKeyFeature1.png",
     },
     {
-      title: "4. Country Taxation Overview",
+      title: "3. Country Comparison",
       description:
-        "Clear, visual taxation insights across 25 countries with AI-generated summaries and comparisons.",
+        "Side-by-side comparison on visas, taxes, cost of living, weather, and community strength.",
+      image: "/EHH Key Features/ehhKeyFeature6.png",
+    },
+    {
+      title: "4. Verified Role Ladder",
+      description:
+        "Trust earned through real event check-ins, not sign-ups or tenure.",
       image: "/EHH Key Features/ehhKeyFeature4.png",
     },
     {
-      title: "5. Housing Aggregator",
+      title: "5. Gated Messaging",
       description:
-        "A unified housing search that aggregates multiple providers and delivers personalized recommendations.",
+        "Direct messages unlock only after two members attend an event together.",
       image: "/EHH Key Features/ehhKeyFeature5.png",
     },
     {
-      title: "6. Visa & Residency Program Overview",
+      title: "6. One-Dashboard Publishing",
       description:
-        "A searchable, AI-summarized visa catalog with comparison tools and shortlisting across 25 countries.",
-      image: "/EHH Key Features/ehhKeyFeature6.png",
+        "A single CMS post flows into country pages, news, and city updates.",
+      image: "/EHH Key Features/ehhKeyFeature3.png",
     },
   ],
   leftIconSrc: "/leftIcon.svg",
@@ -123,7 +124,7 @@ export const keyFeaturesData = {
 
 export const testimonialData = {
   text: "Omer is a professional, reliable, and kind person. Working with him was great! Omer was available for any question, gave professional answers, was patient with the project and the results are beautiful. I highly recommend working with him.",
-  clientImageSrc: "/dummyOwner.png",
-  clientName: "Zachary Renta",
-  clientTitle: "SBA Loans Founder & CEO",
+  clientImageSrc: "/ehhOwner.png",
+  clientName: "Client Name",
+  clientTitle: "Founder & CEO",
 };
