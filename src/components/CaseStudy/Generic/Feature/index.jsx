@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import * as containerStyles from "../../../../styles/global.module.css";
+import Problem from "../Problem";
 
 import {
   FeatureContainer,
@@ -17,15 +18,16 @@ import {
 
 /**
  * @param {Object} props
- * @param {boolean} props.overview 
- * @param {boolean} props.left 
+ * @param {boolean} props.overview
+ * @param {boolean} props.left
  * @param {string} props.title
- * @param {React.ReactNode} props.caption 
- * @param {string} props.detail 
- * @param {string|Object|React.ReactNode} props.img 
+ * @param {React.ReactNode} props.caption
+ * @param {string} props.detail
+ * @param {string|Object|React.ReactNode} props.img
+ * @param {Object} [props.problemData] - rendered as a grid item below the text column (overview only)
  */
 const Feature = (props) => {
-  const { overview, left, title, caption, detail, img } = props;
+  const { overview, left, title, caption, detail, img, problemData } = props;
   const isOverview = overview !== undefined ? overview : false;
   const [smallGradient, setSmallGradient] = useState(isSmallGradient());
 
@@ -88,6 +90,13 @@ const Feature = (props) => {
                 {caption && <FeatureCaption overview={isOverview}>{caption}</FeatureCaption>}
                 <FeatureDetail overview={isOverview}>{detail}</FeatureDetail>
               </FeatureContainer>
+              {isOverview && problemData && (
+                <Problem
+                  title={problemData.title}
+                  text={problemData.text}
+                  frameImageSrc={problemData.frameImageSrc}
+                />
+              )}
               {isOverview ? (
                 <OverviewImgContainer>
                   {renderImage(false, isOverview)}
@@ -113,7 +122,7 @@ const Feature = (props) => {
             </>
           )}
         </FeatureOuterContainer>
-        <HeroShade />
+        {!isOverview && <HeroShade />}
       </div>
     </>
   );

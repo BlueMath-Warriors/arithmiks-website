@@ -9,7 +9,6 @@ import {
   SubHeading,
   SubHeadingTitle,
   CarouselSection,
-  FadeOverlay,
   CarouselButtons,
   CarouselButton,
   CarouselContainer,
@@ -18,6 +17,15 @@ import {
   PaginationDots,
   Dot,
 } from "./index.styled";
+
+// Shortest signed circular distance from `currentSlide` to `index` (e.g. with
+// 5 slides, index 4 is treated as -1 relative to current index 0, not +4).
+const getCircularOffset = (index, currentSlide, total) => {
+  let diff = index - currentSlide;
+  if (diff > total / 2) diff -= total;
+  if (diff < -total / 2) diff += total;
+  return diff;
+};
 
 /**
  * @param {Object} props
@@ -38,9 +46,10 @@ const KeyFeatures = ({
   rightIconSrc = "/rightIcon.svg",
 }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const carouselRef = useRef(null);
-  const slideRefs = useRef([]);
   const totalSlides = features.length;
+  const dragRef = useRef({ startX: 0, deltaX: 0, dragging: false, moved: false });
+  const SWIPE_THRESHOLD = 50;
+  const MOVE_THRESHOLD = 10;
 
   const headingParts = heading.split(" ");
   const lastWord = headingParts.pop();
@@ -54,71 +63,47 @@ const KeyFeatures = ({
     setCurrentSlide((prev) => (prev === totalSlides - 1 ? 0 : prev + 1));
   };
 
+  const handlePointerDown = (e) => {
+    if (e.pointerType === "mouse" && e.button !== 0) return;
+    dragRef.current = { startX: e.clientX, deltaX: 0, dragging: true, moved: false };
+  };
+
+  // Track move/up on window (not the container) so we never need
+  // setPointerCapture — capturing on an ancestor hijacks click routing for
+  // descendant buttons/images in most browsers, breaking normal clicks.
   useEffect(() => {
-    if (carouselRef.current && slideRefs.current[currentSlide]) {
-      const container = carouselRef.current;
-      const slideElement = slideRefs.current[currentSlide];
+    const handlePointerMove = (e) => {
+      const drag = dragRef.current;
+      if (!drag.dragging) return;
+      drag.deltaX = e.clientX - drag.startX;
+      if (Math.abs(drag.deltaX) > MOVE_THRESHOLD) drag.moved = true;
+    };
 
-      const slideLeft = slideElement.offsetLeft;
-      const containerWidth = container.offsetWidth;
-      const slideWidth = slideElement.offsetWidth;
-
-      const scrollPosition = slideLeft - containerWidth / 2 + slideWidth / 2;
-
-      container.scrollTo({
-        left: Math.max(0, scrollPosition),
-        behavior: "smooth",
-      });
-    }
-  }, [currentSlide]);
-
-  useEffect(() => {
-    const container = carouselRef.current;
-    if (!container) return;
-
-    const handleScroll = () => {
-      if (!container || slideRefs.current.length === 0) return;
-
-      const containerRect = container.getBoundingClientRect();
-      const containerCenter = containerRect.left + containerRect.width / 2;
-
-      let closestSlide = 0;
-      let closestDistance = Infinity;
-
-      slideRefs.current.forEach((slide, index) => {
-        if (!slide) return;
-        const slideRect = slide.getBoundingClientRect();
-        const slideCenter = slideRect.left + slideRect.width / 2;
-        const distance = Math.abs(containerCenter - slideCenter);
-
-        if (distance < closestDistance) {
-          closestDistance = distance;
-          closestSlide = index;
-        }
-      });
-
-      if (closestSlide !== currentSlide) {
-        setCurrentSlide(closestSlide);
+    const endDrag = () => {
+      const drag = dragRef.current;
+      if (!drag.dragging) return;
+      drag.dragging = false;
+      if (drag.deltaX > SWIPE_THRESHOLD) {
+        handlePrev();
+      } else if (drag.deltaX < -SWIPE_THRESHOLD) {
+        handleNext();
       }
     };
 
-    let scrollTimeout;
-    const throttledHandleScroll = () => {
-      clearTimeout(scrollTimeout);
-      scrollTimeout = setTimeout(handleScroll, 100);
-    };
-
-    container.addEventListener('scroll', throttledHandleScroll);
-    container.addEventListener('touchmove', throttledHandleScroll);
-    container.addEventListener('touchend', handleScroll);
-
+    window.addEventListener("pointermove", handlePointerMove);
+    window.addEventListener("pointerup", endDrag);
+    window.addEventListener("pointercancel", endDrag);
     return () => {
-      container.removeEventListener('scroll', throttledHandleScroll);
-      container.removeEventListener('touchmove', throttledHandleScroll);
-      container.removeEventListener('touchend', handleScroll);
-      clearTimeout(scrollTimeout);
+      window.removeEventListener("pointermove", handlePointerMove);
+      window.removeEventListener("pointerup", endDrag);
+      window.removeEventListener("pointercancel", endDrag);
     };
-  }, [currentSlide, totalSlides]);
+  }, [totalSlides]);
+
+  const handleSlideClick = (index) => {
+    if (dragRef.current.moved) return;
+    setCurrentSlide(index);
+  };
 
   if (totalSlides === 0) return null;
 
@@ -137,36 +122,47 @@ const KeyFeatures = ({
               {features[currentSlide]?.description}
             </SubHeading>
           </SubHeadingContainer>
-          <CarouselButtons role="group" aria-label="Carousel navigation">
-            <CarouselButton
-              onClick={handlePrev}
-              aria-label="Previous feature"
-            >
-              <img src={leftIconSrc} alt="" width={24} height={24} aria-hidden="true" />
-            </CarouselButton>
-            <CarouselButton
-              onClick={handleNext}
-              aria-label="Next feature"
-            >
-              <img src={rightIconSrc} alt="" width={24} height={24} aria-hidden="true" />
-            </CarouselButton>
-          </CarouselButtons>
         </KeyFeaturesHeader>
         <CarouselSection>
-          <FadeOverlay side="left" />
-          <FadeOverlay side="right" />
-          <CarouselContainer ref={carouselRef}>
-            {features.map((feature, index) => (
-              <CarouselSlide
-                key={index}
-                ref={(el) => (slideRefs.current[index] = el)}
+          <CarouselContainer onPointerDown={handlePointerDown}>
+            <CarouselButtons role="group" aria-label="Carousel navigation">
+              <CarouselButton
+                side="left"
+                onClick={handlePrev}
+                aria-label="Previous feature"
               >
-                <DashboardImage
-                  src={feature.image}
-                  alt={`Dashboard view ${index + 1}`}
-                />
-              </CarouselSlide>
-            ))}
+                <img src={leftIconSrc} alt="" width={24} height={24} aria-hidden="true" />
+              </CarouselButton>
+              <CarouselButton
+                side="right"
+                onClick={handleNext}
+                aria-label="Next feature"
+              >
+                <img src={rightIconSrc} alt="" width={24} height={24} aria-hidden="true" />
+              </CarouselButton>
+            </CarouselButtons>
+            {features.map((feature, index) => {
+              const offset = getCircularOffset(index, currentSlide, totalSlides);
+              const isActive = offset === 0;
+              const isPeek = Math.abs(offset) === 1;
+
+              return (
+                <CarouselSlide
+                  key={index}
+                  $offset={offset}
+                  $active={isActive}
+                  $isPeek={isPeek}
+                  onClick={isPeek ? () => handleSlideClick(index) : undefined}
+                  aria-hidden={!isActive}
+                >
+                  <DashboardImage
+                    src={feature.image}
+                    alt={`Dashboard view ${index + 1}`}
+                    draggable={false}
+                  />
+                </CarouselSlide>
+              );
+            })}
           </CarouselContainer>
           <PaginationDots role="tablist" aria-label="Feature slides">
             {Array.from({ length: totalSlides }).map((_, index) => (

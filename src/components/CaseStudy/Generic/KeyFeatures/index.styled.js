@@ -117,24 +117,7 @@ export const SubHeadingTitle = styled.span`
 `;
 
 export const CarouselButtons = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 24px;
-  position: absolute;
-  top: 180px;
-  right: 20px;
-
-  @media screen and (max-width: ${breakpoints.large}) {
-    top: 160px;
-    right: 20px;
-  }
-
-  @media screen and (max-width: ${breakpoints.medium}) {
-    position: static;
-    margin-top: 24px;
-    align-self: flex-start;
-  }
+  display: contents;
 `;
 
 export const CarouselButton = styled.button`
@@ -149,6 +132,14 @@ export const CarouselButton = styled.button`
   background: #CEDDF8;
   cursor: pointer;
   transition: box-shadow 0.3s ease;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 20;
+  ${(props) =>
+    props.side === "left"
+      ? "left: calc(50% - 500px - 64px);"
+      : "right: calc(50% - 500px - 64px);"}
 
   &:hover {
     box-shadow: 4px 8px 24px 0px rgba(9, 87, 222, 0.25);
@@ -159,10 +150,18 @@ export const CarouselButton = styled.button`
     height: 18px;
   }
 
+  @media screen and (max-width: ${breakpoints.large}) {
+    ${(props) =>
+      props.side === "left"
+        ? "left: calc(50% - 380px - 56px);"
+        : "right: calc(50% - 380px - 56px);"}
+  }
+
   @media screen and (max-width: ${breakpoints.medium}) {
     width: 40px;
     height: 42px;
     padding: 12px;
+    ${(props) => (props.side === "left" ? "left: 4px;" : "right: 4px;")}
 
     img {
       width: 16px;
@@ -177,7 +176,6 @@ export const CarouselSection = styled.div`
   flex-direction: column;
   align-items: center;
   padding-bottom: 80px;
-  overflow: hidden;
   position: relative;
 
   @media screen and (max-width: ${breakpoints.medium}) {
@@ -185,90 +183,68 @@ export const CarouselSection = styled.div`
   }
 `;
 
-export const FadeOverlay = styled.div`
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 60px;
-  pointer-events: none;
-  z-index: 10;
-  background: ${(props) =>
-    props.side === "left"
-      ? "linear-gradient(to right, rgba(230, 238, 252, 0.5) 0%, rgba(230, 238, 252, 0) 100%)"
-      : "linear-gradient(to left, rgba(230, 238, 252, 0.5) 0%, rgba(230, 238, 252, 0) 100%)"};
-  ${(props) => (props.side === "left" ? "left: 0;" : "right: 0;")}
-
-  @media screen and (max-width: ${breakpoints.large}) {
-    width: 150px;
-  }
-
-  @media screen and (max-width: ${breakpoints.medium}) {
-    width: 100px;
-  }
-`;
-
 export const CarouselContainer = styled.div`
-  display: flex;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
+  position: relative;
   width: 100%;
   max-width: 100%;
-  margin: 0;
-  padding: 0 calc(50% - 415px);
-  scrollbar-width: none; 
-  -ms-overflow-style: none; 
-  gap: 32px;
-  justify-content: flex-start;
+  height: 690px;
+  overflow: hidden;
+  cursor: grab;
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
 
-  &::-webkit-scrollbar {
-    display: none;
+  &:active {
+    cursor: grabbing;
   }
 
   @media screen and (max-width: ${breakpoints.large}) {
-    padding: 0 calc(50% - 300px);
-    gap: 24px;
+    height: 524px;
   }
 
   @media screen and (max-width: ${breakpoints.medium}) {
-    padding: 0 16px;
-    gap: 16px;
+    height: 280px;
   }
 `;
 
 export const CarouselSlide = styled.div`
-  min-width: 831px;
-  flex-shrink: 0;
-  scroll-snap-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
-
-  @media screen and (max-width: ${breakpoints.large}) {
-    min-width: 600px;
-  }
+  transition: transform 0.4s ease, opacity 0.4s ease;
+  transform: translate(-50%, -50%)
+    translateX(${(props) => props.$offset * 60}%)
+    scale(${(props) => (props.$active ? 1 : 0.8)});
+  opacity: ${(props) => (props.$active ? 1 : props.$isPeek ? 0.5 : 0)};
+  z-index: ${(props) => (props.$active ? 10 : props.$isPeek ? 5 : 0)};
+  pointer-events: ${(props) => (props.$isPeek ? "auto" : "none")};
+  cursor: ${(props) => (props.$isPeek ? "pointer" : "default")};
 
   @media screen and (max-width: ${breakpoints.medium}) {
-    min-width: calc(100vw - 32px);
-    max-width: calc(100vw - 32px);
+    transform: translate(-50%, -50%)
+      translateX(${(props) => props.$offset * 85}%)
+      scale(${(props) => (props.$active ? 1 : 0.85)});
   }
 `;
 
 export const DashboardImage = styled.img`
-  width: 831px;
-  height: 573px;
+  width: 1000px;
+  height: 690px;
   object-fit: contain;
   display: block;
   border-radius: 12px;
 
   @media screen and (max-width: ${breakpoints.large}) {
-    width: 600px;
-    height: 414px;
+    width: 760px;
+    height: 524px;
   }
 
   @media screen and (max-width: ${breakpoints.medium}) {
-    width: 100%;
-    max-width: calc(100vw - 32px);
+    width: calc(100vw - 80px);
+    max-width: 400px;
     height: auto;
     min-height: 250px;
   }

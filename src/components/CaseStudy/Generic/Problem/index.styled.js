@@ -2,26 +2,23 @@ import { styled } from "styled-components";
 import { breakpoints } from "../../../Landing/index.styled";
 
 export const ProblemSection = styled.section`
+  grid-area: problem;
   width: 100%;
   background-color: transparent;
-  padding: 0 0 40px 20px;
+  padding: 0 0 40px 0;
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  margin-top: -300px;
+  margin-left: 120px;
 
   @media screen and (max-width: ${breakpoints.large}) {
-    margin-top: -240px;
+    margin-left: 80px;
   }
 
   @media screen and (max-width: ${breakpoints.medium}) {
     padding: 0 16px 40px 16px;
     justify-content: center;
-    margin-top: 24px;
-  }
-
-  @media screen and (max-width: ${breakpoints.small}) {
-    margin-top: 20px;
+    margin-left: 0;
   }
 `;
 
