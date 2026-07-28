@@ -9,17 +9,17 @@ export const breakpoints = {
 
 export const Headerr = styled.header`
   background: ${(props) =>
-    props.white ? "white" : "rgba(255, 255, 255, 0.80)"};
+    props.$white ? "white" : "rgba(255, 255, 255, 0.80)"};
   position: ${(props) =>
-    props.fixed ? "fixed" : props.white ? "fixed" : "absolute"};
-  display: ${(props) => (props.hide ? "none" : "")};
+    props.$fixed ? "fixed" : props.$white ? "fixed" : "absolute"};
+  display: ${(props) => (props.$hide ? "none" : "")};
   box-shadow: none;
   left: 0;
   right: 0;
   top: 0;
   z-index: 15;
-  ${({ fixed }) =>
-    fixed ? "animation: slide-in-from-top 0.5s ease-in-out;" : ""}
+  ${({ $fixed }) =>
+    $fixed ? "animation: slide-in-from-top 0.5s ease-in-out;" : ""}
 
   @keyframes slide-in-from-top {
     0% {
@@ -158,13 +158,11 @@ export const MenuItem = styled.li`
 `;
 
 export const MenuItemLink = styled(Link)`
-  color: ${(props) =>
-    props.active || props.blue === "true" ? "#1355FF" : "#170F49"};
+  color: ${(props) => (props.$active ? "#1355FF" : "#170F49")};
   font-family: Poppins;
   font-size: 18px;
   font-style: normal;
-  font-weight: ${(props) =>
-    props.active || props.blue === "true" ? "600" : "400"};
+  font-weight: ${(props) => (props.$active ? "600" : "400")};
   line-height: normal;
   letter-spacing: -0.36px;
   cursor: pointer;
@@ -200,11 +198,11 @@ export const MenuItemLink = styled(Link)`
 `;
 
 export const ServiceMenuItem = styled.li`
-  color: ${(props) => (props.blue ? "#1355FF" : "#170F49")};
+  color: ${(props) => (props.$blue ? "#1355FF" : "#170F49")};
   font-family: Poppins;
   font-size: 18px;
   font-style: normal;
-  font-weight: ${(props) => (props.blue ? "600" : "400")};
+  font-weight: ${(props) => (props.$blue ? "600" : "400")};
   line-height: normal;
   letter-spacing: -0.36px;
   cursor: pointer;

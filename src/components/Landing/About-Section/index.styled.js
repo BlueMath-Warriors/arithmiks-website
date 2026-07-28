@@ -78,7 +78,7 @@ export const CardBody = styled.p`
   }
 `;
 
-export const CardBtn = styled.a`
+export const CardBtn = styled.button`
   display: flex;
   padding: 0px 32px;
   justify-content: center;

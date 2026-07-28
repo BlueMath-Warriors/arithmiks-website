@@ -29,6 +29,7 @@ const Sbaloans = ({ images }) => {
   return (
     <>
       <Header />
+      <main>
       <Hero {...heroData} />
       <TechStack {...techStackData} />
       <Overview {...overviewData} />
@@ -37,6 +38,7 @@ const Sbaloans = ({ images }) => {
       <KeyFeatures {...keyFeaturesData} />
       <MoreCaseStudies currentSlug="sbaloans" />
       <ContactUs />
+      </main>
       <Footer />
     </>
   );

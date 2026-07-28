@@ -29,6 +29,7 @@ const Swerv = ({ images }) => {
   return (
     <>
       <Header />
+      <main>
       <Hero {...heroData} />
       <TechStack {...techStackData} />
       <Overview {...overviewData} />
@@ -39,6 +40,7 @@ const Swerv = ({ images }) => {
       <KeyFeatures {...keyFeaturesData} />
       <MoreCaseStudies currentSlug="swerv" />
       <ContactUs />
+      </main>
       <Footer />
     </>
   );

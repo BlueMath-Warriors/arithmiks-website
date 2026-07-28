@@ -41,7 +41,7 @@ const Footer = () => {
       <FooterContent>
         <Arithmiks>
           <LogoHeading>
-            <Logo src={favicon} />
+            <Logo src={favicon} alt="Arithmiks" width={27} height={32} />
             <CompanyName>Arithmiks</CompanyName>
           </LogoHeading>
           <Moto>
@@ -72,7 +72,7 @@ const Footer = () => {
         </Services>
 
         <Technologies>
-          <Heading mb8>Technologies</Heading>
+          <Heading $mb8>Technologies</Heading>
           <Text>Python</Text>
           <Text>Node</Text>
           <Text>React</Text>
@@ -84,7 +84,7 @@ const Footer = () => {
         </Technologies>
 
         <Industries>
-          <Heading mb8>Industries</Heading>
+          <Heading $mb8>Industries</Heading>
           <Text>Healthcare</Text>
           <Text>Fintech</Text>
           <Text>Retail</Text>
@@ -93,7 +93,7 @@ const Footer = () => {
         </Industries>
 
         <Expertise>
-          <Heading mb8>Expertise</Heading>
+          <Heading $mb8>Expertise</Heading>
           <Text>Cloud</Text>
           <Text>DevOps</Text>
           <Text>Machine Learning</Text>
@@ -124,7 +124,7 @@ const Footer = () => {
           </FooterCircle>
           <CardContent>
             <FooterCaption>Office</FooterCaption>
-            <FooterContentText medium>
+            <FooterContentText $medium>
               Lahore, Pakistan
             </FooterContentText>
           </CardContent>
@@ -147,8 +147,8 @@ const Footer = () => {
 
       <FooterBottom>
         <FooterLinks>
-          <Link divider>Privacy Policy</Link>
-          <Link divider>Terms & Conditions</Link>
+          <Link $divider>Privacy Policy</Link>
+          <Link $divider>Terms & Conditions</Link>
           <Link>Cookie Policy</Link>
         </FooterLinks>
         <CopyRightText>© Arithmiks {new Date().getFullYear()}</CopyRightText>

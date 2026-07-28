@@ -108,7 +108,7 @@ const InputForm = () => {
     <FormContainer className="contact-form">
       <FormSection>
         <Form onSubmit={handleSubmit}>
-          <FormSuccessText show={formSubmitted}>
+          <FormSuccessText $show={formSubmitted}>
             We have received your inquiry. Our team will get back to you soon.
           </FormSuccessText>
 
@@ -126,7 +126,7 @@ const InputForm = () => {
                     setName(e.target.value);
                   }}
                 />
-                <FormErrorText show={showWarnings && name === ""}>This field is required</FormErrorText>
+                <FormErrorText $show={showWarnings && name === ""}>This field is required</FormErrorText>
               </InputContainer>
               <InputContainer>
                 <NameInput
@@ -137,7 +137,7 @@ const InputForm = () => {
                     setEmail(e.target.value);
                   }}
                 />
-                <FormErrorText show={showWarnings && email === ""}>This field is required</FormErrorText>
+                <FormErrorText $show={showWarnings && email === ""}>This field is required</FormErrorText>
               </InputContainer>
           </InputRow>
 
@@ -145,13 +145,14 @@ const InputForm = () => {
             <DropdownWrapper>
               <DropDownInput
                 type="text"
+                aria-label="Select a Service or Technology"
                 value={selectedValue}
                 className={selectedValue ? "has-value" : ""}
                 onChange={(e) => {
                   setSelectedValue(e.target.value);
                 }}
               >
-                <option value="" disabled selected>Select a Service or Technology *</option>
+                <option value="" disabled>Select a Service or Technology *</option>
                 {services.map((service) => (
                   <option value={service} key={service}>{service}</option>
                 ))}
@@ -159,7 +160,7 @@ const InputForm = () => {
               </DropDownInput>
               <DownArrow />
             </DropdownWrapper>
-            <FormErrorText show={showWarnings && selectedValue === ""}>This field is required</FormErrorText>
+            <FormErrorText $show={showWarnings && selectedValue === ""}>This field is required</FormErrorText>
           </InputContainer>
 
           <InputRow>
@@ -178,27 +179,28 @@ const InputForm = () => {
                 value={phone}
                 onChange={phone => setPhone(phone)}
               />
-              <FormErrorText show={showWarnings && phone === ""}>This field is required</FormErrorText>
+              <FormErrorText $show={showWarnings && phone === ""}>This field is required</FormErrorText>
             </InputContainer>
 
             <InputContainer>
               <DropdownWrapper>
                 <DropDownInput
                   type="text"
+                  aria-label="Share Your Budget"
                   value={budget}
                   className={budget ? "has-value" : ""}
                   onChange={(e) => {
                     setBudget(e.target.value);
                   }}
                 >
-                  <option value="" disabled selected>Share Your Budget *</option>
+                  <option value="" disabled>Share Your Budget *</option>
                   {budgets.map((budgetOption) => (
                     <option value={budgetOption} key={budgetOption}>{budgetOption}</option>
                   ))}
                 </DropDownInput>
                 <DownArrow />
               </DropdownWrapper>
-              <FormErrorText show={showWarnings && budget === ""}>This field is required</FormErrorText>
+              <FormErrorText $show={showWarnings && budget === ""}>This field is required</FormErrorText>
             </InputContainer>
           </InputRow>
           
@@ -210,7 +212,7 @@ const InputForm = () => {
                   setMessage(e.target.value);
                 }}
               />
-              <FormErrorText show={showWarnings && message === ""}>This field is required</FormErrorText>
+              <FormErrorText $show={showWarnings && message === ""}>This field is required</FormErrorText>
             </InputContainer>
 
           <SubmitButton>

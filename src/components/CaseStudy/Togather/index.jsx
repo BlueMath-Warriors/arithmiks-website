@@ -29,6 +29,7 @@ const Togather = ({ images }) => {
   return (
     <>
       <Header />
+      <main>
       <Hero {...heroData} />
       <TechStack {...techStackData} />
       <Overview {...overviewData} />
@@ -37,6 +38,7 @@ const Togather = ({ images }) => {
       <KeyFeatures {...keyFeaturesData} />
       <MoreCaseStudies currentSlug="togather" />
       <ContactUs />
+      </main>
       <Footer />
     </>
   );

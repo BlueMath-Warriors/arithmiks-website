@@ -29,6 +29,7 @@ const Hakro = ({ images }) => {
   return (
     <>
       <Header />
+      <main>
       <Hero {...heroData} />
       <TechStack {...techStackData} />
       <Overview {...overviewData} />
@@ -39,6 +40,7 @@ const Hakro = ({ images }) => {
       <KeyFeatures {...keyFeaturesData} />
       <MoreCaseStudies currentSlug="hakro" />
       <ContactUs />
+      </main>
       <Footer />
     </>
   );

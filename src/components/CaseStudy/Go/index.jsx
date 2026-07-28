@@ -29,6 +29,7 @@ const Go = ({ images }) => {
   return (
     <>
       <Header />
+      <main>
       <Hero {...heroData} />
       <TechStack {...techStackData} />
       <Overview {...overviewData} />
@@ -37,6 +38,7 @@ const Go = ({ images }) => {
       <KeyFeatures {...keyFeaturesData} />
       <MoreCaseStudies currentSlug="go" />
       <ContactUs />
+      </main>
       <Footer />
     </>
   );

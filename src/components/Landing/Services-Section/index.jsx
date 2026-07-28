@@ -86,6 +86,7 @@ const Services = () => {
         </Left>
         <Right>
           <ViewButton
+            type="button"
             onClick={() => {
               document
                 .getElementById("contact-form")

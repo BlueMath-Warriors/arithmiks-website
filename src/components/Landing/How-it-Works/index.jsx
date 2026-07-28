@@ -188,10 +188,10 @@ const HowItWorks = () => {
           </HeaderDescription>
         </HeaderLeft>
         <CarouselButtons>
-          <CarouselButton onClick={handleScrollLeft}>
+          <CarouselButton type="button" aria-label="Scroll left" onClick={handleScrollLeft}>
             <ArrowLeft/>
           </CarouselButton>
-          <CarouselButton blue onClick={handleScrollRight}>
+          <CarouselButton type="button" aria-label="Scroll right" $blue onClick={handleScrollRight}>
             <ArrowRight />
           </CarouselButton>
         </CarouselButtons>

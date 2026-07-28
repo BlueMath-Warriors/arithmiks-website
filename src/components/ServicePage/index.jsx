@@ -25,6 +25,7 @@ const ServicePage = ({ headline, intro }) => {
   return (
     <>
       <Header white={false} />
+      <main>
       <section className={containerStyles.fixed_price}>
         <OuterContainer>
           <TextContainer>
@@ -53,6 +54,7 @@ const ServicePage = ({ headline, intro }) => {
         </OuterContainer>
       </section>
       <ContactUs />
+      </main>
       <Footer />
     </>
   );

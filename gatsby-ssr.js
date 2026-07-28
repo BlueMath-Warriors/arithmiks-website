@@ -27,23 +27,6 @@ export const onRenderBody = ({ setHtmlAttributes, setHeadComponents, setPreBodyC
       rel="dns-prefetch"
       href="https://www.googletagmanager.com"
     />,
-    
-    <link
-      key="preload-poppins-regular"
-      rel="preload"
-      href="https://fonts.gstatic.com/s/poppins/v21/pxiEyp8kv8JHgFVrJJfecg.woff2"
-      as="font"
-      type="font/woff2"
-      crossOrigin="anonymous"
-    />,
-    <link
-      key="preload-poppins-semibold"
-      rel="preload"
-      href="https://fonts.gstatic.com/s/poppins/v21/pxiByp8kv8JHgFVrLEj6Z1xlFQ.woff2"
-      as="font"
-      type="font/woff2"
-      crossOrigin="anonymous"
-    />,
   ]);
 };
 

@@ -127,7 +127,7 @@ export const FormErrorText = styled.p`
   left: 10px;
   top: 5px;
   color: #FF3333;
-  display: ${props => (props.show ? 'block' : 'none')};
+  display: ${props => (props.$show ? 'block' : 'none')};
   font-size: 14px;
 `
 
@@ -140,7 +140,7 @@ export const FormSuccessText = styled.p`
   padding: 8px 12px;
   text-align: center;
   border-radius: 4px;
-  display: ${props => (props.show ? 'block' : 'none')};
+  display: ${props => (props.$show ? 'block' : 'none')};
   width: fit-content;
   transition: all 0.3s ease-in-out;
 `;

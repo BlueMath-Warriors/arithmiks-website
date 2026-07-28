@@ -489,7 +489,7 @@ export const ViewMoreButtonLink = styled(Link)`
   text-decoration: none;
   transition: box-shadow 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
 
-  color: #0957de;
+  color: #084ec2;
   font-family: Poppins;
   font-size: 14px;
   font-style: normal;

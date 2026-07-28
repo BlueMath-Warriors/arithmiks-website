@@ -15,8 +15,8 @@ import {
 } from "./index.styled";
 import * as containerStyles from "../../../styles/global.module.css";
 import ArrowRight from "../../../images/arrow-right-circle-line.svg";
-import img_1 from "../../../images/about_img_1.jpg";
-import img_2 from "../../../images/about_img_2.jpg";
+import img_1 from "../../../images/about_img_1.webp";
+import img_2 from "../../../images/about_img_2.webp";
 import Circle from "../../../images/circle.svg";
 import Rectangle from "../../../images/rectangle.svg";
 import { gsap } from "gsap";
@@ -105,7 +105,8 @@ const About = () => {
           Software Development Company That Vows Your Success. We Provide
           Professional IT Solutions For Your Business
         </CardBody>
-        <CardBtn 
+        <CardBtn
+          type="button"
           onClick={scrollToContact}
           aria-label="Learn more about Arithmiks - scroll to contact form"
         >

@@ -78,7 +78,7 @@ export const CarouselButton = styled.button`
   align-items: center;
   border-radius: 100px;
   border: none;
-  background: ${props => (props.blue ? '#1355FF' : '#1A202C')};
+  background: ${props => (props.$blue ? '#1355FF' : '#1A202C')};
   &:hover{
     box-shadow: 4px 8px 24px 0px rgba(36, 107, 253, 0.25);
   }

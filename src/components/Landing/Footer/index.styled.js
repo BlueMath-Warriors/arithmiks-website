@@ -59,6 +59,7 @@ export const LogoHeading = styled.div`
 `
 
 export const Logo = styled.img`
+  width: 27px;
   height: 32px;
 `
 
@@ -93,7 +94,7 @@ export const Heading = styled.p`
     letter-spacing: -0.48px;
   }
 
-  ${props => props.mb8 && `margin-bottom: 8px;`}
+  ${props => props.$mb8 && `margin-bottom: 8px;`}
 
 `
 
@@ -122,7 +123,7 @@ export const Text = styled.a`
   }
 `
 
-export const Moto = styled.p`
+export const Moto = styled.div`
   color: #596780;
   font-family: Poppins;
   font-size: 18px;
@@ -287,7 +288,7 @@ export const FooterCaption = styled.p`
 export const FooterContentText = styled.p`
   color: #596780;
   font-family: Poppins;
-  font-size: ${(props) => (props.medium ? "14px" : "16px")};
+  font-size: ${(props) => (props.$medium ? "14px" : "16px")};
   font-style: normal;
   font-weight: 400;
   line-height: 28px;
@@ -366,7 +367,7 @@ export const Link = styled.a`
   line-height: 150%;
   letter-spacing: -0.36px;
   ${props =>
-    props.divider &&
+    props.$divider &&
     ` &::after {
       content: " I"; 
       color: #1A202C; 
@@ -384,7 +385,7 @@ export const Link = styled.a`
   }
   @media screen and (max-width: ${breakpoints.medium}) {
     ${props =>
-    props.divider &&
+    props.$divider &&
     ` &::after {
       content: " I"; 
       color: #1A202C; 

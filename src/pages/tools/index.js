@@ -27,6 +27,7 @@ const ToolsIndexPage = () => (
     <div className={containerStyles.header_div}>
       <Header white={true} fixed={true} />
     </div>
+    <main>
     <ToolShell>
       <ToolHero>
         <ToolHeroInner>
@@ -72,6 +73,7 @@ const ToolsIndexPage = () => (
         </SectionInner>
       </Section>
     </ToolShell>
+    </main>
     <Footer />
   </>
 );
