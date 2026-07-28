@@ -17,9 +17,9 @@ const animatePageEntrance = () => {
     { 
       opacity: 1, 
       y: 0, 
-      duration: 0.4, 
+      duration: 0.4,
       ease: "power2.out",
-      clearProps: "all"
+      clearProps: "opacity,transform"
     }
   );
 };
