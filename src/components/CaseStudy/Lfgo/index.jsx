@@ -29,6 +29,7 @@ const Lfgo = ({ images }) => {
   return (
     <>
       <Header />
+      <main>
       <Hero {...heroData} />
       <TechStack {...techStackData} />
       <Overview {...overviewData} />
@@ -37,6 +38,7 @@ const Lfgo = ({ images }) => {
       <KeyFeatures {...keyFeaturesData} />
       <MoreCaseStudies currentSlug="lfgo" />
       <ContactUs />
+      </main>
       <Footer />
     </>
   );

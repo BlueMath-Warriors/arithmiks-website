@@ -96,6 +96,7 @@ const LandingPage = () => {
   return (
     <>
       <Header white={false} />
+      <main>
       <section className={containerStyles.main_hero} ref={heroRef}>
         <TextContainer>
           <MainHead className="hero-headline">
@@ -140,7 +141,8 @@ const LandingPage = () => {
       <Suspense fallback={<SectionLoader />}>
         <ContactUs />
       </Suspense>
-      
+      </main>
+
       <Suspense fallback={<SectionLoader />}>
         <Footer />
       </Suspense>

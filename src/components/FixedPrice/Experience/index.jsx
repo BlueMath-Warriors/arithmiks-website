@@ -130,12 +130,12 @@ const Experience = () => {
           <HeaderTitle>Elevate your experience with Arithmiks</HeaderTitle>
         </HeaderLeft>
         <CarouselButtons>
-          <CarouselButton onClick={handleScrollLeft}>
+          <CarouselButton type="button" aria-label="Scroll left" onClick={handleScrollLeft}>
             <BtnIcon>
               <ArrowLeft/>
             </BtnIcon>
           </CarouselButton>
-          <CarouselButton blue onClick={handleScrollRight}>
+          <CarouselButton type="button" aria-label="Scroll right" $blue onClick={handleScrollRight}>
             <BtnIcon>
               <ArrowRight/>
             </BtnIcon>

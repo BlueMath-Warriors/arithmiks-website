@@ -28,6 +28,7 @@ const FixedPrice = () => {
   return (
     <>
       <Header white={false} />
+      <main>
       <section className={containerStyles.fixed_price}>
         <OuterContainer>
           <TextContainer>
@@ -63,6 +64,7 @@ const FixedPrice = () => {
       <Experience />
       <Questions />
       <ContactUs />
+      </main>
       <Footer />
     </>
   );

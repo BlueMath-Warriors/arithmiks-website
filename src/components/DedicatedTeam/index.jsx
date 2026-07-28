@@ -29,6 +29,7 @@ const DedicatedTeam = () => {
   return (
     <>
       <Header white={false} />
+      <main>
       <section className={containerStyles.fixed_price}>
         <OuterContainer>
           <TextContainer>
@@ -66,6 +67,7 @@ const DedicatedTeam = () => {
       <TeamStructure />
       <Questions />
       <ContactUs />
+      </main>
       <Footer />
     </>
   );

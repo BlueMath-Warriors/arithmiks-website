@@ -106,7 +106,7 @@ export const SecondaryColor = styled.span`
     color: #1355FF;
 `
 
-export const ViewButton = styled.a`
+export const ViewButton = styled.button`
   display: inline-flex;
   padding: 12px 16px 12px 24px;
   justify-content: center;

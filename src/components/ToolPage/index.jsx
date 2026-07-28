@@ -43,6 +43,7 @@ const ToolPage = ({
       <div className={containerStyles.header_div}>
         <Header white={true} fixed={true} />
       </div>
+      <main>
       <ToolShell>
         <ToolHero>
           <ToolHeroInner>
@@ -64,6 +65,7 @@ const ToolPage = ({
         <FAQ faq={faq} />
         <RelatedTools currentSlug={slug} />
       </ToolShell>
+      </main>
       <Footer />
     </>
   );

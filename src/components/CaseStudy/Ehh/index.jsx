@@ -29,6 +29,7 @@ const Ehh = ({ images }) => {
   return (
     <>
       <Header />
+      <main>
       <Hero {...heroData} />
       <TechStack {...techStackData} />
       <Overview {...overviewData} />
@@ -39,6 +40,7 @@ const Ehh = ({ images }) => {
       <KeyFeatures {...keyFeaturesData} />
       <MoreCaseStudies currentSlug="expat" />
       <ContactUs />
+      </main>
       <Footer />
     </>
   );

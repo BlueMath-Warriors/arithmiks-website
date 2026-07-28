@@ -30,6 +30,7 @@ const Qareeb = ({ images }) => {
   return (
     <>
       <Header />
+      <main>
       <Hero {...heroData} />
       <TechStack {...techStackData} />
       <Overview {...overviewData} />
@@ -38,6 +39,7 @@ const Qareeb = ({ images }) => {
       <KeyFeatures {...keyFeaturesData} />
       <MoreCaseStudies currentSlug="qareeb" />
       <ContactUs />
+      </main>
       <Footer />
     </>
   );

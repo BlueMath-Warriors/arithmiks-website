@@ -29,6 +29,7 @@ const Easybar = ({ images }) => {
   return (
     <>
       <Header />
+      <main>
       <Hero {...heroData} />
       <TechStack {...techStackData} />
       <Overview {...overviewData} />
@@ -37,6 +38,7 @@ const Easybar = ({ images }) => {
       <KeyFeatures {...keyFeaturesData} />
       <MoreCaseStudies currentSlug="easybar" />
       <ContactUs />
+      </main>
       <Footer />
     </>
   );

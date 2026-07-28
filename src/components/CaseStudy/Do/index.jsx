@@ -29,6 +29,7 @@ const Do = ({ images }) => {
   return (
     <>
       <Header />
+      <main>
       <Hero {...heroData} />
       <TechStack {...techStackData} />
       <Overview {...overviewData} />
@@ -39,6 +40,7 @@ const Do = ({ images }) => {
       <KeyFeatures {...keyFeaturesData} />
       <MoreCaseStudies currentSlug="ofertas" />
       <ContactUs />
+      </main>
       <Footer />
     </>
   );

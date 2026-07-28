@@ -18,7 +18,7 @@ import {
 } from "./index.styled";
 import MenuIcon from "../../../images/hamburger_icon.svg";
 import DownArrow from "../../../images/header-arrow-down.svg";
-import logo from "../../../images/logo.png";
+import logo from "../../../images/logo.webp";
 
 const ServicesMenu = ({ menu_ref }) => {
   return (
@@ -197,9 +197,9 @@ const Header = ({ white, fixed_bar }) => {
   return (
     <>
       <Headerr
-        white={showMenu || showServices || white || isFixed}
-        fixed={isFixed || fixed_bar}
-        hide={hideNav}
+        $white={showMenu || showServices || white || isFixed}
+        $fixed={isFixed || fixed_bar}
+        $hide={hideNav}
       >
         <HeaderContainer>
           <Link to="/" aria-label="Go to homepage">
@@ -208,16 +208,18 @@ const Header = ({ white, fixed_bar }) => {
             </CompanyLogo>
           </Link>
           <Menu ref={navMenu}>
-            <MenuItemLink 
-              to="/" 
-              onClick={closeMenu}
-              active={currentPath === "/"}
-            >
-              Home
-            </MenuItemLink>
+            <li>
+              <MenuItemLink
+                to="/"
+                onClick={closeMenu}
+                $active={currentPath === "/"}
+              >
+                Home
+              </MenuItemLink>
+            </li>
             <ServiceMenuItem
               ref={servicebtnRef}
-              blue={showServices}
+              $blue={showServices}
               onClick={() => {
                 setShowServices(!showServices);
                 navMenu.current.classList.remove("active");
@@ -229,28 +231,34 @@ const Header = ({ white, fixed_bar }) => {
               Services
               <DownArrow className={showServices ? "down-icon" : "up-icon"} />
             </ServiceMenuItem>
-            <MenuItemLink 
-              to="/case-studies" 
-              onClick={closeMenu}
-              active={currentPath.startsWith("/case-studies")}
-            >
-              Case Studies
-            </MenuItemLink>
-            <MenuItemLink
-              to="/about"
-              onClick={closeMenu}
-              active={currentPath === "/about"}
-            >
-              Company
-            </MenuItemLink>
-            <MenuItemLink
-              to="/contact"
-              onClick={closeMenu}
-              className="mobile-only"
-              active={currentPath === "/contact"}
-            >
-              Get in Touch
-            </MenuItemLink>
+            <li>
+              <MenuItemLink
+                to="/case-studies"
+                onClick={closeMenu}
+                $active={currentPath.startsWith("/case-studies")}
+              >
+                Case Studies
+              </MenuItemLink>
+            </li>
+            <li>
+              <MenuItemLink
+                to="/about"
+                onClick={closeMenu}
+                $active={currentPath === "/about"}
+              >
+                Company
+              </MenuItemLink>
+            </li>
+            <li>
+              <MenuItemLink
+                to="/contact"
+                onClick={closeMenu}
+                className="mobile-only"
+                $active={currentPath === "/contact"}
+              >
+                Get in Touch
+              </MenuItemLink>
+            </li>
           </Menu>
           <CtaBtn fill="true" to="/contact">
             <HeaderButtonTxt>Get In Touch</HeaderButtonTxt>
