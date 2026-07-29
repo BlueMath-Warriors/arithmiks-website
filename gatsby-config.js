@@ -40,11 +40,19 @@ module.exports = {
         path: `${__dirname}/static`,
       },
     },
-    
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `blog`,
+        path: `${__dirname}/content/blog`,
+      },
+    },
+    `gatsby-plugin-mdx`,
+
     "gatsby-plugin-sharp",
     "gatsby-transformer-sharp",
     "gatsby-plugin-image",
-    
+
     "gatsby-plugin-react-svg",
     
     {

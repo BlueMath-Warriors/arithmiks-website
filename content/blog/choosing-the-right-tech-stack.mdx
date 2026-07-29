@@ -1,0 +1,54 @@
+---
+title: "How We Choose a Tech Stack for a New Product"
+slug: "choosing-the-right-tech-stack"
+excerpt: "Stack decisions outlast the sprint that made them. Here's the framework we use to pick technology that survives contact with real users, real deadlines, and real hand-offs."
+date: "2026-07-20"
+category: "engineering"
+coverGradient: "blue"
+author:
+  name: "Arithmiks Team"
+  avatar: "AT"
+  bio: "Notes from the engineers and product people building at Arithmiks."
+---
+
+Every new engagement starts with the same question from a founder or a product lead: "What should we build this in?" It's usually asked like there's a single correct answer waiting to be discovered. There isn't. There's a set of trade-offs, and the job is to make them consciously instead of by default.
+
+After years of standing up products across fintech, SaaS, and marketplace platforms, we've settled on a short list of questions that matter far more than which framework is trending this quarter.
+
+## Start with who has to maintain it
+
+The team that ships v1 is rarely the team that maintains v3. Whatever we choose has to be learnable by an engineer who wasn't in the room for the original decision. That's why we lean on ecosystems with deep hiring pools and mature documentation — React and Next.js on the frontend, Django or FastAPI on the backend, Postgres as the default datastore unless there's a specific reason not to.
+
+Novelty is a cost, not a feature. A clever but obscure choice saves a few hours today and costs someone weeks two years from now when they're debugging it alone.
+
+## Match the stack to the shape of the problem
+
+A content-heavy marketing site, a real-time dashboard, and a data pipeline are different problems wearing the same word: "product." We ask:
+
+- Does this need to be interactive in real time, or is server-rendered content enough?
+- Is the bottleneck going to be I/O, computation, or team velocity?
+- What does the data actually look like — relational, document, time-series, graph?
+- Where does this need to run, and who owns that infrastructure after we hand it off?
+
+> The best stack is the one that makes the hardest part of *this specific product* easy, even if it makes something else slightly harder.
+
+## Budget for the boring parts
+
+Auth, logging, error tracking, CI/CD, backups — none of these show up on a feature list, and all of them determine whether a product survives its first production incident. We pick tools with strong defaults here (managed Postgres over self-hosted, established auth providers over hand-rolled sessions) so the team's attention stays on the problem that's actually novel.
+
+```js
+// A stack decision we write down, not just discuss
+const stackDecision = {
+  problem: "Multi-tenant SaaS dashboard, moderate real-time needs",
+  frontend: "Next.js",
+  backend: "FastAPI",
+  datastore: "PostgreSQL (RDS)",
+  reasoning: "Team fluency + hiring pool + managed ops over marginal perf gains",
+};
+```
+
+## Revisit it, on purpose
+
+A stack decision made at kickoff is a hypothesis, not a contract. We schedule a real check-in around the first major milestone — not to relitigate everything, but to catch the one assumption that didn't hold once real users and real data showed up.
+
+Picking a tech stack is rarely about picking the "best" technology in the abstract. It's about picking the option that lets a specific team ship a specific product reliably, and keep shipping it after we're gone.
