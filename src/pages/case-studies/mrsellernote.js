@@ -3,11 +3,9 @@ import { graphql } from "gatsby";
 import MrSellerNote from "../../components/CaseStudy/MrSellerNote";
 import { SEO } from "../../components/seo";
 import { getCaseStudySeo } from "../../constants/caseStudySeo";
-import { caseStudies } from "../../components/Landing/Case-Study/caseStudies";
 
 const slug = "mrsellernote";
 const pageSeo = getCaseStudySeo(slug);
-const pageImage = caseStudies.find((cs) => cs.slug === slug)?.dashboardImg;
 const breadcrumbItems = [
   { name: "Home", pathname: "/" },
   { name: "Case Studies", pathname: "/case-studies" },
@@ -24,7 +22,7 @@ export const Head = () => (
   <SEO
     title={pageSeo.title}
     description={pageSeo.description}
-    image={pageImage}
+    hideImage
     pathname="/case-studies/mrsellernote"
     breadcrumbItems={breadcrumbItems}
   />
