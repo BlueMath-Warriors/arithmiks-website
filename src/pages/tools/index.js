@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Link } from "gatsby";
 import Header from "../../components/Landing/Header";
+import Breadcrumbs from "../../components/Breadcrumbs";
 import Footer from "../../components/Landing/Footer";
 import * as containerStyles from "../../styles/global.module.css";
 import { SEO } from "../../components/seo";
@@ -22,11 +23,17 @@ import {
 
 const liveCount = TOOL_ROUTES.filter((t) => t.status === "live").length;
 
+const breadcrumbItems = [
+  { name: "Home", pathname: "/" },
+  { name: "Tools", pathname: "/tools" },
+];
+
 const ToolsIndexPage = () => (
   <>
     <div className={containerStyles.header_div}>
       <Header white={true} fixed={true} />
     </div>
+    <Breadcrumbs items={breadcrumbItems} />
     <main>
     <ToolShell>
       <ToolHero>
@@ -100,10 +107,7 @@ export const Head = () => {
       title="Free Online Tools - Arithmiks"
       description="Free online tools from Arithmiks: virus scanner, and more on the way. Practical utilities built by our engineering team — no signup, no tracking."
       pathname="/tools"
-      breadcrumbItems={[
-        { name: "Home", pathname: "/" },
-        { name: "Tools", pathname: "/tools" },
-      ]}
+      breadcrumbItems={breadcrumbItems}
       extraSchemas={[itemListSchema]}
     />
   );

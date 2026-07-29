@@ -7,6 +7,7 @@ import { useSiteMetadata } from "../hooks/use-site-metadata";
  * @param {string} [props.title]
  * @param {string} [props.description]
  * @param {string} [props.pathname]
+ * @param {string} [props.image] Absolute or root-relative path to a page-specific share image. Falls back to the site default (arithmiks-home-meta.png) when omitted.
  * @param {{ name: string; pathname: string }[]} [props.breadcrumbItems] Ordered trail including the current page; URLs built with siteUrl + pathname.
  * @param {boolean} [props.article]
  */
@@ -14,6 +15,7 @@ export const SEO = ({
   title,
   description,
   pathname,
+  image,
   breadcrumbItems,
   children,
   article = false,
@@ -21,7 +23,7 @@ export const SEO = ({
   const {
     title: defaultTitle,
     description: defaultDescription,
-    image,
+    image: defaultImage,
     siteUrl,
     twitterUsername,
   } = useSiteMetadata();
@@ -36,7 +38,8 @@ export const SEO = ({
   const seo = {
     title: title || defaultTitle,
     description: description || defaultDescription,
-    image: `${siteUrl}${image}`,
+    image: image ? `${siteUrl}${image}` : `${siteUrl}${defaultImage}`,
+    isDefaultImage: !image,
     url: `${siteUrl}${pathname || ``}`,
     twitterUsername,
   };
@@ -158,10 +161,14 @@ export const SEO = ({
       <meta property="og:site_name" content="Arithmiks" />
       <meta property="og:image" content={seo.image} />
       <meta property="og:image:secure_url" content={seo.image} />
-      <meta property="og:image:width" content="1200" />
-      <meta property="og:image:height" content="650" />
+      {seo.isDefaultImage && (
+        <>
+          <meta property="og:image:width" content="1200" />
+          <meta property="og:image:height" content="650" />
+          <meta property="og:image:type" content="image/png" />
+        </>
+      )}
       <meta property="og:image:alt" content={seo.title} />
-      <meta property="og:image:type" content="image/png" />
 
       <script type="application/ld+json">
         {JSON.stringify(organizationSchema)}

@@ -17,6 +17,8 @@ export const caseStudies = [
     logo: "/swerv.svg",
     logoAlt: "Swerv Automotive",
     tag: "SaaS",
+    category: "saas-software",
+    relatedService: { slug: "custom-software-development", label: "Custom Software Development" },
     title: "Automates smart vehicle acquisitions",
     description:
       "A SaaS platform for car dealerships to automate acquisitions, centralize data, and optimize sales.",
@@ -28,6 +30,8 @@ export const caseStudies = [
     logo: "/togather.svg",
     logoAlt: "Togather",
     tag: "Software",
+    category: "saas-software",
+    relatedService: { slug: "web-app-development", label: "Web App Development" },
     title: "Unifies community engagement, events, and donations",
     description:
       "Togather is a platform for churches and NGOs to connect communities through events, donations, and engagement.",
@@ -39,6 +43,8 @@ export const caseStudies = [
     logo: "/sbaloans.svg",
     logoAlt: "sbaloansHQ",
     tag: "SaaS",
+    category: "fintech",
+    relatedService: { slug: "custom-software-development", label: "Custom Software Development" },
     title: "Streamlines and automates loan processing",
     description:
       "SBA Loans HQ streamlines SBA loans with centralized documents, tracking, and communication.",
@@ -50,6 +56,8 @@ export const caseStudies = [
     logo: "/easybar.svg",
     logoAlt: "EASY-BAR",
     tag: "Software",
+    category: "contech",
+    relatedService: { slug: "custom-software-development", label: "Custom Software Development" },
     title: "Automates rebar design and ordering",
     description:
       "Easybar lets buyers design iron bars and suppliers print the orders for automated production.",
@@ -61,6 +69,8 @@ export const caseStudies = [
     logo: "/lfgo.svg",
     logoAlt: "LFGO",
     tag: "Web3",
+    category: "fintech",
+    relatedService: { slug: "web-app-development", label: "Web App Development" },
     title: "Simplifies cross-chain token creation",
     description:
       "A Web3 platform to create, launch, and trade tokens with seamless minting and wallet integration.",
@@ -72,6 +82,8 @@ export const caseStudies = [
     logo: "/ehh.svg",
     logoAlt: "Expat Haven Hub",
     tag: "Web App",
+    category: "saas-software",
+    relatedService: { slug: "ai-data-solutions", label: "AI & Data Solutions" },
     title: "AI-Powered Marketing Automation Platform",
     description:
       "AI-powered, gamified platform that centralizes essential lifestyle insights for digital nomads and expats.",
@@ -83,6 +95,8 @@ export const caseStudies = [
     logo: "/go.svg",
     logoAlt: "GO",
     tag: "Machine Learning",
+    category: "saas-software",
+    relatedService: { slug: "ai-data-solutions", label: "AI & Data Solutions" },
     title: "AI-Powered Marketing Automation Platform",
     description:
       "An AI-powered platform that automates digital marketing—handling content, publishing, and ads to help agencies grow.",
@@ -94,6 +108,8 @@ export const caseStudies = [
     logo: "/ofertas.svg",
     logoAlt: "Ofertas",
     tag: "Affiliation Market",
+    category: "saas-software",
+    relatedService: { slug: "web-app-development", label: "Web App Development" },
     title: "Community-Driven Deal & Coupon Discovery Platform",
     description:
       "Platform showcasing the best affiliate deals and offers to help users save more and shop smarter.",
@@ -105,6 +121,8 @@ export const caseStudies = [
     logo: "/hakro.svg",
     logoAlt: "HAKRO",
     tag: "E-Commerce",
+    category: "saas-software",
+    relatedService: { slug: "ui-ux-design", label: "UI/UX Design" },
     title: "Embedded E-commerce Platform for Seller Networks",
     description:
       "Platform enabling dealers to buy bulk products directly from website sessions.",
@@ -116,6 +134,8 @@ export const caseStudies = [
     logo: "/qareeb.svg",
     logoAlt: "Qareeb",
     tag: "SaaS",
+    category: "saas-software",
+    relatedService: { slug: "ai-data-solutions", label: "AI & Data Solutions" },
     title: "AI Meeting Intelligence Platform",
     description:
       "An AI meeting intelligence platform that records, transcribes, and turns every conversation into a searchable knowledge base.",
@@ -127,6 +147,8 @@ export const caseStudies = [
     logo: "/icons/msn-logo.svg",
     logoAlt: "Mr. Seller Note",
     tag: "Web App",
+    category: "fintech",
+    relatedService: { slug: "custom-software-development", label: "Custom Software Development" },
     title: "Automates multi-party loan management and payments",
     description:
       "An automated loan management platform that tracks, calculates, and processes multi-party payments from creation to final settlement.",

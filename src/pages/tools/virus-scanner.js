@@ -8,6 +8,12 @@ import { buildToolSchemas } from "../../utils/toolSchemas";
 const slug = "virus-scanner";
 const tool = getToolBySlug(slug);
 
+const breadcrumbItems = [
+  { name: "Home", pathname: "/" },
+  { name: "Tools", pathname: "/tools" },
+  { name: tool.label, pathname: toolPath(slug) },
+];
+
 const VirusScannerPage = () => (
   <ToolPage
     slug={slug}
@@ -20,6 +26,7 @@ const VirusScannerPage = () => (
       "No signup",
     ]}
     faq={tool.faq}
+    breadcrumbItems={breadcrumbItems}
   >
     <VirusScanner howToSteps={tool.howToSteps} />
   </ToolPage>
@@ -32,11 +39,7 @@ export const Head = () => (
     title={tool.seoTitle}
     description={tool.seoDescription}
     pathname={toolPath(slug)}
-    breadcrumbItems={[
-      { name: "Home", pathname: "/" },
-      { name: "Tools", pathname: "/tools" },
-      { name: tool.label, pathname: toolPath(slug) },
-    ]}
+    breadcrumbItems={breadcrumbItems}
     extraSchemas={buildToolSchemas(tool)}
   >
     <meta name="keywords" content={tool.keywords.join(", ")} />

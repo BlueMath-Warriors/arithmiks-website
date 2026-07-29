@@ -7,6 +7,7 @@ import {
   Logo,
   LogoHeading,
   Text,
+  TechBadge,
   Moto,
   CompanyTextHighlight,
   Services,
@@ -35,6 +36,10 @@ import EmailIcon from "../../../images/email.svg";
 import OfficeIcon from "../../../images/office.svg";
 import CareerIcon from "../../../images/career.svg";
 
+const scrollToContact = () => {
+  document.getElementById("contact-form")?.scrollIntoView({ behavior: "smooth" });
+};
+
 const Footer = () => {
   return (
     <footer className={containerStyles.footer}>
@@ -56,50 +61,48 @@ const Footer = () => {
 
         <Services>
           <Heading>Services</Heading>
-          <Text>Data Processing & Analysis</Text>
-          <Text>Custom Software Development</Text>
-          <Text>Web Application</Text>
-          <Text>Mobile Application</Text>
-          <Text>Re-Engineering Softwares</Text>
-          <Text>DevOps</Text>
-          <Text>Cloud Computing Solutions</Text>
-          <Text>
+          <Text to="/services/ai-data-solutions">Data Processing & Analysis</Text>
+          <Text to="/services/custom-software-development">Custom Software Development</Text>
+          <Text to="/services/web-app-development">Web Application</Text>
+          <Text to="/services/mobile-app-development">Mobile Application</Text>
+          <Text to="/services/custom-software-development">Re-Engineering Softwares</Text>
+          <Text to="/services/devops">DevOps</Text>
+          <Text as="button" type="button" onClick={scrollToContact}>Cloud Computing Solutions</Text>
+          <Text as="button" type="button" onClick={scrollToContact}>
             IT Project
             <br />
             Management
           </Text>
-          <Text>Technical Support & Troubleshooting</Text>
+          <Text as="button" type="button" onClick={scrollToContact}>Technical Support & Troubleshooting</Text>
         </Services>
 
         <Technologies>
           <Heading $mb8>Technologies</Heading>
-          <Text>Python</Text>
-          <Text>Node</Text>
-          <Text>React</Text>
-          <Text>Vue</Text>
-          <Text>iOS</Text>
-          <Text>Android</Text>
-          <Text>Java script</Text>
-          <Text>AWS</Text>
+          <TechBadge>Python</TechBadge>
+          <TechBadge>Node</TechBadge>
+          <TechBadge>React</TechBadge>
+          <TechBadge>Vue</TechBadge>
+          <TechBadge>iOS</TechBadge>
+          <TechBadge>Android</TechBadge>
+          <TechBadge>Java script</TechBadge>
+          <TechBadge>AWS</TechBadge>
         </Technologies>
 
         <Industries>
           <Heading $mb8>Industries</Heading>
-          <Text>Healthcare</Text>
-          <Text>Fintech</Text>
-          <Text>Retail</Text>
-          <Text>E-learning</Text>
-          <Text>Con-tech</Text>
+          <Text to="/case-studies?category=fintech">FinTech</Text>
+          <Text to="/case-studies?category=saas-software">SaaS Software</Text>
+          <Text to="/case-studies?category=contech">ConTech</Text>
         </Industries>
 
         <Expertise>
           <Heading $mb8>Expertise</Heading>
-          <Text>Cloud</Text>
-          <Text>DevOps</Text>
-          <Text>Machine Learning</Text>
-          <Text>Mobile</Text>
-          <Text>UI/UX Service</Text>
-          <Text>QA & Testing</Text>
+          <Text as="button" type="button" onClick={scrollToContact}>Cloud</Text>
+          <Text to="/services/devops">DevOps</Text>
+          <Text to="/services/ai-data-solutions">Machine Learning</Text>
+          <Text to="/services/mobile-app-development">Mobile</Text>
+          <Text to="/services/ui-ux-design">UI/UX Service</Text>
+          <Text as="button" type="button" onClick={scrollToContact}>QA & Testing</Text>
         </Expertise>
       </FooterContent>
 

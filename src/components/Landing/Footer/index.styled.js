@@ -1,4 +1,5 @@
 import { styled } from "styled-components";
+import { Link as GatsbyLink } from "gatsby";
 import { breakpoints } from "../index.styled";
 
 export const FooterContent = styled.div`
@@ -98,7 +99,14 @@ export const Heading = styled.p`
 
 `
 
-export const Text = styled.a`
+export const Text = styled(GatsbyLink)`
+  display: block;
+  width: 100%;
+  border: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
   color: #596780;
   font-family: Poppins;
   font-size: 16px;
@@ -107,6 +115,12 @@ export const Text = styled.a`
   line-height: 150%;
   letter-spacing: -0.36px;
   cursor: pointer;
+  text-decoration: none;
+
+  &:hover {
+    color: #1355ff;
+  }
+
   @media screen and (max-width: ${breakpoints.large}) {
     color: #596780;
     font-family: Poppins;
@@ -114,7 +128,32 @@ export const Text = styled.a`
     font-style: normal;
     font-weight: 400;
     line-height: 150%;
-    letter-spacing: -0.28px;    
+    letter-spacing: -0.28px;
+  }
+  @media screen and (max-width: ${breakpoints.medium}) {
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: -0.4px;
+  }
+`
+
+export const TechBadge = styled.span`
+  display: block;
+  color: #596780;
+  font-family: Poppins;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
+  letter-spacing: -0.36px;
+  @media screen and (max-width: ${breakpoints.large}) {
+    color: #596780;
+    font-family: Poppins;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+    letter-spacing: -0.28px;
   }
   @media screen and (max-width: ${breakpoints.medium}) {
     font-size: 20px;

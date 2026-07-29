@@ -542,3 +542,48 @@ export const CaseStudyCardLink = styled(Link)`
     }
   }
 `;
+
+export const CategoryTabs = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  width: 1120px;
+  margin: 48px auto 56px;
+
+  @media screen and (max-width: ${breakpoints.large}) {
+    width: 760px;
+  }
+  @media screen and (max-width: ${breakpoints.medium}) {
+    width: 90%;
+  }
+`;
+
+export const CategoryTab = styled.button`
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 20px;
+  border-radius: 100px;
+  border: 1px solid ${(props) => (props.$active ? "#1355FF" : "#E7EAEE")};
+  background: ${(props) => (props.$active ? "#1355FF" : "#FFF")};
+  color: ${(props) => (props.$active ? "#FFF" : "#5C5C5C")};
+  font-family: Poppins;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    border-color: #1355ff;
+    color: ${(props) => (props.$active ? "#FFF" : "#1355FF")};
+  }
+`;
+
+export const EmptyCategoryMessage = styled.p`
+  width: 100%;
+  text-align: center;
+  color: #5c5c5c;
+  font-family: Poppins;
+  font-size: 16px;
+  padding: 60px 0;
+`;

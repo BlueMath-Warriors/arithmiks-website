@@ -37,6 +37,24 @@ export const Container = styled.div`
   }
 `;
 
+export const RelatedServiceText = styled.p`
+  text-align: center;
+  color: #5c5c5c;
+  font-family: Poppins;
+  font-size: 15px;
+  margin: 0 0 40px;
+
+  a {
+    color: #084ec2;
+    font-weight: 600;
+    text-decoration: underline;
+
+    &:hover {
+      color: #1355ff;
+    }
+  }
+`;
+
 export const HeadingRow = styled.div`
   display: flex;
   align-items: center;
