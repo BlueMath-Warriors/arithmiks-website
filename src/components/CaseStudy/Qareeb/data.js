@@ -83,7 +83,7 @@ export const keyFeaturesData = {
       title: "1. AI-Generated Meeting Summary",
       description:
         "Auto-generates a structured summary after each meeting—topic outlines, category tags, plus Entities and Artifacts tabs.",
-      image: "/Qareeb Key Features/qareebKeyFeature1.png",
+      image: "/Qareeb Key Features/qareebKeyFeature1.webp",
     },
     {
       title: "2. Meeting Artifacts",
@@ -95,13 +95,13 @@ export const keyFeaturesData = {
       title: "3. Live Recording with Real-Time Transcription",
       description:
         "Records with live waveform, automatic speaker ID, playback speed control, and a real-time transcript as you talk.",
-      image: "/Qareeb Key Features/qareebKeyFeature3.png",
+      image: "/Qareeb Key Features/qareebKeyFeature3.webp",
     },
     {
       title: "4. Transcript Editor",
       description:
         "Rename speakers, highlight, annotate, format text, navigate by timestamp, undo/redo, and save with keyboard shortcuts.",
-      image: "/Qareeb Key Features/qareebKeyFeature4.png",
+      image: "/Qareeb Key Features/qareebKeyFeature4.webp",
     },
     {
       title: "5. Meeting Library",
@@ -113,13 +113,13 @@ export const keyFeaturesData = {
       title: "6. Document Upload in Projects",
       description:
         "Upload PDFs, DOCX, XLSX, CSV, PPT, and more up to 500MB into any project—transcripts and references in one place.",
-      image: "/Qareeb Key Features/qareebKeyFeature6.png",
+      image: "/Qareeb Key Features/qareebKeyFeature6.webp",
     },
     {
       title: "7. Bilingual UI with Full RTL Support",
       description:
         "Full English and Arabic variants across the product—Arabic is a fully adapted RTL interface, not a translation.",
-      image: "/Qareeb Key Features/qareebKeyFeature7.png",
+      image: "/Qareeb Key Features/qareebKeyFeature7.webp",
     },
   ],
   leftIconSrc: "/leftIcon.svg",

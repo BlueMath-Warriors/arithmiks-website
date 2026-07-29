@@ -1,14 +1,14 @@
-import swervDashboard from "../../../images/swervDashboard.png";
-import togatherDashboard from "../../../images/togatherDashboard.png";
-import sbaloansDashboard from "../../../images/sbaloansDashboard.png";
-import easybarDashboard from "../../../images/easybarDashboard.png";
-import lfgoDashboard from "../../../images/lfgoDashboard.png";
-import ehhDashboard from "../../../images/ehhDashboard.png";
-import goDashboard from "../../../images/goDashboard.png";
-import ofertasDashboard from "../../../images/ofertasDashboard.png";
-import hakroDashboard from "../../../images/hakroDasboard.png";
-import qareebDashboard from "../../../images/qareebDashboard.png";
-import mrsellernoteDashboard from "../../../images/msnDashboard.png";
+import swervDashboard from "../../../images/swervDashboard.webp";
+import togatherDashboard from "../../../images/togatherDashboard.webp";
+import sbaloansDashboard from "../../../images/sbaloansDashboard.webp";
+import easybarDashboard from "../../../images/easybarDashboard.webp";
+import lfgoDashboard from "../../../images/lfgoDashboard.webp";
+import ehhDashboard from "../../../images/ehhDashboard.webp";
+import goDashboard from "../../../images/goDashboard.webp";
+import ofertasDashboard from "../../../images/ofertasDashboard.webp";
+import hakroDashboard from "../../../images/hakroDasboard.webp";
+import qareebDashboard from "../../../images/qareebDashboard.webp";
+import mrsellernoteDashboard from "../../../images/msnDashboard.webp";
 
 export const caseStudies = [
   {

@@ -30,12 +30,12 @@ export const Head = () => (
 
 export const query = graphql`
   query {
-    heroImage: file(relativePath: { eq: "togatherMemorandum.png" }) {
+    heroImage: file(relativePath: { eq: "togatherMemorandum.webp" }) {
       childImageSharp {
         gatsbyImageData(width: 929, placeholder: BLURRED, formats: [AUTO, WEBP, AVIF], quality: 85)
       }
     }
-    overviewImage: file(relativePath: { eq: "togatherFinancialSummary.png" }) {
+    overviewImage: file(relativePath: { eq: "togatherFinancialSummary.webp" }) {
       childImageSharp {
         gatsbyImageData(width: 929, placeholder: BLURRED, formats: [AUTO, WEBP, AVIF], quality: 85)
       }

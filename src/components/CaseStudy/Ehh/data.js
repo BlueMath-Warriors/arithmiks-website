@@ -85,37 +85,37 @@ export const keyFeaturesData = {
       title: "1. Expat Archetype Quiz",
       description:
         "Personalized destination recommendations based on lifestyle, budget, and priorities.",
-      image: "/EHH Key Features/ehhKeyFeature2.png",
+      image: "/EHH Key Features/ehhKeyFeature2.webp",
     },
     {
       title: "2. LLM-Generated Country Pages",
       description:
         "Visa, tax, and cost data across 20+ countries, human-reviewed and always current.",
-      image: "/EHH Key Features/ehhKeyFeature1.png",
+      image: "/EHH Key Features/ehhKeyFeature1.webp",
     },
     {
       title: "3. Country Comparison",
       description:
         "Side-by-side comparison on visas, taxes, cost of living, weather, and community strength.",
-      image: "/EHH Key Features/ehhKeyFeature6.png",
+      image: "/EHH Key Features/ehhKeyFeature6.webp",
     },
     {
       title: "4. Verified Role Ladder",
       description:
         "Trust earned through real event check-ins, not sign-ups or tenure.",
-      image: "/EHH Key Features/ehhKeyFeature4.png",
+      image: "/EHH Key Features/ehhKeyFeature4.webp",
     },
     {
       title: "5. Gated Messaging",
       description:
         "Direct messages unlock only after two members attend an event together.",
-      image: "/EHH Key Features/ehhKeyFeature5.png",
+      image: "/EHH Key Features/ehhKeyFeature5.webp",
     },
     {
       title: "6. One-Dashboard Publishing",
       description:
         "A single CMS post flows into country pages, news, and city updates.",
-      image: "/EHH Key Features/ehhKeyFeature3.png",
+      image: "/EHH Key Features/ehhKeyFeature3.webp",
     },
   ],
   leftIconSrc: "/leftIcon.svg",

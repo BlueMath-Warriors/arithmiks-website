@@ -83,25 +83,25 @@ export const keyFeaturesData = {
       title: "1. Responsive E-commerce Interface:",
       description:
         "Browsing, search, filtering, and checkout optimized for all devices.",
-      image: "/Hakro Key Features/hakroKeyFeature1.png",
+      image: "/Hakro Key Features/hakroKeyFeature1.webp",
     },
     {
       title: "2. Adaptive UI Design:",
       description:
         "Automatically aligns with host-site structure for consistent UX.",
-      image: "/Hakro Key Features/hakroKeyFeature2.png",
+      image: "/Hakro Key Features/hakroKeyFeature2.webp",
     },
     {
       title: "3. Centralized Product Management:",
       description:
         "XML-driven data source enabling real-time updates.",
-      image: "/Hakro Key Features/hakroKeyFeature3.png",
+      image: "/Hakro Key Features/hakroKeyFeature3.webp",
     },
     {
       title: "4. Embedded Cart & Inquiry",
       description:
         "An in-widget cart that allows retailers to review products and send purchase inquiries without leaving their site.",
-      image: "/Hakro Key Features/hakroKeyFeature4.png",
+      image: "/Hakro Key Features/hakroKeyFeature4.webp",
     },
   ],
   leftIconSrc: "/leftIcon.svg",

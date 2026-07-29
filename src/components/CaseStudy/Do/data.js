@@ -88,37 +88,37 @@ export const keyFeaturesData = {
       title: "1. Deal Submission",
       description:
         "Store, pricing, coupon, and media published in a single structured flow.",
-      image: "/D&O Key Features/d&oKeyFeature1.png",
+      image: "/D&O Key Features/d&oKeyFeature1.webp",
     },
     {
       title: "2. Moderation Visibility",
       description:
         "Publishers see exactly where every submission stands, live, under review, or rejected.",
-      image: "/D&O Key Features/d&oKeyFeature2.png",
+      image: "/D&O Key Features/d&oKeyFeature2.webp",
     },
     {
       title: "3. Community Engagement",
       description:
         "Voting, comments, wishlists, and sharing on all approved listings.",
-      image: "/D&O Key Features/d&oKeyFeature3.png",
+      image: "/D&O Key Features/d&oKeyFeature3.webp",
     },
     {
       title: "4. Stores and Coupons",
       description:
         "Deals linked to verified stores, with coupons as standalone listings.",
-      image: "/D&O Key Features/d&oKeyFeature4.png",
+      image: "/D&O Key Features/d&oKeyFeature4.webp",
     },
     {
       title: "5. Social Login",
       description:
         "Email, Google, and Facebook sign-in with automatic session renewal.",
-      image: "/D&O Key Features/d&oKeyFeature5.png",
+      image: "/D&O Key Features/d&oKeyFeature5.webp",
     },
     {
       title: "6. Admin Panel",
       description:
         "Deal approvals, store management, user reports, and category control in one place.",
-      image: "/D&O Key Features/d&oKeyFeature6.png",
+      image: "/D&O Key Features/d&oKeyFeature6.webp",
     },
   ],
   leftIconSrc: "/leftIcon.svg",

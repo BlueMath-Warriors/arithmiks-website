@@ -93,34 +93,34 @@ export const keyFeaturesData = {
       title: "1. AI-Powered Marketing Engine:",
       description:
         "Seamlessly manage keywords, content, WordPress publishing, and ad campaigns with AI-driven automation.",
-      image: "/Go Key Features/goKeyFeature1.png",
+      image: "/Go Key Features/goKeyFeature1.webp",
     },
     {
       title: "2. Smart Control System:",
       description:
         "Self-learning agents continuously analyze data, identify opportunities, and turn them into fully automated, high-performing campaigns.",
-      image: "/Go Key Features/goKeyFeature2.png",
+      image: "/Go Key Features/goKeyFeature2.webp",
     },
     {
       title: "3. Campaign Control Center:",
       description: "Monitor, manage, and evaluate every ad, rule, and performance signal from a single dashboard—without relying on Facebook Ads Manager.",
-      image: "/Go Key Features/goKeyFeature3.png",
+      image: "/Go Key Features/goKeyFeature3.webp",
     },
     {
       title: "4. Real-Time & Historical Performance at a Glance:",
       description:
         "Real-time and historical insights across daily, hourly, and filtered views. Track platform activity and explore detailed campaign metrics — all in one interactive dashboard.",
-      image: "/Go Key Features/goKeyFeature4.png",
+      image: "/Go Key Features/goKeyFeature4.webp",
     },
     {
       title: "5. Multi-Org RBAC Engine:",
       description: "Manage organizations, projects, users, Facebook ad accounts, and WordPress domains — securely orchestrated in one place.",
-      image: "/Go Key Features/goKeyFeature5.png",
+      image: "/Go Key Features/goKeyFeature5.webp",
     },
     {
       title: "6. Continuous Optimization Engine:",
       description: "Always-running data pipelines watch performance, adjust campaigns by time of day, and track competitor activity—so optimization happens automatically.",
-      image: "/Go Key Features/goKeyFeature6.png",
+      image: "/Go Key Features/goKeyFeature6.webp",
     },
   ],
   leftIconSrc: "/leftIcon.svg",
