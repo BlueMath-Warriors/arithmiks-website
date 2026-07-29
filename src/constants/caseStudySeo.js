@@ -5,70 +5,70 @@
 
 const CASE_STUDY_SEO = {
   hakro: {
-    title: "Hakro - Arithmiks",
+    title: "E-Commerce Platform Case Study | Hakro & Arithmiks",
     breadcrumbName: "Hakro",
     description:
-      "Case study: how Arithmiks partnered with Hakro on product discovery, engineering, and delivery for a scalable software initiative.",
+      "Read this case study to see how Arithmiks built an embedded e-commerce platform for Hakro, letting dealers buy bulk products directly from seller sessions.",
   },
   easybar: {
-    title: "Easybar - Arithmiks",
+    title: "ConTech Automation Case Study | Easybar & Arithmiks",
     breadcrumbName: "Easybar",
     description:
-      "Case study: custom platform work for Easybar—UX, implementation, and integrations aligned with business goals.",
+      "Read this case study to see how Arithmiks automated rebar design and ordering for Easybar, connecting buyers and suppliers on one platform.",
   },
   expat: {
-    title: "Expat Haven Hub - Arithmiks",
+    title: "AI Platform Case Study | Expat Haven Hub & Arithmiks",
     breadcrumbName: "Expat Haven Hub",
     description:
-      "Case study: Expat Haven Hub—building digital experiences for expat communities with Arithmiks.",
+      "Read this case study to see how Arithmiks built an AI-powered, gamified platform helping digital nomads and expats access lifestyle insights.",
   },
   ofertas: {
-    title: "Ofertas - Arithmiks",
+    title: "Deal Discovery Case Study | Ofertas & Arithmiks",
     breadcrumbName: "Ofertas",
     description:
-      "Case study: Ofertas—software delivery, product support, and engineering collaboration with Arithmiks.",
+      "Read this case study to see how Arithmiks built Ofertas, a community-driven platform for discovering affiliate deals and coupons.",
   },
   togather: {
-    title: "Togather - Arithmiks",
+    title: "Community Platform Case Study | Togather & Arithmiks",
     breadcrumbName: "Togather",
     description:
-      "Case study: Togather—end-to-end design and development partnership with Arithmiks.",
+      "Read this case study to see how Arithmiks built Togather, a platform helping churches and NGOs unify events, donations, and community engagement.",
   },
   go: {
-    title: "GO - Arithmiks",
+    title: "Marketing Automation Case Study | GO & Arithmiks",
     breadcrumbName: "GO",
     description:
-      "Case study: GO—custom software delivery and product engineering with Arithmiks.",
+      "Read this case study to see how Arithmiks built an AI-powered marketing automation platform that handles content, publishing, and ads for agencies.",
   },
   swerv: {
-    title: "Swerv - Arithmiks",
+    title: "SaaS Development Case Study | Swerv Automotive & Arithmiks",
     breadcrumbName: "Swerv",
     description:
-      "Case study: Swerv Automotive—digital product development and engineering support.",
+      "Read this case study to see how Arithmiks built a SaaS platform for Swerv Automotive to automate vehicle acquisitions and centralize dealer data.",
   },
   sbaloans: {
-    title: "sbaloansHQ - Arithmiks",
+    title: "FinTech Lending Case Study | sbaloansHQ & Arithmiks",
     breadcrumbName: "sbaloansHQ",
     description:
-      "Case study: sbaloansHQ—fintech and lending platform design and development with Arithmiks.",
+      "Read this case study to see how Arithmiks streamlined SBA loan processing for sbaloansHQ with centralized documents, tracking, and communication.",
   },
   lfgo: {
-    title: "LFGO - Arithmiks",
+    title: "Web3 Platform Case Study | LFGO & Arithmiks",
     breadcrumbName: "LFGO",
     description:
-      "Case study: LFGO—building and shipping product capabilities together with Arithmiks.",
+      "Read this case study to see how Arithmiks built LFGO, a cross-chain token platform with seamless minting, launching, and wallet integration.",
   },
   qareeb: {
-    title: "Qareeb - Arithmiks",
+    title: "AI Meeting Intelligence Case Study | Qareeb & Arithmiks",
     breadcrumbName: "Qareeb",
     description:
-      "Case study: how Arithmiks built a bilingual AI meeting intelligence platform for Qareeb, transforming fragmented transcripts into a searchable knowledge base.",
+      "Read this case study to see how Arithmiks built a bilingual AI meeting intelligence platform for Qareeb, turning conversations into a searchable knowledge base.",
   },
   mrsellernote: {
-    title: "Mr. Seller Note - Arithmiks",
+    title: "Loan Management Case Study | Mr. Seller Note & Arithmiks",
     breadcrumbName: "Mr. Seller Note",
     description:
-      "Case study: how Arithmiks built an automated, multi-party loan management platform for Mr. Seller Note, from note creation to final settlement.",
+      "Read this case study to see how Arithmiks automated multi-party loan management for Mr. Seller Note, from note creation to final settlement.",
   },
 };
 

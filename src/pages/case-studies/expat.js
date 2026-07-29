@@ -6,9 +6,14 @@ import { getCaseStudySeo } from "../../constants/caseStudySeo";
 
 const slug = "expat";
 const pageSeo = getCaseStudySeo(slug);
+const breadcrumbItems = [
+  { name: "Home", pathname: "/" },
+  { name: "Case Studies", pathname: "/case-studies" },
+  { name: pageSeo.breadcrumbName, pathname: "/case-studies/expat" },
+];
 
 const ExpatPage = ({ data }) => {
-  return <Ehh images={data} />;
+  return <Ehh images={data} breadcrumbItems={breadcrumbItems} />;
 };
 
 export default ExpatPage;
@@ -17,12 +22,9 @@ export const Head = () => (
   <SEO
     title={pageSeo.title}
     description={pageSeo.description}
+    hideImage
     pathname="/case-studies/expat"
-    breadcrumbItems={[
-      { name: "Home", pathname: "/" },
-      { name: "Case Studies", pathname: "/case-studies" },
-      { name: pageSeo.breadcrumbName, pathname: "/case-studies/expat" },
-    ]}
+    breadcrumbItems={breadcrumbItems}
   />
 );
 

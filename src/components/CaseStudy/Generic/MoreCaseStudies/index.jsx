@@ -1,9 +1,11 @@
 import React, { useMemo } from "react";
+import { Link } from "gatsby";
 import { caseStudies } from "../../../Landing/Case-Study/caseStudies";
 
 import {
   Section,
   Container,
+  RelatedServiceText,
   HeadingRow,
   DividerLine,
   Heading,
@@ -39,12 +41,27 @@ const getNextTwoCaseStudies = (currentSlug) => {
 
 const MoreCaseStudies = ({ currentSlug }) => {
   const nextTwo = useMemo(() => getNextTwoCaseStudies(currentSlug), [currentSlug]);
+  const currentStudy = useMemo(
+    () => (caseStudies || []).find((s) => s.slug === currentSlug),
+    [currentSlug]
+  );
+  const relatedService = currentStudy?.relatedService;
 
   if (!nextTwo || nextTwo.length === 0) return null;
 
   return (
     <Section>
       <Container>
+        {relatedService && (
+          <RelatedServiceText>
+            This project drew on our{" "}
+            <Link to={`/services/${relatedService.slug}`}>
+              {relatedService.label}
+            </Link>{" "}
+            service.
+          </RelatedServiceText>
+        )}
+
         <HeadingRow>
           <DividerLine />
           <Heading>MORE CASE STUDIES</Heading>

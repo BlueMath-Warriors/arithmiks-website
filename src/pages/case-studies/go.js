@@ -6,9 +6,14 @@ import { getCaseStudySeo } from "../../constants/caseStudySeo";
 
 const slug = "go";
 const pageSeo = getCaseStudySeo(slug);
+const breadcrumbItems = [
+  { name: "Home", pathname: "/" },
+  { name: "Case Studies", pathname: "/case-studies" },
+  { name: pageSeo.breadcrumbName, pathname: "/case-studies/go" },
+];
 
 const GoPage = ({ data }) => {
-  return <Go images={data} />;
+  return <Go images={data} breadcrumbItems={breadcrumbItems} />;
 };
 
 export default GoPage;
@@ -17,12 +22,9 @@ export const Head = () => (
   <SEO
     title={pageSeo.title}
     description={pageSeo.description}
+    hideImage
     pathname="/case-studies/go"
-    breadcrumbItems={[
-      { name: "Home", pathname: "/" },
-      { name: "Case Studies", pathname: "/case-studies" },
-      { name: pageSeo.breadcrumbName, pathname: "/case-studies/go" },
-    ]}
+    breadcrumbItems={breadcrumbItems}
   />
 );
 

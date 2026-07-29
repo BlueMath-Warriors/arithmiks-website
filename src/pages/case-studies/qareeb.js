@@ -6,9 +6,14 @@ import { getCaseStudySeo } from "../../constants/caseStudySeo";
 
 const slug = "qareeb";
 const pageSeo = getCaseStudySeo(slug);
+const breadcrumbItems = [
+  { name: "Home", pathname: "/" },
+  { name: "Case Studies", pathname: "/case-studies" },
+  { name: pageSeo.breadcrumbName, pathname: "/case-studies/qareeb" },
+];
 
 const QareebPage = ({ data }) => {
-  return <Qareeb images={data} />;
+  return <Qareeb images={data} breadcrumbItems={breadcrumbItems} />;
 };
 
 export default QareebPage;
@@ -17,12 +22,9 @@ export const Head = () => (
   <SEO
     title={pageSeo.title}
     description={pageSeo.description}
+    hideImage
     pathname="/case-studies/qareeb"
-    breadcrumbItems={[
-      { name: "Home", pathname: "/" },
-      { name: "Case Studies", pathname: "/case-studies" },
-      { name: pageSeo.breadcrumbName, pathname: "/case-studies/qareeb" },
-    ]}
+    breadcrumbItems={breadcrumbItems}
   />
 );
 

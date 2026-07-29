@@ -22,7 +22,7 @@ import {
   keyFeaturesData,
 } from "./data";
 
-const Easybar = ({ images }) => {
+const Easybar = ({ images, breadcrumbItems }) => {
   const heroData = getHeroData(images);
   const overviewData = getOverviewData(images);
 
@@ -30,7 +30,7 @@ const Easybar = ({ images }) => {
     <>
       <Header />
       <main>
-      <Hero {...heroData} />
+      <Hero {...heroData} breadcrumbItems={breadcrumbItems} />
       <TechStack {...techStackData} />
       <Overview {...overviewData} />
       <Testimonial {...testimonialData} />

@@ -6,9 +6,14 @@ import { getCaseStudySeo } from "../../constants/caseStudySeo";
 
 const slug = "lfgo";
 const pageSeo = getCaseStudySeo(slug);
+const breadcrumbItems = [
+  { name: "Home", pathname: "/" },
+  { name: "Case Studies", pathname: "/case-studies" },
+  { name: pageSeo.breadcrumbName, pathname: "/case-studies/lfgo" },
+];
 
 const LfgoPage = ({ data }) => {
-  return <Lfgo images={data} />;
+  return <Lfgo images={data} breadcrumbItems={breadcrumbItems} />;
 };
 
 export default LfgoPage;
@@ -17,12 +22,9 @@ export const Head = () => (
   <SEO
     title={pageSeo.title}
     description={pageSeo.description}
+    hideImage
     pathname="/case-studies/lfgo"
-    breadcrumbItems={[
-      { name: "Home", pathname: "/" },
-      { name: "Case Studies", pathname: "/case-studies" },
-      { name: pageSeo.breadcrumbName, pathname: "/case-studies/lfgo" },
-    ]}
+    breadcrumbItems={breadcrumbItems}
   />
 );
 

@@ -1,6 +1,7 @@
 import * as React from "react";
 import * as containerStyles from "../styles/global.module.css";
 import Header from "../components/Landing/Header";
+import Breadcrumbs from "../components/Breadcrumbs";
 import About from "../components/Landing/About-Section";
 import Services from "../components/Landing/Services-Section";
 import ContactUs from "../components/Landing/Contact-Us";
@@ -18,7 +19,7 @@ const pageTitleStyle = {
 };
 
 const aboutIntroStyle = {
-  paddingTop: "120px",
+  paddingTop: "64px",
   paddingBottom: "24px",
   paddingLeft: "24px",
   paddingRight: "24px",
@@ -26,12 +27,18 @@ const aboutIntroStyle = {
   margin: "0 auto",
 };
 
+const breadcrumbItems = [
+  { name: "Home", pathname: "/" },
+  { name: "About", pathname: "/about" },
+];
+
 const AboutPage = () => {
   return (
     <>
       <div className={containerStyles.header_div}>
         <Header white={true} fixed={true} />
       </div>
+      <Breadcrumbs items={breadcrumbItems} />
       <main style={aboutIntroStyle}>
         <h1 style={pageTitleStyle}>About Arithmiks</h1>
       </main>
@@ -50,9 +57,6 @@ export const Head = () => (
     title="About Arithmiks"
     description="Learn how Arithmiks builds customer-centric software—from product discovery to delivery—and explore our services, culture, and how we partner with teams worldwide."
     pathname="/about"
-    breadcrumbItems={[
-      { name: "Home", pathname: "/" },
-      { name: "About", pathname: "/about" },
-    ]}
+    breadcrumbItems={breadcrumbItems}
   />
 );

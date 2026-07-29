@@ -6,9 +6,14 @@ import { getCaseStudySeo } from "../../constants/caseStudySeo";
 
 const slug = "sbaloans";
 const pageSeo = getCaseStudySeo(slug);
+const breadcrumbItems = [
+  { name: "Home", pathname: "/" },
+  { name: "Case Studies", pathname: "/case-studies" },
+  { name: pageSeo.breadcrumbName, pathname: "/case-studies/sbaloans" },
+];
 
 const SbaloansPage = ({ data }) => {
-  return <Sbaloans images={data} />;
+  return <Sbaloans images={data} breadcrumbItems={breadcrumbItems} />;
 };
 
 export default SbaloansPage;
@@ -17,12 +22,9 @@ export const Head = () => (
   <SEO
     title={pageSeo.title}
     description={pageSeo.description}
+    hideImage
     pathname="/case-studies/sbaloans"
-    breadcrumbItems={[
-      { name: "Home", pathname: "/" },
-      { name: "Case Studies", pathname: "/case-studies" },
-      { name: pageSeo.breadcrumbName, pathname: "/case-studies/sbaloans" },
-    ]}
+    breadcrumbItems={breadcrumbItems}
   />
 );
 

@@ -14,6 +14,7 @@ import {
 } from "./index.styled";
 import * as containerStyles from "../../styles/global.module.css";
 import Header from "../Landing/Header";
+import Breadcrumbs from "../Breadcrumbs";
 import ContactUs from "../Landing/Contact-Us";
 import Footer from "..//Landing/Footer";
 import TeamNeed from "./TeamNeed";
@@ -25,12 +26,19 @@ import TeamStructure from "./TeamStructure";
 import ArrowRight from "../../images/ArrowRight.svg";
 import TeamIcon from "../../images/team-icon.svg";
 import Gradiant from "../../images/gradiant-6.svg";
+
+const breadcrumbItems = [
+  { name: "Home", pathname: "/" },
+  { name: "Dedicated Team", pathname: "/dedicated-team" },
+];
+
 const DedicatedTeam = () => {
   return (
     <>
       <Header white={false} />
+      <Breadcrumbs items={breadcrumbItems} clearHeader />
       <main>
-      <section className={containerStyles.fixed_price}>
+      <section >
         <OuterContainer>
           <TextContainer>
             <PrimaryText>

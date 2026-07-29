@@ -5,9 +5,14 @@ import { getServiceBySlug, servicePath } from "../../constants/serviceRoutes";
 
 const slug = "ai-data-solutions";
 const service = getServiceBySlug(slug);
+const breadcrumbItems = [
+  { name: "Home", pathname: "/" },
+  { name: "Services", pathname: "/services" },
+  { name: service.label, pathname: servicePath(slug) },
+];
 
 const AiDataSolutionsPage = () => (
-  <ServicePage headline={service.headline} intro={service.intro} />
+  <ServicePage headline={service.headline} intro={service.intro} breadcrumbItems={breadcrumbItems} />
 );
 
 export default AiDataSolutionsPage;
@@ -17,10 +22,6 @@ export const Head = () => (
     title={service.seoTitle}
     description={service.seoDescription}
     pathname={servicePath(slug)}
-    breadcrumbItems={[
-      { name: "Home", pathname: "/" },
-      { name: "Services", pathname: "/services" },
-      { name: service.label, pathname: servicePath(slug) },
-    ]}
+    breadcrumbItems={breadcrumbItems}
   />
 );

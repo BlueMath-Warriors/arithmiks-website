@@ -22,7 +22,7 @@ import {
   keyFeaturesData,
 } from "./data";
 
-const Swerv = ({ images }) => {
+const Swerv = ({ images, breadcrumbItems }) => {
   const heroData = getHeroData(images);
   const overviewData = getOverviewData(images);
 
@@ -30,7 +30,7 @@ const Swerv = ({ images }) => {
     <>
       <Header />
       <main>
-      <Hero {...heroData} />
+      <Hero {...heroData} breadcrumbItems={breadcrumbItems} />
       <TechStack {...techStackData} />
       <Overview {...overviewData} />
       {testimonialData && testimonialData.clientImageSrc && !testimonialData.clientImageSrc.includes('dummyOwner') && (

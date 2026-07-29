@@ -19,5 +19,9 @@ export const Head = () => (
       "Experience the power of highly talented engineers working delicately on a project to unleash the excellence and delivery."
     }
     pathname="/dedicated-team"
+    breadcrumbItems={[
+      { name: "Home", pathname: "/" },
+      { name: "Dedicated Team", pathname: "/dedicated-team" },
+    ]}
   />
 );

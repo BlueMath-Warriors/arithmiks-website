@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "gatsby";
 import {
   SmallTxt,
@@ -16,6 +16,9 @@ import {
   CaseStudyTag,
   ButtonRow,
   ViewMoreButtonLink,
+  CategoryTabs,
+  CategoryTab,
+  EmptyCategoryMessage,
 } from "./index.styled";
 import CollaboratedWith from "./Collaborated-With";
 import * as containerStyles from "../../../styles/global.module.css";
@@ -28,11 +31,44 @@ if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
 
+const CATEGORIES = [
+  { slug: "all", label: "All" },
+  { slug: "fintech", label: "FinTech" },
+  { slug: "saas-software", label: "SaaS Software" },
+  { slug: "contech", label: "ConTech" },
+];
+
+const getInitialCategory = () => {
+  if (typeof window === "undefined") return "all";
+  const params = new URLSearchParams(window.location.search);
+  const requested = params.get("category");
+  return CATEGORIES.some((c) => c.slug === requested) ? requested : "all";
+};
+
 /**
  * @param {{ landing?: boolean; titleAs?: "h1" | "h2" }} props
  */
 const CaseStudy = ({ landing = false, titleAs = "h2" }) => {
   const sectionRef = useRef(null);
+  const [activeCategory, setActiveCategory] = useState(landing ? "all" : getInitialCategory);
+
+  const visibleCaseStudies = useMemo(() => {
+    if (landing) return caseStudies.slice(0, 4);
+    if (activeCategory === "all") return caseStudies;
+    return caseStudies.filter((study) => study.category === activeCategory);
+  }, [landing, activeCategory]);
+
+  const handleCategoryClick = (slug) => {
+    setActiveCategory(slug);
+    if (typeof window === "undefined") return;
+    const url = new URL(window.location.href);
+    if (slug === "all") {
+      url.searchParams.delete("category");
+    } else {
+      url.searchParams.set("category", slug);
+    }
+    window.history.replaceState({}, "", url);
+  };
 
   useEffect(() => {
     if (typeof window === "undefined" || !sectionRef.current) return;
@@ -88,8 +124,30 @@ const CaseStudy = ({ landing = false, titleAs = "h2" }) => {
 
       {!landing && <CollaboratedWith />}
 
+      {!landing && (
+        <CategoryTabs role="group" aria-label="Filter case studies by category">
+          {CATEGORIES.map((category) => (
+            <CategoryTab
+              key={category.slug}
+              type="button"
+              $active={activeCategory === category.slug}
+              aria-pressed={activeCategory === category.slug}
+              onClick={() => handleCategoryClick(category.slug)}
+            >
+              {category.label}
+            </CategoryTab>
+          ))}
+        </CategoryTabs>
+      )}
+
+      {!landing && visibleCaseStudies.length === 0 && (
+        <EmptyCategoryMessage>
+          No case studies in this category yet — check back soon.
+        </EmptyCategoryMessage>
+      )}
+
       <CaseStudiesGrid className="cs-grid">
-        {(landing ? caseStudies.slice(0, 4) : caseStudies).map((study, index) => {
+        {visibleCaseStudies.map((study, index) => {
           if (study.hasDetailPage) {
             return (
               <CaseStudyCardLink

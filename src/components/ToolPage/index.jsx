@@ -1,6 +1,7 @@
 import React from "react";
 import * as containerStyles from "../../styles/global.module.css";
 import Header from "../Landing/Header";
+import Breadcrumbs from "../Breadcrumbs";
 import Footer from "../Landing/Footer";
 import FAQ from "./FAQ";
 import RelatedTools from "./RelatedTools";
@@ -27,6 +28,7 @@ import {
  * @param {string} [props.eyebrow]
  * @param {string[]} [props.trustBadges]
  * @param {{ question: string; answer: string }[]} [props.faq]
+ * @param {{ name: string; pathname: string }[]} [props.breadcrumbItems]
  * @param {React.ReactNode} props.children  The interactive tool surface.
  */
 const ToolPage = ({
@@ -36,6 +38,7 @@ const ToolPage = ({
   eyebrow = "Free online tool",
   trustBadges = [],
   faq = [],
+  breadcrumbItems,
   children,
 }) => {
   return (
@@ -43,6 +46,7 @@ const ToolPage = ({
       <div className={containerStyles.header_div}>
         <Header white={true} fixed={true} />
       </div>
+      <Breadcrumbs items={breadcrumbItems} />
       <main>
       <ToolShell>
         <ToolHero>

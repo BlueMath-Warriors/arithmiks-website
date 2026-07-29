@@ -7,6 +7,8 @@ import { useSiteMetadata } from "../hooks/use-site-metadata";
  * @param {string} [props.title]
  * @param {string} [props.description]
  * @param {string} [props.pathname]
+ * @param {string} [props.image] Absolute or root-relative path to a page-specific share image. Falls back to the site default (arithmiks-home-meta.png) when omitted.
+ * @param {boolean} [props.hideImage] When true, omits all image meta tags entirely (no fallback to the site default) so link previews show title/description only.
  * @param {{ name: string; pathname: string }[]} [props.breadcrumbItems] Ordered trail including the current page; URLs built with siteUrl + pathname.
  * @param {boolean} [props.article]
  */
@@ -14,6 +16,8 @@ export const SEO = ({
   title,
   description,
   pathname,
+  image,
+  hideImage = false,
   breadcrumbItems,
   children,
   article = false,
@@ -21,7 +25,7 @@ export const SEO = ({
   const {
     title: defaultTitle,
     description: defaultDescription,
-    image,
+    image: defaultImage,
     siteUrl,
     twitterUsername,
   } = useSiteMetadata();
@@ -36,7 +40,8 @@ export const SEO = ({
   const seo = {
     title: title || defaultTitle,
     description: description || defaultDescription,
-    image: `${siteUrl}${image}`,
+    image: image ? `${siteUrl}${image}` : `${siteUrl}${defaultImage}`,
+    isDefaultImage: !image,
     url: `${siteUrl}${pathname || ``}`,
     twitterUsername,
   };
@@ -135,19 +140,19 @@ export const SEO = ({
     <>
       <title>{seo.title}</title>
       <meta name="description" content={seo.description} />
-      <meta name="image" content={seo.image} />
+      {!hideImage && <meta name="image" content={seo.image} />}
       <meta name="author" content="Arithmiks" />
-      
+
       <meta name="robots" content="index, follow, max-snippet:-1, max-video-preview:-1, max-image-preview:large" />
-      
+
       <link rel="canonical" href={seo.url} />
-      
-      <meta name="twitter:card" content="summary_large_image" />
+
+      <meta name="twitter:card" content={hideImage ? "summary" : "summary_large_image"} />
       <meta name="twitter:site" content={`@${seo.twitterUsername}`} />
       <meta name="twitter:creator" content={`@${seo.twitterUsername}`} />
       <meta name="twitter:title" content={seo.title} />
       <meta name="twitter:description" content={seo.description} />
-      <meta name="twitter:image" content={seo.image} />
+      {!hideImage && <meta name="twitter:image" content={seo.image} />}
       <meta name="twitter:url" content={seo.url} />
 
       <meta property="og:locale" content="en_US" />
@@ -156,12 +161,20 @@ export const SEO = ({
       <meta property="og:description" content={seo.description} />
       <meta property="og:url" content={seo.url} />
       <meta property="og:site_name" content="Arithmiks" />
-      <meta property="og:image" content={seo.image} />
-      <meta property="og:image:secure_url" content={seo.image} />
-      <meta property="og:image:width" content="1200" />
-      <meta property="og:image:height" content="650" />
-      <meta property="og:image:alt" content={seo.title} />
-      <meta property="og:image:type" content="image/png" />
+      {!hideImage && (
+        <>
+          <meta property="og:image" content={seo.image} />
+          <meta property="og:image:secure_url" content={seo.image} />
+          {seo.isDefaultImage && (
+            <>
+              <meta property="og:image:width" content="1200" />
+              <meta property="og:image:height" content="650" />
+              <meta property="og:image:type" content="image/png" />
+            </>
+          )}
+          <meta property="og:image:alt" content={seo.title} />
+        </>
+      )}
 
       <script type="application/ld+json">
         {JSON.stringify(organizationSchema)}

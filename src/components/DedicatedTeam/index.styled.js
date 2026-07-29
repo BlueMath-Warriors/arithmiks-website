@@ -5,26 +5,23 @@ export const OuterContainer = styled.div`
   background-color: #fff;
   background-size: cover;
   background-position: center;
-  height: 720px;
-  padding-top: 90px;
   max-width: 1120px;
   margin: auto;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 24px 0;
   gap: 16px;
   position: relative;
 
 @media screen and (max-width: ${breakpoints.large}) {
     max-width: 757px;
-    height: 605px;
 }
 @media screen and (max-width: ${breakpoints.medium}) {
     max-width: 382px;
-    height: 834px;
     flex-direction: column;
-    gap: 62px;
-    padding-top: 128px;
+    gap: 40px;
+    padding: 24px 0;
 }
 `
 export const TextContainer = styled.div`

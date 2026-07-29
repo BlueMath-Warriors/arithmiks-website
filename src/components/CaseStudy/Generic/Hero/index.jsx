@@ -1,6 +1,7 @@
 import React from "react";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import * as containerStyles from "../../../../styles/global.module.css";
+import Breadcrumbs from "../../../Breadcrumbs";
 import {
   HeroContent,
   SmallTxt,
@@ -12,13 +13,14 @@ import {
 
 /**
  * @param {Object} props
- * @param {string} props.category 
- * @param {string} props.logoSrc 
- * @param {string} props.logoAlt 
- * @param {React.ReactNode} props.caption 
+ * @param {string} props.category
+ * @param {string} props.logoSrc
+ * @param {string} props.logoAlt
+ * @param {React.ReactNode} props.caption
  * @param {Object} [props.heroImageData] - gatsbyImageData from GraphQL query
  * @param {string} [props.heroImageSrc] - fallback static path
- * @param {string} props.heroImageAlt 
+ * @param {string} props.heroImageAlt
+ * @param {{ name: string; pathname: string }[]} [props.breadcrumbItems]
  */
 const Hero = ({
   category,
@@ -28,11 +30,13 @@ const Hero = ({
   heroImageData,
   heroImageSrc,
   heroImageAlt = "Hero Image",
+  breadcrumbItems,
 }) => {
   const gatsbyImage = heroImageData ? getImage(heroImageData) : null;
 
   return (
     <div className={containerStyles.easybar_hero}>
+      <Breadcrumbs items={breadcrumbItems} />
       <HeroContent>
         <SmallTxt>{category}</SmallTxt>
         <LogoImage src={logoSrc} alt={logoAlt} />

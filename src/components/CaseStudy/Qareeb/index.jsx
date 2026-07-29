@@ -22,7 +22,7 @@ import {
   keyFeaturesData,
 } from "./data";
 
-const Qareeb = ({ images }) => {
+const Qareeb = ({ images, breadcrumbItems }) => {
   const heroData = getHeroData(images);
   const overviewData = getOverviewData(images);
   const hasTestimonial = false;
@@ -31,7 +31,7 @@ const Qareeb = ({ images }) => {
     <>
       <Header />
       <main>
-      <Hero {...heroData} />
+      <Hero {...heroData} breadcrumbItems={breadcrumbItems} />
       <TechStack {...techStackData} />
       <Overview {...overviewData} />
       {hasTestimonial && <Testimonial {...testimonialData} />}
