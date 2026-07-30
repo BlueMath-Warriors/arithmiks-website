@@ -25,6 +25,7 @@ import {
   RelatedGrid,
   RelatedCardLink,
   RelatedCardCover,
+  RelatedCardCategoryTag,
   RelatedCardTitle,
   RelatedCardMeta,
 } from "../components/Blog/BlogPost/index.styled";
@@ -81,6 +82,9 @@ const BlogPostTemplate = ({ data, pageContext, children }) => {
                   <RelatedCardCover>
                     <CoverArt $gradient={post.frontmatter.coverGradient} style={{ height: "100%" }} />
                   </RelatedCardCover>
+                  <RelatedCardCategoryTag>
+                    {getCategoryLabel(post.frontmatter.category)}
+                  </RelatedCardCategoryTag>
                   <RelatedCardTitle>{post.frontmatter.title}</RelatedCardTitle>
                   <RelatedCardMeta>
                     {post.frontmatter.date} · {post.readingTime} min read
@@ -151,6 +155,7 @@ export const query = graphql`
         frontmatter {
           title
           slug
+          category
           coverGradient
           date(formatString: "MMM D, YYYY")
         }

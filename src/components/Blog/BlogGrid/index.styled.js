@@ -118,6 +118,8 @@ export const CategoryTabs = styled.div`
 export const CategoryTab = styled.button`
   display: inline-flex;
   align-items: center;
+  justify-content: center;
+  min-height: 44px;
   padding: 10px 20px;
   border-radius: 100px;
   border: 1px solid ${(props) => (props.$active ? "#1355FF" : "#E7EAEE")};
@@ -132,6 +134,11 @@ export const CategoryTab = styled.button`
   &:hover {
     border-color: #1355ff;
     color: ${(props) => (props.$active ? "#FFF" : "#1355FF")};
+  }
+
+  &:focus-visible {
+    outline: 2px solid #1355ff;
+    outline-offset: 2px;
   }
 `;
 
@@ -174,18 +181,6 @@ export const CardCoverWrap = styled.div`
   transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 `;
 
-export const BlogCardLink = styled(Link)`
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  text-decoration: none;
-  cursor: pointer;
-
-  &:hover ${CardCoverWrap} {
-    transform: translateY(-4px);
-  }
-`;
-
 export const CardCategoryTag = styled.span`
   display: inline-block;
   padding: 4px 10px;
@@ -210,10 +205,33 @@ export const CardTitle = styled.h3`
   line-height: 28px;
   letter-spacing: -0.4px;
   margin-bottom: 10px;
+  transition: color 0.2s ease;
 
   @media screen and (max-width: ${breakpoints.medium}) {
     font-size: 19px;
     line-height: 26px;
+  }
+`;
+
+export const BlogCardLink = styled(Link)`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 16px;
+
+  &:hover ${CardCoverWrap} {
+    transform: translateY(-4px);
+  }
+
+  &:hover ${CardTitle} {
+    color: #1355ff;
+  }
+
+  &:focus-visible {
+    outline: 2px solid #1355ff;
+    outline-offset: 6px;
   }
 `;
 

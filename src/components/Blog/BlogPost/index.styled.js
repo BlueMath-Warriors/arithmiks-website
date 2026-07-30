@@ -33,11 +33,11 @@ export const CoverSection = styled.div`
 `;
 
 export const ContentColumn = styled.div`
-  width: 700px;
+  width: 1120px;
   margin: 0 auto;
 
   @media screen and (max-width: ${breakpoints.large}) {
-    width: 600px;
+    width: 760px;
   }
   @media screen and (max-width: ${breakpoints.medium}) {
     width: 90%;
@@ -46,6 +46,7 @@ export const ContentColumn = styled.div`
 
 export const CategoryPill = styled.span`
   display: inline-block;
+  max-width: 700px;
   padding: 6px 14px;
   background: #f0f5ff;
   border-radius: 100px;
@@ -59,6 +60,7 @@ export const CategoryPill = styled.span`
 `;
 
 export const Title = styled.h1`
+  max-width: 700px;
   color: #1d1d1f;
   font-family: Poppins;
   font-size: 44px;
@@ -79,6 +81,7 @@ export const BylineRow = styled.div`
   display: flex;
   align-items: center;
   gap: 14px;
+  max-width: 700px;
   padding-bottom: 28px;
   margin-bottom: 32px;
   border-bottom: 1px solid #e7eaee;
@@ -107,6 +110,7 @@ export const BylineSub = styled.span`
 `;
 
 export const ArticleBody = styled.div`
+  max-width: 700px;
   color: #1d1d1f;
   font-family: Poppins;
   font-size: 18px;
@@ -274,13 +278,19 @@ export const RelatedCardCover = styled.div`
   transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 `;
 
-export const RelatedCardLink = styled(Link)`
-  display: block;
-  text-decoration: none;
-
-  &:hover ${RelatedCardCover} {
-    transform: translateY(-4px);
-  }
+export const RelatedCardCategoryTag = styled.span`
+  display: inline-block;
+  padding: 4px 10px;
+  background: #f0f5ff;
+  border-radius: 6px;
+  color: #1355ff;
+  font-family: Poppins;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  margin-bottom: 8px;
+  width: fit-content;
 `;
 
 export const RelatedCardTitle = styled.h3`
@@ -291,6 +301,26 @@ export const RelatedCardTitle = styled.h3`
   line-height: 24px;
   letter-spacing: -0.3px;
   margin-bottom: 8px;
+  transition: color 0.2s ease;
+`;
+
+export const RelatedCardLink = styled(Link)`
+  display: block;
+  text-decoration: none;
+  border-radius: 14px;
+
+  &:hover ${RelatedCardCover} {
+    transform: translateY(-4px);
+  }
+
+  &:hover ${RelatedCardTitle} {
+    color: #1355ff;
+  }
+
+  &:focus-visible {
+    outline: 2px solid #1355ff;
+    outline-offset: 6px;
+  }
 `;
 
 export const RelatedCardMeta = styled.span`
