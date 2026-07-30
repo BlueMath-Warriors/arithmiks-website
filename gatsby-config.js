@@ -18,7 +18,7 @@ const toAbsoluteUrl = (path) => {
 module.exports = {
   siteMetadata: {
     title: `Arithmiks - Software Development Company`,
-    siteUrl: `https://arithmiks.com`,
+    siteUrl: siteUrl,
     description: `We are a custom software development company that assists you in converting your ideas into wonderful software solutions. With our customer centric approach we build products that matter to users.`,
     image: `/arithmiks-home-meta.png`,
     twitterUsername: 'arithmiks',
@@ -40,11 +40,19 @@ module.exports = {
         path: `${__dirname}/static`,
       },
     },
-    
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `blog`,
+        path: `${__dirname}/content/blog`,
+      },
+    },
+    `gatsby-plugin-mdx`,
+
     "gatsby-plugin-sharp",
     "gatsby-transformer-sharp",
     "gatsby-plugin-image",
-    
+
     "gatsby-plugin-react-svg",
     
     {

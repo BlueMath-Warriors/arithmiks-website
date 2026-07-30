@@ -83,31 +83,31 @@ export const keyFeaturesData = {
       title: "1. Multi-Chain Token Creation:",
       description:
         "Seamless minting and trading on Ethereum and Solana blockchains.",
-      image: "/Lfgo Key Features/lfgoKeyFeature1.png",
+      image: "/Lfgo Key Features/lfgoKeyFeature1.webp",
     },
     {
       title: "2. Real-Time NFT Marketplace",
       description:
         "Discover NFT prices, new drops, and liquidity updates in real time, powered by WebSocket streaming.",
-      image: "/Lfgo Key Features/lfgoKeyFeature2.png",
+      image: "/Lfgo Key Features/lfgoKeyFeature2.webp",
     },
     {
       title: "3. One Dashboard, Any Wallet",
       description:
         "Connect MetaMask or Phantom to manage all your multi-chain assets from one dashboard.",
-      image: "/Lfgo Key Features/lfgoKeyFeature3.png",
+      image: "/Lfgo Key Features/lfgoKeyFeature3.webp",
     },
     {
       title: "4. Fail-Safe Token Launches",
       description:
         "Missed liquidity goals? Users get automatic or on-demand refunds.",
-      image: "/Lfgo Key Features/lfgoKeyFeature4.png",
+      image: "/Lfgo Key Features/lfgoKeyFeature4.webp",
     },
     {
       title: "5. Smart Reward Contracts",
       description:
         "Automated contracts validate requirements, apply boosts, and convert rewards into platform tokens.",
-      image: "/Lfgo Key Features/lfgoKeyFeature5.png",
+      image: "/Lfgo Key Features/lfgoKeyFeature5.webp",
     },
   ],
   leftIconSrc: "/leftIcon.svg",

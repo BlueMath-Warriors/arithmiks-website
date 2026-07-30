@@ -1,11 +1,14 @@
 import * as React from "react";
 import { graphql } from "gatsby";
+import { getSrc } from "gatsby-plugin-image";
 import Qareeb from "../../components/CaseStudy/Qareeb";
 import { SEO } from "../../components/seo";
 import { getCaseStudySeo } from "../../constants/caseStudySeo";
+import { caseStudies } from "../../components/Landing/Case-Study/caseStudies";
 
 const slug = "qareeb";
 const pageSeo = getCaseStudySeo(slug);
+const fallbackImage = caseStudies.find((cs) => cs.slug === slug)?.dashboardImg;
 const breadcrumbItems = [
   { name: "Home", pathname: "/" },
   { name: "Case Studies", pathname: "/case-studies" },
@@ -18,11 +21,11 @@ const QareebPage = ({ data }) => {
 
 export default QareebPage;
 
-export const Head = () => (
+export const Head = ({ data }) => (
   <SEO
     title={pageSeo.title}
     description={pageSeo.description}
-    hideImage
+    image={(data?.heroImage && getSrc(data.heroImage)) || fallbackImage}
     pathname="/case-studies/qareeb"
     breadcrumbItems={breadcrumbItems}
   />
@@ -30,7 +33,7 @@ export const Head = () => (
 
 export const query = graphql`
   query {
-    heroImage: file(relativePath: { eq: "qareebHero.png" }) {
+    heroImage: file(relativePath: { eq: "qareebHero.webp" }) {
       childImageSharp {
         gatsbyImageData(
           width: 929
@@ -40,7 +43,7 @@ export const query = graphql`
         )
       }
     }
-    overviewImage: file(relativePath: { eq: "qareebOverview.png" }) {
+    overviewImage: file(relativePath: { eq: "qareebOverview.webp" }) {
       childImageSharp {
         gatsbyImageData(
           width: 929

@@ -1,0 +1,37 @@
+---
+title: "What We Learned Shipping Client Products This Year"
+slug: "what-we-learned-shipping-client-products"
+excerpt: "A few honest lessons from building across fintech, SaaS, and contech this year — the kind that only show up after the demo is over and the product is actually in use."
+date: "2026-04-10"
+category: "company-news"
+coverGradient: "navy"
+coverImage: "/blog/covers/what-we-learned-shipping-client-products.webp"
+author:
+  name: "Arithmiks Team"
+  avatar: "AT"
+  bio: "Notes from the engineers and product people building at Arithmiks."
+---
+
+We spend most of our time heads-down inside client codebases, which means we rarely stop to write down what we're actually learning. This year, working across fintech, SaaS, and contech products, a few lessons kept repeating across otherwise very different engagements — so we're writing them down here instead of just in retro notes.
+
+## Discovery is cheaper than rework, every time
+
+The engagements that went smoothest weren't the ones with the cleanest requirements docs — they were the ones where we pushed back early on vague scope instead of starting to build against it. A week spent clarifying what "automate loan processing" actually means for a specific team's workflow saves months of rebuilding features that solved the wrong version of the problem.
+
+## Migration tooling is a feature, not a chore
+
+More than one product we shipped this year lived or died on whether existing users could bring their data and workflows with them. It's tempting to treat import/export and migration tooling as unglamorous plumbing to build last. In practice, it's often the single feature that determines adoption — we now scope it in week one, not week ten.
+
+## Dashboards earn trust by showing their work
+
+Across the fintech and SaaS platforms we built this year, the dashboards that users actually trusted weren't the ones with the most charts — they were the ones that made it obvious *where a number came from*. Drill-down, timestamps, and clear data provenance did more for user confidence than any visual polish on top.
+
+> Users don't need every number to be perfect. They need to be able to check it when something looks wrong.
+
+## Small, boring reliability work compounds
+
+None of this year's most-appreciated work showed up on a feature list. Cutting a flaky deploy pipeline down to something predictable. Adding real error tracking to a product that previously found out about bugs from user emails. Tightening a backup strategy nobody hoped to ever need. These are the improvements that don't demo well and matter enormously six months later.
+
+## What's next
+
+We're carrying all of this into the next set of engagements — tighter discovery, earlier migration planning, dashboards that show their work, and a continued bias toward the unglamorous reliability work that keeps products trustworthy long after launch day. If you're building something and want to compare notes, [get in touch](/contact) — we'd like to hear what you're seeing too.

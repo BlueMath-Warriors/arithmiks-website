@@ -85,6 +85,7 @@ export const Menu = styled.ul`
   list-style-type: none;
   margin-left: auto;
   margin-right: 32px;
+
   @media screen and (max-width: ${breakpoints.large}) {
     position: fixed;
     left: 0;
@@ -93,22 +94,61 @@ export const Menu = styled.ul`
     background: #fff;
     width: 100%;
     text-align: left;
-    transform: translateX(100%);
-  }
-
-  &.active {
-    top: 70px;
-    position: absolute;
-    left: 0;
-    margin-top: 18px;
-    border-top: 1px solid #c2c2c2;
-    transform: translateX(0);
-  }
-  @media screen and (max-width: ${breakpoints.large}) {
     gap: 24px;
     padding: 12px 0;
+    margin-top: 18px;
+    border-top: 1px solid #c2c2c2;
+
+    transform: translateX(100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+      opacity 0.25s ease,
+      visibility 0s linear 0.35s;
+
+    > * {
+      opacity: 0;
+      transform: translateX(16px);
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+
     &.hide {
       display: none;
+    }
+
+    &.active {
+      transform: translateX(0);
+      opacity: 1;
+      visibility: visible;
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+        opacity 0.25s ease,
+        visibility 0s linear 0s;
+
+      > *:nth-child(1) { transition-delay: 0.08s; }
+      > *:nth-child(2) { transition-delay: 0.13s; }
+      > *:nth-child(3) { transition-delay: 0.18s; }
+      > *:nth-child(4) { transition-delay: 0.23s; }
+      > *:nth-child(5) { transition-delay: 0.28s; }
+      > *:nth-child(6) { transition-delay: 0.33s; }
+
+      > * {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+  }
+
+  @media screen and (max-width: ${breakpoints.large}) and (prefers-reduced-motion: reduce) {
+    transition: none;
+    transform: none;
+
+    > * {
+      transition: none;
+      transform: none;
+    }
+
+    &.active {
+      transition: none;
     }
   }
 `;

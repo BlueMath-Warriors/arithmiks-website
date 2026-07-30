@@ -64,53 +64,53 @@ export const ProblemFrame = styled.div`
 export const ProblemContent = styled.div`
   position: absolute;
   top: 0;
-  left: 80px;
+  left: 0;
   right: 60px;
   bottom: 0;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  padding: 40px 50px;
+  padding: 40px 50px 40px 0;
   gap: 12px;
 
   @media screen and (max-width: ${breakpoints.large}) {
-    padding: 35px 40px;
-    left: 60px;
+    padding: 35px 40px 35px 0;
+    left: 0;
     right: 50px;
   }
 
   @media screen and (max-width: ${breakpoints.medium}) {
     position: absolute;
-    padding: 25px 28px;
-    left: 20px;
+    padding: 25px 28px 25px 0;
+    left: 0;
     right: 40px;
     gap: 8px;
     top: 0;
     bottom: 0;
-    max-width: calc(100% - 60px);
+    max-width: calc(100% - 40px);
   }
 
   @media screen and (max-width: ${breakpoints.small}) {
     position: absolute;
-    padding: 20px 20px;
-    left: 15px;
+    padding: 20px 20px 20px 0;
+    left: 0;
     right: 35px;
     gap: 6px;
     top: 0;
     bottom: 0;
-    max-width: calc(100% - 50px);
+    max-width: calc(100% - 35px);
   }
 
   @media screen and (max-width: 375px) {
     position: absolute;
-    padding: 16px 16px;
-    left: 12px;
+    padding: 16px 16px 16px 0;
+    left: 0;
     right: 30px;
     gap: 4px;
     top: 0;
     bottom: 0;
-    max-width: calc(100% - 42px);
+    max-width: calc(100% - 30px);
   }
 `;
 

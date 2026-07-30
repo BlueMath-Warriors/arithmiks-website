@@ -242,6 +242,15 @@ const Header = ({ white, fixed_bar }) => {
             </li>
             <li>
               <MenuItemLink
+                to="/blogs"
+                onClick={closeMenu}
+                $active={currentPath.startsWith("/blogs")}
+              >
+                Blog
+              </MenuItemLink>
+            </li>
+            <li>
+              <MenuItemLink
                 to="/about"
                 onClick={closeMenu}
                 $active={currentPath === "/about"}

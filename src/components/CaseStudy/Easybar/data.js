@@ -86,37 +86,37 @@ export const keyFeaturesData = {
       title: "1. Interactive Steel Design Tool:",
       description:
         "A visual canvas-based editor for designing rebars, wire mesh, and pile cages with real-time preview, configurable dimensions, and support for multiple steel types and diameters.",
-      image: "/Easybar Key Features/easybarKeyFeature1.png",
+      image: "/Easybar Key Features/easybarKeyFeature1.webp",
     },
     {
       title: "2. Ticket Creator:",
       description:
         "Generate print-ready fabrication tickets with barcodes, enabling suppliers to streamline their production workflow.",
-      image: "/Easybar Key Features/easybarKeyFeature2.png",
+      image: "/Easybar Key Features/easybarKeyFeature2.webp",
     },
     {
       title: "3. PDF & Document Generation:",
       description:
         "Generate branded PDF orders with RTL/LTR language support, barcode integration, and Excel export for seamless documentation.",
-      image: "/Easybar Key Features/easybarKeyFeature3.png",
+      image: "/Easybar Key Features/easybarKeyFeature3.webp",
     },
     {
       title: "4. Order Management:",
       description:
         "Centralized order tracking from creation to delivery, with automatic calculations for weight, units, and project timelines.",
-      image: "/Easybar Key Features/easybarKeyFeature4.png",
+      image: "/Easybar Key Features/easybarKeyFeature4.webp",
     },
     {
       title: "5. Bids Calculator:",
       description:
         "Compare supplier quotes side-by-side, apply custom fees, and generate professional pricing documents to support procurement decisions.",
-      image: "/Easybar Key Features/easybarKeyFeature5.png",
+      image: "/Easybar Key Features/easybarKeyFeature5.webp",
     },
     {
       title: "6. Admin Analytics Dashboard:",
       description:
         "Track platform usage, monitor order volumes, and export business reports to measure performance and identify growth opportunities.",
-      image: "/Easybar Key Features/easybarKeyFeature6.png",
+      image: "/Easybar Key Features/easybarKeyFeature6.webp",
     },
   ],
   leftIconSrc: "/leftIcon.svg",

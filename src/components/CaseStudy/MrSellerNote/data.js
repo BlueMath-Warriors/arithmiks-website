@@ -87,31 +87,31 @@ export const keyFeaturesData = {
       title: "1. Loan Creation and Email Invitation",
       description:
         "Structured flow to create a loan and invite the other party—tracks onboarding states, visible to all involved.",
-      image: "/MSN Key Features/msnKeyFeature1.png",
+      image: "/MSN Key Features/msnKeyFeature1.webp",
     },
     {
       title: "2. Financial Calculation Logic",
       description:
         "Backend logic calculates principal+interest breakdown per installment, records payments, and updates the balance.",
-      image: "/MSN Key Features/msnKeyFeature2.png",
+      image: "/MSN Key Features/msnKeyFeature2.webp",
     },
     {
       title: "3. Automated Payments with Stripe",
       description:
         "Scheduled collection via Stripe Connect with ACH—payments process and distribute across all parties.",
-      image: "/MSN Key Features/msnKeyFeature3.png",
+      image: "/MSN Key Features/msnKeyFeature3.webp",
     },
     {
       title: "4. Referral and Commission Handling",
       description:
         "Referral flow tracking participation, Stripe status, and commissions calculated per payment automatically.",
-      image: "/MSN Key Features/msnKeyFeature4.png",
+      image: "/MSN Key Features/msnKeyFeature4.webp",
     },
     {
       title: "5. Role-Based Dashboards",
       description:
         "Separate dashboards for Seller, Borrower, Referral, and Super Admin—each scoped to show only relevant data.",
-      image: "/MSN Key Features/msnKeyFeature5.png",
+      image: "/MSN Key Features/msnKeyFeature5.webp",
     },
   ],
   leftIconSrc: "/leftIcon.svg",

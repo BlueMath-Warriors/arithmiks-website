@@ -94,37 +94,37 @@ export const keyFeaturesData = {
       title: "1. AI Lead Scoring",
       description:
         "Gemini-powered spam filtering and configurable per-partner qualification rules.",
-      image: "/Sba Key Features/sbaKeyFeature1.png",
+      image: "/Sba Key Features/sbaKeyFeature1.webp",
     },
     {
       title: "2. AI Document Pipeline",
       description:
         "OCR and two-phase extraction turning every upload into structured summaries and audit findings.",
-      image: "/Sba Key Features/sbaKeyFeature2.png",
+      image: "/Sba Key Features/sbaKeyFeature2.webp",
     },
     {
       title: "3. AI Credit Memos",
       description:
         "Deal-level synthesis producing underwriting-style memos automatically.",
-      image: "/Sba Key Features/sbaKeyFeature3.png",
+      image: "/Sba Key Features/sbaKeyFeature3.webp",
     },
     {
       title: "4. Document Collection & E-Signature",
       description:
         "Structured requests and DocuSeal signing in one place.",
-      image: "/Sba Key Features/sbaKeyFeature4.png",
+      image: "/Sba Key Features/sbaKeyFeature4.webp",
     },
     {
       title: "5. Lender Marketplace",
       description:
         "Controlled deal access through approval workflows and referral agreements.",
-      image: "/Sba Key Features/sbaKeyFeature5.png",
+      image: "/Sba Key Features/sbaKeyFeature5.webp",
     },
     {
       title: "6. Deal Chat & Notifications",
       description:
         "Isolated threads per party with batched notification digests.",
-      image: "/Sba Key Features/sbaKeyFeature6.png",
+      image: "/Sba Key Features/sbaKeyFeature6.webp",
     },
   ],
   leftIconSrc: "/leftIcon.svg",

@@ -1,0 +1,42 @@
+---
+title: "Where AI Actually Earns Its Place in Product Engineering"
+slug: "where-ai-earns-its-place"
+excerpt: "Not every workflow needs a model. A practical look at where AI genuinely improves a product, and where it's just the trend of the moment wearing a feature's clothes."
+date: "2026-05-02"
+category: "industry-insights"
+coverGradient: "sunset"
+coverImage: "/blog/covers/where-ai-earns-its-place.webp"
+author:
+  name: "Arithmiks Team"
+  avatar: "AT"
+  bio: "Notes from the engineers and product people building at Arithmiks."
+---
+
+Almost every discovery call we run now includes some version of "should this have AI in it?" It's a fair question, and it deserves a better answer than yes or no by default. The honest answer is: it depends on whether the problem is actually a prediction or generation problem, or whether it's a workflow problem wearing an AI costume.
+
+## The tell: deterministic problems don't need probabilistic solutions
+
+If a task has a clear, rule-based correct answer — validating a form, routing a support ticket by category, calculating a loan eligibility threshold — a model is usually the wrong tool. It adds latency, cost, and a new class of failure (confidently wrong output) to a problem that a well-written function already solves reliably.
+
+AI earns its place when the task is genuinely fuzzy: summarizing unstructured text, extracting intent from a free-form message, surfacing patterns across a dataset too large for a person to eyeball, generating a first draft that a human will refine. Those are problems where "good most of the time, reviewed by a human" is an acceptable and even valuable outcome.
+
+## Data readiness decides the timeline, not the roadmap
+
+The gap between "we want an AI feature" and "we have an AI feature" is almost always data, not modeling. Is the data labeled? Is it representative of what the model will actually see in production? Is there a feedback mechanism to catch and correct drift after launch?
+
+We've seen teams spend a quarter on model selection for a feature that was blocked the entire time by a data pipeline that didn't exist yet. Sequencing matters:
+
+1. Confirm the data exists, is accessible, and is usable — before committing to a model architecture
+2. Ship the smallest version that produces a reviewable output, not an autonomous one
+3. Instrument for failure — know when the model is wrong before your users tell you
+4. Only automate the human-in-the-loop step once the failure rate earns that trust
+
+## Guardrails are part of the feature, not an afterthought
+
+Every AI feature we ship carries an explicit answer to "what happens when this is wrong?" That might be a confidence threshold that routes uncertain cases to a human, a citation requirement so output is checkable, or simply a clearly labeled "AI-generated, review before sending" state in the UI. Treating this as scope from day one is cheaper than retrofitting trust after a bad output erodes it.
+
+> The question isn't "can AI do this?" Increasingly, the answer is yes. The question is whether the cost of being occasionally, confidently wrong is one your users can absorb.
+
+## Where we've seen it work
+
+Data preprocessing and modeling engagements that succeed tend to share a pattern: a well-scoped prediction or extraction problem, a realistic data pipeline, and a UI that makes the model's confidence visible instead of hiding it behind a clean-looking answer. That combination is what turns "we added AI" into a feature people actually trust.

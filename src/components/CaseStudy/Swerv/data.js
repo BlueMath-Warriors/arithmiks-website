@@ -86,31 +86,31 @@ export const keyFeaturesData = {
       title: "1. Inventory Intelligence:",
       description:
         "Smart analytics for comparing and prioritizing acquisition opportunities.",
-      image: "/Swerv Key Features/swervKeyFeature1.png",
+      image: "/Swerv Key Features/swervKeyFeature1.webp",
     },
     {
       title: "2. OCD Data Integration:",
       description:
         "Real-time synchronization of Open Car Data to provide instant insights into vehicle trends and market performance.",
-      image: "/Swerv Key Features/swervKeyFeature2.png",
+      image: "/Swerv Key Features/swervKeyFeature2.webp",
     },
     {
       title: "3. Automated Workflows:",
       description:
         "AWS Lambda and Selenium-driven automations for lead syncing and campaign execution.",
-      image: "/Swerv Key Features/swervKeyFeature3.png",
+      image: "/Swerv Key Features/swervKeyFeature3.webp",
     },
     {
       title: "4. Dealer Dashboard:",
       description:
         "Centralized interface for tracking performance metrics, acquisitions, and ROI.",
-      image: "/Swerv Key Features/swervKeyFeature4.png",
+      image: "/Swerv Key Features/swervKeyFeature4.webp",
     },
     {
       title: "5. CRM Integration:",
       description:
         "GoHighLevel and SendGrid for automated communication and marketing.",
-      image: "/Swerv Key Features/swervKeyFeature5.png",
+      image: "/Swerv Key Features/swervKeyFeature5.webp",
     },
   ],
   leftIconSrc: "/leftIcon.svg",
