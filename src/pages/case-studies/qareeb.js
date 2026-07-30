@@ -1,5 +1,6 @@
 import * as React from "react";
 import { graphql } from "gatsby";
+import { getSrc } from "gatsby-plugin-image";
 import Qareeb from "../../components/CaseStudy/Qareeb";
 import { SEO } from "../../components/seo";
 import { getCaseStudySeo } from "../../constants/caseStudySeo";
@@ -7,7 +8,7 @@ import { caseStudies } from "../../components/Landing/Case-Study/caseStudies";
 
 const slug = "qareeb";
 const pageSeo = getCaseStudySeo(slug);
-const pageImage = caseStudies.find((cs) => cs.slug === slug)?.dashboardImg;
+const fallbackImage = caseStudies.find((cs) => cs.slug === slug)?.dashboardImg;
 const breadcrumbItems = [
   { name: "Home", pathname: "/" },
   { name: "Case Studies", pathname: "/case-studies" },
@@ -20,11 +21,11 @@ const QareebPage = ({ data }) => {
 
 export default QareebPage;
 
-export const Head = () => (
+export const Head = ({ data }) => (
   <SEO
     title={pageSeo.title}
     description={pageSeo.description}
-    image={pageImage}
+    image={(data?.heroImage && getSrc(data.heroImage)) || fallbackImage}
     pathname="/case-studies/qareeb"
     breadcrumbItems={breadcrumbItems}
   />
