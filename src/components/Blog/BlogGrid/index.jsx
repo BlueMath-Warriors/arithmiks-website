@@ -19,7 +19,7 @@ import {
   CardFooterRow,
   CardMetaText,
 } from "./index.styled";
-import { CoverArt } from "../CoverArt";
+import { BlogCover } from "../CoverArt";
 import { AuthorAvatar, AuthorRow } from "../AuthorBadge";
 import { CATEGORIES, getCategoryLabel } from "../../../utils/blog";
 import { gsap } from "gsap";
@@ -59,6 +59,7 @@ const BlogGrid = ({ titleAs = "h1" }) => {
             excerpt
             category
             coverGradient
+            coverImage
             date(formatString: "MMM D, YYYY")
             author {
               name
@@ -167,7 +168,12 @@ const BlogGrid = ({ titleAs = "h1" }) => {
         {visiblePosts.map((post) => (
           <BlogCardLink key={post.id} to={`/blogs/${post.slug}`} className="blog-card">
             <CardCoverWrap>
-              <CoverArt $gradient={post.coverGradient} style={{ height: "100%" }} />
+              <BlogCover
+                gradient={post.coverGradient}
+                image={post.coverImage}
+                alt={post.title}
+                style={{ height: "100%" }}
+              />
             </CardCoverWrap>
             <CardCategoryTag>{getCategoryLabel(post.category)}</CardCategoryTag>
             <CardTitle>{post.title}</CardTitle>

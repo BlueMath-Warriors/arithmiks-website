@@ -6,7 +6,7 @@ import Breadcrumbs from "../components/Breadcrumbs";
 import ContactUs from "../components/Landing/Contact-Us";
 import Footer from "../components/Landing/Footer";
 import { SEO } from "../components/seo";
-import { CoverArt } from "../components/Blog/CoverArt";
+import { BlogCover } from "../components/Blog/CoverArt";
 import { AuthorAvatar } from "../components/Blog/AuthorBadge";
 import { getCategoryLabel } from "../utils/blog";
 import {
@@ -50,7 +50,13 @@ const BlogPostTemplate = ({ data, pageContext, children }) => {
 
       <Article>
         <CoverSection>
-          <CoverArt $gradient={frontmatter.coverGradient} $radius="0" style={{ height: "100%" }} />
+          <BlogCover
+            gradient={frontmatter.coverGradient}
+            image={frontmatter.coverImage}
+            alt={frontmatter.title}
+            radius="0"
+            style={{ height: "100%" }}
+          />
         </CoverSection>
 
         <ContentColumn>
@@ -80,7 +86,12 @@ const BlogPostTemplate = ({ data, pageContext, children }) => {
               {relatedPosts.map((post) => (
                 <RelatedCardLink key={post.id} to={`/blogs/${post.frontmatter.slug}`}>
                   <RelatedCardCover>
-                    <CoverArt $gradient={post.frontmatter.coverGradient} style={{ height: "100%" }} />
+                    <BlogCover
+                      gradient={post.frontmatter.coverGradient}
+                      image={post.frontmatter.coverImage}
+                      alt={post.frontmatter.title}
+                      style={{ height: "100%" }}
+                    />
                   </RelatedCardCover>
                   <RelatedCardCategoryTag>
                     {getCategoryLabel(post.frontmatter.category)}
@@ -133,6 +144,7 @@ export const query = graphql`
         excerpt
         category
         coverGradient
+        coverImage
         date(formatString: "MMMM D, YYYY")
         author {
           name
@@ -157,6 +169,7 @@ export const query = graphql`
           slug
           category
           coverGradient
+          coverImage
           date(formatString: "MMM D, YYYY")
         }
       }

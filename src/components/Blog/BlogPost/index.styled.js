@@ -30,6 +30,12 @@ export const CoverSection = styled.div`
     border-radius: 14px;
     margin-bottom: 32px;
   }
+
+  /* A real image dictates its own height instead of being cropped/letterboxed
+     to a fixed ratio — only the flat-gradient fallback needs a forced ratio. */
+  &:has(img) {
+    aspect-ratio: auto;
+  }
 `;
 
 export const ContentColumn = styled.div`
@@ -276,6 +282,12 @@ export const RelatedCardCover = styled.div`
   border-radius: 14px;
   overflow: hidden;
   transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* A real image dictates its own height instead of being cropped/letterboxed
+     to a fixed ratio — only the flat-gradient fallback needs a forced ratio. */
+  &:has(img) {
+    aspect-ratio: auto;
+  }
 `;
 
 export const RelatedCardCategoryTag = styled.span`

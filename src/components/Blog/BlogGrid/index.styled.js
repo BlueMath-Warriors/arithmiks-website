@@ -179,6 +179,12 @@ export const CardCoverWrap = styled.div`
   border-radius: 16px;
   overflow: hidden;
   transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* A real image dictates its own height instead of being cropped/letterboxed
+     to a fixed ratio — only the flat-gradient fallback needs a forced ratio. */
+  &:has(img) {
+    aspect-ratio: auto;
+  }
 `;
 
 export const CardCategoryTag = styled.span`
