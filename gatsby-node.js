@@ -32,6 +32,27 @@ exports.createResolvers = ({ createResolvers }) => {
   });
 };
 
+/**
+ * @uiw/react-md-editor touches browser-only globals at import time, which
+ * breaks Gatsby's server-side HTML build ("window is not defined"). It's only
+ * ever rendered client-side (see the `mounted` guard in WritePostForm), so
+ * it's safe to strip out entirely during the SSR/HTML build stages.
+ */
+exports.onCreateWebpackConfig = ({ stage, actions }) => {
+  if (stage === "build-html" || stage === "develop-html") {
+    actions.setWebpackConfig({
+      module: {
+        rules: [
+          {
+            test: /@uiw[/\\]react-md-editor/,
+            use: "null-loader",
+          },
+        ],
+      },
+    });
+  }
+};
+
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions;
   const blogPostTemplate = path.resolve("./src/templates/blog-post.jsx");

@@ -32,4 +32,42 @@ const validateRequiredFields = (formData) => {
   return errors;
 };
 
-export { validateEmail, sanitizeInput, validateRequiredFields };
+/**
+ * Verifies a Netlify Identity JWT by asking Netlify's own GoTrue endpoint
+ * whether it's valid, and returns the associated user if so. Works regardless
+ * of whether this function runs as a raw Netlify Function or a Gatsby
+ * Function, since it doesn't depend on any framework-injected identity
+ * context — just a plain HTTP call.
+ *
+ * @param {{ headers: Record<string, string> }} req
+ * @returns {Promise<null | { id: string; email: string; user_metadata?: object }>}
+ */
+const verifyIdentity = async (req) => {
+  const authHeader = req.headers.authorization || req.headers.Authorization;
+  if (!authHeader || !authHeader.startsWith("Bearer ")) return null;
+
+  const siteUrl = process.env.URL || process.env.DEPLOY_URL;
+  if (!siteUrl) return null;
+
+  try {
+    const response = await fetch(`${siteUrl}/.netlify/identity/user`, {
+      headers: { Authorization: authHeader },
+    });
+    if (!response.ok) return null;
+    return await response.json();
+  } catch {
+    return null;
+  }
+};
+
+/** URL-safe slug from a title, e.g. "Hello, World!" -> "hello-world". */
+const slugify = (title) =>
+  (title || "")
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9\s-]/g, "")
+    .replace(/\s+/g, "-")
+    .replace(/-+/g, "-")
+    .replace(/^-|-$/g, "");
+
+export { validateEmail, sanitizeInput, validateRequiredFields, verifyIdentity, slugify };

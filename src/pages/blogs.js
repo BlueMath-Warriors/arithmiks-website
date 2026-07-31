@@ -3,6 +3,7 @@ import * as containerStyles from "../styles/global.module.css";
 import Header from "../components/Landing/Header";
 import Breadcrumbs from "../components/Breadcrumbs";
 import BlogGrid from "../components/Blog/BlogGrid";
+import AuthBar from "../components/Blog/AuthBar";
 import ContactUs from "../components/Landing/Contact-Us";
 import Footer from "../components/Landing/Footer";
 import { SEO } from "../components/seo";
@@ -20,6 +21,9 @@ const BlogsPage = () => {
       </div>
       <Breadcrumbs items={breadcrumbItems} />
       <main>
+        <div style={{ paddingTop: 32 }}>
+          <AuthBar />
+        </div>
         <BlogGrid titleAs="h1" />
         <ContactUs />
       </main>
