@@ -3,7 +3,6 @@ import { slugify } from "../util/index.js";
 import { commitFile } from "../util/github.js";
 import {
   verifyContentfulWebhook,
-  isBlogPostPublishEvent,
   fetchResolvedEntry,
   resolveLink,
   resolveAssetUrl,
@@ -33,14 +32,14 @@ export default async function contentfulWebhookHandler(req, res) {
     return res.status(401).json({ success: false, error: "Invalid webhook secret." });
   }
 
-  // Not our content type / not a publish event — acknowledge quietly, do nothing.
-  if (!isBlogPostPublishEvent(req)) {
-    return res.status(200).json({ success: true, skipped: true });
-  }
-
   const entryId = req.body?.sys?.id;
   if (!entryId) {
-    return res.status(400).json({ success: false, error: "Missing entry id in webhook payload." });
+    return res.status(400).json({
+      success: false,
+      error: "Missing entry id in webhook payload.",
+      debugBodyKeys: req.body ? Object.keys(req.body) : null,
+      debugSys: req.body?.sys ?? null,
+    });
   }
 
   try {
