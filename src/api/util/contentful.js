@@ -9,6 +9,24 @@ const verifyContentfulWebhook = (req) => {
 };
 
 /**
+ * The published entry's id.
+ *
+ * Read from the `X-Contentful-CRN` header rather than the request body:
+ * Contentful posts with its own vendor content type
+ * (`application/vnd.contentful.management.v1+json`), which the default JSON
+ * body parser ignores — so `req.body` can arrive empty. Headers are always
+ * available, and the id is all we need since the full entry gets re-fetched
+ * from the Delivery API anyway. Falls back to the body when it is parsed.
+ *
+ * CRN shape: crn:contentful:::content:spaces/<space>/environments/<env>/entries/<entryId>
+ */
+const getEntryId = (req) => {
+  const crn = req.headers["x-contentful-crn"] || req.headers["X-Contentful-CRN"];
+  const fromCrn = typeof crn === "string" ? crn.match(/\/entries\/([^/\s]+)/) : null;
+  return fromCrn?.[1] || req.body?.sys?.id || null;
+};
+
+/**
  * Fetches the fully-resolved entry (with linked Author entry and image
  * assets expanded) from Contentful's Content Delivery API — the webhook
  * payload itself only contains unresolved reference links, so we re-fetch.
@@ -44,4 +62,4 @@ const resolveAssetUrl = (asset) => {
   return url.startsWith("//") ? `https:${url}` : url;
 };
 
-export { verifyContentfulWebhook, fetchResolvedEntry, resolveLink, resolveAssetUrl };
+export { verifyContentfulWebhook, getEntryId, fetchResolvedEntry, resolveLink, resolveAssetUrl };
