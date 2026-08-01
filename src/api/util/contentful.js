@@ -91,9 +91,15 @@ const resolveLink = (link, includes) => {
   return pool?.find((item) => item.sys.id === link.sys.id) || null;
 };
 
-/** Contentful asset URLs are protocol-relative ("//images.ctfassets.net/..."). */
+/**
+ * Contentful asset URLs are protocol-relative ("//images.ctfassets.net/...").
+ * An asset's `file` field can itself be locale-wrapped (assets support a
+ * different upload per locale), so it needs the same unwrapping as entry
+ * fields — this was the one spot that assumed a flat shape.
+ */
 const resolveAssetUrl = (asset) => {
-  const url = asset?.fields?.file?.url;
+  const file = unwrapLocale(asset?.fields?.file);
+  const url = file?.url;
   if (!url) return null;
   return url.startsWith("//") ? `https:${url}` : url;
 };
