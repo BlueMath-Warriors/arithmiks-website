@@ -54,4 +54,33 @@ const commitFile = async ({ path, content, message, author }) => {
   });
 };
 
-export { GITHUB_API, OWNER, REPO, BASE_BRANCH, githubRequest, commitFile };
+/**
+ * Deletes a file from the base branch, if it exists. GitHub's delete
+ * endpoint requires the file's current SHA, so it's looked up first.
+ * Returns `{ deleted: false }` rather than throwing when the file is already
+ * gone — for an unpublish/delete webhook, "no file to remove" means the goal
+ * is already met, not a failure.
+ */
+const deleteFile = async ({ path, message, author }) => {
+  let existing;
+  try {
+    existing = await githubRequest(`/repos/${OWNER}/${REPO}/contents/${path}?ref=${BASE_BRANCH}`);
+  } catch {
+    return { deleted: false };
+  }
+  if (!existing?.sha) return { deleted: false };
+
+  await githubRequest(`/repos/${OWNER}/${REPO}/contents/${path}`, {
+    method: "DELETE",
+    body: JSON.stringify({
+      message,
+      sha: existing.sha,
+      branch: BASE_BRANCH,
+      author,
+      committer: author,
+    }),
+  });
+  return { deleted: true };
+};
+
+export { GITHUB_API, OWNER, REPO, BASE_BRANCH, githubRequest, commitFile, deleteFile };
