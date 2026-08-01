@@ -10,11 +10,17 @@ const verifyContentfulWebhook = (req) => {
   return Boolean(secret) && secret === process.env.CONTENTFUL_WEBHOOK_SECRET;
 };
 
-/** True only for a real "entry published" event for our Blog Post content type. */
+/**
+ * True only when the published entry is our Blog Post content type — lets us
+ * quietly ignore publishes of unrelated content (Author, SEO, etc.) instead
+ * of erroring on them. Deliberately checks only the content type id from the
+ * payload body, not any request header — headers can vary by exactly how a
+ * webhook is configured, but every Contentful entry payload reliably carries
+ * `sys.contentType.sys.id`.
+ */
 const isBlogPostPublishEvent = (req) => {
-  const topic = req.headers["x-contentful-topic"] || req.headers["X-Contentful-Topic"];
   const contentTypeId = req.body?.sys?.contentType?.sys?.id;
-  return topic === "ContentManagement.Entry.publish" && contentTypeId === CONTENT_TYPE_ID;
+  return contentTypeId === CONTENT_TYPE_ID;
 };
 
 /**
