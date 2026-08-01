@@ -64,7 +64,7 @@ const BlogPostTemplate = ({ data, pageContext, children }) => {
           <Title>{frontmatter.title}</Title>
 
           <BylineRow>
-            <AuthorAvatar $size="48px" $fontSize="16px">
+            <AuthorAvatar $size="48px" $fontSize="16px" alt={frontmatter.author.name}>
               {frontmatter.author.avatar}
             </AuthorAvatar>
             <BylineMeta>
