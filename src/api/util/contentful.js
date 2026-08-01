@@ -31,6 +31,14 @@ const getEntryId = (req) => {
  * assets expanded) from Contentful's Content Delivery API — the webhook
  * payload itself only contains unresolved reference links, so we re-fetch.
  *
+ * Queries the *collection* endpoint (`/entries?sys.id=...`) rather than the
+ * single-entry endpoint (`/entries/{id}`), even though both accept
+ * `include`: the single-entry endpoint was observed, via a direct curl
+ * against production, to never attach a top-level `includes` object at all
+ * — every linked entry/asset came back unresolved regardless of its actual
+ * publish state. The collection form reliably returns `includes` alongside
+ * `items[0]`.
+ *
  * Per Contentful's own docs: links only resolve against *published*
  * entries/assets. An unresolvable link (e.g. the linked asset exists but was
  * never itself published) doesn't throw — the response stays 200 OK, the
@@ -42,7 +50,7 @@ const getEntryId = (req) => {
 const fetchResolvedEntry = async (entryId) => {
   const spaceId = process.env.CONTENTFUL_SPACE_ID;
   const token = process.env.CONTENTFUL_ACCESS_TOKEN;
-  const url = `https://cdn.contentful.com/spaces/${spaceId}/environments/master/entries/${entryId}?include=2`;
+  const url = `https://cdn.contentful.com/spaces/${spaceId}/environments/master/entries?sys.id=${entryId}&include=2`;
 
   const response = await fetch(url, {
     headers: { Authorization: `Bearer ${token}` },
@@ -54,6 +62,10 @@ const fetchResolvedEntry = async (entryId) => {
   }
 
   const data = await response.json();
+  const entry = data.items?.[0];
+  if (!entry) {
+    throw new Error(`Entry ${entryId} was not found via the Delivery API (not published, or wrong environment).`);
+  }
 
   const unresolvableLinkErrors = (data.errors || [])
     .filter((err) => err.details?.type === "Link" || err.id === "notResolvable")
@@ -62,7 +74,7 @@ const fetchResolvedEntry = async (entryId) => {
       return `${d.linkType || "link"} "${d.id || "unknown"}" could not be resolved (not published, wrong environment, or deleted).`;
     });
 
-  return { ...data, unresolvableLinkErrors };
+  return { ...entry, includes: data.includes, unresolvableLinkErrors };
 };
 
 /**
