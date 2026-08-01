@@ -50,7 +50,7 @@ export default async function contentfulWebhookHandler(req, res) {
     const title = fields.title;
     const slug = fields.slug || slugify(title);
     const excerpt = fields.subtitle;
-    const category = fields.category;
+    const category = (fields.category || "").toLowerCase();
     const body = fields.body;
     const dateRaw = fields.publishedDate;
 
@@ -58,7 +58,7 @@ export default async function contentfulWebhookHandler(req, res) {
     if (!title) errors.push("Title is missing.");
     if (!slug) errors.push("Slug is missing.");
     if (!excerpt) errors.push("Subtitle (excerpt) is missing.");
-    if (!VALID_CATEGORY_SLUGS.includes(category)) errors.push(`Category "${category}" is not a recognized value.`);
+    if (!VALID_CATEGORY_SLUGS.includes(category)) errors.push(`Category "${fields.category}" is not a recognized value.`);
     if (!body || body.trim().length < 50) errors.push("Body is missing or too short.");
 
     if (errors.length > 0) {
