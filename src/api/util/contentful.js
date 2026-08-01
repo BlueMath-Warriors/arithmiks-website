@@ -30,6 +30,14 @@ const getEntryId = (req) => {
  * Fetches the fully-resolved entry (with linked Author entry and image
  * assets expanded) from Contentful's Content Delivery API — the webhook
  * payload itself only contains unresolved reference links, so we re-fetch.
+ *
+ * Per Contentful's own docs: links only resolve against *published*
+ * entries/assets. An unresolvable link (e.g. the linked asset exists but was
+ * never itself published) doesn't throw — the response stays 200 OK, the
+ * link is just silently absent from `includes`, and Contentful instead adds
+ * an `unresolvableLink` entry to a top-level `errors` array. We surface that
+ * here instead of only inferring it from an absent value, since Contentful
+ * is already telling us exactly what failed to resolve and why.
  */
 const fetchResolvedEntry = async (entryId) => {
   const spaceId = process.env.CONTENTFUL_SPACE_ID;
@@ -45,7 +53,16 @@ const fetchResolvedEntry = async (entryId) => {
     throw new Error(`Contentful API fetch failed (${response.status}): ${body}`);
   }
 
-  return response.json();
+  const data = await response.json();
+
+  const unresolvableLinkErrors = (data.errors || [])
+    .filter((err) => err.details?.type === "Link" || err.id === "notResolvable")
+    .map((err) => {
+      const d = err.details || {};
+      return `${d.linkType || "link"} "${d.id || "unknown"}" could not be resolved (not published, wrong environment, or deleted).`;
+    });
+
+  return { ...data, unresolvableLinkErrors };
 };
 
 /**

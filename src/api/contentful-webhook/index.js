@@ -78,7 +78,11 @@ export default async function contentfulWebhookHandler(req, res) {
 
   try {
     const entry = await fetchResolvedEntry(entryId);
-    const { fields, includes } = entry;
+    const { fields, includes, unresolvableLinkErrors } = entry;
+    // Seeded from Contentful's own `errors` array rather than only inferred
+    // after the fact — see fetchResolvedEntry for why this is the reliable
+    // signal (an unresolvable link is silent otherwise: 200 OK, value absent).
+    const warnings = [...unresolvableLinkErrors];
 
     const title = readField(fields, ["title"], { asString: true });
     const rawCategory = readField(fields, ["category"], { asString: true });
@@ -116,13 +120,6 @@ export default async function contentfulWebhookHandler(req, res) {
     }
 
     const date = dateRaw ? dateRaw.slice(0, 10) : new Date().toISOString().slice(0, 10);
-
-    // Track resolution gaps for the response, rather than have a missing
-    // image/author be a silent, unexplained difference from what was set in
-    // Contentful — most commonly caused by an asset that's uploaded but not
-    // itself published (an entry and its referenced assets publish
-    // separately in Contentful).
-    const warnings = [];
 
     const featuredImageLink = readField(fields, ["featuredImage", "coverImage", "image"]);
     const coverImage = resolveAssetUrl(resolveLink(featuredImageLink, includes));
