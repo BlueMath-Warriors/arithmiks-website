@@ -48,6 +48,42 @@ const fetchResolvedEntry = async (entryId) => {
   return response.json();
 };
 
+/**
+ * True for a `{ "en-US": value, "de-DE": value }` locale map, as opposed to a
+ * link/asset object (which carries `sys`) or a plain value.
+ */
+const isLocaleMap = (value) =>
+  value &&
+  typeof value === "object" &&
+  !Array.isArray(value) &&
+  !value.sys &&
+  Object.keys(value).length > 0 &&
+  Object.keys(value).every((key) => /^[a-z]{2}(-[A-Za-z]{2,4})?$/.test(key));
+
+/** Unwraps a locale map to the default locale (falling back to whatever exists). */
+const unwrapLocale = (value, defaultLocale = "en-US") =>
+  isLocaleMap(value) ? value[defaultLocale] ?? Object.values(value)[0] : value;
+
+/**
+ * Reads an entry field by any of its plausible ids.
+ *
+ * Contentful field *ids* are generated from the display name at creation time
+ * and don't always match it (a field shown as "Subtitle" may be stored as
+ * `shortDescription`, for example), and template-provisioned models vary.
+ * Accepting a list of candidates keeps this working across those variations
+ * instead of failing on an exact-name mismatch. Also tolerates both the
+ * flattened shape the Delivery API returns and the locale-keyed shape.
+ */
+const readField = (fields, names, { asString = false } = {}) => {
+  for (const name of names) {
+    const value = unwrapLocale(fields?.[name]);
+    if (value === undefined || value === null || value === "") continue;
+    if (asString && typeof value !== "string") continue;
+    return value;
+  }
+  return null;
+};
+
 /** Resolves a `{ sys: { type: "Link", ... } }` reference against the entry's `includes` block. */
 const resolveLink = (link, includes) => {
   if (!link?.sys) return null;
@@ -62,4 +98,11 @@ const resolveAssetUrl = (asset) => {
   return url.startsWith("//") ? `https:${url}` : url;
 };
 
-export { verifyContentfulWebhook, getEntryId, fetchResolvedEntry, resolveLink, resolveAssetUrl };
+export {
+  verifyContentfulWebhook,
+  getEntryId,
+  fetchResolvedEntry,
+  readField,
+  resolveLink,
+  resolveAssetUrl,
+};
