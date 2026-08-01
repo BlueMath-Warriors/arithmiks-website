@@ -3,6 +3,7 @@ import { slugify } from "../util/index.js";
 import { commitFile } from "../util/github.js";
 import {
   verifyContentfulWebhook,
+  getEntryId,
   fetchResolvedEntry,
   resolveLink,
   resolveAssetUrl,
@@ -10,6 +11,21 @@ import {
 import { CATEGORIES } from "../../utils/blog.js";
 
 const VALID_CATEGORY_SLUGS = CATEGORIES.map((c) => c.slug).filter((slug) => slug !== "all");
+
+/**
+ * Contentful posts with its own vendor content type
+ * (`application/vnd.contentful.management.v1+json`), which the default JSON
+ * body parser ignores — leaving `req.body` empty. Widening the accepted types
+ * makes the payload parse normally. The entry id is read from a header
+ * regardless (see `getEntryId`), so this is a convenience, not a dependency.
+ */
+export const config = {
+  bodyParser: {
+    json: {
+      type: ["application/json", "application/vnd.contentful.management.v1+json"],
+    },
+  },
+};
 
 const initials = (name) =>
   (name || "")
@@ -32,14 +48,9 @@ export default async function contentfulWebhookHandler(req, res) {
     return res.status(401).json({ success: false, error: "Invalid webhook secret." });
   }
 
-  const entryId = req.body?.sys?.id;
+  const entryId = getEntryId(req);
   if (!entryId) {
-    return res.status(400).json({
-      success: false,
-      error: "Missing entry id in webhook payload.",
-      debugBodyKeys: req.body ? Object.keys(req.body) : null,
-      debugSys: req.body?.sys ?? null,
-    });
+    return res.status(400).json({ success: false, error: "Could not determine the entry id." });
   }
 
   try {
@@ -102,6 +113,13 @@ export default async function contentfulWebhookHandler(req, res) {
 
     return res.status(200).json({ success: true, message: `Published "${title}".` });
   } catch (error) {
-    return res.status(500).json({ success: false, error: "Failed to process the published entry." });
+    // Surfaced deliberately: this endpoint is secret-protected and only ever
+    // called by Contentful, and the message is what makes a failed publish
+    // diagnosable from the webhook activity log.
+    return res.status(500).json({
+      success: false,
+      error: "Failed to process the published entry.",
+      detail: error.message,
+    });
   }
 }
