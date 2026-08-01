@@ -117,19 +117,38 @@ export default async function contentfulWebhookHandler(req, res) {
 
     const date = dateRaw ? dateRaw.slice(0, 10) : new Date().toISOString().slice(0, 10);
 
+    // Track resolution gaps for the response, rather than have a missing
+    // image/author be a silent, unexplained difference from what was set in
+    // Contentful — most commonly caused by an asset that's uploaded but not
+    // itself published (an entry and its referenced assets publish
+    // separately in Contentful).
+    const warnings = [];
+
     const featuredImageLink = readField(fields, ["featuredImage", "coverImage", "image"]);
     const coverImage = resolveAssetUrl(resolveLink(featuredImageLink, includes));
+    if (featuredImageLink && !coverImage) {
+      warnings.push(
+        "Featured image is set but couldn't be resolved — check that the image asset itself is Published, not just the post."
+      );
+    }
 
     const authorEntry = resolveLink(readField(fields, ["author"]), includes);
+    if (readField(fields, ["author"]) && !authorEntry) {
+      warnings.push("Author is set but couldn't be resolved — check that the author entry itself is Published.");
+    }
     const authorFields = authorEntry?.fields;
     const authorName =
       readField(authorFields, ["name", "fullName"], { asString: true }) || "Arithmiks Team";
     const authorBio =
       readField(authorFields, ["bio", "biography", "description"], { asString: true }) ||
       "Written by the Arithmiks team.";
-    const authorAvatarUrl = resolveAssetUrl(
-      resolveLink(readField(authorFields, ["avatar", "image", "photo"]), includes)
-    );
+    const authorAvatarLink = readField(authorFields, ["avatar", "image", "photo"]);
+    const authorAvatarUrl = resolveAssetUrl(resolveLink(authorAvatarLink, includes));
+    if (authorAvatarLink && !authorAvatarUrl) {
+      warnings.push(
+        "Author avatar is set but couldn't be resolved — check that the avatar image asset itself is Published."
+      );
+    }
 
     const frontmatter = {
       title,
@@ -156,7 +175,11 @@ export default async function contentfulWebhookHandler(req, res) {
       author: { name: authorName, email: "cms@arithmiks.com" },
     });
 
-    return res.status(200).json({ success: true, message: `Published "${title}".` });
+    return res.status(200).json({
+      success: true,
+      message: `Published "${title}".`,
+      ...(warnings.length > 0 ? { warnings } : {}),
+    });
   } catch (error) {
     // Surfaced deliberately: this endpoint is secret-protected and only ever
     // called by Contentful, and the message is what makes a failed publish
