@@ -1,5 +1,3 @@
-const CONTENT_TYPE_ID = "pageBlogPost";
-
 /**
  * Confirms an incoming request genuinely came from our Contentful webhook,
  * via a shared secret Contentful sends as a custom header (configured on the
@@ -8,19 +6,6 @@ const CONTENT_TYPE_ID = "pageBlogPost";
 const verifyContentfulWebhook = (req) => {
   const secret = req.headers["x-webhook-secret"] || req.headers["X-Webhook-Secret"];
   return Boolean(secret) && secret === process.env.CONTENTFUL_WEBHOOK_SECRET;
-};
-
-/**
- * True only when the published entry is our Blog Post content type — lets us
- * quietly ignore publishes of unrelated content (Author, SEO, etc.) instead
- * of erroring on them. Deliberately checks only the content type id from the
- * payload body, not any request header — headers can vary by exactly how a
- * webhook is configured, but every Contentful entry payload reliably carries
- * `sys.contentType.sys.id`.
- */
-const isBlogPostPublishEvent = (req) => {
-  const contentTypeId = req.body?.sys?.contentType?.sys?.id;
-  return contentTypeId === CONTENT_TYPE_ID;
 };
 
 /**
@@ -59,4 +44,4 @@ const resolveAssetUrl = (asset) => {
   return url.startsWith("//") ? `https:${url}` : url;
 };
 
-export { verifyContentfulWebhook, isBlogPostPublishEvent, fetchResolvedEntry, resolveLink, resolveAssetUrl };
+export { verifyContentfulWebhook, fetchResolvedEntry, resolveLink, resolveAssetUrl };
