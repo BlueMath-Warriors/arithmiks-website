@@ -180,7 +180,7 @@ const BlogGrid = ({ titleAs = "h1" }) => {
             <CardExcerpt>{post.excerpt}</CardExcerpt>
             <CardFooterRow>
               <AuthorRow>
-                <AuthorAvatar $size="28px" $fontSize="11px">
+                <AuthorAvatar $size="28px" $fontSize="11px" alt={post.author.name}>
                   {post.author.avatar}
                 </AuthorAvatar>
                 <CardMetaText>{post.author.name}</CardMetaText>

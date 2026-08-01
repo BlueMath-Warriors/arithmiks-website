@@ -32,4 +32,14 @@ const validateRequiredFields = (formData) => {
   return errors;
 };
 
-export { validateEmail, sanitizeInput, validateRequiredFields };
+/** URL-safe slug from a title, e.g. "Hello, World!" -> "hello-world". */
+const slugify = (title) =>
+  (title || "")
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9\s-]/g, "")
+    .replace(/\s+/g, "-")
+    .replace(/-+/g, "-")
+    .replace(/^-|-$/g, "");
+
+export { validateEmail, sanitizeInput, validateRequiredFields, slugify };
