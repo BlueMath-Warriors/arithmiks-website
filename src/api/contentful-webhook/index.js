@@ -5,6 +5,7 @@ import {
   verifyContentfulWebhook,
   getEntryId,
   fetchResolvedEntry,
+  readField,
   resolveLink,
   resolveAssetUrl,
 } from "../util/contentful.js";
@@ -35,6 +36,28 @@ const initials = (name) =>
     .map((part) => part[0].toUpperCase())
     .join("") || "AT";
 
+/**
+ * A stand-in excerpt taken from the opening prose of the post, used only when
+ * no excerpt field is found. A missing excerpt is a card-preview nicety — it
+ * should never be the thing that blocks a finished post from publishing.
+ */
+const deriveExcerpt = (markdown) => {
+  const firstProse = (markdown || "")
+    .split(/\n{2,}/)
+    .map((block) => block.trim())
+    .find((block) => block && !/^(#|>|```|[-*+]\s|\d+\.\s)/.test(block));
+  if (!firstProse) return null;
+
+  const plain = firstProse
+    .replace(/!?\[([^\]]*)\]\([^)]*\)/g, "$1") // links/images -> their text
+    .replace(/[*_`#>]/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+  if (!plain) return null;
+
+  return plain.length > 200 ? `${plain.slice(0, 197).trimEnd()}…` : plain;
+};
+
 export default async function contentfulWebhookHandler(req, res) {
   if (req.method !== "POST") {
     return res.status(405).json({ success: false, error: "Method not allowed." });
@@ -57,34 +80,56 @@ export default async function contentfulWebhookHandler(req, res) {
     const entry = await fetchResolvedEntry(entryId);
     const { fields, includes } = entry;
 
-    const title = fields.title;
-    const slug = fields.slug || slugify(title);
-    const excerpt = fields.subtitle;
-    const category = (fields.category || "").toLowerCase();
-    const body = fields.body;
-    const dateRaw = fields.publishedDate;
+    const title = readField(fields, ["title"], { asString: true });
+    const rawCategory = readField(fields, ["category"], { asString: true });
+    const body = readField(fields, ["body", "bodyText", "markdownBody", "content"], {
+      asString: true,
+    });
+    const excerpt =
+      readField(fields, ["subtitle", "shortDescription", "excerpt", "description"], {
+        asString: true,
+      }) || deriveExcerpt(body);
+    const dateRaw = readField(fields, ["publishedDate", "date", "publicationDate"], {
+      asString: true,
+    });
+    const slug = readField(fields, ["slug"], { asString: true }) || slugify(title);
+    const category = (rawCategory || "").toLowerCase();
 
     const errors = [];
     if (!title) errors.push("Title is missing.");
     if (!slug) errors.push("Slug is missing.");
     if (!excerpt) errors.push("Subtitle (excerpt) is missing.");
-    if (!VALID_CATEGORY_SLUGS.includes(category)) errors.push(`Category "${fields.category}" is not a recognized value.`);
+    if (!VALID_CATEGORY_SLUGS.includes(category)) {
+      errors.push(`Category "${rawCategory}" is not one of: ${VALID_CATEGORY_SLUGS.join(", ")}.`);
+    }
     if (!body || body.trim().length < 50) errors.push("Body is missing or too short.");
 
     if (errors.length > 0) {
-      return res.status(400).json({ success: false, error: "Validation failed.", details: errors });
+      // `availableFields` makes any remaining field-id mismatch a one-glance
+      // fix rather than another round of guessing.
+      return res.status(400).json({
+        success: false,
+        error: "Validation failed.",
+        details: errors,
+        availableFields: Object.keys(fields || {}),
+      });
     }
 
     const date = dateRaw ? dateRaw.slice(0, 10) : new Date().toISOString().slice(0, 10);
 
-    const featuredImageAsset = resolveLink(fields.featuredImage, includes);
-    const coverImage = resolveAssetUrl(featuredImageAsset);
+    const featuredImageLink = readField(fields, ["featuredImage", "coverImage", "image"]);
+    const coverImage = resolveAssetUrl(resolveLink(featuredImageLink, includes));
 
-    const authorEntry = resolveLink(fields.author, includes);
-    const authorName = authorEntry?.fields?.name || "Arithmiks Team";
-    const authorBio = authorEntry?.fields?.bio || "Written by the Arithmiks team.";
-    const authorAvatarAsset = resolveLink(authorEntry?.fields?.avatar, includes);
-    const authorAvatarUrl = resolveAssetUrl(authorAvatarAsset);
+    const authorEntry = resolveLink(readField(fields, ["author"]), includes);
+    const authorFields = authorEntry?.fields;
+    const authorName =
+      readField(authorFields, ["name", "fullName"], { asString: true }) || "Arithmiks Team";
+    const authorBio =
+      readField(authorFields, ["bio", "biography", "description"], { asString: true }) ||
+      "Written by the Arithmiks team.";
+    const authorAvatarUrl = resolveAssetUrl(
+      resolveLink(readField(authorFields, ["avatar", "image", "photo"]), includes)
+    );
 
     const frontmatter = {
       title,
