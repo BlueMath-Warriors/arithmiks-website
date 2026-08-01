@@ -99,6 +99,9 @@ export default async function contentfulWebhookHandler(req, res) {
     const slug = readField(fields, ["slug"], { asString: true }) || slugify(title);
     const category = (rawCategory || "").toLowerCase();
 
+    const featuredImageLink = readField(fields, ["featuredImage", "coverImage", "image"]);
+    const coverImage = resolveAssetUrl(resolveLink(featuredImageLink, includes));
+
     const errors = [];
     if (!title) errors.push("Title is missing.");
     if (!slug) errors.push("Slug is missing.");
@@ -107,6 +110,15 @@ export default async function contentfulWebhookHandler(req, res) {
       errors.push(`Category "${rawCategory}" is not one of: ${VALID_CATEGORY_SLUGS.join(", ")}.`);
     }
     if (!body || body.trim().length < 50) errors.push("Body is missing or too short.");
+    // A post without a cover image is incomplete, not just cosmetically bare
+    // — every published post is required to carry one.
+    if (!coverImage) {
+      errors.push(
+        featuredImageLink
+          ? "Featured image is set but couldn't be resolved — check that the image asset itself is Published, not just the post."
+          : "Featured image is required."
+      );
+    }
 
     if (errors.length > 0) {
       // `availableFields` makes any remaining field-id mismatch a one-glance
@@ -120,14 +132,6 @@ export default async function contentfulWebhookHandler(req, res) {
     }
 
     const date = dateRaw ? dateRaw.slice(0, 10) : new Date().toISOString().slice(0, 10);
-
-    const featuredImageLink = readField(fields, ["featuredImage", "coverImage", "image"]);
-    const coverImage = resolveAssetUrl(resolveLink(featuredImageLink, includes));
-    if (featuredImageLink && !coverImage) {
-      warnings.push(
-        "Featured image is set but couldn't be resolved — check that the image asset itself is Published, not just the post."
-      );
-    }
 
     const authorEntry = resolveLink(readField(fields, ["author"]), includes);
     if (readField(fields, ["author"]) && !authorEntry) {
@@ -154,16 +158,24 @@ export default async function contentfulWebhookHandler(req, res) {
       date,
       category,
       coverGradient: "blue",
-      ...(coverImage ? { coverImage } : {}),
+      coverImage,
       author: {
         name: authorName,
         avatar: authorAvatarUrl || initials(authorName),
         bio: authorBio,
       },
+      // Not read by the site — kept for traceability back to the source
+      // entry when debugging a specific post's file.
+      contentfulId: entryId,
     };
 
     const mdxContent = `---\n${dumpYaml(frontmatter)}---\n\n${body.trim()}\n`;
-    const mdxPath = `content/blog/${slug}.mdx`;
+    // Keyed by entry id, not slug: the id is the only identifier Contentful
+    // guarantees on every event type, including Unpublish/Delete (see
+    // contentful-webhook-remove) — and it stays stable even if the slug is
+    // edited later, so an edited post always overwrites the same file
+    // instead of leaving the old slug-named file behind as an orphan.
+    const mdxPath = `content/blog/${entryId}.mdx`;
 
     await commitFile({
       path: mdxPath,

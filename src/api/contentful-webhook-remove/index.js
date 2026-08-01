@@ -1,4 +1,4 @@
-import { verifyContentfulWebhook, readField } from "../util/contentful.js";
+import { verifyContentfulWebhook, getEntryId } from "../util/contentful.js";
 import { deleteFile } from "../util/github.js";
 
 /**
@@ -27,31 +27,32 @@ export default async function contentfulRemoveHandler(req, res) {
     return res.status(401).json({ success: false, error: "Invalid webhook secret." });
   }
 
-  // Read straight from the webhook payload, not a fresh API fetch — an
-  // unpublished or deleted entry may no longer be resolvable via the
-  // Delivery API at all, so this can't depend on re-fetching it. The
-  // payload carries the entry's field snapshot at the time of the action
-  // regardless of what happens to the entry afterward.
-  const fields = req.body?.fields;
-  const slug = readField(fields, ["slug"], { asString: true });
-  const title = readField(fields, ["title"], { asString: true }) || "(untitled)";
+  // Contentful sends a stripped payload for Unpublish/Delete events —
+  // `sys.type: "DeletedEntry"` with no `fields` object at all — so slug or
+  // title can't be read from the body here (confirmed against production:
+  // the body genuinely has no fields on these two event types). The entry
+  // id, read from the X-Contentful-CRN header regardless of body shape, is
+  // the only identifier every event type carries. Posts are committed to
+  // GitHub keyed by entry id (see contentful-webhook), specifically so this
+  // lookup never depends on data this payload doesn't have.
+  const entryId = getEntryId(req);
 
-  if (!slug) {
-    return res.status(400).json({ success: false, error: "Could not determine the post's slug." });
+  if (!entryId) {
+    return res.status(400).json({ success: false, error: "Could not determine the entry id." });
   }
 
   try {
     const result = await deleteFile({
-      path: `content/blog/${slug}.mdx`,
-      message: `Remove blog post via Contentful: "${title}"`,
+      path: `content/blog/${entryId}.mdx`,
+      message: `Remove blog post via Contentful (entry ${entryId})`,
       author: { name: "Arithmiks CMS", email: "cms@arithmiks.com" },
     });
 
     return res.status(200).json({
       success: true,
       message: result.deleted
-        ? `Removed "${title}" from the site.`
-        : `No live file found for "${title}" — nothing to remove.`,
+        ? `Removed post ${entryId} from the site.`
+        : `No live file found for entry ${entryId} — nothing to remove.`,
     });
   } catch (error) {
     return res.status(500).json({
