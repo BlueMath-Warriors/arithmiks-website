@@ -1,0 +1,44 @@
+---
+title: 'What We Actually Look For in a Code Review '
+slug: what-we-look-for-in-code-review
+excerpt: >
+  Code review isn't about catching bugs — a good test suite does that better.
+  Here's what we're actually checking for when we review a teammate's pull
+  request.
+date: '2026-08-01'
+category: engineering
+coverGradient: blue
+coverImage: >-
+  https://images.ctfassets.net/4zigetffchm7/5RkqA7aCLNtkhJp6GGJJNb/2bfb58a3c928b5a560a2eb30e0fb4f34/Gemini_Generated_Image_1b4xmp1b4xmp1b4x.png
+author:
+  name: Muhammad Ali
+  avatar: MA
+  bio: Software Engineer
+contentfulId: 4wv554moGUvpKsbYI0gCGn
+---
+
+Ask five engineers what code review is for, and you'll get five different answers — but most of them boil down to "catching bugs before they ship." That's true, but it's not really the point. If bugs are what you're worried about, a solid test suite and a staging environment will catch far more of them than a human skimming a diff ever will.
+
+What code review is actually good at is something tests can't check: whether the *shape* of the change makes sense.
+
+1. Readability beats cleverness
+
+The first thing we look for isn't correctness — it's whether the next person to touch this code (who might be you, six months from now, having forgotten all the context) can understand it without a Slack thread. A clever one-liner that saves three lines of code but takes ninety seconds to parse is usually a bad trade. We'd rather see the boring, obvious version.
+
+2. Does this match how the rest of the codebase works?
+
+Every codebase develops its own conventions — how errors get handled, how components are structured, where validation lives. A change that's individually well-written but ignores those conventions still makes the codebase worse, because now there are two ways of doing the same thing and nobody knows which one is "correct." Review is where we catch that drift before it becomes permanent.
+
+3. What happens when this breaks?
+
+Not "does this work" — "what does it look like when it doesn't." Does a failure here fail loudly and obviously, or silently corrupt something three steps downstream? We spend more review time on error paths than on the happy path, because the happy path is what got tested; the error path is usually what shipped by accident.
+
+    > The best reviews don't ask "is this correct?" They ask "what did the author not think about?"
+
+4. Scope creep is a review problem too
+
+A pull request that quietly grows from "fix this bug" to "fix this bug and also refactor this unrelated module" is harder to review properly, harder to revert cleanly if something goes wrong, and harder to reason about in six months when you're trying to figure out why a line changed. We'll ask authors to split these, even when the extra changes are individually good ideas.
+
+5. What we're not doing
+
+We're not nitpicking formatting — that's what linters and formatters are for, and arguing about tabs versus spaces in a PR comment is a waste of everyone's time. We're not blocking on personal style preference when the existing approach is already reasonable. And we're not treating review as a gate where the reviewer has to find *something* to justify their involvement — "looks good, ship it" is a completely valid review when the change is exactly that......
