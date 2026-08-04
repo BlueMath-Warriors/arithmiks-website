@@ -79,8 +79,14 @@ export const CarouselButton = styled.button`
   border-radius: 100px;
   border: none;
   background: ${props => (props.$blue ? '#1355FF' : '#1A202C')};
+  transition: opacity 0.2s ease;
   &:hover{
     box-shadow: 4px 8px 24px 0px rgba(36, 107, 253, 0.25);
+  }
+  &:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+    box-shadow: none;
   }
 `
 
