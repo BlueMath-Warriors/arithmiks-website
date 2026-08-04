@@ -25,6 +25,8 @@ import {
 const Ehh = ({ images, breadcrumbItems }) => {
   const heroData = getHeroData(images);
   const overviewData = getOverviewData(images);
+  // Testimonial hidden on request; data kept in ./data in case it's re-enabled later.
+  const hasTestimonial = false;
 
   return (
     <>
@@ -33,10 +35,8 @@ const Ehh = ({ images, breadcrumbItems }) => {
       <Hero {...heroData} breadcrumbItems={breadcrumbItems} />
       <TechStack {...techStackData} />
       <Overview {...overviewData} />
-      {testimonialData && testimonialData.clientImageSrc && !testimonialData.clientImageSrc.includes('dummyOwner') && (
-        <Testimonial {...testimonialData} />
-      )}
-      <Solution {...solutionData} hasTestimonial={testimonialData && testimonialData.clientImageSrc && !testimonialData.clientImageSrc.includes('dummyOwner')} />
+      {hasTestimonial && <Testimonial {...testimonialData} />}
+      <Solution {...solutionData} hasTestimonial={hasTestimonial} />
       <KeyFeatures {...keyFeaturesData} />
       <MoreCaseStudies currentSlug="expat" />
       <ContactUs />

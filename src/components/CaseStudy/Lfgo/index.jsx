@@ -25,6 +25,8 @@ import {
 const Lfgo = ({ images, breadcrumbItems }) => {
   const heroData = getHeroData(images);
   const overviewData = getOverviewData(images);
+  // Testimonial hidden on request; data kept in ./data in case it's re-enabled later.
+  const hasTestimonial = false;
 
   return (
     <>
@@ -33,8 +35,8 @@ const Lfgo = ({ images, breadcrumbItems }) => {
       <Hero {...heroData} breadcrumbItems={breadcrumbItems} />
       <TechStack {...techStackData} />
       <Overview {...overviewData} />
-      <Testimonial {...testimonialData} />
-      <Solution {...solutionData} hasTestimonial={true} />
+      {hasTestimonial && <Testimonial {...testimonialData} />}
+      <Solution {...solutionData} hasTestimonial={hasTestimonial} />
       <KeyFeatures {...keyFeaturesData} />
       <MoreCaseStudies currentSlug="lfgo" />
       <ContactUs />
