@@ -154,6 +154,7 @@ const CaseStudy = ({ landing = false, titleAs = "h2" }) => {
                 key={study.slug}
                 to={`/case-studies/${study.slug}`}
                 className="cs-card"
+                $landing={landing}
               >
                 <CaseStudyImgWrapper>
                   <img 

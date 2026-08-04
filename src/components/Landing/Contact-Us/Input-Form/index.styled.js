@@ -7,8 +7,11 @@ export const FormContainer = styled.div`
   align-items: center;
   height: 662px;
   background-color: #fff;
+  border-radius: 0px 24px 24px 0px;
+  overflow: hidden;
   @media screen and (max-width: ${breakpoints.large}) {
     height: 100%;
+    border-radius: 24px 24px 0px 0px;
   }
   @media screen and (max-width: ${breakpoints.medium}) {
     height: 100%;
@@ -21,14 +24,12 @@ export const FormContainer = styled.div`
 export const FormSection = styled.div`
   z-index: 10;
   width: 672px;
-  border-radius: 0px 24px 24px 0px;
   background: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
   @media screen and (max-width: ${breakpoints.large}) {
     width: 760px;
-    border-radius: 24px 24px 0px 0px;
     padding: 32px 65px;
   }
   @media screen and (max-width: ${breakpoints.medium}) {

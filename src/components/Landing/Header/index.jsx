@@ -9,67 +9,14 @@ import {
   CompanyLogo,
   Hamburger,
   HeaderButtonTxt,
-  ServiceContainer,
-  ServiceRow,
-  ServiceHeader,
-  ServiceText,
-  TwoRows,
-  ServiceMenuItem,
 } from "./index.styled";
 import MenuIcon from "../../../images/hamburger_icon.svg";
-import DownArrow from "../../../images/header-arrow-down.svg";
 import logo from "../../../images/logo.webp";
-
-const ServicesMenu = ({ menu_ref }) => {
-  return (
-    <ServiceContainer ref={menu_ref} role="group" aria-label="Service categories">
-      <TwoRows>
-        <ServiceRow>
-          <ServiceHeader>Software Development</ServiceHeader>
-          <ServiceText>Web App Development</ServiceText>
-          <ServiceText>Mobile App Development</ServiceText>
-          <ServiceText>Custom Software Development</ServiceText>
-          <ServiceText>UI/UX Design</ServiceText>
-          <ServiceText>Software Quality Assurance</ServiceText>
-          <ServiceText>DevOps </ServiceText>
-        </ServiceRow>
-
-        <ServiceRow>
-          <ServiceHeader>Solution</ServiceHeader>
-          <ServiceText>Cloud Infrastructure Management</ServiceText>
-          <ServiceText>Project Management</ServiceText>
-          <ServiceText>Technical Support</ServiceText>
-          <ServiceText>Digital Transformation</ServiceText>
-        </ServiceRow>
-      </TwoRows>
-
-      <TwoRows>
-        <ServiceRow>
-          <ServiceHeader>Data and AI</ServiceHeader>
-          <ServiceText>Data Pre-Processing</ServiceText>
-          <ServiceText>Data Modeling</ServiceText>
-          <ServiceText>Results and Visualization</ServiceText>
-        </ServiceRow>
-
-        <ServiceRow>
-          <ServiceHeader>Product Engineering</ServiceHeader>
-          <ServiceText>Product Discovery</ServiceText>
-          <ServiceText>Interactive Prototyping</ServiceText>
-          <ServiceText>MVP</ServiceText>
-          <ServiceText>Software Re-engineering</ServiceText>
-        </ServiceRow>
-      </TwoRows>
-    </ServiceContainer>
-  );
-};
 
 const Header = ({ white, fixed_bar }) => {
   const navMenu = useRef(null);
-  const servicesRef = useRef(null);
-  const servicebtnRef = useRef(null);
   const menuButtonRef = useRef(null);
   const [showMenu, setShowMenu] = useState(false);
-  const [showServices, setShowServices] = useState(false);
   const [heroHeight, setHeroHeight] = useState(840);
   const [isFixed, setIsFixed] = useState(false);
   const [hideNav, setHideNav] = useState(false);
@@ -84,17 +31,6 @@ const Header = ({ white, fixed_bar }) => {
 
   const handleClickOutside = useCallback((event) => {
     if (
-      showServices &&
-      servicesRef.current &&
-      !(
-        servicesRef.current.contains(event.target) ||
-        servicebtnRef.current.contains(event.target)
-      )
-    ) {
-      setShowServices(false);
-    }
-
-    if (
       heroHeight < 840 &&
       showMenu &&
       navMenu.current &&
@@ -105,10 +41,10 @@ const Header = ({ white, fixed_bar }) => {
     ) {
       closeMenu();
     }
-  }, [showServices, showMenu, heroHeight, closeMenu]);
+  }, [showMenu, heroHeight, closeMenu]);
 
   useEffect(() => {
-    if (showServices || showMenu) {
+    if (showMenu) {
       document.addEventListener("mousedown", handleClickOutside);
     } else {
       document.removeEventListener("mousedown", handleClickOutside);
@@ -116,7 +52,7 @@ const Header = ({ white, fixed_bar }) => {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [showServices, showMenu, handleClickOutside]);
+  }, [showMenu, handleClickOutside]);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -181,7 +117,6 @@ const Header = ({ white, fixed_bar }) => {
       } else if (scrollY < heroHeight && scrollY > heroHeight - 10) {
         setHideNav(true);
         setShowMenu(false);
-        setShowServices(false);
       } else {
         setHideNav(false);
         setIsFixed(false);
@@ -197,7 +132,7 @@ const Header = ({ white, fixed_bar }) => {
   return (
     <>
       <Headerr
-        $white={showMenu || showServices || white || isFixed}
+        $white={showMenu || white || isFixed}
         $fixed={isFixed || fixed_bar}
         $hide={hideNav}
       >
@@ -217,20 +152,15 @@ const Header = ({ white, fixed_bar }) => {
                 Home
               </MenuItemLink>
             </li>
-            <ServiceMenuItem
-              ref={servicebtnRef}
-              $blue={showServices}
-              onClick={() => {
-                setShowServices(!showServices);
-                navMenu.current.classList.remove("active");
-                setShowMenu(false);
-              }}
-              aria-expanded={showServices}
-              aria-haspopup="true"
-            >
-              Services
-              <DownArrow className={showServices ? "down-icon" : "up-icon"} />
-            </ServiceMenuItem>
+            <li>
+              <MenuItemLink
+                to="/services"
+                onClick={closeMenu}
+                $active={currentPath.startsWith("/services")}
+              >
+                Services
+              </MenuItemLink>
+            </li>
             <li>
               <MenuItemLink
                 to="/case-studies"
@@ -286,7 +216,6 @@ const Header = ({ white, fixed_bar }) => {
             <MenuIcon />
           </Hamburger>
         </HeaderContainer>
-        {showServices && <ServicesMenu menu_ref={servicesRef} />}
       </Headerr>
     </>
   );
