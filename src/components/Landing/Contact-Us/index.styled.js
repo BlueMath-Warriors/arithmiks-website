@@ -136,34 +136,42 @@ export const CardLeft = styled.div`
 
 export const BackImage = styled.div`
   position: absolute;
-  height: 270px;
-  right: 0px;
-  bottom: 100px;
+  width: 300px;
+  height: 323px;
+  right: -30px;
+  bottom: -1px;
   top: auto;
-  overflow: hidden;
-  opacity: 0.3;
+  opacity: 1;
   pointer-events: none;
   z-index: 0;
-  
+
+  svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
   @media screen and (max-width: ${breakpoints.large}) {
-    right: 0px;
-    bottom: 80px;
+    width: 260px;
+    height: 280px;
+    right: -20px;
+    bottom: -1px;
     top: auto;
-    height: 250px;
   }
 
   @media screen and (max-width: ${breakpoints.medium}) {
-    height: 200px;
-    right: 0px;
-    bottom: 40px;
+    width: 210px;
+    height: 226px;
+    right: -15px;
+    bottom: -15px;
     top: auto;
-    opacity: 0.2;
   }
-  
+
   @media screen and (max-width: ${breakpoints.xsmall}) {
-    height: 150px;
-    bottom: 20px;
-    opacity: 0.15;
+    width: 160px;
+    height: 172px;
+    right: -10px;
+    bottom: -10px;
   }
 `
 

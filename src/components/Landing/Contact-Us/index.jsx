@@ -121,10 +121,10 @@ const ContactUs = ({ primaryTitleAs = "h2" }) => {
       </DescriptionText>
       <MainCard className="contact-card">
         <CardLeft className="contact-left">
+          <BackImage>
+            <BgImg/>
+          </BackImage>
           <CardDetails>
-            <BackImage>
-              <BgImg/>
-            </BackImage>
             <LeftCardHeader>Contact Information</LeftCardHeader>
 
             <SubCard>
