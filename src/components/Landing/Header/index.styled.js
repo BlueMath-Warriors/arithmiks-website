@@ -237,43 +237,6 @@ export const MenuItemLink = styled(Link)`
   }
 `;
 
-export const ServiceMenuItem = styled.li`
-  color: ${(props) => (props.$blue ? "#1355FF" : "#170F49")};
-  font-family: Poppins;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: ${(props) => (props.$blue ? "600" : "400")};
-  line-height: normal;
-  letter-spacing: -0.36px;
-  cursor: pointer;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-
-  @media screen and (max-width: ${breakpoints.large}) {
-    padding-left: 24px;
-    justify-content: flex-start;
-  }
-  @media screen and (max-width: ${breakpoints.medium}) {
-    padding-left: 24px;
-    justify-content: flex-start;
-  }
-
-  .down-icon {
-    transition: 0.5s all;
-    rotate: 180deg;
-    path {
-      stroke: #1355ff;
-    }
-  }
-
-  .up-icon {
-    transition: 0.5s all;
-  }
-`;
-
 export const HeaderButtonTxt = styled.p`
   color: #fff;
   text-align: center;
@@ -343,73 +306,4 @@ export const LogoText = styled.p`
   }
 `;
 
-export const ServiceContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  padding: 24px 0px;
-  position: absolute;
-  width: 100%;
-  top: 90px;
-  background: #fff;
-  box-shadow: 0px 2px 4px -2px rgba(0, 0, 0, 0.05),
-    0px 4px 6px -1px rgba(0, 0, 0, 0.1);
-  overflow-y: auto;
-  @media screen and (max-width: ${breakpoints.large}) {
-    flex-direction: column;
-    gap: 32px;
-    align-items: center;
-    justify-content: center;
-  }
-  @media screen and (max-width: ${breakpoints.medium}) {
-    align-items: flex-start;
-    padding: 32px;
-  }
-  &.hide {
-    display: none;
-  }
-`;
-export const TwoRows = styled.div`
-  display: flex;
-  align-items: flex-start;
-  padding: 0;
-  margin: 0;
-  @media screen and (max-width: ${breakpoints.medium}) {
-    flex-direction: column;
-    gap: 32px;
-    align-items: center;
-    justify-content: center;
-  }
-`;
-export const ServiceRow = styled.div`
-  display: flex;
-  width: 256px;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 16px;
-`;
-export const ServiceHeader = styled.div`
-  color: #111928;
-  font-family: Poppins;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 16px;
-`;
-
-export const ServiceText = styled.p`
-  color: #6b7280;
-  font-family: Poppins;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 14px;
-  cursor: pointer;
-
-  &:hover {
-    color: #1355ff;
-    font-weight: 700;
-  }
-`;
 

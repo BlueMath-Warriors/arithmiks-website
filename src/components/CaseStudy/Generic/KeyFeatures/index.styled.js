@@ -8,16 +8,16 @@ export const KeyFeaturesHeader = styled.div`
   width: 100%;
   max-width: 1120px;
   margin: 0 auto;
-  padding: 80px 20px 48px 20px;
+  padding: 80px 20px 24px 20px;
   position: relative;
 
   @media screen and (max-width: ${breakpoints.large}) {
     max-width: 760px;
-    padding: 60px 20px 40px 20px;
+    padding: 60px 20px 20px 20px;
   }
 
   @media screen and (max-width: ${breakpoints.medium}) {
-    padding: 48px 16px 32px 16px;
+    padding: 48px 16px 16px 16px;
   }
 `;
 
@@ -91,7 +91,7 @@ export const SubHeading = styled.p`
   font-style: normal;
   font-weight: 400;
   line-height: 28px;
-  margin: 0 0 32px 0;
+  margin: 0 0 16px 0;
   max-width: 800px;
   width: 100%;
   padding-left: 0;
@@ -100,12 +100,13 @@ export const SubHeading = styled.p`
   @media screen and (max-width: ${breakpoints.large}) {
     padding-left: 0;
     margin-left: 0;
+    margin-bottom: 16px;
   }
 
   @media screen and (max-width: ${breakpoints.medium}) {
     font-size: 16px;
     line-height: 24px;
-    margin-bottom: 24px;
+    margin-bottom: 12px;
     padding-left: 0;
     margin-left: 0;
   }
@@ -216,7 +217,7 @@ export const CarouselSlide = styled.div`
   align-items: center;
   transition: transform 0.4s ease, opacity 0.4s ease;
   transform: translate(-50%, -50%)
-    translateX(${(props) => props.$offset * 60}%)
+    translateX(${(props) => props.$offset * 92}%)
     scale(${(props) => (props.$active ? 1 : 0.8)});
   opacity: ${(props) => (props.$active ? 1 : props.$isPeek ? 0.5 : 0)};
   z-index: ${(props) => (props.$active ? 10 : props.$isPeek ? 5 : 0)};
@@ -225,7 +226,7 @@ export const CarouselSlide = styled.div`
 
   @media screen and (max-width: ${breakpoints.medium}) {
     transform: translate(-50%, -50%)
-      translateX(${(props) => props.$offset * 85}%)
+      translateX(${(props) => props.$offset * 96}%)
       scale(${(props) => (props.$active ? 1 : 0.85)});
   }
 `;

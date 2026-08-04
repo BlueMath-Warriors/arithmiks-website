@@ -526,21 +526,25 @@ export const CaseStudyCardLink = styled(Link)`
     }
   }
 
-  &:nth-child(2n) {
-    margin-top: 120px;
-  }
-
-  @media screen and (max-width: ${breakpoints.large}) {
+  ${(props) =>
+    !props.$landing &&
+    `
     &:nth-child(2n) {
-      margin-top: 100px;
+      margin-top: 120px;
     }
-  }
 
-  @media screen and (max-width: ${breakpoints.medium}) {
-    &:nth-child(2n) {
-      margin-top: 0;
+    @media screen and (max-width: ${breakpoints.large}) {
+      &:nth-child(2n) {
+        margin-top: 100px;
+      }
     }
-  }
+
+    @media screen and (max-width: ${breakpoints.medium}) {
+      &:nth-child(2n) {
+        margin-top: 0;
+      }
+    }
+  `}
 `;
 
 export const CategoryTabs = styled.div`

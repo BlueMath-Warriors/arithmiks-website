@@ -25,10 +25,8 @@ import {
 const MrSellerNote = ({ images, breadcrumbItems }) => {
   const heroData = getHeroData(images);
   const overviewData = getOverviewData(images);
-  const hasTestimonial =
-    testimonialData &&
-    testimonialData.clientImageSrc &&
-    !testimonialData.clientImageSrc.includes("dummyOwner");
+  // Testimonial hidden on request; data kept in ./data in case it's re-enabled later.
+  const hasTestimonial = false;
 
   return (
     <>
