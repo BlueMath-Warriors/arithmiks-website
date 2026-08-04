@@ -2,17 +2,31 @@ import { styled } from "styled-components";
 import { Link as GatsbyLink } from "gatsby";
 import { breakpoints } from "../index.styled";
 
+export const FooterSubCard = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  @media screen and (max-width: ${breakpoints.medium}) {
+    gap: 12px;
+  }
+`;
+
 export const FooterContent = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: flex-start;
+  width: 1120px;
 
   @media screen and (max-width: ${breakpoints.large}) {
+    width: 760px;
+    justify-content: center;
     gap: 16px;
     flex-wrap: wrap;
   }
 
   @media screen and (max-width: ${breakpoints.medium}) {
+    justify-content: center;
     gap: 32px;
     flex-wrap: wrap;
     width: 382px;
@@ -30,7 +44,6 @@ export const Arithmiks = styled.div`
   flex-direction: column;
   align-items: flex-start;
   gap: 32px;
-  margin-right: 117px;
 
   @media screen and (max-width: ${breakpoints.large}) {
     flex-direction: row;
@@ -193,7 +206,6 @@ export const Services = styled.div`
   flex-direction: column;
   align-items: flex-start;
   gap: 16px;
-  margin-right: 50px;
   @media screen and (max-width: ${breakpoints.large}) {
     width: 176px;
     margin-right: 0px;
@@ -213,7 +225,6 @@ export const Technologies = styled.div`
   flex-direction: column;
   align-items: flex-start;
   gap: 24px;
-  margin-right: 61.5px;
   @media screen and (max-width: ${breakpoints.large}) {
     width: 176px;
     margin-right: 0px;
@@ -233,7 +244,6 @@ export const Industries = styled.div`
   flex-direction: column;
   align-items: flex-start;
   gap: 24px;
-  margin-right: 88px;
   @media screen and (max-width: ${breakpoints.large}) {
     width: 176px;
     margin-right: 0px;
@@ -291,15 +301,15 @@ export const Divider =  styled.hr`
 
 export const ContactInfoContainer = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: flex-start;
-  gap: 240px;
   margin-top: 24px;
   margin-bottom: 6px;
   width: 1120px;
 
   @media screen and (max-width: ${breakpoints.large}) {
     width: 760px;
+    justify-content: center;
     gap: 180px;
   }
 

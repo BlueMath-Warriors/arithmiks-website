@@ -21,14 +21,12 @@ import {
   Link,
   CopyRightText,
 } from "./index.styled";
-import {
-  SubCard,
-  CardContent,
-} from "../Contact-Us/index.styled";
+import { CardContent } from "../Contact-Us/index.styled";
 import {
   FooterCaption,
   FooterContentText,
   FooterCircle,
+  FooterSubCard,
 } from "./index.styled";
 import * as containerStyles from "../../../styles/global.module.css";
 import favicon from "../../../images/favicon.png";
@@ -109,7 +107,7 @@ const Footer = () => {
       <Divider />
 
       <ContactInfoContainer>
-        <SubCard>
+        <FooterSubCard>
           <FooterCircle>
             <EmailIcon />
           </FooterCircle>
@@ -119,9 +117,9 @@ const Footer = () => {
               <FooterContentText>services@arithmiks.com</FooterContentText>
             </a>
           </CardContent>
-        </SubCard>
+        </FooterSubCard>
 
-        <SubCard>
+        <FooterSubCard>
           <FooterCircle>
             <OfficeIcon />
           </FooterCircle>
@@ -131,9 +129,9 @@ const Footer = () => {
               Lahore, Pakistan
             </FooterContentText>
           </CardContent>
-        </SubCard>
+        </FooterSubCard>
 
-        <SubCard>
+        <FooterSubCard>
           <FooterCircle>
             <CareerIcon />
           </FooterCircle>
@@ -143,7 +141,7 @@ const Footer = () => {
               <FooterContentText>hr@arithmiks.com</FooterContentText>
             </a>
           </CardContent>
-        </SubCard>
+        </FooterSubCard>
       </ContactInfoContainer>
 
       <Divider />
