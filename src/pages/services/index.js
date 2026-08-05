@@ -96,7 +96,14 @@ const ServicesIndexPage = () => {
       gsap.fromTo(
         ".svc-hero",
         { opacity: 0, y: 30 },
-        { opacity: 1, y: 0, duration: 0.7, ease: "power3.out", stagger: 0.08 }
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.7,
+          ease: "power3.out",
+          stagger: 0.08,
+          clearProps: "transform",
+        }
       );
 
       gsap.utils.toArray(".svc-category").forEach((section) => {
@@ -108,6 +115,7 @@ const ServicesIndexPage = () => {
             y: 0,
             duration: 0.6,
             ease: "power3.out",
+            clearProps: "transform",
             scrollTrigger: { trigger: section, start: "top 82%" },
           }
         );
@@ -121,6 +129,7 @@ const ServicesIndexPage = () => {
             duration: 0.6,
             ease: "power3.out",
             stagger: 0.1,
+            clearProps: "transform",
             scrollTrigger: { trigger: section, start: "top 78%" },
           }
         );
@@ -136,6 +145,7 @@ const ServicesIndexPage = () => {
               duration: 0.4,
               ease: "power2.out",
               stagger: 0.04,
+              clearProps: "transform",
               scrollTrigger: { trigger: section, start: "top 70%" },
             }
           );
@@ -177,7 +187,7 @@ const ServicesIndexPage = () => {
               </Stat>
             </StatRow>
 
-            <HeaderCta className="svc-hero" type="button" onClick={scrollToContact}>
+            <HeaderCta type="button" onClick={scrollToContact}>
               Talk to an Expert
               <ArrowRightBlue style={{ filter: "brightness(0) invert(1)" }} />
             </HeaderCta>

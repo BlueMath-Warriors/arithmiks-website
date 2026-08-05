@@ -114,15 +114,11 @@ export const HeaderCta = styled.button`
   font-weight: 600;
   line-height: 150%;
   cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
   &:hover,
   &:focus-visible {
-    box-shadow: 0px 8px 24px rgba(19, 85, 255, 0.25);
-  }
-
-  &:active {
-    transform: scale(0.98);
+    background: #0040e0;
+    
   }
 
   svg {
