@@ -50,7 +50,7 @@ const Hero = ({
               style={{
                 marginTop: "12px",
                 marginBottom: "-45px",
-                width: "100%",
+                maxWidth: "100%",
                 display: "block",
               }}
             />
