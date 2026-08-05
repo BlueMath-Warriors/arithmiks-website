@@ -382,7 +382,7 @@ export const CaseStudyTitle = styled.h3`
   font-family: Poppins;
   font-size: 24px;
   font-style: normal;
-  font-weight: 700;
+  font-weight: 500;
   line-height: 32px;
   letter-spacing: -0.48px;
   margin-bottom: 12px;

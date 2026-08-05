@@ -159,6 +159,7 @@ const KeyFeatures = ({
                     src={feature.image}
                     alt={`Dashboard view ${index + 1}`}
                     draggable={false}
+                    loading="lazy"
                   />
                 </CarouselSlide>
               );

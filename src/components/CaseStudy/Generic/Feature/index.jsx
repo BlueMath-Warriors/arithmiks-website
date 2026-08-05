@@ -59,7 +59,7 @@ const Feature = (props) => {
         <GatsbyImage
           image={gatsbyImageData}
           alt={title}
-          style={{ width: "100%", height: "auto" }}
+          style={{ maxWidth: "100%" }}
         />
       );
     }

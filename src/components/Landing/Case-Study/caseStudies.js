@@ -12,6 +12,19 @@ import mrsellernoteDashboard from "../../../images/msnDashboard.webp";
 
 export const caseStudies = [
   {
+    slug: "go",
+    dashboardImg: goDashboard,
+    logo: "/go.svg",
+    logoAlt: "GO",
+    tag: "Machine Learning",
+    category: "saas-software",
+    relatedService: { slug: "ai-data-solutions", label: "AI & Data Solutions" },
+    title: "AI-Powered Marketing Automation Platform",
+    description:
+      "An AI-powered platform that automates digital marketing—handling content, publishing, and ads to help agencies grow.",
+    hasDetailPage: true,
+  },
+  {
     slug: "swerv",
     dashboardImg: swervDashboard,
     logo: "/swerv.svg",
@@ -34,7 +47,7 @@ export const caseStudies = [
     relatedService: { slug: "web-app-development", label: "Web App Development" },
     title: "Unifies community engagement, events, and donations",
     description:
-      "Togather is a platform for churches and NGOs to connect communities through events, donations, and engagement.",
+      "Together is a platform for churches and NGOs to connect communities through events, donations, and engagement.",
     hasDetailPage: true,
   },
   {
@@ -84,22 +97,9 @@ export const caseStudies = [
     tag: "Web App",
     category: "saas-software",
     relatedService: { slug: "ai-data-solutions", label: "AI & Data Solutions" },
-    title: "AI-Powered Marketing Automation Platform",
+    title: "Unifies relocation research, decisions, and community",
     description:
-      "AI-powered, gamified platform that centralizes essential lifestyle insights for digital nomads and expats.",
-    hasDetailPage: true,
-  },
-  {
-    slug: "go",
-    dashboardImg: goDashboard,
-    logo: "/go.svg",
-    logoAlt: "GO",
-    tag: "Machine Learning",
-    category: "saas-software",
-    relatedService: { slug: "ai-data-solutions", label: "AI & Data Solutions" },
-    title: "AI-Powered Marketing Automation Platform",
-    description:
-      "An AI-powered platform that automates digital marketing—handling content, publishing, and ads to help agencies grow.",
+      "A relocation platform combining AI-powered research, country comparisons, and a verified expat community.",
     hasDetailPage: true,
   },
   {
@@ -136,9 +136,9 @@ export const caseStudies = [
     tag: "SaaS",
     category: "saas-software",
     relatedService: { slug: "ai-data-solutions", label: "AI & Data Solutions" },
-    title: "AI Meeting Intelligence Platform",
+    title: "Turns meetings into AI-searchable knowledge",
     description:
-      "An AI meeting intelligence platform that records, transcribes, and turns every conversation into a searchable knowledge base.",
+      "An AI platform that records and transcribes conversations into a searchable knowledge base.",
     hasDetailPage: true,
   },
   {
@@ -149,9 +149,9 @@ export const caseStudies = [
     tag: "Web App",
     category: "fintech",
     relatedService: { slug: "custom-software-development", label: "Custom Software Development" },
-    title: "Automates multi-party loan management and payments",
+    title: "Automates multi-party loan payment processing",
     description:
-      "An automated loan management platform that tracks, calculates, and processes multi-party payments from creation to final settlement.",
+      "An automated loan platform that tracks and processes payments from creation to settlement.",
     hasDetailPage: true,
   },
 ];
