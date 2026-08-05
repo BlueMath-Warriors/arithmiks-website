@@ -59,12 +59,12 @@ const Footer = () => {
 
         <Services>
           <Heading>Services</Heading>
-          <Text to="/services/ai-data-solutions">Data Processing & Analysis</Text>
-          <Text to="/services/custom-software-development">Custom Software Development</Text>
-          <Text to="/services/web-app-development">Web Application</Text>
-          <Text to="/services/mobile-app-development">Mobile Application</Text>
-          <Text to="/services/custom-software-development">Re-Engineering Softwares</Text>
-          <Text to="/services/devops">DevOps</Text>
+          <Text to="/services">Data Processing & Analysis</Text>
+          <Text to="/services">Custom Software Development</Text>
+          <Text to="/services">Web Application</Text>
+          <Text to="/services">Mobile Application</Text>
+          <Text to="/services">Re-Engineering Softwares</Text>
+          <Text to="/services">DevOps</Text>
           <Text as="button" type="button" onClick={scrollToContact}>Cloud Computing Solutions</Text>
           <Text as="button" type="button" onClick={scrollToContact}>
             IT Project
@@ -96,10 +96,10 @@ const Footer = () => {
         <Expertise>
           <Heading $mb8>Expertise</Heading>
           <Text as="button" type="button" onClick={scrollToContact}>Cloud</Text>
-          <Text to="/services/devops">DevOps</Text>
-          <Text to="/services/ai-data-solutions">Machine Learning</Text>
-          <Text to="/services/mobile-app-development">Mobile</Text>
-          <Text to="/services/ui-ux-design">UI/UX Service</Text>
+          <Text to="/services">DevOps</Text>
+          <Text to="/services">Machine Learning</Text>
+          <Text to="/services">Mobile</Text>
+          <Text to="/services">UI/UX Service</Text>
           <Text as="button" type="button" onClick={scrollToContact}>QA & Testing</Text>
         </Expertise>
       </FooterContent>
