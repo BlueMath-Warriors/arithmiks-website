@@ -25,8 +25,7 @@ import {
 const Lfgo = ({ images, breadcrumbItems }) => {
   const heroData = getHeroData(images);
   const overviewData = getOverviewData(images);
-  // Testimonial hidden on request; data kept in ./data in case it's re-enabled later.
-  const hasTestimonial = false;
+  const hasTestimonial = true;
 
   return (
     <>
