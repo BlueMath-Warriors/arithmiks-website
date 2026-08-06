@@ -70,6 +70,12 @@ const CASE_STUDY_SEO = {
     description:
       "Read this case study to see how Arithmiks automated multi-party loan management for Mr. Seller Note, from note creation to final settlement.",
   },
+  quanta: {
+    title: "Conversational BI Platform Case Study | Quanta & Arithmiks",
+    breadcrumbName: "Quanta",
+    description:
+      "Read this case study to see how Arithmiks built Quanta, a multi-tenant BI platform that lets any team query their own database in plain English.",
+  },
 };
 
 /** @param {string} slug */
