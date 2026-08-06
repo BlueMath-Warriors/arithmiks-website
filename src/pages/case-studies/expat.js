@@ -35,12 +35,12 @@ export const query = graphql`
   query {
     heroImage: file(relativePath: { eq: "ehhMemorandum.webp" }) {
       childImageSharp {
-        gatsbyImageData(width: 929, placeholder: BLURRED, formats: [AUTO, WEBP, AVIF], quality: 85)
+        gatsbyImageData(width: 929, placeholder: NONE, formats: [AUTO, WEBP, AVIF], quality: 85)
       }
     }
     overviewImage: file(relativePath: { eq: "ehhFinancialSummary.webp" }) {
       childImageSharp {
-        gatsbyImageData(width: 929, placeholder: BLURRED, formats: [AUTO, WEBP, AVIF], quality: 85)
+        gatsbyImageData(width: 929, placeholder: NONE, formats: [AUTO, WEBP, AVIF], quality: 85)
       }
     }
   }
