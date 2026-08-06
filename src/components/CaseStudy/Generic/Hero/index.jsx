@@ -39,7 +39,7 @@ const Hero = ({
       <Breadcrumbs items={breadcrumbItems} />
       <HeroContent>
         <SmallTxt>{category}</SmallTxt>
-        <LogoImage src={logoSrc} alt={logoAlt} />
+        {logoSrc && <LogoImage src={logoSrc} alt={logoAlt} />}
         <StudyCaption>{caption}</StudyCaption>
         <div style={{ position: "relative" }}>
           {gatsbyImage ? (
@@ -49,7 +49,7 @@ const Hero = ({
               loading="eager"
               style={{
                 marginTop: "12px",
-                marginBottom: "-45px",
+                marginBottom: "-40px",
                 maxWidth: "100%",
                 display: "block",
               }}

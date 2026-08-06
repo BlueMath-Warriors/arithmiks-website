@@ -167,7 +167,9 @@ const CaseStudy = ({ landing = false, titleAs = "h2" }) => {
                   />
                 </CaseStudyImgWrapper>
                 <LogoAndTagWrapper>
-                  <CompanyLogo src={study.logo} alt={study.logoAlt} width={40} height={40} />
+                  {study.logo && (
+                    <CompanyLogo src={study.logo} alt={study.logoAlt} width={40} height={40} />
+                  )}
                   <CaseStudyTag>{study.tag}</CaseStudyTag>
                 </LogoAndTagWrapper>
                 <CaseStudyTitle>{study.title}</CaseStudyTitle>
@@ -193,7 +195,9 @@ const CaseStudy = ({ landing = false, titleAs = "h2" }) => {
                 />
               </CaseStudyImgWrapper>
               <LogoAndTagWrapper>
-                <CompanyLogo src={study.logo} alt={study.logoAlt} width={40} height={40} />
+                {study.logo && (
+                  <CompanyLogo src={study.logo} alt={study.logoAlt} width={40} height={40} />
+                )}
                 <CaseStudyTag>{study.tag}</CaseStudyTag>
               </LogoAndTagWrapper>
               <CaseStudyTitle>{study.title}</CaseStudyTitle>

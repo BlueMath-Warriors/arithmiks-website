@@ -76,6 +76,12 @@ const CASE_STUDY_SEO = {
     description:
       "Read this case study to see how Arithmiks built Quanta, a multi-tenant BI platform that lets any team query their own database in plain English.",
   },
+  "media-infrastructure": {
+    title: "AI Media Infrastructure Case Study | Arithmiks",
+    breadcrumbName: "Media Infrastructure",
+    description:
+      "Read this case study to see how Arithmiks built an AI platform that makes decades of broadcast video searchable via transcripts, faces, chapters, and natural language search.",
+  },
 };
 
 /** @param {string} slug */
