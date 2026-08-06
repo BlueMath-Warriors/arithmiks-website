@@ -9,6 +9,8 @@ import ofertasDashboard from "../../../images/ofertasDashboard.webp";
 import hakroDashboard from "../../../images/hakroDasboard.webp";
 import qareebDashboard from "../../../images/qareebDashboard.webp";
 import mrsellernoteDashboard from "../../../images/msnDashboard.webp";
+import quantaDashboard from "../../../images/quantaDashboard.webp";
+import mediaInfraDashboard from "../../../images/mediaInfraDashboard.webp";
 
 export const caseStudies = [
   {
@@ -22,6 +24,19 @@ export const caseStudies = [
     title: "AI-Powered Marketing Automation Platform",
     description:
       "An AI-powered platform that automates digital marketing—handling content, publishing, and ads to help agencies grow.",
+    hasDetailPage: true,
+  },
+  {
+    slug: "media-infrastructure",
+    dashboardImg: mediaInfraDashboard,
+    logo: null,
+    logoAlt: "Media Infrastructure",
+    tag: "Media Infrastructure",
+    category: "saas-software",
+    relatedService: { slug: "ai-data-solutions", label: "AI & Data Solutions" },
+    title: "AI-powered platform for searching broadcast video archives",
+    description:
+      "AI platform makes decades of broadcast video searchable via transcripts, faces, chapters, and NLP.",
     hasDetailPage: true,
   },
   {
@@ -152,6 +167,19 @@ export const caseStudies = [
     title: "Automates multi-party loan payment processing",
     description:
       "An automated loan platform that tracks and processes payments from creation to settlement.",
+    hasDetailPage: true,
+  },
+  {
+    slug: "quanta",
+    dashboardImg: quantaDashboard,
+    logo: "/quanta.svg",
+    logoAlt: "Quanta",
+    tag: "BI Platform",
+    category: "saas-software",
+    relatedService: { slug: "ai-data-solutions", label: "AI & Data Solutions" },
+    title: "Query your database in plain English conversations",
+    description:
+      "A multi-tenant BI platform that lets any team query their own database in plain English, no SQL required.",
     hasDetailPage: true,
   },
 ];

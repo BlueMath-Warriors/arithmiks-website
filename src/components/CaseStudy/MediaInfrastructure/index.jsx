@@ -3,29 +3,21 @@ import ContactUs from "../../Landing/Contact-Us";
 import Footer from "../../Landing/Footer";
 import Header from "../../Landing/Header";
 
-import {
-  Hero,
-  TechStack,
-  Overview,
-  Testimonial,
-  Solution,
-  KeyFeatures,
-  MoreCaseStudies,
-} from "../Generic";
+import { Hero, TechStack, Overview, Solution, KeyFeatures, MoreCaseStudies } from "../Generic";
 
 import {
   getHeroData,
   techStackData,
   getOverviewData,
-  testimonialData,
   solutionData,
   keyFeaturesData,
 } from "./data";
 
-const Lfgo = ({ images, breadcrumbItems }) => {
+const MediaInfrastructure = ({ images, breadcrumbItems }) => {
   const heroData = getHeroData(images);
   const overviewData = getOverviewData(images);
-  const hasTestimonial = true;
+  // No testimonial content yet — add testimonialData + flip this to true once available.
+  const hasTestimonial = false;
 
   return (
     <>
@@ -34,10 +26,9 @@ const Lfgo = ({ images, breadcrumbItems }) => {
       <Hero {...heroData} breadcrumbItems={breadcrumbItems} />
       <TechStack {...techStackData} />
       <Overview {...overviewData} />
-      {hasTestimonial && <Testimonial {...testimonialData} />}
       <Solution {...solutionData} hasTestimonial={hasTestimonial} />
       <KeyFeatures {...keyFeaturesData} />
-      <MoreCaseStudies currentSlug="lfgo" />
+      <MoreCaseStudies currentSlug="media-infrastructure" />
       <ContactUs />
       </main>
       <Footer />
@@ -45,4 +36,4 @@ const Lfgo = ({ images, breadcrumbItems }) => {
   );
 };
 
-export default Lfgo;
+export default MediaInfrastructure;
