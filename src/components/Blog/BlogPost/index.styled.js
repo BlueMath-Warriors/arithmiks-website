@@ -236,6 +236,25 @@ export const ArticleBody = styled.div`
   }
 `;
 
+export const BodyGrid = styled.div`
+  display: ${({ $hasToc }) => ($hasToc ? "grid" : "block")};
+  grid-template-columns: 240px 1fr;
+  gap: 64px;
+  align-items: start;
+
+  ${ArticleBody} {
+    max-width: ${({ $hasToc }) => ($hasToc ? "none" : "700px")};
+  }
+
+  @media screen and (max-width: ${breakpoints.large}) {
+    display: block;
+
+    ${ArticleBody} {
+      max-width: 700px;
+    }
+  }
+`;
+
 export const RelatedSection = styled.div`
   width: 1120px;
   margin: 88px auto 0;
