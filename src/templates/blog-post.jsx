@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useRef } from "react";
 import { graphql } from "gatsby";
 import * as containerStyles from "../styles/global.module.css";
 import Header from "../components/Landing/Header";
@@ -8,6 +9,7 @@ import Footer from "../components/Landing/Footer";
 import { SEO } from "../components/seo";
 import { BlogCover } from "../components/Blog/CoverArt";
 import { AuthorAvatar } from "../components/Blog/AuthorBadge";
+import { TableOfContents } from "../components/Blog/TableOfContents";
 import { getCategoryLabel } from "../utils/blog";
 import {
   Article,
@@ -19,6 +21,7 @@ import {
   BylineMeta,
   BylineName,
   BylineSub,
+  BodyGrid,
   ArticleBody,
   RelatedSection,
   RelatedHeading,
@@ -31,9 +34,10 @@ import {
 } from "../components/Blog/BlogPost/index.styled";
 
 const BlogPostTemplate = ({ data, pageContext, children }) => {
-  const { frontmatter } = data.mdx;
+  const { frontmatter, headings } = data.mdx;
   const relatedPosts = data.relatedPosts.nodes;
   const readingTime = pageContext.readingTime;
+  const articleBodyRef = useRef(null);
 
   const breadcrumbItems = [
     { name: "Home", pathname: "/" },
@@ -76,7 +80,10 @@ const BlogPostTemplate = ({ data, pageContext, children }) => {
             </BylineMeta>
           </BylineRow>
 
-          <ArticleBody>{children}</ArticleBody>
+          <BodyGrid $hasToc={headings.length >= 2}>
+            <TableOfContents headings={headings} containerRef={articleBodyRef} />
+            <ArticleBody ref={articleBodyRef}>{children}</ArticleBody>
+          </BodyGrid>
         </ContentColumn>
 
         {relatedPosts.length > 0 && (
@@ -138,6 +145,7 @@ export const Head = ({ data }) => {
 export const query = graphql`
   query BlogPostQuery($id: String!) {
     mdx(id: { eq: $id }) {
+      headings
       frontmatter {
         title
         slug
