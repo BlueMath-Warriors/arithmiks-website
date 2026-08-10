@@ -40,7 +40,13 @@ export const query = graphql`
     }
     overviewImage: file(relativePath: { eq: "d&oFinancialSummary.webp" }) {
       childImageSharp {
-        gatsbyImageData(width: 929, placeholder: NONE, formats: [AUTO, WEBP, AVIF], quality: 85)
+        gatsbyImageData(
+          width: 1230
+          placeholder: NONE
+          formats: [AUTO, WEBP, AVIF]
+          quality: 85
+          sizes: "(max-width: 820px) calc(100vw - 32px), (max-width: 1200px) calc(50vw - 40px), calc(50vw - 50px)"
+        )
       }
     }
   }
