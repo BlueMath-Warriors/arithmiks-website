@@ -39,8 +39,9 @@ import {
   CtaBtn,
   SearchButton,
   Hamburger,
-  MobileDrawer,
 } from "./index.styled";
+import SearchOverlay from "./SearchOverlay";
+import MobileMenu from "./MobileMenu";
 import logoMark from "../../../images/favicon.png";
 import MenuIcon from "../../../images/hamburger_icon.svg";
 import companyTeamPhoto from "../../../images/homepage/hero-team.png";
@@ -82,7 +83,7 @@ const Header = ({ white, fixed_bar }) => {
   const [hideNav, setHideNav] = useState(false);
   const [currentPath, setCurrentPath] = useState("");
   const [showMenu, setShowMenu] = useState(false);
-  const [openAccordion, setOpenAccordion] = useState(null);
+  const [showSearch, setShowSearch] = useState(false);
   const [activeCategory, setActiveCategory] = useState(SERVICE_NAV_GROUPS[0].slug);
 
   const services = useHoverIntent();
@@ -93,14 +94,6 @@ const Header = ({ white, fixed_bar }) => {
     if (menu !== "services") services.setOpen(false);
     if (menu !== "products") products.setOpen(false);
     if (menu !== "company") company.setOpen(false);
-  };
-
-  const toggleAccordion = (key) =>
-    setOpenAccordion((current) => (current === key ? null : key));
-
-  const closeDrawer = () => {
-    setShowMenu(false);
-    setOpenAccordion(null);
   };
 
   // scroll/resize-driven fixed & hide behavior — unrelated to the visual
@@ -159,9 +152,10 @@ const Header = ({ white, fixed_bar }) => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [heroHeight, fixed_bar]);
 
-  // The open white mega-menus need dark nav text regardless of scroll
-  // position — matches the source's forceHeaderLight() behavior.
-  const anyMenuOpen = services.open || products.open || company.open;
+  // The open white mega-menus (and the white search sheet) need dark nav
+  // text regardless of scroll position — matches the source's own
+  // forceHeaderLight() behavior.
+  const anyMenuOpen = services.open || products.open || company.open || showSearch;
   const onLight = white || isFixed || fixed_bar || anyMenuOpen;
   const navColor = onLight ? "#3A4256" : "rgba(255,255,255,.9)";
 
@@ -257,21 +251,43 @@ const Header = ({ white, fixed_bar }) => {
           </CtaBtn>
         </Nav>
 
-        <SearchButton aria-label="Search" type="button" $white={white} $onLight={onLight}>
-          <svg
-            viewBox="0 0 20 20"
-            width="19"
-            height="19"
-            fill="none"
-            stroke={navColor}
-            strokeWidth="1.8"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            aria-hidden="true"
-          >
-            <circle cx="8.8" cy="8.8" r="5.3" />
-            <path d="m12.7 12.7 4 4" />
-          </svg>
+        <SearchButton
+          aria-label={showSearch ? "Close search" : "Search"}
+          aria-expanded={showSearch}
+          type="button"
+          $white={white}
+          $onLight={onLight}
+          onClick={() => setShowSearch((v) => !v)}
+        >
+          {showSearch ? (
+            <svg
+              viewBox="0 0 20 20"
+              width="19"
+              height="19"
+              fill="none"
+              stroke={navColor}
+              strokeWidth="1.9"
+              strokeLinecap="round"
+              aria-hidden="true"
+            >
+              <path d="M5 5l10 10M15 5L5 15" />
+            </svg>
+          ) : (
+            <svg
+              viewBox="0 0 20 20"
+              width="19"
+              height="19"
+              fill="none"
+              stroke={navColor}
+              strokeWidth="1.8"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden="true"
+            >
+              <circle cx="8.8" cy="8.8" r="5.3" />
+              <path d="m12.7 12.7 4 4" />
+            </svg>
+          )}
         </SearchButton>
 
         <Hamburger
@@ -315,14 +331,26 @@ const Header = ({ white, fixed_bar }) => {
               <MegaPane key={category.slug}>
                 <h3>{category.title}</h3>
                 <MegaItemsGrid>
-                  {category.items.map((svc) => (
-                    <MegaItem key={svc.slug} to={svc.url}>
-                      {svc.label}
-                    </MegaItem>
-                  ))}
+                  {category.items.map((svc) =>
+                    svc.hasPage ? (
+                      <MegaItem key={svc.slug} to={svc.url}>
+                        {svc.label}
+                      </MegaItem>
+                    ) : (
+                      <MegaItem key={svc.slug} as="a" href="#">
+                        {svc.label}
+                      </MegaItem>
+                    )
+                  )}
                 </MegaItemsGrid>
                 <MegaPaneFooter>
-                  <MegaPaneAllLink to={category.url}>All {category.title} →</MegaPaneAllLink>
+                  {category.hasPage ? (
+                    <MegaPaneAllLink to={category.url}>All {category.title} →</MegaPaneAllLink>
+                  ) : (
+                    <MegaPaneAllLink as="a" href="#">
+                      All {category.title} →
+                    </MegaPaneAllLink>
+                  )}
                 </MegaPaneFooter>
               </MegaPane>
             ))}
@@ -379,7 +407,7 @@ const Header = ({ white, fixed_bar }) => {
               <span>About</span>
               <p>Who we are and how we got here</p>
             </CompanyLink>
-            <CompanyLink href="/how-we-work">
+            <CompanyLink href="#">
               <span>How we work</span>
               <p>Our process, from audit to handover</p>
             </CompanyLink>
@@ -387,7 +415,7 @@ const Header = ({ white, fixed_bar }) => {
               <span>Arithmiks Blog</span>
               <p>What we are learning about shipping AI</p>
             </CompanyLink>
-            <CompanyLink href="/careers">
+            <CompanyLink href="#">
               <span>Careers</span>
               <p>Open roles and what it is like here</p>
             </CompanyLink>
@@ -400,79 +428,8 @@ const Header = ({ white, fixed_bar }) => {
         </CompanyPanel>
       )}
 
-      {showMenu && (
-        <MobileDrawer>
-          <button
-            type="button"
-            aria-expanded={openAccordion === "services"}
-            onClick={() => toggleAccordion("services")}
-          >
-            Services
-          </button>
-          {openAccordion === "services" && (
-            <div>
-              {SERVICE_NAV_GROUPS.map((category) => (
-                <div key={category.slug}>
-                  <strong>{category.title}</strong>
-                  {category.items.map((svc) => (
-                    <Link key={svc.slug} to={svc.url} onClick={closeDrawer}>
-                      {svc.label}
-                    </Link>
-                  ))}
-                </div>
-              ))}
-            </div>
-          )}
-
-          <button
-            type="button"
-            aria-expanded={openAccordion === "products"}
-            onClick={() => toggleAccordion("products")}
-          >
-            Our Products
-          </button>
-          {openAccordion === "products" && (
-            <div>
-              {PRODUCTS.map((product) => (
-                <a key={product.name} href={product.url}>
-                  {product.name}
-                </a>
-              ))}
-            </div>
-          )}
-
-          <Link to="/case-studies" onClick={closeDrawer}>
-            Case Studies
-          </Link>
-
-          <button
-            type="button"
-            aria-expanded={openAccordion === "company"}
-            onClick={() => toggleAccordion("company")}
-          >
-            Company
-          </button>
-          {openAccordion === "company" && (
-            <div>
-              <Link to="/about" onClick={closeDrawer}>
-                About
-              </Link>
-              <a href="/how-we-work">How we work</a>
-              <Link to="/blogs" onClick={closeDrawer}>
-                Arithmiks Blog
-              </Link>
-              <a href="/careers">Careers</a>
-              <Link to="/contact" onClick={closeDrawer}>
-                Contact
-              </Link>
-            </div>
-          )}
-
-          <CtaBtn as={Link} to="/contact" onClick={closeDrawer}>
-            Book Free Consultation
-          </CtaBtn>
-        </MobileDrawer>
-      )}
+      {showSearch && <SearchOverlay onClose={() => setShowSearch(false)} />}
+      {showMenu && <MobileMenu onClose={() => setShowMenu(false)} />}
     </Headerr>
   );
 };

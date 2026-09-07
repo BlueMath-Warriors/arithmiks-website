@@ -56,24 +56,38 @@ export const Body = styled.div`
   margin-top: clamp(38px, 4.43vw, 73px);
 `;
 
+// A native scroll-snap row rather than a JS-driven translateX: dragging two
+// flex items forward at once also crosses a gap the container's own width
+// doesn't include, so a page-indexed "translateX(page * -100%)" drifts out
+// of alignment by one gap per page (the last page fell short and clipped
+// its second card). Native scrolling has no such arithmetic to get wrong,
+// and it's what gives this a real touch/trackpad swipe for free.
+//
+// The vertical padding + compensating negative margin is the same
+// bleed trick the design uses horizontally (data-voiceview's padding/
+// margin pair) — it exists purely so a card's hover lift and glow have
+// room above/below before hitting this container's own clip edge,
+// without adding visible extra spacing around the carousel.
 export const TrackView = styled.div`
   flex: 1 1 auto;
   min-width: 0;
-  /* Clip horizontally only (this is the carousel viewport). Must be "clip",
-     not "hidden" — pairing "hidden" on one axis with "visible" on the other
-     makes the UA silently recompute "visible" to "auto" (CSS Overflow spec),
-     which still clips. "clip" is exempt from that rule, so the y-axis stays
-     genuinely visible and a card's hover lift/glow isn't cut off at the top. */
-  overflow-x: clip;
-  overflow-y: visible;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding: 28px 0 56px;
+  margin: -28px 0 -56px;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 export const Track = styled.div`
   display: flex;
   align-items: stretch;
   gap: clamp(18px, 2.13vw, 39px);
-  transform: translateX(${(p) => p.$page * -100}%);
-  transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
 `;
 
 // Decorative hover layers ported from the design's data-vgrid/data-vglow/
@@ -163,6 +177,7 @@ export const Card = styled.figure`
   position: relative;
   overflow: hidden;
   isolation: isolate;
+  scroll-snap-align: start;
   flex: 0 0 calc((100% - clamp(18px, 2.13vw, 39px)) / 2);
   margin: 0;
   display: flex;
@@ -325,6 +340,13 @@ export const CaseLink = styled.a`
   text-decoration: none;
   transition: background 0.3s ease, border-color 0.3s ease;
 
+  /* global.module.css's "* { color: #000 }" directly matches this span, so
+     the white it would otherwise inherit from the link loses — needs its
+     own explicit color to win. */
+  span {
+    color: inherit;
+  }
+
   &:hover {
     background: rgba(255, 255, 255, 0.14);
     border-color: #fff;
@@ -348,9 +370,10 @@ export const Dot = styled.button`
   height: 22px;
   padding: 0;
   background: transparent;
-  border: 0;
+  border: ${(p) => (p.$active ? "1.5px solid #fff" : "1.5px solid transparent")};
   border-radius: 50%;
   cursor: pointer;
+  transition: border-color 0.3s ease;
 
   &::after {
     content: "";

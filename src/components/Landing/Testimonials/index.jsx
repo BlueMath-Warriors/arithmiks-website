@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { caseStudies } from "../Case-Study/caseStudies.js";
 import {
   Section,
@@ -38,6 +38,7 @@ import voiceSbaZachary from "../../../images/homepage/voice-sba-zachary.png";
 import voiceEasybarRon from "../../../images/homepage/voice-easybar-ron.png";
 import voiceSwervPierce from "../../../images/homepage/voice-swerv-pierce.png";
 import voiceDifactoIvan from "../../../images/homepage/voice-difacto-ivan.png";
+import difactoLogo from "../../../images/homepage/voice-logo-difacto.png";
 
 // Testimonial headshots extracted from the design source, keyed by the
 // matching caseStudies.js slug (see Task 3 in the plan for provenance).
@@ -49,13 +50,27 @@ const AVATARS = {
   swerv: voiceSwervPierce,
 };
 
+// The public /*.svg logos (used elsewhere in flat, light-background
+// contexts) are mostly plain black wordmarks — filtering one to grayscale
+// still works (any colour crushes to a white silhouette), but removing the
+// filter on hover just revealed black-on-black. The design instead ships a
+// dedicated colour variant per client for these cards (white wordmark, its
+// accent colour kept), used here as the ONE asset for both states: filtered
+// to a white silhouette at rest, shown true-colour on hover.
+const VOICE_LOGOS = {
+  go: "/homepage/voice-logo-go-dark.svg",
+  hakro: "/homepage/voice-logo-hakro-dark.svg",
+  easybar: "/homepage/voice-logo-easybar-dark.svg",
+  swerv: "/homepage/voice-logo-swerv-dark.svg",
+};
+
 const VOICES = [
   ...caseStudies
     .filter((c) => c.testimonial)
     .map((c) => ({
       slug: c.slug,
       avatar: AVATARS[c.slug],
-      companyLogo: c.logo,
+      companyLogo: VOICE_LOGOS[c.slug] || c.logo,
       companyName: c.logoAlt,
       name: c.testimonial.personName,
       role: c.testimonial.personRole,
@@ -69,7 +84,7 @@ const VOICES = [
   {
     slug: "difacto",
     avatar: voiceDifactoIvan,
-    companyLogo: null,
+    companyLogo: difactoLogo,
     companyName: "Difacto",
     name: "Ivan Grant",
     role: "Co-Founder",
@@ -85,8 +100,8 @@ const PER_PAGE = 2;
 const PAGE_COUNT = Math.ceil(VOICES.length / PER_PAGE);
 
 // Only sbaloansHQ keeps its natural colour at rest in the source; every
-// other logo starts grayscale and reveals colour on hover (see the
-// CompanyLogoDark swap below).
+// other logo (Difacto included) starts as a grayscale silhouette and
+// reveals its real colour on hover.
 const RAW_LOGO_SLUGS = ["sbaloans"];
 
 // The grid mesh and brand glow pool around the pointer, so their position
@@ -111,6 +126,37 @@ const trackPointer = (e) => {
 
 const Testimonials = () => {
   const [page, setPage] = useState(0);
+  const trackViewRef = useRef(null);
+  const cardRefs = useRef([]);
+
+  // Scroll-snap reports its own position — this just keeps the dots in
+  // sync with whatever page a drag/swipe/trackpad gesture lands on.
+  useEffect(() => {
+    const view = trackViewRef.current;
+    if (!view) return undefined;
+    let frame = null;
+    const onScroll = () => {
+      if (frame) return;
+      frame = requestAnimationFrame(() => {
+        frame = null;
+        const nearest = Math.round(view.scrollLeft / view.clientWidth);
+        setPage(Math.min(PAGE_COUNT - 1, Math.max(0, nearest)));
+      });
+    };
+    view.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      view.removeEventListener("scroll", onScroll);
+      if (frame) cancelAnimationFrame(frame);
+    };
+  }, []);
+
+  const goToPage = (i) => {
+    cardRefs.current[i * PER_PAGE]?.scrollIntoView({
+      behavior: "smooth",
+      inline: "start",
+      block: "nearest",
+    });
+  };
 
   return (
     <Section id="voices" aria-labelledby="voices-h">
@@ -122,10 +168,17 @@ const Testimonials = () => {
           </Heading>
         </Header>
         <Body>
-          <TrackView>
-            <Track $page={page}>
-              {VOICES.map((v) => (
-                <Card key={v.slug} onMouseEnter={trackPointer} onMouseMove={trackPointer}>
+          <TrackView ref={trackViewRef}>
+            <Track>
+              {VOICES.map((v, i) => (
+                <Card
+                  key={v.slug}
+                  ref={(el) => {
+                    cardRefs.current[i] = el;
+                  }}
+                  onMouseEnter={trackPointer}
+                  onMouseMove={trackPointer}
+                >
                   <VGrid data-vgrid aria-hidden="true" />
                   <VGlow data-vglow aria-hidden="true" />
                   <VEdge aria-hidden="true" />
@@ -179,7 +232,7 @@ const Testimonials = () => {
                 type="button"
                 $active={i === page}
                 aria-label={`Show testimonial page ${i + 1}`}
-                onClick={() => setPage(i)}
+                onClick={() => goToPage(i)}
               />
             ))}
           </Dots>

@@ -1,5 +1,15 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { colors, shellMaxWidth, shellPadding } from "../../../styles/tokens";
+
+const drift = keyframes`
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(-2%, 2%, 0) scale(1.06);
+  }
+`;
 
 export const HeroSection = styled.section`
   position: relative;
@@ -25,6 +35,20 @@ export const HeroBackground = styled.img`
   height: 100%;
   object-fit: cover;
   object-position: center 32%;
+`;
+
+export const HeroGlow = styled.div`
+  position: absolute;
+  inset: -20% -10%;
+  pointer-events: none;
+  opacity: 0.9;
+  background: radial-gradient(40% 44% at 14% 22%, rgba(19, 85, 255, 0.42), transparent 68%),
+    radial-gradient(36% 40% at 86% 10%, rgba(11, 58, 209, 0.3), transparent 70%);
+  animation: ${drift} 24s ease-in-out infinite;
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
 `;
 
 export const HeroOverlay = styled.div`
@@ -93,6 +117,16 @@ export const Headline = styled.h1`
   @media (max-width: 768px) {
     max-width: 18ch;
   }
+`;
+
+// The word "AI" gets a gradient treatment wherever it appears in a slide
+// (see markAI in index.jsx) — same gradient as the testimonials heading.
+export const GradientAI = styled.span`
+  background: linear-gradient(100deg, #7fa6ff 0%, #9e9be8 46%, #c77fd6 72%, #f56bb0 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: #9e9be8;
 `;
 
 export const Dots = styled.div`

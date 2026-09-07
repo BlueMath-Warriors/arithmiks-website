@@ -5,10 +5,12 @@ import {
   HeroSection,
   HeroBackground,
   HeroOverlay,
+  HeroGlow,
   HeroShell,
   HeroMain,
   Eyebrow,
   Headline,
+  GradientAI,
   Dots,
   Dot,
   ScrollCue,
@@ -24,6 +26,13 @@ const SLIDES = [
   "Leverage AI in your next SaaS idea",
   "AI-first data extraction",
 ];
+
+// Wraps every standalone "AI" in the slide text with the gradient
+// treatment, same word-boundary rule as the design's own markAI().
+const markAI = (text) =>
+  text
+    .split(/(\bAI\b)/g)
+    .map((part, i) => (part === "AI" ? <GradientAI key={i}>AI</GradientAI> : part));
 
 // Ported from CLIENTS in the design source. `treatment: "raw"` keeps the
 // logo's natural color (the source's own choice for LFGO and Mr. Seller
@@ -86,10 +95,11 @@ const Hero = () => {
         alt="Arithmiks team collaborating over data charts in a meeting room"
       />
       <HeroOverlay />
+      <HeroGlow aria-hidden="true" />
       <HeroShell>
         <HeroMain>
           <Eyebrow>AI-First Software Engineering</Eyebrow>
-          <Headline aria-live="polite">{SLIDES[slide]}</Headline>
+          <Headline aria-live="polite">{markAI(SLIDES[slide])}</Headline>
           <Dots role="group" aria-label="Headline slides">
             {SLIDES.map((_, i) => (
               <Dot

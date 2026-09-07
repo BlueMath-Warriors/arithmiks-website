@@ -107,12 +107,19 @@ const Accordion = () => {
                   <h3>{category.title}</h3>
                   <PanelBlurb>{meta.blurb}</PanelBlurb>
                   <PanelItems>
-                    {category.items.map((svc) => (
-                      <PanelItemLink key={svc.slug} to={svc.url}>
-                        <ItemArrow aria-hidden="true">→</ItemArrow>
-                        {svc.label}
-                      </PanelItemLink>
-                    ))}
+                    {category.items.map((svc) =>
+                      svc.hasPage ? (
+                        <PanelItemLink key={svc.slug} to={svc.url}>
+                          <ItemArrow aria-hidden="true">→</ItemArrow>
+                          {svc.label}
+                        </PanelItemLink>
+                      ) : (
+                        <PanelItemLink key={svc.slug} as="a" href="#">
+                          <ItemArrow aria-hidden="true">→</ItemArrow>
+                          {svc.label}
+                        </PanelItemLink>
+                      )
+                    )}
                   </PanelItems>
                 </PanelOpen>
               </Panel>

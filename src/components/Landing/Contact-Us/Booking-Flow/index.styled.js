@@ -117,6 +117,113 @@ export const FieldPair = styled.div`
 // Field-level styling (text/textarea/dropdown) now lives in ./Input —
 // this file only keeps layout wrappers used directly by index.jsx.
 
+// react-phone-input-2 ships its own fixed-width, fixed-height look (a
+// 300px input, 35px tall, grey border) that doesn't match the sibling
+// fields' chrome — this overrides its built-in classNames to line up with
+// Input's fieldChrome (same border, radius, padding, font-size).
+// The outer wrapper owns the border + radius; the flag box is inset by
+// exactly that border's width with a radius reduced by the same amount
+// (the standard concentric-corner formula: inner radius = outer radius -
+// border width) so its corner traces the same curve from the inside rather
+// than needing to be clipped to it. Two earlier attempts got this wrong:
+// stacking a SEPARATE, identically-radiused box on top of the input's own
+// (border-width mismatch → a notch), then clipping the whole wrapper with
+// overflow:hidden to fix that — which also clipped the country-search
+// dropdown, since it renders inside this same wrapper.
+const phoneRadius = "clamp(10px, 0.85vw, 14px)";
+const phoneBorderWidth = "1px";
+
+export const PhoneField = styled.div`
+  .react-tel-input {
+    font-family: inherit;
+    width: 100%;
+    background: #fff;
+    border: ${phoneBorderWidth} solid #dde2ec !important;
+    border-radius: ${phoneRadius} !important;
+    transition: border-color 0.25s ease;
+
+    &:focus-within {
+      border-color: ${colors.primary} !important;
+    }
+  }
+
+  .form-control {
+    width: 100% !important;
+    height: auto !important;
+    padding: clamp(14px, 1.15vw, 19px) clamp(15px, 1.2vw, 20px) clamp(14px, 1.15vw, 19px) 64px !important;
+    font-size: clamp(14.5px, 0.93vw, 15.5px) !important;
+    font-family: inherit;
+    line-height: normal !important;
+    color: ${colors.text};
+    background: transparent !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+
+    &:focus {
+      outline: none;
+      box-shadow: none;
+    }
+  }
+
+  /* Matches the design's data-dialwrap: a light-tinted well, divided from
+     the number input by a hairline border rather than blending into it.
+     !important throughout this block: the library's own rule is the same
+     two-class specificity (".react-tel-input .flag-dropdown"), so which of
+     the two wins is down to stylesheet load order, not CSS we control. */
+  .flag-dropdown,
+  .flag-dropdown.open {
+    top: ${phoneBorderWidth} !important;
+    left: ${phoneBorderWidth} !important;
+    bottom: ${phoneBorderWidth} !important;
+    height: auto !important;
+    background: #fafbfe !important;
+    border: 0 !important;
+    border-right: 1px solid #e9ecf4 !important;
+    border-radius: calc(${phoneRadius} - ${phoneBorderWidth}) 0 0 calc(${phoneRadius} - ${phoneBorderWidth}) !important;
+  }
+
+  .selected-flag {
+    width: 54px !important;
+    height: 100% !important;
+    top: 0 !important;
+    left: 0 !important;
+    padding: 0 0 0 14px !important;
+    background: transparent !important;
+    border-radius: inherit !important;
+
+    /* high-res.css takes the flag icon itself out of flow entirely
+       (position:absolute;left:10px), so the chevron's own flow position
+       starts back at the box's padding-left, not after the flag — its
+       "left" offset is the only thing standing between it and sitting
+       under/behind the flag graphic. 10px (flag's own offset) + ~25px
+       (flag width) + a small gap clears it reliably. */
+    .arrow {
+      left: 30px !important;
+    }
+
+    &:hover,
+    &:focus,
+    &.selected-flag:hover {
+      background: #f2f4fa !important;
+    }
+  }
+
+  .country-list {
+    margin-top: 8px;
+    width: 280px;
+    border: 1px solid ${colors.border};
+    border-radius: 12px;
+    box-shadow: 0 18px 40px rgba(10, 15, 31, 0.16);
+  }
+
+  .search-box {
+    margin-left: 0;
+    width: calc(100% - 20px);
+    border-radius: 8px;
+    border-color: ${colors.border};
+  }
+`;
+
 export const ErrorText = styled.span`
   font-size: 12px;
   font-weight: 500;
@@ -210,8 +317,40 @@ export const ContactBlock = styled.div`
   a {
     font-size: clamp(16px, 1.02vw, 17.5px);
     font-weight: 550;
-    color: ${colors.text};
+    color: ${colors.primary};
     text-decoration: none;
+  }
+`;
+
+export const SocialRow = styled.span`
+  display: flex;
+  gap: 10px;
+`;
+
+export const SocialLink = styled.a`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 44px;
+  height: 44px;
+  color: ${colors.primary};
+  border: 1.5px solid ${colors.primary};
+  border-radius: 10px;
+  transition: background 0.25s ease, color 0.25s ease;
+
+  /* global.module.css's "* { color: #000 }" matches every element in the
+     svg (path/rect/circle), not just the svg itself, so each needs its own
+     explicit "inherit" — an inherited value alone loses to that direct
+     universal-selector match. */
+  svg,
+  svg * {
+    color: inherit;
+  }
+
+  &:hover {
+    background: ${colors.primary};
+    color: #fff;
   }
 `;
 

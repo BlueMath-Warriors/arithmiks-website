@@ -132,6 +132,18 @@ export const SearchButton = styled.button`
   color: ${navLinkColor};
   transition: background 0.25s ease, color 0.25s ease;
 
+  /* Nav carries its own margin-left:auto to push the nav+CTA group right on
+     desktop, but Nav is display:none below the breakpoint, so a hidden
+     element's margin pushes nothing, stranding Search+Hamburger next to
+     the logo. This repeats that auto-margin here for the same breakpoint
+     only: flexbox splits leftover space EVENLY across every auto-margin
+     present, so doing this unconditionally opened a second gap on desktop
+     (Nav's own margin plus this one, competing for the same space). Scoped
+     to mobile, only one of the two is ever active at a time. */
+  @media screen and (max-width: ${breakpoints.large}) {
+    margin-left: auto;
+  }
+
   &:hover {
     background: rgba(19, 85, 255, 0.1);
   }
@@ -462,55 +474,8 @@ export const CompanyPhoto = styled.img`
   object-position: center 32%;
 `;
 
-/* ---- Mobile drawer ---- */
-
-export const MobileDrawer = styled.div`
-  position: fixed;
-  top: 72px;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  overflow-y: auto;
-  background: #fff;
-  padding: 20px ${shellPadding} 40px;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  z-index: 39;
-
-  @media screen and (min-width: ${breakpoints.large}) {
-    display: none;
-  }
-
-  > button,
-  > a {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 16px 0;
-    border-bottom: 1px solid ${colors.border};
-    background: transparent;
-    border-left: 0;
-    border-right: 0;
-    border-top: 0;
-    font-size: 17px;
-    font-weight: 550;
-    color: ${colors.text};
-    text-decoration: none;
-    cursor: pointer;
-    text-align: left;
-  }
-
-  > div {
-    display: flex;
-    flex-direction: column;
-    padding: 4px 0 12px 12px;
-
-    a {
-      padding: 10px 0;
-      color: ${colors.textMuted};
-      text-decoration: none;
-      font-size: 15px;
-    }
-  }
-`;
+/* Mobile menu content lives in ./MobileMenu — it's a full-screen takeover
+   with its own top bar, not a panel hung off this header (see that
+   component for why: this header's own transform makes it a containing
+   block for position:fixed descendants, which broke a nested drawer's
+   sizing). */

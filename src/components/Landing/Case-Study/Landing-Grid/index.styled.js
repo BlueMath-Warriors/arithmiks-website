@@ -99,6 +99,20 @@ export const Track = styled.div`
   will-change: transform;
 `;
 
+// Declared before CaseCard so its hover rule below can reference this
+// styled component directly (a nested-selector reference needs the target
+// already defined at that point).
+export const CardLogo = styled.img`
+  flex: none;
+  height: 18px;
+  width: auto;
+  max-width: 170px;
+  object-fit: contain;
+  filter: grayscale(1);
+  opacity: 0.62;
+  transition: filter 0.3s ease, opacity 0.3s ease;
+`;
+
 export const CaseCard = styled(Link)`
   flex: 0 0 clamp(288px, 31.4%, 452px);
   scroll-snap-align: start;
@@ -118,6 +132,11 @@ export const CaseCard = styled(Link)`
     transform: translateY(-6px);
     box-shadow: 0 26px 52px -20px rgba(19, 85, 255, 0.34);
     border-color: ${colors.primary};
+  }
+
+  &:hover ${CardLogo} {
+    filter: none;
+    opacity: 1;
   }
 `;
 
@@ -157,16 +176,6 @@ export const CardChip = styled.span`
   padding: 6px 12px;
   border-radius: 999px;
   white-space: nowrap;
-`;
-
-export const CardLogo = styled.img`
-  flex: none;
-  height: 18px;
-  width: auto;
-  max-width: 170px;
-  object-fit: contain;
-  filter: grayscale(1);
-  opacity: 0.62;
 `;
 
 export const CardClientName = styled.span`

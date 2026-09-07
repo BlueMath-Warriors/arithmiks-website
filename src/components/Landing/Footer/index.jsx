@@ -53,13 +53,15 @@ const MODELS = [
   { name: "Staff augmentation", url: "/engagement/staff-augmentation", internal: false },
 ];
 
+// `internal: false` entries have no page yet — href="#" rather than the
+// real (currently 404ing) path, per product decision.
 const FooterLink = ({ link }) =>
   link.internal ? (
     <ColumnLink as={Link} to={link.url}>
       {link.name}
     </ColumnLink>
   ) : (
-    <ColumnLink href={link.url}>{link.name}</ColumnLink>
+    <ColumnLink href="#">{link.name}</ColumnLink>
   );
 
 const Footer = () => (
@@ -68,14 +70,26 @@ const Footer = () => (
       <ServiceMap>
         {SERVICE_NAV_GROUPS.map((category) => (
           <ServiceColumn key={category.slug} aria-label={category.title}>
-            <ColumnLink as={Link} to={category.url} $heading>
-              {category.title}
-            </ColumnLink>
-            {category.items.map((svc) => (
-              <ColumnLink key={svc.slug} as={Link} to={svc.url}>
-                {svc.label}
+            {category.hasPage ? (
+              <ColumnLink as={Link} to={category.url} $heading>
+                {category.title}
               </ColumnLink>
-            ))}
+            ) : (
+              <ColumnLink href="#" $heading>
+                {category.title}
+              </ColumnLink>
+            )}
+            {category.items.map((svc) =>
+              svc.hasPage ? (
+                <ColumnLink key={svc.slug} as={Link} to={svc.url}>
+                  {svc.label}
+                </ColumnLink>
+              ) : (
+                <ColumnLink key={svc.slug} href="#">
+                  {svc.label}
+                </ColumnLink>
+              )
+            )}
           </ServiceColumn>
         ))}
       </ServiceMap>
