@@ -1,460 +1,225 @@
-import { styled } from "styled-components";
-import { Link as GatsbyLink } from "gatsby";
-import { breakpoints } from "../index.styled";
+import styled from "styled-components";
+import { colors, shellMaxWidth, shellPadding } from "../../../styles/tokens";
 
-export const FooterSubCard = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 16px;
-
-  @media screen and (max-width: ${breakpoints.medium}) {
-    gap: 12px;
-  }
+export const FooterEl = styled.footer`
+  background: ${colors.dark};
+  color: #fff;
+  padding: clamp(60px, 5.34vw, 101px) 0 32px;
 `;
 
-export const FooterContent = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  width: 1120px;
-
-  @media screen and (max-width: ${breakpoints.large}) {
-    width: 760px;
-    justify-content: center;
-    gap: 16px;
-    flex-wrap: wrap;
-  }
-
-  @media screen and (max-width: ${breakpoints.medium}) {
-    justify-content: center;
-    gap: 32px;
-    flex-wrap: wrap;
-    width: 382px;
-  }
-
-  @media screen and (max-width: ${breakpoints.xsmall}) {
-    width: 95%;
-  }
-`;
-
-export const Arithmiks = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 260px;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 32px;
-
-  @media screen and (max-width: ${breakpoints.large}) {
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    margin-right: 0px;
-    width: 100%;
-    gap: 16px;
-  }
-  @media screen and (max-width: ${breakpoints.medium}) {
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    margin-right: 0px;
-    width: 100%;
-    gap: 16px;
-    padding: 0 16px;
-  }
-
-`
-
-export const LogoHeading = styled.div`
-  display: flex;
-  justify-content: start;
-  align-items: center;
-  gap: 14px;
-`
-
-export const Logo = styled.img`
-  width: 27px;
-  height: 32px;
-`
-
-export const CompanyName = styled.p`
-  color: #1A202C;
-  text-align: justify;
-  font-family: Poppins;
-  font-size: 24px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 80%;
-  width: 123px;
-  letter-spacing: -0.72px;
-  margin: 0;
-`
-export const Heading = styled.p`
-  color: #1A202C;
-  font-family: Poppins;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 150%; /* 30px */
-  letter-spacing: -0.4px;
-  margin-bottom: 16px;
-  @media screen and (max-width: ${breakpoints.large}) {
-    margin-right: 0px;
-  }
-  @media screen and (max-width: ${breakpoints.medium}) {
-    margin-right: 0px;
-    margin-bottom: 12px;
-    font-size: 24px;
-    letter-spacing: -0.48px;
-  }
-
-  ${props => props.$mb8 && `margin-bottom: 8px;`}
-
-`
-
-export const Text = styled(GatsbyLink)`
-  display: block;
+export const Shell = styled.div`
+  max-width: ${shellMaxWidth};
   width: 100%;
-  border: none;
-  background: none;
-  padding: 0;
-  margin: 0;
-  text-align: left;
-  color: #596780;
-  font-family: Poppins;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 150%;
-  letter-spacing: -0.36px;
-  cursor: pointer;
+  margin: 0 auto;
+  padding: 0 ${shellPadding};
+`;
+
+export const ServiceMap = styled.div`
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 40px 34px;
+  padding: 0 0 46px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.13);
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr 1fr;
+  }
+`;
+
+export const ServiceColumn = styled.nav`
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+`;
+
+export const ColumnLink = styled.a`
+  display: block;
+  font-size: ${(p) => (p.$heading ? "16.5px" : "clamp(15.5px, .98vw, 17px)")};
+  font-weight: ${(p) => (p.$heading ? 650 : 400)};
+  letter-spacing: ${(p) => (p.$heading ? "-.01em" : "normal")};
+  line-height: 1.45;
+  color: ${(p) => (p.$heading ? "#fff" : "rgba(255,255,255,.68)")};
   text-decoration: none;
+  transition: color 0.25s ease;
+  margin-bottom: ${(p) => (p.$heading ? "5px" : 0)};
 
   &:hover {
-    color: #1355ff;
+    color: #fff;
   }
+`;
 
-  @media screen and (max-width: ${breakpoints.large}) {
-    color: #596780;
-    font-family: Poppins;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 150%;
-    letter-spacing: -0.28px;
-  }
-  @media screen and (max-width: ${breakpoints.medium}) {
-    font-size: 20px;
-    font-weight: 500;
-    letter-spacing: -0.4px;
-  }
-`
+export const TopRow = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1.05fr;
+  gap: 56px 72px;
+  padding: 46px 0 52px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.13);
 
-export const TechBadge = styled.span`
-  display: block;
-  color: #596780;
-  font-family: Poppins;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 150%;
-  letter-spacing: -0.36px;
-  @media screen and (max-width: ${breakpoints.large}) {
-    color: #596780;
-    font-family: Poppins;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 150%;
-    letter-spacing: -0.28px;
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
   }
-  @media screen and (max-width: ${breakpoints.medium}) {
-    font-size: 20px;
-    font-weight: 500;
-    letter-spacing: -0.4px;
-  }
-`
+`;
 
-export const Moto = styled.div`
-  color: #596780;
-  font-family: Poppins;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 150%;
-  letter-spacing: -0.36px;
-  cursor: pointer;
-  @media screen and (max-width: ${breakpoints.large}) {
-    width: 434px;
-  }
-  @media screen and (max-width: ${breakpoints.medium}) {
-    width: 100%;
-  }
-`
-
-export const CompanyTextHighlight = styled.span`
-  background: linear-gradient(90deg, #0957DE 0%, #BC4E9B 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-`
-
-export const Services = styled.div`
+export const Brand = styled.div`
   display: flex;
   flex-direction: column;
-  width: 192px;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 16px;
-  @media screen and (max-width: ${breakpoints.large}) {
-    width: 176px;
-    margin-right: 0px;
-  }
-  @media screen and (max-width: ${breakpoints.medium}) {
-    padding: 0 16px;
-    width: 100%;
-    gap: 4px;
-  }
+  gap: 22px;
 
-`
-
-export const Technologies = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 151px;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 24px;
-  @media screen and (max-width: ${breakpoints.large}) {
-    width: 176px;
-    margin-right: 0px;
-  }
-  @media screen and (max-width: ${breakpoints.medium}) {
-    padding: 0 16px;
-    width: 100%;
-    gap: 4px;
-  }
-
-`
-
-export const Industries = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 103.5px;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 24px;
-  @media screen and (max-width: ${breakpoints.large}) {
-    width: 176px;
-    margin-right: 0px;
-  }
-  @media screen and (max-width: ${breakpoints.medium}) {
-    padding: 0 16px;
-    width: 100%;
-    gap: 4px;
-  }
-
-`
-
-export const Expertise = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 128px;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 24px;
-  @media screen and (max-width: ${breakpoints.large}) {
-    width: 176px;
-    margin-right: 0px;
-  }
-  @media screen and (max-width: ${breakpoints.medium}) {
-    padding: 0 16px;
-    width: 100%;
-    gap: 4px;
-  }
-
-`
-
-export const Divider =  styled.hr`
-  width: 100%;
-  max-width: 100%;
-  border-width: 1px; 
-  margin-top: 24px;
-  margin-bottom: 0;
-  border-color: #0B63E5;
-  border-top: 1px solid #0B63E5;
-  border-bottom: none;
-
-  &:nth-of-type(2) {
-    margin-top: 6px;
-  }
-
-  @media screen and (max-width: ${breakpoints.medium}) {
-    width: 100%;
-    margin-top: 20px;
-    
-    &:nth-of-type(2) {
-      margin-top: 6px;
-    }
-  }  
-`
-
-export const ContactInfoContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-top: 24px;
-  margin-bottom: 6px;
-  width: 1120px;
-
-  @media screen and (max-width: ${breakpoints.large}) {
-    width: 760px;
-    justify-content: center;
-    gap: 180px;
-  }
-
-  @media screen and (max-width: ${breakpoints.medium}) {
-    flex-direction: column;
-    width: 100%;
-    gap: 40px;
-    padding: 0 16px;
-    margin-top: 20px;
-    margin-bottom: 6px;
-  }
-`
-
-export const FooterCaption = styled.p`
-  color: #1A202C;
-  font-family: Poppins;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 100%;
-  letter-spacing: 0.14px;
-  margin: 0;
-`
-
-export const FooterContentText = styled.p`
-  color: #596780;
-  font-family: Poppins;
-  font-size: ${(props) => (props.$medium ? "14px" : "16px")};
-  font-style: normal;
-  font-weight: 400;
-  line-height: 28px;
-  margin: 0;
-  white-space: nowrap;
-
-  a {
-    color: #596780;
-    text-decoration: none;
-    
-    &:hover {
-      color: #0957DE;
-    }
-  }
-
-  @media screen and (max-width: ${breakpoints.xsmall}) {
-    font-size: 14px;
-  }
-`
-
-export const FooterCircle = styled.div`
-  display: flex;
-  padding: 0;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  width: fit-content;
-  height: fit-content;
-
-  svg {
-    width: 48px;
-    height: 48px;
+  img {
+    height: 43px;
     display: block;
   }
-`
+`;
 
-export const FooterBottom = styled.div`
+export const BrandName = styled.span`
+  font-size: 33px;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+  color: #fff;
+`;
+
+export const BrandBlurb = styled.p`
+  font-size: clamp(15px, 0.96vw, 16.5px);
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.72);
+  max-width: 46ch;
+`;
+
+export const ContactLinks = styled.div`
   display: flex;
-  width: 1120px;
-  justify-content: space-between;
+  flex-direction: column;
+  gap: 9px;
+
+  a {
+    font-size: clamp(17px, 1.12vw, 19px);
+    font-weight: 550;
+    color: #fff;
+    text-decoration: none;
+  }
+`;
+
+export const BadgeRow = styled.div`
+  display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  margin-top: 16px;
-  margin-bottom: 0;
+  gap: 16px;
+  margin-top: 6px;
 
-  @media screen and (max-width: ${breakpoints.large}) {
-    width: 760px;
+  img {
+    height: 96px;
+    width: auto;
+    display: block;
   }
-  @media screen and (max-width: ${breakpoints.medium}) {
-    margin-top: 12px;
-    width: 95%;
-    flex-direction: column;
-    gap: 8px;
-  }
+`;
 
-`
-
-export const FooterLinks = styled.div`
+export const SocialColumn = styled.div`
   display: flex;
+  flex-direction: column;
+  gap: 20px;
   justify-content: flex-start;
-  align-items: center;
-  gap: 32px;
 
-  @media screen and (max-width: ${breakpoints.medium}) {
+  > span:first-child {
+    font-size: 13px;
+    font-weight: 650;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.55);
+  }
+
+  a {
+    display: inline-flex;
+    align-items: center;
     justify-content: center;
-    gap: 4px;
+    width: 42px;
+    height: 42px;
+    border: 1px solid rgba(255, 255, 255, 0.24);
+    border-radius: 11px;
+    color: #fff;
+    transition: background 0.25s ease, border-color 0.25s ease;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.13);
+      border-color: #fff;
+    }
   }
+`;
 
-`
+export const SocialRow = styled.div`
+  display: flex;
+  gap: 10px;
+`;
 
-export const Link = styled.a`
-  color:#1A202C;
-  font-family: Poppins;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 150%;
-  letter-spacing: -0.36px;
-  ${props =>
-    props.$divider &&
-    ` &::after {
-      content: " I"; 
-      color: #1A202C; 
-      font-size: 18px;
-      line-height: 150%; 
-      letter-spacing: -0.36px; 
-      margin-left: 32px;
-    } `
+export const OfficeBlock = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  span:first-child {
+    font-size: 13px;
+    font-weight: 650;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.55);
   }
-  @media screen and (max-width: ${breakpoints.medium}) {
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 400;
-    letter-spacing: -0.28px;
+  span:last-child {
+    font-size: clamp(17px, 1.12vw, 19px);
+    font-weight: 550;
+    color: #fff;
   }
-  @media screen and (max-width: ${breakpoints.medium}) {
-    ${props =>
-    props.$divider &&
-    ` &::after {
-      content: " I"; 
-      color: #1A202C; 
-      font-size: 18px;
-      line-height: 150%; 
-      letter-spacing: -0.36px; 
-      margin-left: 4px;
-    } `
+`;
+
+export const ExtraCols = styled.div`
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px 34px;
+  padding: 36px 0 32px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.13);
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr 1fr;
   }
+`;
 
-`
+export const ExtraColumn = styled.nav`
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+`;
 
-export const CopyRightText = styled.p`
-  color: #596780;
-  text-align: right;
+export const ColumnTitle = styled.h2`
+  font-size: 13px;
+  font-weight: 650;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+`;
 
-  font-family: Poppins;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 150%;
-  letter-spacing: -0.32px;
-`
+export const BottomBar = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px 30px;
+  padding-top: 24px;
+`;
+
+export const Copyright = styled.span`
+  font-size: clamp(15px, 0.96vw, 16.5px);
+  color: rgba(255, 255, 255, 0.6);
+`;
+
+export const LegalLinks = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+
+  a {
+    font-size: clamp(15px, 0.96vw, 16.5px);
+    color: rgba(255, 255, 255, 0.72);
+    text-decoration: none;
+
+    &:hover {
+      color: #fff;
+    }
+  }
+`;

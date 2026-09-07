@@ -25,6 +25,13 @@ export const caseStudies = [
     description:
       "An AI-powered platform that automates digital marketing—handling content, publishing, and ads to help agencies grow.",
     hasDetailPage: true,
+    testimonial: {
+      quote: "Omer and his team put in significant effort and delivered many positive contributions.",
+      personName: "Louis-Antoine",
+      personRole: "GoAgents Founder & CEO",
+      stat1: { value: "6 wks", label: "To first release" },
+      stat2: { value: "3.4×", label: "Content output" },
+    },
   },
   {
     slug: "media-infrastructure",
@@ -51,6 +58,13 @@ export const caseStudies = [
     description:
       "Platform enabling dealers to buy bulk products directly from website sessions.",
     hasDetailPage: true,
+    testimonial: {
+      quote: "Omer provided us with excellent support for our Next.js projects. I continue to work with him on other projects. Best regards from Germany!",
+      personName: "Michael Neuhauser",
+      personRole: "Head of Digital",
+      stat1: { value: "5 wks", label: "To live checkout" },
+      stat2: { value: "+28%", label: "Checkout completion" },
+    },
   },
   {
     slug: "sbaloans",
@@ -64,6 +78,13 @@ export const caseStudies = [
     description:
       "SBA Loans HQ streamlines SBA loans with centralized documents, tracking, and communication.",
     hasDetailPage: true,
+    testimonial: {
+      quote: "Usama and the Arithmiks team took our web app from a stalled project to a finished product that runs our entire day-to-day operations. I highly recommend them.",
+      personName: "Zachary Renta",
+      personRole: "Founder",
+      stat1: { value: "7 wks", label: "To handover" },
+      stat2: { value: "100%", label: "Run by their team" },
+    },
   },
   {
     slug: "easybar",
@@ -77,6 +98,13 @@ export const caseStudies = [
     description:
       "Easybar lets buyers design iron bars and suppliers print the orders for automated production.",
     hasDetailPage: true,
+    testimonial: {
+      quote: "Omer is a professional, reliable, and kind person. Working with him was great! He was available for questions, gave professional answers, and the results are beautiful.",
+      personName: "Ron Balmas",
+      personRole: "Lead Product Manager and Co-Founder",
+      stat1: { value: "6 wks", label: "To first release" },
+      stat2: { value: "+34%", label: "Repeat orders" },
+    },
   },
   {
     slug: "qareeb",
@@ -168,6 +196,13 @@ export const caseStudies = [
     description:
       "A SaaS platform for car dealerships to automate acquisitions, centralize data, and optimize sales.",
     hasDetailPage: true,
+    testimonial: {
+      quote: "Thank you brother! We are all on a mission to succeed with the project. I see that you guys have been doing great. I made a great decision choosing you!",
+      personName: "Pierce Grimsley",
+      personRole: "Founder",
+      stat1: { value: "8 wks", label: "To production" },
+      stat2: { value: "+41%", label: "Faster stock calls" },
+    },
   },
   {
     slug: "togather",

@@ -1,229 +1,133 @@
 import React, { useEffect, useRef, useState } from "react";
-
 import {
-  Header,
-  HeaderLeft,
-  HeaderTitle,
-  HeaderDescription,
-  CarouselButtons,
-  CarouselButton,
-  BtnIcon,
-  CarouselContainer,
-  CarouselCard,
-  ImgContainer,
-  CardImg,
+  Section,
+  Shell,
+  Grid,
+  Left,
+  Eyebrow,
+  Heading,
+  Intro,
+  Rail,
+  RailDot,
+  RailLine,
+  RailLabel,
+  CtaLink,
+  Cards,
+  Card,
+  CardTop,
+  CardChip,
+  CardNumber,
   CardTitle,
-  CardDetails,
-  ArrowImage,
+  CardBody,
 } from "./index.styled";
-import * as containerStyles from "../../../styles/global.module.css";
-import ArrowLeft from "../../../images/btn-arrow-left.svg";
-import ArrowRight from "../../../images/btn-arrow-right.svg";
-import CardArrow from "../../../images/arrow.svg";
-import MeetingIcon from "../../../images/card-meeting.svg";
-import RequirementIcon from "../../../images/card-requirement.svg";
-import EngagementIcon from "../../../images/card-engagement.svg";
-import PlanIcon from "../../../images/card-plan.svg";
-import DevelopmentIcon from "../../../images/card-development.svg";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { prefersReducedMotion } from "../../../utils/animations";
 
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
-}
-
-const iconImages = {
-  1: <MeetingIcon/>,
-  2: <RequirementIcon/>,
-  3: <EngagementIcon/>,
-  4: <PlanIcon/>,
-  5: <DevelopmentIcon/>,
-};
+// Icon paths ported verbatim from the source design's STEPS data.
+const STEPS = [
+  {
+    title: "Free Consultation",
+    body: "Tell us your idea in a quick, no-obligation call. We listen, ask the sharp questions, and tell you honestly whether it is worth building.",
+    icon: "M20 12.5c0 3.9-3.6 7-8 7-1 0-2-.2-2.9-.5L5 20.5l1.6-3.4A6.6 6.6 0 0 1 4 12.5c0-3.9 3.6-7 8-7s8 3.1 8 7Z",
+  },
+  {
+    title: "AI Audit & SaaS Proof of Concept",
+    body: "We validate feasibility against your real data and build a working proof of concept — so you see it run before committing a full budget.",
+    icon: "M12 3.5a5.5 5.5 0 0 0-3.2 10c.5.4.7.9.7 1.5v.5h5v-.5c0-.6.2-1.1.7-1.5A5.5 5.5 0 0 0 12 3.5ZM9.5 19.5h5",
+  },
+  {
+    title: "Build",
+    body: "We design, develop, and ship your production product, then hand over something your team can own and keep evolving without us.",
+    icon: "M12 3.5c3.2 2 5 5.4 5 9.2l-2.4 2.4H9.4L7 12.7c0-3.8 1.8-7.2 5-9.2ZM9.4 15.1 7.6 19l2.6-.9m4.4-3 1.8 3.9-2.6-.9",
+  },
+];
 
 const HowItWorks = () => {
-  const [windowWidth, setWindowWidth] = useState(1450);
-  const [offset, setOffset] = useState(0);
-  const [cardGap, setCardGap] = useState(111);
-  const [width, setWidth] = useState(326);
-  const [currentIndex, setCurrentIndex] = useState(1);
-  const cardsRef = useRef([]);
-  const containerRef = useRef(null);
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const handleWindowResize = () => {
-        setWindowWidth(window.innerWidth);
-        setOffset(5 - Math.floor((window.innerWidth - 50) / (cardGap + width)));
-        if (window.innerWidth < 830) {
-          setCardGap(32);
-          setWidth(270);
-        } else if (window.innerWidth < 1200) {
-          setCardGap(52);
-        } else {
-          setWidth(326);
-          setCardGap(111);
-        }
-      };
-      handleWindowResize();
-
-      window.addEventListener("resize", handleWindowResize);
-      return () => {
-        window.removeEventListener("resize", handleWindowResize);
-      };
-    }
-  }, [cardGap, width]);
-
-  const Data = [
-    {
-      id: 1,
-      title: "Introductory Meeting",
-      description:
-        "All the stakeholders attend the meeting to brainstorm the idea.",
-    },
-    {
-      id: 2,
-      title: "Highlight Scope & Requirements",
-      description:
-        "Our team will prepare SRS document and highlight the product scope.",
-    },
-    {
-      id: 3,
-      title: "Choose Engagement Model",
-      description:
-        "You will choose an engagement model which suits you.",
-    },
-    {
-      id: 4,
-      title: "Project Plan & Prototyping",
-      description:
-        "We will plan product roadmap and create a rapid clickable prototype for you.",
-    },
-    {
-      id: 5,
-      title: "Development & launch",
-      description:
-        "We will design, develop and test your application to ensure a smooth launch.",
-    },
-  ];
-
-  const handleScrollLeft = () => {
-    if (containerRef.current && currentIndex > 1) {
-      const currentPosition = parseInt(
-        getComputedStyle(containerRef.current).left,
-        10
-      );
-      const newPosition = currentPosition + width + cardGap;
-      containerRef.current.style.left = newPosition + "px";
-      setCurrentIndex(currentIndex - 1);
-    }
-  };
-
-  const handleScrollRight = () => {
-    if (containerRef.current && currentIndex <= offset) {
-      const currentPosition = parseInt(
-        getComputedStyle(containerRef.current).left,
-        10
-      );
-      const newPosition = currentPosition - width - cardGap;
-      containerRef.current.style.left = newPosition + "px";
-      setCurrentIndex(currentIndex + 1);
-    }
-  };
-
-  const sectionRef = useRef(null);
+  const [active, setActive] = useState(0);
+  const cardRefs = useRef([]);
 
   useEffect(() => {
-    if (containerRef.current) {
-      containerRef.current.scrollLeft = 0;
-    }
-  }, []);
-
-  useEffect(() => {
-    if (typeof window === "undefined" || !sectionRef.current) return;
-    if (prefersReducedMotion()) return;
-
-    const ctx = gsap.context(() => {
-      gsap.fromTo(
-        ".hiw-header",
-        { opacity: 0, y: 40 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.7,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top 80%",
-          },
+    const onScroll = () => {
+      const line = window.innerHeight * 0.45;
+      let best = Infinity;
+      let nextActive = 0;
+      cardRefs.current.forEach((el, i) => {
+        if (!el) return;
+        const rect = el.getBoundingClientRect();
+        const distance = Math.abs(rect.top + rect.height / 2 - line);
+        if (distance < best) {
+          best = distance;
+          nextActive = i;
         }
-      );
-
-      gsap.fromTo(
-        ".hiw-card",
-        { opacity: 0, y: 50 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.6,
-          ease: "power3.out",
-          stagger: 0.12,
-          scrollTrigger: {
-            trigger: ".hiw-carousel",
-            start: "top 85%",
-          },
-        }
-      );
-    }, sectionRef);
-
-    return () => ctx.revert();
+      });
+      setActive(nextActive);
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   return (
-    <section className={containerStyles.how_it_works} ref={sectionRef}>
-      <Header className="hiw-header">
-        <HeaderLeft>
-          <HeaderTitle>How it Works</HeaderTitle>
-          <HeaderDescription>
-            Our foolproof process ensures you receive a reliable solution.
-          </HeaderDescription>
-        </HeaderLeft>
-        <CarouselButtons>
-          <CarouselButton
-            type="button"
-            aria-label="Scroll left"
-            onClick={handleScrollLeft}
-            disabled={currentIndex <= 1}
-          >
-            <ArrowLeft/>
-          </CarouselButton>
-          <CarouselButton
-            type="button"
-            aria-label="Scroll right"
-            $blue
-            onClick={handleScrollRight}
-            disabled={currentIndex > offset}
-          >
-            <ArrowRight />
-          </CarouselButton>
-        </CarouselButtons>
-      </Header>
-      <CarouselContainer ref={containerRef} className="hiw-carousel">
-        {Data.map((card, index) => (
-          <CarouselCard id={`card_${card.id}`} ref={cardsRef[1]} className="hiw-card">
-            <ImgContainer>
-              {iconImages[card.id]}
-            </ImgContainer>
-            <CardTitle>{card.title}</CardTitle>
-            <CardDetails>{card.description}</CardDetails>
-            {index < Data.length - 1 && (
-              <ArrowImage up={index % 2 === 0}>
-                <CardArrow width="100%" height="100%"/>
-              </ArrowImage>
-            )}
-          </CarouselCard>
-        ))}
-      </CarouselContainer>
-    </section>
+    <Section id="how" aria-labelledby="how-h">
+      <Shell>
+        <Grid>
+          <Left>
+            <Eyebrow>How we start</Eyebrow>
+            <Heading id="how-h">
+              Have an idea? Book a <span>free consultation</span>
+            </Heading>
+            <Intro>
+              Three steps from a conversation to a product in production. You can stop
+              after any one of them.
+            </Intro>
+            <Rail>
+              {STEPS.map((step, i) => (
+                <div key={step.title} style={{ display: "flex", gap: 16 }}>
+                  <span style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+                    <RailDot $state={i < active ? "done" : i === active ? "active" : "todo"}>
+                      {String(i + 1).padStart(2, "0")}
+                    </RailDot>
+                    {i < STEPS.length - 1 && <RailLine $done={i < active} />}
+                  </span>
+                  <RailLabel $active={i === active}>{step.title}</RailLabel>
+                </div>
+              ))}
+            </Rail>
+            <CtaLink href="#contact">Book Free Consultation</CtaLink>
+          </Left>
+          <Cards>
+            {STEPS.map((step, i) => (
+              <Card
+                key={step.title}
+                ref={(el) => {
+                  cardRefs.current[i] = el;
+                }}
+                $active={i === active}
+              >
+                <CardTop>
+                  <CardChip $active={i === active}>
+                    <svg
+                      viewBox="0 0 24 24"
+                      width="27"
+                      height="27"
+                      fill="none"
+                      stroke={i === active ? "#fff" : "#1355FF"}
+                      strokeWidth="1.7"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      aria-hidden="true"
+                    >
+                      <path d={step.icon} />
+                    </svg>
+                  </CardChip>
+                  <CardNumber $active={i === active}>{String(i + 1).padStart(2, "0")}</CardNumber>
+                </CardTop>
+                <CardTitle $active={i === active}>{step.title}</CardTitle>
+                <CardBody $active={i === active}>{step.body}</CardBody>
+              </Card>
+            ))}
+          </Cards>
+        </Grid>
+      </Shell>
+    </Section>
   );
 };
 

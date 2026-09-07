@@ -19,6 +19,12 @@ body {
   overflow-x: clip;
   scroll-behavior: smooth;
   max-width: 100vw;
+  /* Fallback stack from the new homepage design's own font spec (it names a
+     licensed variable font, "Aspekta", not embedded here — pending a
+     decision on licensing it for web use). Existing components keep
+     rendering in Poppins since they declare font-family explicitly; this
+     only backstops new components that don't. */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
 button {
