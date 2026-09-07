@@ -21,6 +21,7 @@ import {
   EmptyCategoryMessage,
 } from "./index.styled";
 import CollaboratedWith from "./Collaborated-With";
+import LandingGrid from "./Landing-Grid";
 import * as containerStyles from "../../../styles/global.module.css";
 import { caseStudies } from "./caseStudies";
 import { gsap } from "gsap";
@@ -109,6 +110,11 @@ const CaseStudy = ({ landing = false, titleAs = "h2" }) => {
 
     return () => ctx.revert();
   }, []);
+
+  // The homepage redesign renders the pinned-scroll grid below instead of
+  // this section's category-filtered listing — /case-studies and every
+  // individual case-study page keep using the listing unchanged.
+  if (landing) return <LandingGrid caseStudies={caseStudies} />;
 
   return (
     <section className={containerStyles.case_study} ref={sectionRef}>

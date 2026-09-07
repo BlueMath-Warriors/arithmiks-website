@@ -40,6 +40,7 @@ import LinkedInIcon from "../../../images/social-icons/in.svg";
 import BgImg from "../../../images/bgImg.svg";
 
 import InputForm from "./Input-Form";
+import BookingFlow from "./Booking-Flow";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { prefersReducedMotion } from "../../../utils/animations";
@@ -49,13 +50,16 @@ if (typeof window !== "undefined") {
 }
 
 /**
- * @param {{ primaryTitleAs?: "h1" | "h2" }} props
+ * @param {{ primaryTitleAs?: "h1" | "h2"; landing?: boolean }} props
  */
-const ContactUs = ({ primaryTitleAs = "h2" }) => {
+const ContactUs = ({ primaryTitleAs = "h2", landing = false }) => {
   const [inIcon, setInIcon] = useState(false);
   const sectionRef = useRef(null);
 
   useEffect(() => {
+    // The homepage redesign renders <BookingFlow /> instead (see the return
+    // below) — its own entrance handling lives in that component, not here.
+    if (landing) return;
     if (typeof window === "undefined" || !sectionRef.current) return;
     if (prefersReducedMotion()) return;
 
@@ -108,7 +112,9 @@ const ContactUs = ({ primaryTitleAs = "h2" }) => {
     }, sectionRef);
 
     return () => ctx.revert();
-  }, []);
+  }, [landing]);
+
+  if (landing) return <BookingFlow />;
 
   return (
     <section id="contact-form" className={containerStyles.contact_us} ref={sectionRef}>

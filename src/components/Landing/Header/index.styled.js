@@ -1,309 +1,481 @@
-import { styled, keyframes } from "styled-components";
+import styled from "styled-components";
 import { Link } from "gatsby";
+import { colors, shellMaxWidth, shellPadding } from "../../../styles/tokens";
 
 export const breakpoints = {
   small: "430px",
   medium: "820px",
-  large: "1200px",
+  large: "1151px",
 };
 
 export const Headerr = styled.header`
-  background: ${(props) =>
-    props.$white ? "white" : "rgba(255, 255, 255, 0.80)"};
-  position: ${(props) =>
-    props.$fixed ? "fixed" : props.$white ? "fixed" : "absolute"};
-  display: ${(props) => (props.$hide ? "none" : "")};
-  box-shadow: none;
+  position: fixed;
+  top: 0;
   left: 0;
   right: 0;
-  top: 0;
-  z-index: 15;
-  ${({ $fixed }) =>
-    $fixed ? "animation: slide-in-from-top 0.5s ease-in-out;" : ""}
-
-  @keyframes slide-in-from-top {
-    0% {
-      transform: translateY(-100%);
-    }
-    100% {
-      transform: translateY(0);
-    }
-  }
-
-  @media screen and (max-width: ${breakpoints.medium}) {
-    position: absolute;
-    display: block !important;
-  }
+  z-index: 40;
+  background: ${(p) => (p.$white || p.$fixed ? "#fff" : "transparent")};
+  border-bottom: 1px solid ${(p) => (p.$white || p.$fixed ? colors.border : "transparent")};
+  transition: background 0.25s ease, border-color 0.25s ease, transform 0.3s ease;
+  transform: ${(p) => (p.$hide ? "translateY(-100%)" : "translateY(0)")};
 `;
 
 export const HeaderContainer = styled.div`
-  display: flex !important;
-  max-width: 1120px;
-  height: 90px;
-  padding: 19.5px 0px;
-  justify-content: space-between;
+  max-width: ${shellMaxWidth};
+  display: flex;
   align-items: center;
+  gap: clamp(20px, 2vw, 40px);
   margin: 0 auto;
-
-  @media screen and (max-width: ${breakpoints.large}) {
-    width: 760px;
-  }
-  @media screen and (max-width: ${breakpoints.medium}) {
-    width: 90%;
-  }
-`;
-
-export const DownIcon = styled.div`
-  display: flex;
-  width: 20px;
-  height: 20px;
-  padding: 0px 4.167px;
-  justify-content: center;
-  align-items: center;
-`;
-export const IconImg = styled.img`
-  width: 11.667px;
-  height: 5.833px;
-`;
-
-export const Hamburger = styled.div`
-  display: none;
-  @media screen and (max-width: ${breakpoints.large}) {
-    display: block;
-    width: 33px;
-    height: 33px;
-    cursor: pointer;
-    margin-left: 16px;
-  }
-`;
-
-export const Menu = styled.ul`
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 32px;
-  list-style-type: none;
-  margin-left: auto;
-  margin-right: 32px;
-
-  @media screen and (max-width: ${breakpoints.large}) {
-    position: fixed;
-    left: 0;
-    top: 70px;
-    flex-direction: column;
-    background: #fff;
-    width: 100%;
-    text-align: left;
-    gap: 24px;
-    padding: 12px 0;
-    margin-top: 18px;
-    border-top: 1px solid #c2c2c2;
-
-    transform: translateX(100%);
-    opacity: 0;
-    visibility: hidden;
-    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-      opacity 0.25s ease,
-      visibility 0s linear 0.35s;
-
-    > * {
-      opacity: 0;
-      transform: translateX(16px);
-      transition: opacity 0.25s ease, transform 0.25s ease;
-    }
-
-    &.hide {
-      display: none;
-    }
-
-    &.active {
-      transform: translateX(0);
-      opacity: 1;
-      visibility: visible;
-      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-        opacity 0.25s ease,
-        visibility 0s linear 0s;
-
-      > *:nth-child(1) { transition-delay: 0.08s; }
-      > *:nth-child(2) { transition-delay: 0.13s; }
-      > *:nth-child(3) { transition-delay: 0.18s; }
-      > *:nth-child(4) { transition-delay: 0.23s; }
-      > *:nth-child(5) { transition-delay: 0.28s; }
-      > *:nth-child(6) { transition-delay: 0.33s; }
-
-      > * {
-        opacity: 1;
-        transform: translateX(0);
-      }
-    }
-  }
-
-  @media screen and (max-width: ${breakpoints.large}) and (prefers-reduced-motion: reduce) {
-    transition: none;
-    transform: none;
-
-    > * {
-      transition: none;
-      transform: none;
-    }
-
-    &.active {
-      transition: none;
-    }
-  }
-`;
-
-export const MenuItem = styled.li`
-  color: ${(props) => (props.blue ? "#1355FF" : "#170F49")};
-  font-family: Poppins;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: ${(props) => (props.blue ? "600" : "400")};
-  line-height: normal;
-  letter-spacing: -0.36px;
-  cursor: pointer;
-
-  display: ${(props) => (props.hidden ? "none" : "flex")};
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  ${({ active }) =>
-    active &&
-    `
-    background: var(--button-gradient, linear-gradient(230deg, #BC4E9B 19.66%, #0957DE 115.46%));
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  `}
-  @media screen and (max-width: ${breakpoints.large}) {
-    display: ${(props) => (props.hidden ? "none" : "")};
-    padding-left: 24px;
-  }
-  @media screen and (max-width: ${breakpoints.medium}) {
-    display: ${(props) => (props.hidden ? "block" : "")};
-    padding-left: 24px;
-  }
-
-  .down-icon {
-    transition: 0.5s all;
-    rotate: 180deg;
-    path {
-      stroke: #1355ff;
-    }
-  }
-
-  .up-icon {
-    transition: 0.5s all;
-  }
-`;
-
-export const MenuItemLink = styled(Link)`
-  color: ${(props) => (props.$active ? "#1355FF" : "#170F49")};
-  font-family: Poppins;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: ${(props) => (props.$active ? "600" : "400")};
-  line-height: normal;
-  letter-spacing: -0.36px;
-  cursor: pointer;
-  text-decoration: none;
-  position: relative;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  transition: color 0.3s ease;
-  
-  &:hover {
-    color: #1355FF;
-  }
-  
-  &.mobile-only {
-    display: none;
-  }
-
-  @media screen and (max-width: ${breakpoints.large}) {
-    padding-left: 24px;
-    justify-content: flex-start;
-  }
-  @media screen and (max-width: ${breakpoints.medium}) {
-    padding-left: 24px;
-    justify-content: flex-start;
-    
-    &.mobile-only {
-      display: block;
-    }
-  }
-`;
-
-export const HeaderButtonTxt = styled.p`
-  color: #fff;
-  text-align: center;
-  font-feature-settings: "clig" off, "liga" off;
-  font-family: Poppins;
-  font-size: 15.999px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 17.999px;
-`;
-
-export const CtaBtn = styled(Link)`
-  display: flex;
-  width: ${(props) => (props.fixed ? "134px" : "182px")};
-  height: 52px;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  border-radius: 8px;
-  background: ${(props) => (props.fill ? "#1355FF" : "transparent")};
-
-  color: ${(props) => (props.fill ? "#FFF" : "#1355FF")};
-  text-align: center;
-  font-family: Poppins;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 150%;
-
-  border: ${(props) => (props.fill ? "none" : "1px solid #1355FF; ")};
-  @media screen and (max-width: ${breakpoints.large}) {
-    margin-left: ${(props) => (props.fixed ? "" : "auto")};
-    margin-right: ${(props) => (props.fixed ? "" : "16px")};
-  }
-  @media screen and (max-width: ${breakpoints.medium}) {
-    display: ${(props) => (props.fixed ? "" : "none")};
-  }
+  padding: 16px ${shellPadding};
 `;
 
 export const CompanyLogo = styled.div`
-  width: 190px;
-  height: 37px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: none;
+
+  img {
+    width: 37px;
+    height: 37px;
+    display: block;
+  }
+`;
+
+export const LogoText = styled.span`
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: ${(p) => (p.$onLight ? colors.text : "#fff")};
+  transition: color 0.25s ease;
+`;
+
+export const Nav = styled.nav`
+  display: flex;
+  align-items: center;
+  gap: clamp(20px, 2.2vw, 40px);
+  margin-left: auto;
+
+  @media screen and (max-width: ${breakpoints.large}) {
+    display: none;
+  }
+`;
+
+const navLinkColor = (p) => (p.$white || p.$onLight ? colors.textMuted : "rgba(255,255,255,.9)");
+
+export const NavButton = styled.button`
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  font-size: 15.5px;
+  font-weight: 450;
+  color: ${navLinkColor};
+  transition: color 0.25s ease;
+`;
+
+export const Chevron = styled.svg`
+  transition: transform 0.25s ease;
+  transform: rotate(${(p) => (p.$open ? "180deg" : "0deg")});
+`;
+
+export const NavLink = styled(Link)`
+  font-size: 15.5px;
+  font-weight: 450;
+  color: ${navLinkColor};
+  text-decoration: none;
+  transition: color 0.25s ease;
+
+  &:hover {
+    color: ${colors.primary};
+  }
+`;
+
+export const CtaBtn = styled(Link)`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15.5px;
+  font-weight: 550;
+  color: #fff;
+  background: ${colors.primary};
+  padding: 12px 22px;
+  border-radius: 999px;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 0.25s ease, transform 0.25s ease;
+
+  &:hover {
+    background: ${colors.primaryHover};
+    transform: translateY(-2px);
+  }
+
+  @media screen and (max-width: 640px) {
+    display: none;
+  }
+`;
+
+export const SearchButton = styled.button`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+  color: ${navLinkColor};
+  transition: background 0.25s ease, color 0.25s ease;
+
+  /* Nav carries its own margin-left:auto to push the nav+CTA group right on
+     desktop, but Nav is display:none below the breakpoint, so a hidden
+     element's margin pushes nothing, stranding Search+Hamburger next to
+     the logo. This repeats that auto-margin here for the same breakpoint
+     only: flexbox splits leftover space EVENLY across every auto-margin
+     present, so doing this unconditionally opened a second gap on desktop
+     (Nav's own margin plus this one, competing for the same space). Scoped
+     to mobile, only one of the two is ever active at a time. */
+  @media screen and (max-width: ${breakpoints.large}) {
+    margin-left: auto;
+  }
+
+  &:hover {
+    background: rgba(19, 85, 255, 0.1);
+  }
+`;
+
+export const Hamburger = styled.button`
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background: transparent;
+  border: 1px solid ${(p) => (p.$white || p.$onLight ? colors.border : "rgba(255,255,255,.3)")};
+  border-radius: 10px;
+  cursor: pointer;
+  color: ${navLinkColor};
+
+  @media screen and (max-width: ${breakpoints.large}) {
+    display: flex;
+  }
+
+  svg {
+    width: 19px;
+    height: 19px;
+  }
+`;
+
+/* ---- Mega-menus (shared shell) ---- */
+
+const panelBase = `
+  position: absolute;
+  top: 100%;
+  background: #fff;
+  border: 1px solid ${colors.border};
+  border-top: 0;
+  box-shadow: 0 26px 60px -28px rgba(10, 15, 31, 0.34);
+  border-radius: 0 0 16px 16px;
+  z-index: 45;
+
+  @media screen and (max-width: 1151px) {
+    display: none;
+  }
+`;
+
+export const MegaPanel = styled.div`
+  ${panelBase}
+  left: 0;
+  right: 0;
+  border-radius: 0;
+`;
+
+export const MegaGrid = styled.div`
+  max-width: ${shellMaxWidth};
+  display: grid;
+  grid-template-columns: clamp(250px, 17vw, 364px) minmax(0, 1fr) clamp(310px, 23.1vw, 486px);
+  gap: 0;
+  margin: 0 auto;
+  padding: 0 ${shellPadding};
+`;
+
+export const MegaTabsLabel = styled.span`
+  font-size: 13px;
+  font-weight: 650;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: ${colors.textFaint};
+  padding: 0 clamp(12px, 1vw, 17px) clamp(10px, 0.85vw, 14px);
+`;
+
+export const MegaTabs = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 26px clamp(18px, 1.4vw, 33px) 26px 0;
+  border-right: 1px solid #edeff5;
+`;
+
+export const MegaTab = styled.button`
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  width: 100%;
+  padding: clamp(12px, 1vw, 17px);
+  background: ${(p) => (p.$active ? "#F5F8FF" : "transparent")};
+  border: 0;
+  border-radius: 10px;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.22s ease;
+
+  span:first-child {
+    font-size: 15.5px;
+    font-weight: 550;
+    color: ${(p) => (p.$active ? colors.primary : colors.text)};
+    transition: color 0.22s ease;
+  }
+  span:last-child {
+    font-size: 13px;
+    color: ${colors.textFaint};
+  }
+`;
+
+export const MegaPane = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 26px clamp(22px, 2.1vw, 52px);
+
+  h3 {
+    font-size: 17.5px;
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    color: ${colors.text};
+    margin-bottom: 16px;
+  }
+`;
+
+export const MegaItemsGrid = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 clamp(20px, 1.8vw, 41px);
+`;
+
+export const MegaPaneFooter = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  margin-top: auto;
+  padding-top: 18px;
+`;
+
+export const MegaPaneAllLink = styled(Link)`
+  font-size: 12.5px;
+  font-weight: 550;
+  color: ${colors.primary};
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+`;
+
+export const MegaSpotlight = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 26px clamp(22px, 1.96vw, 37px);
+  background: #edf2fc;
+`;
+
+export const SpotlightLabel = styled.span`
+  font-size: 13px;
+  font-weight: 650;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: ${colors.textFaint};
+`;
+
+export const SpotlightCard = styled(Link)`
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  color: ${colors.text};
+  text-decoration: none;
+`;
+
+export const SpotlightImageWrap = styled.span`
+  display: block;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #dce6fa;
 
   img {
     width: 100%;
     height: auto;
+    display: block;
   }
 `;
 
-export const LogoIcon = styled.div`
-  width: 36px;
-  @media screen and (max-width: ${breakpoints.medium}) {
-    width: 24px;
+export const SpotlightTitle = styled.span`
+  font-size: 16px;
+  font-weight: 650;
+  letter-spacing: -0.012em;
+  line-height: 1.35;
+`;
+
+export const SpotlightReadLink = styled.span`
+  font-size: 13.5px;
+  font-weight: 550;
+  color: ${colors.primary};
+`;
+
+export const SpotlightCta = styled(Link)`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  margin-top: auto;
+  padding: 14px 18px;
+  font-size: 13.5px;
+  font-weight: 550;
+  color: ${colors.primary};
+  border: 1.5px solid ${colors.primary};
+  border-radius: 100px;
+  text-decoration: none;
+  transition: background 0.22s ease, color 0.22s ease;
+
+  &:hover {
+    background: ${colors.primary};
+    color: #fff;
   }
 `;
 
-export const LogoText = styled.p`
-  color: #170f49;
-  font-feature-settings: "clig" off, "liga" off;
-  font-family: Poppins;
-  font-size: 28.152px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 29.716px;
-  @media screen and (max-width: ${breakpoints.medium}) {
-    font-size: 18px;
+export const MegaItem = styled(Link)`
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: clamp(8px, 0.7vw, 12px) clamp(10px, 0.85vw, 14px);
+  margin: 0 -10px;
+  border-radius: 8px;
+  font-size: 15px;
+  color: #3a4256;
+  text-decoration: none;
+  transition: background 0.2s ease, color 0.2s ease;
+
+  &:hover {
+    background: #f5f8ff;
+    color: ${colors.primary};
   }
 `;
 
+export const ProductsPanel = styled.div`
+  ${panelBase}
+  left: 50%;
+  transform: translateX(-50%);
+  width: max-content;
+  max-width: calc(100vw - 2 * ${shellPadding});
+  padding: clamp(26px, 2.2vw, 40px) clamp(30px, 2.5vw, 46px);
+  display: flex;
+  gap: 18px;
+`;
 
+export const ProductCard = styled.a`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 260px;
+  padding: clamp(14px, 1.15vw, 20px);
+  border: 1px solid ${colors.border};
+  border-radius: 14px;
+  color: ${colors.text};
+  text-decoration: none;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+
+  &:hover {
+    border-color: #c9d6ff;
+    box-shadow: 0 16px 34px -22px rgba(10, 15, 31, 0.3);
+  }
+
+  span:first-child {
+    font-weight: 650;
+  }
+  span:nth-child(2) {
+    align-self: flex-start;
+    font-size: 12px;
+    font-weight: 550;
+    color: ${colors.primary};
+    background: #eaf0ff;
+    padding: 4px 8px;
+    border-radius: 6px;
+  }
+  p {
+    font-size: 14px;
+    color: ${colors.textFaint};
+  }
+`;
+
+export const CompanyPanel = styled.div`
+  ${panelBase}
+  left: 50%;
+  transform: translateX(-50%);
+  width: max-content;
+  max-width: calc(100vw - 2 * ${shellPadding});
+  padding: clamp(26px, 2.2vw, 40px) clamp(30px, 2.5vw, 46px);
+  display: flex;
+  align-items: flex-start;
+  gap: 26px;
+`;
+
+export const CompanyLinksGrid = styled.div`
+  flex: 1 1 380px;
+  min-width: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px 18px;
+`;
+
+export const CompanyLink = styled.a`
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: clamp(11px, 0.95vw, 16px) clamp(12px, 1vw, 17px);
+  border-radius: 10px;
+  color: ${colors.text};
+  text-decoration: none;
+  transition: background 0.2s ease;
+
+  &:hover {
+    background: #f5f8ff;
+    color: ${colors.primary};
+  }
+
+  span {
+    font-size: 15.5px;
+    font-weight: 550;
+  }
+  p {
+    font-size: 13.5px;
+    color: ${colors.textFaint};
+  }
+`;
+
+export const CompanyPhoto = styled.img`
+  flex: none;
+  width: clamp(240px, 21vw, 336px);
+  aspect-ratio: 4 / 3;
+  border-radius: 12px;
+  object-fit: cover;
+  object-position: center 32%;
+`;
+
+/* Mobile menu content lives in ./MobileMenu — it's a full-screen takeover
+   with its own top bar, not a panel hung off this header (see that
+   component for why: this header's own transform makes it a containing
+   block for position:fixed descendants, which broke a nested drawer's
+   sizing). */
