@@ -16,13 +16,15 @@ export const Shell = styled.div`
 
 export const ServiceMap = styled.div`
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(4, max-content);
+  justify-content: space-between;
   gap: 40px 34px;
   padding: 0 0 46px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.13);
 
-  @media (max-width: 900px) {
-    grid-template-columns: 1fr 1fr;
+  @media (max-width: 1100px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    justify-content: stretch;
   }
 `;
 
@@ -44,7 +46,7 @@ export const ColumnLink = styled.a`
   margin-bottom: ${(p) => (p.$heading ? "5px" : 0)};
 
   &:hover {
-    color: #fff;
+    color: ${(p) => (p.$heading ? "#8FA9FF" : "#fff")};
   }
 `;
 
@@ -57,6 +59,7 @@ export const TopRow = styled.div`
 
   @media (max-width: 900px) {
     grid-template-columns: 1fr;
+    gap: 40px;
   }
 `;
 
@@ -91,10 +94,34 @@ export const ContactLinks = styled.div`
   gap: 9px;
 
   a {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
     font-size: clamp(17px, 1.12vw, 19px);
+    text-decoration: none;
+  }
+
+  svg {
+    flex: none;
+  }
+
+  /* The primary address leads; the careers address sits back a step. */
+  a:first-child {
     font-weight: 550;
     color: #fff;
-    text-decoration: none;
+
+    &:hover {
+      color: #8fa9ff;
+    }
+  }
+
+  a:last-child {
+    font-weight: 450;
+    color: rgba(255, 255, 255, 0.78);
+
+    &:hover {
+      color: #fff;
+    }
   }
 `;
 
@@ -115,8 +142,15 @@ export const BadgeRow = styled.div`
 export const SocialColumn = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 30px;
   justify-content: flex-start;
+  padding-left: 120px;
+  padding-right: 120px;
+
+  @media (max-width: 900px) {
+    padding-left: 0;
+    padding-right: 0;
+  }
 
   > span:first-child {
     font-size: 13px;
@@ -170,13 +204,15 @@ export const OfficeBlock = styled.div`
 
 export const ExtraCols = styled.div`
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(4, max-content);
+  justify-content: space-between;
   gap: 24px 34px;
   padding: 36px 0 32px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.13);
 
-  @media (max-width: 900px) {
-    grid-template-columns: 1fr 1fr;
+  @media (max-width: 1100px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    justify-content: stretch;
   }
 `;
 

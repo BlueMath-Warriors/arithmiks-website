@@ -52,7 +52,7 @@ const LandingPage = () => (
         <HowItWorks />
       </Suspense>
       <Suspense fallback={<SectionLoader />}>
-        <CaseStudy landing titleAs="h2" />
+        <CaseStudy />
       </Suspense>
       <Suspense fallback={<SectionLoader />}>
         <ContactUs landing />

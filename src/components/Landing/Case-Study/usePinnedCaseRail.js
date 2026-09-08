@@ -5,7 +5,7 @@ import { useEffect, useRef } from "react";
  * section becomes a tall runway with a sticky inner panel, and scroll
  * progress through that runway drives a translateX on the card track until
  * every card has passed. Below 901px this is a no-op — the rail is a plain
- * scroll-snap row instead (see index.styled.js).
+ * scroll-snap row instead (see Landing-Grid/index.styled.js).
  */
 export const usePinnedCaseRail = () => {
   const stageRef = useRef(null);
