@@ -185,8 +185,12 @@ const Header = ({ white, fixed_bar }) => {
               services.openNow();
             }}
           >
+            {/* A link, not a button: hovering still opens the mega-menu, but
+                clicking goes to the services index. Products and Company stay
+                buttons — neither has a landing page yet. */}
             <NavButton
-              type="button"
+              as={Link}
+              to="/services"
               aria-expanded={services.open}
               aria-haspopup="menu"
               $white={white}

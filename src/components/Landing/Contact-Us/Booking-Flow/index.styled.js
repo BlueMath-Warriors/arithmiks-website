@@ -139,7 +139,10 @@ const phoneBorderWidth = "1px";
 // Width of the flag/dial-code box (.selected-flag, .flag-dropdown below) —
 // shared with DialCodeLabel so its text lines up inside that box without
 // the two guessing at each other's layout.
-const dialBoxWidth = "92px";
+// Wide enough for a four-character dial code (+234, +998) to sit between the
+// flag and the chevron. DialCodeLabel below is also bounded on the right, so a
+// rare five-character code (+1876) clips instead of colliding with the chevron.
+const dialBoxWidth = "108px";
 
 export const PhoneField = styled.div`
   position: relative;
@@ -249,12 +252,20 @@ export const DialCodeLabel = styled.span`
   top: 1px;
   bottom: 1px;
   left: 38px;
+  /* Stops long codes running under DialChevron; anything that still does not
+     fit is clipped rather than overlapped. */
+  right: calc(100% - ${dialBoxWidth} + 33px);
   display: flex;
   align-items: center;
+  overflow: hidden;
+  white-space: nowrap;
   font-size: 14px;
   font-weight: 550;
   color: ${colors.textMuted};
   pointer-events: none;
+  /* react-phone-input-2 gives .flag-dropdown.open a white background and
+     z-index 2, which would otherwise paint over both of these. */
+  z-index: 3;
 `;
 
 // Replaces the library's own .arrow (hidden above) — same chevron icon,
@@ -269,6 +280,7 @@ export const DialChevron = styled.svg`
   left: calc(${dialBoxWidth} - 27px);
   transform: translateY(-50%);
   pointer-events: none;
+  z-index: 3;
 `;
 
 export const ErrorText = styled.span`

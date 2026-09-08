@@ -31,6 +31,20 @@ button {
   cursor: pointer;
 }
 
+/*
+ * Form controls do not inherit the page font by default, so they fall back to
+ * the UA's Arial. Arial only ships Regular and Bold, which silently rounds any
+ * weight of 550+ up to Bold — that is why buttons rendered heavier than the
+ * design. Same reset the design itself uses; font-size is deliberately left
+ * alone since components set their own.
+ */
+button,
+input,
+textarea,
+select {
+  font-family: inherit;
+}
+
 @media (prefers-reduced-motion: reduce) {
 
   *,
