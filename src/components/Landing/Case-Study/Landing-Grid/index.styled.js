@@ -113,6 +113,14 @@ export const CardLogo = styled.img`
   transition: filter 0.3s ease, opacity 0.3s ease;
 `;
 
+export const CardReadMoreArrow = styled.span`
+  // global.module.css's "* { color: #000 }" targets this span directly, which
+  // otherwise beats CardReadMore's inherited primary blue the moment this
+  // wrapper element exists — same gotcha as Hero's HeadlineText.
+  color: inherit;
+  transition: transform 0.25s ease;
+`;
+
 export const CaseCard = styled(Link)`
   flex: 0 0 clamp(288px, 31.4%, 452px);
   scroll-snap-align: start;
@@ -137,6 +145,10 @@ export const CaseCard = styled(Link)`
   &:hover ${CardLogo} {
     filter: none;
     opacity: 1;
+  }
+
+  &:hover ${CardReadMoreArrow} {
+    transform: translateX(4px);
   }
 `;
 

@@ -362,7 +362,7 @@ const Header = ({ white, fixed_bar }) => {
                 return (
                   <SpotlightCard to={`/case-studies/${spotlight.slug}`}>
                     <SpotlightImageWrap>
-                      <img src={spotlight.dashboardImg} alt={spotlight.title} loading="lazy" />
+                      <img src={spotlight.dashboardImg} alt={spotlight.title} />
                     </SpotlightImageWrap>
                     <SpotlightTitle>{spotlight.title}</SpotlightTitle>
                     <SpotlightReadLink>Read case study →</SpotlightReadLink>

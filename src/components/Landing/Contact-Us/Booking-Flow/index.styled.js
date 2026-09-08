@@ -4,6 +4,9 @@ import { colors, shellMaxWidth, shellPadding } from "../../../../styles/tokens";
 export const Section = styled.section`
   padding: clamp(56px, 4.82vw, 90.5px) 0 clamp(60px, 5.34vw, 101px);
   background: ${colors.surface};
+  // Matches the fixed header's height (see usePinnedCaseRail's pinTop) so an
+  // anchor jump to #contact doesn't land the heading behind the fixed nav.
+  scroll-margin-top: 104px;
 `;
 
 export const Shell = styled.div`
@@ -133,7 +136,14 @@ export const FieldPair = styled.div`
 const phoneRadius = "clamp(10px, 0.85vw, 14px)";
 const phoneBorderWidth = "1px";
 
+// Width of the flag/dial-code box (.selected-flag, .flag-dropdown below) —
+// shared with DialCodeLabel so its text lines up inside that box without
+// the two guessing at each other's layout.
+const dialBoxWidth = "92px";
+
 export const PhoneField = styled.div`
+  position: relative;
+
   .react-tel-input {
     font-family: inherit;
     width: 100%;
@@ -150,7 +160,8 @@ export const PhoneField = styled.div`
   .form-control {
     width: 100% !important;
     height: auto !important;
-    padding: clamp(14px, 1.15vw, 19px) clamp(15px, 1.2vw, 20px) clamp(14px, 1.15vw, 19px) 64px !important;
+    padding: clamp(14px, 1.15vw, 19px) clamp(15px, 1.2vw, 20px) clamp(14px, 1.15vw, 19px)
+      calc(${dialBoxWidth} + 8px) !important;
     font-size: clamp(14.5px, 0.93vw, 15.5px) !important;
     font-family: inherit;
     line-height: normal !important;
@@ -183,7 +194,7 @@ export const PhoneField = styled.div`
   }
 
   .selected-flag {
-    width: 54px !important;
+    width: ${dialBoxWidth} !important;
     height: 100% !important;
     top: 0 !important;
     left: 0 !important;
@@ -191,14 +202,15 @@ export const PhoneField = styled.div`
     background: transparent !important;
     border-radius: inherit !important;
 
-    /* high-res.css takes the flag icon itself out of flow entirely
-       (position:absolute;left:10px), so the chevron's own flow position
-       starts back at the box's padding-left, not after the flag — its
-       "left" offset is the only thing standing between it and sitting
-       under/behind the flag graphic. 10px (flag's own offset) + ~25px
-       (flag width) + a small gap clears it reliably. */
+    /* The library nests .arrow INSIDE .flag (a ~25px box positioned
+       relative to .selected-flag, not the reverse) — so any left/right
+       offset on .arrow is relative to that small flag box, not the wider
+       dial box widened above, and no offset can reliably clear it for
+       every flag width. Hidden in favor of DialChevron, a plain sibling
+       rendered directly in PhoneField and positioned against the dial box
+       itself. */
     .arrow {
-      left: 30px !important;
+      display: none !important;
     }
 
     &:hover,
@@ -222,6 +234,41 @@ export const PhoneField = styled.div`
     border-radius: 8px;
     border-color: ${colors.border};
   }
+`;
+
+// react-phone-input-2 (with disableCountryCode) hides the dial code from the
+// editable input but doesn't render it anywhere else — this fills that gap,
+// overlaid on top of the library's own .selected-flag button so the flag and
+// its native click/dropdown behavior still work underneath. Matches the
+// design's flag-then-code-then-chevron dial box, split from the plain number
+// input beside it — font is the design's exact fixed 14px (not the adjacent
+// number input's clamp) at its muted text color, not the near-black used for
+// the number itself.
+export const DialCodeLabel = styled.span`
+  position: absolute;
+  top: 1px;
+  bottom: 1px;
+  left: 38px;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 550;
+  color: ${colors.textMuted};
+  pointer-events: none;
+`;
+
+// Replaces the library's own .arrow (hidden above) — same chevron icon,
+// stroke and size as the "Select a service" dropdown's Chevron
+// (Booking-Flow/Input/index.styled.js) for a consistent look across the
+// form's dropdowns. Positioned against the dial box itself (dialBoxWidth)
+// instead of the library's small nested .flag box — and NOT PhoneField's
+// full width, which spans the number input too.
+export const DialChevron = styled.svg`
+  position: absolute;
+  top: 50%;
+  left: calc(${dialBoxWidth} - 27px);
+  transform: translateY(-50%);
+  pointer-events: none;
 `;
 
 export const ErrorText = styled.span`

@@ -26,6 +26,8 @@ import {
   SocialLink,
   BadgeRow,
   PhoneField,
+  DialCodeLabel,
+  DialChevron,
 } from "./index.styled";
 import upworkRank from "../../../../images/homepage/upwork-rank.png";
 
@@ -49,6 +51,11 @@ const NEXT_UP = [
 const BookingFlow = () => {
   const [step, setStep] = useState(1);
   const [values, setValues] = useState({ name: "", email: "", phone: "", service: "", brief: "" });
+  // Seeded to match the PhoneInput's own default country="pk" below. Used
+  // both to render DialCodeLabel and to rebuild the full phone number on
+  // submit — disableCountryCode (below) strips the dial code out of
+  // values.phone itself, not just what's displayed.
+  const [dialCode, setDialCode] = useState("92");
   const [errors, setErrors] = useState({});
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState("");
@@ -74,7 +81,11 @@ const BookingFlow = () => {
       formData.append("full_name", values.name);
       formData.append("sender_email", values.email);
       formData.append("category", values.service);
-      formData.append("phone_number", values.phone);
+      // disableCountryCode (on PhoneInput below) strips the dial code from
+      // both the display AND values.phone itself, not just what's shown —
+      // reassembled here so the submitted format matches what the backend
+      // always received.
+      formData.append("phone_number", values.phone ? `+${dialCode}${values.phone}` : "");
       formData.append("message", values.brief);
 
       const apiEndpoint = process.env.GATSBY_API_ENDPOINT;
@@ -139,11 +150,38 @@ const BookingFlow = () => {
                       <PhoneInput
                         country="pk"
                         inputProps={{ placeholder: "Phone", "aria-label": "Phone number" }}
-                        countryCodeEditable
+                        disableCountryCode
+                        // Without disableCountryCode, the number typed always
+                        // starts after the dial-code prefix the user can see,
+                        // so the library's typed-digit country auto-guess only
+                        // ever matches on that prefix. With it hidden, the
+                        // guess runs against the visible (local-only) digits
+                        // instead and can silently swap the selected country
+                        // mid-type — e.g. typing 3001234567 matches Greece's
+                        // "30" dial code. Disabled since the flag is now only
+                        // ever changed deliberately, via the dropdown.
+                        disableCountryGuess
                         enableSearch
                         value={values.phone}
-                        onChange={(phone) => setValues((v) => ({ ...v, phone }))}
+                        onChange={(phone, country) => {
+                          setValues((v) => ({ ...v, phone }));
+                          setDialCode(country.dialCode);
+                        }}
                       />
+                      <DialCodeLabel aria-hidden="true">+{dialCode}</DialCodeLabel>
+                      <DialChevron
+                        aria-hidden="true"
+                        viewBox="0 0 16 16"
+                        width="15"
+                        height="15"
+                        fill="none"
+                        stroke="#5C6478"
+                        strokeWidth="1.7"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      >
+                        <path d="M4 6.5 8 10.5l4-4" />
+                      </DialChevron>
                     </PhoneField>
                     <Input
                       type="dropdown"

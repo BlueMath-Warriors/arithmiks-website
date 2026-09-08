@@ -20,6 +20,7 @@ import {
   CardTitle,
   CardOutcome,
   CardReadMore,
+  CardReadMoreArrow,
 } from "./index.styled";
 
 // Matches the source's 7-card CASES list, using the real case studies this
@@ -63,7 +64,10 @@ const LandingGrid = ({ caseStudies }) => {
                     </CardTopRow>
                     <CardTitle>{study.title}</CardTitle>
                     <CardOutcome>{study.description}</CardOutcome>
-                    <CardReadMore>Read case study</CardReadMore>
+                    <CardReadMore>
+                      Read case study
+                      <CardReadMoreArrow aria-hidden="true">→</CardReadMoreArrow>
+                    </CardReadMore>
                   </CardBody>
                 </CaseCard>
               ))}

@@ -309,20 +309,30 @@ export const SpotlightCard = styled(Link)`
   text-decoration: none;
 `;
 
+// Fixed aspect ratio (matches the case-study dashboard screenshots' actual
+// ~5:4 export size, same ratio CardImage uses in Landing-Grid) so the box
+// doesn't grow from ~0 to full height once the image resolves — the space
+// is reserved up front regardless of load timing.
 export const SpotlightImageWrap = styled.span`
   display: block;
+  aspect-ratio: 5 / 4;
   border-radius: 10px;
   overflow: hidden;
   background: #dce6fa;
 
   img {
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: cover;
     display: block;
   }
 `;
 
+// min-height reserves 2 lines so a short case-study title (1 line) and a
+// long one (2 lines) don't change the Spotlight card's height when switching
+// category tabs.
 export const SpotlightTitle = styled.span`
+  min-height: 2.7em;
   font-size: 16px;
   font-weight: 650;
   letter-spacing: -0.012em;

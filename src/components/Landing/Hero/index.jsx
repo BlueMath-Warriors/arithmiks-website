@@ -8,12 +8,17 @@ import {
   HeroGlow,
   HeroShell,
   HeroMain,
+  HeroHeadline,
   Eyebrow,
   Headline,
+  HeadlineText,
   GradientAI,
   Dots,
   Dot,
+  ScrollCueRow,
   ScrollCue,
+  ScrollCueLabel,
+  ScrollCueIcon,
   TrustedLabel,
   ClientLogo,
 } from "./index.styled";
@@ -62,17 +67,37 @@ const CLIENTS = [
   { name: "Quanta", logo: "/homepage/client-quanta-mark.svg", height: 36, treatment: "flat" },
 ];
 
+// Half of Headline's own 0.45s opacity/transform transition — swapping the
+// text at the midpoint of the exit animation is what produces the design's
+// crossfade-and-rise rather than a fade-out-then-fade-in with a dead pause.
+const SLIDE_TRANSITION_HALF_MS = 220;
+
 const Hero = () => {
   const [slide, setSlide] = useState(0);
+  const [visible, setVisible] = useState(true);
   const pausedRef = useRef(false);
+  const swapTimeoutRef = useRef(null);
+
+  const goToSlide = (next) => {
+    if (next === slide) return;
+    clearTimeout(swapTimeoutRef.current);
+    setVisible(false);
+    swapTimeoutRef.current = setTimeout(() => {
+      setSlide(next);
+      setVisible(true);
+    }, SLIDE_TRANSITION_HALF_MS);
+  };
 
   useEffect(() => {
     if (prefersReducedMotion()) return undefined;
     const id = setInterval(() => {
-      if (!pausedRef.current) setSlide((s) => (s + 1) % SLIDES.length);
+      if (!pausedRef.current) goToSlide((slide + 1) % SLIDES.length);
     }, 5200);
     return () => clearInterval(id);
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [slide]);
+
+  useEffect(() => () => clearTimeout(swapTimeoutRef.current), []);
 
   return (
     <HeroSection
@@ -98,8 +123,14 @@ const Hero = () => {
       <HeroGlow aria-hidden="true" />
       <HeroShell>
         <HeroMain>
-          <Eyebrow>AI-First Software Engineering</Eyebrow>
-          <Headline aria-live="polite">{markAI(SLIDES[slide])}</Headline>
+          <HeroHeadline>
+            <Eyebrow>AI-First Software Engineering</Eyebrow>
+            <Headline aria-live="polite">
+              <HeadlineText $visible={visible}>{markAI(SLIDES[slide])}</HeadlineText>
+            </Headline>
+          </HeroHeadline>
+        </HeroMain>
+        <ScrollCueRow>
           <Dots role="group" aria-label="Headline slides">
             {SLIDES.map((_, i) => (
               <Dot
@@ -108,12 +139,28 @@ const Hero = () => {
                 $active={i === slide}
                 aria-label={`Show slide ${i + 1}`}
                 aria-current={i === slide}
-                onClick={() => setSlide(i)}
+                onClick={() => goToSlide(i)}
               />
             ))}
           </Dots>
-          <ScrollCue aria-hidden="true">SCROLL</ScrollCue>
-        </HeroMain>
+          <ScrollCue aria-hidden="true">
+            <ScrollCueLabel>
+              SCROLL
+              <ScrollCueIcon
+                viewBox="0 0 16 16"
+                width="15"
+                height="15"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.75"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M8 3v9M4.5 8.5 8 12l3.5-3.5" />
+              </ScrollCueIcon>
+            </ScrollCueLabel>
+          </ScrollCue>
+        </ScrollCueRow>
         <TrustedLabel>Trusted by teams building what&apos;s next.</TrustedLabel>
         <Marquee
           items={CLIENTS.map((c) => ({

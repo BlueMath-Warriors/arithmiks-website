@@ -74,19 +74,35 @@ export const Panel = styled.button`
   }
 `;
 
+// Always mounted and stacked (absolute + inset:0) over PanelOpen below,
+// cross-fading via opacity instead of a display:none/flex swap — the panel's
+// width animates over 0.55s (see Panel), and toggling display would pop the
+// open panel's full content in mid-width-transition, reflowing as it grows.
 export const PanelClosed = styled.div`
-  display: ${(p) => (p.$visible ? "flex" : "none")};
+  position: absolute;
+  inset: 0;
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
   padding: clamp(26px, 2vw, 38px) 0 clamp(30px, 2.2vw, 42px);
-  height: 100%;
+  opacity: ${(p) => (p.$visible ? 1 : 0)};
+  pointer-events: ${(p) => (p.$visible ? "auto" : "none")};
+  transition: opacity 0.3s;
 
+  // Below 900px, Panel doesn't animate width (it's a stacked expand/collapse
+  // list, not a hover-driven row) — there's no reflow to protect against, so
+  // this reverts to a plain display toggle instead of an always-mounted,
+  // absolutely-positioned overlay.
   @media (max-width: 900px) {
+    position: static;
+    display: ${(p) => (p.$visible ? "flex" : "none")};
     flex-direction: row;
     justify-content: flex-start;
     gap: 14px;
     padding: 18px 20px;
+    opacity: 1;
+    pointer-events: auto;
   }
 `;
 
@@ -127,10 +143,24 @@ export const PanelCount = styled.span`
 `;
 
 export const PanelOpen = styled.div`
-  display: ${(p) => (p.$visible ? "flex" : "none")};
+  position: absolute;
+  inset: 0;
+  display: flex;
   flex-direction: column;
   padding: clamp(32px, 2.6vw, 48px) clamp(34px, 2.8vw, 52px) clamp(30px, 2.4vw, 46px);
-  height: 100%;
+  opacity: ${(p) => (p.$visible ? 1 : 0)};
+  pointer-events: ${(p) => (p.$visible ? "auto" : "none")};
+  // Fades in slightly after PanelClosed fades out (see its 0.3s, no delay)
+  // so the two never both read as visible at once mid-crossfade.
+  transition: opacity 0.35s 0.12s;
+
+  @media (max-width: 900px) {
+    position: static;
+    display: ${(p) => (p.$visible ? "flex" : "none")};
+    opacity: 1;
+    pointer-events: auto;
+    transition: none;
+  }
 
   h3 {
     margin-top: clamp(20px, 1.7vw, 30px);
