@@ -167,7 +167,7 @@ const Header = ({ white, fixed_bar }) => {
       <HeaderContainer>
         <Link to="/" aria-label="Go to homepage">
           <CompanyLogo>
-            <img src={logoMark} alt="" width={37} height={37} />
+            <img src={logoMark} alt="" width={23} height={27} />
             <LogoText $onLight={onLight}>Arithmiks</LogoText>
           </CompanyLogo>
         </Link>

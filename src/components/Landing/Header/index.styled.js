@@ -24,28 +24,33 @@ export const HeaderContainer = styled.div`
   max-width: ${shellMaxWidth};
   display: flex;
   align-items: center;
-  gap: clamp(20px, 2vw, 40px);
+  gap: 40px;
   margin: 0 auto;
-  padding: 16px ${shellPadding};
+  padding: 20px ${shellPadding};
+  // The design is set in Aspekta, whose default line-height is 1.43; the
+  // fallback stack's is 1.175, which otherwise renders the bar ~13px shorter
+  // than the design because the CTA's line box drives the bar's height.
+  line-height: 1.43;
 `;
 
 export const CompanyLogo = styled.div`
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 9px;
   flex: none;
 
+  // The mark is 189x222, not square — width must stay auto or it distorts.
   img {
-    width: 37px;
-    height: 37px;
+    height: 27px;
+    width: auto;
     display: block;
   }
 `;
 
 export const LogoText = styled.span`
-  font-size: 22px;
-  font-weight: 700;
-  letter-spacing: -0.01em;
+  font-size: clamp(20px, 1.34vw, 22.5px);
+  font-weight: 650;
+  letter-spacing: -0.02em;
   color: ${(p) => (p.$onLight ? colors.text : "#fff")};
   transition: color 0.25s ease;
 `;
@@ -53,7 +58,7 @@ export const LogoText = styled.span`
 export const Nav = styled.nav`
   display: flex;
   align-items: center;
-  gap: clamp(20px, 2.2vw, 40px);
+  gap: 32px;
   margin-left: auto;
 
   @media screen and (max-width: ${breakpoints.large}) {
@@ -71,7 +76,7 @@ export const NavButton = styled.button`
   background: transparent;
   border: 0;
   cursor: pointer;
-  font-size: 15.5px;
+  font-size: clamp(15px, 0.96vw, 16.5px);
   font-weight: 450;
   color: ${navLinkColor};
   transition: color 0.25s ease;
@@ -83,7 +88,7 @@ export const Chevron = styled.svg`
 `;
 
 export const NavLink = styled(Link)`
-  font-size: 15.5px;
+  font-size: clamp(15px, 0.96vw, 16.5px);
   font-weight: 450;
   color: ${navLinkColor};
   text-decoration: none;
@@ -98,7 +103,7 @@ export const CtaBtn = styled(Link)`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: 15.5px;
+  font-size: clamp(15px, 0.96vw, 16.5px);
   font-weight: 550;
   color: #fff;
   background: ${colors.primary};
@@ -318,7 +323,11 @@ export const SpotlightImageWrap = styled.span`
   aspect-ratio: 5 / 4;
   border-radius: 10px;
   overflow: hidden;
-  background: #dce6fa;
+  // The design declares #DCE6FA here, but its own spotlight renders ship an
+  // opaque #F2F4F4 backdrop that covers the tile, so that blue never shows.
+  // This site's dashboard exports are transparent, so the tile itself has to
+  // carry the grey to land on the same result.
+  background: #f2f4f4;
 
   img {
     width: 100%;

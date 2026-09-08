@@ -18,10 +18,11 @@ export const HeroSection = styled.section`
   background: #fff;
 
   /* The design's generic ≤900px band rule would drop this to 64px, which on
-     this page would put the heading under the fixed header — its own hero
-     treatment at that width (110px/48px) is used instead. */
+     this page would put the heading under the fixed header (85px tall here).
+     Its own hero treatment at that width is used instead, plus the 8px the
+     header gained when its padding was matched to the design. */
   @media (max-width: 900px) {
-    padding: 110px 0 48px;
+    padding: 118px 0 48px;
   }
 
   @media (max-height: 500px) {

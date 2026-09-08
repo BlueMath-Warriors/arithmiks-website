@@ -7,6 +7,7 @@ import {
   ServiceMap,
   ServiceColumn,
   ColumnLink,
+  ExtraColumnLink,
   TopRow,
   Brand,
   BrandName,
@@ -81,11 +82,11 @@ const MODELS = [
 // real (currently 404ing) path, per product decision.
 const FooterLink = ({ link }) =>
   link.internal ? (
-    <ColumnLink as={Link} to={link.url}>
+    <ExtraColumnLink as={Link} to={link.url}>
       {link.name}
-    </ColumnLink>
+    </ExtraColumnLink>
   ) : (
-    <ColumnLink href="#">{link.name}</ColumnLink>
+    <ExtraColumnLink href="#">{link.name}</ExtraColumnLink>
   );
 
 const Footer = () => (
@@ -121,7 +122,7 @@ const Footer = () => (
       <TopRow>
         <Brand>
           <span style={{ display: "flex", alignItems: "center", gap: 10 }}>
-            <img src={logoMark} alt="" height={43} width={43} />
+            <img src={logoMark} alt="" height={43} width={37} />
             <BrandName>Arithmiks</BrandName>
           </span>
           <BrandBlurb>

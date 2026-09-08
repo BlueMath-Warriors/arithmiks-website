@@ -31,10 +31,6 @@ export const Pill = styled.button`
     border-color: ${colors.primary};
     color: ${colors.primary};
   }
-
-  @media (max-width: 560px) {
-    min-width: 100%;
-  }
 `;
 
 // The design draws this inside the pill; rendered as a sibling instead, since a
