@@ -33,6 +33,9 @@ import {
   ProductsPanel,
   ProductCard,
   CompanyPanel,
+  CompanyIntro,
+  CompanyIntroLabel,
+  CompanyIntroText,
   CompanyLinksGrid,
   CompanyLink,
   CompanyPhoto,
@@ -402,6 +405,12 @@ const Header = ({ white, fixed_bar }) => {
           onMouseEnter={company.openNow}
           onMouseLeave={company.closeAfterDelay}
         >
+          <CompanyIntro>
+            <CompanyIntroLabel>Company</CompanyIntroLabel>
+            <CompanyIntroText>
+              Who we are, how we work, and where we are going.
+            </CompanyIntroText>
+          </CompanyIntro>
           <CompanyLinksGrid>
             <CompanyLink as={Link} to="/about">
               <span>About</span>

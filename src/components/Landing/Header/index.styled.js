@@ -393,6 +393,7 @@ export const ProductsPanel = styled.div`
   padding: clamp(26px, 2.2vw, 40px) clamp(30px, 2.5vw, 46px);
   display: flex;
   gap: 18px;
+  border-radius: 0;
 `;
 
 export const ProductCard = styled.a`
@@ -440,6 +441,29 @@ export const CompanyPanel = styled.div`
   display: flex;
   align-items: flex-start;
   gap: 26px;
+  border-radius: 0;
+`;
+
+// Intro column matching the Services mega-menu's own label+blurb treatment
+// (MegaTabsLabel) — an eyebrow plus a short description of the whole menu,
+// to the left of the actual links.
+export const CompanyIntro = styled.div`
+  flex: 0 0 clamp(190px, 15vw, 250px);
+`;
+
+export const CompanyIntroLabel = styled.div`
+  font-size: 13px;
+  font-weight: 650;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: ${colors.textFaint};
+  margin-bottom: 10px;
+`;
+
+export const CompanyIntroText = styled.p`
+  font-size: 14.5px;
+  line-height: 1.5;
+  color: ${colors.textFaint};
 `;
 
 export const CompanyLinksGrid = styled.div`
