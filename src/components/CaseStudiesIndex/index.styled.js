@@ -124,6 +124,14 @@ export const ClearAllButton = styled.button`
     flex: none;
   }
 
+  /* global.module.css's "* { color: #000 }" matches the icon's <path>
+     directly, which otherwise beats this inherited color — without it the
+     icon stayed black at rest and never actually turned red on hover. */
+  svg,
+  svg * {
+    color: inherit;
+  }
+
   &:hover {
     color: #b42318;
     background: #fef3f2;

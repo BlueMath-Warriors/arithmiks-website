@@ -1,6 +1,6 @@
 import React, { useMemo } from "react";
-import { Link } from "gatsby";
 import { caseStudies } from "../../../Landing/Case-Study/caseStudies";
+import CaseStudyCard from "../../../Landing/Case-Study/CaseStudyCard";
 
 import {
   Section,
@@ -10,16 +10,10 @@ import {
   DividerLine,
   Heading,
   CardsGrid,
-  CardLink,
-  CaseStudyImgWrapper,
-  LogoAndTagWrapper,
-  CompanyLogo,
-  CaseStudyTag,
-  CaseStudyTitle,
-  CaseStudyDescription,
   ButtonRow,
   ViewMoreButtonLink,
 } from "./index.styled";
+import { Link } from "gatsby";
 
 const getNextTwoCaseStudies = (currentSlug) => {
   const detailCaseStudies = (caseStudies || []).filter((s) => s.hasDetailPage);
@@ -69,33 +63,9 @@ const MoreCaseStudies = ({ currentSlug }) => {
         </HeadingRow>
 
         <CardsGrid>
-          {nextTwo.map((study) => {
-            return (
-              <CardLink
-                key={study.slug}
-                to={`/case-studies/${study.slug}`}
-              >
-                <CaseStudyImgWrapper>
-                  <img 
-                    src={study.dashboardImg} 
-                    alt={`${study.logoAlt} dashboard preview`}
-                    width={500}
-                    height={300}
-                    loading="lazy"
-                    style={{ width: '100%', height: 'auto' }}
-                  />
-                </CaseStudyImgWrapper>
-                <LogoAndTagWrapper>
-                  {study.logo && (
-                    <CompanyLogo src={study.logo} alt={study.logoAlt} width={40} height={40} />
-                  )}
-                  <CaseStudyTag>{study.tag}</CaseStudyTag>
-                </LogoAndTagWrapper>
-                <CaseStudyTitle>{study.title}</CaseStudyTitle>
-                <CaseStudyDescription>{study.description}</CaseStudyDescription>
-              </CardLink>
-            );
-          })}
+          {nextTwo.map((study) => (
+            <CaseStudyCard key={study.slug} study={study} />
+          ))}
         </CardsGrid>
 
         <ButtonRow>

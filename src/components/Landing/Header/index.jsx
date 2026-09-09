@@ -50,6 +50,12 @@ import logoMark from "../../../images/favicon.png";
 import MenuIcon from "../../../images/hamburger_icon.svg";
 import companyTeamPhoto from "../../../images/homepage/hero-team.png";
 
+// Matches the fixed header's own rendered height (see usePinnedCaseRail's
+// pinTop and Booking-Flow's scroll-margin-top) — the point at which a hero
+// section has scrolled fully clear of the header, not the design's raw 90px
+// (measured against its own header chrome, not ours).
+const HEADER_SOLID_THRESHOLD = 104;
+
 // Each Services category "spotlights" a real, shipped case study on the
 // mega-menu's right column — matches the design's per-category showcase.
 const SPOTLIGHT_SLUG_BY_CATEGORY = {
@@ -82,9 +88,7 @@ const NavChevron = ({ open, color }) => (
 );
 
 const Header = ({ white, fixed_bar }) => {
-  const [heroHeight, setHeroHeight] = useState(840);
   const [isFixed, setIsFixed] = useState(false);
-  const [hideNav, setHideNav] = useState(false);
   const [currentPath, setCurrentPath] = useState("");
   const [showMenu, setShowMenu] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
@@ -119,42 +123,29 @@ const Header = ({ white, fixed_bar }) => {
     };
   }, [currentPath]);
 
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    let timeoutId;
-    const handleResize = () => {
-      clearTimeout(timeoutId);
-      timeoutId = setTimeout(() => {
-        if (window.innerWidth > 1200) setHeroHeight(840);
-        else if (window.innerWidth > 820) setHeroHeight(553);
-        else setHeroHeight(445);
-      }, 100);
-    };
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => {
-      clearTimeout(timeoutId);
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
+  // Tracks the actual hero element (id="top", when the current page renders
+  // one) instead of guessing its height from a viewport-width breakpoint —
+  // that guess ignored viewport *height* entirely (the hero is 100svh), so
+  // on many screens the header either flipped solid while still well over
+  // the dark hero, or stayed transparent long after scrolling onto light
+  // content beneath it. This reacts to the hero's real edge, on every
+  // scroll tick, so it starts adjusting immediately rather than waiting for
+  // scroll to cross an arbitrary fixed distance — and drives a single CSS
+  // background transition instead of also hiding/re-showing the bar, which
+  // was the source of the jiggle.
   useEffect(() => {
     if (typeof window === "undefined" || fixed_bar) return;
     const handleScroll = () => {
-      const scrollY = window.scrollY;
-      if (scrollY >= heroHeight) {
-        setHideNav(false);
-        setIsFixed(true);
-      } else if (scrollY < heroHeight && scrollY > heroHeight - 10) {
-        setHideNav(true);
-      } else {
-        setHideNav(false);
-        setIsFixed(false);
-      }
+      const hero = document.getElementById("top");
+      const scrolledPastHero = hero
+        ? hero.getBoundingClientRect().bottom <= HEADER_SOLID_THRESHOLD
+        : window.scrollY > 8;
+      setIsFixed(scrolledPastHero);
     };
+    handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [heroHeight, fixed_bar]);
+  }, [fixed_bar]);
 
   // The open white mega-menus (and the white search sheet) need dark nav
   // text regardless of scroll position — matches the source's own
@@ -169,7 +160,7 @@ const Header = ({ white, fixed_bar }) => {
   return (
     <>
       <NavScrim $visible={navPanelsOpen} aria-hidden="true" />
-      <Headerr $white={white} $fixed={isFixed || fixed_bar || anyMenuOpen} $hide={hideNav}>
+      <Headerr $white={white} $fixed={isFixed || fixed_bar || anyMenuOpen}>
       <HeaderContainer>
         <Link to="/" aria-label="Go to homepage">
           <CompanyLogo>

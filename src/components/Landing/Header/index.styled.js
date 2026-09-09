@@ -37,8 +37,7 @@ export const Headerr = styled.header`
   z-index: 40;
   background: ${(p) => (p.$white || p.$fixed ? "#fff" : "transparent")};
   border-bottom: 1px solid ${(p) => (p.$white || p.$fixed ? colors.border : "transparent")};
-  transition: background 0.25s ease, border-color 0.25s ease, transform 0.3s ease;
-  transform: ${(p) => (p.$hide ? "translateY(-100%)" : "translateY(0)")};
+  transition: background 0.25s ease, border-color 0.25s ease;
 `;
 
 export const HeaderContainer = styled.div`

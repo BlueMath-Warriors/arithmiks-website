@@ -55,6 +55,15 @@ export const ClearBadge = styled.button`
   cursor: pointer;
   transition: background 0.2s ease, color 0.2s ease;
 
+  /* global.module.css's "* { color: #000 }" matches the icon's <path>
+     directly, which otherwise beats this inherited color the moment the
+     icon exists — same gotcha as CaseStudyCard's CardReadMoreArrow and
+     Header's SocialLink. */
+  svg,
+  svg * {
+    color: inherit;
+  }
+
   &:hover {
     background: ${colors.primary};
     color: #fff;
