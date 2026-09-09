@@ -111,8 +111,7 @@ const BookingFlow = ({ headingAs = "h2" }) => {
       formData.append("phone_number", values.phone ? `+${dialCode}${values.phone}` : "");
       formData.append("message", values.brief);
 
-      const apiEndpoint = process.env.GATSBY_API_ENDPOINT;
-      const response = await fetch(`${apiEndpoint}form-submission`, {
+      const response = await fetch("/api/form-submission", {
         method: "POST",
         body: formData,
       });
