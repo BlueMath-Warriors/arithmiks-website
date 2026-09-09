@@ -28,7 +28,7 @@ const Sbaloans = ({ images, breadcrumbItems }) => {
 
   return (
     <>
-      <Header />
+      <Header white={true} />
       <main>
       <Hero {...heroData} breadcrumbItems={breadcrumbItems} />
       <TechStack {...techStackData} />

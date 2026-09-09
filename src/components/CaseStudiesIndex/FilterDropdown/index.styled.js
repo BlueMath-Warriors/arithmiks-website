@@ -55,6 +55,15 @@ export const ClearBadge = styled.button`
   cursor: pointer;
   transition: background 0.2s ease, color 0.2s ease;
 
+  /* global.module.css's "* { color: #000 }" matches the icon's <path>
+     directly, which otherwise beats this inherited color the moment the
+     icon exists — same gotcha as CaseStudyCard's CardReadMoreArrow and
+     Header's SocialLink. */
+  svg,
+  svg * {
+    color: inherit;
+  }
+
   &:hover {
     background: ${colors.primary};
     color: #fff;
@@ -72,6 +81,18 @@ export const Chevron = styled.svg`
   flex: none;
   transition: transform 0.25s ease;
   transform: ${(p) => (p.$open ? "rotate(180deg)" : "none")};
+
+  /* Same global.module.css "* { color: #000 }" gotcha as ClearBadge below —
+     stroke="currentColor" is set on this <svg> but inherits down to (and is
+     actually painted by) the <path> child, and "color: inherit" on just the
+     svg itself doesn't stop "* { color: #000 }" from directly matching that
+     <path> too — a direct match always beats an inherited value, regardless
+     of the parent's own color. Both need it. */
+  color: inherit;
+
+  & * {
+    color: inherit;
+  }
 `;
 
 export const Panel = styled.span`

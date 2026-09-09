@@ -102,11 +102,24 @@ export const FilterRow = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 12px;
   margin-bottom: clamp(40px, 4vw, 72px);
 `;
 
+export const PillsGroup = styled.div`
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+`;
+
+
 export const ClearAllButton = styled.button`
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-left: 12px;
+  white-space: nowrap;
   display: inline-flex;
   align-items: center;
   gap: 9px;
@@ -120,8 +133,26 @@ export const ClearAllButton = styled.button`
   cursor: pointer;
   transition: color 0.25s ease, background 0.25s ease;
 
+  // On narrow screens PillsGroup's own pills already wrap and take up most
+  // of the row's width, leaving no room beside them for this without
+  // overlapping — drop it back into normal flow, centered on its own line
+  // below the pills, same as everything else on this page.
+  @media screen and (max-width: 640px) {
+    position: static;
+    transform: none;
+    margin: 4px auto 0;
+  }
+
   svg {
     flex: none;
+  }
+
+  /* global.module.css's "* { color: #000 }" matches the icon's <path>
+     directly, which otherwise beats this inherited color — without it the
+     icon stayed black at rest and never actually turned red on hover. */
+  svg,
+  svg * {
+    color: inherit;
   }
 
   &:hover {
@@ -131,10 +162,22 @@ export const ClearAllButton = styled.button`
 `;
 
 export const Grid = styled.div`
+  // Anchors the absolute positioning the filter-transition effect applies to
+  // a leaving card (CaseStudiesIndex/index.jsx) — pulled out of grid flow at
+  // its old spot so the remaining cards' Flip-computed end position is
+  // correct, positioned relative to this container rather than the page.
+  position: relative;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: clamp(24px, 2.4vw, 52px) clamp(24px, 2.6vw, 56px);
   align-items: stretch;
+  // align-content's default ("normal") computes to "stretch" on a grid
+  // container, so the min-height the filter-transition effect reserves
+  // during a transition (CaseStudiesIndex/index.jsx) would otherwise stretch
+  // the row tracks — and the cards in them, via align-items:stretch above —
+  // to fill that reserved space, instead of leaving it as plain trailing
+  // room below the actual content.
+  align-content: start;
 
   @media (max-width: 900px) {
     grid-template-columns: 1fr;

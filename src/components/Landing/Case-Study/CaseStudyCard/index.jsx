@@ -18,12 +18,19 @@ import {
  *
  * `className` is forwarded so callers can extend the root with
  * `styled(CaseStudyCard)` — the rail uses that to add its own flex sizing and
- * scroll-snap without duplicating the card's visuals.
+ * scroll-snap without duplicating the card's visuals. `data-slug` is set from
+ * `study.slug` so a caller can identify/select a specific rendered card by DOM
+ * query (CaseStudiesIndex's Flip-based filter transition does this) without
+ * needing its own prop-forwarding path.
  *
  * @param {{ study: object; className?: string }} props
  */
 const CaseStudyCard = ({ study, className }) => (
-  <CardRoot to={`/case-studies/${study.slug}`} className={className}>
+  <CardRoot
+    to={`/case-studies/${study.slug}`}
+    className={className}
+    data-slug={study.slug}
+  >
     <CardImage
       src={study.dashboardImg}
       alt={`${study.title} — product interface`}
