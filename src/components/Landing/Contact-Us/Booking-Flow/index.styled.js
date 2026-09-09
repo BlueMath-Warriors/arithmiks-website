@@ -146,6 +146,12 @@ const dialBoxWidth = "108px";
 
 export const PhoneField = styled.div`
   position: relative;
+  /* FieldPair is a grid row with the default align-items: stretch, so without
+     this the sibling dropdown's reserved error-text row (see Input's
+     ErrorText) stretches this box taller than the actual phone input inside
+     it — and DialCodeLabel/DialChevron below, anchored at 50%/1px-from-edge
+     of THIS box, drift off-center from the input as a result. */
+  align-self: start;
 
   .react-tel-input {
     font-family: inherit;

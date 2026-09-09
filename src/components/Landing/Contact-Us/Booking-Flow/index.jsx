@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/high-res.css";
 import Calendar from "./Calendar";
@@ -59,6 +59,14 @@ const BookingFlow = () => {
   const [errors, setErrors] = useState({});
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState("");
+  const errorTimeoutRef = useRef(null);
+
+  // Field errors only ever get (re)computed on submit, so without this they
+  // sit on screen indefinitely even after the user fixes the field —
+  // auto-dismissed after 5s instead.
+  useEffect(() => {
+    return () => clearTimeout(errorTimeoutRef.current);
+  }, []);
 
   const validate = () => {
     const next = {};
@@ -67,8 +75,17 @@ const BookingFlow = () => {
     if (!values.service) next.service = "This field is required";
     if (!values.brief.trim()) next.brief = "This field is required";
     setErrors(next);
+
+    clearTimeout(errorTimeoutRef.current);
+    if (Object.keys(next).length > 0) {
+      errorTimeoutRef.current = setTimeout(() => setErrors({}), 5000);
+    }
     return Object.keys(next).length === 0;
   };
+
+  // Same required set as validate() above — phone stays optional.
+  const isStep1Complete =
+    values.name.trim() && values.email.trim() && values.service && values.brief.trim();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -202,7 +219,7 @@ const BookingFlow = () => {
                     error={errors.brief}
                   />
                   {submitError && <ErrorText>{submitError}</ErrorText>}
-                  <SubmitButton type="submit" disabled={submitting}>
+                  <SubmitButton type="submit" disabled={submitting || !isStep1Complete}>
                     {submitting ? "Sending…" : "Next: Book a call"}
                   </SubmitButton>
                 </Form>
