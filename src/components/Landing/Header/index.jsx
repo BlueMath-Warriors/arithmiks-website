@@ -33,6 +33,9 @@ import {
   ProductsPanel,
   ProductCard,
   CompanyPanel,
+  CompanyIntro,
+  CompanyIntroLabel,
+  CompanyIntroText,
   CompanyLinksGrid,
   CompanyLink,
   CompanyPhoto,
@@ -164,7 +167,7 @@ const Header = ({ white, fixed_bar }) => {
       <HeaderContainer>
         <Link to="/" aria-label="Go to homepage">
           <CompanyLogo>
-            <img src={logoMark} alt="" width={37} height={37} />
+            <img src={logoMark} alt="" width={23} height={27} />
             <LogoText $onLight={onLight}>Arithmiks</LogoText>
           </CompanyLogo>
         </Link>
@@ -182,8 +185,12 @@ const Header = ({ white, fixed_bar }) => {
               services.openNow();
             }}
           >
+            {/* A link, not a button: hovering still opens the mega-menu, but
+                clicking goes to the services index. Products and Company stay
+                buttons — neither has a landing page yet. */}
             <NavButton
-              type="button"
+              as={Link}
+              to="/services"
               aria-expanded={services.open}
               aria-haspopup="menu"
               $white={white}
@@ -362,7 +369,7 @@ const Header = ({ white, fixed_bar }) => {
                 return (
                   <SpotlightCard to={`/case-studies/${spotlight.slug}`}>
                     <SpotlightImageWrap>
-                      <img src={spotlight.dashboardImg} alt={spotlight.title} loading="lazy" />
+                      <img src={spotlight.dashboardImg} alt={spotlight.title} />
                     </SpotlightImageWrap>
                     <SpotlightTitle>{spotlight.title}</SpotlightTitle>
                     <SpotlightReadLink>Read case study →</SpotlightReadLink>
@@ -402,6 +409,12 @@ const Header = ({ white, fixed_bar }) => {
           onMouseEnter={company.openNow}
           onMouseLeave={company.closeAfterDelay}
         >
+          <CompanyIntro>
+            <CompanyIntroLabel>Company</CompanyIntroLabel>
+            <CompanyIntroText>
+              Who we are, how we work, and where we are going.
+            </CompanyIntroText>
+          </CompanyIntro>
           <CompanyLinksGrid>
             <CompanyLink as={Link} to="/about">
               <span>About</span>

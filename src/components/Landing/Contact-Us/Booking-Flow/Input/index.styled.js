@@ -86,11 +86,16 @@ export const DropdownOption = styled.button`
   }
 `;
 
+// Always mounted (see Input/index.jsx) so the field's height — and the grid
+// row it sits in — never changes when an error appears/disappears; visibility
+// (not display/mount) is what toggles, so the reserved space stays reserved.
 export const ErrorText = styled.span`
   display: flex;
   align-items: center;
   gap: 6px;
+  min-height: 15px;
   font-size: 12px;
   font-weight: 500;
   color: #b42318;
+  visibility: ${(p) => (p.$visible ? "visible" : "hidden")};
 `;

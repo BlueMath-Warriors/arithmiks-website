@@ -10,16 +10,7 @@ import {
   ViewAllLink,
   View,
   Track,
-  CaseCard,
-  CardImage,
-  CardBody,
-  CardTopRow,
-  CardChip,
-  CardLogo,
-  CardClientName,
-  CardTitle,
-  CardOutcome,
-  CardReadMore,
+  RailCard,
 } from "./index.styled";
 
 // Matches the source's 7-card CASES list, using the real case studies this
@@ -46,26 +37,7 @@ const LandingGrid = ({ caseStudies }) => {
           <View ref={rail.viewRef}>
             <Track ref={rail.trackRef} role="group" aria-label="Case studies carousel">
               {featured.map((study) => (
-                <CaseCard key={study.slug} to={`/case-studies/${study.slug}`}>
-                  <CardImage
-                    src={study.dashboardImg}
-                    alt={`${study.title} — product interface`}
-                    loading="lazy"
-                  />
-                  <CardBody>
-                    <CardTopRow>
-                      <CardChip>{study.tag}</CardChip>
-                      {study.logo ? (
-                        <CardLogo src={study.logo} alt={study.logoAlt} />
-                      ) : (
-                        <CardClientName>{study.logoAlt}</CardClientName>
-                      )}
-                    </CardTopRow>
-                    <CardTitle>{study.title}</CardTitle>
-                    <CardOutcome>{study.description}</CardOutcome>
-                    <CardReadMore>Read case study</CardReadMore>
-                  </CardBody>
-                </CaseCard>
+                <RailCard key={study.slug} study={study} />
               ))}
             </Track>
           </View>

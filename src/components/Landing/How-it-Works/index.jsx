@@ -40,6 +40,14 @@ const STEPS = [
   },
 ];
 
+// Explicit smooth scrollIntoView rather than relying only on the global
+// `scroll-behavior: smooth` (global.module.css) + native anchor jump, so
+// this keeps working the same way even if that global default ever changes.
+const scrollToContactSmoothly = (event) => {
+  event.preventDefault();
+  document.getElementById("contact")?.scrollIntoView({ behavior: "smooth", block: "start" });
+};
+
 const HowItWorks = () => {
   const [active, setActive] = useState(0);
   const cardRefs = useRef([]);
@@ -91,7 +99,9 @@ const HowItWorks = () => {
                 </div>
               ))}
             </Rail>
-            <CtaLink href="#contact">Book Free Consultation</CtaLink>
+            <CtaLink href="#contact" onClick={scrollToContactSmoothly}>
+              Book Free Consultation
+            </CtaLink>
           </Left>
           <Cards>
             {STEPS.map((step, i) => (

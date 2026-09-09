@@ -7,6 +7,7 @@ import {
   ServiceMap,
   ServiceColumn,
   ColumnLink,
+  ExtraColumnLink,
   TopRow,
   Brand,
   BrandName,
@@ -25,6 +26,30 @@ import {
 } from "./index.styled";
 import logoMark from "../../../images/favicon.png";
 import upworkRank from "../../../images/homepage/upwork-rank.png";
+
+const contactIconProps = {
+  viewBox: "0 0 20 20",
+  width: 16,
+  height: 16,
+  fill: "none",
+  stroke: "#5C7BFF",
+  strokeWidth: 1.6,
+  strokeLinecap: "round",
+  strokeLinejoin: "round",
+  "aria-hidden": true,
+};
+
+const MailIcon = () => (
+  <svg {...contactIconProps}>
+    <path d="M2.5 5.5h15v9h-15zM2.5 5.5 10 11l7.5-5.5" />
+  </svg>
+);
+
+const PersonIcon = () => (
+  <svg {...contactIconProps}>
+    <path d="M10 3.2a3.1 3.1 0 1 0 0 6.2 3.1 3.1 0 0 0 0-6.2ZM3.6 17c0-3 2.9-4.9 6.4-4.9s6.4 1.9 6.4 4.9" />
+  </svg>
+);
 
 const COMPANY_LINKS = [
   { name: "About", url: "/about", internal: true },
@@ -57,11 +82,11 @@ const MODELS = [
 // real (currently 404ing) path, per product decision.
 const FooterLink = ({ link }) =>
   link.internal ? (
-    <ColumnLink as={Link} to={link.url}>
+    <ExtraColumnLink as={Link} to={link.url}>
       {link.name}
-    </ColumnLink>
+    </ExtraColumnLink>
   ) : (
-    <ColumnLink href="#">{link.name}</ColumnLink>
+    <ExtraColumnLink href="#">{link.name}</ExtraColumnLink>
   );
 
 const Footer = () => (
@@ -97,7 +122,7 @@ const Footer = () => (
       <TopRow>
         <Brand>
           <span style={{ display: "flex", alignItems: "center", gap: 10 }}>
-            <img src={logoMark} alt="" height={43} width={43} />
+            <img src={logoMark} alt="" height={43} width={37} />
             <BrandName>Arithmiks</BrandName>
           </span>
           <BrandBlurb>
@@ -106,8 +131,14 @@ const Footer = () => (
             keep evolving.
           </BrandBlurb>
           <ContactLinks>
-            <a href="mailto:services@arithmiks.com">services@arithmiks.com</a>
-            <a href="mailto:hr@arithmiks.com">hr@arithmiks.com</a>
+            <a href="mailto:services@arithmiks.com">
+              <MailIcon />
+              services@arithmiks.com
+            </a>
+            <a href="mailto:hr@arithmiks.com">
+              <PersonIcon />
+              hr@arithmiks.com
+            </a>
           </ContactLinks>
           <BadgeRow>
             <img src="/homepage/upwork-top-rated.svg" alt="Upwork Top Rated Plus" height={96} />

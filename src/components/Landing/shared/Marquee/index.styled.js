@@ -16,12 +16,12 @@ export const MarqueeRow = styled.div`
   display: flex;
   width: max-content;
   align-items: center;
-  gap: 86px;
+  gap: ${(p) => p.$gap}px;
   animation: ${scroll} ${(p) => p.$duration}s linear infinite;
 
-  @media (max-width: 768px) {
-    animation-duration: 38s;
-    gap: 58px;
+  @media (max-width: ${(p) => p.$mobileBreakpoint}px) {
+    animation-duration: ${(p) => p.$durationMobile}s;
+    gap: ${(p) => p.$gapMobile}px;
   }
 `;
 
@@ -30,9 +30,16 @@ export const MarqueeCell = styled.span`
   align-items: center;
   justify-content: center;
   flex: none;
-  height: 64px;
+  height: ${(p) => p.$cellHeight}px;
+  ${(p) => (p.$cellWidth ? `width: ${p.$cellWidth}px;` : "")}
 
-  @media (max-width: 768px) {
-    height: 48px;
+  @media (max-width: ${(p) => p.$bpMd}px) {
+    height: ${(p) => p.$cellHeightMd}px;
+    ${(p) => (p.$cellWidthMd ? `width: ${p.$cellWidthMd}px;` : "")}
+  }
+
+  @media (max-width: ${(p) => p.$bpSm}px) {
+    height: ${(p) => p.$cellHeightSm}px;
+    ${(p) => (p.$cellWidthSm ? `width: ${p.$cellWidthSm}px;` : "")}
   }
 `;

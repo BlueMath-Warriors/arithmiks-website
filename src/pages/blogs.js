@@ -3,7 +3,7 @@ import * as containerStyles from "../styles/global.module.css";
 import Header from "../components/Landing/Header";
 import Breadcrumbs from "../components/Breadcrumbs";
 import BlogGrid from "../components/Blog/BlogGrid";
-import ContactUs from "../components/Landing/Contact-Us";
+import BookingFlow from "../components/Landing/Contact-Us/Booking-Flow";
 import Footer from "../components/Landing/Footer";
 import { SEO } from "../components/seo";
 
@@ -21,7 +21,7 @@ const BlogsPage = () => {
       <Breadcrumbs items={breadcrumbItems} />
       <main>
         <BlogGrid titleAs="h1" />
-        <ContactUs />
+        <BookingFlow />
       </main>
       <Footer />
     </>

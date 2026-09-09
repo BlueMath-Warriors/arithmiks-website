@@ -74,14 +74,22 @@ export const HeroShell = styled.div`
   padding: 0 ${shellPadding} clamp(18px, 3vh, 34px);
 `;
 
-// Centers the headline block within whatever vertical space is left above
-// the trusted-by/marquee row, which stays pinned to the bottom of the hero
-// (auto margins on both sides absorb the remaining space evenly).
+// A flexible region filling all the space above ScrollCueRow/TrustedLabel/
+// Marquee (whose heights are fixed by their own content), so HeroHeadline
+// centers within that space — independent of ScrollCueRow, which sits in
+// normal flow right above the trusted-by row instead of inside this
+// centered block.
 export const HeroMain = styled.div`
+  flex: 1 1 auto;
+  min-height: 0;
   display: flex;
   flex-direction: column;
-  margin-top: auto;
-  margin-bottom: auto;
+  justify-content: center;
+`;
+
+export const HeroHeadline = styled.div`
+  display: flex;
+  flex-direction: column;
 `;
 
 export const Eyebrow = styled.div`
@@ -119,6 +127,21 @@ export const Headline = styled.h1`
   }
 `;
 
+// Crossfade-and-rise on slide change, matching the design's own headline
+// transition (opacity + a 14px translate, 0.45s) — Hero swaps SLIDES[slide]
+// at the midpoint of this transition so it reads as one continuous motion.
+export const HeadlineText = styled.span`
+  display: inline-block;
+  // global.module.css's "* { color: #000 }" targets this span directly (not
+  // just inherited), which otherwise beats Headline's color:#fff the moment
+  // this wrapper element exists — same gotcha documented on Contact-Us's
+  // Booking-Flow SocialLink styled component.
+  color: inherit;
+  transition: opacity 0.45s, transform 0.45s;
+  opacity: ${(p) => (p.$visible ? 1 : 0)};
+  transform: ${(p) => (p.$visible ? "none" : "translate3d(0, 14px, 0)")};
+`;
+
 // The word "AI" gets a gradient treatment wherever it appears in a slide
 // (see markAI in index.jsx) — same gradient as the testimonials heading.
 export const GradientAI = styled.span`
@@ -133,7 +156,6 @@ export const Dots = styled.div`
   display: flex;
   align-items: center;
   gap: 11px;
-  margin-bottom: clamp(18px, 3vh, 34px);
 `;
 
 export const Dot = styled.button`
@@ -147,15 +169,67 @@ export const Dot = styled.button`
   transition: background 0.25s ease, width 0.25s ease;
 `;
 
+// Shared row for both the slide dots (left-aligned, always visible) and the
+// scroll cue (absolutely centered within it, desktop-only) — matching the
+// design, where both sit on the same line rather than stacked as separate
+// rows.
+export const ScrollCueRow = styled.div`
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+`;
+
 export const ScrollCue = styled.div`
   display: none;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  justify-content: center;
+
+  @media (min-width: 769px) {
+    display: flex;
+  }
+`;
+
+export const ScrollCueLabel = styled.span`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
   font-size: 10.5px;
   font-weight: 650;
   letter-spacing: 0.2em;
   color: rgba(255, 255, 255, 0.62);
+`;
 
-  @media (min-width: 769px) {
-    display: block;
+const scrollCueBounce = keyframes`
+  0%, 100% {
+    transform: translateY(0);
+    opacity: 0.45;
+  }
+  50% {
+    transform: translateY(7px);
+    opacity: 1;
+  }
+`;
+
+export const ScrollCueIcon = styled.svg`
+  // global.module.css's "* { color: #000 }" matches every element, the
+  // child <path> included — stroke="currentColor" resolves against each
+  // element's OWN color, not an ancestor's, so the path needs this same
+  // fix as the svg itself, not just its parent. Same gotcha as HeadlineText.
+  color: inherit;
+
+  path {
+    color: inherit;
+  }
+
+  animation: ${scrollCueBounce} 2.2s ease-in-out infinite;
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
   }
 `;
 

@@ -5,6 +5,11 @@ export const FooterEl = styled.footer`
   background: ${colors.dark};
   color: #fff;
   padding: clamp(60px, 5.34vw, 101px) 0 32px;
+  // The design leaves most footer text at the default line-height, which in
+  // its Aspekta is 1.43 — the fallback stack's 1.175 collapsed every link row
+  // by 4-5px. Set once here so each rule that already declares its own
+  // line-height (ColumnLink, BrandBlurb) still wins.
+  line-height: 1.43;
 `;
 
 export const Shell = styled.div`
@@ -16,13 +21,15 @@ export const Shell = styled.div`
 
 export const ServiceMap = styled.div`
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(4, max-content);
+  justify-content: space-between;
   gap: 40px 34px;
   padding: 0 0 46px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.13);
 
-  @media (max-width: 900px) {
-    grid-template-columns: 1fr 1fr;
+  @media (max-width: 1100px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    justify-content: stretch;
   }
 `;
 
@@ -32,16 +39,34 @@ export const ServiceColumn = styled.nav`
   gap: 9px;
 `;
 
+// The services nav band. Its group headings and its links carry different
+// line-heights in the design (1.35 vs 1.45), so both live here rather than
+// sharing one value.
 export const ColumnLink = styled.a`
   display: block;
   font-size: ${(p) => (p.$heading ? "16.5px" : "clamp(15.5px, .98vw, 17px)")};
   font-weight: ${(p) => (p.$heading ? 650 : 400)};
   letter-spacing: ${(p) => (p.$heading ? "-.01em" : "normal")};
-  line-height: 1.45;
+  line-height: ${(p) => (p.$heading ? "1.35" : "1.45")};
   color: ${(p) => (p.$heading ? "#fff" : "rgba(255,255,255,.68)")};
   text-decoration: none;
   transition: color 0.25s ease;
   margin-bottom: ${(p) => (p.$heading ? "5px" : 0)};
+
+  &:hover {
+    color: ${(p) => (p.$heading ? "#8FA9FF" : "#fff")};
+  }
+`;
+
+// The lower Company/Work/Resources/Engagement band. Same size and colour as a
+// services link, but the design leaves its line-height at the default.
+export const ExtraColumnLink = styled.a`
+  display: block;
+  font-size: clamp(15.5px, 0.98vw, 17px);
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.68);
+  text-decoration: none;
+  transition: color 0.25s ease;
 
   &:hover {
     color: #fff;
@@ -57,6 +82,7 @@ export const TopRow = styled.div`
 
   @media (max-width: 900px) {
     grid-template-columns: 1fr;
+    gap: 40px;
   }
 `;
 
@@ -65,8 +91,10 @@ export const Brand = styled.div`
   flex-direction: column;
   gap: 22px;
 
+  // Same 189x222 mark as the header — width auto keeps its proportions.
   img {
     height: 43px;
+    width: auto;
     display: block;
   }
 `;
@@ -91,10 +119,34 @@ export const ContactLinks = styled.div`
   gap: 9px;
 
   a {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
     font-size: clamp(17px, 1.12vw, 19px);
+    text-decoration: none;
+  }
+
+  svg {
+    flex: none;
+  }
+
+  /* The primary address leads; the careers address sits back a step. */
+  a:first-child {
     font-weight: 550;
     color: #fff;
-    text-decoration: none;
+
+    &:hover {
+      color: #8fa9ff;
+    }
+  }
+
+  a:last-child {
+    font-weight: 450;
+    color: rgba(255, 255, 255, 0.78);
+
+    &:hover {
+      color: #fff;
+    }
   }
 `;
 
@@ -115,8 +167,15 @@ export const BadgeRow = styled.div`
 export const SocialColumn = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 30px;
   justify-content: flex-start;
+  padding-left: 120px;
+  padding-right: 120px;
+
+  @media (max-width: 900px) {
+    padding-left: 0;
+    padding-right: 0;
+  }
 
   > span:first-child {
     font-size: 13px;
@@ -170,13 +229,15 @@ export const OfficeBlock = styled.div`
 
 export const ExtraCols = styled.div`
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(4, max-content);
+  justify-content: space-between;
   gap: 24px 34px;
   padding: 36px 0 32px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.13);
 
-  @media (max-width: 900px) {
-    grid-template-columns: 1fr 1fr;
+  @media (max-width: 1100px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    justify-content: stretch;
   }
 `;
 

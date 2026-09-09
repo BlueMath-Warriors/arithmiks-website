@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Link } from "gatsby";
-import { colors } from "../../../../styles/tokens";
+import { colors, shellPadding } from "../../../../styles/tokens";
 
 export const Wrap = styled.div`
   position: fixed;
@@ -11,12 +11,21 @@ export const Wrap = styled.div`
   flex-direction: column;
 `;
 
+// 20px of vertical padding around the 44px close button matches the main
+// header's own 85px bar, so opening the drawer does not visibly resize the top
+// of the screen. (The source design uses 14px here and jumps by 12px; that is
+// a flaw in the design, not something worth reproducing.) The horizontal
+// padding stays at 20px to line the logo up with the drawer's own content
+// below it rather than with the page shell.
 export const TopBar = styled.div`
   flex: none;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 14px 20px;
+  /* Same 20px vertical rhythm and the same horizontal shell padding as the
+     main header, so neither the bar's height nor the logo's position moves
+     when the drawer opens over it. */
+  padding: 20px ${shellPadding};
   border-bottom: 1px solid ${colors.border};
 `;
 
@@ -26,8 +35,11 @@ export const LogoLink = styled(Link)`
   gap: 9px;
   color: ${colors.text};
 
+  /* 27px, matching the main header's mark exactly, so the logo does not
+     appear to resize as the drawer opens over it. */
   img {
-    height: 26px;
+    height: 27px;
+    width: auto;
     display: block;
   }
 
@@ -55,7 +67,9 @@ export const Scroll = styled.div`
   flex: 1 1 auto;
   min-height: 0;
   overflow-y: auto;
-  padding: 18px 20px 24px;
+  /* Matches TopBar's horizontal padding so the menu items line up under the
+     logo rather than sitting inboard of it. */
+  padding: 18px ${shellPadding} 24px;
 `;
 
 export const SearchForm = styled.form`
@@ -159,7 +173,7 @@ export const AllLink = styled(Link)`
 
 export const BottomBar = styled.div`
   flex: none;
-  padding: 14px 20px calc(14px + env(safe-area-inset-bottom));
+  padding: 14px ${shellPadding} calc(14px + env(safe-area-inset-bottom));
   border-top: 1px solid ${colors.border};
   background: #fff;
 `;

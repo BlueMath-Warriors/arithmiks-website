@@ -1,5 +1,5 @@
 import React from "react";
-import ContactUs from "../../Landing/Contact-Us";
+import BookingFlow from "../../Landing/Contact-Us/Booking-Flow";
 import Footer from "../../Landing/Footer";
 import Header from "../../Landing/Header";
 
@@ -29,7 +29,7 @@ const MediaInfrastructure = ({ images, breadcrumbItems }) => {
       <Solution {...solutionData} hasTestimonial={hasTestimonial} />
       <KeyFeatures {...keyFeaturesData} />
       <MoreCaseStudies currentSlug="media-infrastructure" />
-      <ContactUs />
+      <BookingFlow />
       </main>
       <Footer />
     </>

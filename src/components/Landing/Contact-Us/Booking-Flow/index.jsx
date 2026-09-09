@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/high-res.css";
 import Calendar from "./Calendar";
@@ -26,6 +26,8 @@ import {
   SocialLink,
   BadgeRow,
   PhoneField,
+  DialCodeLabel,
+  DialChevron,
 } from "./index.styled";
 import upworkRank from "../../../../images/homepage/upwork-rank.png";
 
@@ -46,12 +48,31 @@ const NEXT_UP = [
   "You leave with an honest answer on scope and sequence.",
 ];
 
-const BookingFlow = () => {
+/**
+ * @param {{ headingAs?: "h1" | "h2" }} props Defaults to "h2" — every page this
+ * renders on already has its own page-level <h1> elsewhere, except /contact,
+ * which has none of its own and passes "h1" so the built page still has
+ * exactly one (see scripts/check-heading-h1-count.mjs).
+ */
+const BookingFlow = ({ headingAs = "h2" }) => {
   const [step, setStep] = useState(1);
   const [values, setValues] = useState({ name: "", email: "", phone: "", service: "", brief: "" });
+  // Seeded to match the PhoneInput's own default country="pk" below. Used
+  // both to render DialCodeLabel and to rebuild the full phone number on
+  // submit — disableCountryCode (below) strips the dial code out of
+  // values.phone itself, not just what's displayed.
+  const [dialCode, setDialCode] = useState("92");
   const [errors, setErrors] = useState({});
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState("");
+  const errorTimeoutRef = useRef(null);
+
+  // Field errors only ever get (re)computed on submit, so without this they
+  // sit on screen indefinitely even after the user fixes the field —
+  // auto-dismissed after 5s instead.
+  useEffect(() => {
+    return () => clearTimeout(errorTimeoutRef.current);
+  }, []);
 
   const validate = () => {
     const next = {};
@@ -60,8 +81,17 @@ const BookingFlow = () => {
     if (!values.service) next.service = "This field is required";
     if (!values.brief.trim()) next.brief = "This field is required";
     setErrors(next);
+
+    clearTimeout(errorTimeoutRef.current);
+    if (Object.keys(next).length > 0) {
+      errorTimeoutRef.current = setTimeout(() => setErrors({}), 5000);
+    }
     return Object.keys(next).length === 0;
   };
+
+  // Same required set as validate() above — phone stays optional.
+  const isStep1Complete =
+    values.name.trim() && values.email.trim() && values.service && values.brief.trim();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -74,11 +104,14 @@ const BookingFlow = () => {
       formData.append("full_name", values.name);
       formData.append("sender_email", values.email);
       formData.append("category", values.service);
-      formData.append("phone_number", values.phone);
+      // disableCountryCode (on PhoneInput below) strips the dial code from
+      // both the display AND values.phone itself, not just what's shown —
+      // reassembled here so the submitted format matches what the backend
+      // always received.
+      formData.append("phone_number", values.phone ? `+${dialCode}${values.phone}` : "");
       formData.append("message", values.brief);
 
-      const apiEndpoint = process.env.GATSBY_API_ENDPOINT;
-      const response = await fetch(`${apiEndpoint}form-submission`, {
+      const response = await fetch("/api/form-submission", {
         method: "POST",
         body: formData,
       });
@@ -108,7 +141,7 @@ const BookingFlow = () => {
 
             {step === 1 ? (
               <Step1>
-                <Heading id="contact-h">
+                <Heading as={headingAs} id="contact-h">
                   Describe your <span>idea</span>
                 </Heading>
                 <Intro>
@@ -139,11 +172,38 @@ const BookingFlow = () => {
                       <PhoneInput
                         country="pk"
                         inputProps={{ placeholder: "Phone", "aria-label": "Phone number" }}
-                        countryCodeEditable
+                        disableCountryCode
+                        // Without disableCountryCode, the number typed always
+                        // starts after the dial-code prefix the user can see,
+                        // so the library's typed-digit country auto-guess only
+                        // ever matches on that prefix. With it hidden, the
+                        // guess runs against the visible (local-only) digits
+                        // instead and can silently swap the selected country
+                        // mid-type — e.g. typing 3001234567 matches Greece's
+                        // "30" dial code. Disabled since the flag is now only
+                        // ever changed deliberately, via the dropdown.
+                        disableCountryGuess
                         enableSearch
                         value={values.phone}
-                        onChange={(phone) => setValues((v) => ({ ...v, phone }))}
+                        onChange={(phone, country) => {
+                          setValues((v) => ({ ...v, phone }));
+                          setDialCode(country.dialCode);
+                        }}
                       />
+                      <DialCodeLabel aria-hidden="true">+{dialCode}</DialCodeLabel>
+                      <DialChevron
+                        aria-hidden="true"
+                        viewBox="0 0 16 16"
+                        width="15"
+                        height="15"
+                        fill="none"
+                        stroke="#5C6478"
+                        strokeWidth="1.7"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      >
+                        <path d="M4 6.5 8 10.5l4-4" />
+                      </DialChevron>
                     </PhoneField>
                     <Input
                       type="dropdown"
@@ -164,7 +224,7 @@ const BookingFlow = () => {
                     error={errors.brief}
                   />
                   {submitError && <ErrorText>{submitError}</ErrorText>}
-                  <SubmitButton type="submit" disabled={submitting}>
+                  <SubmitButton type="submit" disabled={submitting || !isStep1Complete}>
                     {submitting ? "Sending…" : "Next: Book a call"}
                   </SubmitButton>
                 </Form>

@@ -20,6 +20,8 @@ export const caseStudies = [
     logoAlt: "GO",
     tag: "Machine Learning",
     category: "saas-software",
+    industry: "Marketing",
+    services: ["AI & Machine Learning", "SaaS Platforms"],
     relatedService: { slug: "ai-data-solutions", label: "AI & Data Solutions" },
     title: "AI-Powered Marketing Automation Platform",
     description:
@@ -40,6 +42,8 @@ export const caseStudies = [
     logoAlt: "Media Infrastructure",
     tag: "Media Infrastructure",
     category: "saas-software",
+    industry: "Media",
+    services: ["AI & Machine Learning", "SaaS Platforms"],
     relatedService: { slug: "ai-data-solutions", label: "AI & Data Solutions" },
     title: "AI-powered platform for searching broadcast video archives",
     description:
@@ -53,6 +57,8 @@ export const caseStudies = [
     logoAlt: "HAKRO",
     tag: "E-Commerce",
     category: "saas-software",
+    industry: "Retail",
+    services: ["E-Commerce", "Custom Software"],
     relatedService: { slug: "ui-ux-design", label: "UI/UX Design" },
     title: "Embedded E-commerce Platform for Seller Networks",
     description:
@@ -73,6 +79,8 @@ export const caseStudies = [
     logoAlt: "sbaloansHQ",
     tag: "SaaS",
     category: "fintech",
+    industry: "Finance",
+    services: ["SaaS Platforms", "Custom Software"],
     relatedService: { slug: "custom-software-development", label: "Custom Software Development" },
     title: "Streamlines and automates loan processing",
     description:
@@ -93,6 +101,8 @@ export const caseStudies = [
     logoAlt: "EASY-BAR",
     tag: "Software",
     category: "contech",
+    industry: "Construction",
+    services: ["Custom Software"],
     relatedService: { slug: "custom-software-development", label: "Custom Software Development" },
     title: "Automates rebar design and ordering",
     description:
@@ -113,6 +123,8 @@ export const caseStudies = [
     logoAlt: "Qareeb",
     tag: "SaaS",
     category: "saas-software",
+    industry: "Productivity",
+    services: ["AI & Machine Learning", "SaaS Platforms"],
     relatedService: { slug: "ai-data-solutions", label: "AI & Data Solutions" },
     title: "Turns meetings into AI-searchable knowledge",
     description:
@@ -126,6 +138,8 @@ export const caseStudies = [
     logoAlt: "Mr. Seller Note",
     tag: "Web App",
     category: "fintech",
+    industry: "Finance",
+    services: ["Custom Software", "SaaS Platforms"],
     relatedService: { slug: "custom-software-development", label: "Custom Software Development" },
     title: "Automates multi-party loan payment processing",
     description:
@@ -139,6 +153,8 @@ export const caseStudies = [
     logoAlt: "Quanta",
     tag: "BI Platform",
     category: "saas-software",
+    industry: "Productivity",
+    services: ["AI & Machine Learning", "Data & Analytics"],
     relatedService: { slug: "ai-data-solutions", label: "AI & Data Solutions" },
     title: "Query your database in plain English conversations",
     description:
@@ -152,6 +168,8 @@ export const caseStudies = [
     logoAlt: "LFGO",
     tag: "Web3",
     category: "fintech",
+    industry: "Web3",
+    services: ["Custom Software", "SaaS Platforms"],
     relatedService: { slug: "web-app-development", label: "Web App Development" },
     title: "Simplifies cross-chain token creation",
     description:
@@ -165,6 +183,8 @@ export const caseStudies = [
     logoAlt: "Expat Haven Hub",
     tag: "Web App",
     category: "saas-software",
+    industry: "Travel & Relocation",
+    services: ["AI & Machine Learning", "Custom Software"],
     relatedService: { slug: "ai-data-solutions", label: "AI & Data Solutions" },
     title: "Unifies relocation research, decisions, and community",
     description:
@@ -178,6 +198,8 @@ export const caseStudies = [
     logoAlt: "Ofertas",
     tag: "Affiliation Market",
     category: "saas-software",
+    industry: "Retail",
+    services: ["E-Commerce", "Data & Analytics"],
     relatedService: { slug: "web-app-development", label: "Web App Development" },
     title: "Community-Driven Deal & Coupon Discovery Platform",
     description:
@@ -191,6 +213,8 @@ export const caseStudies = [
     logoAlt: "Swerv Automotive",
     tag: "SaaS",
     category: "saas-software",
+    industry: "Automotive",
+    services: ["SaaS Platforms", "Data & Analytics"],
     relatedService: { slug: "custom-software-development", label: "Custom Software Development" },
     title: "Automates smart vehicle acquisitions",
     description:
@@ -211,6 +235,8 @@ export const caseStudies = [
     logoAlt: "Togather",
     tag: "Software",
     category: "saas-software",
+    industry: "Nonprofit",
+    services: ["Custom Software", "SaaS Platforms"],
     relatedService: { slug: "web-app-development", label: "Web App Development" },
     title: "Unifies community engagement, events, and donations",
     description:
