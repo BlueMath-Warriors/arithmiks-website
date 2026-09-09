@@ -7,7 +7,7 @@ import Services from "./Services-Section";
 const Testimonials = lazy(() => import("./Testimonials"));
 const HowItWorks = lazy(() => import("./How-it-Works"));
 const CaseStudy = lazy(() => import("./Case-Study"));
-const ContactUs = lazy(() => import("./Contact-Us"));
+const BookingFlow = lazy(() => import("./Contact-Us/Booking-Flow"));
 const Footer = lazy(() => import("./Footer"));
 
 const SectionLoader = () => (
@@ -55,7 +55,7 @@ const LandingPage = () => (
         <CaseStudy />
       </Suspense>
       <Suspense fallback={<SectionLoader />}>
-        <ContactUs landing />
+        <BookingFlow />
       </Suspense>
     </main>
     <Suspense fallback={<SectionLoader />}>

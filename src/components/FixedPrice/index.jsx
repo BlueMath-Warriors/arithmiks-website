@@ -15,7 +15,7 @@ import {
 import * as containerStyles from "../../styles/global.module.css";
 import Header from "../Landing/Header";
 import Breadcrumbs from "../Breadcrumbs";
-import ContactUs from "../Landing/Contact-Us";
+import BookingFlow from "../Landing/Contact-Us/Booking-Flow";
 import Footer from "..//Landing/Footer";
 import Ideas from "./Ideas";
 import Process from "./Process";
@@ -71,7 +71,7 @@ const FixedPrice = () => {
       <Process />
       <Experience />
       <Questions />
-      <ContactUs />
+      <BookingFlow />
       </main>
       <Footer />
     </>

@@ -4,7 +4,7 @@ import Header from "../components/Landing/Header";
 import Breadcrumbs from "../components/Breadcrumbs";
 import About from "../components/Landing/About-Section";
 import Services from "../components/Landing/Services-Section";
-import ContactUs from "../components/Landing/Contact-Us";
+import BookingFlow from "../components/Landing/Contact-Us/Booking-Flow";
 import Footer from "../components/Landing/Footer";
 import { SEO } from "../components/seo";
 
@@ -44,7 +44,7 @@ const AboutPage = () => {
       </main>
       <About />
       <Services />
-      <ContactUs />
+      <BookingFlow />
       <Footer />
     </>
   );

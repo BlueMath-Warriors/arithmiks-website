@@ -48,7 +48,13 @@ const NEXT_UP = [
   "You leave with an honest answer on scope and sequence.",
 ];
 
-const BookingFlow = () => {
+/**
+ * @param {{ headingAs?: "h1" | "h2" }} props Defaults to "h2" — every page this
+ * renders on already has its own page-level <h1> elsewhere, except /contact,
+ * which has none of its own and passes "h1" so the built page still has
+ * exactly one (see scripts/check-heading-h1-count.mjs).
+ */
+const BookingFlow = ({ headingAs = "h2" }) => {
   const [step, setStep] = useState(1);
   const [values, setValues] = useState({ name: "", email: "", phone: "", service: "", brief: "" });
   // Seeded to match the PhoneInput's own default country="pk" below. Used
@@ -136,7 +142,7 @@ const BookingFlow = () => {
 
             {step === 1 ? (
               <Step1>
-                <Heading id="contact-h">
+                <Heading as={headingAs} id="contact-h">
                   Describe your <span>idea</span>
                 </Heading>
                 <Intro>

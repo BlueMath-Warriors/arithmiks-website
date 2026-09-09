@@ -1,5 +1,5 @@
 import React from "react";
-import ContactUs from "../../Landing/Contact-Us";
+import BookingFlow from "../../Landing/Contact-Us/Booking-Flow";
 import Footer from "../../Landing/Footer";
 import Header from "../../Landing/Header";
 
@@ -39,7 +39,7 @@ const Do = ({ images, breadcrumbItems }) => {
       <Solution {...solutionData} hasTestimonial={testimonialData && testimonialData.clientImageSrc && !testimonialData.clientImageSrc.includes('dummyOwner')} />
       <KeyFeatures {...keyFeaturesData} />
       <MoreCaseStudies currentSlug="ofertas" />
-      <ContactUs />
+      <BookingFlow />
       </main>
       <Footer />
     </>

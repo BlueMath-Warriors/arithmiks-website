@@ -1,5 +1,5 @@
 import React from "react";
-import ContactUs from "../../Landing/Contact-Us";
+import BookingFlow from "../../Landing/Contact-Us/Booking-Flow";
 import Footer from "../../Landing/Footer";
 import Header from "../../Landing/Header";
 
@@ -37,7 +37,7 @@ const Go = ({ images, breadcrumbItems }) => {
       <Solution {...solutionData} hasTestimonial={true} />
       <KeyFeatures {...keyFeaturesData} />
       <MoreCaseStudies currentSlug="go" />
-      <ContactUs />
+      <BookingFlow />
       </main>
       <Footer />
     </>
