@@ -81,6 +81,18 @@ export const Chevron = styled.svg`
   flex: none;
   transition: transform 0.25s ease;
   transform: ${(p) => (p.$open ? "rotate(180deg)" : "none")};
+
+  /* Same global.module.css "* { color: #000 }" gotcha as ClearBadge below —
+     stroke="currentColor" is set on this <svg> but inherits down to (and is
+     actually painted by) the <path> child, and "color: inherit" on just the
+     svg itself doesn't stop "* { color: #000 }" from directly matching that
+     <path> too — a direct match always beats an inherited value, regardless
+     of the parent's own color. Both need it. */
+  color: inherit;
+
+  & * {
+    color: inherit;
+  }
 `;
 
 export const Panel = styled.span`
