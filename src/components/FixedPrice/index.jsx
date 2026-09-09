@@ -34,7 +34,7 @@ const breadcrumbItems = [
 const FixedPrice = () => {
   return (
     <>
-      <Header white={false} />
+      <Header white={true} />
       <Breadcrumbs items={breadcrumbItems} clearHeader />
       <main>
       <section className={containerStyles.fixed_price}>

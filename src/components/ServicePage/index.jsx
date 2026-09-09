@@ -25,7 +25,7 @@ import TeamIcon from "../../images/team-icon.svg";
 const ServicePage = ({ headline, intro, breadcrumbItems }) => {
   return (
     <>
-      <Header white={false} />
+      <Header white={true} />
       <Breadcrumbs items={breadcrumbItems} clearHeader />
       <main>
       <section className={containerStyles.fixed_price}>

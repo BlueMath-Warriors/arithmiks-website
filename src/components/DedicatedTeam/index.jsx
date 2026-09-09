@@ -35,7 +35,7 @@ const breadcrumbItems = [
 const DedicatedTeam = () => {
   return (
     <>
-      <Header white={false} />
+      <Header white={true} />
       <Breadcrumbs items={breadcrumbItems} clearHeader />
       <main>
       <section >
