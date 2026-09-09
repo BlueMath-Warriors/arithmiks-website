@@ -105,12 +105,6 @@ export const FilterRow = styled.div`
   margin-bottom: clamp(40px, 4vw, 72px);
 `;
 
-// The two FilterDropdowns' own centering unit — position: relative so
-// ClearAllButton can anchor to the *pills' own edge* (see below) rather than
-// FilterRow's, which would put it at the row's far edge on a wide viewport
-// instead of right next to the pills. Sized to its own content only, so
-// ClearAllButton (absolutely positioned, out of flow) never shifts where
-// FilterRow centers this group, however often it mounts/unmounts.
 export const PillsGroup = styled.div`
   position: relative;
   display: flex;
@@ -118,9 +112,7 @@ export const PillsGroup = styled.div`
   gap: 12px;
 `;
 
-// Anchored to PillsGroup's right edge (not FilterRow's) so it sits right
-// next to the pills regardless of how wide the page is — absolutely
-// positioned, so it still can't shift the pills' own centered position.
+
 export const ClearAllButton = styled.button`
   position: absolute;
   left: 100%;
