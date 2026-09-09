@@ -87,6 +87,10 @@ const CaseStudiesIndex = () => {
             duration: 0.4,
             ease: "power1.out",
             scrollTrigger: { trigger: card, start: "top 92%" },
+            // Otherwise the reveal leaves an inline transform on the card, which
+            // outranks the styled-component's `:hover` rule and permanently kills
+            // the hover lift once the card has scrolled into view.
+            onComplete: () => gsap.set(card, { clearProps: "transform" }),
           }
         );
       });

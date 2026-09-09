@@ -16,5 +16,4 @@ export const shellPadding = "clamp(18px, 6.25vw, 120px)";
 
 // Matches the font-family reset in global.module.css — inherited by default,
 // only needed explicitly inside a portal or other element outside that cascade.
-export const fontFamily =
-  '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif';
+export const fontFamily = '"Aspekta", "Aspekta Fallback", system-ui, sans-serif';
