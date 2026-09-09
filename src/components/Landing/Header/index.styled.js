@@ -8,6 +8,27 @@ export const breakpoints = {
   large: "1151px",
 };
 
+// Dims and blurs whatever is behind an open mega/products/company panel, so
+// the open panel reads as the focused layer instead of a plain card dropped
+// on top of a fully-sharp page — matches the design's [data-navscrim]. Always
+// mounted (opacity-toggled, not conditionally rendered) so the fade transition
+// actually plays on close, the same way it does in the design's own JS.
+export const NavScrim = styled.div`
+  position: fixed;
+  inset: 0;
+  z-index: 39;
+  background: rgba(7, 11, 24, 0.42);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  opacity: ${(p) => (p.$visible ? 1 : 0)};
+  pointer-events: none;
+  transition: opacity 0.28s ease;
+
+  @media screen and (max-width: 1151px) {
+    display: none;
+  }
+`;
+
 export const Headerr = styled.header`
   position: fixed;
   top: 0;

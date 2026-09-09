@@ -5,6 +5,7 @@ import { SERVICE_NAV_GROUPS } from "../../../constants/serviceNavGroups";
 import { PRODUCTS } from "../../../constants/products";
 import { caseStudies } from "../Case-Study/caseStudies.js";
 import {
+  NavScrim,
   Headerr,
   HeaderContainer,
   CompanyLogo,
@@ -161,9 +162,14 @@ const Header = ({ white, fixed_bar }) => {
   const anyMenuOpen = services.open || products.open || company.open || showSearch;
   const onLight = white || isFixed || fixed_bar || anyMenuOpen;
   const navColor = onLight ? "#3A4256" : "rgba(255,255,255,.9)";
+  // Search has its own matching backdrop (SearchOverlay), so this only
+  // reacts to the three mega/dropdown panels — not showSearch too.
+  const navPanelsOpen = services.open || products.open || company.open;
 
   return (
-    <Headerr $white={white} $fixed={isFixed || fixed_bar || anyMenuOpen} $hide={hideNav}>
+    <>
+      <NavScrim $visible={navPanelsOpen} aria-hidden="true" />
+      <Headerr $white={white} $fixed={isFixed || fixed_bar || anyMenuOpen} $hide={hideNav}>
       <HeaderContainer>
         <Link to="/" aria-label="Go to homepage">
           <CompanyLogo>
@@ -443,7 +449,8 @@ const Header = ({ white, fixed_bar }) => {
 
       {showSearch && <SearchOverlay onClose={() => setShowSearch(false)} />}
       {showMenu && <MobileMenu onClose={() => setShowMenu(false)} />}
-    </Headerr>
+      </Headerr>
+    </>
   );
 };
 
