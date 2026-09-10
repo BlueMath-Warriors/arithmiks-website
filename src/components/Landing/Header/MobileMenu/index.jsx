@@ -29,7 +29,7 @@ const COMPANY_LINKS = [
   { label: "About", to: "/about" },
   { label: "How we work", to: "#" },
   { label: "Arithmiks Blog", to: "/blogs" },
-  { label: "Careers", to: "#" },
+  { label: "Careers", to: "/careers" },
   { label: "Contact", to: "/contact" },
 ];
 
