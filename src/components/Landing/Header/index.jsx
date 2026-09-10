@@ -32,7 +32,20 @@ import {
   SpotlightCta,
   Chevron,
   ProductsPanel,
+  ProductsSidebar,
+  ProductsEyebrow,
+  ProductsSidebarText,
+  ProductsGrid,
   ProductCard,
+  ProductThumb,
+  ProductLogoRow,
+  ProductLogo,
+  ProductName,
+  ProductTag,
+  ProductDescription,
+  ProductActionsRow,
+  ProductCaseStudyLink,
+  ProductArrow,
   CompanyPanel,
   CompanyIntro,
   CompanyIntroLabel,
@@ -377,13 +390,37 @@ const Header = ({ white, fixed_bar }) => {
           onMouseEnter={products.openNow}
           onMouseLeave={products.closeAfterDelay}
         >
-          {PRODUCTS.map((product) => (
-            <ProductCard key={product.name} href={product.url}>
-              <span>{product.name}</span>
-              <span>{product.tag}</span>
-              <p>{product.description}</p>
-            </ProductCard>
-          ))}
+          <ProductsSidebar>
+            <ProductsEyebrow>Our Products</ProductsEyebrow>
+            <ProductsSidebarText>Software we built and run ourselves.</ProductsSidebarText>
+          </ProductsSidebar>
+          <ProductsGrid>
+            {PRODUCTS.map((product) => {
+              const Logo = product.logo;
+              return (
+                <ProductCard key={product.name}>
+                  <ProductThumb>
+                    <img src={product.thumb} alt={product.name} loading="lazy" />
+                  </ProductThumb>
+                  <ProductLogoRow>
+                    {Logo ? (
+                      <ProductLogo as={Logo} $height={product.logoHeight} />
+                    ) : (
+                      <ProductName>{product.name}</ProductName>
+                    )}
+                    <ProductTag>{product.tag}</ProductTag>
+                  </ProductLogoRow>
+                  <ProductDescription>{product.description}</ProductDescription>
+                  <ProductActionsRow>
+                    <ProductCaseStudyLink to={product.caseStudyUrl} role="menuitem">
+                      Read case study{" "}
+                      <ProductArrow aria-hidden="true">→</ProductArrow>
+                    </ProductCaseStudyLink>
+                  </ProductActionsRow>
+                </ProductCard>
+              );
+            })}
+          </ProductsGrid>
         </ProductsPanel>
       )}
 

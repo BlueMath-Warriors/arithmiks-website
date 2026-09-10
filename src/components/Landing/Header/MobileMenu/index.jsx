@@ -159,7 +159,7 @@ const MobileMenu = ({ onClose }) => {
             </AccButton>
             <AccPanel $open={openAccordion === "products"}>
               {PRODUCTS.map((product) => (
-                <ItemLink key={product.name} as="a" href={product.url} onClick={onClose}>
+                <ItemLink key={product.name} to={product.caseStudyUrl} onClick={onClose}>
                   <span>{product.name}</span>
                   <PlainArrow aria-hidden="true">→</PlainArrow>
                 </ItemLink>
