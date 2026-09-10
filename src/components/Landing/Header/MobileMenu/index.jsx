@@ -29,7 +29,7 @@ const COMPANY_LINKS = [
   { label: "About", to: "/about" },
   { label: "How we work", to: "#" },
   { label: "Arithmiks Blog", to: "/blogs" },
-  { label: "Careers", to: "#" },
+  { label: "Careers", to: "/careers" },
   { label: "Contact", to: "/contact" },
 ];
 
@@ -159,7 +159,7 @@ const MobileMenu = ({ onClose }) => {
             </AccButton>
             <AccPanel $open={openAccordion === "products"}>
               {PRODUCTS.map((product) => (
-                <ItemLink key={product.name} as="a" href={product.url} onClick={onClose}>
+                <ItemLink key={product.name} to={product.caseStudyUrl} onClick={onClose}>
                   <span>{product.name}</span>
                   <PlainArrow aria-hidden="true">→</PlainArrow>
                 </ItemLink>

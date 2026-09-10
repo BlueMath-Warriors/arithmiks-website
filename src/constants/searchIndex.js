@@ -51,7 +51,7 @@ export const buildSearchIndex = () => {
     title: p.name,
     cat: "Product",
     desc: p.description,
-    url: p.url,
+    url: p.caseStudyUrl,
     img: null,
   }));
 

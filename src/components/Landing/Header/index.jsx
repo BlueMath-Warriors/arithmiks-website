@@ -32,7 +32,20 @@ import {
   SpotlightCta,
   Chevron,
   ProductsPanel,
+  ProductsSidebar,
+  ProductsEyebrow,
+  ProductsSidebarText,
+  ProductsGrid,
   ProductCard,
+  ProductThumb,
+  ProductLogoRow,
+  ProductLogo,
+  ProductName,
+  ProductTag,
+  ProductDescription,
+  ProductActionsRow,
+  ProductCaseStudyLink,
+  ProductArrow,
   CompanyPanel,
   CompanyIntro,
   CompanyIntroLabel,
@@ -50,11 +63,11 @@ import logoMark from "../../../images/favicon.png";
 import MenuIcon from "../../../images/hamburger_icon.svg";
 import companyTeamPhoto from "../../../images/homepage/hero-team.png";
 
-// Matches the fixed header's own rendered height (see usePinnedCaseRail's
-// pinTop and Booking-Flow's scroll-margin-top) — the point at which a hero
-// section has scrolled fully clear of the header, not the design's raw 90px
-// (measured against its own header chrome, not ours).
-const HEADER_SOLID_THRESHOLD = 104;
+// How far the page must scroll before the header goes solid — matches the
+// design's own behavior (verified directly against its source: the header
+// flips to white within ~8px of scroll, regardless of hero height, not once
+// the hero has scrolled fully clear).
+const SCROLL_SOLID_THRESHOLD = 8;
 
 // Each Services category "spotlights" a real, shipped case study on the
 // mega-menu's right column — matches the design's per-category showcase.
@@ -123,25 +136,13 @@ const Header = ({ white, fixed_bar }) => {
     };
   }, [currentPath]);
 
-  // Tracks the actual hero element (id="top", when the current page renders
-  // one) instead of guessing its height from a viewport-width breakpoint —
-  // that guess ignored viewport *height* entirely (the hero is 100svh), so
-  // on many screens the header either flipped solid while still well over
-  // the dark hero, or stayed transparent long after scrolling onto light
-  // content beneath it. This reacts to the hero's real edge, on every
-  // scroll tick, so it starts adjusting immediately rather than waiting for
-  // scroll to cross an arbitrary fixed distance — and drives a single CSS
-  // background transition instead of also hiding/re-showing the bar, which
-  // was the source of the jiggle.
+  // A single small, fixed scroll distance — same on every page, hero or not
+  // — matching the design's own source rather than the hero's height. The
+  // header sits as an opaque bar on top of whatever's beneath it, so it
+  // doesn't need to wait for the hero to clear.
   useEffect(() => {
     if (typeof window === "undefined" || fixed_bar) return;
-    const handleScroll = () => {
-      const hero = document.getElementById("top");
-      const scrolledPastHero = hero
-        ? hero.getBoundingClientRect().bottom <= HEADER_SOLID_THRESHOLD
-        : window.scrollY > 8;
-      setIsFixed(scrolledPastHero);
-    };
+    const handleScroll = () => setIsFixed(window.scrollY > SCROLL_SOLID_THRESHOLD);
     handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
@@ -389,13 +390,37 @@ const Header = ({ white, fixed_bar }) => {
           onMouseEnter={products.openNow}
           onMouseLeave={products.closeAfterDelay}
         >
-          {PRODUCTS.map((product) => (
-            <ProductCard key={product.name} href={product.url}>
-              <span>{product.name}</span>
-              <span>{product.tag}</span>
-              <p>{product.description}</p>
-            </ProductCard>
-          ))}
+          <ProductsSidebar>
+            <ProductsEyebrow>Our Products</ProductsEyebrow>
+            <ProductsSidebarText>Software we built and run ourselves.</ProductsSidebarText>
+          </ProductsSidebar>
+          <ProductsGrid>
+            {PRODUCTS.map((product) => {
+              const Logo = product.logo;
+              return (
+                <ProductCard key={product.name}>
+                  <ProductThumb>
+                    <img src={product.thumb} alt={product.name} loading="lazy" />
+                  </ProductThumb>
+                  <ProductLogoRow>
+                    {Logo ? (
+                      <ProductLogo as={Logo} $height={product.logoHeight} />
+                    ) : (
+                      <ProductName>{product.name}</ProductName>
+                    )}
+                    <ProductTag>{product.tag}</ProductTag>
+                  </ProductLogoRow>
+                  <ProductDescription>{product.description}</ProductDescription>
+                  <ProductActionsRow>
+                    <ProductCaseStudyLink to={product.caseStudyUrl} role="menuitem">
+                      Read case study{" "}
+                      <ProductArrow aria-hidden="true">→</ProductArrow>
+                    </ProductCaseStudyLink>
+                  </ProductActionsRow>
+                </ProductCard>
+              );
+            })}
+          </ProductsGrid>
         </ProductsPanel>
       )}
 
@@ -425,7 +450,7 @@ const Header = ({ white, fixed_bar }) => {
               <span>Arithmiks Blog</span>
               <p>What we are learning about shipping AI</p>
             </CompanyLink>
-            <CompanyLink href="#">
+            <CompanyLink as={Link} to="/careers">
               <span>Careers</span>
               <p>Open roles and what it is like here</p>
             </CompanyLink>

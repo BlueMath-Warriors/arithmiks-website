@@ -421,42 +421,150 @@ export const ProductsPanel = styled.div`
   max-width: calc(100vw - 2 * ${shellPadding});
   padding: clamp(26px, 2.2vw, 40px) clamp(30px, 2.5vw, 46px);
   display: flex;
-  gap: 18px;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 26px 48px;
   border-radius: 0;
 `;
 
-export const ProductCard = styled.a`
+export const ProductsSidebar = styled.div`
+  flex: none;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  width: 260px;
+  gap: 8px;
+  padding-top: 10px;
+  max-width: 190px;
+`;
+
+export const ProductsEyebrow = styled.span`
+  font-size: clamp(10.5px, 0.82vw, 13.5px);
+  font-weight: 650;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: ${colors.textFaint};
+`;
+
+export const ProductsSidebarText = styled.span`
+  font-size: clamp(12.5px, 0.95vw, 16px);
+  line-height: 1.55;
+  color: ${colors.textFaint};
+`;
+
+export const ProductsGrid = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+`;
+
+export const ProductCard = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+  width: 300px;
   padding: clamp(14px, 1.15vw, 20px);
   border: 1px solid ${colors.border};
   border-radius: 14px;
   color: ${colors.text};
-  text-decoration: none;
   transition: border-color 0.25s ease, box-shadow 0.25s ease;
 
   &:hover {
     border-color: #c9d6ff;
     box-shadow: 0 16px 34px -22px rgba(10, 15, 31, 0.3);
   }
+`;
 
-  span:first-child {
-    font-weight: 650;
+export const ProductThumb = styled.span`
+  display: block;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #edf2fc;
+
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
   }
-  span:nth-child(2) {
-    align-self: flex-start;
-    font-size: 12px;
-    font-weight: 550;
-    color: ${colors.primary};
-    background: #eaf0ff;
-    padding: 4px 8px;
-    border-radius: 6px;
+`;
+
+export const ProductLogoRow = styled.span`
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+`;
+
+// Rendered `as` the imported SVG component (see products.js). The explicit
+// color + `* { color: inherit }` counters global.module.css's
+// `* { color: #000 }`, which would otherwise force the `fill="currentColor"`
+// path to black (same gotcha documented in the Careers components).
+export const ProductLogo = styled.img`
+  display: block;
+  width: auto;
+  height: ${(p) => p.$height || "28px"};
+  max-width: 190px;
+  color: ${colors.text};
+
+  * {
+    color: inherit;
   }
-  p {
-    font-size: 14px;
-    color: ${colors.textFaint};
+`;
+
+export const ProductName = styled.span`
+  font-size: clamp(15px, 0.96vw, 16.5px);
+  font-weight: 650;
+  letter-spacing: -0.012em;
+  line-height: 1.3;
+`;
+
+export const ProductTag = styled.span`
+  font-size: clamp(10.5px, 0.82vw, 13.5px);
+  font-weight: 550;
+  color: ${colors.primary};
+  background: #eaf0ff;
+  padding: 4px 8px;
+  border-radius: 6px;
+`;
+
+export const ProductDescription = styled.span`
+  font-size: clamp(12.5px, 0.95vw, 16px);
+  line-height: 1.55;
+  color: ${colors.textFaint};
+`;
+
+export const ProductActionsRow = styled.span`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 4px;
+`;
+
+export const ProductCaseStudyLink = styled(Link)`
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: clamp(12.5px, 0.95vw, 16px);
+  font-weight: 550;
+  color: ${colors.primary};
+  white-space: nowrap;
+  transition: opacity 0.25s ease;
+
+  &:hover {
+    opacity: 0.72;
+  }
+`;
+
+// Bare glyph — needs its own color since global.module.css's `* { color: #000 }`
+// beats the link's inherited blue the moment this wrapper span exists (same
+// gotcha documented in the Careers components).
+export const ProductArrow = styled.span`
+  display: inline-block;
+  color: inherit;
+  transition: transform 0.25s ease;
+
+  ${ProductCaseStudyLink}:hover & {
+    transform: translateX(3px);
   }
 `;
 

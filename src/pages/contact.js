@@ -1,6 +1,5 @@
 import * as React from "react";
 import Header from "../components/Landing/Header";
-import Breadcrumbs from "../components/Breadcrumbs";
 import BookingFlow from "../components/Landing/Contact-Us/Booking-Flow";
 import Footer from "../components/Landing/Footer";
 import * as containerStyles from "../styles/global.module.css";
@@ -17,7 +16,6 @@ const ContactPage = () => {
       <div className={containerStyles.header_div}>
         <Header white={true} />
       </div>
-      <Breadcrumbs items={breadcrumbItems} />
       <main>
         <BookingFlow headingAs="h1" />
       </main>
