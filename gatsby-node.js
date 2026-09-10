@@ -4,6 +4,7 @@
 
 const fs = require("fs");
 const path = require("path");
+const { jobs } = require("./src/constants/jobs");
 
 const WORDS_PER_MINUTE = 200;
 
@@ -71,6 +72,17 @@ exports.createResolvers = ({ createResolvers }) => {
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions;
   const blogPostTemplate = path.resolve("./src/templates/blog-post.jsx");
+  const jobDetailTemplate = path.resolve("./src/templates/job-detail.jsx");
+
+  // Static data (src/constants/jobs.js), not file-sourced content — no
+  // GraphQL query needed, unlike the MDX blog posts below.
+  jobs.forEach((job) => {
+    createPage({
+      path: `/careers/jobs/${job.slug}`,
+      component: jobDetailTemplate,
+      context: { slug: job.slug },
+    });
+  });
 
   const result = await graphql(`
     query {
