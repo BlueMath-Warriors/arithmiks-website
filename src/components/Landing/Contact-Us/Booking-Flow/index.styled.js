@@ -117,32 +117,14 @@ export const FieldPair = styled.div`
   }
 `;
 
-// Field-level styling (text/textarea/dropdown) now lives in ./Input —
-// this file only keeps layout wrappers used directly by index.jsx.
 
-// react-phone-input-2 ships its own fixed-width, fixed-height look (a
-// 300px input, 35px tall, grey border) that doesn't match the sibling
-// fields' chrome — this overrides its built-in classNames to line up with
-// Input's fieldChrome (same border, radius, padding, font-size).
-// The outer wrapper owns the border + radius; the flag box is inset by
-// exactly that border's width with a radius reduced by the same amount
-// (the standard concentric-corner formula: inner radius = outer radius -
-// border width) so its corner traces the same curve from the inside rather
-// than needing to be clipped to it. Two earlier attempts got this wrong:
-// stacking a SEPARATE, identically-radiused box on top of the input's own
-// (border-width mismatch → a notch), then clipping the whole wrapper with
-// overflow:hidden to fix that — which also clipped the country-search
-// dropdown, since it renders inside this same wrapper.
 const phoneRadius = "clamp(10px, 0.85vw, 14px)";
 const phoneBorderWidth = "1px";
 
 // Width of the flag/dial-code box (.selected-flag, .flag-dropdown below) —
 // shared with DialCodeLabel so its text lines up inside that box without
 // the two guessing at each other's layout.
-// Wide enough for a four-character dial code (+234, +998) to sit between the
-// flag and the chevron. DialCodeLabel below is also bounded on the right, so a
-// rare five-character code (+1876) clips instead of colliding with the chevron.
-const dialBoxWidth = "108px";
+const dialBoxWidth = "100px";
 
 export const PhoneField = styled.div`
   position: relative;
@@ -207,7 +189,7 @@ export const PhoneField = styled.div`
     height: 100% !important;
     top: 0 !important;
     left: 0 !important;
-    padding: 0 0 0 14px !important;
+    padding: 0 0 0 12px !important;
     background: transparent !important;
     border-radius: inherit !important;
 
@@ -257,10 +239,12 @@ export const DialCodeLabel = styled.span`
   position: absolute;
   top: 1px;
   bottom: 1px;
-  left: 38px;
+  /* .selected-flag's 12px padding-left + the 25px high-res flag + a ~5px gap,
+     so the code sits clear of the flag rather than touching it. */
+  left: 42px;
   /* Stops long codes running under DialChevron; anything that still does not
      fit is clipped rather than overlapped. */
-  right: calc(100% - ${dialBoxWidth} + 33px);
+  right: calc(100% - ${dialBoxWidth} + 25px);
   display: flex;
   align-items: center;
   overflow: hidden;
@@ -283,7 +267,7 @@ export const DialCodeLabel = styled.span`
 export const DialChevron = styled.svg`
   position: absolute;
   top: 50%;
-  left: calc(${dialBoxWidth} - 27px);
+  left: calc(${dialBoxWidth} - 21px);
   transform: translateY(-50%);
   pointer-events: none;
   z-index: 3;

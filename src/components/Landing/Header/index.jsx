@@ -100,7 +100,11 @@ const NavChevron = ({ open, color }) => (
   </Chevron>
 );
 
-const Header = ({ white, fixed_bar }) => {
+// `lightHero`: the page opens on a *light* hero (e.g. /services) whose design
+// wants the bar to blend into it — dark nav text like `white`, but the
+// background stays transparent until scroll instead of being solid from the
+// top. `white` still wins where both are passed.
+const Header = ({ white, fixed_bar, lightHero }) => {
   const [isFixed, setIsFixed] = useState(false);
   const [currentPath, setCurrentPath] = useState("");
   const [showMenu, setShowMenu] = useState(false);
@@ -152,7 +156,7 @@ const Header = ({ white, fixed_bar }) => {
   // text regardless of scroll position — matches the source's own
   // forceHeaderLight() behavior.
   const anyMenuOpen = services.open || products.open || company.open || showSearch;
-  const onLight = white || isFixed || fixed_bar || anyMenuOpen;
+  const onLight = white || lightHero || isFixed || fixed_bar || anyMenuOpen;
   const navColor = onLight ? "#3A4256" : "rgba(255,255,255,.9)";
   // Search has its own matching backdrop (SearchOverlay), so this only
   // reacts to the three mega/dropdown panels — not showSearch too.
