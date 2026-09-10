@@ -14,7 +14,7 @@ const breadcrumbItems = [
 
 const ServicesIndexPage = () => (
   <>
-    <Header white={true} />
+    <Header lightHero={true} />
     <main>
       <ServicesIndex />
       <BookingFlow />
