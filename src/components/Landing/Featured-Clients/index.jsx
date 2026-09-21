@@ -16,7 +16,6 @@ const FeaturedClients = () => {
     { name: "WEASY-BAR", path: "/easybar.svg" },
     { name: "Almani", path: "/almani.svg" },
     { name: "sbaloansHQ", path: "/sbaloans.svg" },
-    { name: "Hakro", path: "/hakro.svg" },
     { name: "Swerv Automotive", path: "/swerv.svg" },
     { name: "Swerv Automotive", path: "/ehh.svg" },
     { name: "Swerv Automotive", path: "/ofertas.svg" },

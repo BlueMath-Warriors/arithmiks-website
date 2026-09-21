@@ -16,7 +16,6 @@ const CollaboratedWith = () => {
     { name: "easybar", path: "/easybar.svg" },
     { name: "almani", path: "/almani.svg" },
     { name: "sbaloans", path: "/sbaloans.svg" },
-    { name: "hakro", path: "/hakro.svg" },
     { name: "swerv", path: "/swerv.svg" },
     { name: "qareeb", path: "/qareeb.svg" },
     { name: "mrsellernote", path: "/icons/msn-logo.svg" },

@@ -6,7 +6,6 @@ import lfgoDashboard from "../../../images/lfgoDashboard.webp";
 import ehhDashboard from "../../../images/ehhDashboard.webp";
 import goDashboard from "../../../images/goDashboard.webp";
 import ofertasDashboard from "../../../images/ofertasDashboard.webp";
-import hakroDashboard from "../../../images/hakroDasboard.webp";
 import qareebDashboard from "../../../images/qareebDashboard.webp";
 import mrsellernoteDashboard from "../../../images/msnDashboard.webp";
 import quantaDashboard from "../../../images/quantaDashboard.webp";
@@ -37,19 +36,6 @@ export const caseStudies = [
     title: "AI-powered platform for searching broadcast video archives",
     description:
       "AI platform makes decades of broadcast video searchable via transcripts, faces, chapters, and NLP.",
-    hasDetailPage: true,
-  },
-  {
-    slug: "hakro",
-    dashboardImg: hakroDashboard,
-    logo: "/hakro.svg",
-    logoAlt: "HAKRO",
-    tag: "E-Commerce",
-    category: "saas-software",
-    relatedService: { slug: "ui-ux-design", label: "UI/UX Design" },
-    title: "Embedded E-commerce Platform for Seller Networks",
-    description:
-      "Platform enabling dealers to buy bulk products directly from website sessions.",
     hasDetailPage: true,
   },
   {
