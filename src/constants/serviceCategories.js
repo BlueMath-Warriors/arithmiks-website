@@ -79,7 +79,7 @@ export const SERVICE_CATEGORIES = [
         teaser: "Flows, interfaces, and design systems.",
         desc: "User flows, interfaces, and design systems that reduce friction, improve conversion, and stay consistent across web and mobile touchpoints.",
         tags: ["User flows", "UI kit", "Usability testing"],
-        relatedCaseStudy: "hakro",
+        relatedCaseStudy: "togather",
       }),
       item("Software Quality Assurance", {
         teaser: "Test strategy and automation coverage.",
@@ -150,7 +150,7 @@ export const SERVICE_CATEGORIES = [
         teaser: "Nothing breaks quietly after launch.",
         desc: "Ongoing maintenance and support after launch, so nothing breaks quietly.",
         tags: ["Maintenance", "Monitoring", "SLA options"],
-        relatedCaseStudy: "hakro",
+        relatedCaseStudy: "swerv",
       }),
       item("Digital Transformation", {
         teaser: "Legacy processes into connected workflows.",

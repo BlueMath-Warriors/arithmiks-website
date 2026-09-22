@@ -6,7 +6,6 @@ import lfgoDashboard from "../../../images/lfgoDashboard.webp";
 import ehhDashboard from "../../../images/ehhDashboard.webp";
 import goDashboard from "../../../images/goDashboard.webp";
 import ofertasDashboard from "../../../images/ofertasDashboard.webp";
-import hakroDashboard from "../../../images/hakroDasboard.webp";
 import qareebDashboard from "../../../images/qareebDashboard.webp";
 import mrsellernoteDashboard from "../../../images/msnDashboard.webp";
 import quantaDashboard from "../../../images/quantaDashboard.webp";
@@ -49,28 +48,6 @@ export const caseStudies = [
     description:
       "AI platform makes decades of broadcast video searchable via transcripts, faces, chapters, and NLP.",
     hasDetailPage: true,
-  },
-  {
-    slug: "hakro",
-    dashboardImg: hakroDashboard,
-    logo: "/hakro.svg",
-    logoAlt: "HAKRO",
-    tag: "E-Commerce",
-    category: "saas-software",
-    industry: "Retail",
-    services: ["E-Commerce", "Custom Software"],
-    relatedService: { slug: "ui-ux-design", label: "UI/UX Design" },
-    title: "Embedded E-commerce Platform for Seller Networks",
-    description:
-      "Platform enabling dealers to buy bulk products directly from website sessions.",
-    hasDetailPage: true,
-    testimonial: {
-      quote: "Omer provided us with excellent support for our Next.js projects. I continue to work with him on other projects. Best regards from Germany!",
-      personName: "Michael Neuhauser",
-      personRole: "Head of Digital",
-      stat1: { value: "5 wks", label: "To live checkout" },
-      stat2: { value: "+28%", label: "Checkout completion" },
-    },
   },
   {
     slug: "sbaloans",

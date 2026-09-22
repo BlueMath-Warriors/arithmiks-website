@@ -28,7 +28,7 @@ const Easybar = ({ images, breadcrumbItems }) => {
 
   return (
     <>
-      <Header white={true} />
+      <Header lightHero={true} />
       <main>
       <Hero {...heroData} breadcrumbItems={breadcrumbItems} />
       <TechStack {...techStackData} />

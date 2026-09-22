@@ -1,6 +1,14 @@
 import { styled } from "styled-components";
 import { breakpoints } from "../../../Landing/index.styled";
 
+export const HeroForeground = styled.div`
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
 export const HeroContent = styled.div`
   display: flex;
   align-items: center;

@@ -4,12 +4,6 @@
  */
 
 const CASE_STUDY_SEO = {
-  hakro: {
-    title: "E-Commerce Platform Case Study | Hakro & Arithmiks",
-    breadcrumbName: "Hakro",
-    description:
-      "Read this case study to see how Arithmiks built an embedded e-commerce platform for Hakro, letting dealers buy bulk products directly from seller sessions.",
-  },
   easybar: {
     title: "ConTech Automation Case Study | Easybar & Arithmiks",
     breadcrumbName: "Easybar",

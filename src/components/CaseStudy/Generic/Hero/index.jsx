@@ -2,7 +2,9 @@ import React from "react";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import * as containerStyles from "../../../../styles/global.module.css";
 import Breadcrumbs from "../../../Breadcrumbs";
+import MeshHeroBackground from "../../../shared/MeshHeroBackground";
 import {
+  HeroForeground,
   HeroContent,
   SmallTxt,
   LogoImage,
@@ -36,29 +38,32 @@ const Hero = ({
 
   return (
     <div className={containerStyles.easybar_hero}>
-      <Breadcrumbs items={breadcrumbItems} />
-      <HeroContent>
-        <SmallTxt>{category}</SmallTxt>
-        {logoSrc && <LogoImage src={logoSrc} alt={logoAlt} />}
-        <StudyCaption>{caption}</StudyCaption>
-        <div style={{ position: "relative" }}>
-          {gatsbyImage ? (
-            <GatsbyImage
-              image={gatsbyImage}
-              alt={heroImageAlt}
-              loading="eager"
-              style={{
-                marginTop: "12px",
-                marginBottom: "-40px",
-                maxWidth: "100%",
-                display: "block",
-              }}
-            />
-          ) : (
-            <HeroImg src={heroImageSrc} alt={heroImageAlt} />
-          )}
-        </div>
-      </HeroContent>
+      <MeshHeroBackground />
+      <HeroForeground>
+        <Breadcrumbs items={breadcrumbItems} />
+        <HeroContent>
+          <SmallTxt>{category}</SmallTxt>
+          {logoSrc && <LogoImage src={logoSrc} alt={logoAlt} />}
+          <StudyCaption>{caption}</StudyCaption>
+          <div style={{ position: "relative" }}>
+            {gatsbyImage ? (
+              <GatsbyImage
+                image={gatsbyImage}
+                alt={heroImageAlt}
+                loading="eager"
+                style={{
+                  marginTop: "12px",
+                  marginBottom: "-40px",
+                  maxWidth: "100%",
+                  display: "block",
+                }}
+              />
+            ) : (
+              <HeroImg src={heroImageSrc} alt={heroImageAlt} />
+            )}
+          </div>
+        </HeroContent>
+      </HeroForeground>
       <HeroShade />
     </div>
   );

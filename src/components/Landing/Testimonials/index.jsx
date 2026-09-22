@@ -33,7 +33,6 @@ import {
   Dot,
 } from "./index.styled";
 import voiceGoLouis from "../../../images/homepage/voice-go-louis.png";
-import voiceHakroMichael from "../../../images/homepage/voice-hakro-michael.png";
 import voiceSbaZachary from "../../../images/homepage/voice-sba-zachary.png";
 import voiceEasybarRon from "../../../images/homepage/voice-easybar-ron.png";
 import voiceSwervPierce from "../../../images/homepage/voice-swerv-pierce.png";
@@ -44,7 +43,6 @@ import difactoLogo from "../../../images/homepage/voice-logo-difacto.png";
 // matching caseStudies.js slug (see Task 3 in the plan for provenance).
 const AVATARS = {
   go: voiceGoLouis,
-  hakro: voiceHakroMichael,
   sbaloans: voiceSbaZachary,
   easybar: voiceEasybarRon,
   swerv: voiceSwervPierce,
@@ -59,7 +57,6 @@ const AVATARS = {
 // to a white silhouette at rest, shown true-colour on hover.
 const VOICE_LOGOS = {
   go: "/homepage/voice-logo-go-dark.svg",
-  hakro: "/homepage/voice-logo-hakro-dark.svg",
   easybar: "/homepage/voice-logo-easybar-dark.svg",
   swerv: "/homepage/voice-logo-swerv-dark.svg",
 };

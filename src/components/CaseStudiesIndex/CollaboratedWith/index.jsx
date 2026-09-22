@@ -7,7 +7,6 @@ import { Section, Shell, Title, Rows, RowMask, Row, Cell, Logo } from "./index.s
 const LOGOS = [
   ["LFGO", "/lfgo.svg", 28],
   ["GO", "/go.svg", 28],
-  ["HAKRO", "/hakro.svg", 23],
   ["NICGS", "/homepage/client-nicgs.svg", 26],
   ["Swerv Automotive", "/swerv.svg", 26],
   ["Almani", "/almani.svg", 29],

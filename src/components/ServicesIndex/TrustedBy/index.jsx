@@ -8,7 +8,6 @@ const CLIENTS = [
   { name: "GO", logo: "/go.svg" },
   { name: "Almani Health Institute", logo: "/almani.svg" },
   { name: "EASY-BAR", logo: "/easybar.svg" },
-  { name: "HAKRO", logo: "/hakro.svg" },
   { name: "Swerv Automotive", logo: "/swerv.svg" },
   { name: "NICGS", logo: "/homepage/client-nicgs.svg" },
 ];

@@ -1,5 +1,20 @@
+import React from "react";
+import { createRoot } from "react-dom/client";
 import "./src/styles/global.module.css";
 import { gsap } from "gsap";
+import CookieConsent from "./src/components/shared/CookieConsent";
+
+// Mounted outside the Gatsby-managed tree, not via wrapRootElement/
+// wrapPageElement: every page here also exports a Head component, and
+// Gatsby's Head API re-renders those wrappers for its own head-only pass —
+// any real UI placed there ends up rendered twice (see
+// https://gatsby.dev/invalid-head-elements), which is what broke this banner.
+export const onClientEntry = () => {
+  const mountNode = document.createElement("div");
+  mountNode.id = "cookie-consent-root";
+  document.body.appendChild(mountNode);
+  createRoot(mountNode).render(<CookieConsent />);
+};
 
 const prefersReducedMotion = () => {
   if (typeof window === "undefined") return false;
