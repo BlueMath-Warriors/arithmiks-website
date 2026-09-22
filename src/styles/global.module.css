@@ -270,10 +270,6 @@ select {
 
 .easybar_hero {
   background-color: #fff;
-  background-image: url("/HeroSectionImg.png");
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
 
   padding-top: 144px;
   padding-bottom: 0;
