@@ -74,7 +74,7 @@ const SCROLL_SOLID_THRESHOLD = 8;
 const SPOTLIGHT_SLUG_BY_CATEGORY = {
   "ai-engineering-data": "go",
   "software-development": "easybar",
-  solutions: "hakro",
+  solutions: "swerv",
   "product-engineering": "sbaloans",
 };
 

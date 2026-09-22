@@ -55,7 +55,6 @@ const CLIENTS = [
   { name: "GO", logo: "/go.svg", height: 36, treatment: "flat" },
   { name: "Almani Health Institute", logo: "/almani.svg", height: 34, treatment: "flat" },
   { name: "EASY-BAR", logo: "/easybar.svg", height: 16, treatment: "flat" },
-  { name: "HAKRO", logo: "/hakro.svg", height: 26, treatment: "flat" },
   { name: "Swerv Automotive", logo: "/swerv.svg", height: 26, treatment: "flat" },
   { name: "NICGS", logo: "/homepage/client-nicgs.svg", height: 30, treatment: "flat" },
   { name: "Togather", logo: "/togather.svg", height: 24, treatment: "flat" },
