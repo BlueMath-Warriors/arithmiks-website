@@ -1,10 +1,7 @@
-import React, { useEffect, useRef } from "react";
+import React from "react";
+import MeshHeroBackground from "../../shared/MeshHeroBackground";
 import {
   Section,
-  MeshClip,
-  Mesh,
-  BlobBlue,
-  BlobPink,
   Shell,
   EyebrowRow,
   EyebrowBar,
@@ -29,9 +26,6 @@ import {
   MetaDot,
 } from "./index.styled";
 import { useCountUp } from "../../../hooks/useCountUp";
-import { prefersReducedMotion } from "../../../utils/animations";
-
-const MESH_PARALLAX_FACTOR = 0.14;
 
 /**
  * @param {{ groups: { slug: string, number: string, title: string, items: unknown[] }[];
@@ -39,41 +33,10 @@ const MESH_PARALLAX_FACTOR = 0.14;
  */
 const Hero = ({ groups, capabilityCount }) => {
   const countRef = useCountUp(capabilityCount);
-  const meshRef = useRef(null);
-
-  useEffect(() => {
-    if (typeof window === "undefined" || !meshRef.current) return undefined;
-    if (prefersReducedMotion()) return undefined;
-
-    let frame = 0;
-    const onScroll = () => {
-      if (frame) return;
-      frame = window.requestAnimationFrame(() => {
-        frame = 0;
-        if (meshRef.current) {
-          meshRef.current.style.transform = `translate3d(0, ${
-            window.scrollY * MESH_PARALLAX_FACTOR
-          }px, 0)`;
-        }
-      });
-    };
-
-    window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-      if (frame) window.cancelAnimationFrame(frame);
-    };
-  }, []);
 
   return (
     <Section id="top">
-      <MeshClip aria-hidden="true">
-        <Mesh ref={meshRef}>
-          <BlobBlue />
-          <BlobPink />
-        </Mesh>
-      </MeshClip>
+      <MeshHeroBackground />
 
       <Shell>
         <EyebrowRow>
