@@ -15,7 +15,7 @@ const breadcrumbItems = [
 const CaseStudiesPage = () => {
   return (
     <>
-      <Header white={true} />
+      <Header lightHero={true} />
       <main>
         <CaseStudiesIndex />
         <BookingFlow />

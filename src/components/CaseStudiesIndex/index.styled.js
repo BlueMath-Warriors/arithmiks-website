@@ -14,8 +14,10 @@ export const Shell = styled.div`
 // The top padding clears the fixed Header on its own — this page renders no
 // spacer above it, the same way the homepage hero does.
 export const HeroSection = styled.section`
+  position: relative;
   padding: clamp(186px, 21vh, 272px) 0 clamp(30px, 3vw, 46px);
   background: #fff;
+  overflow-x: clip;
 
   /* The design's generic ≤900px band rule would drop this to 64px, which on
      this page would put the heading under the fixed header (85px tall here).
@@ -31,6 +33,8 @@ export const HeroSection = styled.section`
 `;
 
 export const HeroInner = styled.div`
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   align-items: center;

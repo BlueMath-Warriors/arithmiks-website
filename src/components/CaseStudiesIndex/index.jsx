@@ -11,6 +11,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Flip } from "gsap/Flip";
 import CollaboratedWith from "./CollaboratedWith";
 import FilterDropdown from "./FilterDropdown";
+import MeshHeroBackground from "../shared/MeshHeroBackground";
 import {
   Shell,
   HeroSection,
@@ -230,6 +231,7 @@ const CaseStudiesIndex = () => {
   return (
     <>
       <HeroSection>
+        <MeshHeroBackground />
         <Shell>
           <HeroInner>
             <Eyebrow>Case studies</Eyebrow>
