@@ -5,11 +5,10 @@ export const FooterEl = styled.footer`
   background: ${colors.dark};
   color: #fff;
   padding: clamp(60px, 5.34vw, 101px) 0 32px;
-  // The design leaves most footer text at the default line-height, which in
-  // its Aspekta is 1.43 — the fallback stack's 1.175 collapsed every link row
-  // by 4-5px. Set once here so each rule that already declares its own
-  // line-height (ColumnLink, BrandBlurb) still wins.
-  line-height: 1.43;
+  // The design leaves footer text at the font's normal line-height. A fixed
+  // 1.43 (Aspekta's ratio) renders each line 1px short, because "normal"
+  // rounds ascent and descent to whole pixels separately.
+  line-height: normal;
 `;
 
 export const Shell = styled.div`
@@ -91,7 +90,7 @@ export const Brand = styled.div`
   flex-direction: column;
   gap: 22px;
 
-  // Same 189x222 mark as the header — width auto keeps its proportions.
+  // The vector logo mark (36x40) — width auto keeps its proportions.
   img {
     height: 43px;
     width: auto;
@@ -177,14 +176,6 @@ export const SocialColumn = styled.div`
     padding-right: 0;
   }
 
-  > span:first-child {
-    font-size: 13px;
-    font-weight: 650;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.55);
-  }
-
   a {
     display: inline-flex;
     align-items: center;
@@ -200,6 +191,22 @@ export const SocialColumn = styled.div`
       background: rgba(255, 255, 255, 0.13);
       border-color: #fff;
     }
+  }
+`;
+
+// The label sits 12px above its icons; the 30px column gap then separates
+// this group from the office block, as in the design.
+export const SocialGroup = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  > span {
+    font-size: 13px;
+    font-weight: 650;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.55);
   }
 `;
 
@@ -267,6 +274,12 @@ export const BottomBar = styled.div`
 export const Copyright = styled.span`
   font-size: clamp(15px, 0.96vw, 16.5px);
   color: rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+  transition: color 0.25s ease;
+
+  &:hover {
+    color: #fff;
+  }
 `;
 
 export const LegalLinks = styled.div`

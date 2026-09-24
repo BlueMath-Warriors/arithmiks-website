@@ -1,54 +1,25 @@
 import * as React from "react";
-import * as containerStyles from "../styles/global.module.css";
 import Header from "../components/Landing/Header";
-import Breadcrumbs from "../components/Breadcrumbs";
-import About from "../components/Landing/About-Section";
-import Services from "../components/Landing/Services-Section";
-import BookingFlow from "../components/Landing/Contact-Us/Booking-Flow";
+import About from "../components/About";
 import Footer from "../components/Landing/Footer";
 import { SEO } from "../components/seo";
 
-const pageTitleStyle = {
-  fontFamily: "Poppins, sans-serif",
-  fontSize: "clamp(2rem, 4vw, 2.75rem)",
-  fontWeight: 700,
-  color: "#061237",
-  lineHeight: 1.2,
-  letterSpacing: "-0.02em",
-  margin: 0,
-};
-
-const aboutIntroStyle = {
-  paddingTop: "64px",
-  paddingBottom: "24px",
-  paddingLeft: "24px",
-  paddingRight: "24px",
-  maxWidth: "1120px",
-  margin: "0 auto",
-};
-
+// No visible breadcrumb bar (the design has none) — these still drive the
+// BreadcrumbList structured data in <head>.
 const breadcrumbItems = [
   { name: "Home", pathname: "/" },
   { name: "About", pathname: "/about" },
 ];
 
-const AboutPage = () => {
-  return (
-    <>
-      <div className={containerStyles.header_div}>
-        <Header white={true} fixed={true} />
-      </div>
-      <Breadcrumbs items={breadcrumbItems} />
-      <main style={aboutIntroStyle}>
-        <h1 style={pageTitleStyle}>About Arithmiks</h1>
-      </main>
+const AboutPage = () => (
+  <>
+    <Header lightHero={true} />
+    <main>
       <About />
-      <Services />
-      <BookingFlow />
-      <Footer />
-    </>
-  );
-};
+    </main>
+    <Footer />
+  </>
+);
 
 export default AboutPage;
 

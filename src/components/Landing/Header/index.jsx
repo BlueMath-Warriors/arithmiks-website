@@ -11,6 +11,7 @@ import {
   CompanyLogo,
   LogoText,
   Nav,
+  NavLinks,
   NavButton,
   NavLink,
   MegaPanel,
@@ -59,8 +60,7 @@ import {
 } from "./index.styled";
 import SearchOverlay from "./SearchOverlay";
 import MobileMenu from "./MobileMenu";
-import logoMark from "../../../images/favicon.png";
-import MenuIcon from "../../../images/hamburger_icon.svg";
+import { LOGO_MARK_SRC } from "../../../constants/brand";
 import companyTeamPhoto from "../../../images/homepage/hero-team.png";
 
 // How far the page must scroll before the header goes solid — matches the
@@ -104,7 +104,9 @@ const NavChevron = ({ open, color }) => (
 // wants the bar to blend into it — dark nav text like `white`, but the
 // background stays transparent until scroll instead of being solid from the
 // top. `white` still wins where both are passed.
-const Header = ({ white, fixed_bar, lightHero }) => {
+// `transparentWhile`: optional stable predicate; while it returns true the bar
+// stays transparent despite scroll (e.g. over a pinned, scroll-driven hero).
+const Header = ({ white, fixed_bar, lightHero, transparentWhile }) => {
   const [isFixed, setIsFixed] = useState(false);
   const [currentPath, setCurrentPath] = useState("");
   const [showMenu, setShowMenu] = useState(false);
@@ -146,11 +148,14 @@ const Header = ({ white, fixed_bar, lightHero }) => {
   // doesn't need to wait for the hero to clear.
   useEffect(() => {
     if (typeof window === "undefined" || fixed_bar) return;
-    const handleScroll = () => setIsFixed(window.scrollY > SCROLL_SOLID_THRESHOLD);
+    const handleScroll = () =>
+      setIsFixed(
+        window.scrollY > SCROLL_SOLID_THRESHOLD && !(transparentWhile && transparentWhile())
+      );
     handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [fixed_bar]);
+  }, [fixed_bar, transparentWhile]);
 
   // The open white mega-menus (and the white search sheet) need dark nav
   // text regardless of scroll position — matches the source's own
@@ -169,145 +174,158 @@ const Header = ({ white, fixed_bar, lightHero }) => {
       <HeaderContainer>
         <Link to="/" aria-label="Go to homepage">
           <CompanyLogo>
-            <img src={logoMark} alt="" width={23} height={27} />
+            <img src={LOGO_MARK_SRC} alt="" width={24} height={27} />
             <LogoText $onLight={onLight}>Arithmiks</LogoText>
           </CompanyLogo>
         </Link>
 
         <Nav aria-label="Main">
-          <span
-            ref={services.triggerRef}
-            onMouseEnter={() => {
-              openOnly("services");
-              services.openNow();
-            }}
-            onMouseLeave={services.closeAfterDelay}
-            onFocus={() => {
-              openOnly("services");
-              services.openNow();
-            }}
-          >
-            {/* A link, not a button: hovering still opens the mega-menu, but
-                clicking goes to the services index. Products and Company stay
-                buttons — neither has a landing page yet. */}
-            <NavButton
-              as={Link}
-              to="/services"
-              aria-expanded={services.open}
-              aria-haspopup="menu"
-              $white={white}
-              $onLight={onLight}
+          <NavLinks>
+            <span
+              ref={services.triggerRef}
+              onMouseEnter={() => {
+                openOnly("services");
+                services.openNow();
+              }}
+              onMouseLeave={services.closeAfterDelay}
+              onFocus={() => {
+                openOnly("services");
+                services.openNow();
+              }}
             >
-              Services
-              <NavChevron open={services.open} color={navColor} />
-            </NavButton>
-          </span>
+              {/* A link, not a button: hovering still opens the mega-menu, but
+                  clicking goes to the services index. Products and Company stay
+                  buttons — neither has a landing page yet. */}
+              <NavButton
+                as={Link}
+                to="/services"
+                aria-expanded={services.open}
+                aria-haspopup="menu"
+                $white={white}
+                $onLight={onLight}
+              >
+                Services
+                <NavChevron open={services.open} color={navColor} />
+              </NavButton>
+            </span>
 
-          <span
-            ref={products.triggerRef}
-            onMouseEnter={() => {
-              openOnly("products");
-              products.openNow();
-            }}
-            onMouseLeave={products.closeAfterDelay}
-            onFocus={() => {
-              openOnly("products");
-              products.openNow();
-            }}
-          >
-            <NavButton
-              type="button"
-              aria-expanded={products.open}
-              aria-haspopup="menu"
-              $white={white}
-              $onLight={onLight}
+            <span
+              ref={products.triggerRef}
+              onMouseEnter={() => {
+                openOnly("products");
+                products.openNow();
+              }}
+              onMouseLeave={products.closeAfterDelay}
+              onFocus={() => {
+                openOnly("products");
+                products.openNow();
+              }}
             >
-              Our Products
-              <NavChevron open={products.open} color={navColor} />
-            </NavButton>
-          </span>
+              <NavButton
+                type="button"
+                aria-expanded={products.open}
+                aria-haspopup="menu"
+                $white={white}
+                $onLight={onLight}
+              >
+                Our Products
+                <NavChevron open={products.open} color={navColor} />
+              </NavButton>
+            </span>
 
-          <NavLink to="/case-studies" $white={white} $onLight={onLight}>
-            Case Studies
-          </NavLink>
+            <NavLink to="/case-studies" $white={white} $onLight={onLight}>
+              Case Studies
+            </NavLink>
 
-          <span
-            ref={company.triggerRef}
-            onMouseEnter={() => {
-              openOnly("company");
-              company.openNow();
-            }}
-            onMouseLeave={company.closeAfterDelay}
-            onFocus={() => {
-              openOnly("company");
-              company.openNow();
-            }}
-          >
-            <NavButton
-              type="button"
-              aria-expanded={company.open}
-              aria-haspopup="menu"
-              $white={white}
-              $onLight={onLight}
+            <span
+              ref={company.triggerRef}
+              onMouseEnter={() => {
+                openOnly("company");
+                company.openNow();
+              }}
+              onMouseLeave={company.closeAfterDelay}
+              onFocus={() => {
+                openOnly("company");
+                company.openNow();
+              }}
             >
-              Company
-              <NavChevron open={company.open} color={navColor} />
-            </NavButton>
-          </span>
+              <NavButton
+                type="button"
+                aria-expanded={company.open}
+                aria-haspopup="menu"
+                $white={white}
+                $onLight={onLight}
+              >
+                Company
+                <NavChevron open={company.open} color={navColor} />
+              </NavButton>
+            </span>
+          </NavLinks>
 
           <CtaBtn as={Link} to="/contact">
             Book Free Consultation
           </CtaBtn>
+
+          <Hamburger
+            aria-label="Toggle menu"
+            aria-expanded={showMenu}
+            $white={white}
+            $onLight={onLight}
+            onClick={() => setShowMenu((v) => !v)}
+          >
+            <svg
+              viewBox="0 0 22 22"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.75"
+              strokeLinecap="round"
+              aria-hidden="true"
+            >
+              <path d="M3 6.5h16M3 11h16M3 15.5h16" />
+            </svg>
+          </Hamburger>
+
+          <SearchButton
+            aria-label={showSearch ? "Close search" : "Search"}
+            aria-expanded={showSearch}
+            type="button"
+            $white={white}
+            $onLight={onLight}
+            onClick={() => setShowSearch((v) => !v)}
+          >
+            {showSearch ? (
+              <svg
+                viewBox="0 0 20 20"
+                width="19"
+                height="19"
+                fill="none"
+                stroke={navColor}
+                strokeWidth="1.9"
+                strokeLinecap="round"
+                aria-hidden="true"
+              >
+                <path d="M5 5l10 10M15 5L5 15" />
+              </svg>
+            ) : (
+              <svg
+                viewBox="0 0 20 20"
+                width="19"
+                height="19"
+                fill="none"
+                stroke={navColor}
+                strokeWidth="1.8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <circle cx="8.8" cy="8.8" r="5.3" />
+                <path d="m12.7 12.7 4 4" />
+              </svg>
+            )}
+          </SearchButton>
         </Nav>
 
-        <SearchButton
-          aria-label={showSearch ? "Close search" : "Search"}
-          aria-expanded={showSearch}
-          type="button"
-          $white={white}
-          $onLight={onLight}
-          onClick={() => setShowSearch((v) => !v)}
-        >
-          {showSearch ? (
-            <svg
-              viewBox="0 0 20 20"
-              width="19"
-              height="19"
-              fill="none"
-              stroke={navColor}
-              strokeWidth="1.9"
-              strokeLinecap="round"
-              aria-hidden="true"
-            >
-              <path d="M5 5l10 10M15 5L5 15" />
-            </svg>
-          ) : (
-            <svg
-              viewBox="0 0 20 20"
-              width="19"
-              height="19"
-              fill="none"
-              stroke={navColor}
-              strokeWidth="1.8"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              aria-hidden="true"
-            >
-              <circle cx="8.8" cy="8.8" r="5.3" />
-              <path d="m12.7 12.7 4 4" />
-            </svg>
-          )}
-        </SearchButton>
 
-        <Hamburger
-          aria-label="Toggle menu"
-          aria-expanded={showMenu}
-          $white={white}
-          $onLight={onLight}
-          onClick={() => setShowMenu((v) => !v)}
-        >
-          <MenuIcon />
-        </Hamburger>
       </HeaderContainer>
 
       {/* Full-width panel, anchored to the header itself (not the "Services"
@@ -446,7 +464,7 @@ const Header = ({ white, fixed_bar, lightHero }) => {
               <span>About</span>
               <p>Who we are and how we got here</p>
             </CompanyLink>
-            <CompanyLink href="#">
+            <CompanyLink as={Link} to="/how-we-work">
               <span>How we work</span>
               <p>Our process, from audit to handover</p>
             </CompanyLink>

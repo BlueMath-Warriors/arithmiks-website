@@ -8,7 +8,7 @@ if (typeof window !== "undefined") {
 }
 
 /** Counts a number up from 0 to `end` once the element scrolls into view. */
-export const useCountUp = (end, { duration = 1.4 } = {}) => {
+export const useCountUp = (end, { duration = 1.4, ease = "power2.out" } = {}) => {
   const elementRef = useRef(null);
 
   useEffect(() => {
@@ -21,7 +21,7 @@ export const useCountUp = (end, { duration = 1.4 } = {}) => {
     const tween = gsap.to(counter, {
       n: end,
       duration,
-      ease: "power2.out",
+      ease,
       onUpdate: () => {
         if (elementRef.current) elementRef.current.textContent = String(Math.round(counter.n));
       },
@@ -32,7 +32,7 @@ export const useCountUp = (end, { duration = 1.4 } = {}) => {
       },
     });
     return () => tween.kill();
-  }, [end, duration]);
+  }, [end, duration, ease]);
 
   return elementRef;
 };

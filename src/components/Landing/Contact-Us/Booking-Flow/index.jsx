@@ -89,10 +89,6 @@ const BookingFlow = ({ headingAs = "h2" }) => {
     return Object.keys(next).length === 0;
   };
 
-  // Same required set as validate() above — phone stays optional.
-  const isStep1Complete =
-    values.name.trim() && values.email.trim() && values.service && values.brief.trim();
-
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (!validate()) return;
@@ -194,11 +190,11 @@ const BookingFlow = ({ headingAs = "h2" }) => {
                       <DialChevron
                         aria-hidden="true"
                         viewBox="0 0 16 16"
-                        width="15"
-                        height="15"
+                        width="12"
+                        height="12"
                         fill="none"
                         stroke="#5C6478"
-                        strokeWidth="1.7"
+                        strokeWidth="1.8"
                         strokeLinecap="round"
                         strokeLinejoin="round"
                       >
@@ -224,8 +220,16 @@ const BookingFlow = ({ headingAs = "h2" }) => {
                     error={errors.brief}
                   />
                   {submitError && <ErrorText>{submitError}</ErrorText>}
-                  <SubmitButton type="submit" disabled={submitting || !isStep1Complete}>
-                    {submitting ? "Sending…" : "Next: Book a call"}
+                  {/* Always clickable, as in the design: validate() reports any
+                      missing field on submit instead of a greyed-out button. */}
+                  <SubmitButton type="submit" disabled={submitting}>
+                    {submitting ? (
+                      "Sending…"
+                    ) : (
+                      <>
+                        Next: Book a call <span aria-hidden="true">→</span>
+                      </>
+                    )}
                   </SubmitButton>
                 </Form>
               </Step1>
@@ -246,7 +250,22 @@ const BookingFlow = ({ headingAs = "h2" }) => {
               <h3>What happens next</h3>
               <NextUpList>
                 {NEXT_UP.map((line) => (
-                  <NextUpItem key={line}>{line}</NextUpItem>
+                  <NextUpItem key={line}>
+                    <svg
+                      viewBox="0 0 16 16"
+                      width="15"
+                      height="15"
+                      fill="none"
+                      stroke="#12B76A"
+                      strokeWidth="1.9"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      aria-hidden="true"
+                    >
+                      <path d="m3 8.4 3.2 3.2L13 4.8" />
+                    </svg>
+                    {line}
+                  </NextUpItem>
                 ))}
               </NextUpList>
             </div>

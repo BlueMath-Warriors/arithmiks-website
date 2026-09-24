@@ -19,11 +19,22 @@ gtag('consent', 'default', {
 });
 `;
 
+// Flags motion support on <html> before first paint, so scroll-reveal targets
+// can start hidden in CSS instead of flashing visible until React mounts.
+const MOTION_FLAG_BOOTSTRAP = `
+try {
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.documentElement.setAttribute('data-motion', '');
+  }
+} catch (e) {}
+`;
+
 export const onRenderBody = ({ setHtmlAttributes, setHeadComponents, setPreBodyComponents }) => {
   setHtmlAttributes({ lang: "en" });
 
   setHeadComponents([
     <script key="consent-mode-default" dangerouslySetInnerHTML={{ __html: CONSENT_MODE_BOOTSTRAP }} />,
+    <script key="motion-flag" dangerouslySetInnerHTML={{ __html: MOTION_FLAG_BOOTSTRAP }} />,
     <meta
       key="google-site-verification"
       name="google-site-verification"

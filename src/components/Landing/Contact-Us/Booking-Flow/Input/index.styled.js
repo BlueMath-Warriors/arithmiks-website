@@ -32,6 +32,7 @@ export const TextField = styled.input`
 
 export const TextAreaField = styled.textarea`
   ${fieldChrome}
+  line-height: 1.6;
   resize: vertical;
 `;
 
@@ -41,9 +42,20 @@ export const DropdownButton = styled.button`
   align-items: center;
   justify-content: space-between;
   gap: 8px;
+  padding: 14px 13px;
+  border-radius: 10px;
   cursor: pointer;
   text-align: left;
   color: ${(p) => (p.$hasValue ? colors.text : colors.textFaint)};
+
+  span {
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: inherit;
+  }
 `;
 
 export const Chevron = styled.svg`
@@ -86,16 +98,13 @@ export const DropdownOption = styled.button`
   }
 `;
 
-// Always mounted (see Input/index.jsx) so the field's height — and the grid
-// row it sits in — never changes when an error appears/disappears; visibility
-// (not display/mount) is what toggles, so the reserved space stays reserved.
+// Rendered only while there is an error, as in the design, so an error-free
+// form keeps the design's tight field spacing.
 export const ErrorText = styled.span`
   display: flex;
   align-items: center;
   gap: 6px;
-  min-height: 15px;
   font-size: 12px;
   font-weight: 500;
   color: #b42318;
-  visibility: ${(p) => (p.$visible ? "visible" : "hidden")};
 `;

@@ -58,7 +58,7 @@ const Input = ({
           aria-label={label}
         />
       )}
-      <ErrorText $visible={Boolean(error)}>{error || " "}</ErrorText>
+      {error && <ErrorText role="alert">{error}</ErrorText>}
     </Field>
   );
 };
@@ -127,7 +127,7 @@ const DropdownInput = ({ label, placeholder, value, onChange, error, options }) 
           ))}
         </DropdownPanel>
       )}
-      <ErrorText $visible={Boolean(error)}>{error || " "}</ErrorText>
+      {error && <ErrorText role="alert">{error}</ErrorText>}
     </Field>
   );
 };

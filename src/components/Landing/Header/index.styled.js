@@ -8,6 +8,10 @@ export const breakpoints = {
   large: "1151px",
 };
 
+// Where the header's text links give way to the menu button — the design's
+// own breakpoint. Header-only: breakpoints.large is shared site-wide.
+const navCollapse = "1080px";
+
 // Dims and blurs whatever is behind an open mega/products/company panel, so
 // the open panel reads as the focused layer instead of a plain card dropped
 // on top of a fully-sharp page — matches the design's [data-navscrim]. Always
@@ -24,7 +28,7 @@ export const NavScrim = styled.div`
   pointer-events: none;
   transition: opacity 0.28s ease;
 
-  @media screen and (max-width: 1151px) {
+  @media screen and (max-width: ${navCollapse}) {
     display: none;
   }
 `;
@@ -47,10 +51,9 @@ export const HeaderContainer = styled.div`
   gap: 40px;
   margin: 0 auto;
   padding: 20px ${shellPadding};
-  // The design is set in Aspekta, whose default line-height is 1.43; the
-  // fallback stack's is 1.175, which otherwise renders the bar ~13px shorter
-  // than the design because the CTA's line box drives the bar's height.
-  line-height: 1.43;
+  // The design leaves the bar at the font's normal line-height, which the
+  // CTA's line box turns into the bar's height (a fixed 1.43 renders 1px short).
+  line-height: normal;
 `;
 
 export const CompanyLogo = styled.div`
@@ -59,7 +62,7 @@ export const CompanyLogo = styled.div`
   gap: 9px;
   flex: none;
 
-  // The mark is 189x222, not square — width must stay auto or it distorts.
+  // The mark is 36x40, not square — width must stay auto or it distorts.
   img {
     height: 27px;
     width: auto;
@@ -75,13 +78,29 @@ export const LogoText = styled.span`
   transition: color 0.25s ease;
 `;
 
+// Holds the links, CTA, menu button and search in the design's order, so the
+// 32px rhythm between them holds at every width.
 export const Nav = styled.nav`
   display: flex;
   align-items: center;
   gap: 32px;
   margin-left: auto;
+`;
 
-  @media screen and (max-width: ${breakpoints.large}) {
+export const NavLinks = styled.span`
+  display: flex;
+  align-items: center;
+  gap: 32px;
+
+  /* Hover wrappers around the dropdown triggers — flex, not inline, so the
+     trigger isn't nudged down by an inline line box's baseline. */
+  > span {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  @media screen and (max-width: ${navCollapse}) {
     display: none;
   }
 `;
@@ -157,18 +176,6 @@ export const SearchButton = styled.button`
   color: ${navLinkColor};
   transition: background 0.25s ease, color 0.25s ease;
 
-  /* Nav carries its own margin-left:auto to push the nav+CTA group right on
-     desktop, but Nav is display:none below the breakpoint, so a hidden
-     element's margin pushes nothing, stranding Search+Hamburger next to
-     the logo. This repeats that auto-margin here for the same breakpoint
-     only: flexbox splits leftover space EVENLY across every auto-margin
-     present, so doing this unconditionally opened a second gap on desktop
-     (Nav's own margin plus this one, competing for the same space). Scoped
-     to mobile, only one of the two is ever active at a time. */
-  @media screen and (max-width: ${breakpoints.large}) {
-    margin-left: auto;
-  }
-
   &:hover {
     background: rgba(19, 85, 255, 0.1);
   }
@@ -184,15 +191,20 @@ export const Hamburger = styled.button`
   border: 1px solid ${(p) => (p.$white || p.$onLight ? colors.border : "rgba(255,255,255,.3)")};
   border-radius: 10px;
   cursor: pointer;
-  color: ${navLinkColor};
+  color: ${(p) => (p.$white || p.$onLight ? colors.text : "#fff")};
 
-  @media screen and (max-width: ${breakpoints.large}) {
+  @media screen and (max-width: ${navCollapse}) {
     display: flex;
   }
 
   svg {
     width: 19px;
     height: 19px;
+  }
+
+  svg,
+  svg * {
+    color: inherit;
   }
 `;
 
@@ -208,7 +220,7 @@ const panelBase = `
   border-radius: 0 0 16px 16px;
   z-index: 45;
 
-  @media screen and (max-width: 1151px) {
+  @media screen and (max-width: ${navCollapse}) {
     display: none;
   }
 `;

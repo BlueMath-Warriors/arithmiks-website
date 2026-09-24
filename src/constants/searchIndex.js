@@ -11,6 +11,12 @@ import { caseStudies } from "../components/Landing/Case-Study/caseStudies.js";
 
 const PAGES = [
   { title: "About", cat: "Page", desc: "Who we are and how we got here.", url: "/about" },
+  {
+    title: "How we work",
+    cat: "Page",
+    desc: "Our process, from first call to production.",
+    url: "/how-we-work",
+  },
   { title: "Contact", cat: "Page", desc: "Start a conversation with us.", url: "/contact" },
   {
     title: "Case Studies",
