@@ -87,6 +87,8 @@ export const CoverFrame = styled.span`
     height: 100%;
     object-fit: cover;
     display: block;
+    /* The covers carry a 12px frame; the design crops it (768/744 zoom). */
+    transform: scale(1.032);
     transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   }
 `;
@@ -108,7 +110,7 @@ export const Card = styled(Link)`
   min-width: 0;
 
   &:hover ${CoverFrame} img {
-    transform: scale(1.04);
+    transform: scale(1.073);
   }
 
   &:hover ${CardTitle} {
