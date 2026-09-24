@@ -207,9 +207,9 @@ const Footer = () => (
       <BottomBar>
         <Copyright>© Arithmiks {new Date().getFullYear()} · All rights reserved.</Copyright>
         <LegalLinks>
-          {/* The source design itself leaves these as placeholder "#top"
-              anchors — carried over as-is, not built out (see spec §8). */}
-          <a href="#top">Privacy Policy</a>
+          {/* Terms, AI usage and sitemap are still "#top" placeholders in the
+              source design — carried over as-is until those pages exist. */}
+          <Link to="/privacy-policy">Privacy Policy</Link>
           <a href="#top">Terms &amp; Conditions</a>
           <a href="#top">AI Usage Policy</a>
           <a href="#top">Sitemap</a>
