@@ -82,6 +82,7 @@ export const Heading = styled.h2`
   font-weight: 750;
   letter-spacing: -0.02em;
   line-height: 1.18;
+  color: ${colors.text};
 
   span {
     background: linear-gradient(100deg, #1355ff 0%, #a96fc8 62%, #ec4a9e 100%);
@@ -121,18 +122,17 @@ export const FieldPair = styled.div`
 const phoneRadius = "clamp(10px, 0.85vw, 14px)";
 const phoneBorderWidth = "1px";
 
-// Width of the flag/dial-code box (.selected-flag, .flag-dropdown below) —
-// shared with DialCodeLabel so its text lines up inside that box without
-// the two guessing at each other's layout.
-const dialBoxWidth = "100px";
+// Width of the flag/dial-code box (.selected-flag, .flag-dropdown below),
+// excluding its 1px divider — the design's dial well is 92px including it.
+// Shared with DialCodeLabel/DialChevron so they line up inside that box.
+const dialBoxWidth = "91px";
 
 export const PhoneField = styled.div`
   position: relative;
   /* FieldPair is a grid row with the default align-items: stretch, so without
-     this the sibling dropdown's reserved error-text row (see Input's
-     ErrorText) stretches this box taller than the actual phone input inside
-     it — and DialCodeLabel/DialChevron below, anchored at 50%/1px-from-edge
-     of THIS box, drift off-center from the input as a result. */
+     this the sibling dropdown's error text (when shown) stretches this box
+     taller than the phone input inside it — and DialCodeLabel/DialChevron
+     below, anchored at 50% of THIS box, drift off-center as a result. */
   align-self: start;
 
   .react-tel-input {
@@ -151,8 +151,7 @@ export const PhoneField = styled.div`
   .form-control {
     width: 100% !important;
     height: auto !important;
-    padding: clamp(14px, 1.15vw, 19px) clamp(15px, 1.2vw, 20px) clamp(14px, 1.15vw, 19px)
-      calc(${dialBoxWidth} + 8px) !important;
+    padding: 14px 10px 14px calc(${dialBoxWidth} + 12px) !important;
     font-size: clamp(14.5px, 0.93vw, 15.5px) !important;
     font-family: inherit;
     line-height: normal !important;
@@ -174,9 +173,9 @@ export const PhoneField = styled.div`
      the two wins is down to stylesheet load order, not CSS we control. */
   .flag-dropdown,
   .flag-dropdown.open {
-    top: ${phoneBorderWidth} !important;
-    left: ${phoneBorderWidth} !important;
-    bottom: ${phoneBorderWidth} !important;
+    top: 0 !important;
+    left: 0 !important;
+    bottom: 0 !important;
     height: auto !important;
     background: #fafbfe !important;
     border: 0 !important;
@@ -189,7 +188,7 @@ export const PhoneField = styled.div`
     height: 100% !important;
     top: 0 !important;
     left: 0 !important;
-    padding: 0 0 0 12px !important;
+    padding: 0 0 0 11px !important;
     background: transparent !important;
     border-radius: inherit !important;
 
@@ -202,6 +201,14 @@ export const PhoneField = styled.div`
        itself. */
     .arrow {
       display: none !important;
+    }
+
+    /* The library's high-res flag sprite cells are 25x20 and offset 2px high
+       (margin-top -12px); the design's flags are 21px wide and centered. */
+    .flag {
+      margin-top: -10px !important;
+      transform: scale(0.84);
+      transform-origin: left center;
     }
 
     &:hover,
@@ -239,12 +246,11 @@ export const DialCodeLabel = styled.span`
   position: absolute;
   top: 1px;
   bottom: 1px;
-  /* .selected-flag's 12px padding-left + the 25px high-res flag + a ~5px gap,
-     so the code sits clear of the flag rather than touching it. */
-  left: 42px;
+  /* 1px border + .selected-flag's 11px padding + the 21px flag + a 7px gap. */
+  left: 40px;
   /* Stops long codes running under DialChevron; anything that still does not
      fit is clipped rather than overlapped. */
-  right: calc(100% - ${dialBoxWidth} + 25px);
+  right: calc(100% - ${dialBoxWidth} + 20px);
   display: flex;
   align-items: center;
   overflow: hidden;
@@ -267,7 +273,7 @@ export const DialCodeLabel = styled.span`
 export const DialChevron = styled.svg`
   position: absolute;
   top: 50%;
-  left: calc(${dialBoxWidth} - 21px);
+  left: calc(${dialBoxWidth} - 19px);
   transform: translateY(-50%);
   pointer-events: none;
   z-index: 3;
@@ -289,8 +295,13 @@ export const SubmitButton = styled.button`
   color: #fff;
   font-size: clamp(15px, 0.96vw, 16.5px);
   font-weight: 600;
+  line-height: 1.2;
   padding: 14px 30px;
   white-space: nowrap;
+
+  span {
+    color: inherit;
+  }
   border: 0;
   border-radius: 999px;
   cursor: pointer;
@@ -335,10 +346,9 @@ export const NextUpItem = styled.p`
   line-height: 1.6;
   color: ${colors.textMuted};
 
-  &::before {
-    content: "✓";
-    color: #12b76a;
+  svg {
     flex: none;
+    transform: translateY(2px);
   }
 `;
 
@@ -363,11 +373,16 @@ export const ContactBlock = styled.div`
     color: ${colors.textFaint};
   }
 
-  a {
+  a,
+  span + span {
     font-size: clamp(16px, 1.02vw, 17.5px);
     font-weight: 550;
-    color: ${colors.primary};
+    color: ${colors.text};
     text-decoration: none;
+  }
+
+  a {
+    color: ${colors.primary};
   }
 `;
 
