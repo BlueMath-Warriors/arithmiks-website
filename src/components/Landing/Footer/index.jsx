@@ -205,13 +205,14 @@ const Footer = () => (
       </ExtraCols>
 
       <BottomBar>
-        <Copyright>© Arithmiks {new Date().getFullYear()} · All rights reserved.</Copyright>
+        <Copyright as={Link} to="/copyright">
+          © Arithmiks {new Date().getFullYear()} · All rights reserved.
+        </Copyright>
         <LegalLinks>
-          {/* Terms, AI usage and sitemap are still "#top" placeholders in the
-              source design — carried over as-is until those pages exist. */}
           <Link to="/privacy-policy">Privacy Policy</Link>
-          <a href="#top">Terms &amp; Conditions</a>
-          <a href="#top">AI Usage Policy</a>
+          <Link to="/terms-and-conditions">Terms &amp; Conditions</Link>
+          <Link to="/ai-usage-policy">AI Usage Policy</Link>
+          {/* No sitemap page exists yet; kept as the design's placeholder. */}
           <a href="#top">Sitemap</a>
         </LegalLinks>
       </BottomBar>

@@ -267,6 +267,12 @@ export const BottomBar = styled.div`
 export const Copyright = styled.span`
   font-size: clamp(15px, 0.96vw, 16.5px);
   color: rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+  transition: color 0.25s ease;
+
+  &:hover {
+    color: #fff;
+  }
 `;
 
 export const LegalLinks = styled.div`
