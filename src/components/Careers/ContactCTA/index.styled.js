@@ -9,7 +9,7 @@ import ArithmiksMark from "../shared/ArithmiksMark";
 // so this one only adds bottom padding, on the same surface background.
 export const Section = styled.section`
   padding: 0 0 clamp(64px, 5.9vw, 109px);
-  background: ${colors.surface};
+  background: ${({ $background }) => $background || colors.surface};
 `;
 
 export const Shell = styled.div`
@@ -46,6 +46,14 @@ export const Watermark = styled(ArithmiksMark)`
   filter: grayscale(1) brightness(3);
   pointer-events: none;
   ${inheritSelfIconColor}
+
+  ${({ $hideOnNarrow }) =>
+    $hideOnNarrow &&
+    `
+    @media (max-width: 1000px) {
+      display: none;
+    }
+  `}
 `;
 
 export const Content = styled.div`

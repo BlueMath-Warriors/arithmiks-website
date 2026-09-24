@@ -23,13 +23,17 @@ import {
   InfoLink,
 } from "./index.styled";
 
-/** Gradient banner closing the Careers landing page — links into the site's existing /contact page. */
-const ContactCTA = () => (
-  <Section>
+/**
+ * Gradient banner linking into the site's existing /contact page.
+ * @param {{ background?: string, hideWatermarkOnNarrow?: boolean }} props
+ * `background` defaults to the Careers page's surface grey.
+ */
+const ContactCTA = ({ background, hideWatermarkOnNarrow = false }) => (
+  <Section $background={background}>
     <Shell>
       <Card>
         <Glow />
-        <Watermark />
+        <Watermark $hideOnNarrow={hideWatermarkOnNarrow} />
         <Content>
           <Main>
             <Eyebrow>Contact us</Eyebrow>
