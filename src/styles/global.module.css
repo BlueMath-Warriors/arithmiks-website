@@ -50,6 +50,13 @@ button {
   cursor: pointer;
 }
 
+/* Scroll-reveal targets start hidden until useReveal animates them in.
+   html[data-motion] is set by an inline head script (gatsby-ssr.js) only
+   when motion is allowed, so without JS or with reduced motion they show. */
+html[data-motion] [data-reveal] {
+  opacity: 0;
+}
+
 /*
  * Form controls do not inherit the page font by default, so they fall back to
  * the UA's Arial. Arial only ships Regular and Bold, which silently rounds any
