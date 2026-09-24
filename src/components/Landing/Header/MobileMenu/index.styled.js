@@ -38,7 +38,7 @@ export const LogoLink = styled(Link)`
   /* 27px, matching the main header's mark exactly, so the logo does not
      appear to resize as the drawer opens over it. */
   img {
-    height: 27px;
+    height: 26px;
     width: auto;
     display: block;
   }

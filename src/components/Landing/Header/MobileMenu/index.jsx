@@ -23,7 +23,7 @@ import {
   BottomBar,
   CtaLink,
 } from "./index.styled";
-import logoMark from "../../../../images/favicon.png";
+import { LOGO_MARK_SRC } from "../../../../constants/brand";
 
 const COMPANY_LINKS = [
   { label: "About", to: "/about" },
@@ -85,7 +85,7 @@ const MobileMenu = ({ onClose }) => {
     <Wrap role="dialog" aria-modal="true" aria-label="Mobile menu">
       <TopBar>
         <LogoLink to="/" onClick={onClose} aria-label="Go to homepage">
-          <img src={logoMark} alt="" />
+          <img src={LOGO_MARK_SRC} alt="" width={23} height={26} />
           <span>Arithmiks</span>
         </LogoLink>
         <CloseButton aria-label="Close menu" onClick={onClose}>
