@@ -254,7 +254,7 @@ export const generateContactResponseEmail = (formData, firstName) => {
             <div class="footer">
                 <p class="footer-text">
                 This email was sent to <a href=""><span class="underlined-text">services@arithmiks.com</span>
-                    537-C, Faisal Town, Lahore<br>
+                    DHA Rehbar, Lahore, Punjab, Pakistan<br>
                     © 2024 Arithmiks
                 </p>
             </div>  

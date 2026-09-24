@@ -14,5 +14,5 @@ export const list = (...items) => ({
 export const numberSections = (sections) =>
   sections.map((section, index) => ({ ...section, number: String(index + 1).padStart(2, "0") }));
 
-export const OFFICE_ADDRESS = "537, C Block, Street 13, Faisal Town, Lahore, Punjab, Pakistan";
+export const OFFICE_ADDRESS = "DHA Rehbar, Lahore, Punjab, Pakistan";
 export const LEGAL_EMAIL = "services@arithmiks.com";
