@@ -104,7 +104,9 @@ const NavChevron = ({ open, color }) => (
 // wants the bar to blend into it — dark nav text like `white`, but the
 // background stays transparent until scroll instead of being solid from the
 // top. `white` still wins where both are passed.
-const Header = ({ white, fixed_bar, lightHero }) => {
+// `transparentWhile`: optional stable predicate; while it returns true the bar
+// stays transparent despite scroll (e.g. over a pinned, scroll-driven hero).
+const Header = ({ white, fixed_bar, lightHero, transparentWhile }) => {
   const [isFixed, setIsFixed] = useState(false);
   const [currentPath, setCurrentPath] = useState("");
   const [showMenu, setShowMenu] = useState(false);
@@ -146,11 +148,14 @@ const Header = ({ white, fixed_bar, lightHero }) => {
   // doesn't need to wait for the hero to clear.
   useEffect(() => {
     if (typeof window === "undefined" || fixed_bar) return;
-    const handleScroll = () => setIsFixed(window.scrollY > SCROLL_SOLID_THRESHOLD);
+    const handleScroll = () =>
+      setIsFixed(
+        window.scrollY > SCROLL_SOLID_THRESHOLD && !(transparentWhile && transparentWhile())
+      );
     handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [fixed_bar]);
+  }, [fixed_bar, transparentWhile]);
 
   // The open white mega-menus (and the white search sheet) need dark nav
   // text regardless of scroll position — matches the source's own
@@ -446,7 +451,7 @@ const Header = ({ white, fixed_bar, lightHero }) => {
               <span>About</span>
               <p>Who we are and how we got here</p>
             </CompanyLink>
-            <CompanyLink href="#">
+            <CompanyLink as={Link} to="/how-we-work">
               <span>How we work</span>
               <p>Our process, from audit to handover</p>
             </CompanyLink>

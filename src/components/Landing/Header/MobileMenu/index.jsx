@@ -27,7 +27,7 @@ import logoMark from "../../../../images/favicon.png";
 
 const COMPANY_LINKS = [
   { label: "About", to: "/about" },
-  { label: "How we work", to: "#" },
+  { label: "How we work", to: "/how-we-work" },
   { label: "Arithmiks Blog", to: "/blogs" },
   { label: "Careers", to: "/careers" },
   { label: "Contact", to: "/contact" },

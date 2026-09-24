@@ -53,7 +53,7 @@ const PersonIcon = () => (
 
 const COMPANY_LINKS = [
   { name: "About", url: "/about", internal: true },
-  { name: "How we work", url: "/how-we-work", internal: false },
+  { name: "How we work", url: "/how-we-work", internal: true },
   { name: "Careers", url: "/careers", internal: true },
   { name: "Contact", url: "/contact", internal: true },
 ];
