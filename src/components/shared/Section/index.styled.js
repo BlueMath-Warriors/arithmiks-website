@@ -11,6 +11,20 @@ const floatB = keyframes`
   50% { transform: translate3d(4%, -3%, 0) scale(0.96); }
 `;
 
+const drift = keyframes`
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(-2%, 2%, 0) scale(1.06); }
+`;
+
+// Oversized layer of radial glows that slowly drifts behind a hero.
+export const driftingGlow = (gradients) => css`
+  position: absolute;
+  inset: -20% -10%;
+  pointer-events: none;
+  background: ${gradients};
+  animation: ${drift} 24s ease-in-out infinite;
+`;
+
 // Soft drifting colour orb behind a hero; each page positions its own.
 export const glowOrb = (rgb, alpha, fadeStop, animation, seconds) => css`
   position: absolute;
