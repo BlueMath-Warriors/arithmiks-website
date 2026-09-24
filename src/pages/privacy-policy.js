@@ -1,6 +1,7 @@
 import * as React from "react";
 import Header from "../components/Landing/Header";
-import PrivacyPolicy from "../components/PrivacyPolicy";
+import LegalPage from "../components/LegalPage";
+import { PRIVACY_POLICY } from "../constants/legal/privacyPolicy";
 import Footer from "../components/Landing/Footer";
 import { SEO } from "../components/seo";
 
@@ -15,7 +16,7 @@ const PrivacyPolicyPage = () => (
   <>
     <Header lightHero={true} />
     <main>
-      <PrivacyPolicy />
+      <LegalPage policy={PRIVACY_POLICY} />
     </main>
     <Footer />
   </>
