@@ -60,7 +60,7 @@ const COMPANY_LINKS = [
 ];
 const WORK_LINKS = [
   { name: "Case studies", url: "/case-studies", internal: true },
-  { name: "Industries", url: "/industries", internal: false },
+  { name: "Industries", url: "/industries", internal: true },
   { name: "Clients", url: "/clients", internal: true },
 ];
 // This site's real blog route is /blogs — the source design's own /blog is
