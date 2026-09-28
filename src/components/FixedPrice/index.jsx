@@ -23,7 +23,7 @@ import Experience from "./Experience";
 import Questions from "./Questions";
 
 import ArrowRight from "../../images/ArrowRight.svg";
-import PriceTag from "../../images/price-tag-logo.png";
+import PriceTag from "../../images/price-tag-logo.webp";
 import Gradiant from "../../images/gradiant-6.svg";
 
 const breadcrumbItems = [

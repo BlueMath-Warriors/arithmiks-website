@@ -26,7 +26,7 @@ import {
   BadgeRow,
 } from "./index.styled";
 import { LOGO_MARK_SRC } from "../../../constants/brand";
-import upworkRank from "../../../images/homepage/upwork-rank.png";
+import upworkRank from "../../../images/homepage/upwork-rank.webp";
 
 const contactIconProps = {
   viewBox: "0 0 20 20",

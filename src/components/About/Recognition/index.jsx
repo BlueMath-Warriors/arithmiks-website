@@ -14,7 +14,7 @@ import {
   BadgeRow,
   BadgeCaption,
 } from "./index.styled";
-import upworkRank from "../../../images/homepage/upwork-rank.png";
+import upworkRank from "../../../images/homepage/upwork-rank.webp";
 
 const AWARDS = [
   {

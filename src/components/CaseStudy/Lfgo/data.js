@@ -116,7 +116,7 @@ export const keyFeaturesData = {
 
 export const testimonialData = {
   text: "Highly effective and helpful both on the implementation side and at the strategic level.",
-  clientImageSrc: "/lfgoOwner.png",
+  clientImageSrc: "/lfgoOwner.webp",
   clientName: "Louis-Antoine",
   clientTitle: "GoAgents Loans Founder & CEO",
 };

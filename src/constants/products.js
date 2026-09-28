@@ -1,4 +1,4 @@
-import quantaThumb from "../images/quanta-product-thumb.png";
+import quantaThumb from "../images/quanta-product-thumb.webp";
 import QuantaMark from "../images/quanta-mark.svg";
 
 /**
