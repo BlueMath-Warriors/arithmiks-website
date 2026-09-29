@@ -1,13 +1,14 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
+import { navigate } from "gatsby";
 import { buildSearchIndex, searchSite } from "../../../../constants/searchIndex";
 import SearchResultsList, { Meta, Empty } from "../SearchResultsList";
-import { Wrap, Scrim, Sheet, Shell, InputRow, FieldWrap, Input, GoButton } from "./index.styled";
+import SearchField from "./SearchField";
+import { Wrap, Scrim, Sheet, Shell } from "./index.styled";
 
 // Matches the design's data-searchwrap: a scrim + sheet dropped from the
 // header, with results ranked and filtered live as the visitor types (see
-// searchIndex.js for the ranking rule) rather than submitting to a
-// dedicated results page, which this site doesn't have.
+// searchIndex.js for the ranking rule); submitting opens the full /search page.
 const SearchOverlay = ({ onClose }) => {
   const [query, setQuery] = useState("");
   const [headerHeight, setHeaderHeight] = useState(0);
@@ -15,6 +16,12 @@ const SearchOverlay = ({ onClose }) => {
   const index = useMemo(buildSearchIndex, []);
   const results = useMemo(() => searchSite(index, query), [index, query]);
   const hasQuery = query.trim().length > 0;
+
+  const submitSearch = () => {
+    if (!hasQuery) return;
+    navigate(`/search?q=${encodeURIComponent(query.trim())}`);
+    onClose();
+  };
 
   useEffect(() => {
     const measure = () => {
@@ -46,49 +53,12 @@ const SearchOverlay = ({ onClose }) => {
       <Scrim onClick={onClose} />
       <Sheet>
         <Shell>
-          <InputRow>
-            <FieldWrap>
-              <svg
-                viewBox="0 0 20 20"
-                width="18"
-                height="18"
-                fill="none"
-                stroke="#5C6478"
-                strokeWidth="1.8"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                aria-hidden="true"
-              >
-                <circle cx="8.8" cy="8.8" r="5.3" />
-                <path d="m12.7 12.7 4 4" />
-              </svg>
-              <Input
-                ref={inputRef}
-                type="search"
-                aria-label="Search Arithmiks"
-                placeholder="Search services, case studies, resources…"
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-              />
-            </FieldWrap>
-            <GoButton type="button" onClick={() => inputRef.current?.focus()}>
-              <svg
-                viewBox="0 0 20 20"
-                width="18"
-                height="18"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.9"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                aria-hidden="true"
-              >
-                <circle cx="8.8" cy="8.8" r="5.3" />
-                <path d="m12.7 12.7 4 4" />
-              </svg>
-              Search
-            </GoButton>
-          </InputRow>
+          <SearchField
+            value={query}
+            onChange={setQuery}
+            onSubmit={submitSearch}
+            inputRef={inputRef}
+          />
 
           {hasQuery && results.length > 0 && (
             <Meta>

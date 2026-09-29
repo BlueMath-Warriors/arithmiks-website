@@ -69,6 +69,38 @@ export const Input = styled.input`
   background: transparent;
   border: 0;
   outline: none;
+
+  &::-webkit-search-cancel-button {
+    display: none;
+  }
+`;
+
+// global.module.css's "* { color: #000 }" hits the svg and its paths
+// directly, hence the explicit inherit.
+export const ClearButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  border-radius: 50%;
+  color: #8a93a6;
+  cursor: pointer;
+  transition: color 0.2s ease, background 0.2s ease;
+
+  svg,
+  svg * {
+    color: inherit;
+  }
+
+  &:hover {
+    color: ${colors.text};
+    background: #e6e9f0;
+  }
 `;
 
 export const GoButton = styled.button`

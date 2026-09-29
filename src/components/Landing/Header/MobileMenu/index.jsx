@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { createPortal } from "react-dom";
+import { navigate } from "gatsby";
 import { SERVICE_NAV_GROUPS } from "../../../../constants/serviceNavGroups";
 import { PRODUCTS } from "../../../../constants/products";
 import { buildSearchIndex, searchSite } from "../../../../constants/searchIndex";
@@ -96,7 +97,14 @@ const MobileMenu = ({ onClose }) => {
       </TopBar>
 
       <Scroll>
-        <SearchForm onSubmit={(e) => e.preventDefault()}>
+        <SearchForm
+          onSubmit={(e) => {
+            e.preventDefault();
+            if (!isSearching) return;
+            navigate(`/search?q=${encodeURIComponent(query.trim())}`);
+            onClose();
+          }}
+        >
           <svg viewBox="0 0 20 20" width="17" height="17" fill="none" stroke="#5C6478" strokeWidth="1.8" strokeLinecap="round" aria-hidden="true">
             <circle cx="8.6" cy="8.6" r="5.4" />
             <path d="m12.8 12.8 4 4" />
