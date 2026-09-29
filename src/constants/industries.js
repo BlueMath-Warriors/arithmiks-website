@@ -71,23 +71,23 @@ export const INDUSTRIES = [
     // Industries with several case studies rotate through them in the panel.
     cases: [
       {
-        client: "Hakro",
-        capability: "Search & recommendations",
-        image: caseImage("hakro"),
-        logo: logo("hakro.svg"),
-        casePath: CASE_STUDIES_INDEX_PATH,
-        headline: "Buyers find the right product first time",
+        client: "Expat Haven Hub",
+        capability: "AI research & community",
+        image: caseImage("expat"),
+        logo: logo("ehh.svg"),
+        casePath: "/case-studies/expat",
+        headline: "One place to research, decide and settle abroad",
         context:
-          "B2B catalogues run to thousands of near-identical products, and buyers leave when search can't match how they describe what they need.",
+          "Relocation research is scattered across government sites, cost-of-living tools and unverified groups, and country data goes stale before people decide.",
         does: [
-          "Understands product searches written in everyday language",
-          "Recommends matching sizes, colours and accessories",
-          "Keeps product data consistent across the catalogue",
+          "Researches visas, tax and cost of living across 20+ countries",
+          "Compares destinations side by side in one place",
+          "Connects movers to a verified, trust-based city community",
         ],
-        metric: "+18%",
-        metricLabel: "search-to-order conversion",
-        beforeAfter: "2.8% → 3.3%",
-        timeframe: "First quarter",
+        metric: "20+",
+        metricLabel: "countries, human-reviewed",
+        beforeAfter: "Dozens of tabs → one platform",
+        timeframe: "Live product",
       },
       {
         client: "Ofertas",

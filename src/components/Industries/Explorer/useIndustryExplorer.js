@@ -4,19 +4,16 @@ import { prefersReducedMotion } from "../../../utils/animations";
 
 const INDUSTRY_SWAP_DELAY_MS = 180;
 const CASE_SWAP_DELAY_MS = 200;
+const IMAGE_READY_FALLBACK_MS = 2000;
 
-/**
- * Selection state for the industry explorer: which industry is open and, for
- * industries with several case studies, which case is showing. Changes fade
- * out, swap content, then fade back in (`fadeScope` says which layer is faded)
- * unless the visitor prefers reduced motion.
- */
 export const useIndustryExplorer = () => {
   const [selection, setSelection] = useState({ industryIndex: 0, caseIndex: 0 });
   const [fadeScope, setFadeScope] = useState(null);
   const [isPanelOffscreen, setIsPanelOffscreen] = useState(false);
   const panelRef = useRef(null);
+  const caseImageRef = useRef(null);
   const swapTimerRef = useRef(null);
+  const revealTokenRef = useRef(0);
 
   const { industryIndex, caseIndex } = selection;
   const industry = INDUSTRIES[industryIndex];
@@ -29,11 +26,33 @@ export const useIndustryExplorer = () => {
       return;
     }
     setFadeScope(scope);
-    swapTimerRef.current = setTimeout(() => {
-      setSelection(nextSelection);
-      requestAnimationFrame(() => setFadeScope(null));
-    }, swapDelayMs);
+    swapTimerRef.current = setTimeout(() => setSelection(nextSelection), swapDelayMs);
   }, []);
+
+  // Runs once per selection, after the case card's <img> already has the new
+  // src (effects fire post-commit). A token guards against a later selection
+  // — or an unmount — resolving after this one.
+  useEffect(() => {
+    const token = (revealTokenRef.current += 1);
+    let fallbackTimer;
+    const reveal = () => {
+      clearTimeout(fallbackTimer);
+      if (revealTokenRef.current === token) setFadeScope(null);
+    };
+    const image = caseImageRef.current;
+    if (!image || (image.complete && image.naturalWidth > 0)) {
+      reveal();
+      return undefined;
+    }
+    image.addEventListener("load", reveal);
+    image.addEventListener("error", reveal);
+    fallbackTimer = setTimeout(reveal, IMAGE_READY_FALLBACK_MS);
+    return () => {
+      image.removeEventListener("load", reveal);
+      image.removeEventListener("error", reveal);
+      clearTimeout(fallbackTimer);
+    };
+  }, [industryIndex, caseIndex]);
 
   const selectIndustry = useCallback(
     (nextIndex) => {
@@ -58,6 +77,15 @@ export const useIndustryExplorer = () => {
 
   useEffect(() => () => clearTimeout(swapTimerRef.current), []);
 
+  // Warm the cache so a swap does not have to wait on the next case's image.
+  useEffect(() => {
+    INDUSTRIES.forEach(({ cases }) =>
+      cases.forEach(({ image }) => {
+        new Image().src = image;
+      })
+    );
+  }, []);
+
   // The case rotation is driven by a CSS animation, so it is paused while the
   // panel is off screen to keep it from advancing unseen.
   useEffect(() => {
@@ -76,6 +104,7 @@ export const useIndustryExplorer = () => {
     fadeScope,
     isPanelOffscreen,
     panelRef,
+    caseImageRef,
     selectIndustry,
     selectCase,
     showNextCase,
