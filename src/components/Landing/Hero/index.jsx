@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import Marquee from "../shared/Marquee";
+import ClientLogoImage from "./ClientLogoImage";
 import { prefersReducedMotion } from "../../../utils/animations";
 import {
   HeroSection,
@@ -20,7 +21,6 @@ import {
   ScrollCueLabel,
   ScrollCueIcon,
   TrustedLabel,
-  ClientLogo,
 } from "./index.styled";
 import heroTeam from "../../../images/homepage/hero-team.webp";
 import lfgoLogo from "../../../images/homepage/client-lfgo-mark.webp";
@@ -165,11 +165,11 @@ const Hero = () => {
           items={CLIENTS.map((c) => ({
             key: c.name,
             node: (
-              <ClientLogo
+              <ClientLogoImage
+                name={c.name}
                 src={c.logo}
-                alt={c.name}
                 height={c.height}
-                $raw={c.treatment === "raw"}
+                raw={c.treatment === "raw"}
               />
             ),
           }))}

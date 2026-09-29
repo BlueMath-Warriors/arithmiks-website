@@ -32,7 +32,9 @@ const Testimonials = () => {
       if (frame) return;
       frame = requestAnimationFrame(() => {
         frame = null;
-        const nearest = Math.round(view.scrollLeft / view.clientWidth);
+        // The view has side padding for the glow, so its width isn't the page step.
+        const pageStep = cardRefs.current[PER_PAGE].offsetLeft - cardRefs.current[0].offsetLeft;
+        const nearest = Math.round(view.scrollLeft / pageStep);
         setPage(Math.min(PAGE_COUNT - 1, Math.max(0, nearest)));
       });
     };
