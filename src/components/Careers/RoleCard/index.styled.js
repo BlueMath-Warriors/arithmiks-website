@@ -38,7 +38,6 @@ export const Title = styled.span`
   font-weight: 700;
   letter-spacing: -0.014em;
   line-height: 1.3;
-  max-width: 20ch;
   text-wrap: balance;
 `;
 

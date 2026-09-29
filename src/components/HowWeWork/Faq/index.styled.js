@@ -118,7 +118,6 @@ export const Panel = styled.div`
 `;
 
 export const Answer = styled.p`
-  max-width: 60ch;
   padding: 0 0 clamp(20px, 2vw, 28px);
   font-size: clamp(14.5px, 0.97vw, 17px);
   line-height: 1.65;
