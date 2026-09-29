@@ -46,7 +46,7 @@ const CaseCard = ({ caseStudy }) => (
       </MetricRow>
       <BeforeAfter>{caseStudy.beforeAfter}</BeforeAfter>
       <CaseCta>
-        <span>Read the {caseStudy.client} case study</span>
+        Read the {caseStudy.client} case study
         <CardArrow aria-hidden="true">→</CardArrow>
       </CaseCta>
     </CaseBody>

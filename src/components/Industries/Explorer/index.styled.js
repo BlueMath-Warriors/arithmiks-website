@@ -402,10 +402,6 @@ export const CaseCta = styled.span`
   font-size: 14.5px;
   font-weight: 600;
   color: ${colors.primary};
-
-  span {
-    color: inherit;
-  }
 `;
 
 export const DotRow = styled.div`

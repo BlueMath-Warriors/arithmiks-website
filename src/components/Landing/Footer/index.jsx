@@ -216,8 +216,7 @@ const Footer = () => (
           <Link to="/terms-and-conditions">Terms &amp; Conditions</Link>
           <Link to="/ai-usage-policy">AI Usage Policy</Link>
           <Link to="/privacy-policy#cookies">Cookie Policy</Link>
-          {/* No sitemap page exists yet; kept as the design's placeholder. */}
-          <a href="#top">Sitemap</a>
+          <Link to="/sitemap">Sitemap</Link>
         </LegalLinks>
       </BottomBar>
     </Shell>
