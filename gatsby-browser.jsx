@@ -53,7 +53,7 @@ export const onRouteUpdate = ({ location, prevLocation }) => {
       behavior: "instant",
     });
 
-    setTimeout(animatePageEntrance, 50);
+    animatePageEntrance();
   }
 };
 
