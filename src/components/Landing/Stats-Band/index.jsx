@@ -27,7 +27,7 @@ const StatCellItem = ({ value, suffix, label }) => {
   return (
     <StatCell>
       <div>
-        <StatNumber ref={ref}>0</StatNumber>
+        <StatNumber ref={ref}>{value}</StatNumber>
         <StatSuffix>{suffix}</StatSuffix>
       </div>
       <StatLabel>{label}</StatLabel>

@@ -129,7 +129,7 @@ export const keyFeaturesData = {
 
 export const testimonialData = {
   text: "Omer and his team put in significant effort and delivered many positive contributions.",
-  clientImageSrc: "/lfgoOwner.png",
+  clientImageSrc: "/lfgoOwner.webp",
   clientName: "Louis-Antoine",
   clientTitle: "GoAgents Loans Founder & CEO",
 };

@@ -22,9 +22,9 @@ import {
   TrustedLabel,
   ClientLogo,
 } from "./index.styled";
-import heroTeam from "../../../images/homepage/hero-team.png";
-import lfgoLogo from "../../../images/homepage/client-lfgo-mark.png";
-import mrsellernoteLogo from "../../../images/homepage/client-mrsellernote-mark.png";
+import heroTeam from "../../../images/homepage/hero-team.webp";
+import lfgoLogo from "../../../images/homepage/client-lfgo-mark.webp";
+import mrsellernoteLogo from "../../../images/homepage/client-mrsellernote-mark.webp";
 
 const SLIDES = [
   "Transform your business with AI",

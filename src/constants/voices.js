@@ -1,10 +1,10 @@
 import { caseStudies } from "../components/Landing/Case-Study/caseStudies.js";
-import voiceGoLouis from "../images/homepage/voice-go-louis.png";
-import voiceSbaZachary from "../images/homepage/voice-sba-zachary.png";
-import voiceEasybarRon from "../images/homepage/voice-easybar-ron.png";
-import voiceSwervPierce from "../images/homepage/voice-swerv-pierce.png";
-import voiceDifactoIvan from "../images/homepage/voice-difacto-ivan.png";
-import difactoLogo from "../images/homepage/voice-logo-difacto.png";
+import voiceGoLouis from "../images/homepage/voice-go-louis.webp";
+import voiceSbaZachary from "../images/homepage/voice-sba-zachary.webp";
+import voiceEasybarRon from "../images/homepage/voice-easybar-ron.webp";
+import voiceSwervPierce from "../images/homepage/voice-swerv-pierce.webp";
+import voiceDifactoIvan from "../images/homepage/voice-difacto-ivan.webp";
+import difactoLogo from "../images/homepage/voice-logo-difacto.webp";
 
 // Testimonial headshots extracted from the design source, keyed by the
 // matching caseStudies.js slug.

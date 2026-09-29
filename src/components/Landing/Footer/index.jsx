@@ -26,7 +26,7 @@ import {
   BadgeRow,
 } from "./index.styled";
 import { LOGO_MARK_SRC } from "../../../constants/brand";
-import upworkRank from "../../../images/homepage/upwork-rank.png";
+import upworkRank from "../../../images/homepage/upwork-rank.webp";
 
 const contactIconProps = {
   viewBox: "0 0 20 20",
@@ -60,7 +60,7 @@ const COMPANY_LINKS = [
 ];
 const WORK_LINKS = [
   { name: "Case studies", url: "/case-studies", internal: true },
-  { name: "Industries", url: "/industries", internal: false },
+  { name: "Industries", url: "/industries", internal: true },
   { name: "Clients", url: "/clients", internal: true },
 ];
 // This site's real blog route is /blogs — the source design's own /blog is
@@ -216,8 +216,7 @@ const Footer = () => (
           <Link to="/terms-and-conditions">Terms &amp; Conditions</Link>
           <Link to="/ai-usage-policy">AI Usage Policy</Link>
           <Link to="/privacy-policy#cookies">Cookie Policy</Link>
-          {/* No sitemap page exists yet; kept as the design's placeholder. */}
-          <a href="#top">Sitemap</a>
+          <Link to="/sitemap">Sitemap</Link>
         </LegalLinks>
       </BottomBar>
     </Shell>

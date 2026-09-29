@@ -326,12 +326,12 @@ select {
 }
 
 .easybar_overview.right {
-  background-image: url(../images/gradiants/gradient-right.png);
+  background-image: url(../images/gradiants/gradient-right.webp);
   background-position: right bottom;
 }
 
 .easybar_overview.left {
-  background-image: url(../images/gradiants/gradient-left.png);
+  background-image: url(../images/gradiants/gradient-left.webp);
   background-position: left bottom;
 }
 
@@ -493,7 +493,7 @@ select {
 .quotes {
   width: 56px;
   height: 47px;
-  background-image: url(../images/quotes.png);
+  background-image: url(../images/quotes.webp);
   background-size: contain;
   background-repeat: no-repeat;
   position: absolute;

@@ -73,7 +73,7 @@ export const TestimonialText = styled.p`
     top: -10px;
     width: 50px;
     height: 50px;
-    background-image: url('/quotes.png');
+    background-image: url('/quotes.webp');
     background-size: contain;
     background-repeat: no-repeat;
   }
@@ -83,7 +83,7 @@ export const TestimonialText = styled.p`
     display: inline-block;
     width: 50px;
     height: 50px;
-    background-image: url('/quotes.png');
+    background-image: url('/quotes.webp');
     background-size: contain;
     background-repeat: no-repeat;
     transform: scaleX(-1) scaleY(-1);

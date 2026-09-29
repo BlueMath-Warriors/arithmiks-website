@@ -61,7 +61,7 @@ import {
 import SearchOverlay from "./SearchOverlay";
 import MobileMenu from "./MobileMenu";
 import { LOGO_MARK_SRC } from "../../../constants/brand";
-import companyTeamPhoto from "../../../images/homepage/hero-team.png";
+import companyTeamPhoto from "../../../images/homepage/hero-team.webp";
 
 // How far the page must scroll before the header goes solid — matches the
 // design's own behavior (verified directly against its source: the header

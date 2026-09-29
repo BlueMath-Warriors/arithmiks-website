@@ -120,7 +120,7 @@ export const keyFeaturesData = {
 
 export const testimonialData = {
   text: "Highly effective and helpful both on the implementation side and at the strategic level.",
-  clientImageSrc: "/mrsellernoteOwner.png",
+  clientImageSrc: "/mrsellernoteOwner.webp",
   clientName: "Client Name",
   clientTitle: "Founder & CEO",
 };

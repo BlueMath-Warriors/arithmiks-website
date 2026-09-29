@@ -89,7 +89,7 @@ export const keyFeaturesData = {
       title: "2. Meeting Artifacts",
       description:
         "One-click Decisions Log, Questions Raised, Key Quotes, Timeline, and Follow-up Email from the transcript—zero manual notes.",
-      image: "/Qareeb Key Features/qareebKeyFeature2.jpg",
+      image: "/Qareeb Key Features/qareebKeyFeature2.webp",
     },
     {
       title: "3. Live Recording with Real-Time Transcription",
@@ -107,7 +107,7 @@ export const keyFeaturesData = {
       title: "5. Meeting Library",
       description:
         "Searchable, sortable meeting table with speakers, status, duration, date, and language—supports GPT and Claude.",
-      image: "/Qareeb Key Features/qareebKeyFeature5.jpg",
+      image: "/Qareeb Key Features/qareebKeyFeature5.webp",
     },
     {
       title: "6. Document Upload in Projects",
@@ -128,7 +128,7 @@ export const keyFeaturesData = {
 
 export const testimonialData = {
   text: "Highly effective and helpful both on the implementation side and at the strategic level.",
-  clientImageSrc: "/qareebOwner.png",
+  clientImageSrc: "/qareebOwner.webp",
   clientName: "Qareeb Team",
   clientTitle: "Qareeb Founder & CEO",
 };

@@ -29,7 +29,7 @@ import {
   DialCodeLabel,
   DialChevron,
 } from "./index.styled";
-import upworkRank from "../../../../images/homepage/upwork-rank.png";
+import upworkRank from "../../../../images/homepage/upwork-rank.webp";
 
 const SERVICE_OPTIONS = [
   "AI Engineering & Data",

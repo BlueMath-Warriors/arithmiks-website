@@ -1,9 +1,9 @@
 import React, { useEffect, useRef } from "react";
 import { Stage, Pin, Track, Card, Duplicate } from "./index.styled";
 import { prefersReducedMotion } from "../../../utils/animations";
-import teamPhotoOne from "../../../images/about/team-1.jpg";
-import teamPhotoTwo from "../../../images/about/team-2.jpg";
-import teamPhotoThree from "../../../images/about/team-3.jpg";
+import teamPhotoOne from "../../../images/about/team-1.webp";
+import teamPhotoTwo from "../../../images/about/team-2.webp";
+import teamPhotoThree from "../../../images/about/team-3.webp";
 
 const PHOTOS = [teamPhotoOne, teamPhotoTwo, teamPhotoThree];
 const DUPLICATE_PHOTOS = [...PHOTOS, ...PHOTOS];
