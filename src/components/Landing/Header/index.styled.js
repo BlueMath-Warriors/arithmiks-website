@@ -582,7 +582,8 @@ export const ProductActionsRow = styled.span`
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  margin-top: 4px;
+  margin-top: auto;
+  padding-top: 4px;
 `;
 
 export const ProductCaseStudyLink = styled(Link)`

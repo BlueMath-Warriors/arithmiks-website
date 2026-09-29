@@ -122,7 +122,7 @@ export const INDUSTRIES = [
         capability: "GenAI review",
         image: caseImage("clauselens-product"),
         logo: logo("clauselens.svg"),
-        casePath: CASE_STUDIES_INDEX_PATH,
+        casePath: "/case-studies/clauselens",
         headline: "Contract review in about a minute",
         context:
           "Legal teams read standard contracts line by line to find the handful of clauses that carry real risk.",

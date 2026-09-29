@@ -9,6 +9,7 @@ import ofertasDashboard from "../../../images/ofertasDashboard.webp";
 import qareebDashboard from "../../../images/qareebDashboard.webp";
 import mrsellernoteDashboard from "../../../images/msnDashboard.webp";
 import quantaDashboard from "../../../images/quantaDashboard.webp";
+import clauselensDashboard from "../../../images/clauselensDashboard.webp";
 import mediaInfraDashboard from "../../../images/mediaInfraDashboard.webp";
 
 export const caseStudies = [
@@ -136,6 +137,21 @@ export const caseStudies = [
     title: "Query your database in plain English conversations",
     description:
       "A multi-tenant BI platform that lets any team query their own database in plain English, no SQL required.",
+    hasDetailPage: true,
+  },
+  {
+    slug: "clauselens",
+    dashboardImg: clauselensDashboard,
+    logo: "/case-studies/clauselens/logo.svg",
+    logoAlt: "ClauseLens",
+    tag: "AI",
+    category: "saas-software",
+    industry: "Legal",
+    services: ["AI & Machine Learning", "SaaS Platforms"],
+    relatedService: { slug: "ai-data-solutions", label: "AI & Data Solutions" },
+    title: "Contract review you can check line by line",
+    description:
+      "AI contract review that flags risks and extracts key terms in about a minute, with every finding traced to its source sentence.",
     hasDetailPage: true,
   },
   {
