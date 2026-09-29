@@ -7,7 +7,7 @@ export const getHeroData = (images) => ({
   caption: (
     <>
       An AI meeting intelligence platform that records, transcribes, and
-      <br />turns every conversation into a searchable knowledge base.
+      {" "}turns every conversation into a searchable knowledge base.
     </>
   ),
   heroImageData: images?.heroImage,
@@ -122,8 +122,6 @@ export const keyFeaturesData = {
       image: "/Qareeb Key Features/qareebKeyFeature7.webp",
     },
   ],
-  leftIconSrc: "/leftIcon.svg",
-  rightIconSrc: "/rightIcon.svg",
 };
 
 export const testimonialData = {

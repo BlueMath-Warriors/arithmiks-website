@@ -16,7 +16,7 @@ const breadcrumbItems = [
 ];
 
 const ExpatPage = ({ data }) => {
-  return <Ehh images={data} breadcrumbItems={breadcrumbItems} />;
+  return <Ehh images={data} />;
 };
 
 export default ExpatPage;
@@ -35,7 +35,7 @@ export const query = graphql`
   query {
     heroImage: file(relativePath: { eq: "ehhMemorandum.webp" }) {
       childImageSharp {
-        gatsbyImageData(width: 929, placeholder: NONE, formats: [AUTO, WEBP, AVIF], quality: 85)
+        gatsbyImageData(width: 1800, placeholder: NONE, formats: [AUTO, WEBP, AVIF], quality: 85)
       }
     }
     overviewImage: file(relativePath: { eq: "ehhFinancialSummary.webp" }) {

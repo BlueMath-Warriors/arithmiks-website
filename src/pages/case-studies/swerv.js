@@ -16,7 +16,7 @@ const breadcrumbItems = [
 ];
 
 const SwervPage = ({ data }) => {
-  return <Swerv images={data} breadcrumbItems={breadcrumbItems} />;
+  return <Swerv images={data} />;
 };
 
 export default SwervPage;
@@ -35,7 +35,7 @@ export const query = graphql`
   query {
     heroImage: file(relativePath: { eq: "swervMemorandum.webp" }) {
       childImageSharp {
-        gatsbyImageData(width: 929, placeholder: NONE, formats: [AUTO, WEBP, AVIF], quality: 85)
+        gatsbyImageData(width: 1800, placeholder: NONE, formats: [AUTO, WEBP, AVIF], quality: 85)
       }
     }
     overviewImage: file(relativePath: { eq: "swervFinancialSummary.webp" }) {

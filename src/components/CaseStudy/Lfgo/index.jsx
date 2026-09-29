@@ -22,7 +22,7 @@ import {
   keyFeaturesData,
 } from "./data";
 
-const Lfgo = ({ images, breadcrumbItems }) => {
+const Lfgo = ({ images }) => {
   const heroData = getHeroData(images);
   const overviewData = getOverviewData(images);
   const hasTestimonial = true;
@@ -31,11 +31,11 @@ const Lfgo = ({ images, breadcrumbItems }) => {
     <>
       <Header lightHero={true} />
       <main>
-      <Hero {...heroData} breadcrumbItems={breadcrumbItems} />
+      <Hero {...heroData} slug="lfgo" />
       <TechStack {...techStackData} />
-      <Overview {...overviewData} />
+      <Overview {...overviewData} name={heroData.logoAlt} />
       {hasTestimonial && <Testimonial {...testimonialData} />}
-      <Solution {...solutionData} hasTestimonial={hasTestimonial} />
+      <Solution {...solutionData} />
       <KeyFeatures {...keyFeaturesData} />
       <MoreCaseStudies currentSlug="lfgo" />
       <BookingFlow />

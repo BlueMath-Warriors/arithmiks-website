@@ -7,7 +7,7 @@ export const getHeroData = (images) => ({
   caption: (
     <>
       A community-driven deals platform where users publish, vote on,
-      <br />
+      {" "}
       and validate offers, with moderation built in to keep quality high.
     </>
   ),
@@ -121,8 +121,6 @@ export const keyFeaturesData = {
       image: "/D&O Key Features/d&oKeyFeature6.webp",
     },
   ],
-  leftIconSrc: "/leftIcon.svg",
-  rightIconSrc: "/rightIcon.svg",
 };
 
 export const testimonialData = {

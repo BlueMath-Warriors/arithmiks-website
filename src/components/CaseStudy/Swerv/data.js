@@ -7,7 +7,7 @@ export const getHeroData = (images) => ({
   caption: (
     <>
       A SaaS platform for car dealerships to automate
-      <br />
+      {" "}
       acquisitions, centralize data, and optimize sales.
     </>
   ),
@@ -113,8 +113,6 @@ export const keyFeaturesData = {
       image: "/Swerv Key Features/swervKeyFeature5.webp",
     },
   ],
-  leftIconSrc: "/leftIcon.svg",
-  rightIconSrc: "/rightIcon.svg",
 };
 
 export const testimonialData = {

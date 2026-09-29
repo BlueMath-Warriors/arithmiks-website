@@ -16,7 +16,7 @@ const breadcrumbItems = [
 ];
 
 const LfgoPage = ({ data }) => {
-  return <Lfgo images={data} breadcrumbItems={breadcrumbItems} />;
+  return <Lfgo images={data} />;
 };
 
 export default LfgoPage;
@@ -35,7 +35,7 @@ export const query = graphql`
   query {
     heroImage: file(relativePath: { eq: "lfgoMemorandum.webp" }) {
       childImageSharp {
-        gatsbyImageData(width: 929, placeholder: NONE, formats: [AUTO, WEBP, AVIF], quality: 85)
+        gatsbyImageData(width: 1800, placeholder: NONE, formats: [AUTO, WEBP, AVIF], quality: 85)
       }
     }
     overviewImage: file(relativePath: { eq: "lfgoFinancialSummary.webp" }) {

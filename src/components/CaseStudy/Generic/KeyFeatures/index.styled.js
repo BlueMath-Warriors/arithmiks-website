@@ -1,286 +1,188 @@
-import { styled } from "styled-components";
-import { breakpoints } from "../../../Landing/index.styled";
+import styled from "styled-components";
+import { colors } from "../../../../styles/tokens";
+import { bandPadding } from "../layout.styled";
 
-export const KeyFeaturesHeader = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  max-width: 1120px;
-  margin: 0 auto;
-  padding: 80px 20px 24px 20px;
-  position: relative;
+const SLIDE_EASE = "cubic-bezier(0.65, 0, 0.35, 1)";
+const ARROW_BG = "#ceddf8";
+const ARROW_COLOR = "#0957de";
+const INACTIVE_DOT = "#d6d6d6";
 
-  @media screen and (max-width: ${breakpoints.large}) {
-    max-width: 760px;
-    padding: 60px 20px 20px 20px;
-  }
-
-  @media screen and (max-width: ${breakpoints.medium}) {
-    padding: 48px 16px 16px 16px;
-  }
+export const FeaturesSection = styled.section`
+  ${bandPadding}
+  background: linear-gradient(180deg, #e6eefc 0%, #ffffff 100%);
+  overflow: clip;
 `;
 
-export const SubHeadingContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  width: 100%;
-  max-width: 1120px;
-  padding-left: 0;
-  margin-left: -40px;
-  align-self: flex-start;
+export const Header = styled.div`
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto;
+`;
 
-  @media screen and (max-width: ${breakpoints.large}) {
-    max-width: 760px;
-    padding-left: 0;
-    margin-left: -40px;
-    align-self: flex-start;
-  }
+export const Body = styled.div`
+  margin-top: clamp(40px, 4vw, 64px);
+`;
 
-  @media screen and (max-width: ${breakpoints.medium}) {
-    padding-left: 0;
-    margin-left: 0;
-    align-self: flex-start;
+export const Caption = styled.div`
+  will-change: transform, opacity;
+`;
+
+export const CaptionTitle = styled.h3`
+  margin: 0;
+  font-size: clamp(19px, 1.7vw, 28px);
+  font-weight: 700;
+  letter-spacing: -0.012em;
+  line-height: 1.3;
+  color: ${colors.primary};
+`;
+
+export const CaptionText = styled.p`
+  margin-top: 12px;
+  font-size: clamp(15px, 1.25vw, 20px);
+  line-height: 1.6;
+  color: ${colors.textMuted};
+`;
+
+export const Stage = styled.div`
+  --gap: clamp(28px, 3.55vw, 68px);
+  --arrow: clamp(40px, 3.06vw, 56px);
+  position: relative;
+  width: min(100%, 76vw, calc((100svh - 230px) * 1.8028));
+  min-width: min(100%, 640px);
+  margin: clamp(24px, 2.6vw, 40px) auto 0;
+
+  @media (max-width: 900px) {
     width: 100%;
   }
 `;
 
-export const KeyFeaturesLabel = styled.p`
-  color: #0957DE;
-  font-family: Poppins;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;
-  margin: 0 0 8px 0;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  text-align: center;
-
-  @media screen and (max-width: ${breakpoints.medium}) {
-    font-size: 12px;
-  }
-`;
-
-export const PrimaryHeading = styled.h2`
-  color: #1d1d1f;
-  text-align: center;
-  font-family: Poppins;
-  font-size: 48px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-  margin: 0 0 24px 0;
-
-  @media screen and (max-width: ${breakpoints.medium}) {
-    font-size: 36px;
-    margin-bottom: 20px;
-  }
-`;
-
-export const Secondary = styled.span`
-  color: #0957DE;
-`;
-
-export const SubHeading = styled.p`
-  color: #42526B;
-  text-align: left;
-  font-family: Poppins;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 28px;
-  margin: 0 0 16px 0;
-  max-width: 800px;
-  width: 100%;
-  padding-left: 0;
-  margin-left: 0;
-
-  @media screen and (max-width: ${breakpoints.large}) {
-    padding-left: 0;
-    margin-left: 0;
-    margin-bottom: 16px;
-  }
-
-  @media screen and (max-width: ${breakpoints.medium}) {
-    font-size: 16px;
-    line-height: 24px;
-    margin-bottom: 12px;
-    padding-left: 0;
-    margin-left: 0;
-  }
-`;
-
-export const SubHeadingTitle = styled.span`
-  color: #0957DE;
-  font-weight: 600;
-`;
-
-export const CarouselButtons = styled.div`
-  display: contents;
-`;
-
-export const CarouselButton = styled.button`
-  display: flex;
-  width: 48px;
-  height: 50px;
-  padding: 16px;
-  justify-content: center;
-  align-items: center;
-  border-radius: 100px;
-  border: none;
-  background: #CEDDF8;
-  cursor: pointer;
-  transition: box-shadow 0.3s ease;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 20;
-  ${(props) =>
-    props.side === "left"
-      ? "left: calc(50% - 500px - 64px);"
-      : "right: calc(50% - 500px - 64px);"}
-
-  &:hover {
-    box-shadow: 4px 8px 24px 0px rgba(9, 87, 222, 0.25);
-  }
-
-  img {
-    width: 18px;
-    height: 18px;
-  }
-
-  @media screen and (max-width: ${breakpoints.large}) {
-    ${(props) =>
-      props.side === "left"
-        ? "left: calc(50% - 380px - 56px);"
-        : "right: calc(50% - 380px - 56px);"}
-  }
-
-  @media screen and (max-width: ${breakpoints.medium}) {
-    width: 40px;
-    height: 42px;
-    padding: 12px;
-    ${(props) => (props.side === "left" ? "left: 4px;" : "right: 4px;")}
-
-    img {
-      width: 16px;
-      height: 16px;
-    }
-  }
-`;
-
-export const CarouselSection = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-bottom: 80px;
+export const Track = styled.div`
   position: relative;
-
-  @media screen and (max-width: ${breakpoints.medium}) {
-    padding-bottom: 60px;
-  }
-`;
-
-export const CarouselContainer = styled.div`
-  position: relative;
-  width: 100%;
-  max-width: 100%;
-  height: 690px;
-  overflow: hidden;
-  cursor: grab;
+  z-index: 1;
+  isolation: isolate;
+  aspect-ratio: 1033 / 573;
   touch-action: pan-y;
   user-select: none;
-  -webkit-user-select: none;
+`;
 
-  &:active {
-    cursor: grabbing;
-  }
+export const Slide = styled.div`
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: ${({ $transform }) => $transform};
+  opacity: ${({ $opacity }) => $opacity};
+  z-index: ${({ $zIndex }) => $zIndex};
+  transition: transform 0.75s ${SLIDE_EASE}, opacity 0.6s ease;
+  will-change: transform;
+  pointer-events: none;
 
-  @media screen and (max-width: ${breakpoints.large}) {
-    height: 524px;
-  }
-
-  @media screen and (max-width: ${breakpoints.medium}) {
-    height: 280px;
+  @media (max-width: 900px) {
+    ${({ $isNeighbour }) => $isNeighbour && "opacity: 0;"}
   }
 `;
 
-export const CarouselSlide = styled.div`
+const SLIDE_SHADOW = "0 2px 30px rgba(0, 0, 0, 0.15)";
+const SLIDE_RADIUS = "8px";
+
+// A screenshot with the design's 1.6 aspect fills a white card and is cropped
+// to it. Any other image is shown whole, centred, with the same radius and
+// shadow on the image itself, so nothing is cropped and no white bars show.
+export const SlideCard = styled.div`
+  position: relative;
+  width: 100%;
+  height: 100%;
+  ${({ $framed }) =>
+    $framed
+      ? `background: #fff; border-radius: ${SLIDE_RADIUS}; box-shadow: ${SLIDE_SHADOW}; overflow: hidden;`
+      : "display: flex; align-items: center; justify-content: center;"}
+
+  img {
+    display: block;
+    ${({ $framed }) =>
+      $framed
+        ? "width: 100%; height: 100%; object-fit: cover; object-position: left top;"
+        : `max-width: 100%; max-height: 100%; width: auto; height: auto; border-radius: ${SLIDE_RADIUS}; box-shadow: ${SLIDE_SHADOW};`}
+    opacity: ${({ $isNeighbour }) => ($isNeighbour ? 0.5 : 1)};
+    transition: opacity 0.75s ease;
+  }
+`;
+
+// A blue wash fades in over a neighbour once it has parked beside the main card.
+export const Wash = styled.div`
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    ${({ $direction }) => $direction},
+    rgba(13, 109, 235, 0) 0%,
+    rgba(13, 109, 235, 0.15) 26%,
+    rgba(13, 109, 235, 0.15) 100%
+  );
+  opacity: ${({ $isNeighbour }) => ($isNeighbour ? 1 : 0)};
+  transition: ${({ $isNeighbour }) => ($isNeighbour ? "opacity 0.3s ease 0.75s" : "opacity 0s")};
+`;
+
+export const Arrow = styled.button`
   position: absolute;
   top: 50%;
-  left: 50%;
+  ${({ $side }) =>
+    $side === "left"
+      ? "left: calc(-1 * (var(--gap) + var(--arrow) / 2) + 4px);"
+      : "right: calc(-1 * (var(--gap) + var(--arrow) / 2) + 4px);"}
+  z-index: 10;
+  transform: translateY(-50%);
+  width: var(--arrow);
+  height: var(--arrow);
+  border-radius: 50%;
+  background: ${ARROW_BG};
+  border: 0;
+  color: ${ARROW_COLOR};
+  cursor: pointer;
   display: flex;
+  align-items: center;
   justify-content: center;
-  align-items: center;
-  transition: transform 0.4s ease, opacity 0.4s ease;
-  transform: translate(-50%, -50%)
-    translateX(${(props) => props.$offset * 92}%)
-    scale(${(props) => (props.$active ? 1 : 0.8)});
-  opacity: ${(props) => (props.$active ? 1 : props.$isPeek ? 0.5 : 0)};
-  z-index: ${(props) => (props.$active ? 10 : props.$isPeek ? 5 : 0)};
-  pointer-events: ${(props) => (props.$isPeek ? "auto" : "none")};
-  cursor: ${(props) => (props.$isPeek ? "pointer" : "default")};
+  transition: background 0.25s ease, color 0.25s ease;
 
-  @media screen and (max-width: ${breakpoints.medium}) {
-    transform: translate(-50%, -50%)
-      translateX(${(props) => props.$offset * 96}%)
-      scale(${(props) => (props.$active ? 1 : 0.85)});
+  svg,
+  svg * {
+    color: inherit;
+  }
+
+  &:hover {
+    background: ${colors.primary};
+    color: #fff;
+  }
+
+  @media (max-width: 900px) {
+    ${({ $side }) => ($side === "left" ? "left: 10px;" : "right: 10px;")}
+    box-shadow: 0 8px 22px -12px rgba(19, 85, 255, 0.45);
+  }
+
+  @media (max-width: 760px) {
+    display: none;
   }
 `;
 
-export const DashboardImage = styled.img`
-  width: 1000px;
-  height: 690px;
-  object-fit: contain;
-  display: block;
-  border-radius: 12px;
-
-  @media screen and (max-width: ${breakpoints.large}) {
-    width: 760px;
-    height: 524px;
-  }
-
-  @media screen and (max-width: ${breakpoints.medium}) {
-    width: calc(100vw - 80px);
-    max-width: 400px;
-    height: auto;
-    min-height: 250px;
-  }
-`;
-
-export const PaginationDots = styled.div`
+export const Dots = styled.div`
   display: flex;
-  align-items: center;
   justify-content: center;
   gap: 12px;
-  margin-top: 32px;
-  width: 100%;
-
-  @media screen and (max-width: ${breakpoints.medium}) {
-    margin-top: 24px;
-    gap: 10px;
-  }
+  margin-top: clamp(32px, 3.2vw, 52px);
 `;
 
 export const Dot = styled.button`
   width: 12px;
   height: 12px;
-  border-radius: 50%;
-  border: none;
-  background: ${(props) => (props.active ? "#0957DE" : "#D1D5DB")};
-  cursor: pointer;
   padding: 0;
-  transition: background 0.3s ease;
+  border-radius: 50%;
+  border: 0;
+  background: ${({ $active }) => ($active ? colors.primary : INACTIVE_DOT)};
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
 
   &:hover {
-    background: ${(props) => (props.active ? "#0957DE" : "#9CA3AF")};
-  }
-
-  @media screen and (max-width: ${breakpoints.medium}) {
-    width: 10px;
-    height: 10px;
+    transform: scale(1.2);
   }
 `;

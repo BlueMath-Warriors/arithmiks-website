@@ -15,8 +15,8 @@ const breadcrumbItems = [
   { name: pageSeo.breadcrumbName, pathname: "/case-studies/quanta" },
 ];
 
-const QuantaPage = ({ data }) => {
-  return <Quanta images={data} breadcrumbItems={breadcrumbItems} />;
+const QuantaPage = () => {
+  return <Quanta />;
 };
 
 export default QuantaPage;
@@ -36,7 +36,7 @@ export const query = graphql`
     heroImage: file(relativePath: { eq: "quantaHero.webp" }) {
       childImageSharp {
         gatsbyImageData(
-          width: 929
+          width: 1800
           placeholder: NONE
           formats: [AUTO, WEBP, AVIF]
           quality: 85

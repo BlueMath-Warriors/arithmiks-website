@@ -7,7 +7,7 @@ export const getHeroData = (images) => ({
   caption: (
     <>
       A web platform that simplifies rebar design, vendor
-      <br />
+      {" "}
       quoting, and seamless online ordering.
     </>
   ),
@@ -119,8 +119,6 @@ export const keyFeaturesData = {
       image: "/Easybar Key Features/easybarKeyFeature6.webp",
     },
   ],
-  leftIconSrc: "/leftIcon.svg",
-  rightIconSrc: "/rightIcon.svg",
 };
 
 export const testimonialData = {

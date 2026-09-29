@@ -16,7 +16,7 @@ const breadcrumbItems = [
 ];
 
 const MediaInfrastructurePage = ({ data }) => {
-  return <MediaInfrastructure images={data} breadcrumbItems={breadcrumbItems} />;
+  return <MediaInfrastructure images={data} />;
 };
 
 export default MediaInfrastructurePage;
@@ -36,7 +36,7 @@ export const query = graphql`
     heroImage: file(relativePath: { eq: "mediaInfraHero.webp" }) {
       childImageSharp {
         gatsbyImageData(
-          width: 929
+          width: 1800
           placeholder: NONE
           formats: [AUTO, WEBP, AVIF]
           quality: 85

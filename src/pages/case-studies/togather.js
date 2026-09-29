@@ -16,7 +16,7 @@ const breadcrumbItems = [
 ];
 
 const TogatherPage = ({ data }) => {
-  return <Togather images={data} breadcrumbItems={breadcrumbItems} />;
+  return <Togather images={data} />;
 };
 
 export default TogatherPage;
@@ -35,7 +35,7 @@ export const query = graphql`
   query {
     heroImage: file(relativePath: { eq: "togatherMemorandum.webp" }) {
       childImageSharp {
-        gatsbyImageData(width: 929, placeholder: NONE, formats: [AUTO, WEBP, AVIF], quality: 85)
+        gatsbyImageData(width: 1800, placeholder: NONE, formats: [AUTO, WEBP, AVIF], quality: 85)
       }
     }
     overviewImage: file(relativePath: { eq: "togatherFinancialSummary.webp" }) {

@@ -16,7 +16,7 @@ const breadcrumbItems = [
 ];
 
 const GoPage = ({ data }) => {
-  return <Go images={data} breadcrumbItems={breadcrumbItems} />;
+  return <Go images={data} />;
 };
 
 export default GoPage;
@@ -35,7 +35,7 @@ export const query = graphql`
   query {
     heroImage: file(relativePath: { eq: "goMemorandum.webp" }) {
       childImageSharp {
-        gatsbyImageData(width: 929, placeholder: NONE, formats: [AUTO, WEBP, AVIF], quality: 85)
+        gatsbyImageData(width: 1800, placeholder: NONE, formats: [AUTO, WEBP, AVIF], quality: 85)
       }
     }
     overviewImage: file(relativePath: { eq: "goFinancialSummary.webp" }) {

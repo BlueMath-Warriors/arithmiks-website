@@ -1,71 +1,108 @@
 import React from "react";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
-import * as containerStyles from "../../../../styles/global.module.css";
-import Breadcrumbs from "../../../Breadcrumbs";
-import MeshHeroBackground from "../../../shared/MeshHeroBackground";
+import { caseStudies } from "../../../Landing/Case-Study/caseStudies";
+import { GradientText } from "../../../shared/Section/index.styled";
 import {
-  HeroForeground,
+  HeroSection,
+  MeshClip,
+  Mesh,
+  BlueOrb,
+  PinkOrb,
+  HeroShell,
   HeroContent,
-  SmallTxt,
-  LogoImage,
-  StudyCaption,
-  HeroImg,
-  HeroShade,
+  EyebrowLabel,
+  ProductLogo,
+  Headline,
+  Subtitle,
+  CtaRow,
+  PrimaryCta,
+  SecondaryCta,
+  CtaGlyph,
+  Frame,
 } from "./index.styled";
+
+const HIGHLIGHT_WORD_COUNT = 2;
+// The constrained gatsby image is capped at its generated width; the frame decides the size.
+const FILL_FRAME = { width: "100%", maxWidth: "none" };
+
+// Case studies without a hand-written headline reuse their card title, with
+// the last words in the brand gradient like the design's headline.
+const splitTitle = (title) => {
+  const words = title.split(" ");
+  const cut = Math.max(0, words.length - HIGHLIGHT_WORD_COUNT);
+  return { plain: words.slice(0, cut).join(" "), highlight: words.slice(cut).join(" ") };
+};
 
 /**
  * @param {Object} props
- * @param {string} props.category
+ * @param {string} props.category eyebrow above the logo
  * @param {string} props.logoSrc
  * @param {string} props.logoAlt
- * @param {React.ReactNode} props.caption
- * @param {Object} [props.heroImageData] - gatsbyImageData from GraphQL query
- * @param {string} [props.heroImageSrc] - fallback static path
+ * @param {string} [props.slug] case-study slug; its card title is the h1 when no `headline` is given
+ * @param {string | { plain: string; highlight: string }} [props.headline] h1 text; the highlight part gets the gradient
+ * @param {React.ReactNode} props.caption subtitle under the headline
+ * @param {string} [props.liveUrl] product URL for the "Visit" button
+ * @param {string} [props.liveLabel] name used in the button, defaults to the logo alt
+ * @param {boolean} [props.screenshot] the image is a plain app screenshot (rounded, ringed) rather than a ready-made mockup
+ * @param {Object} [props.heroImageData] gatsbyImageData from GraphQL
+ * @param {string} [props.heroImageSrc] static fallback path
  * @param {string} props.heroImageAlt
- * @param {{ name: string; pathname: string }[]} [props.breadcrumbItems]
  */
 const Hero = ({
   category,
   logoSrc,
   logoAlt = "Logo",
+  slug,
+  headline,
   caption,
+  liveUrl,
+  liveLabel,
+  screenshot = false,
   heroImageData,
   heroImageSrc,
-  heroImageAlt = "Hero Image",
-  breadcrumbItems,
+  heroImageAlt = "Hero image",
 }) => {
   const gatsbyImage = heroImageData ? getImage(heroImageData) : null;
+  const headlineSource = headline || caseStudies.find((study) => study.slug === slug)?.title || logoAlt;
+  const { plain, highlight } =
+    typeof headlineSource === "string" ? splitTitle(headlineSource) : headlineSource;
 
   return (
-    <div className={containerStyles.easybar_hero}>
-      <MeshHeroBackground />
-      <HeroForeground>
-        <Breadcrumbs items={breadcrumbItems} />
+    <HeroSection id="top" aria-labelledby="case-study-headline">
+      <MeshClip aria-hidden="true">
+        <Mesh>
+          <BlueOrb />
+          <PinkOrb />
+        </Mesh>
+      </MeshClip>
+      <HeroShell>
         <HeroContent>
-          <SmallTxt>{category}</SmallTxt>
-          {logoSrc && <LogoImage src={logoSrc} alt={logoAlt} />}
-          <StudyCaption>{caption}</StudyCaption>
-          <div style={{ position: "relative" }}>
-            {gatsbyImage ? (
-              <GatsbyImage
-                image={gatsbyImage}
-                alt={heroImageAlt}
-                loading="eager"
-                style={{
-                  marginTop: "12px",
-                  marginBottom: "-40px",
-                  maxWidth: "100%",
-                  display: "block",
-                }}
-              />
-            ) : (
-              <HeroImg src={heroImageSrc} alt={heroImageAlt} />
+          <EyebrowLabel>{category}</EyebrowLabel>
+          {logoSrc && <ProductLogo src={logoSrc} alt={logoAlt} />}
+          <Headline id="case-study-headline">
+            {plain} <GradientText>{highlight}</GradientText>
+          </Headline>
+          <Subtitle>{caption}</Subtitle>
+          <CtaRow>
+            {liveUrl && (
+              <PrimaryCta href={liveUrl} target="_blank" rel="noopener noreferrer">
+                Visit {liveLabel || logoAlt} <CtaGlyph aria-hidden="true">↗</CtaGlyph>
+              </PrimaryCta>
             )}
-          </div>
+            <SecondaryCta href="#features">
+              Explore features <CtaGlyph aria-hidden="true">↓</CtaGlyph>
+            </SecondaryCta>
+          </CtaRow>
         </HeroContent>
-      </HeroForeground>
-      <HeroShade />
-    </div>
+        <Frame $screenshot={screenshot}>
+          {gatsbyImage ? (
+            <GatsbyImage image={gatsbyImage} alt={heroImageAlt} loading="eager" style={FILL_FRAME} />
+          ) : (
+            <img src={heroImageSrc} alt={heroImageAlt} />
+          )}
+        </Frame>
+      </HeroShell>
+    </HeroSection>
   );
 };
 
