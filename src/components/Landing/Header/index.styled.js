@@ -119,6 +119,14 @@ export const NavButton = styled.button`
   font-weight: 450;
   color: ${navLinkColor};
   transition: color 0.25s ease;
+
+  &:hover {
+    color: ${colors.primary};
+  }
+
+  &:hover svg {
+    stroke: ${colors.primary};
+  }
 `;
 
 export const Chevron = styled.svg`
@@ -311,14 +319,25 @@ export const MegaPaneFooter = styled.div`
   padding-top: 18px;
 `;
 
+// Bare glyph — needs its own colour since global.module.css's `* { color: #000 }`
+// beats the link's inherited blue once this wrapper span exists.
+export const MegaPaneAllArrow = styled.span`
+  display: inline-block;
+  color: inherit;
+  transition: transform 0.25s ease;
+`;
+
 export const MegaPaneAllLink = styled(Link)`
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
   font-size: 12.5px;
   font-weight: 550;
   color: ${colors.primary};
   text-decoration: none;
 
-  &:hover {
-    text-decoration: underline;
+  &:hover ${MegaPaneAllArrow} {
+    transform: translateX(4px);
   }
 `;
 
@@ -418,6 +437,16 @@ export const MegaItem = styled(Link)`
   color: #3a4256;
   text-decoration: none;
   transition: background 0.2s ease, color 0.2s ease;
+
+  &::before {
+    content: "";
+    flex: none;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: #b4bccd;
+    transition: background 0.2s ease;
+  }
 
   &:hover {
     background: #f5f8ff;
@@ -549,7 +578,8 @@ export const ProductActionsRow = styled.span`
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  margin-top: 4px;
+  margin-top: auto;
+  padding-top: 4px;
 `;
 
 export const ProductCaseStudyLink = styled(Link)`
@@ -570,6 +600,30 @@ export const ProductCaseStudyLink = styled(Link)`
 // Bare glyph — needs its own color since global.module.css's `* { color: #000 }`
 // beats the link's inherited blue the moment this wrapper span exists (same
 // gotcha documented in the Careers components).
+export const ProductLiveLink = styled.a`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 36px;
+  height: 36px;
+  margin: -4px -6px -4px 0;
+  border-radius: 50%;
+  color: ${colors.textFaint};
+  background: transparent;
+  transition: background 0.22s ease, color 0.22s ease;
+
+  &:hover {
+    background: #eaf0ff;
+    color: ${colors.primary};
+  }
+
+  svg,
+  svg * {
+    color: inherit;
+  }
+`;
+
 export const ProductArrow = styled.span`
   display: inline-block;
   color: inherit;
@@ -638,9 +692,13 @@ export const CompanyLink = styled.a`
     color: ${colors.primary};
   }
 
+  // global.module.css's "* { color: #000 }" targets the span directly, so it
+  // must inherit for the link's hover blue to reach the heading.
   span {
     font-size: 15.5px;
     font-weight: 550;
+    color: inherit;
+    transition: color 0.2s ease;
   }
   p {
     font-size: 13.5px;

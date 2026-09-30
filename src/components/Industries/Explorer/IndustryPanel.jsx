@@ -22,8 +22,17 @@ import {
 } from "./index.styled";
 
 const IndustryPanel = ({ explorer }) => {
-  const { industry, activeCase, caseIndex, fadeScope, isPanelOffscreen, panelRef, selectCase, showNextCase } =
-    explorer;
+  const {
+    industry,
+    activeCase,
+    caseIndex,
+    fadeScope,
+    isPanelOffscreen,
+    panelRef,
+    caseImageRef,
+    selectCase,
+    showNextCase,
+  } = explorer;
   const hasSeveralCases = industry.cases.length > 1;
 
   return (
@@ -63,7 +72,7 @@ const IndustryPanel = ({ explorer }) => {
             </div>
           </Story>
           <CaseColumn>
-            <CaseCard caseStudy={activeCase} />
+            <CaseCard caseStudy={activeCase} imageRef={caseImageRef} />
             {hasSeveralCases && (
               <CaseDots
                 cases={industry.cases}

@@ -1,6 +1,9 @@
 import sgMail from "@sendgrid/mail";
 import { generateContactResponseEmail } from "./email-template/index.jsx";
 import { sanitizeInput, validateRequiredFields } from "../util/index.js";
+import { prepareAttachment } from "../util/attachment.js";
+
+const DEFAULT_CATEGORY = "Website enquiry";
 
 export default async function formHandler(req, res) {
   // Only allow POST requests
@@ -25,7 +28,8 @@ export default async function formHandler(req, res) {
     // Extract and sanitize form data
     const formData = {
       full_name: sanitizeInput(req.body.full_name),
-      category: sanitizeInput(req.body.category),
+      category: sanitizeInput(req.body.category) || DEFAULT_CATEGORY,
+      role: sanitizeInput(req.body.role) || "",
       email: sanitizeInput(req.body.sender_email),
       phone_number: sanitizeInput(req.body.phone_number) || "Not Provided",
       organization: sanitizeInput(req.body.organization) || "Personal Project",
@@ -42,13 +46,28 @@ export default async function formHandler(req, res) {
       });
     }
 
+    // The form sends at most one file, in the "attachment" field.
+    const upload = (req.files || []).find((file) => file.fieldname === "attachment");
+    const attachment = upload ? prepareAttachment(upload) : null;
+    if (attachment && attachment.error) {
+      return res.status(400).json({
+        success: false,
+        error: "Validation failed",
+        details: [attachment.error],
+      });
+    }
+
     // Extract first name for personalization
     const firstName = formData.full_name.includes(" ")
       ? formData.full_name.split(" ")[0]
       : formData.full_name;
 
     // Prepare email content
-    const htmlContent = generateContactResponseEmail(formData, firstName);
+    const htmlContent = generateContactResponseEmail(
+      formData,
+      firstName,
+      attachment ? attachment.filename : ""
+    );
 
     const serviceEmail = process.env.SERVICE_EMAIL;
 
@@ -62,6 +81,16 @@ export default async function formHandler(req, res) {
       cc: serviceEmail,
       subject: `${formData.category} Inquiry - ${formData.organization}`,
       html: htmlContent,
+      ...(attachment && {
+        attachments: [
+          {
+            content: attachment.content,
+            filename: attachment.filename,
+            type: attachment.type,
+            disposition: "attachment",
+          },
+        ],
+      }),
     };
 
     // Send email

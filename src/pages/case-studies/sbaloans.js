@@ -16,7 +16,7 @@ const breadcrumbItems = [
 ];
 
 const SbaloansPage = ({ data }) => {
-  return <Sbaloans images={data} breadcrumbItems={breadcrumbItems} />;
+  return <Sbaloans images={data} />;
 };
 
 export default SbaloansPage;
@@ -35,13 +35,13 @@ export const query = graphql`
   query {
     heroImage: file(relativePath: { eq: "sbaloansMemorandum.webp" }) {
       childImageSharp {
-        gatsbyImageData(width: 929, placeholder: NONE, formats: [AUTO, WEBP, AVIF], quality: 85)
+        gatsbyImageData(width: 1800, placeholder: NONE, formats: [AUTO, WEBP, AVIF], quality: 85)
       }
     }
     overviewImage: file(relativePath: { eq: "sbaloansFinancialSummary.webp" }) {
       childImageSharp {
         gatsbyImageData(
-          width: 1230
+          width: 2000
           placeholder: NONE
           formats: [AUTO, WEBP, AVIF]
           quality: 85

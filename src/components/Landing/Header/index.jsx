@@ -24,6 +24,7 @@ import {
   MegaItem,
   MegaPaneFooter,
   MegaPaneAllLink,
+  MegaPaneAllArrow,
   MegaSpotlight,
   SpotlightLabel,
   SpotlightCard,
@@ -46,6 +47,7 @@ import {
   ProductDescription,
   ProductActionsRow,
   ProductCaseStudyLink,
+  ProductLiveLink,
   ProductArrow,
   CompanyPanel,
   CompanyIntro,
@@ -372,10 +374,12 @@ const Header = ({ white, fixed_bar, lightHero, transparentWhile }) => {
                 </MegaItemsGrid>
                 <MegaPaneFooter>
                   {category.hasPage ? (
-                    <MegaPaneAllLink to={category.url}>All {category.title} →</MegaPaneAllLink>
+                    <MegaPaneAllLink to={category.url}>
+                      All {category.title} <MegaPaneAllArrow aria-hidden="true">→</MegaPaneAllArrow>
+                    </MegaPaneAllLink>
                   ) : (
                     <MegaPaneAllLink as="a" href="#">
-                      All {category.title} →
+                      All {category.title} <MegaPaneAllArrow aria-hidden="true">→</MegaPaneAllArrow>
                     </MegaPaneAllLink>
                   )}
                 </MegaPaneFooter>
@@ -438,6 +442,28 @@ const Header = ({ white, fixed_bar, lightHero, transparentWhile }) => {
                       Read case study{" "}
                       <ProductArrow aria-hidden="true">→</ProductArrow>
                     </ProductCaseStudyLink>
+                    <ProductLiveLink
+                      href={product.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`Visit ${product.name} (opens in a new tab)`}
+                    >
+                      <svg
+                        viewBox="0 0 20 20"
+                        width="17"
+                        height="17"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="1.7"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        aria-hidden="true"
+                      >
+                        <path d="M11 4h5v5" />
+                        <path d="M16 4 9.2 10.8" />
+                        <path d="M14.4 12.2v3.4a1.4 1.4 0 0 1-1.4 1.4H4.4A1.4 1.4 0 0 1 3 15.6V7a1.4 1.4 0 0 1 1.4-1.4h3.4" />
+                      </svg>
+                    </ProductLiveLink>
                   </ProductActionsRow>
                 </ProductCard>
               );

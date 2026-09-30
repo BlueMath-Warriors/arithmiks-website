@@ -1,147 +1,170 @@
-import { styled } from "styled-components";
+import styled from "styled-components";
 import { Link } from "gatsby";
-import { breakpoints } from "../../../Landing/index.styled";
+import { colors } from "../../../../styles/tokens";
+import { bandPadding } from "../layout.styled";
 
-export const Section = styled.section`
-  background: #ffffff;
+export const MoreSection = styled.section`
+  ${bandPadding}
+  background: #fff;
+`;
+
+export const HeadRow = styled.div`
   display: flex;
-  justify-content: center;
-  width: 100%;
-  padding: 0 0 120px 0;
-
-  @media screen and (max-width: ${breakpoints.large}) {
-    padding-bottom: 96px;
-  }
-
-  @media screen and (max-width: ${breakpoints.medium}) {
-    padding-bottom: 72px;
-  }
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 18px 40px;
 `;
 
-export const Container = styled.div`
-  width: 1120px;
-  margin: 0 auto;
-  padding: 0 20px;
-
-  @media screen and (max-width: ${breakpoints.large}) {
-    width: 760px;
-  }
-
-  @media screen and (max-width: ${breakpoints.medium}) {
-    width: 382px;
-    padding: 0 16px;
-  }
-
-  @media screen and (max-width: ${breakpoints.xsmall}) {
-    width: 95%;
-  }
-`;
-
-export const RelatedServiceText = styled.p`
-  text-align: center;
-  color: #5c5c5c;
-  font-family: Poppins;
-  font-size: 15px;
-  margin: 0 0 40px;
-
-  a {
-    color: #084ec2;
-    font-weight: 600;
-    text-decoration: underline;
-
-    &:hover {
-      color: #1355ff;
-    }
-  }
-`;
-
-export const HeadingRow = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  margin-bottom: 56px;
-
-  @media screen and (max-width: ${breakpoints.large}) {
-    margin-bottom: 48px;
-  }
-
-  @media screen and (max-width: ${breakpoints.medium}) {
-    margin-bottom: 40px;
-    gap: 12px;
-  }
-`;
-
-export const DividerLine = styled.div`
-  flex: 1;
-  height: 1px;
-  background: #e7eaee;
-`;
-
-export const Heading = styled.p`
-  margin: 0;
-  color: #858585;
-  font-family: Poppins;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 24px;
-  letter-spacing: 1.25px;
-  text-transform: uppercase;
+export const ViewAllLink = styled(Link)`
   white-space: nowrap;
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 24px;
+  border-radius: 100px;
+  border: 1.5px solid ${colors.primary};
+  color: ${colors.primary};
+  font-size: 15px;
+  font-weight: 600;
+  transition: background 0.25s ease, color 0.25s ease;
 
-  @media screen and (max-width: ${breakpoints.medium}) {
-    font-size: 12px;
+  span {
+    color: inherit;
+  }
+
+  &:hover {
+    background: ${colors.primary};
+    color: #fff;
   }
 `;
 
-// Gap matches CaseStudyCard's other two homes (CaseStudiesIndex's grid and
-// ServicesIndex's SelectedWork) — this is the same card component now, so it
-// should read the same everywhere it appears rather than keeping the old
-// hand-rolled card's much wider 120px gap.
-export const CardsGrid = styled.div`
+export const Grid = styled.div`
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: clamp(24px, 2.4vw, 52px) clamp(24px, 2.6vw, 56px);
   align-items: stretch;
-  width: 100%;
+  margin-top: clamp(32px, 3.2vw, 48px);
 
-  @media screen and (max-width: ${breakpoints.medium}) {
+  @media (max-width: 760px) {
     grid-template-columns: 1fr;
   }
 `;
 
-export const ButtonRow = styled.div`
+export const CardLink = styled(Link)`
   display: flex;
-  justify-content: center;
-  margin-top: 56px;
+  flex-direction: column;
+  background: #fff;
+  border: 1px solid ${colors.border};
+  border-radius: 20px;
+  overflow: hidden;
+  color: ${colors.text};
+  box-shadow: 0 8px 24px rgba(10, 15, 31, 0.06);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease,
+    border-color 0.3s ease;
 
-  @media screen and (max-width: ${breakpoints.medium}) {
-    margin-top: 40px;
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 26px 52px -20px rgba(19, 85, 255, 0.34);
+    border-color: ${colors.primary};
+    color: ${colors.text};
   }
 `;
 
-export const ViewMoreButtonLink = styled(Link)`
-  display: inline-flex;
-  padding: 12px 18px;
-  justify-content: center;
+export const CardImageFrame = styled.span`
+  position: relative;
+  display: block;
+  aspect-ratio: 5 / 4;
+  background: ${colors.surface};
+  border-bottom: 1px solid ${colors.border};
+  overflow: hidden;
+
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+`;
+
+export const CardBody = styled.span`
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 24px 26px 26px;
+`;
+
+export const CardTopRow = styled.span`
+  display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  border-radius: 8px;
-  border: 1px solid #ceddf8;
-  background: #ceddf8;
-  cursor: pointer;
-  text-decoration: none;
-  transition: box-shadow 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 26px;
 
-  color: #084ec2;
-  font-family: Poppins;
-  font-size: 14px;
-  font-style: normal;
+  img {
+    display: block;
+    height: 24px;
+    width: auto;
+    max-width: 140px;
+    object-fit: contain;
+  }
+`;
+
+export const CardChip = styled.span`
+  padding: 5px 12px;
+  border-radius: 100px;
+  background: #eaf0ff;
+  font-size: 12px;
   font-weight: 600;
-  line-height: 24px;
-  letter-spacing: -0.09px;
+  color: ${colors.primary};
+`;
 
-  &:hover {
-    transform: translateY(-1px);
-    box-shadow: 0px 8px 24px rgba(7, 9, 13, 0.08);
+export const CardName = styled.span`
+  font-size: 13px;
+  font-weight: 600;
+  color: ${colors.text};
+`;
+
+export const CardTitle = styled.span`
+  font-size: clamp(20px, 1.34vw, 22.5px);
+  font-weight: 700;
+  letter-spacing: -0.016em;
+  line-height: 1.25;
+`;
+
+export const CardText = styled.span`
+  font-size: clamp(14.5px, 0.93vw, 15.5px);
+  line-height: 1.6;
+  color: ${colors.textMuted};
+  text-wrap: pretty;
+`;
+
+export const CardCta = styled.span`
+  display: inline-flex;
+  align-items: baseline;
+  gap: 9px;
+  margin-top: auto;
+  font-size: clamp(14.5px, 0.93vw, 15.5px);
+  font-weight: 550;
+  color: ${colors.primary};
+
+  span {
+    color: inherit;
+  }
+`;
+
+export const RelatedService = styled.p`
+  margin-top: clamp(24px, 2.4vw, 36px);
+  font-size: 14px;
+  line-height: 1.6;
+  color: ${colors.textFaint};
+  text-align: center;
+
+  a {
+    color: ${colors.primary};
+    font-weight: 550;
   }
 `;

@@ -3,45 +3,40 @@ import {
   TechStackSection,
   TechStackContainer,
   TechStackTrack,
-  TechStackGroup,
   TechItem,
   TechIcon,
   SpecialIcon,
   TechName,
 } from "./index.styled";
 
-/**
- * @param {Object} props
- * @param {Array} props.technologies 
- * @param {string} props.technologies[].name 
- * @param {string} props.technologies[].icon 
- * @param {Array} props.specialIconNames 
- */
-const TechStack = ({
-  technologies = [],
-  specialIconNames = ["Postmark"],
-}) => {
-  const isSpecialIcon = (name) => specialIconNames.includes(name);
+const LOOP_COPIES = 3;
 
-  const renderItems = (keyPrefix) =>
-    technologies.map((tech, index) => (
-      <TechItem key={`${keyPrefix}-${index}`}>
-        {isSpecialIcon(tech.name) ? (
-          <SpecialIcon src={tech.icon} alt={tech.name} />
-        ) : (
-          <TechIcon src={tech.icon} alt={tech.name} />
-        )}
-        <TechName>{tech.name}</TechName>
-      </TechItem>
-    ));
+/**
+ * Blue "Built with" strip: the technologies loop three times so the CSS
+ * animation (translateX by one third) restarts without a visible jump.
+ *
+ * @param {Object} props
+ * @param {{ name: string; icon: string }[]} props.technologies
+ * @param {string[]} [props.specialIconNames] icons that keep their own colours
+ */
+const TechStack = ({ technologies = [], specialIconNames = ["Postmark"] }) => {
+  if (technologies.length === 0) return null;
 
   return (
-    <TechStackSection>
+    <TechStackSection aria-label="Built with">
       <TechStackContainer>
-        <TechStackTrack>
-          <TechStackGroup>{renderItems("a")}</TechStackGroup>
-          <TechStackGroup aria-hidden="true">{renderItems("b")}</TechStackGroup>
-          <TechStackGroup aria-hidden="true">{renderItems("c")}</TechStackGroup>
+        <TechStackTrack $itemCount={technologies.length}>
+          {Array.from({ length: LOOP_COPIES }).flatMap((_, copy) =>
+            technologies.map((tech) => {
+              const Icon = specialIconNames.includes(tech.name) ? SpecialIcon : TechIcon;
+              return (
+                <TechItem key={`${copy}-${tech.name}`} aria-hidden={copy > 0}>
+                  <Icon src={tech.icon} alt="" />
+                  <TechName>{tech.name}</TechName>
+                </TechItem>
+              );
+            })
+          )}
         </TechStackTrack>
       </TechStackContainer>
     </TechStackSection>

@@ -64,6 +64,12 @@ const CASE_STUDY_SEO = {
     description:
       "Read this case study to see how Arithmiks automated multi-party loan management for Mr. Seller Note, from note creation to final settlement.",
   },
+  clauselens: {
+    title: "AI Contract Review Platform Case Study | ClauseLens & Arithmiks",
+    breadcrumbName: "ClauseLens",
+    description:
+      "See how Arithmiks built ClauseLens, an AI contract review platform that flags risks and extracts key terms in about a minute, with every finding traced to its source sentence.",
+  },
   quanta: {
     title: "Conversational BI Platform Case Study | Quanta & Arithmiks",
     breadcrumbName: "Quanta",

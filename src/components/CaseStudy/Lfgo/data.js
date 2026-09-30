@@ -7,7 +7,7 @@ export const getHeroData = (images) => ({
   caption: (
     <>
       A Web3 platform to create, launch, and trade tokens on Ethereum
-      <br />
+      {" "}
       and Solana with seamless minting and wallet.
     </>
   ),
@@ -110,8 +110,6 @@ export const keyFeaturesData = {
       image: "/Lfgo Key Features/lfgoKeyFeature5.webp",
     },
   ],
-  leftIconSrc: "/leftIcon.svg",
-  rightIconSrc: "/rightIcon.svg",
 };
 
 export const testimonialData = {

@@ -215,7 +215,6 @@ const Footer = () => (
           <Link to="/privacy-policy">Privacy Policy</Link>
           <Link to="/terms-and-conditions">Terms &amp; Conditions</Link>
           <Link to="/ai-usage-policy">AI Usage Policy</Link>
-          <Link to="/privacy-policy#cookies">Cookie Policy</Link>
           <Link to="/sitemap">Sitemap</Link>
         </LegalLinks>
       </BottomBar>

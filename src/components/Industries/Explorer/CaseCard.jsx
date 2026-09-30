@@ -19,15 +19,15 @@ import {
 const IMAGE_WIDTH = 522;
 const IMAGE_HEIGHT = 424;
 
-const CaseCard = ({ caseStudy }) => (
+const CaseCard = ({ caseStudy, imageRef }) => (
   <CaseCardLink to={caseStudy.casePath}>
     <CaseImageFrame>
       <img
+        ref={imageRef}
         src={caseStudy.image}
         width={IMAGE_WIDTH}
         height={IMAGE_HEIGHT}
         alt={`${caseStudy.client} product screens`}
-        loading="lazy"
         decoding="async"
       />
     </CaseImageFrame>

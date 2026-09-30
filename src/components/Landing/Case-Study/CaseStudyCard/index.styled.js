@@ -7,10 +7,10 @@ import { colors } from "../../../../styles/tokens";
 // already defined at that point).
 export const CardLogo = styled.img`
   flex: none;
-  max-height: 18px;
+  max-height: 28px;
   height: auto;
   width: auto;
-  max-width: 104px;
+  max-width: 140px;
   object-fit: contain;
   filter: grayscale(1);
   opacity: 0.62;

@@ -7,7 +7,7 @@ export const getHeroData = (images) => ({
   caption: (
     <>
       A relocation platform that combines AI-powered research, country
-      <br />
+      {" "}
       comparisons, and a verified expat community in one product.
     </>
   ),
@@ -118,8 +118,6 @@ export const keyFeaturesData = {
       image: "/EHH Key Features/ehhKeyFeature3.webp",
     },
   ],
-  leftIconSrc: "/leftIcon.svg",
-  rightIconSrc: "/rightIcon.svg",
 };
 
 export const testimonialData = {

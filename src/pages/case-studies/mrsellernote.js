@@ -16,7 +16,7 @@ const breadcrumbItems = [
 ];
 
 const MrSellerNotePage = ({ data }) => {
-  return <MrSellerNote images={data} breadcrumbItems={breadcrumbItems} />;
+  return <MrSellerNote images={data} />;
 };
 
 export default MrSellerNotePage;
@@ -36,7 +36,7 @@ export const query = graphql`
     heroImage: file(relativePath: { eq: "msnHero.webp" }) {
       childImageSharp {
         gatsbyImageData(
-          width: 929
+          width: 1800
           placeholder: NONE
           formats: [AUTO, WEBP, AVIF]
           quality: 85
@@ -46,7 +46,7 @@ export const query = graphql`
     overviewImage: file(relativePath: { eq: "msnOverview.webp" }) {
       childImageSharp {
         gatsbyImageData(
-          width: 1230
+          width: 2000
           placeholder: NONE
           formats: [AUTO, WEBP, AVIF]
           quality: 85

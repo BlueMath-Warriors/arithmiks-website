@@ -1,4 +1,4 @@
-export const generateContactResponseEmail = (formData, firstName) => {
+export const generateContactResponseEmail = (formData, firstName, attachmentName = "") => {
   return `
  <!DOCTYPE html>
     <html lang="en">
@@ -202,13 +202,6 @@ export const generateContactResponseEmail = (formData, firstName) => {
                 <p class="main-text">Hi ${firstName},<br><br> We have received your following details. Our Team will reach out to you soon.</p>
         
                 <div class="section">
-                <h3 class="detail_heading">How can we help you?</h3>
-                <p class="detail_value">${formData.category}</p>  
-                </div>
-    
-                <hr class="break">
-        
-                <div class="section">
                 <h3 class="detail_heading">Your Name</h3>
                 <p class="detail_value">${formData.full_name}</p>  
                 </div>
@@ -231,12 +224,32 @@ export const generateContactResponseEmail = (formData, firstName) => {
                 <p class="detail_value text_sm">${formData.organization}</p>  
                 </div>
                 <hr class="break">
+
+                ${
+                  formData.role
+                    ? `<div class="section">
+                <h3 class="detail_heading">Your role</h3>
+                <p class="detail_value text_sm">${formData.role}</p>  
+                </div>
+                <hr class="break">`
+                    : ""
+                }
     
                 <div class="section">
                 <h3 class="detail_heading">Tell us about your project..</h3>
                 <p class="detail_value text_sm">${formData.message}</p>  
                 </div>
                 <hr class="break">
+
+                ${
+                  attachmentName
+                    ? `<div class="section">
+                <h3 class="detail_heading">Attachment</h3>
+                <p class="detail_value text_sm">${attachmentName}</p>  
+                </div>
+                <hr class="break">`
+                    : ""
+                }
     
                 <div class="thanks-text">
                 <p>

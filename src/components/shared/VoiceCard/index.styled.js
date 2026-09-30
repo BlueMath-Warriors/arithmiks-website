@@ -58,15 +58,6 @@ export const CompanyLogo = styled.img`
   z-index: 1;
 `;
 
-export const CompanyLogoRaw = styled.img`
-  height: clamp(26px, 1.9vw, 32px);
-  max-width: 100%;
-  width: auto;
-  object-fit: contain;
-  opacity: 0.9;
-  transition: opacity 0.35s ease;
-`;
-
 // Absolutely-positioned true-colour copy of the same logo, faded in over
 // the grayscale default on hover — matches the design's data-vlogodark.
 export const CompanyLogoDark = styled.img`

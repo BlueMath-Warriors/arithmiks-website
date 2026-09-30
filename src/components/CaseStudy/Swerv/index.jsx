@@ -22,7 +22,7 @@ import {
   keyFeaturesData,
 } from "./data";
 
-const Swerv = ({ images, breadcrumbItems }) => {
+const Swerv = ({ images }) => {
   const heroData = getHeroData(images);
   const overviewData = getOverviewData(images);
 
@@ -30,13 +30,13 @@ const Swerv = ({ images, breadcrumbItems }) => {
     <>
       <Header lightHero={true} />
       <main>
-      <Hero {...heroData} breadcrumbItems={breadcrumbItems} />
+      <Hero {...heroData} slug="swerv" />
       <TechStack {...techStackData} />
-      <Overview {...overviewData} />
+      <Overview {...overviewData} name={heroData.logoAlt} />
       {testimonialData && testimonialData.clientImageSrc && !testimonialData.clientImageSrc.includes('dummyOwner') && (
         <Testimonial {...testimonialData} />
       )}
-      <Solution {...solutionData} hasTestimonial={testimonialData && testimonialData.clientImageSrc && !testimonialData.clientImageSrc.includes('dummyOwner')} />
+      <Solution {...solutionData} />
       <KeyFeatures {...keyFeaturesData} />
       <MoreCaseStudies currentSlug="swerv" />
       <BookingFlow />

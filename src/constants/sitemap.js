@@ -44,7 +44,7 @@ export const SITEMAP_BLOCKS = [
     column: 1,
     links: [
       { label: "Quanta — BI platform", to: "/case-studies/quanta" },
-      { label: "ClauseLens — AI contract review" },
+      { label: "ClauseLens — AI contract review", to: "/case-studies/clauselens" },
       { label: "quanta.arithmiks.com", external: "https://quanta.arithmiks.com" },
       { label: "clauselens.arithmiks.com", external: "https://clauselens.arithmiks.com" },
     ],
@@ -64,7 +64,7 @@ export const SITEMAP_BLOCKS = [
     title: "Case studies",
     to: CASE_STUDIES_INDEX_PATH,
     column: 2,
-    // Hakro and ClauseLens have no page of their own, so they land on the index.
+    // Hakro has no page of its own, so it lands on the index.
     links: [
       { label: "AI-Powered Marketing Automation Platform", to: "/case-studies/go" },
       { label: "Searchable Broadcast Video Archive", to: "/case-studies/media-infrastructure" },
@@ -74,7 +74,7 @@ export const SITEMAP_BLOCKS = [
       { label: "Dealer Inventory Intelligence", to: "/case-studies/swerv" },
       { label: "Community Deals Marketplace", to: "/case-studies/ofertas" },
       { label: "Quanta — BI platform", to: "/case-studies/quanta" },
-      { label: "ClauseLens — AI contract review", to: CASE_STUDIES_INDEX_PATH },
+      { label: "ClauseLens — AI contract review", to: "/case-studies/clauselens" },
     ],
   },
   {

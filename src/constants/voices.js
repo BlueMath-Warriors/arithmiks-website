@@ -26,6 +26,7 @@ const VOICE_LOGOS = {
   go: "/homepage/voice-logo-go-dark.svg",
   easybar: "/homepage/voice-logo-easybar-dark.svg",
   swerv: "/homepage/voice-logo-swerv-dark.svg",
+  sbaloans: "/homepage/voice-logo-sbaloans-ondark.png",
 };
 
 // The design's testimonial order (HAKRO omitted — removed from the site).

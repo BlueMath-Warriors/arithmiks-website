@@ -193,7 +193,7 @@ export const Index = styled.div`
 export const CountRow = styled.div`
   display: flex;
   align-items: flex-end;
-  gap: 12px;
+  gap: 10px;
 `;
 
 export const Count = styled.span`
@@ -207,7 +207,8 @@ export const Count = styled.span`
   // re-centring the whole hero) while it passes through 1-digit values.
   font-variant-numeric: tabular-nums;
   display: inline-block;
-  min-width: ${(p) => p.$digits}ch;
+  // Tabular digits at this weight/tracking measure ~0.75ch, not 1ch.
+  min-width: ${(p) => p.$digits * 0.75}ch;
 
   @media (max-width: 420px) {
     font-size: 52px;

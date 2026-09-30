@@ -5,6 +5,22 @@ import { colors } from "../../../styles/tokens";
 
 const isInternal = (url) => url.startsWith("/");
 
+const escapeRegExp = (text) => text.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
+const Mark = styled.mark`
+  background: #dfe8ff;
+  color: ${colors.primary};
+  border-radius: 3px;
+  padding: 0 2px;
+`;
+
+const highlightTerm = (text, term) => {
+  if (!term) return text;
+  return text
+    .split(new RegExp(`(${escapeRegExp(term)})`, "i"))
+    .map((part, i) => (i % 2 === 1 ? <Mark key={i}>{part}</Mark> : part));
+};
+
 const Results = styled.div`
   display: flex;
   flex-direction: column;
@@ -115,7 +131,7 @@ export const Empty = styled.div`
 // Each result item is either a real internal route (Gatsby Link) or "#" for
 // a service that has no page built yet — same hasPage convention as the
 // rest of the nav.
-const SearchResultsList = ({ results, onNavigate }) => (
+const SearchResultsList = ({ results, onNavigate, term }) => (
   <Results role="listbox" aria-label="Search results">
     {results.map((item, i) => {
       const content = (
@@ -126,8 +142,8 @@ const SearchResultsList = ({ results, onNavigate }) => (
             </Thumb>
           )}
           <Body>
-            <Title>{item.title}</Title>
-            <Category>{item.cat}</Category>
+            <Title>{highlightTerm(item.title, term)}</Title>
+            <Category>{[item.type, item.cat].filter(Boolean).join(" · ")}</Category>
             <Description>{item.desc}</Description>
           </Body>
         </>

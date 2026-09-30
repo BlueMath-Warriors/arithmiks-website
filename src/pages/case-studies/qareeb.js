@@ -16,7 +16,7 @@ const breadcrumbItems = [
 ];
 
 const QareebPage = ({ data }) => {
-  return <Qareeb images={data} breadcrumbItems={breadcrumbItems} />;
+  return <Qareeb images={data} />;
 };
 
 export default QareebPage;
@@ -36,7 +36,7 @@ export const query = graphql`
     heroImage: file(relativePath: { eq: "qareebHero.webp" }) {
       childImageSharp {
         gatsbyImageData(
-          width: 929
+          width: 1800
           placeholder: NONE
           formats: [AUTO, WEBP, AVIF]
           quality: 85
@@ -46,7 +46,7 @@ export const query = graphql`
     overviewImage: file(relativePath: { eq: "qareebOverview.webp" }) {
       childImageSharp {
         gatsbyImageData(
-          width: 1230
+          width: 2000
           placeholder: NONE
           formats: [AUTO, WEBP, AVIF]
           quality: 85

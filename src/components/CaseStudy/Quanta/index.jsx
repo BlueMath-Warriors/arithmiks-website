@@ -2,38 +2,36 @@ import React from "react";
 import BookingFlow from "../../Landing/Contact-Us/Booking-Flow";
 import Footer from "../../Landing/Footer";
 import Header from "../../Landing/Header";
-
-import { Hero, TechStack, Overview, Solution, KeyFeatures, MoreCaseStudies } from "../Generic";
-
+import { Hero, TechStack, Overview, Solution, Flow, KeyFeatures, MoreCaseStudies } from "../Generic";
+import FlowDiagram from "./FlowDiagram";
 import {
-  getHeroData,
+  heroData,
   techStackData,
-  getOverviewData,
+  overviewData,
   solutionData,
+  flowData,
   keyFeaturesData,
 } from "./data";
 
-const Quanta = ({ images, breadcrumbItems }) => {
-  const heroData = getHeroData(images);
-  const overviewData = getOverviewData(images);
-  // No testimonial content yet — add testimonialData + flip this to true once available.
-  const hasTestimonial = false;
+const RELATED_SLUGS = ["clauselens", "go"];
 
-  return (
-    <>
-      <Header lightHero={true} />
-      <main>
-      <Hero {...heroData} breadcrumbItems={breadcrumbItems} />
+const Quanta = () => (
+  <>
+    <Header lightHero={true} />
+    <main>
+      <Hero {...heroData} />
       <TechStack {...techStackData} />
-      <Overview {...overviewData} />
-      <Solution {...solutionData} hasTestimonial={hasTestimonial} />
+      <Overview {...overviewData} name={heroData.logoAlt} />
+      <Solution {...solutionData} />
+      <Flow {...flowData}>
+        <FlowDiagram />
+      </Flow>
       <KeyFeatures {...keyFeaturesData} />
-      <MoreCaseStudies currentSlug="quanta" />
+      <MoreCaseStudies currentSlug="quanta" relatedSlugs={RELATED_SLUGS} />
       <BookingFlow />
-      </main>
-      <Footer />
-    </>
-  );
-};
+    </main>
+    <Footer />
+  </>
+);
 
 export default Quanta;

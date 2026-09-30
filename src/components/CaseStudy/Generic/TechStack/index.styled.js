@@ -1,121 +1,73 @@
-import { styled, keyframes } from "styled-components";
-import { breakpoints } from "../../../Landing/index.styled";
+import styled, { keyframes } from "styled-components";
+import { colors } from "../../../../styles/tokens";
 
-const scroll = keyframes`
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-33.33%);
-  }
+// The design runs 18 logos in 94s; other pages have fewer, so the duration
+// scales with the item count to keep the scroll speed the same.
+const SECONDS_PER_ITEM = 94 / 18;
+
+const marquee = keyframes`
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-33.3333%, 0, 0); }
 `;
 
 export const TechStackSection = styled.section`
-  width: 100%;
-  background-color: #0957DE;
-  padding: 24px 0;
-  overflow: hidden;
-  margin-top: -1px;
   position: relative;
-  z-index: 1;
-
-  @media screen and (max-width: ${breakpoints.medium}) {
-    padding: 20px 0;
-  }
+  z-index: 3;
+  margin-top: -5px;
+  background: ${colors.primary};
+  color: #fff;
+  padding: clamp(22px, 1.9vw, 28px) 0;
 `;
 
 export const TechStackContainer = styled.div`
-  width: 100%;
   overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 7%, #000 93%, transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0, #000 7%, #000 93%, transparent 100%);
 `;
 
-export const TechStackTrack = styled.div`
+export const TechStackTrack = styled.ul`
+  list-style: none;
+  margin: 0;
+  padding: 0;
   display: flex;
-  width: fit-content;
-  animation: ${scroll} 20s linear infinite;
+  flex-wrap: nowrap;
+  align-items: center;
+  width: max-content;
+  animation: ${marquee} ${({ $itemCount }) => $itemCount * SECONDS_PER_ITEM}s linear infinite;
 
   &:hover {
     animation-play-state: paused;
   }
 `;
 
-export const TechStackGroup = styled.div`
-  display: flex;
-  align-items: center;
-  flex-shrink: 0;
-  gap: 80px;
-  padding-right: 80px;
-
-  @media screen and (max-width: ${breakpoints.large}) {
-    gap: 64px;
-    padding-right: 64px;
-  }
-
-  @media screen and (max-width: ${breakpoints.medium}) {
-    gap: 40px;
-    padding-right: 40px;
-  }
-
-  @media screen and (max-width: ${breakpoints.small}) {
-    gap: 32px;
-    padding-right: 32px;
-  }
-`;
-
-export const TechItem = styled.div`
+export const TechItem = styled.li`
+  flex: none;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 6px;
-  min-width: 80px;
-  flex-shrink: 0;
+  gap: 10px;
+  width: clamp(120px, 11.5vw, 190px);
+`;
 
-  @media screen and (max-width: ${breakpoints.medium}) {
-    min-width: 60px;
-    gap: 4px;
-  }
-
-  @media screen and (max-width: ${breakpoints.small}) {
-    min-width: 50px;
-  }
+const iconSize = `
+  width: clamp(34px, 2.2vw, 40px);
+  height: clamp(34px, 2.2vw, 40px);
+  display: block;
+  object-fit: contain;
 `;
 
 export const TechIcon = styled.img`
-  width: 40px;
-  height: 40px;
-  object-fit: contain;
+  ${iconSize}
   filter: brightness(0) invert(1);
-
-  @media screen and (max-width: ${breakpoints.medium}) {
-    width: 32px;
-    height: 32px;
-  }
 `;
 
 export const SpecialIcon = styled.img`
-  width: 40px;
-  height: 40px;
-  object-fit: contain;
-  filter: none;
-
-  @media screen and (max-width: ${breakpoints.medium}) {
-    width: 32px;
-    height: 32px;
-  }
+  ${iconSize}
 `;
 
 export const TechName = styled.span`
-  color: #ffffff;
-  font-family: Poppins;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  text-align: center;
+  font-size: clamp(13px, 0.95vw, 15px);
+  font-weight: 500;
+  color: #fff;
   white-space: nowrap;
-
-  @media screen and (max-width: ${breakpoints.medium}) {
-    font-size: 12px;
-  }
 `;

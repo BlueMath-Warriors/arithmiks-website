@@ -7,7 +7,7 @@ export const getHeroData = (images) => ({
   caption: (
     <>
       Togather is a platform for churches and NGOs to connect
-      <br />
+      {" "}
       communities through events, donations, and engagement.
     </>
   ),
@@ -118,8 +118,6 @@ export const keyFeaturesData = {
       image: "/Togather Key Features/togatherKeyFeature5.webp",
     },
   ],
-  leftIconSrc: "/leftIcon.svg",
-  rightIconSrc: "/rightIcon.svg",
 };
 
 export const testimonialData = {

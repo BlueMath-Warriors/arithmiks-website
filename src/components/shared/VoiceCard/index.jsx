@@ -8,7 +8,6 @@ import {
   Portrait,
   LogoWrap,
   CompanyLogo,
-  CompanyLogoRaw,
   CompanyLogoDark,
   CompanyName,
   Info,
@@ -23,9 +22,6 @@ import {
   CaseLink,
 } from "./index.styled";
 
-// Only sbaloansHQ keeps its natural colour at rest in the source; every
-// other logo starts as a grayscale silhouette and reveals its colour on hover.
-const RAW_LOGO_SLUGS = ["sbaloans"];
 const COMPACT_LOGO_SLUGS = ["easybar"];
 
 // The grid mesh and brand glow pool around the pointer, so their position
@@ -51,13 +47,6 @@ const trackPointer = (event) => {
 const VoiceLogo = ({ voice }) => {
   if (!voice.companyLogo) return <CompanyName>{voice.companyName}</CompanyName>;
   const compact = COMPACT_LOGO_SLUGS.includes(voice.slug);
-  if (RAW_LOGO_SLUGS.includes(voice.slug)) {
-    return (
-      <LogoWrap $compact={compact}>
-        <CompanyLogoRaw src={voice.companyLogo} alt={voice.companyName} />
-      </LogoWrap>
-    );
-  }
   return (
     <LogoWrap $compact={compact}>
       <CompanyLogo src={voice.companyLogo} alt={voice.companyName} />

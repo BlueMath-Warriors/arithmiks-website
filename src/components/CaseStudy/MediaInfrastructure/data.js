@@ -8,7 +8,7 @@ export const getHeroData = (images) => ({
   caption: (
     <>
       An AI platform that turns decades of broadcast video into a searchable
-      <br />knowledge base with transcripts, faces, chapters, and natural language search.
+      {" "}knowledge base with transcripts, faces, chapters, and natural language search.
     </>
   ),
   heroImageData: images?.heroImage,
@@ -120,6 +120,4 @@ export const keyFeaturesData = {
       image: "/Media Infrastructure Key Features/mediaInfraKeyFeature6.webp",
     },
   ],
-  leftIconSrc: "/leftIcon.svg",
-  rightIconSrc: "/rightIcon.svg",
 };

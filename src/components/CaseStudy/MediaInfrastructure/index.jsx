@@ -13,20 +13,18 @@ import {
   keyFeaturesData,
 } from "./data";
 
-const MediaInfrastructure = ({ images, breadcrumbItems }) => {
+const MediaInfrastructure = ({ images }) => {
   const heroData = getHeroData(images);
   const overviewData = getOverviewData(images);
-  // No testimonial content yet — add testimonialData + flip this to true once available.
-  const hasTestimonial = false;
 
   return (
     <>
       <Header lightHero={true} />
       <main>
-      <Hero {...heroData} breadcrumbItems={breadcrumbItems} />
+      <Hero {...heroData} slug="media-infrastructure" />
       <TechStack {...techStackData} />
-      <Overview {...overviewData} />
-      <Solution {...solutionData} hasTestimonial={hasTestimonial} />
+      <Overview {...overviewData} name={heroData.logoAlt} />
+      <Solution {...solutionData} />
       <KeyFeatures {...keyFeaturesData} />
       <MoreCaseStudies currentSlug="media-infrastructure" />
       <BookingFlow />

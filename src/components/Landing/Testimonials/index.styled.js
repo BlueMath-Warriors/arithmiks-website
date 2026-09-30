@@ -50,10 +50,12 @@ export const Heading = styled.h2`
   }
 `;
 
+const CARD_GAP = "clamp(18px, 2.13vw, 39px)";
+
 export const Body = styled.div`
   display: flex;
   align-items: stretch;
-  gap: clamp(18px, 2.13vw, 39px);
+  gap: ${CARD_GAP};
   margin-top: clamp(38px, 4.43vw, 73px);
 `;
 
@@ -68,7 +70,9 @@ export const Body = styled.div`
 // bleed trick the design uses horizontally (data-voiceview's padding/
 // margin pair) — it exists purely so a card's hover lift and glow have
 // room above/below before hitting this container's own clip edge,
-// without adding visible extra spacing around the carousel.
+// without adding visible extra spacing around the carousel. The side bleed
+// equals the card gap, so the neighbouring cards stay just outside it, and
+// scroll-padding keeps the snapped card aligned with the content edge.
 export const TrackView = styled.div`
   flex: 1 1 auto;
   min-width: 0;
@@ -77,8 +81,9 @@ export const TrackView = styled.div`
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
-  padding: 28px 0 56px;
-  margin: -28px 0 -56px;
+  padding: 28px ${CARD_GAP} 56px;
+  margin: -28px -${CARD_GAP} -56px;
+  scroll-padding: 0 ${CARD_GAP};
 
   &::-webkit-scrollbar {
     display: none;
@@ -88,12 +93,12 @@ export const TrackView = styled.div`
 export const Track = styled.div`
   display: flex;
   align-items: stretch;
-  gap: clamp(18px, 2.13vw, 39px);
+  gap: ${CARD_GAP};
 `;
 
 export const CarouselCard = styled(VoiceCard)`
   scroll-snap-align: start;
-  flex: 0 0 calc((100% - clamp(18px, 2.13vw, 39px)) / 2);
+  flex: 0 0 calc((100% - ${CARD_GAP}) / 2);
 
   @media (max-width: 900px) {
     flex: 0 0 100%;

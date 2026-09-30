@@ -18,6 +18,7 @@ const LOGOS = [
   ["Mr Seller Note", "/icons/msn-logo.svg", 30],
   ["Qareeb", "/qareeb.svg", 28],
   ["Quanta", "/quanta.svg", 28],
+  ["ClauseLens", "/case-studies/clauselens/logo.svg", 26],
 ];
 
 const REVERSED = [...LOGOS].reverse();

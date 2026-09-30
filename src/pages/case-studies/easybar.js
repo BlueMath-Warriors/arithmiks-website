@@ -15,7 +15,7 @@ const breadcrumbItems = [
   { name: pageSeo.breadcrumbName, pathname: "/case-studies/easybar" },
 ];
 
-const EasybarPage = ({ data }) => <Easybar images={data} breadcrumbItems={breadcrumbItems} />;
+const EasybarPage = ({ data }) => <Easybar images={data} />;
 
 export default EasybarPage;
 
@@ -33,13 +33,13 @@ export const query = graphql`
   query {
     heroImage: file(relativePath: { eq: "easybarMemorandum.webp" }) {
       childImageSharp {
-        gatsbyImageData(width: 929, placeholder: NONE, formats: [AUTO, WEBP, AVIF], quality: 85)
+        gatsbyImageData(width: 1800, placeholder: NONE, formats: [AUTO, WEBP, AVIF], quality: 85)
       }
     }
     overviewImage: file(relativePath: { eq: "easybarFinancialSummary.webp" }) {
       childImageSharp {
         gatsbyImageData(
-          width: 1230
+          width: 2000
           placeholder: NONE
           formats: [AUTO, WEBP, AVIF]
           quality: 85

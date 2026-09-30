@@ -7,7 +7,7 @@ export const getHeroData = (images) => ({
   caption: (
     <>
       An automated loan management platform that tracks, calculates,
-      <br />and processes multi-party payments from creation to final settlement.
+      {" "}and processes multi-party payments from creation to final settlement.
     </>
   ),
   heroImageData: images?.heroImage,
@@ -114,8 +114,6 @@ export const keyFeaturesData = {
       image: "/MSN Key Features/msnKeyFeature5.webp",
     },
   ],
-  leftIconSrc: "/leftIcon.svg",
-  rightIconSrc: "/rightIcon.svg",
 };
 
 export const testimonialData = {

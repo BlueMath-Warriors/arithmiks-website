@@ -66,6 +66,13 @@ export const RailLink = styled.a`
     padding-left: 5px;
   }
 
+  // global.module.css's "* { color: #000 }" hits the svg and its paths
+  // directly, so currentColor would stay black without this.
+  svg,
+  svg * {
+    color: inherit;
+  }
+
   svg {
     flex: none;
     margin-top: 2px;

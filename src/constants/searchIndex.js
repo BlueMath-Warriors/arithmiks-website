@@ -10,26 +10,29 @@ import { PRODUCTS } from "./products";
 import { caseStudies } from "../components/Landing/Case-Study/caseStudies.js";
 
 const PAGES = [
-  { title: "About", cat: "Page", desc: "Who we are and how we got here.", url: "/about" },
+  { title: "About", type: "Page", cat: "", desc: "Who we are and how we got here.", url: "/about" },
   {
     title: "How we work",
-    cat: "Page",
+    type: "Page",
+    cat: "",
     desc: "Our process, from first call to production.",
     url: "/how-we-work",
   },
-  { title: "Contact", cat: "Page", desc: "Start a conversation with us.", url: "/contact" },
+  { title: "Contact", type: "Page", cat: "", desc: "Start a conversation with us.", url: "/contact" },
   {
     title: "Case Studies",
-    cat: "Page",
+    type: "Page",
+    cat: "",
     desc: "Real products we have shipped for clients.",
     url: "/case-studies",
   },
-  { title: "Blog", cat: "Page", desc: "What we are learning about shipping AI.", url: "/blogs" },
+  { title: "Blog", type: "Page", cat: "", desc: "What we are learning about shipping AI.", url: "/blogs" },
 ];
 
 export const buildSearchIndex = () => {
   const caseStudyItems = caseStudies.map((c) => ({
     title: c.title,
+    type: "Case study",
     cat: c.tag,
     desc: c.description,
     url: c.hasDetailPage ? `/case-studies/${c.slug}` : "/case-studies",
@@ -39,13 +42,15 @@ export const buildSearchIndex = () => {
   const serviceItems = SERVICE_NAV_GROUPS.flatMap((category) => [
     {
       title: category.title,
-      cat: "Services",
+      type: "Service",
+      cat: "All services",
       desc: `Every service under ${category.title}.`,
       url: category.hasPage ? category.url : "#",
       img: null,
     },
     ...category.items.map((svc) => ({
       title: svc.label,
+      type: "Service",
       cat: category.title,
       desc: `Part of ${category.title}.`,
       url: svc.hasPage ? svc.url : "#",
@@ -55,7 +60,8 @@ export const buildSearchIndex = () => {
 
   const productItems = PRODUCTS.map((p) => ({
     title: p.name,
-    cat: "Product",
+    type: "Product",
+    cat: p.tag,
     desc: p.description,
     url: p.caseStudyUrl,
     img: null,
@@ -66,8 +72,12 @@ export const buildSearchIndex = () => {
 
 const MAX_RESULTS = 12;
 
-/** @param {ReturnType<typeof buildSearchIndex>} index @param {string} query */
-export const searchSite = (index, query) => {
+/**
+ * @param {ReturnType<typeof buildSearchIndex>} index
+ * @param {string} query
+ * @param {number} [limit] the dropdown caps results; the results page passes Infinity
+ */
+export const searchSite = (index, query, limit = MAX_RESULTS) => {
   const term = query.trim().toLowerCase();
   if (!term) return [];
 
@@ -85,6 +95,6 @@ export const searchSite = (index, query) => {
     })
     .filter((x) => x.score > 0)
     .sort((a, b) => b.score - a.score)
-    .slice(0, MAX_RESULTS)
+    .slice(0, limit)
     .map((x) => x.item);
 };

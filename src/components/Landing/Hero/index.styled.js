@@ -242,6 +242,40 @@ export const TrustedLabel = styled.div`
   margin-bottom: 6px;
 `;
 
+const logoShimmer = keyframes`
+  from { background-position: 200% 0; }
+  to { background-position: -200% 0; }
+`;
+
+// Both children share one grid cell so the placeholder holds the logo's slot
+// until the real image is ready.
+export const LogoFrame = styled.span`
+  display: grid;
+  align-items: center;
+
+  > * {
+    grid-area: 1 / 1;
+  }
+`;
+
+export const LogoSkeleton = styled.span`
+  width: ${(p) => p.$height * 4}px;
+  height: ${(p) => p.$height}px;
+  border-radius: 6px;
+  background: linear-gradient(
+    100deg,
+    rgba(255, 255, 255, 0.08) 30%,
+    rgba(255, 255, 255, 0.22) 50%,
+    rgba(255, 255, 255, 0.08) 70%
+  );
+  background-size: 200% 100%;
+  animation: ${logoShimmer} 1.6s linear infinite;
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+`;
+
 /** The source's two marquee logo treatments: `raw` keeps natural color at
  * reduced opacity, everything else is grayscale + inverted to white (the
  * default for a dark hero) at higher opacity, both brightening on hover. */
@@ -251,6 +285,7 @@ export const ClientLogo = styled.img`
   object-fit: contain;
   display: block;
   transition: opacity 0.3s ease;
+  ${(p) => p.$hidden && "visibility: hidden;"}
   ${(p) =>
     p.$raw
       ? `opacity: .86; &:hover { opacity: 1; }`

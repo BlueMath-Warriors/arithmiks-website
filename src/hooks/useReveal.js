@@ -41,9 +41,19 @@ export const useReveal = (rootRef) => {
       (entries) => {
         entries.forEach((entry) => {
           if (!entry.isIntersecting) return;
-          entry.target.style.opacity = "1";
-          entry.target.style.transform = "none";
-          observer.unobserve(entry.target);
+          const target = entry.target;
+          target.style.opacity = "1";
+          target.style.transform = "none";
+          target.addEventListener("transitionend", function settle(event) {
+            if (event.propertyName !== "transform") return;
+            // Hand the element back to its stylesheet, otherwise the inline
+            // transform/transition/delay would block its own :hover effects.
+            target.style.removeProperty("transform");
+            target.style.removeProperty("transition");
+            target.style.removeProperty("transition-delay");
+            target.removeEventListener("transitionend", settle);
+          });
+          observer.unobserve(target);
         });
       },
       { rootMargin: "0px 0px -8% 0px", threshold: 0.05 }

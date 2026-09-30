@@ -7,7 +7,7 @@ export const getHeroData = (images) => ({
   caption: (
     <>
       A SaaS platform that automates SBA loan origination with AI-powered
-      <br />
+      {" "}
       lead scoring, document processing, and deal summarization.
     </>
   ),
@@ -127,8 +127,6 @@ export const keyFeaturesData = {
       image: "/Sba Key Features/sbaKeyFeature6.webp",
     },
   ],
-  leftIconSrc: "/leftIcon.svg",
-  rightIconSrc: "/rightIcon.svg",
 };
 
 export const testimonialData = {

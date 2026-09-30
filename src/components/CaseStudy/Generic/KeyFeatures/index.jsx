@@ -1,191 +1,201 @@
-import React, { useState, useRef, useEffect } from "react";
-import * as containerStyles from "../../../../styles/global.module.css";
+import React, { useCallback, useEffect, useRef, useState } from "react";
+import useReveal from "../../../../hooks/useReveal";
+import { prefersReducedMotion } from "../../../../utils/animations";
+import { GradientText, Shell } from "../../../shared/Section/index.styled";
+import { SectionEyebrow, SectionHeading } from "../layout.styled";
+import { splitHeading } from "../heading";
 import {
-  KeyFeaturesHeader,
-  KeyFeaturesLabel,
-  PrimaryHeading,
-  Secondary,
-  SubHeadingContainer,
-  SubHeading,
-  SubHeadingTitle,
-  CarouselSection,
-  CarouselButtons,
-  CarouselButton,
-  CarouselContainer,
-  CarouselSlide,
-  DashboardImage,
-  PaginationDots,
+  FeaturesSection,
+  Header,
+  Body,
+  Caption,
+  CaptionTitle,
+  CaptionText,
+  Stage,
+  Track,
+  Slide,
+  SlideCard,
+  Wash,
+  Arrow,
+  Dots,
   Dot,
 } from "./index.styled";
 
-// Shortest signed circular distance from `currentSlide` to `index` (e.g. with
-// 5 slides, index 4 is treated as -1 relative to current index 0, not +4).
-const getCircularOffset = (index, currentSlide, total) => {
-  let diff = index - currentSlide;
-  if (diff > total / 2) diff -= total;
-  if (diff < -total / 2) diff += total;
-  return diff;
+const SWIPE_THRESHOLD_PX = 40;
+const CAPTION_SHIFT_PX = 40;
+const CAPTION_OUT_MS = 300;
+const CAPTION_OUT = "opacity .3s ease, transform .3s cubic-bezier(.4,0,1,1)";
+const CAPTION_IN = "opacity .5s ease, transform .65s cubic-bezier(.16,1,.3,1)";
+const LEADING_NUMBER = /^\d+\.\s*/;
+const TRAILING_COLON = /\s*:\s*$/;
+
+const cleanTitle = (title) => title.replace(LEADING_NUMBER, "").replace(TRAILING_COLON, "");
+
+// Circular offset of slide `index` from the active one, so the strip loops.
+const offsetFrom = (index, active, total) => {
+  const offset = (index - active + total) % total;
+  return offset > total / 2 ? offset - total : offset;
+};
+
+const slideStyle = (offset) => {
+  const isCurrent = offset === 0;
+  const isNear = Math.abs(offset) <= 1;
+  return {
+    $transform: isCurrent
+      ? "translateX(0) scale(1)"
+      : `translateX(calc(${offset} * (90.75% + var(--gap)))) scale(.815)`,
+    $opacity: isNear ? 1 : 0,
+    $zIndex: isCurrent ? 3 : isNear ? 2 : 1,
+    $isNeighbour: !isCurrent,
+  };
 };
 
 /**
+ * Stacked-card feature carousel: the active screenshot sits centred with its
+ * neighbours parked at the sides; arrows, dots and a horizontal swipe move it.
+ *
  * @param {Object} props
- * @param {string} props.label 
- * @param {string} props.heading 
- * @param {Array} props.features 
- * @param {string} props.features[].title 
- * @param {string} props.features[].description 
- * @param {string} props.features[].image 
- * @param {string} props.leftIconSrc 
- * @param {string} props.rightIconSrc 
+ * @param {string} props.label
+ * @param {string | { plain: string; highlight: string }} props.heading
+ * @param {boolean} [props.framed] fill each slide with a white card and crop to it (for 1.6-aspect screenshots); otherwise each image is shown whole with a drop shadow
+ * @param {{ title: string; description: string; image: string; imageAlt?: string }[]} props.features
  */
-const KeyFeatures = ({
-  label = "HIGHLIGHTS",
-  heading = "Key Features",
-  features = [],
-  leftIconSrc = "/leftIcon.svg",
-  rightIconSrc = "/rightIcon.svg",
-}) => {
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const totalSlides = features.length;
-  const dragRef = useRef({ startX: 0, deltaX: 0, dragging: false, moved: false });
-  const SWIPE_THRESHOLD = 50;
-  const MOVE_THRESHOLD = 10;
+const KeyFeatures = ({ label = "HIGHLIGHTS", heading = "Key features", framed = false, features = [] }) => {
+  const total = features.length;
+  const [active, setActive] = useState(0);
+  const [captionIndex, setCaptionIndex] = useState(0);
+  const rootRef = useRef(null);
+  const captionRef = useRef(null);
+  const captionTimerRef = useRef(null);
+  const swipeStartRef = useRef(null);
+  useReveal(rootRef);
 
-  const headingParts = heading.split(" ");
-  const lastWord = headingParts.pop();
-  const firstPart = headingParts.join(" ");
+  useEffect(() => () => clearTimeout(captionTimerRef.current), []);
 
-  const handlePrev = () => {
-    setCurrentSlide((prev) => (prev === 0 ? totalSlides - 1 : prev - 1));
-  };
-
-  const handleNext = () => {
-    setCurrentSlide((prev) => (prev === totalSlides - 1 ? 0 : prev + 1));
-  };
-
-  const handlePointerDown = (e) => {
-    if (e.pointerType === "mouse" && e.button !== 0) return;
-    dragRef.current = { startX: e.clientX, deltaX: 0, dragging: true, moved: false };
-  };
-
-  // Track move/up on window (not the container) so we never need
-  // setPointerCapture — capturing on an ancestor hijacks click routing for
-  // descendant buttons/images in most browsers, breaking normal clicks.
-  useEffect(() => {
-    const handlePointerMove = (e) => {
-      const drag = dragRef.current;
-      if (!drag.dragging) return;
-      drag.deltaX = e.clientX - drag.startX;
-      if (Math.abs(drag.deltaX) > MOVE_THRESHOLD) drag.moved = true;
-    };
-
-    const endDrag = () => {
-      const drag = dragRef.current;
-      if (!drag.dragging) return;
-      drag.dragging = false;
-      if (drag.deltaX > SWIPE_THRESHOLD) {
-        handlePrev();
-      } else if (drag.deltaX < -SWIPE_THRESHOLD) {
-        handleNext();
+  // The caption drifts out the way the strip travels, then the new one eases
+  // in from the other side while the incoming card is still settling.
+  const goTo = useCallback(
+    (next, direction) => {
+      if (next === active) return;
+      const shift = direction || (next > active ? 1 : -1);
+      const caption = captionRef.current;
+      setActive(next);
+      if (!caption || prefersReducedMotion()) {
+        setCaptionIndex(next);
+        return;
       }
-    };
+      clearTimeout(captionTimerRef.current);
+      caption.style.transition = CAPTION_OUT;
+      caption.style.opacity = "0";
+      caption.style.transform = `translate3d(${-shift * CAPTION_SHIFT_PX}px,0,0)`;
+      captionTimerRef.current = setTimeout(() => {
+        caption.style.transition = "none";
+        caption.style.transform = `translate3d(${shift * CAPTION_SHIFT_PX}px,0,0)`;
+        setCaptionIndex(next);
+        requestAnimationFrame(() =>
+          requestAnimationFrame(() => {
+            caption.style.transition = CAPTION_IN;
+            caption.style.opacity = "1";
+            caption.style.transform = "translate3d(0,0,0)";
+          })
+        );
+      }, CAPTION_OUT_MS);
+    },
+    [active]
+  );
 
-    window.addEventListener("pointermove", handlePointerMove);
-    window.addEventListener("pointerup", endDrag);
-    window.addEventListener("pointercancel", endDrag);
-    return () => {
-      window.removeEventListener("pointermove", handlePointerMove);
-      window.removeEventListener("pointerup", endDrag);
-      window.removeEventListener("pointercancel", endDrag);
-    };
-  }, [totalSlides]);
+  if (total === 0) return null;
 
-  const handleSlideClick = (index) => {
-    if (dragRef.current.moved) return;
-    setCurrentSlide(index);
-  };
-
-  if (totalSlides === 0) return null;
+  const { plain, highlight } = splitHeading(heading);
+  const current = features[captionIndex];
 
   return (
-    <>
-      <div className={containerStyles.easybar_key_features}>
-        <KeyFeaturesHeader>
-          <KeyFeaturesLabel>{label}</KeyFeaturesLabel>
-          <PrimaryHeading>
-            {firstPart} <Secondary>{lastWord}</Secondary>
-          </PrimaryHeading>
-          <SubHeadingContainer>
-            <SubHeading>
-              <SubHeadingTitle>{features[currentSlide]?.title}</SubHeadingTitle>
-              <br />
-              {features[currentSlide]?.description}
-            </SubHeading>
-          </SubHeadingContainer>
-        </KeyFeaturesHeader>
-        <CarouselSection>
-          <CarouselContainer onPointerDown={handlePointerDown}>
-            <CarouselButtons role="group" aria-label="Carousel navigation">
-              <CarouselButton
-                side="left"
-                onClick={handlePrev}
-                aria-label="Previous feature"
-              >
-                <img src={leftIconSrc} alt="" width={24} height={24} aria-hidden="true" />
-              </CarouselButton>
-              <CarouselButton
-                side="right"
-                onClick={handleNext}
-                aria-label="Next feature"
-              >
-                <img src={rightIconSrc} alt="" width={24} height={24} aria-hidden="true" />
-              </CarouselButton>
-            </CarouselButtons>
-            {features.map((feature, index) => {
-              const offset = getCircularOffset(index, currentSlide, totalSlides);
-              const isActive = offset === 0;
-              const isPeek = Math.abs(offset) === 1;
-
-              return (
-                <CarouselSlide
-                  key={index}
-                  $offset={offset}
-                  $active={isActive}
-                  $isPeek={isPeek}
-                  onClick={isPeek ? () => handleSlideClick(index) : undefined}
-                  aria-hidden={!isActive}
-                >
-                  <DashboardImage
-                    src={feature.image}
-                    alt={`Dashboard view ${index + 1}`}
-                    draggable={false}
-                    loading="lazy"
-                  />
-                </CarouselSlide>
-              );
-            })}
-          </CarouselContainer>
-          <PaginationDots role="tablist" aria-label="Feature slides">
-            {Array.from({ length: totalSlides }).map((_, index) => (
+    <FeaturesSection id="features" aria-labelledby="features-heading" ref={rootRef}>
+      <Shell>
+        <Header data-reveal="">
+          <SectionEyebrow>{label}</SectionEyebrow>
+          <SectionHeading id="features-heading">
+            {plain} <GradientText>{highlight}</GradientText>
+          </SectionHeading>
+        </Header>
+        <Body data-reveal="">
+          <Caption ref={captionRef}>
+            <CaptionTitle>
+              {captionIndex + 1}. {cleanTitle(current.title)}:
+            </CaptionTitle>
+            <CaptionText>{current.description}</CaptionText>
+          </Caption>
+          <Stage>
+            <Track
+              onPointerDown={(event) => {
+                swipeStartRef.current = event.clientX;
+              }}
+              onPointerUp={(event) => {
+                if (swipeStartRef.current == null) return;
+                const distance = event.clientX - swipeStartRef.current;
+                swipeStartRef.current = null;
+                if (Math.abs(distance) <= SWIPE_THRESHOLD_PX) return;
+                const step = distance < 0 ? 1 : -1;
+                goTo((active + step + total) % total, step);
+              }}
+            >
+              {features.map((feature, index) => {
+                const offset = offsetFrom(index, active, total);
+                const style = slideStyle(offset);
+                return (
+                  <Slide key={feature.title} data-slide={offset === 0 ? "current" : "side"} aria-hidden={offset !== 0} {...style}>
+                    <SlideCard $framed={framed} $isNeighbour={style.$isNeighbour}>
+                      <img
+                        src={feature.image}
+                        alt={offset === 0 ? feature.imageAlt || feature.title : ""}
+                        draggable={false}
+                        loading={Math.abs(offset) <= 1 ? "eager" : "lazy"}
+                      />
+                      {framed && (
+                        <Wash $isNeighbour={style.$isNeighbour} $direction={offset < 0 ? "to left" : "to right"} aria-hidden="true" />
+                      )}
+                    </SlideCard>
+                  </Slide>
+                );
+              })}
+            </Track>
+            <Arrow
+              type="button"
+              $side="left"
+              aria-label="Previous feature"
+              onClick={() => goTo((active + total - 1) % total, -1)}
+            >
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <path d="m15 18-6-6 6-6" />
+              </svg>
+            </Arrow>
+            <Arrow
+              type="button"
+              $side="right"
+              aria-label="Next feature"
+              onClick={() => goTo((active + 1) % total, 1)}
+            >
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <path d="m9 18 6-6-6-6" />
+              </svg>
+            </Arrow>
+          </Stage>
+          <Dots role="tablist" aria-label="Features">
+            {features.map((feature, index) => (
               <Dot
-                key={index}
-                active={index === currentSlide}
-                onClick={() => setCurrentSlide(index)}
+                key={feature.title}
+                type="button"
                 role="tab"
-                aria-selected={index === currentSlide}
-                aria-label={`Go to feature ${index + 1}`}
-                tabIndex={0}
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter' || e.key === ' ') {
-                    setCurrentSlide(index);
-                  }
-                }}
+                aria-selected={index === active}
+                aria-label={cleanTitle(feature.title)}
+                $active={index === active}
+                onClick={() => goTo(index)}
               />
             ))}
-          </PaginationDots>
-        </CarouselSection>
-      </div>
-    </>
+          </Dots>
+        </Body>
+      </Shell>
+    </FeaturesSection>
   );
 };
 
