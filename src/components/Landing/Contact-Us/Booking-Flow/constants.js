@@ -1,25 +1,6 @@
-// [ISO code, dial code, country] — the design's list. Only these two flags ship
-// with the design; the rest show their ISO code instead.
-export const DIAL_CODES = [
-  ["PK", "+92", "Pakistan"],
-  ["US", "+1", "United States"],
-  ["GB", "+44", "United Kingdom"],
-  ["AE", "+971", "United Arab Emirates"],
-  ["SA", "+966", "Saudi Arabia"],
-  ["QA", "+974", "Qatar"],
-  ["CA", "+1", "Canada"],
-  ["AU", "+61", "Australia"],
-  ["DE", "+49", "Germany"],
-  ["NL", "+31", "Netherlands"],
-  ["SE", "+46", "Sweden"],
-  ["SG", "+65", "Singapore"],
-  ["IN", "+91", "India"],
-  ["ZA", "+27", "South Africa"],
-];
+export { DIAL_CODES } from "./dialCodes";
 
 export const DEFAULT_COUNTRY_ISO = "PK";
-export const FLAG_ISO_CODES = ["PK", "ZA"];
-export const flagSource = (isoCode) => `/flags/${isoCode.toLowerCase()}.svg`;
 
 export const ROLE_OPTIONS = [
   "Founder / CEO",

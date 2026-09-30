@@ -33,29 +33,21 @@ export const Trigger = styled.button`
   }
 `;
 
-const flagBox = `
+// The sprite flag is 25x20; scaled to the design's 21px-wide slot.
+export const FlagBox = styled.span`
   flex: none;
-  width: 21px;
-  height: 15px;
-  border-radius: 2px;
-`;
-
-export const Flag = styled.img`
-  ${flagBox}
-  object-fit: cover;
-  box-shadow: 0 0 0 1px rgba(10, 15, 31, 0.09);
   display: block;
-`;
+  width: 21px;
+  height: 17px;
+  border-radius: 2px;
+  overflow: hidden;
+  box-shadow: 0 0 0 1px rgba(10, 15, 31, 0.09);
 
-export const IsoBadge = styled.span`
-  ${flagBox}
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #e7ebf3;
-  font-size: 9.5px;
-  font-weight: 650;
-  color: ${colors.textFaint};
+  .flag {
+    margin: 0;
+    transform: scale(0.84);
+    transform-origin: 0 0;
+  }
 `;
 
 export const Panel = styled.span`
@@ -105,5 +97,32 @@ export const CountryName = styled.span`
 export const DialText = styled.span`
   flex: none;
   font-weight: 550;
+  color: ${colors.textFaint};
+`;
+
+export const SearchBox = styled.input`
+  position: sticky;
+  top: -6px;
+  // Above the scaled flags below, which sit in their own stacking contexts.
+  z-index: 2;
+  width: 100%;
+  margin-bottom: 4px;
+  padding: 9px 10px;
+  font-size: 13.5px;
+  color: ${colors.text};
+  background: #fff;
+  border: 1px solid ${colors.border};
+  border-radius: 8px;
+  outline: none;
+
+  &:focus {
+    border-color: ${colors.primary};
+  }
+`;
+
+export const Empty = styled.span`
+  display: block;
+  padding: 10px;
+  font-size: 13.5px;
   color: ${colors.textFaint};
 `;

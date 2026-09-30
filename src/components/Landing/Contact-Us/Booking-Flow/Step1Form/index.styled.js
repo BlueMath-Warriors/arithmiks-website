@@ -33,6 +33,8 @@ export const FieldPair = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: ${FIELD_GAP};
+  // An error under one field must not stretch its neighbour.
+  align-items: start;
 
   @media (max-width: 900px) {
     grid-template-columns: 1fr;

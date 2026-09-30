@@ -1,22 +1,25 @@
 import React, { useEffect, useRef, useState } from "react";
-import { DIAL_CODES, FLAG_ISO_CODES, flagSource } from "../constants";
+import "react-phone-input-2/lib/high-res.css";
+import { DIAL_CODES } from "../constants";
 import {
   Wrap,
   Trigger,
-  Flag,
-  IsoBadge,
+  FlagBox,
   Panel,
+  SearchBox,
+  Empty,
   Option,
   CountryName,
   DialText,
 } from "./index.styled";
 
-const CountryMark = ({ isoCode }) =>
-  FLAG_ISO_CODES.includes(isoCode) ? (
-    <Flag src={flagSource(isoCode)} alt="" />
-  ) : (
-    <IsoBadge>{isoCode}</IsoBadge>
-  );
+// The flag sprite ships with react-phone-input-2 (its CSS carries the image);
+// its rules only apply inside a .react-tel-input ancestor.
+const CountryMark = ({ isoCode }) => (
+  <FlagBox className="react-tel-input" aria-hidden="true">
+    <div className={`flag ${isoCode.toLowerCase()}`} />
+  </FlagBox>
+);
 
 /**
  * Country dial-code picker shown in front of the phone input.
@@ -25,8 +28,23 @@ const CountryMark = ({ isoCode }) =>
  */
 const DialCodeSelect = ({ isoCode, onChange }) => {
   const [open, setOpen] = useState(false);
+  const [query, setQuery] = useState("");
   const wrapRef = useRef(null);
   const selected = DIAL_CODES.find(([iso]) => iso === isoCode) || DIAL_CODES[0];
+
+  const term = query.trim().toLowerCase();
+  const countries = term
+    ? DIAL_CODES.filter(
+        ([iso, code, name]) =>
+          name.toLowerCase().includes(term) ||
+          iso.toLowerCase() === term ||
+          code.replace("+", "").startsWith(term.replace("+", "")),
+      )
+    : DIAL_CODES;
+
+  useEffect(() => {
+    if (!open) setQuery("");
+  }, [open]);
 
   useEffect(() => {
     if (!open) return undefined;
@@ -55,13 +73,32 @@ const DialCodeSelect = ({ isoCode, onChange }) => {
       >
         <CountryMark isoCode={selected[0]} />
         <span>{selected[1]}</span>
-        <svg viewBox="0 0 16 16" width="12" height="12" fill="none" stroke="#5C6478" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <svg
+          viewBox="0 0 16 16"
+          width="12"
+          height="12"
+          fill="none"
+          stroke="#5C6478"
+          strokeWidth="1.8"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          aria-hidden="true"
+        >
           <path d="M4 6.5 8 10.5l4-4" />
         </svg>
       </Trigger>
       {open && (
         <Panel role="listbox" aria-label="Country dial codes">
-          {DIAL_CODES.map(([iso, code, name]) => (
+          <SearchBox
+            type="text"
+            autoFocus
+            aria-label="Search countries"
+            placeholder="Search country or code"
+            value={query}
+            onChange={(event) => setQuery(event.target.value)}
+          />
+          {countries.length === 0 && <Empty>No matching country</Empty>}
+          {countries.map(([iso, code, name]) => (
             <Option
               key={iso}
               type="button"
