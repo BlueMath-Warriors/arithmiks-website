@@ -1,12 +1,11 @@
-import React from "react";
-
 const ASSET_ROOT = "/case-studies/quanta";
 const tech = (name, file) => ({ name, icon: `${ASSET_ROOT}/tech/${file}.png` });
 
 export const heroData = {
   category: "Product · BI Platform",
-  logoSrc: "/quanta.svg",
+  logoSrc: `${ASSET_ROOT}/logo.svg`,
   logoAlt: "Quanta",
+  logoHeight: "clamp(56px, 4.4vw, 80px)",
   headline: { plain: "Your database, answering in", highlight: "plain English" },
   caption:
     "A multi-tenant BI platform that lets any team query their own database in plain English, no SQL required.",
@@ -43,34 +42,36 @@ export const overviewData = {
 };
 
 export const solutionData = {
-  label: "SOLUTION",
-  heading: "Our Solution",
-  description: (
-    <>
-      <strong>Arithmiks</strong> designed and delivered a conversational BI
-      platform safe enough to run against a real production database.
-    </>
-  ),
+  label: "Built for trust",
+  heading: { plain: "Safe enough to run on", highlight: "production data" },
+  description:
+    "Quanta connects to live databases, so every design decision starts from one rule: answering questions must never put the data at risk.",
   solutions: [
     {
-      icon: "/quantasolution1.svg",
-      title: "Validated, Read-Only Query Execution",
+      title: "Read-only by design",
       detail:
-        "Every AI query is parsed structurally and rejected on any mutation, then run inside a read-only transaction—so a parser regression alone can never open a write path.",
+        "Every AI-written query is parsed and checked before it runs, then executed inside a read-only transaction. Quanta answers questions; it never changes your data.",
+      iconPath: "M12 3 4.5 6v5.4c0 4.4 3.1 7.9 7.5 9.6 4.4-1.7 7.5-5.2 7.5-9.6V6L12 3Zm-2.6 9.1 1.9 1.9 3.4-3.6",
     },
     {
-      icon: "/quantasolution2.svg",
-      title: "Secure Access to Private Databases",
+      title: "Private databases stay private",
       detail:
-        "Private-subnet databases connect via an SSH bastion—strict security policy on one side, normal access on the other—making private DBs the default, not a workaround.",
+        "Connect databases on a private subnet through an SSH bastion, with strict per-connection policies. Nothing has to be opened to the internet.",
+      iconPath: "M6.5 10.5V8a5.5 5.5 0 0 1 11 0v2.5M5 10.5h14v9.5H5v-9.5Zm7 4v2",
     },
     {
-      icon: "/quantasolution3.svg",
-      title: "Cost-Efficient AI Planning at Scale",
+      title: "AI cost that stays predictable",
       detail:
-        "A compact schema representation ties AI planning costs to actual usage—not database size—cutting payload size ~60% with zero disruption to existing customers.",
+        "A compact schema representation keeps every prompt small, cutting AI planning cost by around 60% with no change to what users see.",
+      iconPath: "M4 16V8m4 8V4m4 12v-6m4 6V6m4 10V10",
     },
   ],
+};
+
+export const flowData = {
+  heading: { plain: "What happens", highlight: "behind every answer" },
+  description:
+    "A plain-English question passes through planning, generation and two independent safety checks before a single row is read.",
 };
 
 export const keyFeaturesData = {

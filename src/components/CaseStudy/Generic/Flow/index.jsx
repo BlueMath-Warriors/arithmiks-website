@@ -3,6 +3,7 @@ import useReveal from "../../../../hooks/useReveal";
 import { GradientText, Shell } from "../../../shared/Section/index.styled";
 import { SectionEyebrow, SectionHeading } from "../layout.styled";
 import { splitHeading } from "../heading";
+import useConnectorAlignment from "./useConnectorAlignment";
 import useFlowFit from "./useFlowFit";
 import { FlowSection, FlowHead, Description, Diagram, DiagramGlow, DiagramLayout } from "./index.styled";
 
@@ -20,6 +21,7 @@ const Flow = ({ label = "The flow", heading, description, children }) => {
   const rootRef = useRef(null);
   useReveal(rootRef);
   useFlowFit(rootRef);
+  useConnectorAlignment(rootRef);
   const { plain, highlight } = splitHeading(heading);
 
   return (

@@ -109,4 +109,29 @@ export const DiagramLayout = styled.div`
       left: calc(50% - 23px);
     }
   }
+
+  // Quanta's pipeline: connectors bend between differently tall cards on wide
+  // screens and the whole diagram becomes one column on narrow ones.
+  @media (min-width: 1101px) {
+    [data-qfcol="mid"] > [data-qfctx] {
+      margin-top: -84px;
+    }
+  }
+
+  @media (max-width: 1100px) {
+    [data-qflow] {
+      grid-template-columns: minmax(0, 1fr) !important;
+      gap: 6px !important;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+    [data-qfarrow] {
+      height: 40px !important;
+      transform: rotate(90deg);
+    }
+    [data-qfctx] {
+      height: auto !important;
+      padding-top: 6px;
+    }
+  }
 `;
