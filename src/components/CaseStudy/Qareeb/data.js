@@ -4,6 +4,7 @@ export const getHeroData = (images) => ({
   category: "Web Application / SaaS",
   logoSrc: "/qareeb.svg",
   logoAlt: "Qareeb",
+  tone: "warm",
   caption: (
     <>
       An AI meeting intelligence platform that records, transcribes, and

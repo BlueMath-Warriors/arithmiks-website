@@ -38,11 +38,13 @@ const splitTitle = (title) => {
  * @param {string} props.category eyebrow above the logo
  * @param {string} props.logoSrc
  * @param {string} props.logoAlt
+ * @param {string} [props.logoHeight] CSS height for the logo when the default is too small
  * @param {string} [props.slug] case-study slug; its card title is the h1 when no `headline` is given
  * @param {string | { plain: string; highlight: string }} [props.headline] h1 text; the highlight part gets the gradient
  * @param {React.ReactNode} props.caption subtitle under the headline
  * @param {string} [props.liveUrl] product URL for the "Visit" button
  * @param {string} [props.liveLabel] name used in the button, defaults to the logo alt
+ * @param {"blue" | "warm"} [props.tone] colour of the frame around the image
  * @param {boolean} [props.screenshot] the image is a plain app screenshot (rounded, ringed) rather than a ready-made mockup
  * @param {Object} [props.heroImageData] gatsbyImageData from GraphQL
  * @param {string} [props.heroImageSrc] static fallback path
@@ -52,11 +54,13 @@ const Hero = ({
   category,
   logoSrc,
   logoAlt = "Logo",
+  logoHeight,
   slug,
   headline,
   caption,
   liveUrl,
   liveLabel,
+  tone = "blue",
   screenshot = false,
   heroImageData,
   heroImageSrc,
@@ -78,7 +82,7 @@ const Hero = ({
       <HeroShell>
         <HeroContent>
           <EyebrowLabel>{category}</EyebrowLabel>
-          {logoSrc && <ProductLogo src={logoSrc} alt={logoAlt} />}
+          {logoSrc && <ProductLogo src={logoSrc} alt={logoAlt} $height={logoHeight} />}
           <Headline id="case-study-headline">
             {plain} <GradientText>{highlight}</GradientText>
           </Headline>
@@ -94,9 +98,16 @@ const Hero = ({
             </SecondaryCta>
           </CtaRow>
         </HeroContent>
-        <Frame $screenshot={screenshot}>
+        <Frame $tone={tone} $screenshot={screenshot}>
           {gatsbyImage ? (
-            <GatsbyImage image={gatsbyImage} alt={heroImageAlt} loading="eager" style={FILL_FRAME} />
+            <GatsbyImage
+              image={gatsbyImage}
+              alt={heroImageAlt}
+              loading="eager"
+              objectFit="cover"
+              objectPosition="top center"
+              style={FILL_FRAME}
+            />
           ) : (
             <img src={heroImageSrc} alt={heroImageAlt} />
           )}

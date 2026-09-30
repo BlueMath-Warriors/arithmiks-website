@@ -30,10 +30,10 @@ const renderImage = (image, alt) => {
  * @param {string} props.detail
  * @param {string|Object} props.imageSrc static path or gatsby image node
  * @param {string} [props.imageAlt]
- * @param {boolean} [props.framed] show the image as a bordered card (for plain screenshots, not mockups)
+ * @param {boolean} [props.framed] show the image as a bordered card with a drop shadow (default)
  * @param {{ title: string; text: string }} props.problemData rendered in the "gap" box
  */
-const Overview = ({ name, detail, imageSrc, imageAlt, framed = false, problemData }) => {
+const Overview = ({ name, detail, imageSrc, imageAlt, framed = true, problemData }) => {
   const rootRef = useRef(null);
   useReveal(rootRef);
 

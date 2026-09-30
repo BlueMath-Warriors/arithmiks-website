@@ -9,6 +9,7 @@ export const heroData = {
   caption:
     "AI contract review that flags risks and extracts key terms in about a minute, with every finding traced to its source sentence.",
   liveUrl: "https://clauselens.arithmiks.com",
+  tone: "warm",
   screenshot: true,
   heroImageSrc: `${ASSET_ROOT}/hero.webp`,
   heroImageAlt:

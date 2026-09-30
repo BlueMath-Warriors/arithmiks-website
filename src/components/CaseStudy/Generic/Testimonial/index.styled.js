@@ -1,6 +1,18 @@
 import { styled } from "styled-components";
 import { breakpoints } from "../../../Landing/index.styled";
 
+// Same blue band as the landing page's stats section.
+export const Band = styled.div`
+  position: relative;
+  z-index: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background: linear-gradient(135deg, #0b3ad1 0%, #1355ff 55%, #0a2aa0 100%);
+`;
+
 export const TestimonialContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -55,7 +67,7 @@ export const Quotes = styled.div`
 `;
 
 export const TestimonialText = styled.p`
-  color: #0957DE;
+  color: #ffffff;
   text-align: left;
   font-family: Poppins;
   font-size: 24px;
@@ -74,6 +86,8 @@ export const TestimonialText = styled.p`
     width: 50px;
     height: 50px;
     background-image: url('/quotes.webp');
+    filter: brightness(0) invert(1);
+    opacity: 0.4;
     background-size: contain;
     background-repeat: no-repeat;
   }
@@ -84,6 +98,8 @@ export const TestimonialText = styled.p`
     width: 50px;
     height: 50px;
     background-image: url('/quotes.webp');
+    filter: brightness(0) invert(1);
+    opacity: 0.4;
     background-size: contain;
     background-repeat: no-repeat;
     transform: scaleX(-1) scaleY(-1);
@@ -206,7 +222,7 @@ export const Name = styled.h3`
 `;
 
 export const NameCaption = styled.p`
-  color: #ADADAD;
+  color: rgba(255, 255, 255, 0.78);
   text-align: left;
   font-family: Poppins;
   font-size: 16px;

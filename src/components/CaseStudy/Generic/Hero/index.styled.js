@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { colors } from "../../../../styles/tokens";
 import { Shell, glowOrb } from "../../../shared/Section/index.styled";
 
@@ -62,10 +62,21 @@ export const HeroShell = styled(Shell)`
   text-align: center;
 `;
 
+const enter = keyframes`
+  from { opacity: 0; transform: translate3d(0, 26px, 0); }
+  to { opacity: 1; transform: none; }
+`;
+
+// The eyebrow, logo, headline, copy and buttons rise in together, as in the design.
 export const HeroContent = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  animation: ${enter} 0.8s cubic-bezier(0.16, 1, 0.3, 1) 260ms both;
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
 `;
 
 export const EyebrowLabel = styled.span`
@@ -78,7 +89,7 @@ export const EyebrowLabel = styled.span`
 `;
 
 export const ProductLogo = styled.img`
-  height: clamp(44px, 3.4vw, 62px);
+  height: ${({ $height }) => $height || "clamp(44px, 3.4vw, 62px)"};
   width: auto;
   display: block;
   margin-top: clamp(22px, 2.4vw, 30px);
@@ -163,9 +174,26 @@ export const CtaGlyph = styled.span`
   color: inherit;
 `;
 
-// Every hero image sits in the same warm frame with a top-only radius. A plain
-// screenshot is also rounded and ringed; a mockup already has its own shape
-// and shadow, so it is left untouched.
+// Every hero image sits in a framed panel with a top-only radius. The tone is
+// the frame's colour: cool blue by default, warm beige for products whose app
+// UI is cream-coloured. A plain screenshot is also rounded and ringed; a
+// mockup already has its own shape and shadow, so it is left untouched.
+const FRAME_TONES = {
+  blue: {
+    background: "linear-gradient(135deg, #eef1fb 0%, #e9edfa 45%, #f1ecf8 100%)",
+    border: "#dfe4f2",
+    shadow: "0 -10px 60px -30px rgba(10, 15, 31, 0.28), 0 2px 6px rgba(10, 15, 31, 0.04)",
+  },
+  warm: {
+    background: "linear-gradient(135deg, #f4efe7 0%, #efe8dd 50%, #f3ece4 100%)",
+    border: "#e4dacb",
+    shadow: "0 -10px 60px -30px rgba(60, 40, 20, 0.28), 0 2px 6px rgba(60, 40, 20, 0.05)",
+  },
+};
+
+// Every hero image gets the height of a 1800×1125 screenshot, so pages line up.
+const HERO_IMAGE_RATIO = "1800 / 1125";
+
 export const Frame = styled.div`
   position: relative;
   z-index: 2;
@@ -173,11 +201,11 @@ export const Frame = styled.div`
   max-width: ${HERO_IMAGE_MAX_WIDTH};
   margin: clamp(44px, 5vw, 72px) 0 0;
   padding: ${FRAME_PADDING} ${FRAME_PADDING} 0;
-  background: linear-gradient(135deg, #f4efe7 0%, #efe8dd 50%, #f3ece4 100%);
-  border: 1px solid #e4dacb;
+  background: ${({ $tone }) => FRAME_TONES[$tone].background};
+  border: 1px solid ${({ $tone }) => FRAME_TONES[$tone].border};
   border-bottom: 0;
   border-radius: ${FRAME_RADIUS} ${FRAME_RADIUS} 0 0;
-  box-shadow: 0 -10px 60px -30px rgba(60, 40, 20, 0.28), 0 2px 6px rgba(60, 40, 20, 0.05);
+  box-shadow: ${({ $tone }) => FRAME_TONES[$tone].shadow};
   overflow: hidden;
 
   img {
@@ -190,5 +218,13 @@ export const Frame = styled.div`
       border-radius: ${IMAGE_RADIUS} ${IMAGE_RADIUS} 0 0;
       box-shadow: 0 0 0 1px rgba(10, 15, 31, 0.06);
     `}
+  }
+
+  .gatsby-image-wrapper {
+    aspect-ratio: ${HERO_IMAGE_RATIO};
+  }
+
+  .gatsby-image-wrapper > div[aria-hidden="true"] {
+    display: none;
   }
 `;

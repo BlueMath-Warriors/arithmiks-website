@@ -46,7 +46,7 @@ export const query = graphql`
     overviewImage: file(relativePath: { eq: "mediaInfraOverview.webp" }) {
       childImageSharp {
         gatsbyImageData(
-          width: 1230
+          width: 2000
           placeholder: NONE
           formats: [AUTO, WEBP, AVIF]
           quality: 85

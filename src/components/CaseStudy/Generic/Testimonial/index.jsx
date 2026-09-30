@@ -1,6 +1,7 @@
 import React from "react";
 import * as containerStyles from "../../../../styles/global.module.css";
 import {
+  Band,
   TestimonialText,
   Name,
   NameCaption,
@@ -35,7 +36,7 @@ const Testimonial = ({
   
   return (
     <>
-      <div className={containerStyles.easybar_testimonial}>
+      <Band>
         <TestimonialContainer>
           <TextContainer>
             <div className={`${containerStyles.quotes} ${containerStyles.bottom}`} />
@@ -57,7 +58,7 @@ const Testimonial = ({
             </InnerContainer>
           </NameContainer>
         </TestimonialContainer>
-      </div>
+      </Band>
     </>
   );
 };
