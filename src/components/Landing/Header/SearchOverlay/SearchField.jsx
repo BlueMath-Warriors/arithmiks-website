@@ -57,8 +57,8 @@ const SearchField = ({ value, onChange, onSubmit, inputRef }) => (
             inputRef?.current?.focus();
           }}
         >
-          <svg viewBox="0 0 20 20" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" aria-hidden="true">
-            <path d="M5 5l10 10M15 5L5 15" />
+          <svg viewBox="0 0 12 12" width="12" height="12" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" aria-hidden="true">
+            <path d="M2 2l8 8M10 2l-8 8" />
           </svg>
         </ClearButton>
       )}

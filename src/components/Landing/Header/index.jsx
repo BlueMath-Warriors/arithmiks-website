@@ -450,8 +450,8 @@ const Header = ({ white, fixed_bar, lightHero, transparentWhile }) => {
                     >
                       <svg
                         viewBox="0 0 20 20"
-                        width="16"
-                        height="16"
+                        width="17"
+                        height="17"
                         fill="none"
                         stroke="currentColor"
                         strokeWidth="1.7"
@@ -459,7 +459,9 @@ const Header = ({ white, fixed_bar, lightHero, transparentWhile }) => {
                         strokeLinejoin="round"
                         aria-hidden="true"
                       >
-                        <path d="M11 4h5v5M16 4l-7 7M8 5H5.5A1.5 1.5 0 0 0 4 6.5v8A1.5 1.5 0 0 0 5.5 16h8a1.5 1.5 0 0 0 1.5-1.5V12" />
+                        <path d="M11 4h5v5" />
+                        <path d="M16 4 9.2 10.8" />
+                        <path d="M14.4 12.2v3.4a1.4 1.4 0 0 1-1.4 1.4H4.4A1.4 1.4 0 0 1 3 15.6V7a1.4 1.4 0 0 1 1.4-1.4h3.4" />
                       </svg>
                     </ProductLiveLink>
                   </ProductActionsRow>

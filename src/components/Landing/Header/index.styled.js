@@ -452,10 +452,6 @@ export const MegaItem = styled(Link)`
     background: #f5f8ff;
     color: ${colors.primary};
   }
-
-  &:hover::before {
-    background: ${colors.primary};
-  }
 `;
 
 export const ProductsPanel = styled.div`
@@ -609,12 +605,16 @@ export const ProductLiveLink = styled.a`
   align-items: center;
   justify-content: center;
   flex: none;
-  width: 32px;
-  height: 32px;
-  color: #8a93a6;
-  transition: color 0.25s ease;
+  width: 36px;
+  height: 36px;
+  margin: -4px -6px -4px 0;
+  border-radius: 50%;
+  color: ${colors.textFaint};
+  background: transparent;
+  transition: background 0.22s ease, color 0.22s ease;
 
   &:hover {
+    background: #eaf0ff;
     color: ${colors.primary};
   }
 

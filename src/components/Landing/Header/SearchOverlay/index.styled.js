@@ -75,22 +75,19 @@ export const Input = styled.input`
   }
 `;
 
-// global.module.css's "* { color: #000 }" hits the svg and its paths
-// directly, hence the explicit inherit.
+// No background, in either state: only the colour changes. The global
+// "* { color: #000 }" hits the svg directly, hence the explicit inherit.
 export const ClearButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
   flex: none;
-  width: 24px;
-  height: 24px;
-  padding: 0;
+  padding: 4px;
   background: transparent;
   border: 0;
-  border-radius: 50%;
   color: #8a93a6;
   cursor: pointer;
-  transition: color 0.2s ease, background 0.2s ease;
+  transition: color 0.2s ease;
 
   svg,
   svg * {
@@ -99,7 +96,6 @@ export const ClearButton = styled.button`
 
   &:hover {
     color: ${colors.text};
-    background: #e6e9f0;
   }
 `;
 

@@ -79,10 +79,6 @@ export const RailLink = styled.a`
     opacity: 0.85;
   }
 
-  &:hover svg {
-    color: ${colors.primary};
-  }
-
   @media (max-width: 900px) {
     flex: none;
     min-height: 52px;
