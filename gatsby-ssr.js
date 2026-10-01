@@ -29,6 +29,17 @@ try {
 } catch (e) {}
 `;
 
+// Without these the text first paints in the fallback font and then jumps when
+// the web font arrives (layout shift); the weights are the Latin subsets used
+// above the fold across the site.
+const PRELOADED_FONTS = [
+  "/fonts/Aspekta-Variable.woff2",
+  "/fonts/poppins/poppins-400-latin.woff2",
+  "/fonts/poppins/poppins-500-latin.woff2",
+  "/fonts/poppins/poppins-600-latin.woff2",
+  "/fonts/poppins/poppins-700-latin.woff2",
+];
+
 export const onRenderBody = ({ setHtmlAttributes, setHeadComponents, setPreBodyComponents }) => {
   setHtmlAttributes({ lang: "en" });
 
@@ -40,18 +51,9 @@ export const onRenderBody = ({ setHtmlAttributes, setHeadComponents, setPreBodyC
       name="google-site-verification"
       content="-vSMxD4PrE6GOok0ajvRRpkns32Bgucy-d92OMsgR1Q"
     />,
-    <link
-      key="preconnect-google-fonts"
-      rel="preconnect"
-      href="https://fonts.googleapis.com"
-      crossOrigin="anonymous"
-    />,
-    <link
-      key="preconnect-gstatic"
-      rel="preconnect"
-      href="https://fonts.gstatic.com"
-      crossOrigin="anonymous"
-    />,
+    ...PRELOADED_FONTS.map((href) => (
+      <link key={`preload-${href}`} rel="preload" href={href} as="font" type="font/woff2" crossOrigin="anonymous" />
+    )),
     
     <link
       key="dns-prefetch-gtag"
