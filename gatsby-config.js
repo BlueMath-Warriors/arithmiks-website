@@ -2,6 +2,9 @@
  * @type {import('gatsby').GatsbyConfig}
  */
 
+const fs = require("fs")
+const path = require("path")
+
 require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
 })
@@ -14,6 +17,28 @@ const toAbsoluteUrl = (path) => {
   const normalizedPath = path.endsWith("/") ? path.slice(0, -1) : path;
   return new URL(normalizedPath, siteUrl).toString();
 };
+
+const ONE_DAY_SECONDS = 86400
+const ONE_WEEK_SECONDS = 604800
+const CACHEABLE_STATIC_FILE = /\.(svg|png|jpe?g|webp|woff2)$/i
+
+// Files copied as-is from /static keep their names when they change, so they
+// can't be cached "forever" like Gatsby's hashed bundles. A day plus a week of
+// stale-while-revalidate still removes the revalidation round-trip on repeat
+// visits. Built from the folder so new assets are covered automatically (the
+// Netlify adapter regenerates _headers, so a static/_headers file is ignored).
+const staticAssetHeaders = fs
+  .readdirSync(path.join(__dirname, "static"), { withFileTypes: true })
+  .filter((entry) => entry.isDirectory() || CACHEABLE_STATIC_FILE.test(entry.name))
+  .map((entry) => ({
+    source: entry.isDirectory() ? `/${entry.name}/*` : `/${entry.name}`,
+    headers: [
+      {
+        key: "cache-control",
+        value: `public, max-age=${ONE_DAY_SECONDS}, stale-while-revalidate=${ONE_WEEK_SECONDS}`,
+      },
+    ],
+  }))
 
 module.exports = {
   siteMetadata: {
@@ -132,6 +157,8 @@ module.exports = {
   },
   
   trailingSlash: 'never',
+
+  headers: staticAssetHeaders,
 };
 
 
