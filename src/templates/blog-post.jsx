@@ -59,6 +59,7 @@ const BlogPostTemplate = ({ data, pageContext, children }) => {
             image={frontmatter.coverImage}
             alt={frontmatter.title}
             radius="0"
+            eager
             style={{ height: "100%" }}
           />
         </CoverSection>

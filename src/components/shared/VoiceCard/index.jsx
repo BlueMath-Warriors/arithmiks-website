@@ -49,8 +49,8 @@ const VoiceLogo = ({ voice }) => {
   const compact = COMPACT_LOGO_SLUGS.includes(voice.slug);
   return (
     <LogoWrap $compact={compact}>
-      <CompanyLogo src={voice.companyLogo} alt={voice.companyName} />
-      <CompanyLogoDark src={voice.companyLogo} alt="" aria-hidden="true" />
+      <CompanyLogo src={voice.companyLogo} alt={voice.companyName} loading="lazy" decoding="async" />
+      <CompanyLogoDark src={voice.companyLogo} alt="" aria-hidden="true" loading="lazy" decoding="async" />
     </LogoWrap>
   );
 };
@@ -67,7 +67,7 @@ const VoiceCard = forwardRef(({ voice, className }, ref) => (
     <VGlow data-vglow aria-hidden="true" />
     <VEdge aria-hidden="true" />
     <VoiceHead>
-      <Portrait src={voice.avatar} alt={voice.name} />
+      <Portrait src={voice.avatar} alt={voice.name} loading="lazy" decoding="async" />
       <Info>
         <VoiceLogo voice={voice} />
         <NameRole>

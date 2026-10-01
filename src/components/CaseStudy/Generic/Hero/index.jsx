@@ -109,7 +109,7 @@ const Hero = ({
               style={FILL_FRAME}
             />
           ) : (
-            <img src={heroImageSrc} alt={heroImageAlt} />
+            <img src={heroImageSrc} alt={heroImageAlt} fetchpriority="high" decoding="async" />
           )}
         </Frame>
       </HeroShell>
