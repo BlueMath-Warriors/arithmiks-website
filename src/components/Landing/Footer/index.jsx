@@ -25,7 +25,7 @@ import {
   LegalLinks,
   BadgeRow,
 } from "./index.styled";
-import { LOGO_MARK_SRC } from "../../../constants/brand";
+import { LOGO_MARK_SRC, UPWORK_RANK_SIZE, UPWORK_TOP_RATED_SIZE } from "../../../constants/brand";
 import upworkRank from "../../../images/homepage/upwork-rank.webp";
 
 const contactIconProps = {
@@ -142,11 +142,19 @@ const Footer = () => (
             </a>
           </ContactLinks>
           <BadgeRow>
-            <img src="/homepage/upwork-top-rated.svg" alt="Upwork Top Rated Plus" height={96} />
+            <img
+              src="/homepage/upwork-top-rated.svg"
+              alt="Upwork Top Rated Plus"
+              width={UPWORK_TOP_RATED_SIZE.width}
+              height={UPWORK_TOP_RATED_SIZE.height}
+            />
             <img
               src={upworkRank}
               alt="UpworkRank — #146 in Web Development, top 0.87%"
-              height={96}
+              width={UPWORK_RANK_SIZE.width}
+              height={UPWORK_RANK_SIZE.height}
+              loading="lazy"
+              decoding="async"
             />
           </BadgeRow>
         </Brand>

@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import useReveal from "../../../../hooks/useReveal";
 import { prefersReducedMotion } from "../../../../utils/animations";
+import { KEY_FEATURE_IMAGE_SIZES, keyFeatureSrcSet } from "../../../../utils/responsiveImage";
 import { GradientText, Shell } from "../../../shared/Section/index.styled";
 import { SectionEyebrow, SectionHeading } from "../layout.styled";
 import { splitHeading } from "../heading";
@@ -147,9 +148,12 @@ const KeyFeatures = ({ label = "HIGHLIGHTS", heading = "Key features", framed = 
                     <SlideCard $framed={framed} $isNeighbour={style.$isNeighbour}>
                       <img
                         src={feature.image}
+                        srcSet={keyFeatureSrcSet(feature.image)}
+                        sizes={KEY_FEATURE_IMAGE_SIZES}
                         alt={offset === 0 ? feature.imageAlt || feature.title : ""}
                         draggable={false}
-                        loading={Math.abs(offset) <= 1 ? "eager" : "lazy"}
+                        loading="lazy"
+                        decoding="async"
                       />
                       {framed && (
                         <Wash $isNeighbour={style.$isNeighbour} $direction={offset < 0 ? "to left" : "to right"} aria-hidden="true" />

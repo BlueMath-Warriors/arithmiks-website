@@ -1,5 +1,6 @@
 import React from "react";
 import upworkRank from "../../../../../images/homepage/upwork-rank.webp";
+import { UPWORK_RANK_SIZE, UPWORK_TOP_RATED_SIZE } from "../../../../../constants/brand";
 import TestimonialRotator from "./TestimonialRotator";
 import {
   Aside,
@@ -20,8 +21,20 @@ const ContactAside = () => (
     <Info>
       <Label $tight>Recognition</Label>
       <Badges>
-        <img src="/homepage/upwork-top-rated.svg" alt="Upwork Top Rated Plus" />
-        <img src={upworkRank} alt="UpworkRank — #146 in Web Development, top 0.87%" />
+        <img
+          src="/homepage/upwork-top-rated.svg"
+          alt="Upwork Top Rated Plus"
+          width={UPWORK_TOP_RATED_SIZE.width}
+          height={UPWORK_TOP_RATED_SIZE.height}
+        />
+        <img
+          src={upworkRank}
+          alt="UpworkRank — #146 in Web Development, top 0.87%"
+          width={UPWORK_RANK_SIZE.width}
+          height={UPWORK_RANK_SIZE.height}
+          loading="lazy"
+          decoding="async"
+        />
       </Badges>
       <Divider aria-hidden="true" />
       <Details>

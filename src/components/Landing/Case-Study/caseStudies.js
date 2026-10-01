@@ -1,21 +1,53 @@
 import swervDashboard from "../../../images/swervDashboard.webp";
+import swervDashboardMid from "../../../images/swervDashboard-1100.webp";
+import swervDashboardSmall from "../../../images/swervDashboard-750.webp";
 import togatherDashboard from "../../../images/togatherDashboard.webp";
+import togatherDashboardMid from "../../../images/togatherDashboard-1100.webp";
+import togatherDashboardSmall from "../../../images/togatherDashboard-750.webp";
 import sbaloansDashboard from "../../../images/sbaloansDashboard.webp";
+import sbaloansDashboardMid from "../../../images/sbaloansDashboard-1100.webp";
+import sbaloansDashboardSmall from "../../../images/sbaloansDashboard-750.webp";
 import easybarDashboard from "../../../images/easybarDashboard.webp";
+import easybarDashboardMid from "../../../images/easybarDashboard-1100.webp";
+import easybarDashboardSmall from "../../../images/easybarDashboard-750.webp";
 import lfgoDashboard from "../../../images/lfgoDashboard.webp";
+import lfgoDashboardMid from "../../../images/lfgoDashboard-1100.webp";
+import lfgoDashboardSmall from "../../../images/lfgoDashboard-750.webp";
 import ehhDashboard from "../../../images/ehhDashboard.webp";
+import ehhDashboardMid from "../../../images/ehhDashboard-1100.webp";
+import ehhDashboardSmall from "../../../images/ehhDashboard-750.webp";
 import goDashboard from "../../../images/goDashboard.webp";
+import goDashboardMid from "../../../images/goDashboard-1100.webp";
+import goDashboardSmall from "../../../images/goDashboard-750.webp";
 import ofertasDashboard from "../../../images/ofertasDashboard.webp";
+import ofertasDashboardMid from "../../../images/ofertasDashboard-1100.webp";
+import ofertasDashboardSmall from "../../../images/ofertasDashboard-750.webp";
 import qareebDashboard from "../../../images/qareebDashboard.webp";
+import qareebDashboardMid from "../../../images/qareebDashboard-1100.webp";
+import qareebDashboardSmall from "../../../images/qareebDashboard-750.webp";
 import mrsellernoteDashboard from "../../../images/msnDashboard.webp";
+import mrsellernoteDashboardMid from "../../../images/msnDashboard-1100.webp";
+import mrsellernoteDashboardSmall from "../../../images/msnDashboard-750.webp";
 import quantaDashboard from "../../../images/quantaDashboard.webp";
+import quantaDashboardMid from "../../../images/quantaDashboard-1100.webp";
+import quantaDashboardSmall from "../../../images/quantaDashboard-750.webp";
 import clauselensDashboard from "../../../images/clauselensDashboard.webp";
 import mediaInfraDashboard from "../../../images/mediaInfraDashboard.webp";
+import mediaInfraDashboardMid from "../../../images/mediaInfraDashboard-1100.webp";
+import mediaInfraDashboardSmall from "../../../images/mediaInfraDashboard-750.webp";
+
+// Card screenshots ship in three widths so phones and small cards don't pull the
+// 1500px file; DASHBOARD_IMAGE_SIZES is an upper bound of the card's rendered
+// width at each breakpoint so the browser never picks a too-small candidate.
+const dashboardSrcSet = (small, mid, large) => `${small} 750w, ${mid} 1100w, ${large} 1500w`;
+
+export const DASHBOARD_IMAGE_SIZES = "(min-width: 1024px) 723px, (min-width: 768px) 700px, 92vw";
 
 export const caseStudies = [
   {
     slug: "go",
     dashboardImg: goDashboard,
+    dashboardSrcSet: dashboardSrcSet(goDashboardSmall, goDashboardMid, goDashboard),
     logo: "/go.svg",
     logoAlt: "GO",
     tag: "Machine Learning",
@@ -38,6 +70,7 @@ export const caseStudies = [
   {
     slug: "media-infrastructure",
     dashboardImg: mediaInfraDashboard,
+    dashboardSrcSet: dashboardSrcSet(mediaInfraDashboardSmall, mediaInfraDashboardMid, mediaInfraDashboard),
     logo: null,
     logoAlt: "Media Infrastructure",
     tag: "Media Infrastructure",
@@ -53,6 +86,7 @@ export const caseStudies = [
   {
     slug: "sbaloans",
     dashboardImg: sbaloansDashboard,
+    dashboardSrcSet: dashboardSrcSet(sbaloansDashboardSmall, sbaloansDashboardMid, sbaloansDashboard),
     logo: "/sbaloans.svg",
     logoAlt: "sbaloansHQ",
     tag: "SaaS",
@@ -75,6 +109,7 @@ export const caseStudies = [
   {
     slug: "easybar",
     dashboardImg: easybarDashboard,
+    dashboardSrcSet: dashboardSrcSet(easybarDashboardSmall, easybarDashboardMid, easybarDashboard),
     logo: "/easybar.svg",
     logoAlt: "EASY-BAR",
     tag: "Software",
@@ -97,6 +132,7 @@ export const caseStudies = [
   {
     slug: "qareeb",
     dashboardImg: qareebDashboard,
+    dashboardSrcSet: dashboardSrcSet(qareebDashboardSmall, qareebDashboardMid, qareebDashboard),
     logo: "/qareeb.svg",
     logoAlt: "Qareeb",
     tag: "SaaS",
@@ -112,6 +148,7 @@ export const caseStudies = [
   {
     slug: "mrsellernote",
     dashboardImg: mrsellernoteDashboard,
+    dashboardSrcSet: dashboardSrcSet(mrsellernoteDashboardSmall, mrsellernoteDashboardMid, mrsellernoteDashboard),
     logo: "/icons/msn-logo.svg",
     logoAlt: "Mr. Seller Note",
     tag: "Web App",
@@ -127,6 +164,7 @@ export const caseStudies = [
   {
     slug: "quanta",
     dashboardImg: quantaDashboard,
+    dashboardSrcSet: dashboardSrcSet(quantaDashboardSmall, quantaDashboardMid, quantaDashboard),
     logo: "/quanta.svg",
     logoAlt: "Quanta",
     tag: "BI Platform",
@@ -157,6 +195,7 @@ export const caseStudies = [
   {
     slug: "lfgo",
     dashboardImg: lfgoDashboard,
+    dashboardSrcSet: dashboardSrcSet(lfgoDashboardSmall, lfgoDashboardMid, lfgoDashboard),
     logo: "/lfgo.svg",
     logoAlt: "LFGO",
     tag: "Web3",
@@ -172,6 +211,7 @@ export const caseStudies = [
   {
     slug: "expat",
     dashboardImg: ehhDashboard,
+    dashboardSrcSet: dashboardSrcSet(ehhDashboardSmall, ehhDashboardMid, ehhDashboard),
     logo: "/ehh.svg",
     logoAlt: "Expat Haven Hub",
     tag: "Web App",
@@ -187,6 +227,7 @@ export const caseStudies = [
   {
     slug: "ofertas",
     dashboardImg: ofertasDashboard,
+    dashboardSrcSet: dashboardSrcSet(ofertasDashboardSmall, ofertasDashboardMid, ofertasDashboard),
     logo: "/ofertas.svg",
     logoAlt: "Ofertas",
     tag: "Affiliation Market",
@@ -202,6 +243,7 @@ export const caseStudies = [
   {
     slug: "swerv",
     dashboardImg: swervDashboard,
+    dashboardSrcSet: dashboardSrcSet(swervDashboardSmall, swervDashboardMid, swervDashboard),
     logo: "/swerv.svg",
     logoAlt: "Swerv Automotive",
     tag: "SaaS",
@@ -224,6 +266,7 @@ export const caseStudies = [
   {
     slug: "togather",
     dashboardImg: togatherDashboard,
+    dashboardSrcSet: dashboardSrcSet(togatherDashboardSmall, togatherDashboardMid, togatherDashboard),
     logo: "/togather.svg",
     logoAlt: "Togather",
     tag: "Software",

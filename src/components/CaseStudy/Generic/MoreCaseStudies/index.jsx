@@ -1,7 +1,7 @@
 import React, { useMemo, useRef } from "react";
 import { Link } from "gatsby";
 import useReveal from "../../../../hooks/useReveal";
-import { caseStudies } from "../../../Landing/Case-Study/caseStudies";
+import { caseStudies, DASHBOARD_IMAGE_SIZES } from "../../../Landing/Case-Study/caseStudies";
 import { GradientText, Shell } from "../../../shared/Section/index.styled";
 import { SectionEyebrow, SectionHeading } from "../layout.styled";
 import {
@@ -73,7 +73,13 @@ const MoreCaseStudies = ({ currentSlug, relatedSlugs }) => {
           {nextStudies.map((study) => (
             <CardLink key={study.slug} to={`/case-studies/${study.slug}`} data-reveal="">
               <CardImageFrame>
-                <img src={study.dashboardImg} alt={study.title} loading="lazy" />
+                <img
+                  src={study.dashboardImg}
+                  srcSet={study.dashboardSrcSet}
+                  sizes={study.dashboardSrcSet ? DASHBOARD_IMAGE_SIZES : undefined}
+                  alt={study.title}
+                  loading="lazy"
+                />
               </CardImageFrame>
               <CardBody>
                 <CardTopRow>

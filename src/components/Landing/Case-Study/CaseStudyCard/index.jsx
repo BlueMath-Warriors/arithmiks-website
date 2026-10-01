@@ -12,6 +12,7 @@ import {
   CardReadMore,
   CardReadMoreArrow,
 } from "./index.styled";
+import { DASHBOARD_IMAGE_SIZES } from "../caseStudies";
 
 /**
  * The case-study card shared by the homepage rail and the /case-studies grid.
@@ -33,14 +34,17 @@ const CaseStudyCard = ({ study, className }) => (
   >
     <CardImage
       src={study.dashboardImg}
+      srcSet={study.dashboardSrcSet}
+      sizes={study.dashboardSrcSet ? DASHBOARD_IMAGE_SIZES : undefined}
       alt={`${study.title} — product interface`}
       loading="lazy"
+      decoding="async"
     />
     <CardBody>
       <CardTopRow>
         <CardChip>{study.tag}</CardChip>
         {study.logo ? (
-          <CardLogo src={study.logo} alt={study.logoAlt} />
+          <CardLogo src={study.logo} alt={study.logoAlt} loading="lazy" decoding="async" />
         ) : (
           <CardClientName>{study.logoAlt}</CardClientName>
         )}

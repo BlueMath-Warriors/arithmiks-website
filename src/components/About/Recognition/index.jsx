@@ -15,6 +15,7 @@ import {
   BadgeCaption,
 } from "./index.styled";
 import upworkRank from "../../../images/homepage/upwork-rank.webp";
+import { UPWORK_RANK_SIZE, UPWORK_TOP_RATED_SIZE } from "../../../constants/brand";
 
 const AWARDS = [
   {
@@ -71,8 +72,20 @@ const Recognition = () => (
         <BadgeCard data-reveal="">
           <BadgeKicker>On Upwork</BadgeKicker>
           <BadgeRow>
-            <img src="/homepage/upwork-top-rated.svg" alt="Upwork Top Rated Plus" />
-            <img src={upworkRank} alt="UpworkRank — #146 in Web Development, top 0.87%" />
+            <img
+              src="/homepage/upwork-top-rated.svg"
+              alt="Upwork Top Rated Plus"
+              width={UPWORK_TOP_RATED_SIZE.width}
+              height={UPWORK_TOP_RATED_SIZE.height}
+            />
+            <img
+              src={upworkRank}
+              alt="UpworkRank — #146 in Web Development, top 0.87%"
+              width={UPWORK_RANK_SIZE.width}
+              height={UPWORK_RANK_SIZE.height}
+              loading="lazy"
+              decoding="async"
+            />
           </BadgeRow>
           <BadgeCaption>Top Rated Plus, ranked #146 in Web Development — top 0.87% of agencies.</BadgeCaption>
         </BadgeCard>

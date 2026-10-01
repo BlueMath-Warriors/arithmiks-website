@@ -3,7 +3,7 @@ import { Link } from "gatsby";
 import { useHoverIntent } from "../../../hooks/useHoverIntent";
 import { SERVICE_NAV_GROUPS } from "../../../constants/serviceNavGroups";
 import { PRODUCTS } from "../../../constants/products";
-import { caseStudies } from "../Case-Study/caseStudies.js";
+import { caseStudies, DASHBOARD_IMAGE_SIZES } from "../Case-Study/caseStudies.js";
 import {
   NavScrim,
   Headerr,
@@ -393,7 +393,12 @@ const Header = ({ white, fixed_bar, lightHero, transparentWhile }) => {
                 return (
                   <SpotlightCard to={`/case-studies/${spotlight.slug}`}>
                     <SpotlightImageWrap>
-                      <img src={spotlight.dashboardImg} alt={spotlight.title} />
+                      <img
+                        src={spotlight.dashboardImg}
+                        srcSet={spotlight.dashboardSrcSet}
+                        sizes={spotlight.dashboardSrcSet ? DASHBOARD_IMAGE_SIZES : undefined}
+                        alt={spotlight.title}
+                      />
                     </SpotlightImageWrap>
                     <SpotlightTitle>{spotlight.title}</SpotlightTitle>
                     <SpotlightReadLink>Read case study →</SpotlightReadLink>
