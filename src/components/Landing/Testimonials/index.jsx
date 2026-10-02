@@ -34,7 +34,10 @@ const Testimonials = () => {
         frame = null;
         // The view has side padding for the glow, so its width isn't the page step.
         const pageStep = cardRefs.current[PER_PAGE].offsetLeft - cardRefs.current[0].offsetLeft;
-        const nearest = Math.round(view.scrollLeft / pageStep);
+        // The last page holds a single card, so its snap offset lies past the
+        // maximum scroll; reaching the end of the track is what selects it.
+        const isAtEnd = view.scrollLeft + view.clientWidth >= view.scrollWidth - 1;
+        const nearest = isAtEnd ? PAGE_COUNT - 1 : Math.round(view.scrollLeft / pageStep);
         setPage(Math.min(PAGE_COUNT - 1, Math.max(0, nearest)));
       });
     };

@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 /**
  * Desktop-only pinned horizontal scroll for the case-study card rail: the
@@ -6,12 +6,35 @@ import { useEffect, useRef } from "react";
  * progress through that runway drives a translateX on the card track until
  * every card has passed. Below 901px this is a no-op — the rail is a plain
  * scroll-snap row instead (see Landing-Grid/index.styled.js).
+ *
+ * `isRailNear` flips to true once the section is within a viewport of the
+ * screen, so cards still parked off to the right can start loading their
+ * images before they slide in rather than as they arrive.
  */
 export const usePinnedCaseRail = () => {
   const stageRef = useRef(null);
   const panelRef = useRef(null);
   const viewRef = useRef(null);
   const trackRef = useRef(null);
+  const [isRailNear, setIsRailNear] = useState(false);
+
+  useEffect(() => {
+    const stage = stageRef.current;
+    if (!stage || typeof IntersectionObserver === "undefined") {
+      setIsRailNear(true);
+      return undefined;
+    }
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        setIsRailNear(true);
+        observer.disconnect();
+      },
+      { rootMargin: "100% 0px" }
+    );
+    observer.observe(stage);
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     const paint = () => {
@@ -47,5 +70,5 @@ export const usePinnedCaseRail = () => {
     };
   }, []);
 
-  return { stageRef, panelRef, viewRef, trackRef };
+  return { stageRef, panelRef, viewRef, trackRef, isRailNear };
 };

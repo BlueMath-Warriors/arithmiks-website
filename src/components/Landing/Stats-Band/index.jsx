@@ -16,7 +16,7 @@ import {
 // Source's own code comment: "Honest placeholders for a ~9-person studio —
 // no invented scale claims." Shipped as-is per product decision.
 const STATS = [
-  { value: 10, suffix: "+", label: "Products shipped" },
+  { value: 50, suffix: "+", label: "Products shipped" },
   { value: 4, suffix: "", label: "Industries served" },
   { value: 100, suffix: "%", label: "Customer-centric delivery" },
   { value: 24, suffix: "h", label: "Avg. response time" },
