@@ -153,8 +153,6 @@ export const GradientAI = styled.span`
   color: #9e9be8;
 `;
 
-// Width, spacing and the two hide-points follow the homepage design: the row
-// would crowd the headline and scroll cue on small or short viewports.
 export const ChipRow = styled.ul`
   display: flex;
   flex-wrap: wrap;
@@ -165,8 +163,9 @@ export const ChipRow = styled.ul`
   padding: 0;
   list-style: none;
 
-  @media (max-width: 700px), (max-height: 640px) {
-    display: none;
+  @media (max-width: 700px) {
+    width: 100%;
+    gap: 6px;
   }
 `;
 
@@ -205,6 +204,11 @@ export const Chip = styled(Link)`
   white-space: nowrap;
   transition: background-color 0.7s ease, border-color 0.7s ease;
 
+  @media (max-width: 700px) {
+    gap: 6px;
+    padding: 6px 10px 6px 12px;
+  }
+
   ${(p) =>
     p.$spotlight &&
     `&:not(:hover):not(:focus-visible) {
@@ -236,6 +240,10 @@ export const ChipLabel = styled.span`
   letter-spacing: -0.01em;
   line-height: 1.2;
   color: #fff;
+
+  @media (max-width: 700px) {
+    font-size: 13px;
+  }
 `;
 
 export const Dots = styled.div`
