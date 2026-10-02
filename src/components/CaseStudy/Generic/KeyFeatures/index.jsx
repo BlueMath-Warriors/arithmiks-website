@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import useReveal from "../../../../hooks/useReveal";
+import useIdleAfterLoad from "../../../../hooks/useIdleAfterLoad";
 import { prefersReducedMotion } from "../../../../utils/animations";
 import { KEY_FEATURE_IMAGE_SIZES, keyFeatureSrcSet } from "../../../../utils/responsiveImage";
 import { GradientText, Shell } from "../../../shared/Section/index.styled";
@@ -70,6 +71,10 @@ const KeyFeatures = ({ label = "HIGHLIGHTS", heading = "Key features", framed = 
   const captionTimerRef = useRef(null);
   const swipeStartRef = useRef(null);
   useReveal(rootRef);
+  // The section sits far below the fold, so its images stay lazy for the first
+  // load; once the page is idle the visible slide and its neighbours are fetched
+  // so they are ready by the time the reader scrolls here.
+  const isIdle = useIdleAfterLoad();
 
   useEffect(() => () => clearTimeout(captionTimerRef.current), []);
 
@@ -152,7 +157,7 @@ const KeyFeatures = ({ label = "HIGHLIGHTS", heading = "Key features", framed = 
                         sizes={KEY_FEATURE_IMAGE_SIZES}
                         alt={offset === 0 ? feature.imageAlt || feature.title : ""}
                         draggable={false}
-                        loading="lazy"
+                        loading={isIdle && Math.abs(offset) <= 1 ? "eager" : "lazy"}
                         decoding="async"
                       />
                       {framed && (
