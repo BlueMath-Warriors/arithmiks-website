@@ -37,7 +37,7 @@ const LandingGrid = ({ caseStudies }) => {
           <View ref={rail.viewRef}>
             <Track ref={rail.trackRef} role="group" aria-label="Case studies carousel">
               {featured.map((study) => (
-                <RailCard key={study.slug} study={study} />
+                <RailCard key={study.slug} study={study} eager={rail.isRailNear} />
               ))}
             </Track>
           </View>

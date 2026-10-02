@@ -18,27 +18,21 @@ import {
 const authorLine = ({ companyName, role }) =>
   role.toLowerCase().includes(companyName.toLowerCase()) ? role : `${companyName} ${role}`;
 
-/** Client quotes that cross-fade every few seconds; paused under the pointer or reduced motion. */
+/** Client quotes that cross-fade every few seconds; static under reduced motion. */
 const TestimonialRotator = () => {
   const [active, setActive] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
 
   useEffect(() => {
-    if (isPaused || prefersReducedMotion()) return undefined;
+    if (prefersReducedMotion()) return undefined;
     const timer = setTimeout(
       () => setActive((index) => (index + 1) % VOICES.length),
       TESTIMONIAL_INTERVAL_MS
     );
     return () => clearTimeout(timer);
-  }, [active, isPaused]);
+  }, [active]);
 
   return (
-    <Testimonial
-      aria-roledescription="carousel"
-      aria-label="Client testimonials"
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
-    >
+    <Testimonial aria-roledescription="carousel" aria-label="Client testimonials">
       <QuoteMark viewBox="0 0 31 24" width="32" height="25" aria-hidden="true" shapeRendering="geometricPrecision">
         <defs>
           <linearGradient id="contact-quote-gradient" x1="0" y1="0" x2="31" y2="24" gradientUnits="userSpaceOnUse">

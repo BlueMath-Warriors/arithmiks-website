@@ -1,4 +1,5 @@
 import styled, { keyframes } from "styled-components";
+import { Link } from "gatsby";
 import { colors, shellMaxWidth, shellPadding } from "../../../styles/tokens";
 
 const drift = keyframes`
@@ -150,6 +151,91 @@ export const GradientAI = styled.span`
   background-clip: text;
   -webkit-text-fill-color: transparent;
   color: #9e9be8;
+`;
+
+// Width, spacing and the two hide-points follow the homepage design: the row
+// would crowd the headline and scroll cue on small or short viewports.
+export const ChipRow = styled.ul`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  width: clamp(400px, 33vw, 560px);
+  max-width: 100%;
+  margin: calc(clamp(22px, 3.2vh, 36px) - clamp(18px, 2.4vh, 26px)) 0 0;
+  padding: 0;
+  list-style: none;
+
+  @media (max-width: 700px), (max-height: 640px) {
+    display: none;
+  }
+`;
+
+export const ChipArrow = styled.span`
+  flex: none;
+  font-size: 13px;
+  line-height: 1;
+  color: #8fa9ff;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), color 0.25s ease;
+`;
+
+const chipHover = `
+  background: linear-gradient(
+    100deg,
+    rgba(127, 166, 255, 0.5) 0%,
+    rgba(190, 150, 232, 0.44) 60%,
+    rgba(245, 120, 186, 0.42) 100%
+  );
+  border-color: rgba(226, 208, 255, 0.6);
+`;
+
+// `$spotlight` is the chip the hero is currently pointing at; it steps along
+// with each headline so the row reads as alive without anything moving.
+export const Chip = styled(Link)`
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 12px 7px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: #fff;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background-color 0.7s ease, border-color 0.7s ease;
+
+  ${(p) =>
+    p.$spotlight &&
+    `&:not(:hover):not(:focus-visible) {
+      background-color: rgba(127, 166, 255, 0.18);
+      border-color: rgba(167, 195, 255, 0.6);
+    }`}
+
+  &:hover,
+  &:focus-visible {
+    ${chipHover}
+  }
+
+  &:hover ${ChipArrow}, &:focus-visible ${ChipArrow} {
+    transform: translateX(4px);
+    color: #fff;
+  }
+
+  &:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 2px;
+  }
+`;
+
+// Own color on the label: global.module.css's "* { color: #000 }" matches
+// this span directly, so it would not inherit the link's white.
+export const ChipLabel = styled.span`
+  font-size: clamp(14px, 0.95vw, 15.5px);
+  font-weight: 550;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  color: #fff;
 `;
 
 export const Dots = styled.div`

@@ -24,9 +24,12 @@ import { DASHBOARD_IMAGE_SIZES } from "../caseStudies";
  * query (CaseStudiesIndex's Flip-based filter transition does this) without
  * needing its own prop-forwarding path.
  *
- * @param {{ study: object; className?: string }} props
+ * `eager` fetches the card's images now instead of when it nears the viewport —
+ * for rail cards that sit off-screen to the side of the pinned track.
+ *
+ * @param {{ study: object; className?: string; eager?: boolean }} props
  */
-const CaseStudyCard = ({ study, className }) => (
+const CaseStudyCard = ({ study, className, eager = false }) => (
   <CardRoot
     to={`/case-studies/${study.slug}`}
     className={className}
@@ -37,14 +40,14 @@ const CaseStudyCard = ({ study, className }) => (
       srcSet={study.dashboardSrcSet}
       sizes={study.dashboardSrcSet ? DASHBOARD_IMAGE_SIZES : undefined}
       alt={`${study.title} — product interface`}
-      loading="lazy"
+      loading={eager ? "eager" : "lazy"}
       decoding="async"
     />
     <CardBody>
       <CardTopRow>
         <CardChip>{study.tag}</CardChip>
         {study.logo ? (
-          <CardLogo src={study.logo} alt={study.logoAlt} loading="lazy" decoding="async" />
+          <CardLogo src={study.logo} alt={study.logoAlt} loading={eager ? "eager" : "lazy"} decoding="async" />
         ) : (
           <CardClientName>{study.logoAlt}</CardClientName>
         )}

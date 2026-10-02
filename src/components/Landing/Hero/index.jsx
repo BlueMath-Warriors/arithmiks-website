@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import Marquee from "../shared/Marquee";
 import ClientLogoImage from "./ClientLogoImage";
+import ServiceChips, { FEATURED_SERVICE_COUNT } from "./ServiceChips";
 import { prefersReducedMotion } from "../../../utils/animations";
 import {
   HeroSection,
@@ -74,6 +75,7 @@ const SLIDE_TRANSITION_HALF_MS = 220;
 const Hero = () => {
   const [slide, setSlide] = useState(0);
   const [visible, setVisible] = useState(true);
+  const [spotlightIndex, setSpotlightIndex] = useState(0);
   const pausedRef = useRef(false);
   const swapTimeoutRef = useRef(null);
 
@@ -84,6 +86,7 @@ const Hero = () => {
     swapTimeoutRef.current = setTimeout(() => {
       setSlide(next);
       setVisible(true);
+      setSpotlightIndex((index) => (index + 1) % FEATURED_SERVICE_COUNT);
     }, SLIDE_TRANSITION_HALF_MS);
   };
 
@@ -98,22 +101,17 @@ const Hero = () => {
 
   useEffect(() => () => clearTimeout(swapTimeoutRef.current), []);
 
+  // Only the slide dots pause the rotation: the hero fills the viewport, so a
+  // hero-wide hover pause kept it stopped for anyone whose pointer rested on it.
+  const pause = () => {
+    pausedRef.current = true;
+  };
+  const resume = () => {
+    pausedRef.current = false;
+  };
+
   return (
-    <HeroSection
-      id="top"
-      onMouseEnter={() => {
-        pausedRef.current = true;
-      }}
-      onMouseLeave={() => {
-        pausedRef.current = false;
-      }}
-      onFocus={() => {
-        pausedRef.current = true;
-      }}
-      onBlur={() => {
-        pausedRef.current = false;
-      }}
-    >
+    <HeroSection id="top">
       <HeroBackground
         src={heroTeam}
         alt="Arithmiks team collaborating over data charts in a meeting room"
@@ -127,10 +125,18 @@ const Hero = () => {
             <Headline aria-live="polite">
               <HeadlineText $visible={visible}>{markAI(SLIDES[slide])}</HeadlineText>
             </Headline>
+            <ServiceChips spotlightIndex={spotlightIndex} />
           </HeroHeadline>
         </HeroMain>
         <ScrollCueRow>
-          <Dots role="group" aria-label="Headline slides">
+          <Dots
+            role="group"
+            aria-label="Headline slides"
+            onMouseEnter={pause}
+            onMouseLeave={resume}
+            onFocus={(event) => event.target.matches(":focus-visible") && pause()}
+            onBlur={resume}
+          >
             {SLIDES.map((_, i) => (
               <Dot
                 key={i}

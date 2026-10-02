@@ -112,6 +112,7 @@ export const Dots = styled.div`
   align-items: center;
   justify-content: center;
   gap: 14px;
+  cursor: pointer;
 `;
 
 export const Dot = styled.button`
