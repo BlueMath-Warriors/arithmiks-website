@@ -174,7 +174,8 @@ const Header = ({ white, fixed_bar, lightHero, transparentWhile }) => {
       <NavScrim $visible={navPanelsOpen} aria-hidden="true" />
       <Headerr $white={white} $fixed={isFixed || fixed_bar || anyMenuOpen}>
       <HeaderContainer>
-        <Link to="/" aria-label="Go to homepage">
+        {/* The accessible name must contain the visible "Arithmiks" text. */}
+        <Link to="/" aria-label="Arithmiks home">
           <CompanyLogo>
             <img src={LOGO_MARK_SRC} alt="" width={24} height={27} />
             <LogoText $onLight={onLight}>Arithmiks</LogoText>

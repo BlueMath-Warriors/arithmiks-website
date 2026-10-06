@@ -32,15 +32,25 @@ try {
 // Without these the text first paints in the fallback font and then jumps when
 // the web font arrives (layout shift); the weights are the Latin subsets used
 // above the fold across the site.
-const PRELOADED_FONTS = [
-  "/fonts/Aspekta-Variable.woff2",
+const ASPEKTA_FONT = "/fonts/Aspekta-Variable.woff2";
+const POPPINS_FONTS = [
   "/fonts/poppins/poppins-400-latin.woff2",
   "/fonts/poppins/poppins-500-latin.woff2",
   "/fonts/poppins/poppins-600-latin.woff2",
   "/fonts/poppins/poppins-700-latin.woff2",
 ];
 
-export const onRenderBody = ({ setHtmlAttributes, setHeadComponents, setPreBodyComponents }) => {
+// Pages built entirely on the new design never render Poppins; preloading it
+// there only competes with the hero for bandwidth on a slow connection. The
+// @font-face rules stay, so anything that does use Poppins still loads it.
+const ASPEKTA_ONLY_PATHS = ["/services/ai-discovery-strategy-roadmap"];
+
+const preloadedFonts = (pathname = "") => {
+  const path = pathname.replace(/\/+$/, "");
+  return ASPEKTA_ONLY_PATHS.includes(path) ? [ASPEKTA_FONT] : [ASPEKTA_FONT, ...POPPINS_FONTS];
+};
+
+export const onRenderBody = ({ setHtmlAttributes, setHeadComponents, setPreBodyComponents, pathname }) => {
   setHtmlAttributes({ lang: "en" });
 
   setHeadComponents([
@@ -51,7 +61,7 @@ export const onRenderBody = ({ setHtmlAttributes, setHeadComponents, setPreBodyC
       name="google-site-verification"
       content="-vSMxD4PrE6GOok0ajvRRpkns32Bgucy-d92OMsgR1Q"
     />,
-    ...PRELOADED_FONTS.map((href) => (
+    ...preloadedFonts(pathname).map((href) => (
       <link key={`preload-${href}`} rel="preload" href={href} as="font" type="font/woff2" crossOrigin="anonymous" />
     )),
     

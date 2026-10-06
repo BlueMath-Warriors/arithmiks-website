@@ -85,7 +85,7 @@ const MobileMenu = ({ onClose }) => {
   return createPortal(
     <Wrap role="dialog" aria-modal="true" aria-label="Mobile menu">
       <TopBar>
-        <LogoLink to="/" onClick={onClose} aria-label="Go to homepage">
+        <LogoLink to="/" onClick={onClose} aria-label="Arithmiks home">
           <img src={LOGO_MARK_SRC} alt="" width={23} height={26} />
           <span>Arithmiks</span>
         </LogoLink>

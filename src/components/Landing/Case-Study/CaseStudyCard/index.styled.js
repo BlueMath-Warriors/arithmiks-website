@@ -97,8 +97,9 @@ export const CardClientName = styled.span`
   font-size: 13px;
   font-weight: 600;
   letter-spacing: -0.01em;
-  color: ${colors.text};
-  opacity: 0.42;
+  /* textFaint keeps the muted look at 4.5:1+ on white; the old 42% opacity
+     fell to 2.8:1 and failed contrast. */
+  color: ${colors.textFaint};
 `;
 
 export const CardTitle = styled.span`
