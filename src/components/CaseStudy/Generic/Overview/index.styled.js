@@ -43,6 +43,10 @@ export const GapBox = styled.div`
   margin-top: clamp(30px, 3vw, 44px);
   padding: clamp(28px, 2.6vw, 40px) clamp(44px, 4.8vw, 84px)
     clamp(28px, 2.6vw, 40px) 0;
+  // The interior fill GapFill used to provide before the border became a
+  // masked ring instead of a layered fill.
+  background: linear-gradient(90deg, #f2f7ff 0%, #fbfcff 100%);
+  border-radius: 0 999px 999px 0;
 `;
 
 // The box bleeds to the viewport's left edge as a tinted band and ends in a
@@ -60,26 +64,30 @@ export const GapBand = styled.span`
   // -100vw, showing up as a stray horizontal rule past the card's left edge.
 `;
 
+// A gradient border ring via padding + mask-composite, not a layered
+// fill trick — "to top left" is corner-relative, so its angle (and the
+// visible band where color is mid-transition) shifted with the box's own
+// aspect ratio; on the much taller/narrower mobile box that transition
+// band showed as a diagonal line cutting across the middle instead of
+// staying confined to the curved edge. A masked ring is always exactly
+// as thick as its padding, on every box shape, so there's no interior
+// to leak through regardless of ratio.
 export const GapOutline = styled.span`
   position: absolute;
   inset: 0;
   border-radius: 0 999px 999px 0;
+  padding: 2px;
   background: linear-gradient(
-    to top left,
+    135deg,
     #bc4e9b 0%,
     ${GAP_BOX_BLUE} 44.5%,
     ${GAP_BOX_BLUE} 100%
   );
-`;
-
-export const GapFill = styled.span`
-  position: absolute;
-  top: 2px;
-  right: 3px;
-  bottom: 0;
-  left: 0;
-  border-radius: 0 999px 999px 0;
-  background: linear-gradient(90deg, #f2f7ff 0%, #fbfcff 100%);
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
 `;
 
 export const GapTitle = styled.h3`
@@ -103,31 +111,34 @@ export const ScreenshotColumn = styled.div`
   min-width: 0;
 `;
 
-// Screenshots get a card with a border and shadow; mockup images already
-// carry their own backdrop and are shown as is.
+// An invisible slot sized like ClauseLens's own image (same bled width,
+// 1.6 aspect ratio) so every case study renders at the same height — but
+// it has no background of its own, so a narrower image doesn't leave a
+// visible white rectangle around it. Right-aligned so the image still
+// bleeds to the slot's right edge, matching the original design.
 export const Screenshot = styled.div`
   width: ${SCREENSHOT_BLEED_RATIO};
-  // Caps every case study's image to ClauseLens's own height (1800/1125 =
-  // 1.6, at the same bled width) without cropping or re-encoding the
-  // source — object-fit: contain scales the whole image down to fit,
-  // letterboxing on the sides if its own ratio is taller than 1.6, rather
-  // than cutting into it the way object-fit: cover would.
   aspect-ratio: 1.6;
+  display: flex;
+  justify-content: flex-end;
+
+  @media (max-width: 1000px) {
+    width: 100%;
+    justify-content: center;
+  }
+`;
+
+// The actual visible card: shrink-wrapped to the image's own rendered
+// width at the slot's height (height: 100%; width: auto on the img below),
+// so the border/shadow/background only ever cover the image itself.
+export const ScreenshotCard = styled.div`
+  height: 100%;
   overflow: hidden;
 
-  img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-  }
-
-  // GatsbyImage's wrapper otherwise sizes itself from the source image's
-  // own intrinsic ratio (via an internal padding-box), which would fight
-  // the aspect-ratio set here — stretching it to fill this box instead
-  // lets its own inner img (styled above) do the contain-fit.
+  img,
   .gatsby-image-wrapper {
-    width: 100%;
+    display: block;
+    width: auto;
     height: 100%;
   }
 
@@ -139,8 +150,4 @@ export const Screenshot = styled.div`
     border-radius: clamp(14px, 1.2vw, 20px);
     box-shadow: 0 30px 70px -34px rgba(10, 15, 31, 0.38), 0 2px 6px rgba(10, 15, 31, 0.04);
   `}
-
-  @media (max-width: 1000px) {
-    width: 100%;
-  }
 `;

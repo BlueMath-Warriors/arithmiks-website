@@ -11,11 +11,11 @@ import {
   GapBox,
   GapBand,
   GapOutline,
-  GapFill,
   GapTitle,
   GapText,
   ScreenshotColumn,
   Screenshot,
+  ScreenshotCard,
 } from "./index.styled";
 
 const renderImage = (image, alt) => {
@@ -66,15 +66,16 @@ const Overview = ({
               <GapBox>
                 <GapBand aria-hidden="true" />
                 <GapOutline aria-hidden="true" />
-                <GapFill aria-hidden="true" />
                 <GapTitle>{problemData.title}</GapTitle>
                 <GapText>{problemData.text}</GapText>
               </GapBox>
             )}
           </TextColumn>
           <ScreenshotColumn data-reveal="">
-            <Screenshot $framed={framed}>
-              {renderImage(imageSrc, imageAlt || `${name} overview`)}
+            <Screenshot>
+              <ScreenshotCard $framed={framed}>
+                {renderImage(imageSrc, imageAlt || `${name} overview`)}
+              </ScreenshotCard>
             </Screenshot>
           </ScreenshotColumn>
         </OverviewGrid>
