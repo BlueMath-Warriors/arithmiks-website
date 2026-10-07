@@ -1,5 +1,10 @@
 import React, { useState } from "react";
-import { Shell, Eyebrow, GradientText, ArrowGlyph } from "../../shared/Section/index.styled";
+import {
+  Shell,
+  Eyebrow,
+  GradientText,
+  ArrowGlyph,
+} from "../../shared/Section/index.styled";
 import {
   Section,
   Intro,
@@ -13,6 +18,14 @@ import {
   FootLabel,
   FootCell,
   CtaLink,
+  Cards,
+  Card,
+  CardTitle,
+  CardRows,
+  CardRow,
+  CardLabel,
+  CardValue,
+  CardCta,
 } from "./index.styled";
 
 const MODELS = [
@@ -61,7 +74,12 @@ const ROWS = [
   },
   {
     label: "Typical start",
-    values: ["1–2 weeks", "Within 2 weeks of sign-off", "1–2 weeks", "Within a week"],
+    values: [
+      "1–2 weeks",
+      "Within 2 weeks of sign-off",
+      "1–2 weeks",
+      "Within a week",
+    ],
   },
   {
     label: "You end up with",
@@ -93,7 +111,8 @@ const EngagementModels = () => {
         <Intro>
           <Eyebrow $onDark>Engagement models</Eyebrow>
           <Title id="models-h">
-            Four ways to start, <GradientText $onDark>compared side by side.</GradientText>
+            Four ways to start,{" "}
+            <GradientText $onDark>compared side by side.</GradientText>
           </Title>
         </Intro>
 
@@ -105,7 +124,12 @@ const EngagementModels = () => {
                   <span>Compare</span>
                 </CornerCell>
                 {MODELS.map((model, index) => (
-                  <ColumnHead key={model.name} scope="col" data-column={index} $highlighted={highlighted === index}>
+                  <ColumnHead
+                    key={model.name}
+                    scope="col"
+                    data-column={index}
+                    $highlighted={highlighted === index}
+                  >
                     <span>{model.name}</span>
                   </ColumnHead>
                 ))}
@@ -118,7 +142,11 @@ const EngagementModels = () => {
                     <span>{row.label}</span>
                   </RowLabel>
                   {row.values.map((value, index) => (
-                    <Cell key={MODELS[index].name} data-column={index} $highlighted={highlighted === index}>
+                    <Cell
+                      key={MODELS[index].name}
+                      data-column={index}
+                      $highlighted={highlighted === index}
+                    >
                       <span>{value}</span>
                     </Cell>
                   ))}
@@ -127,7 +155,11 @@ const EngagementModels = () => {
               <tr>
                 <FootLabel scope="row" aria-label="Get started" />
                 {MODELS.map((model, index) => (
-                  <FootCell key={model.name} data-column={index} $highlighted={highlighted === index}>
+                  <FootCell
+                    key={model.name}
+                    data-column={index}
+                    $highlighted={highlighted === index}
+                  >
                     <CtaLink to="/contact" $highlighted={highlighted === index}>
                       {model.cta} <ArrowGlyph aria-hidden="true">→</ArrowGlyph>
                     </CtaLink>
@@ -137,6 +169,27 @@ const EngagementModels = () => {
             </tbody>
           </Table>
         </TableScroller>
+
+        <Cards>
+          {MODELS.map((model, index) => (
+            <Card key={model.name} $highlighted={highlighted === index}>
+              <CardTitle>{model.name}</CardTitle>
+              <CardRows>
+                {ROWS.map((row) => (
+                  <CardRow key={row.label}>
+                    <CardLabel>{row.label}</CardLabel>
+                    <CardValue $highlighted={highlighted === index}>
+                      {row.values[index]}
+                    </CardValue>
+                  </CardRow>
+                ))}
+              </CardRows>
+              <CardCta to="/contact" $highlighted={highlighted === index}>
+                {model.cta} <ArrowGlyph aria-hidden="true">→</ArrowGlyph>
+              </CardCta>
+            </Card>
+          ))}
+        </Cards>
       </Shell>
     </Section>
   );

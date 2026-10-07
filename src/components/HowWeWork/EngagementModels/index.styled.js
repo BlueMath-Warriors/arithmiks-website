@@ -11,7 +11,8 @@ const HIGHLIGHT_BG = "rgba(92, 140, 255, 0.16)";
 const IDLE_BG = "rgba(255, 255, 255, 0.035)";
 const COLUMN_TRANSITION = "background 0.28s ease";
 
-const columnBackground = ({ $highlighted }) => ($highlighted ? HIGHLIGHT_BG : IDLE_BG);
+const columnBackground = ({ $highlighted }) =>
+  $highlighted ? HIGHLIGHT_BG : IDLE_BG;
 
 export const Section = styled.section`
   position: relative;
@@ -36,6 +37,12 @@ export const TableScroller = styled.div`
   margin-top: clamp(30px, 3vw, 52px);
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
+
+  // The design replaces the side-scrolling table with one stacked card per
+  // model below 760px — Cards (below) takes over at the same breakpoint.
+  @media (max-width: 760px) {
+    display: none;
+  }
 `;
 
 export const Table = styled.table`
@@ -146,4 +153,79 @@ export const CtaLink = styled(Link)`
   &:hover ${ArrowGlyph} {
     transform: translateX(4px);
   }
+`;
+
+// Mobile fallback for the table above: one card per model, hidden until the
+// table itself hides at the same 760px breakpoint.
+export const Cards = styled.div`
+  display: none;
+
+  @media (max-width: 760px) {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+    margin-top: 28px;
+  }
+`;
+
+export const Card = styled.article`
+  padding: 22px 20px 20px;
+  border-radius: 18px;
+  background: ${columnBackground};
+  border: 1px solid
+    ${({ $highlighted }) => ($highlighted ? "rgba(92, 140, 255, 0.4)" : ROW_RULE)};
+`;
+
+export const CardTitle = styled.h3`
+  margin: 0;
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: -0.014em;
+  line-height: 1.25;
+  color: #fff;
+`;
+
+export const CardRows = styled.dl`
+  margin: 16px 0 0;
+  display: flex;
+  flex-direction: column;
+`;
+
+export const CardRow = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px 0;
+  border-top: ${ROW_RULE};
+`;
+
+export const CardLabel = styled.dt`
+  font-size: 11.5px;
+  font-weight: 650;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+`;
+
+export const CardValue = styled.dd`
+  margin: 0;
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: ${({ $highlighted }) => ($highlighted ? "#fff" : "rgba(255, 255, 255, 0.66)")};
+`;
+
+export const CardCta = styled(Link)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 48px;
+  margin-top: 16px;
+  border-radius: 100px;
+  border: 1.5px solid
+    ${({ $highlighted }) => ($highlighted ? "#fff" : "rgba(255, 255, 255, 0.2)")};
+  background: ${({ $highlighted }) => ($highlighted ? colors.primary : "transparent")};
+  font-size: 15px;
+  font-weight: 600;
+  color: #fff;
 `;
