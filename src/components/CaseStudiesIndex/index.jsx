@@ -239,7 +239,7 @@ const CaseStudiesIndex = () => {
               Our Case <span>Studies</span>
             </HeroTitle>
             <HeroIntro>
-              Problems are guidelines, not &apos;Stop&apos; signs. Check our success
+              Problems are guidelines, not &apos;Stop&apos; signs. Check out our success
               stories in custom software.
             </HeroIntro>
           </HeroInner>

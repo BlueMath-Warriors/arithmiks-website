@@ -276,7 +276,7 @@ export const caseStudies = [
     relatedService: { slug: "web-app-development", label: "Web App Development" },
     title: "Unifies community engagement, events, and donations",
     description:
-      "Together is a platform for churches and NGOs to connect communities through events, donations, and engagement.",
+      "Togather is a platform for churches and NGOs to connect communities through events, donations, and engagement.",
     hasDetailPage: true,
   },
 ];
