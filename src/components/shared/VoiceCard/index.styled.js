@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 // Decorative hover layers ported from the design's data-vgrid/data-vglow/
 // data-vedge spans — a grid mesh and brand glow both pool around the
@@ -11,7 +11,8 @@ export const VGrid = styled.span`
   pointer-events: none;
   opacity: 0;
   transition: opacity 0.5s ease;
-  background-image: linear-gradient(rgba(255, 255, 255, 0.16) 1px, transparent 1px),
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.16) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.16) 1px, transparent 1px);
   background-size: 37px 37px;
 `;
@@ -90,27 +91,34 @@ export const Card = styled.figure`
     rgba(255, 255, 255, 0.03) 62%,
     rgba(255, 255, 255, 0.015) 100%
   );
-  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease,
+  transition:
+    transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.4s ease,
     box-shadow 0.45s ease;
 
-  &:hover {
-    transform: translateY(-6px);
-    border-color: rgba(255, 255, 255, 0.28);
-    box-shadow: 0 22px 44px -26px rgba(19, 85, 255, 0.6);
-  }
-  &:hover ${VGrid},
-  &:hover ${VGlow} {
-    opacity: 1;
-  }
-  &:hover ${VEdge} {
-    transform: scaleX(1);
-  }
-  &:hover ${CompanyLogo} {
-    opacity: 0;
-  }
-  &:hover ${CompanyLogoDark} {
-    opacity: 1;
-  }
+  // Driven by pointerenter/pointerleave state (see index.jsx) rather than
+  // CSS :hover — :hover either never fires on touch or sticks after a tap,
+  // so both mouse and touch now go through the same active/inactive state.
+  ${({ $active }) =>
+    $active &&
+    css`
+      transform: translateY(-6px);
+      border-color: rgba(255, 255, 255, 0.28);
+      box-shadow: 0 22px 44px -26px rgba(19, 85, 255, 0.6);
+
+      ${VGrid}, ${VGlow} {
+        opacity: 1;
+      }
+      ${VEdge} {
+        transform: scaleX(1);
+      }
+      ${CompanyLogo} {
+        opacity: 0;
+      }
+      ${CompanyLogoDark} {
+        opacity: 1;
+      }
+    `}
 `;
 
 export const VoiceHead = styled.div`
@@ -260,7 +268,9 @@ export const CaseLink = styled.a`
   border: 1px solid rgba(255, 255, 255, 0.34);
   border-radius: 999px;
   text-decoration: none;
-  transition: background 0.3s ease, border-color 0.3s ease;
+  transition:
+    background 0.3s ease,
+    border-color 0.3s ease;
 
   /* global.module.css's "* { color: #000 }" directly matches this span, so
      the white it would otherwise inherit from the link loses — needs its
