@@ -6,9 +6,8 @@ export const getHeroData = (images) => ({
   logoAlt: "LFGO",
   caption: (
     <>
-      A Web3 platform to create, launch, and trade tokens on Ethereum
-      {" "}
-      and Solana with seamless minting and wallet.
+      A Web3 platform to create, launch, and trade tokens on Ethereum and Solana
+      with seamless minting and wallet.
     </>
   ),
   heroImageData: images?.heroImage,
@@ -50,7 +49,9 @@ export const solutionData = {
   heading: "Our Solution",
   description: (
     <>
-      <strong>Arithmiks</strong> designed a unified Web3 platform that simplified token creation, enabled cross-chain trading, and delivered real-time marketplace transparency.
+      <strong>Arithmiks</strong> designed a unified Web3 platform that
+      simplified token creation, enabled cross-chain trading, and delivered
+      real-time marketplace transparency.
     </>
   ),
   solutions: [
@@ -78,6 +79,12 @@ export const solutionData = {
 export const keyFeaturesData = {
   label: "HIGHLIGHTS",
   heading: "Key Features",
+  framed: true,
+  // These screenshots average ~1.4:1 (measured 1.27-1.47), well under the
+  // component's 1033/573 (~1.8) default — matching the slide box to that
+  // average keeps object-fit: cover's crop minor instead of cutting into
+  // visible UI on both sides.
+  trackRatio: "1.4 / 1",
   features: [
     {
       title: "1. Multi-Chain Token Creation:",

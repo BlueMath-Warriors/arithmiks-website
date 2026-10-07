@@ -60,7 +60,7 @@ export const Track = styled.div`
   position: relative;
   z-index: 1;
   isolation: isolate;
-  aspect-ratio: 1033 / 573;
+  aspect-ratio: ${({ $ratio }) => $ratio || "1033 / 573"};
   touch-action: pan-y;
   user-select: none;
 `;
@@ -74,7 +74,9 @@ export const Slide = styled.div`
   transform: ${({ $transform }) => $transform};
   opacity: ${({ $opacity }) => $opacity};
   z-index: ${({ $zIndex }) => $zIndex};
-  transition: transform 0.75s ${SLIDE_EASE}, opacity 0.6s ease;
+  transition:
+    transform 0.75s ${SLIDE_EASE},
+    opacity 0.6s ease;
   will-change: transform;
   pointer-events: none;
 
@@ -143,7 +145,9 @@ export const Arrow = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background 0.25s ease, color 0.25s ease;
+  transition:
+    background 0.25s ease,
+    color 0.25s ease;
 
   svg,
   svg * {
@@ -180,7 +184,9 @@ export const Dot = styled.button`
   border: 0;
   background: ${({ $active }) => ($active ? colors.primary : INACTIVE_DOT)};
   cursor: pointer;
-  transition: background 0.3s ease, transform 0.3s ease;
+  transition:
+    background 0.3s ease,
+    transform 0.3s ease;
 
   &:hover {
     transform: scale(1.2);

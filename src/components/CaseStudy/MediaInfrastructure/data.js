@@ -7,8 +7,9 @@ export const getHeroData = (images) => ({
   logoAlt: "Media Infrastructure",
   caption: (
     <>
-      An AI platform that turns decades of broadcast video into a searchable
-      {" "}knowledge base with transcripts, faces, chapters, and natural language search.
+      An AI platform that turns decades of broadcast video into a searchable{" "}
+      knowledge base with transcripts, faces, chapters, and natural language
+      search.
     </>
   ),
   heroImageData: images?.heroImage,
@@ -53,8 +54,8 @@ export const solutionData = {
   description: (
     <>
       <strong>Arithmiks</strong> designed the platform around a control plane
-      and data plane architecture, keeping workflow coordination separate
-      from media transfer for security and scale.
+      and data plane architecture, keeping workflow coordination separate from
+      media transfer for security and scale.
     </>
   ),
   solutions: [
@@ -82,6 +83,12 @@ export const solutionData = {
 export const keyFeaturesData = {
   label: "HIGHLIGHTS",
   heading: "Key Features",
+  framed: true,
+  // These screenshots average ~1.61:1 (measured 1.51-1.66), under the
+  // component's 1033/573 (~1.8) default — matching the slide box to that
+  // average keeps object-fit: cover's crop minor instead of cutting into
+  // visible UI on both sides.
+  trackRatio: "1.61 / 1",
   features: [
     {
       title: "1. Corrected AI Dependency Graph",
