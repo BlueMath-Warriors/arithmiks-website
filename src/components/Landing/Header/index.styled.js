@@ -40,8 +40,11 @@ export const Headerr = styled.header`
   right: 0;
   z-index: 40;
   background: ${(p) => (p.$white || p.$fixed ? "#fff" : "transparent")};
-  border-bottom: 1px solid ${(p) => (p.$white || p.$fixed ? colors.border : "transparent")};
-  transition: background 0.25s ease, border-color 0.25s ease;
+  border-bottom: 1px solid
+    ${(p) => (p.$white || p.$fixed ? colors.border : "transparent")};
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease;
 `;
 
 export const HeaderContainer = styled.div`
@@ -105,7 +108,8 @@ export const NavLinks = styled.span`
   }
 `;
 
-const navLinkColor = (p) => (p.$white || p.$onLight ? colors.textMuted : "rgba(255,255,255,.9)");
+const navLinkColor = (p) =>
+  p.$white || p.$onLight ? colors.textMuted : "rgba(255,255,255,.9)";
 
 export const NavButton = styled.button`
   display: inline-flex;
@@ -158,7 +162,9 @@ export const CtaBtn = styled(Link)`
   border-radius: 999px;
   text-decoration: none;
   white-space: nowrap;
-  transition: background 0.25s ease, transform 0.25s ease;
+  transition:
+    background 0.25s ease,
+    transform 0.25s ease;
 
   &:hover {
     background: ${colors.primaryHover};
@@ -182,10 +188,16 @@ export const SearchButton = styled.button`
   border-radius: 50%;
   cursor: pointer;
   color: ${navLinkColor};
-  transition: background 0.25s ease, color 0.25s ease;
+  transition:
+    background 0.25s ease,
+    color 0.25s ease;
 
   &:hover {
     background: rgba(19, 85, 255, 0.1);
+  }
+
+  @media screen and (max-width: 640px) {
+    order: -1;
   }
 `;
 
@@ -196,13 +208,18 @@ export const Hamburger = styled.button`
   width: 44px;
   height: 44px;
   background: transparent;
-  border: 1px solid ${(p) => (p.$white || p.$onLight ? colors.border : "rgba(255,255,255,.3)")};
+  border: 1px solid
+    ${(p) => (p.$white || p.$onLight ? colors.border : "rgba(255,255,255,.3)")};
   border-radius: 10px;
   cursor: pointer;
   color: ${(p) => (p.$white || p.$onLight ? colors.text : "#fff")};
 
   @media screen and (max-width: ${navCollapse}) {
     display: flex;
+  }
+
+  @media screen and (max-width: 640px) {
+    order: 1;
   }
 
   svg {
@@ -243,7 +260,11 @@ export const MegaPanel = styled.div`
 export const MegaGrid = styled.div`
   max-width: ${shellMaxWidth};
   display: grid;
-  grid-template-columns: clamp(250px, 17vw, 364px) minmax(0, 1fr) clamp(310px, 23.1vw, 486px);
+  grid-template-columns: clamp(250px, 17vw, 364px) minmax(0, 1fr) clamp(
+      310px,
+      23.1vw,
+      486px
+    );
   gap: 0;
   margin: 0 auto;
   padding: 0 ${shellPadding};
@@ -418,7 +439,9 @@ export const SpotlightCta = styled(Link)`
   border: 1.5px solid ${colors.primary};
   border-radius: 100px;
   text-decoration: none;
-  transition: background 0.22s ease, color 0.22s ease;
+  transition:
+    background 0.22s ease,
+    color 0.22s ease;
 
   &:hover {
     background: ${colors.primary};
@@ -436,7 +459,9 @@ export const MegaItem = styled(Link)`
   font-size: 15px;
   color: #3a4256;
   text-decoration: none;
-  transition: background 0.2s ease, color 0.2s ease;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
 
   &::before {
     content: "";
@@ -506,7 +531,9 @@ export const ProductCard = styled.div`
   border: 1px solid ${colors.border};
   border-radius: 14px;
   color: ${colors.text};
-  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
 
   &:hover {
     border-color: #c9d6ff;
@@ -611,7 +638,9 @@ export const ProductLiveLink = styled.a`
   border-radius: 50%;
   color: ${colors.textFaint};
   background: transparent;
-  transition: background 0.22s ease, color 0.22s ease;
+  transition:
+    background 0.22s ease,
+    color 0.22s ease;
 
   &:hover {
     background: #eaf0ff;
