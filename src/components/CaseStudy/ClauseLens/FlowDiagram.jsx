@@ -980,15 +980,14 @@ const FlowDiagram = () => (
         data-clgatebelow=""
         style={{
           position: "absolute",
-          top: "50%",
-          right: "calc(100% + 16px)",
-          transform: "translateY(-50%)",
+          top: "calc(100% + 8px)",
+          left: "50%",
+          transform: "translateX(-50%)",
           width: "max-content",
           maxWidth: "128px",
           display: "flex",
           flexDirection: "column",
-          alignItems: "flex-end",
-          textAlign: "right",
+          alignItems: "center",
           gap: "8px",
         }}
       >
@@ -998,9 +997,10 @@ const FlowDiagram = () => (
           Every citation re-matched to the real text
         </span>
         <svg
-          viewBox="0 0 22 16"
-          width="22"
-          height="16"
+          data-clnoarrow=""
+          viewBox="0 0 16 22"
+          width="16"
+          height="22"
           fill="none"
           stroke="#5C7BFF"
           strokeWidth="1.6"
@@ -1009,7 +1009,7 @@ const FlowDiagram = () => (
           aria-hidden="true"
           style={{ alignSelf: "center", flex: "none" }}
         >
-          <path d="M1 8h19M15 3l5 5-5 5"></path>
+          <path d="M8 1v19M3 15l5 5 5-5"></path>
         </svg>
         <span
           style={{
@@ -1053,6 +1053,93 @@ const FlowDiagram = () => (
           Finding dropped
         </span>
       </span>
+      {/* Mobile only: the "No" branch as its own side exit off the diamond,
+          since below.STACK_BREAKPOINT the pill-shaped version above can't
+          fit beside the diamond without overlapping it. Hidden by default;
+          index.styled.js shows it and hides data-clgatebelow's No/pill. */}
+      <div
+        data-clnobranch=""
+        style={{
+          display: "none",
+          position: "absolute",
+          top: "50%",
+          right: "calc(50% + 40px)",
+          transform: "translateY(-50%)",
+          width: "max-content",
+          flexDirection: "column",
+          alignItems: "flex-start",
+          gap: "8px",
+        }}
+      >
+        <div style={{ display: "flex", alignItems: "center", gap: "4px" }}>
+          <span
+            aria-hidden="true"
+            style={{ width: "8px", height: 0, borderTop: "1.6px solid #8A93A6" }}
+          ></span>
+          <span
+            style={{
+              fontFamily: "ui-monospace,'JetBrains Mono',Menlo,monospace",
+              fontSize: "13px",
+              fontWeight: "700",
+              textTransform: "uppercase",
+              color: "#1355FF",
+            }}
+          >
+            No
+          </span>
+          <svg
+            viewBox="0 0 20 16"
+            width="20"
+            height="16"
+            fill="none"
+            stroke="#8A93A6"
+            strokeWidth="1.6"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M18 8H4M9 3 4 8l5 5"></path>
+          </svg>
+          <span
+            aria-hidden="true"
+            style={{
+              display: "flex",
+              flex: "none",
+              alignItems: "center",
+              justifyContent: "center",
+              width: "30px",
+              height: "30px",
+              borderRadius: "9px",
+              border: "1.5px solid #C9CFDA",
+              background: "#fff",
+            }}
+          >
+            <svg
+              viewBox="0 0 16 16"
+              width="12"
+              height="12"
+              fill="none"
+              stroke="#5C6478"
+              strokeWidth="1.8"
+              strokeLinecap="round"
+              aria-hidden="true"
+            >
+              <path d="M4 4l8 8M12 4l-8 8"></path>
+            </svg>
+          </span>
+        </div>
+        <span
+          style={{
+            maxWidth: "88px",
+            fontSize: "12.5px",
+            lineHeight: "1.35",
+            color: "#0A0F1F",
+            textAlign: "left",
+          }}
+        >
+          Finding dropped
+        </span>
+      </div>
     </div>
     <span
       data-clarrow=""
