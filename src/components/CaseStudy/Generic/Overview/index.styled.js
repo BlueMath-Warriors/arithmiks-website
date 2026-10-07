@@ -103,13 +103,21 @@ export const Screenshot = styled.div`
   width: ${SCREENSHOT_BLEED_RATIO};
   aspect-ratio: 1.6;
   overflow: hidden;
+  // Rounds the crop window itself, independent of $framed, so a tall
+  // screenshot clipped at the bottom still ends on a rounded corner
+  // instead of a hard cut line.
+  border-radius: clamp(14px, 1.2vw, 20px);
 
   img {
     display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: top;
+    // Every screenshot is a UI with a left sidebar/nav, so a wide source
+    // (rare — most are pre-cropped close to this box's 1.6 ratio already)
+    // should lose width off its right edge, not split the crop and cut
+    // into the sidebar on the left.
+    object-position: left top;
   }
 
   ${({ $framed }) =>
@@ -117,7 +125,6 @@ export const Screenshot = styled.div`
     `
     background: #fff;
     border: 1px solid ${colors.border};
-    border-radius: clamp(14px, 1.2vw, 20px);
     box-shadow: 0 30px 70px -34px rgba(10, 15, 31, 0.38), 0 2px 6px rgba(10, 15, 31, 0.04);
   `}
 
