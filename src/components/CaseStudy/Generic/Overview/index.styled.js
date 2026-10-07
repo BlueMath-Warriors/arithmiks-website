@@ -3,6 +3,10 @@ import { colors } from "../../../../styles/tokens";
 import { bandPadding } from "../layout.styled";
 
 const GAP_BOX_BLUE = "rgba(9, 87, 222, 0.7)";
+// designs/ClauseLens Page.html's own data-ovshot element uses this exact
+// ratio (width:calc(100% * 2036/1300), height:auto on the img) — every case
+// study shares this Overview component, so matching it here applies the
+// same sizing everywhere, not just ClauseLens.
 const SCREENSHOT_BLEED_RATIO = "calc(100% * 2036 / 1300)";
 
 export const OverviewSection = styled.section`
@@ -37,7 +41,8 @@ export const Lead = styled.p`
 export const GapBox = styled.div`
   position: relative;
   margin-top: clamp(30px, 3vw, 44px);
-  padding: clamp(28px, 2.6vw, 40px) clamp(44px, 4.8vw, 84px) clamp(28px, 2.6vw, 40px) 0;
+  padding: clamp(28px, 2.6vw, 40px) clamp(44px, 4.8vw, 84px)
+    clamp(28px, 2.6vw, 40px) 0;
 `;
 
 // The box bleeds to the viewport's left edge as a tinted band and ends in a
@@ -49,7 +54,10 @@ export const GapBand = styled.span`
   left: -100vw;
   right: 100%;
   background: #f2f7ff;
-  border-top: 2px solid ${GAP_BOX_BLUE};
+  // No border here — GapOutline/GapFill already draw the full border as a
+  // single curved gradient across the whole box (0 to 100%). A border-top on
+  // this layer too used to bleed its own flat 2px line all the way to
+  // -100vw, showing up as a stray horizontal rule past the card's left edge.
 `;
 
 export const GapOutline = styled.span`
