@@ -76,7 +76,9 @@ export const GapOutline = styled.span`
   position: absolute;
   inset: 0;
   border-radius: 0 999px 999px 0;
-  padding: 2px;
+  // top/right/bottom only — a left ring would show as a vertical line at
+  // the seam with GapBand's bleed, which should stay invisible there.
+  padding: 2px 3px 0 0;
   background: linear-gradient(
     135deg,
     #bc4e9b 0%,
@@ -135,8 +137,7 @@ export const ScreenshotCard = styled.div`
   height: 100%;
   overflow: hidden;
 
-  img,
-  .gatsby-image-wrapper {
+  img {
     display: block;
     width: auto;
     height: 100%;

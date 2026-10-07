@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { GatsbyImage, getImage } from "gatsby-plugin-image";
+import { getImage, getSrc } from "gatsby-plugin-image";
 import useReveal from "../../../../hooks/useReveal";
 import { GradientText, Shell } from "../../../shared/Section/index.styled";
 import { SectionEyebrow, SectionHeading } from "../layout.styled";
@@ -18,14 +18,17 @@ import {
   ScreenshotCard,
 } from "./index.styled";
 
+// A plain <img> rather than GatsbyImage: GatsbyImage's wrapper applies its
+// own inline sizing (to fit its *source* aspect ratio) that fights the
+// shrink-to-fit "size the card to the image" layout ScreenshotCard needs
+// here — a plain img with width:auto/height:100% just works predictably.
 const renderImage = (image, alt) => {
   const gatsbyImage =
     image && typeof image === "object" && image.childImageSharp
       ? getImage(image)
       : null;
-  if (gatsbyImage)
-    return <GatsbyImage image={gatsbyImage} alt={alt} objectFit="contain" />;
-  return <img src={image} alt={alt} loading="lazy" />;
+  const src = gatsbyImage ? getSrc(gatsbyImage) : image;
+  return <img src={src} alt={alt} loading="lazy" />;
 };
 
 /**
