@@ -107,11 +107,28 @@ export const ScreenshotColumn = styled.div`
 // carry their own backdrop and are shown as is.
 export const Screenshot = styled.div`
   width: ${SCREENSHOT_BLEED_RATIO};
+  // Caps every case study's image to ClauseLens's own height (1800/1125 =
+  // 1.6, at the same bled width) without cropping or re-encoding the
+  // source — object-fit: contain scales the whole image down to fit,
+  // letterboxing on the sides if its own ratio is taller than 1.6, rather
+  // than cutting into it the way object-fit: cover would.
+  aspect-ratio: 1.6;
+  overflow: hidden;
 
   img {
     display: block;
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  // GatsbyImage's wrapper otherwise sizes itself from the source image's
+  // own intrinsic ratio (via an internal padding-box), which would fight
+  // the aspect-ratio set here — stretching it to fill this box instead
+  // lets its own inner img (styled above) do the contain-fit.
+  .gatsby-image-wrapper {
+    width: 100%;
+    height: 100%;
   }
 
   ${({ $framed }) =>
@@ -121,7 +138,6 @@ export const Screenshot = styled.div`
     border: 1px solid ${colors.border};
     border-radius: clamp(14px, 1.2vw, 20px);
     box-shadow: 0 30px 70px -34px rgba(10, 15, 31, 0.38), 0 2px 6px rgba(10, 15, 31, 0.04);
-    overflow: hidden;
   `}
 
   @media (max-width: 1000px) {

@@ -23,7 +23,8 @@ const renderImage = (image, alt) => {
     image && typeof image === "object" && image.childImageSharp
       ? getImage(image)
       : null;
-  if (gatsbyImage) return <GatsbyImage image={gatsbyImage} alt={alt} />;
+  if (gatsbyImage)
+    return <GatsbyImage image={gatsbyImage} alt={alt} objectFit="contain" />;
   return <img src={image} alt={alt} loading="lazy" />;
 };
 
