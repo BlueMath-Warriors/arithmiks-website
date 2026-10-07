@@ -28,7 +28,8 @@ const FlowDiagram = () => (
         position: "relative",
         padding: "2px",
         borderRadius: "22px",
-        background: "linear-gradient(135deg,#5C8CFF 0%,#1355FF 40%,#A96FC8 78%,#EC4A9E 100%)",
+        background:
+          "linear-gradient(135deg,#5C8CFF 0%,#1355FF 40%,#A96FC8 78%,#EC4A9E 100%)",
       }}
     >
       <div
@@ -117,7 +118,9 @@ const FlowDiagram = () => (
             Batch
           </span>
         </span>
-        <span style={{ fontSize: "11.5px", lineHeight: "1.45", color: "#5C6478" }}>
+        <span
+          style={{ fontSize: "11.5px", lineHeight: "1.45", color: "#5C6478" }}
+        >
           One file or a whole batch, straight into your library
         </span>
       </div>
@@ -167,7 +170,12 @@ const FlowDiagram = () => (
     >
       <span
         aria-hidden="true"
-        style={{ display: "block", flex: "none", height: "6px", background: "#1355FF" }}
+        style={{
+          display: "block",
+          flex: "none",
+          height: "6px",
+          background: "#1355FF",
+        }}
       ></span>
       <div
         style={{
@@ -175,7 +183,8 @@ const FlowDiagram = () => (
           display: "flex",
           flexDirection: "column",
           gap: "10px",
-          padding: "clamp(14px,1.4vw,20px) clamp(12px,1.2vw,16px) clamp(14px,1.4vw,18px)",
+          padding:
+            "clamp(14px,1.4vw,20px) clamp(12px,1.2vw,16px) clamp(14px,1.4vw,18px)",
         }}
       >
         <div
@@ -249,7 +258,14 @@ const FlowDiagram = () => (
               <path d="M7 3h7l5 5v13H7V3Zm7 0v5h5M10 13h6M10 17h6"></path>
             </svg>
           </span>
-          <span style={{ display: "flex", flexDirection: "column", gap: "2px", minWidth: "0" }}>
+          <span
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: "2px",
+              minWidth: "0",
+            }}
+          >
             <span
               style={{
                 fontSize: "13px",
@@ -262,9 +278,15 @@ const FlowDiagram = () => (
               Every file becomes a PDF
             </span>
             <span
-              style={{ fontSize: "12px", lineHeight: "1.45", color: "#3A4256", textWrap: "pretty" }}
+              style={{
+                fontSize: "12px",
+                lineHeight: "1.45",
+                color: "#3A4256",
+                textWrap: "pretty",
+              }}
             >
-              Word files converted by headless LibreOffice, so one pipeline reads everything
+              Word files converted by headless LibreOffice, so one pipeline
+              reads everything
             </span>
           </span>
         </div>
@@ -305,7 +327,14 @@ const FlowDiagram = () => (
               <path d="M4 5h16v14H4V5Zm0 5h16M9 10v9"></path>
             </svg>
           </span>
-          <span style={{ display: "flex", flexDirection: "column", gap: "2px", minWidth: "0" }}>
+          <span
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: "2px",
+              minWidth: "0",
+            }}
+          >
             <span
               style={{
                 fontSize: "13px",
@@ -318,9 +347,15 @@ const FlowDiagram = () => (
               Layout rebuilt
             </span>
             <span
-              style={{ fontSize: "12px", lineHeight: "1.45", color: "#3A4256", textWrap: "pretty" }}
+              style={{
+                fontSize: "12px",
+                lineHeight: "1.45",
+                color: "#3A4256",
+                textWrap: "pretty",
+              }}
             >
-              Sections, headings and tables restored; OCR only on low-confidence pages
+              Sections, headings and tables restored; OCR only on low-confidence
+              pages
             </span>
           </span>
         </div>
@@ -361,7 +396,14 @@ const FlowDiagram = () => (
               <path d="M5 6h14M8 12h11M11 18h8"></path>
             </svg>
           </span>
-          <span style={{ display: "flex", flexDirection: "column", gap: "2px", minWidth: "0" }}>
+          <span
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: "2px",
+              minWidth: "0",
+            }}
+          >
             <span
               style={{
                 fontSize: "13px",
@@ -374,7 +416,12 @@ const FlowDiagram = () => (
               Clause-aware chunks
             </span>
             <span
-              style={{ fontSize: "12px", lineHeight: "1.45", color: "#3A4256", textWrap: "pretty" }}
+              style={{
+                fontSize: "12px",
+                lineHeight: "1.45",
+                color: "#3A4256",
+                textWrap: "pretty",
+              }}
             >
               §12 → 12.3 → 12.3(a), each tied to its exact place on the page
             </span>
@@ -403,7 +450,14 @@ const FlowDiagram = () => (
           >
             Built on
           </span>
-          <span style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: "12px" }}>
+          <span
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              alignItems: "center",
+              gap: "12px",
+            }}
+          >
             <img
               src="/case-studies/clauselens/tech/docling.png"
               alt="Docling"
@@ -490,7 +544,8 @@ const FlowDiagram = () => (
           display: "flex",
           flexDirection: "column",
           gap: "10px",
-          padding: "clamp(14px,1.4vw,20px) clamp(12px,1.2vw,16px) clamp(14px,1.4vw,18px)",
+          padding:
+            "clamp(14px,1.4vw,20px) clamp(12px,1.2vw,16px) clamp(14px,1.4vw,18px)",
         }}
       >
         <div
@@ -564,7 +619,14 @@ const FlowDiagram = () => (
               <path d="M5 4.5A1.5 1.5 0 0 1 6.5 3H19v15H6.5A1.5 1.5 0 0 0 5 19.5v-15ZM5 19.5A1.5 1.5 0 0 0 6.5 21H19M9 7h6"></path>
             </svg>
           </span>
-          <span style={{ display: "flex", flexDirection: "column", gap: "2px", minWidth: "0" }}>
+          <span
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: "2px",
+              minWidth: "0",
+            }}
+          >
             <span
               style={{
                 fontSize: "13px",
@@ -577,9 +639,15 @@ const FlowDiagram = () => (
               Definitions agent
             </span>
             <span
-              style={{ fontSize: "12px", lineHeight: "1.45", color: "#3A4256", textWrap: "pretty" }}
+              style={{
+                fontSize: "12px",
+                lineHeight: "1.45",
+                color: "#3A4256",
+                textWrap: "pretty",
+              }}
             >
-              Defined terms resolved so every later stage reads them the same way
+              Defined terms resolved so every later stage reads them the same
+              way
             </span>
           </span>
         </div>
@@ -620,7 +688,14 @@ const FlowDiagram = () => (
               <path d="M8 7 3 12l5 5M16 7l5 5-5 5M13.5 4l-3 16"></path>
             </svg>
           </span>
-          <span style={{ display: "flex", flexDirection: "column", gap: "2px", minWidth: "0" }}>
+          <span
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: "2px",
+              minWidth: "0",
+            }}
+          >
             <span
               style={{
                 fontSize: "13px",
@@ -633,7 +708,12 @@ const FlowDiagram = () => (
               Extraction agent
             </span>
             <span
-              style={{ fontSize: "12px", lineHeight: "1.45", color: "#3A4256", textWrap: "pretty" }}
+              style={{
+                fontSize: "12px",
+                lineHeight: "1.45",
+                color: "#3A4256",
+                textWrap: "pretty",
+              }}
             >
               Clauses, key terms, obligations and a summary pulled from the text
             </span>
@@ -676,7 +756,14 @@ const FlowDiagram = () => (
               <path d="M12 4 3 20h18L12 4Zm0 6v4m0 3h.01"></path>
             </svg>
           </span>
-          <span style={{ display: "flex", flexDirection: "column", gap: "2px", minWidth: "0" }}>
+          <span
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: "2px",
+              minWidth: "0",
+            }}
+          >
             <span
               style={{
                 fontSize: "13px",
@@ -689,7 +776,12 @@ const FlowDiagram = () => (
               Risk agent
             </span>
             <span
-              style={{ fontSize: "12px", lineHeight: "1.45", color: "#3A4256", textWrap: "pretty" }}
+              style={{
+                fontSize: "12px",
+                lineHeight: "1.45",
+                color: "#3A4256",
+                textWrap: "pretty",
+              }}
             >
               Each clause rated red, amber or green, with a rationale
             </span>
@@ -738,7 +830,14 @@ const FlowDiagram = () => (
           >
             Model router
           </span>
-          <span style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: "12px" }}>
+          <span
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              alignItems: "center",
+              gap: "12px",
+            }}
+          >
             <img
               src="/case-studies/clauselens/tech/openai.svg"
               alt="OpenAI"
@@ -849,7 +948,8 @@ const FlowDiagram = () => (
             transform: "rotate(45deg) scale(.78)",
             borderRadius: "14px",
             padding: "2px",
-            background: "linear-gradient(135deg,#5C8CFF 0%,#1355FF 40%,#A96FC8 78%,#EC4A9E 100%)",
+            background:
+              "linear-gradient(135deg,#5C8CFF 0%,#1355FF 40%,#A96FC8 78%,#EC4A9E 100%)",
           }}
         >
           <span
@@ -880,24 +980,27 @@ const FlowDiagram = () => (
         data-clgatebelow=""
         style={{
           position: "absolute",
-          top: "calc(100% + 8px)",
-          left: "50%",
-          transform: "translateX(-50%)",
+          top: "50%",
+          right: "calc(100% + 16px)",
+          transform: "translateY(-50%)",
           width: "max-content",
           maxWidth: "128px",
           display: "flex",
           flexDirection: "column",
-          alignItems: "center",
+          alignItems: "flex-end",
+          textAlign: "right",
           gap: "8px",
         }}
       >
-        <span style={{ fontSize: "11.5px", lineHeight: "1.4", color: "#3A4256" }}>
+        <span
+          style={{ fontSize: "11.5px", lineHeight: "1.4", color: "#3A4256" }}
+        >
           Every citation re-matched to the real text
         </span>
         <svg
-          viewBox="0 0 16 22"
-          width="16"
-          height="22"
+          viewBox="0 0 22 16"
+          width="22"
+          height="16"
           fill="none"
           stroke="#5C7BFF"
           strokeWidth="1.6"
@@ -906,7 +1009,7 @@ const FlowDiagram = () => (
           aria-hidden="true"
           style={{ alignSelf: "center", flex: "none" }}
         >
-          <path d="M8 1v19M3 15l5 5 5-5"></path>
+          <path d="M1 8h19M15 3l5 5-5 5"></path>
         </svg>
         <span
           style={{
@@ -1025,7 +1128,8 @@ const FlowDiagram = () => (
           display: "flex",
           flexDirection: "column",
           gap: "10px",
-          padding: "clamp(14px,1.4vw,20px) clamp(12px,1.2vw,16px) clamp(14px,1.4vw,18px)",
+          padding:
+            "clamp(14px,1.4vw,20px) clamp(12px,1.2vw,16px) clamp(14px,1.4vw,18px)",
         }}
       >
         <div
@@ -1099,7 +1203,14 @@ const FlowDiagram = () => (
               <path d="M5 5h14v14H5V5Zm4 5h6M9 14h4"></path>
             </svg>
           </span>
-          <span style={{ display: "flex", flexDirection: "column", gap: "2px", minWidth: "0" }}>
+          <span
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: "2px",
+              minWidth: "0",
+            }}
+          >
             <span
               style={{
                 fontSize: "13px",
@@ -1112,7 +1223,12 @@ const FlowDiagram = () => (
               Findings
             </span>
             <span
-              style={{ fontSize: "12px", lineHeight: "1.45", color: "#3A4256", textWrap: "pretty" }}
+              style={{
+                fontSize: "12px",
+                lineHeight: "1.45",
+                color: "#3A4256",
+                textWrap: "pretty",
+              }}
             >
               Rated risks, each linked to the clause and page it came from
             </span>
@@ -1155,7 +1271,14 @@ const FlowDiagram = () => (
               <path d="M4 6h16M4 12h16M4 18h10"></path>
             </svg>
           </span>
-          <span style={{ display: "flex", flexDirection: "column", gap: "2px", minWidth: "0" }}>
+          <span
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: "2px",
+              minWidth: "0",
+            }}
+          >
             <span
               style={{
                 fontSize: "13px",
@@ -1168,7 +1291,12 @@ const FlowDiagram = () => (
               Key terms and obligations
             </span>
             <span
-              style={{ fontSize: "12px", lineHeight: "1.45", color: "#3A4256", textWrap: "pretty" }}
+              style={{
+                fontSize: "12px",
+                lineHeight: "1.45",
+                color: "#3A4256",
+                textWrap: "pretty",
+              }}
             >
               Parties, dates, amounts and duties in tables you can check
             </span>
@@ -1211,7 +1339,14 @@ const FlowDiagram = () => (
               <path d="M6 4h12v16H6V4Zm3 4h6M9 12h6M9 16h3"></path>
             </svg>
           </span>
-          <span style={{ display: "flex", flexDirection: "column", gap: "2px", minWidth: "0" }}>
+          <span
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: "2px",
+              minWidth: "0",
+            }}
+          >
             <span
               style={{
                 fontSize: "13px",
@@ -1224,7 +1359,12 @@ const FlowDiagram = () => (
               Summary
             </span>
             <span
-              style={{ fontSize: "12px", lineHeight: "1.45", color: "#3A4256", textWrap: "pretty" }}
+              style={{
+                fontSize: "12px",
+                lineHeight: "1.45",
+                color: "#3A4256",
+                textWrap: "pretty",
+              }}
             >
               A plain-language overview of the whole contract
             </span>
@@ -1246,7 +1386,13 @@ const FlowDiagram = () => (
         paddingTop: "8px",
       }}
     >
-      <span style={{ flex: "1 1 auto", width: "0", borderLeft: "1.5px dashed #9AA3B5" }}></span>
+      <span
+        style={{
+          flex: "1 1 auto",
+          width: "0",
+          borderLeft: "1.5px dashed #9AA3B5",
+        }}
+      ></span>
       <span
         style={{
           margin: "6px 0",
@@ -1261,7 +1407,13 @@ const FlowDiagram = () => (
       >
         Same clause index
       </span>
-      <span style={{ flex: "0 0 12px", width: "0", borderLeft: "1.5px dashed #9AA3B5" }}></span>
+      <span
+        style={{
+          flex: "0 0 12px",
+          width: "0",
+          borderLeft: "1.5px dashed #9AA3B5",
+        }}
+      ></span>
       <svg
         viewBox="0 0 16 10"
         width="16"
@@ -1388,7 +1540,8 @@ const FlowDiagram = () => (
         position: "relative",
         padding: "2px",
         borderRadius: "22px",
-        background: "linear-gradient(135deg,#5C8CFF 0%,#1355FF 40%,#A96FC8 78%,#EC4A9E 100%)",
+        background:
+          "linear-gradient(135deg,#5C8CFF 0%,#1355FF 40%,#A96FC8 78%,#EC4A9E 100%)",
       }}
     >
       <div
@@ -1464,7 +1617,9 @@ const FlowDiagram = () => (
             Whole library
           </span>
         </span>
-        <span style={{ fontSize: "11.5px", lineHeight: "1.45", color: "#5C6478" }}>
+        <span
+          style={{ fontSize: "11.5px", lineHeight: "1.45", color: "#5C6478" }}
+        >
           Plain English, follow-ups welcome
         </span>
       </div>
@@ -1527,7 +1682,8 @@ const FlowDiagram = () => (
           display: "flex",
           flexDirection: "column",
           gap: "10px",
-          padding: "clamp(14px,1.4vw,20px) clamp(12px,1.2vw,16px) clamp(14px,1.4vw,18px)",
+          padding:
+            "clamp(14px,1.4vw,20px) clamp(12px,1.2vw,16px) clamp(14px,1.4vw,18px)",
         }}
       >
         <div
@@ -1601,7 +1757,14 @@ const FlowDiagram = () => (
               <path d="M10.5 17a6.5 6.5 0 1 0 0-13 6.5 6.5 0 0 0 0 13ZM20 20l-4.8-4.8"></path>
             </svg>
           </span>
-          <span style={{ display: "flex", flexDirection: "column", gap: "2px", minWidth: "0" }}>
+          <span
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: "2px",
+              minWidth: "0",
+            }}
+          >
             <span
               style={{
                 fontSize: "13px",
@@ -1614,9 +1777,15 @@ const FlowDiagram = () => (
               Hybrid retrieval
             </span>
             <span
-              style={{ fontSize: "12px", lineHeight: "1.45", color: "#3A4256", textWrap: "pretty" }}
+              style={{
+                fontSize: "12px",
+                lineHeight: "1.45",
+                color: "#3A4256",
+                textWrap: "pretty",
+              }}
             >
-              Semantic and keyword search, fused and reranked before the model sees anything
+              Semantic and keyword search, fused and reranked before the model
+              sees anything
             </span>
           </span>
         </div>
@@ -1644,9 +1813,20 @@ const FlowDiagram = () => (
             Index
           </span>
           <span
-            style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: "8px 16px" }}
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              alignItems: "center",
+              gap: "8px 16px",
+            }}
           >
-            <span style={{ display: "inline-flex", alignItems: "center", gap: "6px" }}>
+            <span
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "6px",
+              }}
+            >
               <img
                 src="/case-studies/clauselens/tech/qdrant.png"
                 alt=""
@@ -1658,9 +1838,23 @@ const FlowDiagram = () => (
                   opacity: ".42",
                 }}
               />
-              <span style={{ fontSize: "12px", fontWeight: "550", color: "#5C6478" }}>Qdrant</span>
+              <span
+                style={{
+                  fontSize: "12px",
+                  fontWeight: "550",
+                  color: "#5C6478",
+                }}
+              >
+                Qdrant
+              </span>
             </span>
-            <span style={{ display: "inline-flex", alignItems: "center", gap: "6px" }}>
+            <span
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "6px",
+              }}
+            >
               <img
                 src="/case-studies/clauselens/tech/fastembed.png"
                 alt=""
@@ -1672,7 +1866,13 @@ const FlowDiagram = () => (
                   opacity: ".42",
                 }}
               />
-              <span style={{ fontSize: "12px", fontWeight: "550", color: "#5C6478" }}>
+              <span
+                style={{
+                  fontSize: "12px",
+                  fontWeight: "550",
+                  color: "#5C6478",
+                }}
+              >
                 FastEmbed
               </span>
             </span>
@@ -1738,7 +1938,8 @@ const FlowDiagram = () => (
           display: "flex",
           flexDirection: "column",
           gap: "10px",
-          padding: "clamp(14px,1.4vw,20px) clamp(12px,1.2vw,16px) clamp(14px,1.4vw,18px)",
+          padding:
+            "clamp(14px,1.4vw,20px) clamp(12px,1.2vw,16px) clamp(14px,1.4vw,18px)",
         }}
       >
         <div
@@ -1812,7 +2013,14 @@ const FlowDiagram = () => (
               <path d="M4 5h16v10H9l-5 4V5Z"></path>
             </svg>
           </span>
-          <span style={{ display: "flex", flexDirection: "column", gap: "2px", minWidth: "0" }}>
+          <span
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: "2px",
+              minWidth: "0",
+            }}
+          >
             <span
               style={{
                 fontSize: "13px",
@@ -1825,10 +2033,15 @@ const FlowDiagram = () => (
               Evidence only
             </span>
             <span
-              style={{ fontSize: "12px", lineHeight: "1.45", color: "#3A4256", textWrap: "pretty" }}
+              style={{
+                fontSize: "12px",
+                lineHeight: "1.45",
+                color: "#3A4256",
+                textWrap: "pretty",
+              }}
             >
-              Follow-ups rewritten against the conversation; the model answers from retrieved text,
-              not memory
+              Follow-ups rewritten against the conversation; the model answers
+              from retrieved text, not memory
             </span>
           </span>
         </div>
@@ -1892,7 +2105,8 @@ const FlowDiagram = () => (
           display: "flex",
           flexDirection: "column",
           gap: "10px",
-          padding: "clamp(14px,1.4vw,20px) clamp(12px,1.2vw,16px) clamp(14px,1.4vw,18px)",
+          padding:
+            "clamp(14px,1.4vw,20px) clamp(12px,1.2vw,16px) clamp(14px,1.4vw,18px)",
         }}
       >
         <div
@@ -1966,7 +2180,14 @@ const FlowDiagram = () => (
               <path d="M12 3 4.5 6v5.5c0 4.4 3.1 7.5 7.5 9 4.4-1.5 7.5-4.6 7.5-9V6L12 3Zm-3 9 2.2 2.2L15.5 10"></path>
             </svg>
           </span>
-          <span style={{ display: "flex", flexDirection: "column", gap: "2px", minWidth: "0" }}>
+          <span
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: "2px",
+              minWidth: "0",
+            }}
+          >
             <span
               style={{
                 fontSize: "13px",
@@ -1979,10 +2200,15 @@ const FlowDiagram = () => (
               Answer with citations
             </span>
             <span
-              style={{ fontSize: "12px", lineHeight: "1.45", color: "#3A4256", textWrap: "pretty" }}
+              style={{
+                fontSize: "12px",
+                lineHeight: "1.45",
+                color: "#3A4256",
+                textWrap: "pretty",
+              }}
             >
-              Every statement links to its page and clause. The same grounding check applies, so an
-              unsupported claim is dropped, not shown.
+              Every statement links to its page and clause. The same grounding
+              check applies, so an unsupported claim is dropped, not shown.
             </span>
           </span>
         </div>
