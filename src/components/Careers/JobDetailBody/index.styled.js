@@ -115,10 +115,11 @@ export const Aside = styled.aside`
   border-left: 1px solid ${colors.border};
 
   @media (max-width: 800px) {
+    order: -1;
     padding-left: 0;
     border-left: 0;
-    padding-top: clamp(26px, 2.6vw, 40px);
-    border-top: 1px solid ${colors.border};
+    padding-bottom: clamp(26px, 2.6vw, 40px);
+    border-bottom: 1px solid ${colors.border};
   }
 `;
 
