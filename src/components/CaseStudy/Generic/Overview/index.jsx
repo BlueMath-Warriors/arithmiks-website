@@ -15,24 +15,19 @@ import {
   GapText,
   ScreenshotColumn,
   Screenshot,
-  ScreenshotCard,
 } from "./index.styled";
 
 // A plain <img> rather than GatsbyImage: GatsbyImage's wrapper applies its
-// own inline sizing (to fit its *source* aspect ratio) that fights the
-// shrink-to-fit "size the card to the image" layout ScreenshotCard needs
-// here — a plain img with width:auto/height:100% just works predictably.
+// own inline sizing (to fit its *source* aspect ratio), which fights the
+// fixed width/height + object-fit: cover box this renders into — a plain
+// img sizes predictably with that CSS instead.
 const renderImage = (image, alt) => {
   const gatsbyImage =
     image && typeof image === "object" && image.childImageSharp
       ? getImage(image)
       : null;
   const src = gatsbyImage ? getSrc(gatsbyImage) : image;
-  // Sizing here (width: auto, from ScreenshotCard) needs the image's own
-  // natural dimensions to compute a non-zero width — native lazy-loading
-  // skips measuring a 0-width element as "not visible" yet, so the two
-  // deadlock and the image never loads. Eager-loads instead.
-  return <img src={src} alt={alt} />;
+  return <img src={src} alt={alt} loading="lazy" />;
 };
 
 /**
@@ -79,10 +74,8 @@ const Overview = ({
             )}
           </TextColumn>
           <ScreenshotColumn data-reveal="">
-            <Screenshot>
-              <ScreenshotCard $framed={framed}>
-                {renderImage(imageSrc, imageAlt || `${name} overview`)}
-              </ScreenshotCard>
+            <Screenshot $framed={framed}>
+              {renderImage(imageSrc, imageAlt || `${name} overview`)}
             </Screenshot>
           </ScreenshotColumn>
         </OverviewGrid>

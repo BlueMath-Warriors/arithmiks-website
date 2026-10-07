@@ -3,10 +3,6 @@ import { colors } from "../../../../styles/tokens";
 import { bandPadding } from "../layout.styled";
 
 const GAP_BOX_BLUE = "rgba(9, 87, 222, 0.7)";
-// designs/ClauseLens Page.html's own data-ovshot element uses this exact
-// ratio (width:calc(100% * 2036/1300), height:auto on the img) — every case
-// study shares this Overview component, so matching it here applies the
-// same sizing everywhere, not just ClauseLens.
 const SCREENSHOT_BLEED_RATIO = "calc(100% * 2036 / 1300)";
 
 export const OverviewSection = styled.section`
@@ -64,17 +60,16 @@ export const GapBand = styled.span`
   // -100vw, showing up as a stray horizontal rule past the card's left edge.
 `;
 
-// A gradient border ring via padding + mask-composite, not a layered
-// fill trick — "to top left" is corner-relative, so its angle (and the
-// visible band where color is mid-transition) shifted with the box's own
-// aspect ratio; on the much taller/narrower mobile box that transition
-// band showed as a diagonal line cutting across the middle instead of
-// staying confined to the curved edge. A masked ring is always exactly
-// as thick as its padding, on every box shape, so there's no interior
-// to leak through regardless of ratio.
+
 export const GapOutline = styled.span`
   position: absolute;
-  inset: 0;
+  // Inset 4px from the left instead of 0: padding-left: 0 below already
+  // tells the mask to draw no border there, but at an exact zero-width
+  // seam some browsers still antialias the mask's own edge, showing as a
+  // faint vertical line where this ring meets GapBand's bleed. Starting
+  // the ring's box a few px short of that seam means there's no mask
+  // geometry at that column at all, not just a zero-width one.
+  inset: 0 0 0 4px;
   border-radius: 0 999px 999px 0;
   // top/right/bottom only — a left ring would show as a vertical line at
   // the seam with GapBand's bleed, which should stay invisible there.
@@ -113,34 +108,17 @@ export const ScreenshotColumn = styled.div`
   min-width: 0;
 `;
 
-// An invisible slot sized like ClauseLens's own image (same bled width,
-// 1.6 aspect ratio) so every case study renders at the same height — but
-// it has no background of its own, so a narrower image doesn't leave a
-// visible white rectangle around it. Right-aligned so the image still
-// bleeds to the slot's right edge, matching the original design.
 export const Screenshot = styled.div`
   width: ${SCREENSHOT_BLEED_RATIO};
   aspect-ratio: 1.6;
-  display: flex;
-  justify-content: flex-end;
-
-  @media (max-width: 1000px) {
-    width: 100%;
-    justify-content: center;
-  }
-`;
-
-// The actual visible card: shrink-wrapped to the image's own rendered
-// width at the slot's height (height: 100%; width: auto on the img below),
-// so the border/shadow/background only ever cover the image itself.
-export const ScreenshotCard = styled.div`
-  height: 100%;
   overflow: hidden;
 
   img {
     display: block;
-    width: auto;
+    width: 100%;
     height: 100%;
+    object-fit: cover;
+    object-position: top;
   }
 
   ${({ $framed }) =>
@@ -151,4 +129,8 @@ export const ScreenshotCard = styled.div`
     border-radius: clamp(14px, 1.2vw, 20px);
     box-shadow: 0 30px 70px -34px rgba(10, 15, 31, 0.38), 0 2px 6px rgba(10, 15, 31, 0.04);
   `}
+
+  @media (max-width: 1000px) {
+    width: 100%;
+  }
 `;
