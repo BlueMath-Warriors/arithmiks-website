@@ -28,7 +28,11 @@ const renderImage = (image, alt) => {
       ? getImage(image)
       : null;
   const src = gatsbyImage ? getSrc(gatsbyImage) : image;
-  return <img src={src} alt={alt} loading="lazy" />;
+  // Sizing here (width: auto, from ScreenshotCard) needs the image's own
+  // natural dimensions to compute a non-zero width — native lazy-loading
+  // skips measuring a 0-width element as "not visible" yet, so the two
+  // deadlock and the image never loads. Eager-loads instead.
+  return <img src={src} alt={alt} />;
 };
 
 /**
