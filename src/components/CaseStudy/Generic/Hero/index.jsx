@@ -30,7 +30,10 @@ const FILL_FRAME = { width: "100%", maxWidth: "none" };
 const splitTitle = (title) => {
   const words = title.split(" ");
   const cut = Math.max(0, words.length - HIGHLIGHT_WORD_COUNT);
-  return { plain: words.slice(0, cut).join(" "), highlight: words.slice(cut).join(" ") };
+  return {
+    plain: words.slice(0, cut).join(" "),
+    highlight: words.slice(cut).join(" "),
+  };
 };
 
 /**
@@ -45,7 +48,6 @@ const splitTitle = (title) => {
  * @param {string} [props.liveUrl] product URL for the "Visit" button
  * @param {string} [props.liveLabel] name used in the button, defaults to the logo alt
  * @param {"blue" | "warm"} [props.tone] colour of the frame around the image
- * @param {boolean} [props.screenshot] the image is a plain app screenshot (rounded, ringed) rather than a ready-made mockup
  * @param {Object} [props.heroImageData] gatsbyImageData from GraphQL
  * @param {string} [props.heroImageSrc] static fallback path
  * @param {string} props.heroImageAlt
@@ -61,15 +63,19 @@ const Hero = ({
   liveUrl,
   liveLabel,
   tone = "blue",
-  screenshot = false,
   heroImageData,
   heroImageSrc,
   heroImageAlt = "Hero image",
 }) => {
   const gatsbyImage = heroImageData ? getImage(heroImageData) : null;
-  const headlineSource = headline || caseStudies.find((study) => study.slug === slug)?.title || logoAlt;
+  const headlineSource =
+    headline ||
+    caseStudies.find((study) => study.slug === slug)?.title ||
+    logoAlt;
   const { plain, highlight } =
-    typeof headlineSource === "string" ? splitTitle(headlineSource) : headlineSource;
+    typeof headlineSource === "string"
+      ? splitTitle(headlineSource)
+      : headlineSource;
 
   return (
     <HeroSection id="top" aria-labelledby="case-study-headline">
@@ -82,15 +88,22 @@ const Hero = ({
       <HeroShell>
         <HeroContent>
           <EyebrowLabel>{category}</EyebrowLabel>
-          {logoSrc && <ProductLogo src={logoSrc} alt={logoAlt} $height={logoHeight} />}
+          {logoSrc && (
+            <ProductLogo src={logoSrc} alt={logoAlt} $height={logoHeight} />
+          )}
           <Headline id="case-study-headline">
             {plain} <GradientText>{highlight}</GradientText>
           </Headline>
           <Subtitle>{caption}</Subtitle>
           <CtaRow>
             {liveUrl && (
-              <PrimaryCta href={liveUrl} target="_blank" rel="noopener noreferrer">
-                Visit {liveLabel || logoAlt} <CtaGlyph aria-hidden="true">↗</CtaGlyph>
+              <PrimaryCta
+                href={liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Visit {liveLabel || logoAlt}{" "}
+                <CtaGlyph aria-hidden="true">↗</CtaGlyph>
               </PrimaryCta>
             )}
             <SecondaryCta href="#features">
@@ -98,7 +111,7 @@ const Hero = ({
             </SecondaryCta>
           </CtaRow>
         </HeroContent>
-        <Frame $tone={tone} $screenshot={screenshot}>
+        <Frame $tone={tone}>
           {gatsbyImage ? (
             <GatsbyImage
               image={gatsbyImage}
@@ -109,7 +122,12 @@ const Hero = ({
               style={FILL_FRAME}
             />
           ) : (
-            <img src={heroImageSrc} alt={heroImageAlt} fetchpriority="high" decoding="async" />
+            <img
+              src={heroImageSrc}
+              alt={heroImageAlt}
+              fetchpriority="high"
+              decoding="async"
+            />
           )}
         </Frame>
       </HeroShell>

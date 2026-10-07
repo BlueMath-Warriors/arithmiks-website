@@ -5,12 +5,14 @@ export const heroData = {
   category: "Product · Contract Intelligence",
   logoSrc: `${ASSET_ROOT}/logo.svg`,
   logoAlt: "ClauseLens",
-  headline: { plain: "Contract review you can", highlight: "check line by line" },
+  headline: {
+    plain: "Contract review you can",
+    highlight: "check line by line",
+  },
   caption:
     "AI contract review that flags risks and extracts key terms in about a minute, with every finding traced to its source sentence.",
   liveUrl: "https://clauselens.arithmiks.com",
   tone: "warm",
-  screenshot: true,
   heroImageSrc: `${ASSET_ROOT}/hero.webp`,
   heroImageAlt:
     "ClauseLens review screen: a contract page with flagged clauses beside risk findings",
@@ -47,7 +49,8 @@ export const overviewData = {
     "ClauseLens is an AI contract review and document intelligence platform for teams who read agreements for a living. Upload a contract and it returns a structured, source-grounded analysis: document type, risky clauses, commercial terms, a plain-English summary, and answers to follow-up questions.",
   framed: true,
   imageSrc: `${ASSET_ROOT}/overview.webp`,
-  imageAlt: "ClauseLens contract library: analysed contracts as cards with risk counts",
+  imageAlt:
+    "ClauseLens contract library: analysed contracts as cards with risk counts",
   problemData: {
     title: "The gap it closes",
     text: "One commercial contract takes a trained reviewer two to four hours, most of it spent finding standard clauses and checking them against market norms. Clause libraries miss anything phrased differently, and generic AI chat answers without showing its source. ClauseLens returns a first-pass review in about a minute, with every finding linked to the sentence behind it.",
@@ -103,7 +106,8 @@ export const keyFeaturesData = {
   features: [
     {
       title: "Grounded Risk Findings",
-      description: "Every clause rated against market norms and traced to its source sentence.",
+      description:
+        "Every clause rated against market norms and traced to its source sentence.",
       image: `${ASSET_ROOT}/feature-findings.webp`,
       imageAlt:
         "ClauseLens findings: a flagged clause with why it was flagged, market norm and suggested position",
@@ -113,21 +117,24 @@ export const keyFeaturesData = {
       description:
         "Renewal, liability, indemnity and payment terms in one table, each with its page.",
       image: `${ASSET_ROOT}/feature-keyterms.webp`,
-      imageAlt: "ClauseLens key terms table with values, market norms and sources",
+      imageAlt:
+        "ClauseLens key terms table with values, market norms and sources",
     },
     {
       title: "Obligations with Owners and Deadlines",
       description:
         "Who must do what, by when, and what triggers it, so a renewal notice or payment window never goes unnoticed.",
       image: `${ASSET_ROOT}/feature-obligations.webp`,
-      imageAlt: "ClauseLens obligations list with owners, due dates and triggers",
+      imageAlt:
+        "ClauseLens obligations list with owners, due dates and triggers",
     },
     {
       title: "Ask This Document",
       description:
         "Ask about one contract in plain English. Every answer cites the page, or says plainly that the answer is not in the document.",
       image: `${ASSET_ROOT}/feature-askdoc.webp`,
-      imageAlt: "ClauseLens chat answering a question about one contract with citations",
+      imageAlt:
+        "ClauseLens chat answering a question about one contract with citations",
     },
     {
       title: "Ask Across Your Library",
@@ -141,7 +148,8 @@ export const keyFeaturesData = {
       description:
         "Drop in many PDFs or Word files at once. Each is parsed and checked in parallel, and a file that cannot be read says why.",
       image: `${ASSET_ROOT}/feature-batch.webp`,
-      imageAlt: "ClauseLens analysing eight files with progress and upload errors",
+      imageAlt:
+        "ClauseLens analysing eight files with progress and upload errors",
     },
   ],
 };
