@@ -7,8 +7,11 @@ import {
 } from "../../shared/Section/index.styled";
 
 // Below these the story unpins and every stage stacks as ordinary content.
+// Width alone does not unpin it — a normal-height phone in portrait still
+// gets the pinned, scroll-scrubbed story; only a short viewport (a phone in
+// landscape, a small laptop window) does not have the vertical room for it.
 export const UNPINNED =
-  "(max-width: 900px), (max-height: 560px), (prefers-reduced-motion: reduce)";
+  "(min-width: 901px) and (max-height: 560px), (max-width: 900px) and (max-height: 500px), (prefers-reduced-motion: reduce)";
 const SLIDE_EASE = "cubic-bezier(0.16, 1, 0.3, 1)";
 const MONO = "ui-monospace, 'JetBrains Mono', Menlo, monospace";
 const SLIDE_OFFSET_PX = 44;
@@ -407,6 +410,10 @@ export const Tick = styled.button`
   border: 0;
   cursor: pointer;
   text-align: left;
+
+  @media (max-width: 640px) {
+    padding: 20px 0;
+  }
 `;
 
 export const TickBar = styled.span`
@@ -444,6 +451,10 @@ export const TickLabel = styled.span`
   overflow: hidden;
   text-overflow: ellipsis;
   transition: color 0.4s ease;
+
+  @media (max-width: 640px) {
+    display: none;
+  }
 `;
 
 export const Runway = styled.div`
