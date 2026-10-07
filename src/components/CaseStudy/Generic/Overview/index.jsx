@@ -11,6 +11,7 @@ import {
   GapBox,
   GapBand,
   GapOutline,
+  GapFill,
   GapTitle,
   GapText,
   ScreenshotColumn,
@@ -68,6 +69,7 @@ const Overview = ({
               <GapBox>
                 <GapBand aria-hidden="true" />
                 <GapOutline aria-hidden="true" />
+                <GapFill aria-hidden="true" />
                 <GapTitle>{problemData.title}</GapTitle>
                 <GapText>{problemData.text}</GapText>
               </GapBox>

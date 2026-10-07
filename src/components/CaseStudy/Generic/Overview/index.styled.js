@@ -39,14 +39,16 @@ export const GapBox = styled.div`
   margin-top: clamp(30px, 3vw, 44px);
   padding: clamp(28px, 2.6vw, 40px) clamp(44px, 4.8vw, 84px)
     clamp(28px, 2.6vw, 40px) 0;
-  // The interior fill GapFill used to provide before the border became a
-  // masked ring instead of a layered fill.
-  background: linear-gradient(90deg, #f2f7ff 0%, #fbfcff 100%);
-  border-radius: 0 999px 999px 0;
 `;
 
-// The box bleeds to the viewport's left edge as a tinted band and ends in a
-// gradient-outlined pill on the right; three stacked layers build that outline.
+// Matches the original design's exact technique (a layered solid fill, not
+// a CSS mask ring — the mask-composite ring tried here instead was prone to
+// antialiasing seams/gradient-angle glitches at the left edge and on tall
+// mobile boxes). The box bleeds to the viewport's left edge as a tinted
+// band with its own border-top continuing the gradient border's line; a
+// solid gradient pill (GapOutline) sits behind an inset solid-color fill
+// (GapFill), so only a thin margin of the gradient shows through as the
+// border — same stacking as designs/ClauseLens Page.html.
 export const GapBand = styled.span`
   position: absolute;
   top: 0;
@@ -54,37 +56,26 @@ export const GapBand = styled.span`
   left: -100vw;
   right: 100%;
   background: #f2f7ff;
-  // No border here — GapOutline/GapFill already draw the full border as a
-  // single curved gradient across the whole box (0 to 100%). A border-top on
-  // this layer too used to bleed its own flat 2px line all the way to
-  // -100vw, showing up as a stray horizontal rule past the card's left edge.
+  border-top: 2px solid ${GAP_BOX_BLUE};
 `;
-
 
 export const GapOutline = styled.span`
   position: absolute;
-  // Inset 4px from the left instead of 0: padding-left: 0 below already
-  // tells the mask to draw no border there, but at an exact zero-width
-  // seam some browsers still antialias the mask's own edge, showing as a
-  // faint vertical line where this ring meets GapBand's bleed. Starting
-  // the ring's box a few px short of that seam means there's no mask
-  // geometry at that column at all, not just a zero-width one.
-  inset: 0 0 0 4px;
+  inset: 0;
   border-radius: 0 999px 999px 0;
-  // top/right/bottom only — a left ring would show as a vertical line at
-  // the seam with GapBand's bleed, which should stay invisible there.
-  padding: 2px 3px 0 0;
   background: linear-gradient(
-    135deg,
+    to left top,
     #bc4e9b 0%,
     ${GAP_BOX_BLUE} 44.5%,
     ${GAP_BOX_BLUE} 100%
   );
-  -webkit-mask:
-    linear-gradient(#fff 0 0) content-box,
-    linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
+`;
+
+export const GapFill = styled.span`
+  position: absolute;
+  inset: 2px 3px 0 0;
+  border-radius: 0 999px 999px 0;
+  background: linear-gradient(90deg, #f2f7ff 0%, #fbfcff 100%);
 `;
 
 export const GapTitle = styled.h3`
