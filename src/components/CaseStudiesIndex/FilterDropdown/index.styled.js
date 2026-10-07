@@ -25,11 +25,18 @@ export const Pill = styled.button`
      the pill reserves its 18px + 10px gap here to keep the design's spacing. */
   padding: 11px 18px 11px ${(p) => (p.$active ? "46px" : "18px")};
   cursor: pointer;
-  transition: border-color 0.25s ease, color 0.25s ease, background 0.25s ease;
+  transition:
+    border-color 0.25s ease,
+    color 0.25s ease,
+    background 0.25s ease;
 
   &:hover {
     border-color: ${colors.primary};
     color: ${colors.primary};
+  }
+
+  @media screen and (max-width: 640px) {
+    width: 100%;
   }
 `;
 
@@ -53,7 +60,9 @@ export const ClearBadge = styled.button`
   background: rgba(19, 85, 255, 0.14);
   color: ${colors.primary};
   cursor: pointer;
-  transition: background 0.2s ease, color 0.2s ease;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
 
   /* global.module.css's "* { color: #000 }" matches the icon's <path>
      directly, which otherwise beats this inherited color the moment the
@@ -143,5 +152,7 @@ export const CheckBox = styled.span`
   border-radius: 5px;
   border: 1.5px solid ${(p) => (p.$checked ? colors.primary : BORDER_IDLE)};
   background: ${(p) => (p.$checked ? colors.primary : "#fff")};
-  transition: background 0.2s ease, border-color 0.2s ease;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
 `;
