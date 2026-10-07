@@ -4,11 +4,14 @@ export const getHeroData = (images) => ({
   category: "Web Application / Tool",
   logoSrc: "/easybar.svg",
   logoAlt: "EASY-BAR",
+  // Easybar's wordmark is ~8.4:1 (vs. Sbaloans's ~3.9:1) — at the default
+  // logo height it renders ~2.2x wider than other case-study logos, so it
+  // gets a smaller height here to reach a comparable visual width instead.
+  logoHeight: "clamp(25px, 1.9vw, 35px)",
   caption: (
     <>
-      A web platform that simplifies rebar design, vendor
-      {" "}
-      quoting, and seamless online ordering.
+      A web platform that simplifies rebar design, vendor quoting, and seamless
+      online ordering.
     </>
   ),
   heroImageData: images?.heroImage,
@@ -53,7 +56,9 @@ export const solutionData = {
   heading: "Our Solution",
   description: (
     <>
-      <strong>Arithmiks</strong> rebuilt EasyBar into a fully automated, design-to-order platform that digitized rebar sketching, streamlined vendor collaboration, and scaled manufacturing workflows end-to-end.
+      <strong>Arithmiks</strong> rebuilt EasyBar into a fully automated,
+      design-to-order platform that digitized rebar sketching, streamlined
+      vendor collaboration, and scaled manufacturing workflows end-to-end.
     </>
   ),
   solutions: [
