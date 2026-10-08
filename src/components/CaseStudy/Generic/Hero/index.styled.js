@@ -15,7 +15,10 @@ export const HeroSection = styled.section`
 
   @media (max-width: 900px) {
     padding-top: 110px;
-    padding-bottom: 48px;
+    // Was 48px — that left a visible gap above TechStackSection's fixed
+    // -5px tuck, which only cancels a 0px desktop bottom padding. Zero here
+    // keeps the blue band flush against the image on mobile too.
+    padding-bottom: 0;
   }
 `;
 
@@ -149,7 +152,9 @@ export const PrimaryCta = styled.a`
   background: ${colors.primary};
   border: 1.5px solid ${colors.primary};
   color: #fff;
-  transition: transform 0.25s ease, background 0.25s ease;
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease;
 
   &:hover {
     transform: translateY(-2px);
@@ -162,7 +167,9 @@ export const SecondaryCta = styled.a`
   ${pill}
   border: 1.5px solid ${colors.primary};
   color: ${colors.primary};
-  transition: background 0.25s ease, color 0.25s ease;
+  transition:
+    background 0.25s ease,
+    color 0.25s ease;
 
   &:hover {
     background: ${colors.primary};
@@ -180,14 +187,18 @@ export const CtaGlyph = styled.span`
 // mockup already has its own shape and shadow, so it is left untouched.
 const FRAME_TONES = {
   blue: {
-    background: "linear-gradient(135deg, #eef1fb 0%, #e9edfa 45%, #f1ecf8 100%)",
+    background:
+      "linear-gradient(135deg, #eef1fb 0%, #e9edfa 45%, #f1ecf8 100%)",
     border: "#dfe4f2",
-    shadow: "0 -10px 60px -30px rgba(10, 15, 31, 0.28), 0 2px 6px rgba(10, 15, 31, 0.04)",
+    shadow:
+      "0 -10px 60px -30px rgba(10, 15, 31, 0.28), 0 2px 6px rgba(10, 15, 31, 0.04)",
   },
   warm: {
-    background: "linear-gradient(135deg, #f4efe7 0%, #efe8dd 50%, #f3ece4 100%)",
+    background:
+      "linear-gradient(135deg, #f4efe7 0%, #efe8dd 50%, #f3ece4 100%)",
     border: "#e4dacb",
-    shadow: "0 -10px 60px -30px rgba(60, 40, 20, 0.28), 0 2px 6px rgba(60, 40, 20, 0.05)",
+    shadow:
+      "0 -10px 60px -30px rgba(60, 40, 20, 0.28), 0 2px 6px rgba(60, 40, 20, 0.05)",
   },
 };
 
@@ -212,16 +223,14 @@ export const Frame = styled.div`
     display: block;
     width: 100%;
     height: auto;
-    ${({ $screenshot }) =>
-      $screenshot &&
-      `
-      border-radius: ${IMAGE_RADIUS} ${IMAGE_RADIUS} 0 0;
-      box-shadow: 0 0 0 1px rgba(10, 15, 31, 0.06);
-    `}
+    border-radius: ${IMAGE_RADIUS} ${IMAGE_RADIUS} 0 0;
+    box-shadow: 0 0 0 1px rgba(10, 15, 31, 0.06);
   }
 
   .gatsby-image-wrapper {
     aspect-ratio: ${HERO_IMAGE_RATIO};
+    border-radius: ${IMAGE_RADIUS} ${IMAGE_RADIUS} 0 0;
+    box-shadow: 0 0 0 1px rgba(10, 15, 31, 0.06);
   }
 
   .gatsby-image-wrapper > div[aria-hidden="true"] {

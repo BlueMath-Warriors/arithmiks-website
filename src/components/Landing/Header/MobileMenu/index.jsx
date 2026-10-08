@@ -3,8 +3,12 @@ import { createPortal } from "react-dom";
 import { navigate } from "gatsby";
 import { SERVICE_NAV_GROUPS } from "../../../../constants/serviceNavGroups";
 import { PRODUCTS } from "../../../../constants/products";
-import { buildSearchIndex, searchSite } from "../../../../constants/searchIndex";
+import {
+  buildSearchIndex,
+  searchSite,
+} from "../../../../constants/searchIndex";
 import SearchResultsList, { Meta, Empty } from "../SearchResultsList";
+import { ArrowGlyph } from "../../../shared/Section/index.styled";
 import {
   Wrap,
   TopBar,
@@ -90,7 +94,16 @@ const MobileMenu = ({ onClose }) => {
           <span>Arithmiks</span>
         </LogoLink>
         <CloseButton aria-label="Close menu" onClick={onClose}>
-          <svg viewBox="0 0 22 22" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" aria-hidden="true">
+          <svg
+            viewBox="0 0 22 22"
+            width="18"
+            height="18"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.75"
+            strokeLinecap="round"
+            aria-hidden="true"
+          >
             <path d="M5 5l12 12M17 5L5 17" />
           </svg>
         </CloseButton>
@@ -105,7 +118,16 @@ const MobileMenu = ({ onClose }) => {
             onClose();
           }}
         >
-          <svg viewBox="0 0 20 20" width="17" height="17" fill="none" stroke="#5C6478" strokeWidth="1.8" strokeLinecap="round" aria-hidden="true">
+          <svg
+            viewBox="0 0 20 20"
+            width="17"
+            height="17"
+            fill="none"
+            stroke="#5C6478"
+            strokeWidth="1.8"
+            strokeLinecap="round"
+            aria-hidden="true"
+          >
             <circle cx="8.6" cy="8.6" r="5.4" />
             <path d="m12.8 12.8 4 4" />
           </svg>
@@ -130,7 +152,10 @@ const MobileMenu = ({ onClose }) => {
           ) : (
             <Empty>
               <span>No matches</span>
-              <span>Try a service name, a client, or a topic like &quot;AI audit&quot;.</span>
+              <span>
+                Try a service name, a client, or a topic like &quot;AI
+                audit&quot;.
+              </span>
             </Empty>
           )
         ) : (
@@ -154,7 +179,7 @@ const MobileMenu = ({ onClose }) => {
                 </ItemLink>
               ))}
               <AllLink to="/services" onClick={onClose}>
-                All services <span aria-hidden="true">→</span>
+                All services <ArrowGlyph aria-hidden="true">→</ArrowGlyph>
               </AllLink>
             </AccPanel>
 
@@ -163,11 +188,16 @@ const MobileMenu = ({ onClose }) => {
               aria-expanded={openAccordion === "products"}
               onClick={() => toggleAccordion("products")}
             >
-              Our Products <AccordionChevron open={openAccordion === "products"} />
+              Our Products{" "}
+              <AccordionChevron open={openAccordion === "products"} />
             </AccButton>
             <AccPanel $open={openAccordion === "products"}>
               {PRODUCTS.map((product) => (
-                <ItemLink key={product.name} to={product.caseStudyUrl} onClick={onClose}>
+                <ItemLink
+                  key={product.name}
+                  to={product.caseStudyUrl}
+                  onClick={onClose}
+                >
                   <span>{product.name}</span>
                   <PlainArrow aria-hidden="true">→</PlainArrow>
                 </ItemLink>
@@ -197,7 +227,7 @@ const MobileMenu = ({ onClose }) => {
                     <span>{link.label}</span>
                     <PlainArrow aria-hidden="true">→</PlainArrow>
                   </ItemLink>
-                )
+                ),
               )}
             </AccPanel>
           </Nav>
@@ -206,11 +236,11 @@ const MobileMenu = ({ onClose }) => {
 
       <BottomBar>
         <CtaLink to="/contact" onClick={onClose}>
-          Book Free Consultation <span aria-hidden="true">→</span>
+          Book Free Consultation <ArrowGlyph aria-hidden="true">→</ArrowGlyph>
         </CtaLink>
       </BottomBar>
     </Wrap>,
-    document.body
+    document.body,
   );
 };
 

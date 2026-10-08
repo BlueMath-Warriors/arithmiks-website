@@ -42,7 +42,13 @@ export const Heading = styled.h2`
   color: #fff;
 
   span {
-    background: linear-gradient(100deg, #7fa6ff 0%, #9e9be8 46%, #c77fd6 72%, #f56bb0 100%);
+    background: linear-gradient(
+      100deg,
+      #7fa6ff 0%,
+      #9e9be8 46%,
+      #c77fd6 72%,
+      #f56bb0 100%
+    );
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -57,6 +63,10 @@ export const Body = styled.div`
   align-items: stretch;
   gap: ${CARD_GAP};
   margin-top: clamp(38px, 4.43vw, 73px);
+
+  @media (max-width: 820px) {
+    flex-direction: column;
+  }
 `;
 
 // A native scroll-snap row rather than a JS-driven translateX: dragging two
@@ -113,6 +123,11 @@ export const Dots = styled.div`
   justify-content: center;
   gap: 14px;
   cursor: pointer;
+
+  @media (max-width: 820px) {
+    flex-direction: row;
+    margin-top: 6px;
+  }
 `;
 
 export const Dot = styled.button`

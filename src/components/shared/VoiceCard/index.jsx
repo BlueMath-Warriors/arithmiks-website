@@ -1,4 +1,4 @@
-import React, { forwardRef } from "react";
+import React, { forwardRef, useState } from "react";
 import {
   Card,
   VGrid,
@@ -49,8 +49,19 @@ const VoiceLogo = ({ voice }) => {
   const compact = COMPACT_LOGO_SLUGS.includes(voice.slug);
   return (
     <LogoWrap $compact={compact}>
-      <CompanyLogo src={voice.companyLogo} alt={voice.companyName} loading="lazy" decoding="async" />
-      <CompanyLogoDark src={voice.companyLogo} alt="" aria-hidden="true" loading="lazy" decoding="async" />
+      <CompanyLogo
+        src={voice.companyLogo}
+        alt={voice.companyName}
+        loading="lazy"
+        decoding="async"
+      />
+      <CompanyLogoDark
+        src={voice.companyLogo}
+        alt=""
+        aria-hidden="true"
+        loading="lazy"
+        decoding="async"
+      />
     </LogoWrap>
   );
 };
@@ -61,41 +72,63 @@ const VoiceLogo = ({ voice }) => {
  * can extend it via styled(VoiceCard).
  * @param {{ voice: object, className?: string }} props voice: an entry of constants/voices.
  */
-const VoiceCard = forwardRef(({ voice, className }, ref) => (
-  <Card ref={ref} className={className} onMouseEnter={trackPointer} onMouseMove={trackPointer}>
-    <VGrid data-vgrid aria-hidden="true" />
-    <VGlow data-vglow aria-hidden="true" />
-    <VEdge aria-hidden="true" />
-    <VoiceHead>
-      <Portrait src={voice.avatar} alt={voice.name} loading="lazy" decoding="async" />
-      <Info>
-        <VoiceLogo voice={voice} />
-        <NameRole>
-          <Name>{voice.name}</Name>
-          <Role>{voice.role}</Role>
-        </NameRole>
-      </Info>
-    </VoiceHead>
-    <Quote>“{voice.quote}”</Quote>
-    <StatsRow>
-      <StatGroup>
-        <Stat>
-          <strong>{voice.stat1.value}</strong>
-          <StatLabel>{voice.stat1.label}</StatLabel>
-        </Stat>
-        <Stat>
-          <strong>{voice.stat2.value}</strong>
-          <StatLabel>{voice.stat2.label}</StatLabel>
-        </Stat>
-      </StatGroup>
-      {voice.caseUrl && (
-        <CaseLink href={voice.caseUrl}>
-          View case study <span aria-hidden="true">→</span>
-        </CaseLink>
-      )}
-    </StatsRow>
-  </Card>
-));
+const VoiceCard = forwardRef(({ voice, className }, ref) => {
+  // Pointer Events fire uniformly for mouse and touch, unlike mouseenter/
+  // mousemove — driving the visual state from here (not CSS :hover) is what
+  // makes a tap behave the same as a hover instead of never firing or sticking.
+  const [isActive, setIsActive] = useState(false);
+
+  return (
+    <Card
+      ref={ref}
+      className={className}
+      $active={isActive}
+      onPointerEnter={(event) => {
+        setIsActive(true);
+        trackPointer(event);
+      }}
+      onPointerMove={trackPointer}
+      onPointerLeave={() => setIsActive(false)}
+    >
+      <VGrid data-vgrid aria-hidden="true" />
+      <VGlow data-vglow aria-hidden="true" />
+      <VEdge aria-hidden="true" />
+      <VoiceHead>
+        <Portrait
+          src={voice.avatar}
+          alt={voice.name}
+          loading="lazy"
+          decoding="async"
+        />
+        <Info>
+          <VoiceLogo voice={voice} />
+          <NameRole>
+            <Name>{voice.name}</Name>
+            <Role>{voice.role}</Role>
+          </NameRole>
+        </Info>
+      </VoiceHead>
+      <Quote>“{voice.quote}”</Quote>
+      <StatsRow>
+        <StatGroup>
+          <Stat>
+            <strong>{voice.stat1.value}</strong>
+            <StatLabel>{voice.stat1.label}</StatLabel>
+          </Stat>
+          <Stat>
+            <strong>{voice.stat2.value}</strong>
+            <StatLabel>{voice.stat2.label}</StatLabel>
+          </Stat>
+        </StatGroup>
+        {voice.caseUrl && (
+          <CaseLink href={voice.caseUrl}>
+            View case study <span aria-hidden="true">→</span>
+          </CaseLink>
+        )}
+      </StatsRow>
+    </Card>
+  );
+});
 
 VoiceCard.displayName = "VoiceCard";
 

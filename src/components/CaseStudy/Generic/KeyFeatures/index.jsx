@@ -2,7 +2,10 @@ import React, { useCallback, useEffect, useRef, useState } from "react";
 import useReveal from "../../../../hooks/useReveal";
 import useIdleAfterLoad from "../../../../hooks/useIdleAfterLoad";
 import { prefersReducedMotion } from "../../../../utils/animations";
-import { KEY_FEATURE_IMAGE_SIZES, keyFeatureSrcSet } from "../../../../utils/responsiveImage";
+import {
+  KEY_FEATURE_IMAGE_SIZES,
+  keyFeatureSrcSet,
+} from "../../../../utils/responsiveImage";
 import { GradientText, Shell } from "../../../shared/Section/index.styled";
 import { SectionEyebrow, SectionHeading } from "../layout.styled";
 import { splitHeading } from "../heading";
@@ -31,7 +34,8 @@ const CAPTION_IN = "opacity .5s ease, transform .65s cubic-bezier(.16,1,.3,1)";
 const LEADING_NUMBER = /^\d+\.\s*/;
 const TRAILING_COLON = /\s*:\s*$/;
 
-const cleanTitle = (title) => title.replace(LEADING_NUMBER, "").replace(TRAILING_COLON, "");
+const cleanTitle = (title) =>
+  title.replace(LEADING_NUMBER, "").replace(TRAILING_COLON, "");
 
 // Circular offset of slide `index` from the active one, so the strip loops.
 const offsetFrom = (index, active, total) => {
@@ -59,10 +63,17 @@ const slideStyle = (offset) => {
  * @param {Object} props
  * @param {string} props.label
  * @param {string | { plain: string; highlight: string }} props.heading
- * @param {boolean} [props.framed] fill each slide with a white card and crop to it (for 1.6-aspect screenshots); otherwise each image is shown whole with a drop shadow
+ * @param {boolean} [props.framed] fill each slide with a white card and crop to it (for screenshots close to trackRatio's aspect); otherwise each image is shown whole with a drop shadow
+ * @param {string} [props.trackRatio] CSS aspect-ratio for the slide box; set this to the case study's own screenshots' aspect ratio when framed, so object-fit: cover crops only slightly, not severely
  * @param {{ title: string; description: string; image: string; imageAlt?: string }[]} props.features
  */
-const KeyFeatures = ({ label = "HIGHLIGHTS", heading = "Key features", framed = false, features = [] }) => {
+const KeyFeatures = ({
+  label = "HIGHLIGHTS",
+  heading = "Key features",
+  framed = false,
+  trackRatio,
+  features = [],
+}) => {
   const total = features.length;
   const [active, setActive] = useState(0);
   const [captionIndex, setCaptionIndex] = useState(0);
@@ -103,11 +114,11 @@ const KeyFeatures = ({ label = "HIGHLIGHTS", heading = "Key features", framed = 
             caption.style.transition = CAPTION_IN;
             caption.style.opacity = "1";
             caption.style.transform = "translate3d(0,0,0)";
-          })
+          }),
         );
       }, CAPTION_OUT_MS);
     },
-    [active]
+    [active],
   );
 
   if (total === 0) return null;
@@ -116,7 +127,11 @@ const KeyFeatures = ({ label = "HIGHLIGHTS", heading = "Key features", framed = 
   const current = features[captionIndex];
 
   return (
-    <FeaturesSection id="features" aria-labelledby="features-heading" ref={rootRef}>
+    <FeaturesSection
+      id="features"
+      aria-labelledby="features-heading"
+      ref={rootRef}
+    >
       <Shell>
         <Header data-reveal="">
           <SectionEyebrow>{label}</SectionEyebrow>
@@ -133,6 +148,7 @@ const KeyFeatures = ({ label = "HIGHLIGHTS", heading = "Key features", framed = 
           </Caption>
           <Stage>
             <Track
+              $ratio={trackRatio}
               onPointerDown={(event) => {
                 swipeStartRef.current = event.clientX;
               }}
@@ -149,19 +165,35 @@ const KeyFeatures = ({ label = "HIGHLIGHTS", heading = "Key features", framed = 
                 const offset = offsetFrom(index, active, total);
                 const style = slideStyle(offset);
                 return (
-                  <Slide key={feature.title} data-slide={offset === 0 ? "current" : "side"} aria-hidden={offset !== 0} {...style}>
-                    <SlideCard $framed={framed} $isNeighbour={style.$isNeighbour}>
+                  <Slide
+                    key={feature.title}
+                    data-slide={offset === 0 ? "current" : "side"}
+                    aria-hidden={offset !== 0}
+                    {...style}
+                  >
+                    <SlideCard
+                      $framed={framed}
+                      $isNeighbour={style.$isNeighbour}
+                    >
                       <img
                         src={feature.image}
                         srcSet={keyFeatureSrcSet(feature.image)}
                         sizes={KEY_FEATURE_IMAGE_SIZES}
-                        alt={offset === 0 ? feature.imageAlt || feature.title : ""}
+                        alt={
+                          offset === 0 ? feature.imageAlt || feature.title : ""
+                        }
                         draggable={false}
-                        loading={isIdle && Math.abs(offset) <= 1 ? "eager" : "lazy"}
+                        loading={
+                          isIdle && Math.abs(offset) <= 1 ? "eager" : "lazy"
+                        }
                         decoding="async"
                       />
                       {framed && (
-                        <Wash $isNeighbour={style.$isNeighbour} $direction={offset < 0 ? "to left" : "to right"} aria-hidden="true" />
+                        <Wash
+                          $isNeighbour={style.$isNeighbour}
+                          $direction={offset < 0 ? "to left" : "to right"}
+                          aria-hidden="true"
+                        />
                       )}
                     </SlideCard>
                   </Slide>
@@ -174,7 +206,17 @@ const KeyFeatures = ({ label = "HIGHLIGHTS", heading = "Key features", framed = 
               aria-label="Previous feature"
               onClick={() => goTo((active + total - 1) % total, -1)}
             >
-              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <svg
+                viewBox="0 0 24 24"
+                width="20"
+                height="20"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
                 <path d="m15 18-6-6 6-6" />
               </svg>
             </Arrow>
@@ -184,7 +226,17 @@ const KeyFeatures = ({ label = "HIGHLIGHTS", heading = "Key features", framed = 
               aria-label="Next feature"
               onClick={() => goTo((active + 1) % total, 1)}
             >
-              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <svg
+                viewBox="0 0 24 24"
+                width="20"
+                height="20"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
                 <path d="m9 18 6-6-6-6" />
               </svg>
             </Arrow>

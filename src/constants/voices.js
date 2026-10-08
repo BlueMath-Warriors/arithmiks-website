@@ -63,7 +63,7 @@ export const VOICES = [
     quote:
       "Omer was a key developer in the evolution of our DiFacto platform, rapidly delivering the Full Admin Panel that lets our support team manage user accounts.",
     stat1: { value: "4 wks", label: "To first pipeline" },
-    stat2: { value: "–32%", label: "Manual review time" },
+    stat2: { value: "-32%", label: "Manual review time" },
     caseUrl: null,
   },
 ].sort((a, b) => DISPLAY_ORDER.indexOf(a.slug) - DISPLAY_ORDER.indexOf(b.slug));

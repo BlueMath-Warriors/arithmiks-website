@@ -1,9 +1,17 @@
 import styled, { css, keyframes } from "styled-components";
 import { colors, shellPadding } from "../../../styles/tokens";
-import { Shell, glowOrb, brandGradient } from "../../shared/Section/index.styled";
+import {
+  Shell,
+  glowOrb,
+  brandGradient,
+} from "../../shared/Section/index.styled";
 
 // Below these the story unpins and every stage stacks as ordinary content.
-export const UNPINNED = "(max-width: 900px), (max-height: 560px), (prefers-reduced-motion: reduce)";
+// Width alone does not unpin it — a normal-height phone in portrait still
+// gets the pinned, scroll-scrubbed story; only a short viewport (a phone in
+// landscape, a small laptop window) does not have the vertical room for it.
+export const UNPINNED =
+  "(min-width: 901px) and (max-height: 560px), (max-width: 900px) and (max-height: 500px), (prefers-reduced-motion: reduce)";
 const SLIDE_EASE = "cubic-bezier(0.16, 1, 0.3, 1)";
 const MONO = "ui-monospace, 'JetBrains Mono', Menlo, monospace";
 const SLIDE_OFFSET_PX = 44;
@@ -97,15 +105,22 @@ export const GridMesh = styled.div`
   pointer-events: none;
   opacity: ${({ $visible }) => ($visible ? 1 : 0)};
   transition: opacity 0.8s ease;
-  background-image: linear-gradient(rgba(10, 15, 31, 0.06) 1px, transparent 1px),
+  background-image:
+    linear-gradient(rgba(10, 15, 31, 0.06) 1px, transparent 1px),
     linear-gradient(90deg, rgba(10, 15, 31, 0.06) 1px, transparent 1px);
   background-size: 64px 64px;
-  -webkit-mask-image: radial-gradient(72% 62% at 50% 45%, #000, transparent 78%);
+  -webkit-mask-image: radial-gradient(
+    72% 62% at 50% 45%,
+    #000,
+    transparent 78%
+  );
   mask-image: radial-gradient(72% 62% at 50% 45%, #000, transparent 78%);
 `;
 
 export const Intro = styled.div`
-  transition: opacity 0.6s ${SLIDE_EASE}, transform 0.6s ${SLIDE_EASE};
+  transition:
+    opacity 0.6s ${SLIDE_EASE},
+    transform 0.6s ${SLIDE_EASE};
 
   @media ${UNPINNED} {
     opacity: 1 !important;
@@ -208,7 +223,9 @@ export const FloatingEyebrow = styled.div`
   align-items: center;
   gap: 14px;
   opacity: ${({ $visible }) => ($visible ? 1 : 0)};
-  transition: opacity 0.5s ease, top 0.62s ${SLIDE_EASE};
+  transition:
+    opacity 0.5s ease,
+    top 0.62s ${SLIDE_EASE};
   ${eyebrowText}
 
   @media ${UNPINNED} {
@@ -233,7 +250,9 @@ export const Slide = styled.div`
   align-items: center;
   opacity: ${({ $position }) => ($position === "active" ? 1 : 0)};
   transform: ${slideTransform};
-  transition: opacity 0.62s ${SLIDE_EASE}, transform 0.62s ${SLIDE_EASE};
+  transition:
+    opacity 0.62s ${SLIDE_EASE},
+    transform 0.62s ${SLIDE_EASE};
 
   @media ${UNPINNED} {
     position: static;
@@ -246,6 +265,8 @@ export const Slide = styled.div`
 
   @media (max-width: 640px) {
     grid-template-columns: 1fr;
+    grid-template-areas: "num" "txt" "art";
+    align-items: start;
     gap: 14px;
   }
 `;
@@ -262,6 +283,11 @@ export const StageNumber = styled.span`
   background-clip: text;
   -webkit-text-fill-color: transparent;
   color: ${colors.primary};
+
+  @media (max-width: 640px) {
+    grid-area: num;
+    justify-self: start;
+  }
 `;
 
 export const StageCopy = styled.span`
@@ -270,6 +296,10 @@ export const StageCopy = styled.span`
   gap: clamp(12px, 1.5vh, 20px);
   min-width: 0;
   max-width: 60ch;
+
+  @media (max-width: 640px) {
+    grid-area: txt;
+  }
 `;
 
 export const When = styled.span`
@@ -316,7 +346,9 @@ export const Art = styled.span`
   flex: none;
   opacity: ${({ $active }) => ($active ? 1 : 0)};
   transform: ${({ $active }) => ($active ? "none" : "scale(0.9)")};
-  transition: opacity 0.7s ${SLIDE_EASE} 0.12s, transform 0.7s ${SLIDE_EASE} 0.12s;
+  transition:
+    opacity 0.7s ${SLIDE_EASE} 0.12s,
+    transform 0.7s ${SLIDE_EASE} 0.12s;
 
   img {
     position: relative;
@@ -330,8 +362,18 @@ export const Art = styled.span`
     transform: none;
   }
 
-  @media (max-width: 900px) {
+  // Only drop the illustration in the cramped short-viewport/landscape case —
+  // a normal-height phone keeps it, just resized and reflowed below (640px).
+  @media (max-width: 900px) and (max-height: 500px) {
     display: none;
+  }
+
+  @media (max-width: 640px) {
+    width: min(168px, 22svh);
+    height: min(168px, 22svh);
+    margin-top: 6px;
+    grid-area: art;
+    justify-self: center;
   }
 `;
 
@@ -342,7 +384,9 @@ export const Rail = styled(Shell)`
   bottom: clamp(26px, 4vh, 48px);
   opacity: ${({ $visible }) => ($visible ? 1 : 0)};
   transform: ${({ $visible }) => ($visible ? "none" : "translateY(10px)")};
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
 
   @media ${UNPINNED} {
     display: none;
@@ -366,6 +410,10 @@ export const Tick = styled.button`
   border: 0;
   cursor: pointer;
   text-align: left;
+
+  @media (max-width: 640px) {
+    padding: 20px 0;
+  }
 `;
 
 export const TickBar = styled.span`
@@ -403,6 +451,10 @@ export const TickLabel = styled.span`
   overflow: hidden;
   text-overflow: ellipsis;
   transition: color 0.4s ease;
+
+  @media (max-width: 640px) {
+    display: none;
+  }
 `;
 
 export const Runway = styled.div`

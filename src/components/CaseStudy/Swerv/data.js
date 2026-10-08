@@ -41,6 +41,10 @@ export const getOverviewData = (images) => ({
   detail:
     "Swerv Auto is a SaaS platform that helps automotive dealerships acquire vehicles faster by combining real-time market data, automation, and actionable insights in one system.",
   imageSrc: images?.overviewImage,
+  // The screenshot's own transparent PNG already has its card shadow baked
+  // in, so the shared white card/border/shadow frame would just double up
+  // as a visible white box behind it.
+  framed: false,
   problemData: {
     title: "The Problem",
     text: "Dealerships relied on fragmented tools and manual processes to manage inventory and vehicle acquisitions, leading to slow decisions and limited market visibility. Swerv Auto addresses this by centralizing data and automating workflows to enable faster, data-driven acquisitions.",

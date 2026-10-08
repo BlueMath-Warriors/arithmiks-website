@@ -73,10 +73,32 @@ export const DiagramLayout = styled.div`
     [data-cldash] {
       display: none !important;
     }
+    // Stacked, the pill-shaped "No" branch can't sit beside the diamond
+    // without overlapping it, so only its caption stays (centered, in flow)
+    // and data-clnobranch's compact side-exit (line, label, icon, caption)
+    // takes over as the diamond's left exit. It anchors off data-clgate's
+    // horizontal center (always the diamond's center) plus the diamond's
+    // fixed half-width, not off data-clgate's own box, since that box's
+    // width is pulled wider by the caption text line above it.
     [data-clgatebelow] {
       position: static !important;
       transform: none !important;
       margin-top: 10px;
+    }
+    [data-clgatebelow] > :not(:first-child) {
+      display: none !important;
+    }
+    [data-clnobranch] {
+      display: flex !important;
+    }
+    @media (max-width: 340px) {
+      [data-clnobranch] {
+        right: calc(50% + 36px) !important;
+        gap: 4px !important;
+      }
+      [data-clnobranch] > div {
+        gap: 2px !important;
+      }
     }
     [data-clyes] {
       position: static !important;

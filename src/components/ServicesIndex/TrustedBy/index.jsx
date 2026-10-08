@@ -20,13 +20,15 @@ const TrustedBy = () => (
         <Marquee
           items={CLIENTS.map((client) => ({
             key: client.name,
-            node: <ClientLogo src={client.logo} alt={client.name} loading="lazy" />,
+            node: (
+              <ClientLogo src={client.logo} alt={client.name} loading="lazy" />
+            ),
           }))}
           durationSeconds={52}
           durationSecondsMobile={40}
           mobileBreakpoint={900}
           gap={0}
-          gapMobile={0}
+          gapMobile={16}
           cellWidth={176}
           cellWidthMd={132}
           cellWidthSm={112}

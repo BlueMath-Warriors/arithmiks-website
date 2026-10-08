@@ -114,8 +114,12 @@ export const PillsGroup = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
-`;
 
+  @media screen and (max-width: 640px) {
+    flex-direction: column;
+    width: 100%;
+  }
+`;
 
 export const ClearAllButton = styled.button`
   position: absolute;
@@ -135,7 +139,9 @@ export const ClearAllButton = styled.button`
   border-radius: 100px;
   padding: 11px 16px;
   cursor: pointer;
-  transition: color 0.25s ease, background 0.25s ease;
+  transition:
+    color 0.25s ease,
+    background 0.25s ease;
 
   // On narrow screens PillsGroup's own pills already wrap and take up most
   // of the row's width, leaving no room beside them for this without

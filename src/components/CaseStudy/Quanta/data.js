@@ -6,13 +6,16 @@ export const heroData = {
   logoSrc: `${ASSET_ROOT}/logo.svg`,
   logoAlt: "Quanta",
   logoHeight: "clamp(56px, 4.4vw, 80px)",
-  headline: { plain: "Your database, answering in", highlight: "plain English" },
+  headline: {
+    plain: "Your database, answering in",
+    highlight: "plain English",
+  },
   caption:
     "A multi-tenant BI platform that lets any team query their own database in plain English, no SQL required.",
   liveUrl: "https://quanta.arithmiks.com",
-  screenshot: true,
   heroImageSrc: `${ASSET_ROOT}/hero.webp`,
-  heroImageAlt: "Quanta dashboard: charts and tables built from plain-English questions",
+  heroImageAlt:
+    "Quanta dashboard: charts and tables built from plain-English questions",
 };
 
 export const techStackData = {
@@ -51,13 +54,15 @@ export const solutionData = {
       title: "Read-only by design",
       detail:
         "Every AI-written query is parsed and checked before it runs, then executed inside a read-only transaction. Quanta answers questions; it never changes your data.",
-      iconPath: "M12 3 4.5 6v5.4c0 4.4 3.1 7.9 7.5 9.6 4.4-1.7 7.5-5.2 7.5-9.6V6L12 3Zm-2.6 9.1 1.9 1.9 3.4-3.6",
+      iconPath:
+        "M12 3 4.5 6v5.4c0 4.4 3.1 7.9 7.5 9.6 4.4-1.7 7.5-5.2 7.5-9.6V6L12 3Zm-2.6 9.1 1.9 1.9 3.4-3.6",
     },
     {
       title: "Private databases stay private",
       detail:
         "Connect databases on a private subnet through an SSH bastion, with strict per-connection policies. Nothing has to be opened to the internet.",
-      iconPath: "M6.5 10.5V8a5.5 5.5 0 0 1 11 0v2.5M5 10.5h14v9.5H5v-9.5Zm7 4v2",
+      iconPath:
+        "M6.5 10.5V8a5.5 5.5 0 0 1 11 0v2.5M5 10.5h14v9.5H5v-9.5Zm7 4v2",
     },
     {
       title: "AI cost that stays predictable",

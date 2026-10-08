@@ -1,6 +1,9 @@
 import styled from "styled-components";
 import { colors } from "../../../styles/tokens";
-import { bandPadding, eyebrowOnDarkColor } from "../../shared/Section/index.styled";
+import {
+  bandPadding,
+  eyebrowOnDarkColor,
+} from "../../shared/Section/index.styled";
 
 export const Section = styled.section`
   background: ${colors.dark};
@@ -43,7 +46,8 @@ export const StepGrid = styled.div`
 `;
 
 export const Step = styled.div`
-  padding: clamp(24px, 2.2vw, 32px) clamp(18px, 1.6vw, 26px) clamp(28px, 2.4vw, 36px);
+  padding: clamp(24px, 2.2vw, 32px) clamp(18px, 1.6vw, 26px)
+    clamp(28px, 2.4vw, 36px);
   border-top: 1px solid rgba(255, 255, 255, 0.16);
   transition: background 0.4s ease;
 
@@ -85,6 +89,14 @@ export const Stats = styled.div`
   margin-top: clamp(40px, 4vw, 64px);
   padding-top: clamp(28px, 2.8vw, 44px);
   border-top: 1px solid rgba(255, 255, 255, 0.14);
+
+  // Flex-wrap doesn't guarantee which column each item lands in once it
+  // wraps, so "Industries served" and "Team members" can drift out of
+  // alignment on mobile — a real 2-column grid pins them to the same column.
+  @media (max-width: 760px) {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 `;
 
 export const StatValue = styled.div`

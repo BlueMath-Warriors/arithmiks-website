@@ -37,11 +37,18 @@ export const Lead = styled.p`
 export const GapBox = styled.div`
   position: relative;
   margin-top: clamp(30px, 3vw, 44px);
-  padding: clamp(28px, 2.6vw, 40px) clamp(44px, 4.8vw, 84px) clamp(28px, 2.6vw, 40px) 0;
+  padding: clamp(28px, 2.6vw, 40px) clamp(44px, 4.8vw, 84px)
+    clamp(28px, 2.6vw, 40px) 0;
 `;
 
-// The box bleeds to the viewport's left edge as a tinted band and ends in a
-// gradient-outlined pill on the right; three stacked layers build that outline.
+// Matches the original design's exact technique (a layered solid fill, not
+// a CSS mask ring — the mask-composite ring tried here instead was prone to
+// antialiasing seams/gradient-angle glitches at the left edge and on tall
+// mobile boxes). The box bleeds to the viewport's left edge as a tinted
+// band with its own border-top continuing the gradient border's line; a
+// solid gradient pill (GapOutline) sits behind an inset solid-color fill
+// (GapFill), so only a thin margin of the gradient shows through as the
+// border — same stacking as designs/ClauseLens Page.html.
 export const GapBand = styled.span`
   position: absolute;
   top: 0;
@@ -57,7 +64,7 @@ export const GapOutline = styled.span`
   inset: 0;
   border-radius: 0 999px 999px 0;
   background: linear-gradient(
-    to top left,
+    to left top,
     #bc4e9b 0%,
     ${GAP_BOX_BLUE} 44.5%,
     ${GAP_BOX_BLUE} 100%
@@ -66,10 +73,7 @@ export const GapOutline = styled.span`
 
 export const GapFill = styled.span`
   position: absolute;
-  top: 2px;
-  right: 3px;
-  bottom: 0;
-  left: 0;
+  inset: 2px 3px 0 0;
   border-radius: 0 999px 999px 0;
   background: linear-gradient(90deg, #f2f7ff 0%, #fbfcff 100%);
 `;
@@ -95,15 +99,25 @@ export const ScreenshotColumn = styled.div`
   min-width: 0;
 `;
 
-// Screenshots get a card with a border and shadow; mockup images already
-// carry their own backdrop and are shown as is.
 export const Screenshot = styled.div`
   width: ${SCREENSHOT_BLEED_RATIO};
+  aspect-ratio: 1.6;
+  overflow: hidden;
+  // Rounds the crop window itself, independent of $framed, so a tall
+  // screenshot clipped at the bottom still ends on a rounded corner
+  // instead of a hard cut line.
+  border-radius: clamp(14px, 1.2vw, 20px);
 
   img {
     display: block;
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: cover;
+    // Every screenshot is a UI with a left sidebar/nav, so a wide source
+    // (rare — most are pre-cropped close to this box's 1.6 ratio already)
+    // should lose width off its right edge, not split the crop and cut
+    // into the sidebar on the left.
+    object-position: left top;
   }
 
   ${({ $framed }) =>
@@ -111,9 +125,7 @@ export const Screenshot = styled.div`
     `
     background: #fff;
     border: 1px solid ${colors.border};
-    border-radius: clamp(14px, 1.2vw, 20px);
     box-shadow: 0 30px 70px -34px rgba(10, 15, 31, 0.38), 0 2px 6px rgba(10, 15, 31, 0.04);
-    overflow: hidden;
   `}
 
   @media (max-width: 1000px) {

@@ -43,7 +43,12 @@ export const HeroGlow = styled.div`
   inset: -20% -10%;
   pointer-events: none;
   opacity: 0.9;
-  background: radial-gradient(40% 44% at 14% 22%, rgba(19, 85, 255, 0.42), transparent 68%),
+  background:
+    radial-gradient(
+      40% 44% at 14% 22%,
+      rgba(19, 85, 255, 0.42),
+      transparent 68%
+    ),
     radial-gradient(36% 40% at 86% 10%, rgba(11, 58, 209, 0.3), transparent 70%);
   animation: ${drift} 24s ease-in-out infinite;
 
@@ -124,6 +129,7 @@ export const Headline = styled.h1`
   margin-bottom: clamp(18px, 2.4vh, 26px);
 
   @media (max-width: 768px) {
+    font-size: clamp(34px, 10vw, 54px);
     max-width: 18ch;
   }
 `;
@@ -138,7 +144,9 @@ export const HeadlineText = styled.span`
   // this wrapper element exists — same gotcha documented on Contact-Us's
   // Booking-Flow SocialLink styled component.
   color: inherit;
-  transition: opacity 0.45s, transform 0.45s;
+  transition:
+    opacity 0.45s,
+    transform 0.45s;
   opacity: ${(p) => (p.$visible ? 1 : 0)};
   transform: ${(p) => (p.$visible ? "none" : "translate3d(0, 14px, 0)")};
 `;
@@ -146,7 +154,13 @@ export const HeadlineText = styled.span`
 // The word "AI" gets a gradient treatment wherever it appears in a slide
 // (see markAI in index.jsx) — same gradient as the testimonials heading.
 export const GradientAI = styled.span`
-  background: linear-gradient(100deg, #7fa6ff 0%, #9e9be8 46%, #c77fd6 72%, #f56bb0 100%);
+  background: linear-gradient(
+    100deg,
+    #7fa6ff 0%,
+    #9e9be8 46%,
+    #c77fd6 72%,
+    #f56bb0 100%
+  );
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -174,7 +188,9 @@ export const ChipArrow = styled.span`
   font-size: 13px;
   line-height: 1;
   color: #8fa9ff;
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), color 0.25s ease;
+  transition:
+    transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    color 0.25s ease;
 `;
 
 const chipHover = `
@@ -202,7 +218,9 @@ export const Chip = styled(Link)`
   color: #fff;
   text-decoration: none;
   white-space: nowrap;
-  transition: background-color 0.7s ease, border-color 0.7s ease;
+  transition:
+    background-color 0.7s ease,
+    border-color 0.7s ease;
 
   @media (max-width: 700px) {
     gap: 6px;
@@ -260,7 +278,9 @@ export const Dot = styled.button`
   padding: 0;
   background: ${(p) => (p.$active ? "#fff" : "rgba(255,255,255,.4)")};
   cursor: pointer;
-  transition: background 0.25s ease, width 0.25s ease;
+  transition:
+    background 0.25s ease,
+    width 0.25s ease;
 `;
 
 // Shared row for both the slide dots (left-aligned, always visible) and the
