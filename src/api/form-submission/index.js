@@ -1,9 +1,19 @@
-import sgMail from "@sendgrid/mail";
+import nodemailer from "nodemailer";
 import { generateContactResponseEmail } from "./email-template/index.jsx";
 import { sanitizeInput, validateRequiredFields } from "../util/index.js";
 import { prepareAttachment } from "../util/attachment.js";
 
 const DEFAULT_CATEGORY = "Website enquiry";
+
+const transporter = nodemailer.createTransport({
+  host: "smtp.gmail.com",
+  port: 587,
+  secure: false,
+  auth: {
+    user: process.env.GMAIL_SMTP_USER,
+    pass: process.env.GMAIL_SMTP_PASS,
+  },
+});
 
 export default async function formHandler(req, res) {
   // Only allow POST requests
@@ -15,15 +25,16 @@ export default async function formHandler(req, res) {
   }
 
   try {
-    if (!process.env.SENDGRID_API_KEY || !process.env.SERVICE_EMAIL) {
+    if (
+      !process.env.GMAIL_SMTP_USER ||
+      !process.env.GMAIL_SMTP_PASS ||
+      !process.env.SERVICE_EMAIL
+    ) {
       return res.status(500).json({
         success: false,
         error: "Server configuration error.",
       });
     }
-
-    // Set SendGrid API key
-    sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
     // Extract and sanitize form data
     const formData = {
@@ -73,10 +84,7 @@ export default async function formHandler(req, res) {
 
     const emailMessage = {
       to: formData.email,
-      from: {
-        email: serviceEmail,
-        name: "Arithmiks Solutions",
-      },
+      from: `"Arithmiks Solutions" <${process.env.GMAIL_SMTP_USER}>`,
       replyTo: serviceEmail,
       cc: serviceEmail,
       subject: `${formData.category} Inquiry - ${formData.organization}`,
@@ -84,10 +92,10 @@ export default async function formHandler(req, res) {
       ...(attachment && {
         attachments: [
           {
-            content: attachment.content,
             filename: attachment.filename,
-            type: attachment.type,
-            disposition: "attachment",
+            content: attachment.content,
+            encoding: "base64",
+            contentType: attachment.type,
           },
         ],
       }),
@@ -95,12 +103,12 @@ export default async function formHandler(req, res) {
 
     // Send email
     try {
-      await sgMail.send(emailMessage);
+      await transporter.sendMail(emailMessage);
     } catch (emailError) {
-      // console.error("SendGrid email error:", {
+      // console.error("SMTP email error:", {
       //   message: emailError.message,
       //   code: emailError.code,
-      //   response: emailError.response?.body,
+      //   response: emailError.response,
       // });
 
       return res.status(500).json({
