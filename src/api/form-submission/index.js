@@ -81,13 +81,14 @@ export default async function formHandler(req, res) {
     );
 
     const serviceEmail = process.env.SERVICE_EMAIL;
+    const sender = `"Arithmiks AI" <${process.env.GMAIL_SMTP_USER}>`;
+    const subject = `${formData.category} Inquiry - ${formData.organization}`;
 
-    const emailMessage = {
-      to: formData.email,
-      from: `"Arithmiks Solutions" <${process.env.GMAIL_SMTP_USER}>`,
-      replyTo: serviceEmail,
-      cc: serviceEmail,
-      subject: `${formData.category} Inquiry - ${formData.organization}`,
+    const teamMessage = {
+      to: serviceEmail,
+      from: sender,
+      replyTo: formData.email,
+      subject,
       html: htmlContent,
       ...(attachment && {
         attachments: [
@@ -101,27 +102,36 @@ export default async function formHandler(req, res) {
       }),
     };
 
-    // Send email
-    try {
-      await transporter.sendMail(emailMessage);
-    } catch (emailError) {
-      // console.error("SMTP email error:", {
-      //   message: emailError.message,
-      //   code: emailError.code,
-      //   response: emailError.response,
-      // });
+    const visitorMessage = {
+      to: formData.email,
+      from: sender,
+      replyTo: serviceEmail,
+      subject,
+      html: htmlContent,
+    };
 
+    try {
+      await transporter.sendMail(teamMessage);
+    } catch (emailError) {
       return res.status(500).json({
         success: false,
-        error: "Failed to send confirmation email.",
+        error: "Failed to send your enquiry.",
       });
     }
 
-    // Success response
+
+    let confirmationSent = true;
+    try {
+      await transporter.sendMail(visitorMessage);
+    } catch (emailError) {
+      confirmationSent = false;
+    }
+
     return res.status(200).json({
       success: true,
-      message:
-        "Thank you! Your message has been received successfully. Check your email for confirmation.",
+      message: confirmationSent
+        ? "Thank you! Your message has been received successfully. Check your email for confirmation."
+        : "Thank you! Your message has been received successfully.",
     });
   } catch (error) {
     // console.error("Form handler error:", {
