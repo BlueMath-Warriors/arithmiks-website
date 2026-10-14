@@ -140,14 +140,10 @@ const Step1Form = ({
           <TextArea
             name="brief"
             rows={4}
-            aria-label="What are you building?"
-            aria-describedby="contact-error-brief"
-            aria-invalid={Boolean(errors.brief)}
-            $invalid={Boolean(errors.brief)}
-            placeholder="Describe your idea, challenge, or how we can help..."
+            aria-label="What are you building? (optional)"
+            placeholder="Describe your idea, challenge, or how we can help... (optional)"
             {...bind("brief")}
           />
-          <FieldError id="contact-error-brief" message={errors.brief} />
         </Field>
         <AttachField file={file} error={fileError} onPick={onPickFile} onClear={onClearFile} />
         {submitError && <ErrorMessage role="alert">{`⚠ ${submitError}`}</ErrorMessage>}

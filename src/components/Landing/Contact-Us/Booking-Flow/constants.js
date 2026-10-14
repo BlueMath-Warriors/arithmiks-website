@@ -12,7 +12,6 @@ export const ROLE_OPTIONS = [
 
 export const ATTACHMENT_EXTENSIONS = ["pdf", "doc", "docx", "ppt", "pptx"];
 export const ATTACHMENT_MAX_BYTES = 10 * 1024 * 1024;
-export const MIN_BRIEF_LENGTH = 12;
 
 export const NEXT_UP = [
   "We read your brief before the call — no repeating yourself.",

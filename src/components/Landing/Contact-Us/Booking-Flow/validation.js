@@ -1,20 +1,13 @@
-import {
-  ATTACHMENT_EXTENSIONS,
-  ATTACHMENT_MAX_BYTES,
-  MIN_BRIEF_LENGTH,
-} from "./constants";
+import { ATTACHMENT_EXTENSIONS, ATTACHMENT_MAX_BYTES } from "./constants";
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 const MEGABYTE = 1024 * 1024;
 
-/** @returns {{ name?: string; email?: string; brief?: string }} messages keyed by field; empty when valid */
-export const validateContact = ({ name, email, brief }) => {
+/** @returns {{ name?: string; email?: string }} messages keyed by field; empty when valid */
+export const validateContact = ({ name, email }) => {
   const errors = {};
   if (!name.trim()) errors.name = "Please tell us your name.";
   if (!EMAIL_PATTERN.test(email.trim())) errors.email = "Enter a valid work email address.";
-  if (brief.trim().length < MIN_BRIEF_LENGTH) {
-    errors.brief = "A sentence or two about what you are building.";
-  }
   return errors;
 };
 

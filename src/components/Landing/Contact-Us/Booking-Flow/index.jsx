@@ -91,7 +91,7 @@ const BookingFlow = ({ headingAs = "h2" }) => {
 
   const detailsSummary = `${[values.name.trim(), values.email.trim(), values.company.trim()]
     .filter(Boolean)
-    .join("  ·  ")} — we have your brief.`;
+    .join("  ·  ")} — we have your details.`;
 
   return (
     <Section id="contact" aria-labelledby="contact-h" ref={sectionRef}>
