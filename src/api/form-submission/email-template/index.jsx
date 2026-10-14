@@ -1,280 +1,231 @@
+import { OFFICE_ADDRESS, LEGAL_EMAIL } from "../../../constants/legal/blocks.js";
+
+const SITE_URL = "https://arithmiks.com";
+
+
+const LOGO_SRC =
+  "https://dl.dropboxusercontent.com/scl/fi/4mpymtw1bbvo9ddppgyrq/company-logo-name.png?rlkey=3t7mmrjvtwj2jf7xf3v5wh3da&dl=0";
+
+
+const FONT_STACK =
+  "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif";
+
+
+const PALETTE = {
+  primary: "#1355FF",
+  text: "#0A0F1F",
+  textMuted: "#3A4256",
+  textFaint: "#5C6478",
+  border: "#E4E8F0",
+  surface: "#F5F7FB",
+};
+
+
+const BRAND_GRADIENT_STOPS = ["#3F74DC", "#7E7BD6", "#A96FC8", "#D95BAC", "#EC4A9E"];
+
+
+const HERO_GRADIENT =
+  "linear-gradient(135deg, #E9EFFF 0%, #F6F8FF 26%, #FFFFFF 54%, #FEF3F9 84%, #FBE8F3 100%)";
+
+
+const HERO_FALLBACK = "#F4F7FF";
+
+
+const FOOTER_GRADIENT =
+  "linear-gradient(135deg, #FBE8F3 0%, #FDF1F8 24%, #F7F9FF 58%, #EDF2FD 82%, #E4ECFF 100%)";
+
+const FOOTER_FALLBACK = "#EDF2FC";
+
+// The ramp the hero headline runs through on the site.
+const HEADLINE_GRADIENT_STOPS = ["#1355FF", "#8B6FD4", "#EC4A9E"];
+
+const hexToRgb = (hex) => [1, 3, 5].map((offset) => parseInt(hex.slice(offset, offset + 2), 16));
+
+const rgbToHex = (channels) =>
+  `#${channels.map((channel) => channel.toString(16).padStart(2, "0")).join("")}`;
+
+
+const gradientText = (text, stops = HEADLINE_GRADIENT_STOPS) => {
+  const characters = [...text];
+  const lastIndex = Math.max(characters.length - 1, 1);
+
+  return characters
+    .map((character, index) => {
+      if (character === " ") return " ";
+      const position = (index / lastIndex) * (stops.length - 1);
+      const stopIndex = Math.min(Math.floor(position), stops.length - 2);
+      const ratio = position - stopIndex;
+      const from = hexToRgb(stops[stopIndex]);
+      const to = hexToRgb(stops[stopIndex + 1]);
+      const blended = from.map((channel, i) => Math.round(channel + (to[i] - channel) * ratio));
+      return `<span style="color:${rgbToHex(blended)};">${character}</span>`;
+    })
+    .join("");
+};
+
+/** Line breaks the sender typed survive into the HTML; tags cannot, because
+ *  sanitizeInput has already stripped every angle bracket. */
+const toHtmlText = (value) => String(value ?? "").replace(/\r?\n/g, "<br>");
+
+const gradientRule = () => `
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;">
+              <tr>
+                ${BRAND_GRADIENT_STOPS.map(
+                  (stop) =>
+                    `<td width="20%" height="4" bgcolor="${stop}" style="width:20%;height:4px;line-height:4px;font-size:0;">&nbsp;</td>`
+                ).join("")}
+              </tr>
+            </table>`;
+
+/** The hero's 3px eyebrow rule, as three stacked cells. */
+const eyebrowBar = () => `
+                    <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;">
+                      ${["#5C8CFF", "#1355FF", "#A96FC8"]
+                        .map(
+                          (stop) =>
+                            `<tr><td width="3" height="7" bgcolor="${stop}" style="width:3px;height:7px;line-height:7px;font-size:0;">&nbsp;</td></tr>`
+                        )
+                        .join("")}
+                    </table>`;
+
+const detailRow = ({ label, value }, isLast) => `
+                  <tr>
+                    <td class="detail-cell" style="padding:16px 24px;${
+                      isLast ? "" : `border-bottom:1px solid ${PALETTE.border};`
+                    }">
+                      <p style="margin:0 0 6px;font-family:${FONT_STACK};font-size:11px;font-weight:700;letter-spacing:0.09em;text-transform:uppercase;color:${PALETTE.textFaint};">${label}</p>
+                      <p style="margin:0;font-family:${FONT_STACK};font-size:15px;font-weight:500;line-height:1.6;color:${PALETTE.text};word-break:break-word;">${toHtmlText(value)}</p>
+                    </td>
+                  </tr>`;
+
 export const generateContactResponseEmail = (formData, firstName, attachmentName = "") => {
-  return `
- <!DOCTYPE html>
-    <html lang="en">
-    <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap" rel="stylesheet">
-    <style>
+  const details = [
+    { label: "Your name", value: formData.full_name },
+    { label: "Email", value: formData.email },
+    { label: "Phone", value: formData.phone_number },
+    { label: "Organization", value: formData.organization },
+    ...(formData.role ? [{ label: "Your role", value: formData.role }] : []),
+    ...(formData.message ? [{ label: "About the project", value: formData.message }] : []),
+    ...(attachmentName ? [{ label: "Attachment", value: attachmentName }] : []),
+  ];
 
-        .header{
-        background-image: url('https://dl.dropboxusercontent.com/scl/fi/84ttzkuibqud9ts93u1xc/header-bg.png?rlkey=kte3wu6uy5m1f99bvy7o6airz&dl=0');
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        width: 640px;
-        height: 112px;
-        position: relative;
-        text-align: left;
-        }
-        .wrapper {
-        width: 100%;
-        table-layout: fixed;
-        }
-        .main {
-        margin: 0 auto;
-        max-width: 700px
-        }
+  return `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="x-apple-disable-message-reformatting">
+  <meta name="color-scheme" content="light">
+  <meta name="supported-color-schemes" content="light">
+  <title>We received your enquiry</title>
+  <!--[if mso]>
+  <style type="text/css">
+    body, table, td, p, a, h1, h2 { font-family: Arial, Helvetica, sans-serif !important; }
+  </style>
+  <![endif]-->
+  <style type="text/css">
+    body { margin:0; padding:0; width:100% !important; background-color:${PALETTE.surface}; -webkit-font-smoothing:antialiased; }
+    table { border-collapse:collapse; }
+    img { border:0; outline:none; text-decoration:none; -ms-interpolation-mode:bicubic; }
+    a { text-decoration:none; }
+    .cta:hover { background-color:#0B3AD1 !important; }
 
-        .company-logo{
-        display: inline;
-        height: 44px;
-        padding: 40px 10px 0px 48px
-        }
+    @media only screen and (max-width:620px) {
+      .shell { width:100% !important; }
+      .pad-x { padding-left:24px !important; padding-right:24px !important; }
+      .detail-cell { padding-left:18px !important; padding-right:18px !important; }
+      .headline { font-size:27px !important; line-height:1.24 !important; }
+      .cta-link { display:block !important; }
+    }
+  </style>
+</head>
+<body style="margin:0;padding:0;background-color:${PALETTE.surface};">
+  <div style="display:none;max-height:0;overflow:hidden;opacity:0;mso-hide:all;font-size:1px;line-height:1px;color:${PALETTE.surface};">
+    Thanks ${firstName} — your brief reached us. Here is exactly what we received.
+  </div>
 
-        .main-container{
-        width: 640px;
-        background: #FFF;
-        background-color: rgba(255, 255, 255, 0.7);
-        }
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:${PALETTE.surface};">
+    <tr>
+      <td align="center" style="padding:32px 12px;">
 
-        .mail-body{
-        background-image: url('https://dl.dropboxusercontent.com/scl/fi/hspfiy10mip1tcnltu9wt/bg-effects-3.png?rlkey=wq8uwyydm5ijko5xcn9oti93q&dl=0');
-        -moz-background-size: 100% 100%;
-        -webkit-background-size: 100% 100%;
-        background-size: 100% 100%;
-        background-repeat: no-repeat;
-        padding-bottom: 32px;
-        }
-        .section{
-        width: 544px;
-        text-align: left;
-        }
+        <table role="presentation" class="shell" width="600" cellpadding="0" cellspacing="0" border="0" style="width:600px;max-width:600px;background-color:#FFFFFF;border-radius:16px;overflow:hidden;box-shadow:0 18px 50px rgba(7,11,24,0.09);">
 
-        .detail_heading{
-        color: #1088EF;
-        font-family: Poppins;
-        font-size: 14px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-        margin-bottom: 4px;
-        }
+          <tr>
+            <td style="font-size:0;line-height:0;">${gradientRule()}
+            </td>
+          </tr>
 
-        .detail_value{
-        color: #101010;
-        font-family: Poppins;
-        font-size: 16px;
-        font-style: normal;
-        font-weight: 500;
-        line-height: normal;
-        }
+          <tr>
+            <td class="pad-x" bgcolor="${HERO_FALLBACK}" style="background-color:${HERO_FALLBACK};background-image:${HERO_GRADIENT};background:${HERO_GRADIENT};padding:34px 44px 46px;">
 
-        .text_sm{
-        font-size: 14px;
-        }
+              <a href="${SITE_URL}" style="text-decoration:none;">
+                <img src="${LOGO_SRC}" width="156" height="34" alt="Arithmiks" style="display:block;width:156px;height:34px;border:0;">
+              </a>
 
-        .thanks-text{
-        margin-top: 20px;
-        margin-bottom: 35px;
-        height: 48px;
-        }
-        .thanks-text p{
-            color: #384860;
-            font-family: Poppins;
-            font-size: 16px;
-            font-style: normal;
-            font-weight: 400;
-            line-height: 150%;
-            letter-spacing: 0.2px;
-        }
+              <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin-top:46px;">
+                <tr>
+                  <td valign="middle" style="padding-right:12px;font-size:0;line-height:0;">${eyebrowBar()}
+                  </td>
+                  <td valign="middle" style="font-family:${FONT_STACK};font-size:11.5px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:${PALETTE.primary};">Enquiry received</td>
+                </tr>
+              </table>
 
-        a{
-        text-emphasis: none;
-        text-decoration: none;
-        }
+              <h1 class="headline" style="margin:20px 0 0;font-family:${FONT_STACK};font-size:32px;font-weight:700;line-height:1.2;letter-spacing:-0.02em;color:${PALETTE.text};">Thanks, ${firstName}.<br>We have ${gradientText("your details.")}</h1>
 
-        body, h1, h2, h3, p {
-        margin: 0;
-        padding: 0;
-        }
+              <p style="margin:16px 0 0;font-family:${FONT_STACK};font-size:15px;font-weight:400;line-height:1.65;color:${PALETTE.textMuted};">Your brief is with our team. We read every one before replying — expect to hear from us within one business day.</p>
 
-        body{
-        text-align: center
-        }
+            </td>
+          </tr>
 
-        .container {
-        max-width: 600px;
-        margin: 0 auto;
-        }
+          <tr>
+            <td class="pad-x" style="padding:38px 44px 0;">
 
-        .content {
-        position: relative;
-        padding: 20px 48px;
-        text-align: left;
-        }
+              <p style="margin:0 0 16px;font-family:${FONT_STACK};font-size:11px;font-weight:700;letter-spacing:0.09em;text-transform:uppercase;color:${PALETTE.textFaint};">What you sent us</p>
 
-        .main-heading{
-        color: #121A26;
-        font-feature-settings: 'clig' off, 'liga' off;
-        font-family: Poppins;
-        font-size: 24px;
-        font-style: normal;
-        font-weight: 700;
-        line-height: normal;
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:${PALETTE.surface};border:1px solid ${PALETTE.border};border-radius:14px;">
+                ${details.map((detail, index) => detailRow(detail, index === details.length - 1)).join("")}
+              </table>
 
-        margin-bottom: 24px;
-        }
+            </td>
+          </tr>
 
-        .main-text{
-        color: #101010;
-        font-family: Poppins;
-        font-size: 16px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-        letter-spacing: 0.2px;
-        width: 544px;
-        margin-bottom: 24px;
-        }
+          <tr>
+            <td class="pad-x" style="padding:32px 44px 44px;">
 
+              <table role="presentation" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td class="cta" bgcolor="${PALETTE.primary}" style="background-color:${PALETTE.primary};border-radius:999px;">
+                    <a class="cta-link" href="${SITE_URL}" style="display:inline-block;padding:15px 32px;font-family:${FONT_STACK};font-size:15px;font-weight:600;line-height:1;color:#FFFFFF;text-decoration:none;border-radius:999px;">Explore our work &nbsp;&rarr;</a>
+                  </td>
+                </tr>
+              </table>
 
-        .break{
-        border-top: 1px solid #E8ECF4;
-        margin: 8px 0px;
-        }
+              <p style="margin:26px 0 0;font-family:${FONT_STACK};font-size:15px;font-weight:400;line-height:1.65;color:${PALETTE.textMuted};">Something to add or correct? Just reply to this email — it reaches the same people.</p>
 
-        .back-button{      
-        padding: 20px 32px;
-        gap: 10px;
-        border-radius: 8px;
-        border: none;
-        background: #3B82F6;
+              <p style="margin:22px 0 0;font-family:${FONT_STACK};font-size:15px;font-weight:600;line-height:1.65;color:${PALETTE.text};">Thanks,<br><span style="font-weight:400;color:${PALETTE.textMuted};">The Arithmiks team</span></p>
 
-        color: #FFF;
-        font-feature-settings: 'clig' off, 'liga' off;
-        font-family: Poppins;
-        font-size: 16px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: 160%; /* 25.6px */
-        }
+            </td>
+          </tr>
 
-        .footer{
-        padding: 24px 48px;
-        text-align: left;
-        background: rgba(240, 240, 240, 0.30);
-        margni-bottom: 32px;
-        }
+          <tr>
+            <td class="pad-x" bgcolor="${FOOTER_FALLBACK}" style="background-color:${FOOTER_FALLBACK};background-image:${FOOTER_GRADIENT};background:${FOOTER_GRADIENT};border-top:1px solid ${PALETTE.border};padding:26px 44px 28px;">
 
-        .footer-text{
-        color: #202B3C;
-        font-family: Poppins;
-        font-size: 16px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: 150%;
-        letter-spacing: 0.2px;
-        z-index: 10;
-        }
+              <p style="margin:0 0 6px;font-family:${FONT_STACK};font-size:13.5px;font-weight:400;line-height:1.7;color:${PALETTE.textMuted};">
+                This email was sent to <a href="mailto:${LEGAL_EMAIL}" style="color:${PALETTE.primary};text-decoration:underline;">${LEGAL_EMAIL}</a><br>
+                ${OFFICE_ADDRESS}
+              </p>
 
-        .underlined-text{
-        color: #2969FF;
-        text-decoration: underline;
-        }
-    </style>
-    </head>
-    <body>
-    <center class="wrapper">
-        <table class="main" width="100%">
-        <div class="main-container">
+              <p style="margin:0;font-family:${FONT_STACK};font-size:12.5px;font-weight:400;line-height:1.7;color:${PALETTE.textFaint};">&copy; ${new Date().getFullYear()} Arithmiks. All rights reserved.</p>
 
-            <div class="header">
-            <img class="company-logo" src="https://dl.dropboxusercontent.com/scl/fi/4mpymtw1bbvo9ddppgyrq/company-logo-name.png?rlkey=3t7mmrjvtwj2jf7xf3v5wh3da&dl=0" alt="">
-            </div>
-            <div class='mail-body'>
-            <div class="content">
-                <h2 class="main-heading">Received your following details</h2>
-                <p class="main-text">Hi ${firstName},<br><br> We have received your following details. Our Team will reach out to you soon.</p>
-        
-                <div class="section">
-                <h3 class="detail_heading">Your Name</h3>
-                <p class="detail_value">${formData.full_name}</p>  
-                </div>
-                <hr class="break">
-    
-                <div class="section">
-                <h3 class="detail_heading">Email</h3>
-                <p class="detail_value text_sm">${formData.email}</p>  
-                </div>
-                <hr class="break">
-    
-                <div class="section">
-                <h3 class="detail_heading">Phone</h3>
-                <p class="detail_value text_sm">${formData.phone_number}</p>  
-                </div>
-                <hr class="break">
-    
-                <div class="section">
-                <h3 class="detail_heading">Organization</h3>
-                <p class="detail_value text_sm">${formData.organization}</p>  
-                </div>
-                <hr class="break">
+            </td>
+          </tr>
 
-                ${
-                  formData.role
-                    ? `<div class="section">
-                <h3 class="detail_heading">Your role</h3>
-                <p class="detail_value text_sm">${formData.role}</p>  
-                </div>
-                <hr class="break">`
-                    : ""
-                }
-    
-                <div class="section">
-                <h3 class="detail_heading">Tell us about your project..</h3>
-                <p class="detail_value text_sm">${formData.message}</p>  
-                </div>
-                <hr class="break">
-
-                ${
-                  attachmentName
-                    ? `<div class="section">
-                <h3 class="detail_heading">Attachment</h3>
-                <p class="detail_value text_sm">${attachmentName}</p>  
-                </div>
-                <hr class="break">`
-                    : ""
-                }
-    
-                <div class="thanks-text">
-                <p>
-                    Thanks, <br>Arithmiks Team
-                </p>
-                </div>
-                
-                <a href="https://arithmiks.com">
-                <span class="back-button">
-                    Back to Arithmiks
-                </span>
-                </a>
-    
-            </div>  
-            <div class="footer">
-                <p class="footer-text">
-                This email was sent to <a href=""><span class="underlined-text">services@arithmiks.com</span>
-                    Lahore, Punjab, Pakistan<br>
-                    © ${new Date().getFullYear()} Arithmiks
-                </p>
-            </div>  
-            </div>
-        </div>
         </table>
-    </center>
-    </body>
-    </html>`;
+
+      </td>
+    </tr>
+  </table>
+</body>
+</html>`;
 };
