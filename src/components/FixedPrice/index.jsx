@@ -15,7 +15,7 @@ import {
 import * as containerStyles from "../../styles/global.module.css";
 import Header from "../Landing/Header";
 import Breadcrumbs from "../Breadcrumbs";
-import ContactUs from "../Landing/Contact-Us";
+import BookingFlow from "../Landing/Contact-Us/Booking-Flow";
 import Footer from "..//Landing/Footer";
 import Ideas from "./Ideas";
 import Process from "./Process";
@@ -23,7 +23,7 @@ import Experience from "./Experience";
 import Questions from "./Questions";
 
 import ArrowRight from "../../images/ArrowRight.svg";
-import PriceTag from "../../images/price-tag-logo.png";
+import PriceTag from "../../images/price-tag-logo.webp";
 import Gradiant from "../../images/gradiant-6.svg";
 
 const breadcrumbItems = [
@@ -34,7 +34,7 @@ const breadcrumbItems = [
 const FixedPrice = () => {
   return (
     <>
-      <Header white={false} />
+      <Header white={true} />
       <Breadcrumbs items={breadcrumbItems} clearHeader />
       <main>
       <section className={containerStyles.fixed_price}>
@@ -71,7 +71,7 @@ const FixedPrice = () => {
       <Process />
       <Experience />
       <Questions />
-      <ContactUs />
+      <BookingFlow />
       </main>
       <Footer />
     </>

@@ -4,10 +4,11 @@ export const getHeroData = (images) => ({
   category: "Web Application / SaaS",
   logoSrc: "/qareeb.svg",
   logoAlt: "Qareeb",
+  tone: "warm",
   caption: (
     <>
       An AI meeting intelligence platform that records, transcribes, and
-      <br />turns every conversation into a searchable knowledge base.
+      {" "}turns every conversation into a searchable knowledge base.
     </>
   ),
   heroImageData: images?.heroImage,
@@ -89,7 +90,7 @@ export const keyFeaturesData = {
       title: "2. Meeting Artifacts",
       description:
         "One-click Decisions Log, Questions Raised, Key Quotes, Timeline, and Follow-up Email from the transcript—zero manual notes.",
-      image: "/Qareeb Key Features/qareebKeyFeature2.jpg",
+      image: "/Qareeb Key Features/qareebKeyFeature2.webp",
     },
     {
       title: "3. Live Recording with Real-Time Transcription",
@@ -107,7 +108,7 @@ export const keyFeaturesData = {
       title: "5. Meeting Library",
       description:
         "Searchable, sortable meeting table with speakers, status, duration, date, and language—supports GPT and Claude.",
-      image: "/Qareeb Key Features/qareebKeyFeature5.jpg",
+      image: "/Qareeb Key Features/qareebKeyFeature5.webp",
     },
     {
       title: "6. Document Upload in Projects",
@@ -122,13 +123,11 @@ export const keyFeaturesData = {
       image: "/Qareeb Key Features/qareebKeyFeature7.webp",
     },
   ],
-  leftIconSrc: "/leftIcon.svg",
-  rightIconSrc: "/rightIcon.svg",
 };
 
 export const testimonialData = {
   text: "Highly effective and helpful both on the implementation side and at the strategic level.",
-  clientImageSrc: "/qareebOwner.png",
+  clientImageSrc: "/qareebOwner.webp",
   clientName: "Qareeb Team",
   clientTitle: "Qareeb Founder & CEO",
 };

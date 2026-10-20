@@ -12,8 +12,6 @@ const validateRequiredFields = (formData) => {
   const requiredFields = {
     email: "Email",
     full_name: "Full name",
-    message: "Message",
-    category: "Category",
   };
 
   const errors = [];

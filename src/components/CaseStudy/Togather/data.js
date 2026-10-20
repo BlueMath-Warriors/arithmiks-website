@@ -7,7 +7,7 @@ export const getHeroData = (images) => ({
   caption: (
     <>
       Togather is a platform for churches and NGOs to connect
-      <br />
+      {" "}
       communities through events, donations, and engagement.
     </>
   ),
@@ -118,13 +118,11 @@ export const keyFeaturesData = {
       image: "/Togather Key Features/togatherKeyFeature5.webp",
     },
   ],
-  leftIconSrc: "/leftIcon.svg",
-  rightIconSrc: "/rightIcon.svg",
 };
 
 export const testimonialData = {
   text: "Omer has been a critical part of the Togather team for some time and has been directly responsible for the development, management, and oversight of a multi-faceted and complex product ecosystem. I appreciate his attention to design details and thoroughness of work. He's reliable and committed. I highly recommend him to any team.",
-  clientImageSrc: "/togatherOwner.png",
+  clientImageSrc: "/togatherOwner.webp",
   clientName: "Will Lenzen",
   clientTitle: "Togather CEO",
 };

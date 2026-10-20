@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import ServiceCard from "./Service-Card";
+import Accordion from "./Accordion";
 import {
   SmallTxt,
   Header,
@@ -31,10 +32,13 @@ if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-const Services = () => {
+const Services = ({ landing = false }) => {
   const sectionRef = useRef(null);
 
   useEffect(() => {
+    // The homepage redesign renders <Accordion /> instead (see the return
+    // below) — its entrance animation lives in Accordion itself, not here.
+    if (landing) return;
     if (typeof window === "undefined" || !sectionRef.current) return;
     if (prefersReducedMotion()) return;
 
@@ -73,7 +77,9 @@ const Services = () => {
     }, sectionRef);
 
     return () => ctx.revert();
-  }, []);
+  }, [landing]);
+
+  if (landing) return <Accordion />;
 
   return (
     <section className={containerStyles.services} ref={sectionRef}>

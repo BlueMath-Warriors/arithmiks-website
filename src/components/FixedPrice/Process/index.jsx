@@ -1,9 +1,9 @@
 import React from "react";
 import { PrimaryText, Secondary, SectionHeader, Caption, CardContainer, Card, CardImg, CardTitle, List, ListItem } from "./index.styled";
 import * as containerStyles from "../../../styles/global.module.css";
-import Requirement from "../../../images/requirement-icon.png"
-import Development from "../../../images/development-icon.png"
-import Support from "../../../images/support-icon.png"
+import Requirement from "../../../images/requirement-icon.webp"
+import Development from "../../../images/development-icon.webp"
+import Support from "../../../images/support-icon.webp"
 
 const Process = () => {
   return (

@@ -1,5 +1,5 @@
 import React from "react";
-import ContactUs from "../../Landing/Contact-Us";
+import BookingFlow from "../../Landing/Contact-Us/Booking-Flow";
 import Footer from "../../Landing/Footer";
 import Header from "../../Landing/Header";
 
@@ -22,24 +22,24 @@ import {
   keyFeaturesData,
 } from "./data";
 
-const Do = ({ images, breadcrumbItems }) => {
+const Do = ({ images }) => {
   const heroData = getHeroData(images);
   const overviewData = getOverviewData(images);
 
   return (
     <>
-      <Header />
+      <Header lightHero={true} />
       <main>
-      <Hero {...heroData} breadcrumbItems={breadcrumbItems} />
+      <Hero {...heroData} slug="ofertas" />
       <TechStack {...techStackData} />
-      <Overview {...overviewData} />
+      <Overview {...overviewData} name={heroData.logoAlt} />
       {testimonialData && testimonialData.clientImageSrc && !testimonialData.clientImageSrc.includes('dummyOwner') && (
         <Testimonial {...testimonialData} />
       )}
-      <Solution {...solutionData} hasTestimonial={testimonialData && testimonialData.clientImageSrc && !testimonialData.clientImageSrc.includes('dummyOwner')} />
+      <Solution {...solutionData} />
       <KeyFeatures {...keyFeaturesData} />
       <MoreCaseStudies currentSlug="ofertas" />
-      <ContactUs />
+      <BookingFlow />
       </main>
       <Footer />
     </>

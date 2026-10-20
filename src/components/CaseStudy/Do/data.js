@@ -7,7 +7,7 @@ export const getHeroData = (images) => ({
   caption: (
     <>
       A community-driven deals platform where users publish, vote on,
-      <br />
+      {" "}
       and validate offers, with moderation built in to keep quality high.
     </>
   ),
@@ -121,13 +121,11 @@ export const keyFeaturesData = {
       image: "/D&O Key Features/d&oKeyFeature6.webp",
     },
   ],
-  leftIconSrc: "/leftIcon.svg",
-  rightIconSrc: "/rightIcon.svg",
 };
 
 export const testimonialData = {
   text: "Omer is a professional, reliable, and kind person. Working with him was great! Omer was available for any question, gave professional answers, was patient with the project and the results are beautiful. I highly recommend working with him.",
-  clientImageSrc: "/dummyOwner.png",
+  clientImageSrc: "/dummyOwner.webp",
   clientName: "Zachary Renta",
   clientTitle: "SBA Loans Founder & CEO",
 };

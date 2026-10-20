@@ -2,7 +2,7 @@ import React from "react";
 import * as containerStyles from "../../styles/global.module.css";
 import Header from "../Landing/Header";
 import Breadcrumbs from "../Breadcrumbs";
-import ContactUs from "../Landing/Contact-Us";
+import BookingFlow from "../Landing/Contact-Us/Booking-Flow";
 import Footer from "../Landing/Footer";
 import {
   OuterContainer,
@@ -25,7 +25,7 @@ import TeamIcon from "../../images/team-icon.svg";
 const ServicePage = ({ headline, intro, breadcrumbItems }) => {
   return (
     <>
-      <Header white={false} />
+      <Header white={true} />
       <Breadcrumbs items={breadcrumbItems} clearHeader />
       <main>
       <section className={containerStyles.fixed_price}>
@@ -55,7 +55,7 @@ const ServicePage = ({ headline, intro, breadcrumbItems }) => {
           </ImgBackground>
         </OuterContainer>
       </section>
-      <ContactUs />
+      <BookingFlow />
       </main>
       <Footer />
     </>

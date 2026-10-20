@@ -4,7 +4,7 @@ import { graphql } from "gatsby";
 import * as containerStyles from "../styles/global.module.css";
 import Header from "../components/Landing/Header";
 import Breadcrumbs from "../components/Breadcrumbs";
-import ContactUs from "../components/Landing/Contact-Us";
+import BookingFlow from "../components/Landing/Contact-Us/Booking-Flow";
 import Footer from "../components/Landing/Footer";
 import { SEO } from "../components/seo";
 import { BlogCover } from "../components/Blog/CoverArt";
@@ -59,6 +59,7 @@ const BlogPostTemplate = ({ data, pageContext, children }) => {
             image={frontmatter.coverImage}
             alt={frontmatter.title}
             radius="0"
+            eager
             style={{ height: "100%" }}
           />
         </CoverSection>
@@ -114,7 +115,7 @@ const BlogPostTemplate = ({ data, pageContext, children }) => {
         )}
       </Article>
 
-      <ContactUs />
+      <BookingFlow />
       <Footer />
     </>
   );

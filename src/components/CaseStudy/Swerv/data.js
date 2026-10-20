@@ -7,7 +7,7 @@ export const getHeroData = (images) => ({
   caption: (
     <>
       A SaaS platform for car dealerships to automate
-      <br />
+      {" "}
       acquisitions, centralize data, and optimize sales.
     </>
   ),
@@ -41,6 +41,10 @@ export const getOverviewData = (images) => ({
   detail:
     "Swerv Auto is a SaaS platform that helps automotive dealerships acquire vehicles faster by combining real-time market data, automation, and actionable insights in one system.",
   imageSrc: images?.overviewImage,
+  // The screenshot's own transparent PNG already has its card shadow baked
+  // in, so the shared white card/border/shadow frame would just double up
+  // as a visible white box behind it.
+  framed: false,
   problemData: {
     title: "The Problem",
     text: "Dealerships relied on fragmented tools and manual processes to manage inventory and vehicle acquisitions, leading to slow decisions and limited market visibility. Swerv Auto addresses this by centralizing data and automating workflows to enable faster, data-driven acquisitions.",
@@ -113,13 +117,11 @@ export const keyFeaturesData = {
       image: "/Swerv Key Features/swervKeyFeature5.webp",
     },
   ],
-  leftIconSrc: "/leftIcon.svg",
-  rightIconSrc: "/rightIcon.svg",
 };
 
 export const testimonialData = {
   text: "Omer is a professional, reliable, and kind person. Working with him was great! Omer was available for any question, gave professional answers, was patient with the project and the results are beautiful. I highly recommend working with him.",
-  clientImageSrc: "/dummyOwner.png",
+  clientImageSrc: "/dummyOwner.webp",
   clientName: "Zachary Renta",
   clientTitle: "SBA Loans Founder & CEO",
 };

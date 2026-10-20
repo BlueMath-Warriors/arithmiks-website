@@ -7,7 +7,7 @@ export const getHeroData = (images) => ({
   caption: (
     <>
       An AI-powered platform that automates digital marketing—handling
-      <br />
+      {" "}
       content, publishing, and ads to help agencies grow.
     </>
   ),
@@ -123,13 +123,11 @@ export const keyFeaturesData = {
       image: "/Go Key Features/goKeyFeature6.webp",
     },
   ],
-  leftIconSrc: "/leftIcon.svg",
-  rightIconSrc: "/rightIcon.svg",
 };
 
 export const testimonialData = {
   text: "Omer and his team put in significant effort and delivered many positive contributions.",
-  clientImageSrc: "/lfgoOwner.png",
+  clientImageSrc: "/lfgoOwner.webp",
   clientName: "Louis-Antoine",
   clientTitle: "GoAgents Loans Founder & CEO",
 };

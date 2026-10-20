@@ -1,202 +1,152 @@
-import { styled } from "styled-components";
-import { breakpoints } from "../../../Landing/index.styled";
+import styled from "styled-components";
+import { bandPadding } from "../layout.styled";
 
-export const SolutionHeader = styled.div`
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-  gap: 120px;
-  width: 100%;
-  max-width: 1120px;
-  margin: 80px 0 64px 0;
-  padding: 0 20px 0 20px;
+const RELIABLE_BLUE = "#8fa9ff";
 
-  @media screen and (max-width: ${breakpoints.large}) {
-    max-width: 760px;
-    gap: 80px;
-    margin-top: 60px;
-  }
+export const TrustSection = styled.section`
+  position: relative;
+  ${bandPadding}
+  background: #070b18;
+  color: #fff;
+  overflow: hidden;
+`;
 
-  @media screen and (max-width: ${breakpoints.medium}) {
-    flex-direction: column;
-    gap: 24px;
-    margin-top: 48px;
-    margin-bottom: 48px;
-    padding: 0 16px;
+export const Glow = styled.div`
+  position: absolute;
+  inset: -30% -10% auto auto;
+  width: 60%;
+  height: 120%;
+  background: radial-gradient(closest-side, rgba(19, 85, 255, 0.28), transparent 70%);
+  pointer-events: none;
+`;
+
+export const TrustHead = styled.div`
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr);
+  gap: 20px clamp(36px, 5vw, 96px);
+  align-items: center;
+
+  @media (max-width: 980px) {
+    grid-template-columns: 1fr;
   }
 `;
 
-export const SolutionLeft = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  flex: 0 0 auto;
-  padding-left: 0;
-
-  @media screen and (max-width: ${breakpoints.medium}) {
-    padding-left: 0;
-  }
-`;
-
-export const SolutionRight = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  width: 100%;
-  max-width: calc(1120px - 40px);
-  margin-top: 24px;
-  margin-left: -20px;
-  padding-left: 0;
-
-  @media screen and (max-width: ${breakpoints.large}) {
-    max-width: calc(760px - 40px);
-    margin-top: 20px;
-    margin-left: -16px;
-  }
-
-  @media screen and (max-width: ${breakpoints.medium}) {
-    margin-top: 16px;
-    margin-left: 0;
-    max-width: 100%;
-  }
-`;
-
-export const SolutionLabel = styled.p`
-  color: #0957DE;
-  font-family: Poppins;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;
-  margin: 0;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-
-  @media screen and (max-width: ${breakpoints.medium}) {
-    font-size: 12px;
-  }
-`;
-
-export const Title = styled.h2`
-  color: #1d1d1f;
-  text-align: left;
-  font-family: Poppins;
-  font-size: 45px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;
-  margin: 0;
-
-  @media screen and (max-width: ${breakpoints.medium}) {
-    font-size: 36px;
-  }
-`;
-
-export const Secondary = styled.span`
-  color: #0957DE;
-`;
-
-export const SolutionDescription = styled.p`
-  color: #42526B;
-  font-family: Poppins;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 28px;
-  margin: 0;
+export const Description = styled.p`
+  font-size: clamp(15px, 1.05vw, 18px);
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.72);
 
   strong {
-    color: #1d1d1f;
-    font-weight: 600;
-  }
-
-  @media screen and (max-width: ${breakpoints.medium}) {
-    font-size: 16px;
-    line-height: 24px;
+    color: #fff;
   }
 `;
 
-export const CardContainer = styled.div`
+export const CardGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 32px;
-  width: 100%;
-  max-width: 1120px;
-  margin: 0;
-  padding: 0 20px;
-  position: relative;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(18px, 1.8vw, 28px);
+  margin-top: clamp(36px, 3.6vw, 56px);
 
-  @media screen and (max-width: ${breakpoints.large}) {
-    max-width: 760px;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
-  }
-
-  @media screen and (max-width: ${breakpoints.medium}) {
+  @media (max-width: 980px) {
     grid-template-columns: 1fr;
-    gap: 20px;
-    padding: 0 16px;
   }
 `;
 
 export const Card = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  padding: 32px;
-  border-radius: 16px;
-  background: #fff;
-  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.08);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  gap: 14px;
+  padding: clamp(24px, 2.4vw, 36px);
+  border-radius: clamp(14px, 1.2vw, 20px);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease,
+    background 0.3s ease;
 
   &:hover {
     transform: translateY(-4px);
-    box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.12);
-  }
-
-  @media screen and (max-width: ${breakpoints.medium}) {
-    padding: 24px;
-    gap: 12px;
+    border-color: rgba(143, 169, 255, 0.5);
+    background: rgba(255, 255, 255, 0.06);
   }
 `;
 
-export const CardIcon = styled.img`
+export const IconTile = styled.span`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 48px;
   height: 48px;
-  object-fit: contain;
-  margin-bottom: 8px;
+  border-radius: 14px;
+  background: rgba(19, 85, 255, 0.18);
 
-  @media screen and (max-width: ${breakpoints.medium}) {
-    width: 40px;
-    height: 40px;
+  svg {
+    stroke: ${RELIABLE_BLUE};
   }
+`;
+
+// Pages whose icon is a ready-made round badge image keep it as is.
+export const IconImage = styled.img`
+  width: 48px;
+  height: 48px;
+  display: block;
 `;
 
 export const CardTitle = styled.h3`
-  color: #0957DE;
-  font-family: Poppins;
-  font-size: 24px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;
-  margin: 0;
+  margin-top: 6px;
+  font-size: clamp(17px, 1.35vw, 21px);
+  font-weight: 750;
+  letter-spacing: -0.014em;
+  line-height: 1.25;
+  color: #fff;
+`;
 
-  @media screen and (max-width: ${breakpoints.medium}) {
-    font-size: 20px;
+export const CardText = styled.p`
+  font-size: clamp(14.5px, 1vw, 16px);
+  line-height: 1.66;
+  color: rgba(255, 255, 255, 0.66);
+  text-wrap: pretty;
+`;
+
+export const StatRow = styled.div`
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  justify-content: space-between;
+  gap: 0 clamp(18px, 1.8vw, 28px);
+  margin-top: clamp(40px, 4vw, 64px);
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+
+  @media (max-width: 1100px) {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  @media (max-width: 980px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: 8px;
   }
 `;
 
-export const CardDetail = styled.p`
-  color: #42526B;
-  font-family: Poppins;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 24px;
-  margin: 0;
+export const Stat = styled.div`
+  padding-top: clamp(22px, 2.2vw, 32px);
+  min-width: 0;
+`;
 
-  @media screen and (max-width: ${breakpoints.medium}) {
-    font-size: 14px;
-    line-height: 22px;
+export const StatValue = styled.div`
+  font-size: clamp(34px, 3.4vw, 54px);
+  font-weight: 750;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: #fff;
+`;
+
+export const StatLabel = styled.div`
+  margin-top: 10px;
+  font-size: clamp(14px, 0.95vw, 15.5px);
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.66);
+  white-space: nowrap;
+
+  @media (max-width: 1100px) {
+    white-space: normal;
+    text-wrap: pretty;
   }
 `;

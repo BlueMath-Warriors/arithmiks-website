@@ -44,6 +44,10 @@ const CoverArtBase = styled.div`
   }
 `;
 
+// Every cover in static/blog/covers is exported at this size; passing it as
+// width/height lets the browser reserve the box before the file arrives.
+const COVER_IMAGE_SIZE = { width: 1376, height: 768 };
+
 const CoverImg = styled.img`
   display: block;
   width: 100%;
@@ -73,16 +77,27 @@ export const CoverLabel = styled.span`
  * otherwise (no image set, or the file doesn't exist yet) falls back to the
  * brand gradient so nothing ever shows a broken-image icon.
  *
- * @param {{ gradient?: string; image?: string; radius?: string; alt?: string; style?: object; children?: React.ReactNode }} props
+ * @param {{ gradient?: string; image?: string; radius?: string; alt?: string; eager?: boolean; style?: object; children?: React.ReactNode }} props
+ * `eager` is for a cover that is the first thing on screen (the post header):
+ * it must not be lazy-loaded and is fetched at high priority.
  */
-export const BlogCover = ({ gradient, image, radius, alt = "", style, children }) => {
+export const BlogCover = ({ gradient, image, radius, alt = "", eager = false, style, children }) => {
   const [failed, setFailed] = useState(false);
   const showImage = Boolean(image) && !failed;
 
   return (
     <CoverArtBase $gradient={gradient} $radius={radius} style={style}>
       {showImage && (
-        <CoverImg src={image} alt={alt} loading="lazy" onError={() => setFailed(true)} />
+        <CoverImg
+          src={image}
+          alt={alt}
+          width={COVER_IMAGE_SIZE.width}
+          height={COVER_IMAGE_SIZE.height}
+          loading={eager ? "eager" : "lazy"}
+          fetchpriority={eager ? "high" : undefined}
+          decoding="async"
+          onError={() => setFailed(true)}
+        />
       )}
       {children}
     </CoverArtBase>

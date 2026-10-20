@@ -1,7 +1,6 @@
 import * as React from "react";
 import Header from "../components/Landing/Header";
-import Breadcrumbs from "../components/Breadcrumbs";
-import ContactUs from "../components/Landing/Contact-Us";
+import BookingFlow from "../components/Landing/Contact-Us/Booking-Flow";
 import Footer from "../components/Landing/Footer";
 import * as containerStyles from "../styles/global.module.css";
 import { SEO } from "../components/seo";
@@ -17,9 +16,8 @@ const ContactPage = () => {
       <div className={containerStyles.header_div}>
         <Header white={true} />
       </div>
-      <Breadcrumbs items={breadcrumbItems} />
       <main>
-        <ContactUs primaryTitleAs="h1" />
+        <BookingFlow headingAs="h1" />
       </main>
       <Footer />
     </>

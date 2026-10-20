@@ -1,221 +1,524 @@
-import React, { useRef, useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "gatsby";
+import { useHoverIntent } from "../../../hooks/useHoverIntent";
+import { SERVICE_NAV_GROUPS } from "../../../constants/serviceNavGroups";
+import { PRODUCTS } from "../../../constants/products";
+import { caseStudies, DASHBOARD_IMAGE_SIZES } from "../Case-Study/caseStudies.js";
 import {
-  CtaBtn,
+  NavScrim,
   Headerr,
   HeaderContainer,
-  Menu,
-  MenuItemLink,
   CompanyLogo,
+  LogoText,
+  Nav,
+  NavLinks,
+  NavButton,
+  NavLink,
+  MegaPanel,
+  MegaGrid,
+  MegaTabsLabel,
+  MegaTabs,
+  MegaTab,
+  MegaPane,
+  MegaItemsGrid,
+  MegaItem,
+  MegaPaneFooter,
+  MegaPaneAllLink,
+  MegaPaneAllArrow,
+  MegaSpotlight,
+  SpotlightLabel,
+  SpotlightCard,
+  SpotlightImageWrap,
+  SpotlightTitle,
+  SpotlightReadLink,
+  SpotlightCta,
+  Chevron,
+  ProductsPanel,
+  ProductsSidebar,
+  ProductsEyebrow,
+  ProductsSidebarText,
+  ProductsGrid,
+  ProductCard,
+  ProductThumb,
+  ProductLogoRow,
+  ProductLogo,
+  ProductName,
+  ProductTag,
+  ProductDescription,
+  ProductActionsRow,
+  ProductCaseStudyLink,
+  ProductLiveLink,
+  ProductArrow,
+  CompanyPanel,
+  CompanyIntro,
+  CompanyIntroLabel,
+  CompanyIntroText,
+  CompanyLinksGrid,
+  CompanyLink,
+  CompanyPhoto,
+  CtaBtn,
+  SearchButton,
   Hamburger,
-  HeaderButtonTxt,
 } from "./index.styled";
-import MenuIcon from "../../../images/hamburger_icon.svg";
-import logo from "../../../images/logo.webp";
+import SearchOverlay from "./SearchOverlay";
+import MobileMenu from "./MobileMenu";
+import { LOGO_MARK_SRC } from "../../../constants/brand";
+import companyTeamPhoto from "../../../images/homepage/hero-team.webp";
 
-const Header = ({ white, fixed_bar }) => {
-  const navMenu = useRef(null);
-  const menuButtonRef = useRef(null);
-  const [showMenu, setShowMenu] = useState(false);
-  const [heroHeight, setHeroHeight] = useState(840);
+// How far the page must scroll before the header goes solid — matches the
+// design's own behavior (verified directly against its source: the header
+// flips to white within ~8px of scroll, regardless of hero height, not once
+// the hero has scrolled fully clear).
+const SCROLL_SOLID_THRESHOLD = 8;
+
+// Each Services category "spotlights" a real, shipped case study on the
+// mega-menu's right column — matches the design's per-category showcase.
+const SPOTLIGHT_SLUG_BY_CATEGORY = {
+  "ai-engineering-data": "go",
+  "software-development": "easybar",
+  solutions: "swerv",
+  "product-engineering": "sbaloans",
+};
+
+const spotlightForCategory = (categorySlug) => {
+  const slug = SPOTLIGHT_SLUG_BY_CATEGORY[categorySlug];
+  return caseStudies.find((c) => c.slug === slug);
+};
+
+const NavChevron = ({ open, color }) => (
+  <Chevron
+    $open={open}
+    viewBox="0 0 16 16"
+    width="13"
+    height="13"
+    fill="none"
+    stroke={color}
+    strokeWidth="1.8"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+  >
+    <path d="M4 6.5 8 10.5l4-4" />
+  </Chevron>
+);
+
+// `lightHero`: the page opens on a *light* hero (e.g. /services) whose design
+// wants the bar to blend into it — dark nav text like `white`, but the
+// background stays transparent until scroll instead of being solid from the
+// top. `white` still wins where both are passed.
+// `transparentWhile`: optional stable predicate; while it returns true the bar
+// stays transparent despite scroll (e.g. over a pinned, scroll-driven hero).
+const Header = ({ white, fixed_bar, lightHero, transparentWhile }) => {
   const [isFixed, setIsFixed] = useState(false);
-  const [hideNav, setHideNav] = useState(false);
   const [currentPath, setCurrentPath] = useState("");
+  const [showMenu, setShowMenu] = useState(false);
+  const [showSearch, setShowSearch] = useState(false);
+  const [activeCategory, setActiveCategory] = useState(SERVICE_NAV_GROUPS[0].slug);
 
-  const closeMenu = useCallback(() => {
-    if (navMenu && navMenu.current) {
-      navMenu.current.classList.remove("active");
-    }
-    setShowMenu(false);
-  }, []);
+  const services = useHoverIntent();
+  const products = useHoverIntent();
+  const company = useHoverIntent();
 
-  const handleClickOutside = useCallback((event) => {
-    if (
-      heroHeight < 840 &&
-      showMenu &&
-      navMenu.current &&
-      !(
-        navMenu.current.contains(event.target) ||
-        menuButtonRef.current.contains(event.target)
-      )
-    ) {
-      closeMenu();
-    }
-  }, [showMenu, heroHeight, closeMenu]);
+  const openOnly = (menu) => {
+    if (menu !== "services") services.setOpen(false);
+    if (menu !== "products") products.setOpen(false);
+    if (menu !== "company") company.setOpen(false);
+  };
 
-  useEffect(() => {
-    if (showMenu) {
-      document.addEventListener("mousedown", handleClickOutside);
-    } else {
-      document.removeEventListener("mousedown", handleClickOutside);
-    }
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [showMenu, handleClickOutside]);
-
+  // scroll/resize-driven fixed & hide behavior — unrelated to the visual
+  // redesign, carried over from the previous Header implementation
   useEffect(() => {
     if (typeof window === "undefined") return;
-    
-    const updatePath = () => {
-      setCurrentPath(window.location.pathname);
-    };
-    
+
+    const updatePath = () => setCurrentPath(window.location.pathname);
     updatePath();
-    
-    window.addEventListener("popstate", updatePath);
-    
-    const handleRouteChange = () => {
-      setTimeout(updatePath, 0);
-    };
-    
+
     const interval = setInterval(() => {
-      if (window.location.pathname !== currentPath) {
-        updatePath();
-      }
+      if (window.location.pathname !== currentPath) updatePath();
     }, 200);
-    
+    window.addEventListener("popstate", updatePath);
+
     return () => {
       window.removeEventListener("popstate", updatePath);
       clearInterval(interval);
     };
   }, [currentPath]);
 
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    
-    let timeoutId;
-    const handleWindowResize = () => {
-      clearTimeout(timeoutId);
-      timeoutId = setTimeout(() => {
-        if (window.innerWidth > 1200) {
-          setHeroHeight(840);
-        } else if (window.innerWidth > 820) {
-          setHeroHeight(553);
-        } else {
-          setHeroHeight(445);
-        }
-      }, 100);
-    };
-    handleWindowResize();
-
-    window.addEventListener("resize", handleWindowResize);
-    return () => {
-      clearTimeout(timeoutId);
-      window.removeEventListener("resize", handleWindowResize);
-    };
-  }, []);
-
+  // A single small, fixed scroll distance — same on every page, hero or not
+  // — matching the design's own source rather than the hero's height. The
+  // header sits as an opaque bar on top of whatever's beneath it, so it
+  // doesn't need to wait for the hero to clear.
   useEffect(() => {
     if (typeof window === "undefined" || fixed_bar) return;
-
-    const handleScroll = () => {
-      const scrollY = window.scrollY;
-      if (scrollY >= heroHeight) {
-        setHideNav(false);
-        setIsFixed(true);
-      } else if (scrollY < heroHeight && scrollY > heroHeight - 10) {
-        setHideNav(true);
-        setShowMenu(false);
-      } else {
-        setHideNav(false);
-        setIsFixed(false);
-      }
-    };
-
+    const handleScroll = () =>
+      setIsFixed(
+        window.scrollY > SCROLL_SOLID_THRESHOLD && !(transparentWhile && transparentWhile())
+      );
+    handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [heroHeight, fixed_bar]);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [fixed_bar, transparentWhile]);
+
+  // The open white mega-menus (and the white search sheet) need dark nav
+  // text regardless of scroll position — matches the source's own
+  // forceHeaderLight() behavior.
+  const anyMenuOpen = services.open || products.open || company.open || showSearch;
+  const onLight = white || lightHero || isFixed || fixed_bar || anyMenuOpen;
+  const navColor = onLight ? "#3A4256" : "rgba(255,255,255,.9)";
+  // Search has its own matching backdrop (SearchOverlay), so this only
+  // reacts to the three mega/dropdown panels — not showSearch too.
+  const navPanelsOpen = services.open || products.open || company.open;
 
   return (
     <>
-      <Headerr
-        $white={showMenu || white || isFixed}
-        $fixed={isFixed || fixed_bar}
-        $hide={hideNav}
-      >
-        <HeaderContainer>
-          <Link to="/" aria-label="Go to homepage">
-            <CompanyLogo>
-              <img src={logo} alt="Arithmiks logo" width={190} height={37} />
-            </CompanyLogo>
-          </Link>
-          <Menu ref={navMenu}>
-            <li>
-              <MenuItemLink
-                to="/"
-                onClick={closeMenu}
-                $active={currentPath === "/"}
-              >
-                Home
-              </MenuItemLink>
-            </li>
-            <li>
-              <MenuItemLink
+      <NavScrim $visible={navPanelsOpen} aria-hidden="true" />
+      <Headerr $white={white} $fixed={isFixed || fixed_bar || anyMenuOpen}>
+      <HeaderContainer>
+        {/* The accessible name must contain the visible "Arithmiks" text. */}
+        <Link to="/" aria-label="Arithmiks home">
+          <CompanyLogo>
+            <img src={LOGO_MARK_SRC} alt="" width={24} height={27} />
+            <LogoText $onLight={onLight}>Arithmiks</LogoText>
+          </CompanyLogo>
+        </Link>
+
+        <Nav aria-label="Main">
+          <NavLinks>
+            <span
+              ref={services.triggerRef}
+              onMouseEnter={() => {
+                openOnly("services");
+                services.openNow();
+              }}
+              onMouseLeave={services.closeAfterDelay}
+              onFocus={() => {
+                openOnly("services");
+                services.openNow();
+              }}
+            >
+              {/* A link, not a button: hovering still opens the mega-menu, but
+                  clicking goes to the services index. Products and Company stay
+                  buttons — neither has a landing page yet. */}
+              <NavButton
+                as={Link}
                 to="/services"
-                onClick={closeMenu}
-                $active={currentPath.startsWith("/services")}
+                aria-expanded={services.open}
+                aria-haspopup="menu"
+                $white={white}
+                $onLight={onLight}
               >
                 Services
-              </MenuItemLink>
-            </li>
-            <li>
-              <MenuItemLink
-                to="/case-studies"
-                onClick={closeMenu}
-                $active={currentPath.startsWith("/case-studies")}
+                <NavChevron open={services.open} color={navColor} />
+              </NavButton>
+            </span>
+
+            <span
+              ref={products.triggerRef}
+              onMouseEnter={() => {
+                openOnly("products");
+                products.openNow();
+              }}
+              onMouseLeave={products.closeAfterDelay}
+              onFocus={() => {
+                openOnly("products");
+                products.openNow();
+              }}
+            >
+              <NavButton
+                type="button"
+                aria-expanded={products.open}
+                aria-haspopup="menu"
+                $white={white}
+                $onLight={onLight}
               >
-                Case Studies
-              </MenuItemLink>
-            </li>
-            <li>
-              <MenuItemLink
-                to="/blogs"
-                onClick={closeMenu}
-                $active={currentPath.startsWith("/blogs")}
-              >
-                Blog
-              </MenuItemLink>
-            </li>
-            <li>
-              <MenuItemLink
-                to="/about"
-                onClick={closeMenu}
-                $active={currentPath === "/about"}
+                Our Products
+                <NavChevron open={products.open} color={navColor} />
+              </NavButton>
+            </span>
+
+            <NavLink to="/case-studies" $white={white} $onLight={onLight}>
+              Case Studies
+            </NavLink>
+
+            <span
+              ref={company.triggerRef}
+              onMouseEnter={() => {
+                openOnly("company");
+                company.openNow();
+              }}
+              onMouseLeave={company.closeAfterDelay}
+              onFocus={() => {
+                openOnly("company");
+                company.openNow();
+              }}
+            >
+              <NavButton
+                type="button"
+                aria-expanded={company.open}
+                aria-haspopup="menu"
+                $white={white}
+                $onLight={onLight}
               >
                 Company
-              </MenuItemLink>
-            </li>
-            <li>
-              <MenuItemLink
-                to="/contact"
-                onClick={closeMenu}
-                className="mobile-only"
-                $active={currentPath === "/contact"}
-              >
-                Get in Touch
-              </MenuItemLink>
-            </li>
-          </Menu>
-          <CtaBtn fill="true" to="/contact">
-            <HeaderButtonTxt>Get In Touch</HeaderButtonTxt>
+                <NavChevron open={company.open} color={navColor} />
+              </NavButton>
+            </span>
+          </NavLinks>
+
+          <CtaBtn as={Link} to="/contact">
+            Book Free Consultation
           </CtaBtn>
+
           <Hamburger
-            ref={menuButtonRef}
-            onClick={(e) => {
-              navMenu.current.classList.toggle("active");
-              if (navMenu.current.classList.contains("active")) {
-                setShowMenu(true);
-              } else setShowMenu(false);
-            }}
             aria-label="Toggle menu"
             aria-expanded={showMenu}
+            $white={white}
+            $onLight={onLight}
+            onClick={() => setShowMenu((v) => !v)}
           >
-            <MenuIcon />
+            <svg
+              viewBox="0 0 22 22"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.75"
+              strokeLinecap="round"
+              aria-hidden="true"
+            >
+              <path d="M3 6.5h16M3 11h16M3 15.5h16" />
+            </svg>
           </Hamburger>
-        </HeaderContainer>
+
+          <SearchButton
+            aria-label={showSearch ? "Close search" : "Search"}
+            aria-expanded={showSearch}
+            type="button"
+            $white={white}
+            $onLight={onLight}
+            onClick={() => setShowSearch((v) => !v)}
+          >
+            {showSearch ? (
+              <svg
+                viewBox="0 0 20 20"
+                width="19"
+                height="19"
+                fill="none"
+                stroke={navColor}
+                strokeWidth="1.9"
+                strokeLinecap="round"
+                aria-hidden="true"
+              >
+                <path d="M5 5l10 10M15 5L5 15" />
+              </svg>
+            ) : (
+              <svg
+                viewBox="0 0 20 20"
+                width="19"
+                height="19"
+                fill="none"
+                stroke={navColor}
+                strokeWidth="1.8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <circle cx="8.8" cy="8.8" r="5.3" />
+                <path d="m12.7 12.7 4 4" />
+              </svg>
+            )}
+          </SearchButton>
+        </Nav>
+
+
+      </HeaderContainer>
+
+      {/* Full-width panel, anchored to the header itself (not the "Services"
+          trigger) — the source design spans the whole nav width here, unlike
+          the trigger-anchored Our Products / Company panels above. */}
+      {services.open && (
+        <MegaPanel
+          ref={services.panelRef}
+          role="menu"
+          onMouseEnter={services.openNow}
+          onMouseLeave={services.closeAfterDelay}
+        >
+          <MegaGrid>
+            <MegaTabs>
+              <MegaTabsLabel>Focus areas</MegaTabsLabel>
+              {SERVICE_NAV_GROUPS.map((category) => (
+                <MegaTab
+                  key={category.slug}
+                  type="button"
+                  $active={category.slug === activeCategory}
+                  onMouseEnter={() => setActiveCategory(category.slug)}
+                  onFocus={() => setActiveCategory(category.slug)}
+                >
+                  <span>{category.title}</span>
+                  <span>{category.items.length} services</span>
+                </MegaTab>
+              ))}
+            </MegaTabs>
+            {SERVICE_NAV_GROUPS.filter((c) => c.slug === activeCategory).map((category) => (
+              <MegaPane key={category.slug}>
+                <h3>{category.title}</h3>
+                <MegaItemsGrid>
+                  {category.items.map((svc) =>
+                    svc.hasPage ? (
+                      <MegaItem key={svc.slug} to={svc.url}>
+                        {svc.label}
+                      </MegaItem>
+                    ) : (
+                      <MegaItem key={svc.slug} as="a" href="#">
+                        {svc.label}
+                      </MegaItem>
+                    )
+                  )}
+                </MegaItemsGrid>
+                <MegaPaneFooter>
+                  {category.hasPage ? (
+                    <MegaPaneAllLink to={category.url}>
+                      All {category.title} <MegaPaneAllArrow aria-hidden="true">→</MegaPaneAllArrow>
+                    </MegaPaneAllLink>
+                  ) : (
+                    <MegaPaneAllLink as="a" href="#">
+                      All {category.title} <MegaPaneAllArrow aria-hidden="true">→</MegaPaneAllArrow>
+                    </MegaPaneAllLink>
+                  )}
+                </MegaPaneFooter>
+              </MegaPane>
+            ))}
+            <MegaSpotlight>
+              <SpotlightLabel>Spotlight</SpotlightLabel>
+              {(() => {
+                const spotlight = spotlightForCategory(activeCategory);
+                if (!spotlight) return null;
+                return (
+                  <SpotlightCard to={`/case-studies/${spotlight.slug}`}>
+                    <SpotlightImageWrap>
+                      <img
+                        src={spotlight.dashboardImg}
+                        srcSet={spotlight.dashboardSrcSet}
+                        sizes={spotlight.dashboardSrcSet ? DASHBOARD_IMAGE_SIZES : undefined}
+                        alt={spotlight.title}
+                      />
+                    </SpotlightImageWrap>
+                    <SpotlightTitle>{spotlight.title}</SpotlightTitle>
+                    <SpotlightReadLink>Read case study →</SpotlightReadLink>
+                  </SpotlightCard>
+                );
+              })()}
+              <SpotlightCta to="/contact">Let&apos;s Discuss Your Idea →</SpotlightCta>
+            </MegaSpotlight>
+          </MegaGrid>
+        </MegaPanel>
+      )}
+
+      {/* Centered on the header itself (not the trigger button) — same fix
+          as the Services panel above, so a wide panel never overflows past
+          the viewport edge regardless of where its trigger sits in the nav. */}
+      {products.open && (
+        <ProductsPanel
+          ref={products.panelRef}
+          role="menu"
+          onMouseEnter={products.openNow}
+          onMouseLeave={products.closeAfterDelay}
+        >
+          <ProductsSidebar>
+            <ProductsEyebrow>Our Products</ProductsEyebrow>
+            <ProductsSidebarText>Software we built and run ourselves.</ProductsSidebarText>
+          </ProductsSidebar>
+          <ProductsGrid>
+            {PRODUCTS.map((product) => {
+              const Logo = product.logo;
+              return (
+                <ProductCard key={product.name}>
+                  <ProductThumb>
+                    <img src={product.thumb} alt={product.name} loading="lazy" />
+                  </ProductThumb>
+                  <ProductLogoRow>
+                    {Logo ? (
+                      <ProductLogo as={Logo} $height={product.logoHeight} />
+                    ) : (
+                      <ProductName>{product.name}</ProductName>
+                    )}
+                    <ProductTag>{product.tag}</ProductTag>
+                  </ProductLogoRow>
+                  <ProductDescription>{product.description}</ProductDescription>
+                  <ProductActionsRow>
+                    <ProductCaseStudyLink to={product.caseStudyUrl} role="menuitem">
+                      Read case study{" "}
+                      <ProductArrow aria-hidden="true">→</ProductArrow>
+                    </ProductCaseStudyLink>
+                    <ProductLiveLink
+                      href={product.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`Visit ${product.name} (opens in a new tab)`}
+                    >
+                      <svg
+                        viewBox="0 0 20 20"
+                        width="17"
+                        height="17"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="1.7"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        aria-hidden="true"
+                      >
+                        <path d="M11 4h5v5" />
+                        <path d="M16 4 9.2 10.8" />
+                        <path d="M14.4 12.2v3.4a1.4 1.4 0 0 1-1.4 1.4H4.4A1.4 1.4 0 0 1 3 15.6V7a1.4 1.4 0 0 1 1.4-1.4h3.4" />
+                      </svg>
+                    </ProductLiveLink>
+                  </ProductActionsRow>
+                </ProductCard>
+              );
+            })}
+          </ProductsGrid>
+        </ProductsPanel>
+      )}
+
+      {company.open && (
+        <CompanyPanel
+          ref={company.panelRef}
+          role="menu"
+          onMouseEnter={company.openNow}
+          onMouseLeave={company.closeAfterDelay}
+        >
+          <CompanyIntro>
+            <CompanyIntroLabel>Company</CompanyIntroLabel>
+            <CompanyIntroText>
+              Who we are, how we work, and where we are going.
+            </CompanyIntroText>
+          </CompanyIntro>
+          <CompanyLinksGrid>
+            <CompanyLink as={Link} to="/about">
+              <span>About</span>
+              <p>Who we are and how we got here</p>
+            </CompanyLink>
+            <CompanyLink as={Link} to="/how-we-work">
+              <span>How we work</span>
+              <p>Our process, from audit to handover</p>
+            </CompanyLink>
+            <CompanyLink as={Link} to="/blogs">
+              <span>Arithmiks Blog</span>
+              <p>What we are learning about shipping AI</p>
+            </CompanyLink>
+            <CompanyLink as={Link} to="/careers">
+              <span>Careers</span>
+              <p>Open roles and what it is like here</p>
+            </CompanyLink>
+            <CompanyLink as={Link} to="/contact">
+              <span>Contact</span>
+              <p>Start a conversation</p>
+            </CompanyLink>
+          </CompanyLinksGrid>
+          <CompanyPhoto src={companyTeamPhoto} alt="The Arithmiks team in the Lahore studio" />
+        </CompanyPanel>
+      )}
+
+      {showSearch && <SearchOverlay onClose={() => setShowSearch(false)} />}
+      {showMenu && <MobileMenu onClose={() => setShowMenu(false)} />}
       </Headerr>
     </>
   );

@@ -1,5 +1,5 @@
 import React from "react";
-import ContactUs from "../../Landing/Contact-Us";
+import BookingFlow from "../../Landing/Contact-Us/Booking-Flow";
 import Footer from "../../Landing/Footer";
 import Header from "../../Landing/Header";
 
@@ -22,7 +22,7 @@ import {
   keyFeaturesData,
 } from "./data";
 
-const Ehh = ({ images, breadcrumbItems }) => {
+const Ehh = ({ images }) => {
   const heroData = getHeroData(images);
   const overviewData = getOverviewData(images);
   // Testimonial hidden on request; data kept in ./data in case it's re-enabled later.
@@ -30,16 +30,16 @@ const Ehh = ({ images, breadcrumbItems }) => {
 
   return (
     <>
-      <Header />
+      <Header lightHero={true} />
       <main>
-      <Hero {...heroData} breadcrumbItems={breadcrumbItems} />
+      <Hero {...heroData} slug="expat" />
       <TechStack {...techStackData} />
-      <Overview {...overviewData} />
+      <Overview {...overviewData} name={heroData.logoAlt} />
       {hasTestimonial && <Testimonial {...testimonialData} />}
-      <Solution {...solutionData} hasTestimonial={hasTestimonial} />
+      <Solution {...solutionData} />
       <KeyFeatures {...keyFeaturesData} />
       <MoreCaseStudies currentSlug="expat" />
-      <ContactUs />
+      <BookingFlow />
       </main>
       <Footer />
     </>

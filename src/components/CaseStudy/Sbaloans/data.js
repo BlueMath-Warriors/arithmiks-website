@@ -7,7 +7,7 @@ export const getHeroData = (images) => ({
   caption: (
     <>
       A SaaS platform that automates SBA loan origination with AI-powered
-      <br />
+      {" "}
       lead scoring, document processing, and deal summarization.
     </>
   ),
@@ -127,8 +127,6 @@ export const keyFeaturesData = {
       image: "/Sba Key Features/sbaKeyFeature6.webp",
     },
   ],
-  leftIconSrc: "/leftIcon.svg",
-  rightIconSrc: "/rightIcon.svg",
 };
 
 export const testimonialData = {
@@ -137,7 +135,7 @@ export const testimonialData = {
     "Additionally they all take time to explain certain things about the project, rather than just telling me what I want to hear.",
     "I've worked with some other developers / software teams in the past and Arithmiks is top notch."
   ],
-  clientImageSrc: "/sbaOwner.png",
+  clientImageSrc: "/sbaOwner.webp",
   clientName: "Zachary Renta",
   clientTitle: "SBA Loans Founder & CEO",
 };
