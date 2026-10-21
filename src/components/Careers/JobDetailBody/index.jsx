@@ -20,6 +20,7 @@ import {
   InfoLabel,
   InfoValue,
 } from "./index.styled";
+import { track } from "../../../utils/analytics";
 
 const INFO_ROWS = (job) => [
   ["Industry", job.jobInfo.industry],
@@ -69,7 +70,12 @@ const JobDetailBody = ({ job }) => (
             ))}
           </ParagraphList>
 
-          <ApplyButton href="#">Apply now</ApplyButton>
+          <ApplyButton
+            href="#"
+            onClick={() => track("job_apply_click", { job_title: job.title, button_location: "body" })}
+          >
+            Apply now
+          </ApplyButton>
         </Main>
 
         <Aside aria-labelledby="job-info-h">

@@ -16,6 +16,7 @@ import {
   IconLink,
   IconButton,
 } from "./index.styled";
+import { track } from "../../../utils/analytics";
 
 const FacebookIcon = () => (
   <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true">
@@ -61,7 +62,10 @@ const JobDetailHero = ({ job }) => {
   const pageUrl = `${siteUrl}/careers/jobs/${job.slug}`;
   const shareText = `${job.title} at Arithmiks`;
 
+  const trackShare = (method) => track("job_share", { method, job_title: job.title });
+
   const handleCopyLink = async () => {
+    trackShare("copy_link");
     try {
       await navigator.clipboard.writeText(pageUrl);
       setCopied(true);
@@ -82,26 +86,31 @@ const JobDetailHero = ({ job }) => {
           {job.location}, {job.jobInfo.country} | Posted on {formatPostedDate(job.datePosted)}
         </SubMeta>
         <ActionRow>
-          <ApplyButton href="#">Apply now</ApplyButton>
-          <ShareButton href={`mailto:?subject=${encodeURIComponent(`Job at Arithmiks — ${job.title}`)}&body=${encodeURIComponent(pageUrl)}`}>
+          <ApplyButton
+            href="#"
+            onClick={() => track("job_apply_click", { job_title: job.title, button_location: "hero" })}
+          >
+            Apply now
+          </ApplyButton>
+          <ShareButton onClick={() => trackShare("email")} href={`mailto:?subject=${encodeURIComponent(`Job at Arithmiks — ${job.title}`)}&body=${encodeURIComponent(pageUrl)}`}>
             Share job via email
           </ShareButton>
         </ActionRow>
         <NetworkLabel>Share this job with your network</NetworkLabel>
         <IconRow>
-          <IconLink href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(pageUrl)}`} target="_blank" rel="noopener noreferrer" aria-label="Share on Facebook">
+          <IconLink href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(pageUrl)}`} onClick={() => trackShare("facebook")} target="_blank" rel="noopener noreferrer" aria-label="Share on Facebook">
             <FacebookIcon />
           </IconLink>
-          <IconLink href={`https://x.com/intent/post?url=${encodeURIComponent(pageUrl)}&text=${encodeURIComponent(shareText)}`} target="_blank" rel="noopener noreferrer" aria-label="Share on X">
+          <IconLink href={`https://x.com/intent/post?url=${encodeURIComponent(pageUrl)}&text=${encodeURIComponent(shareText)}`} onClick={() => trackShare("x")} target="_blank" rel="noopener noreferrer" aria-label="Share on X">
             <XIcon />
           </IconLink>
-          <IconLink href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(pageUrl)}`} target="_blank" rel="noopener noreferrer" aria-label="Share on LinkedIn">
+          <IconLink href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(pageUrl)}`} onClick={() => trackShare("linkedin")} target="_blank" rel="noopener noreferrer" aria-label="Share on LinkedIn">
             <LinkedInIcon />
           </IconLink>
-          <IconLink href={`https://wa.me/?text=${encodeURIComponent(`${shareText} ${pageUrl}`)}`} target="_blank" rel="noopener noreferrer" aria-label="Share on WhatsApp">
+          <IconLink href={`https://wa.me/?text=${encodeURIComponent(`${shareText} ${pageUrl}`)}`} onClick={() => trackShare("whatsapp")} target="_blank" rel="noopener noreferrer" aria-label="Share on WhatsApp">
             <WhatsAppIcon />
           </IconLink>
-          <IconLink href={`https://t.me/share/url?url=${encodeURIComponent(pageUrl)}&text=${encodeURIComponent(shareText)}`} target="_blank" rel="noopener noreferrer" aria-label="Share on Telegram">
+          <IconLink href={`https://t.me/share/url?url=${encodeURIComponent(pageUrl)}&text=${encodeURIComponent(shareText)}`} onClick={() => trackShare("telegram")} target="_blank" rel="noopener noreferrer" aria-label="Share on Telegram">
             <TelegramIcon />
           </IconLink>
           <IconButton type="button" onClick={handleCopyLink} aria-label={copied ? "Link copied" : "Copy link"}>

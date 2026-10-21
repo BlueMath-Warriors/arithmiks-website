@@ -248,7 +248,7 @@ const CaseStudiesIndex = () => {
 
       <CollaboratedWith />
 
-      <WorkSection aria-labelledby="cases-h">
+      <WorkSection aria-labelledby="cases-h" data-track-location="case_studies_index">
         <Shell>
           <VisuallyHiddenHeading id="cases-h">All case studies</VisuallyHiddenHeading>
 

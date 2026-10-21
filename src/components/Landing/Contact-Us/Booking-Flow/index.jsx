@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import { LOGO_MARK_SRC } from "../../../../constants/brand";
 import useReveal from "../../../../hooks/useReveal";
+import { currentPath, track } from "../../../../utils/analytics";
 import BookingStep from "./BookingStep";
 import ContactAside from "./ContactAside";
 import Step1Form from "./Step1Form";
@@ -51,14 +52,29 @@ const BookingFlow = ({ headingAs = "h2" }) => {
   const [pinnedHeight, setPinnedHeight] = useState(0);
   const panelRef = useRef(null);
   const sectionRef = useRef(null);
+  const startedRef = useRef(false);
   useReveal(sectionRef);
 
-  const setField = (field, value) => setValues((current) => ({ ...current, [field]: value }));
+  const setField = (field, value) => {
+    // Once per page load: compared with generate_lead it gives the form's drop-off.
+    if (!startedRef.current) {
+      startedRef.current = true;
+      track("contact_form_start", { form_location: currentPath(), first_field: field });
+    }
+    setValues((current) => ({ ...current, [field]: value }));
+  };
 
   const pickFile = (picked) => {
     const problem = validateAttachment(picked);
     setFileError(problem);
     setFile(problem ? null : picked);
+    if (problem) {
+      track("contact_form_error", {
+        error_type: "attachment_invalid",
+        fields: "attachment",
+        form_location: currentPath(),
+      });
+    }
   };
 
   const clearFile = () => {
@@ -69,7 +85,14 @@ const BookingFlow = ({ headingAs = "h2" }) => {
   const handleSubmit = async () => {
     const found = validateContact(values);
     setErrors(found);
-    if (Object.keys(found).length > 0) return;
+    if (Object.keys(found).length > 0) {
+      track("contact_form_error", {
+        error_type: "validation",
+        fields: Object.keys(found).join(","),
+        form_location: currentPath(),
+      });
+      return;
+    }
 
     setSubmitting(true);
     setSubmitError("");
@@ -79,11 +102,24 @@ const BookingFlow = ({ headingAs = "h2" }) => {
         body: buildSubmission(values, countryIso, file),
       });
       if (!response.ok) throw new Error("Submission failed");
+      // Never the field values themselves: GA's terms forbid PII.
+      track("generate_lead", {
+        form_location: currentPath(),
+        lead_role: values.role,
+        has_brief: values.brief.trim() !== "",
+        has_attachment: Boolean(file),
+        has_phone: values.phone.trim() !== "",
+      });
       const height = Math.round(panelRef.current?.getBoundingClientRect().height || 0);
       if (height >= MIN_PINNED_HEIGHT) setPinnedHeight(height);
       setStep(2);
     } catch (error) {
       setSubmitError(SUBMIT_FAILED_MESSAGE);
+      track("contact_form_error", {
+        error_type: "submit_failed",
+        fields: "",
+        form_location: currentPath(),
+      });
     } finally {
       setSubmitting(false);
     }
@@ -120,6 +156,8 @@ const BookingFlow = ({ headingAs = "h2" }) => {
               ) : (
                 <BookingStep
                   firstName={values.name.trim().split(" ")[0]}
+                  name={values.name.trim()}
+                  email={values.email.trim()}
                   detailsSummary={detailsSummary}
                   onBack={() => setStep(1)}
                 />

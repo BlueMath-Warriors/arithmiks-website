@@ -56,7 +56,7 @@ const MoreCaseStudies = ({ currentSlug, relatedSlugs }) => {
   if (nextStudies.length === 0) return null;
 
   return (
-    <MoreSection id="more" aria-labelledby="more-heading" ref={rootRef}>
+    <MoreSection id="more" aria-labelledby="more-heading" ref={rootRef} data-track-location="more_case_studies">
       <Shell>
         <HeadRow data-reveal="">
           <div>

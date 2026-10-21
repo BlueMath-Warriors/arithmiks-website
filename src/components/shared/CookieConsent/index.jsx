@@ -34,6 +34,7 @@ import {
   CONSENT_DENIED,
 } from "../../../utils/cookieConsent";
 import { prefersReducedMotion } from "../../../utils/animations";
+import { track } from "../../../utils/analytics";
 
 // Let the page settle before the banner slides in.
 const ENTER_DELAY_MS = 700;
@@ -107,6 +108,8 @@ const CookieConsent = () => {
   const decide = (allowAnalytics) => {
     storeConsent(allowAnalytics ? CONSENT_GRANTED : CONSENT_DENIED);
     if (allowAnalytics) grantAnalyticsConsent();
+    // After the consent update, so an accept is recorded with full cookies.
+    track("cookie_consent", { consent_choice: allowAnalytics ? "accepted" : "rejected" });
     setOpen(false);
     window.setTimeout(() => setMounted(false), EXIT_DURATION_MS);
   };

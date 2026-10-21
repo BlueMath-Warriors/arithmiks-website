@@ -3,6 +3,7 @@ import { createRoot } from "react-dom/client";
 import "./src/styles/global.module.css";
 import { gsap } from "gsap";
 import CookieConsent from "./src/components/shared/CookieConsent";
+import { initGlobalTracking, resetPageTracking } from "./src/utils/globalTracking";
 
 // Mounted outside the Gatsby-managed tree, not via wrapRootElement/
 // wrapPageElement: every page here also exports a Head component, and
@@ -14,6 +15,7 @@ export const onClientEntry = () => {
   mountNode.id = "cookie-consent-root";
   document.body.appendChild(mountNode);
   createRoot(mountNode).render(<CookieConsent />);
+  initGlobalTracking();
 };
 
 const prefersReducedMotion = () => {
@@ -48,6 +50,8 @@ const animatePageEntrance = () => {
 
 export const onRouteUpdate = ({ location, prevLocation }) => {
   if (prevLocation && location.pathname !== prevLocation.pathname) {
+    resetPageTracking();
+
     window.scrollTo({
       top: 0,
       behavior: "instant",
