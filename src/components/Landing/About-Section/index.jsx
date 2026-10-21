@@ -31,7 +31,7 @@ const About = () => {
   const sectionRef = useRef(null);
 
   const scrollToContact = () => {
-    const contactForm = document.getElementById("contact-form");
+    const contactForm = document.getElementById("contact");
     if (contactForm) {
       contactForm.scrollIntoView({ behavior: "smooth" });
     }
@@ -107,6 +107,7 @@ const About = () => {
         </CardBody>
         <CardBtn
           type="button"
+          data-cta="Learn More"
           onClick={scrollToContact}
           aria-label="Learn more about Arithmiks - scroll to contact form"
         >

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   TextContainer,
   Caption,
@@ -16,6 +16,7 @@ import * as containerStyles from "../../styles/global.module.css";
 import Header from "../Landing/Header";
 import Breadcrumbs from "../Breadcrumbs";
 import BookingFlow from "../Landing/Contact-Us/Booking-Flow";
+import { track } from "../../utils/analytics";
 import Footer from "..//Landing/Footer";
 import TeamNeed from "./TeamNeed";
 import Questions from "./Questions";
@@ -33,6 +34,10 @@ const breadcrumbItems = [
 ];
 
 const DedicatedTeam = () => {
+  useEffect(() => {
+    track("engagement_model_view", { model: "dedicated_team", trigger: "page" });
+  }, []);
+
   return (
     <>
       <Header white={true} />
@@ -47,11 +52,12 @@ const DedicatedTeam = () => {
             <Caption>
               Experience the power of highly talented engineers working delicately on a project to unleash the excellence and delivery.
             </Caption>
-            <MoreButton           
+            <MoreButton
+              data-cta="Tell Us More"
               onClick={() => {
               document
-                .getElementById("contact-form")
-                .scrollIntoView({ behavior: "smooth" });
+                .getElementById("contact")
+                ?.scrollIntoView({ behavior: "smooth" });
             }}>
               Tell Us More <ArrowRight />
             </MoreButton>

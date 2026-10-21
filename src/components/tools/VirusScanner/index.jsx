@@ -19,6 +19,7 @@ import {
   FileMeta,
 } from "./index.styled";
 import { useScanUpload } from "./useScanUpload";
+import { fileExtension, fileSizeBucket, track } from "../../../utils/analytics";
 import {
   validateFile,
   deriveVerdict,
@@ -127,6 +128,7 @@ const FIXTURES = {
 const VirusScanner = ({ howToSteps = [] }) => {
   const [state, dispatch] = useReducer(reducer, initial);
   const dropzoneRef = useRef(null);
+  const scanStartedAtRef = useRef(0);
 
   const onUploading = useCallback(() => {}, []);
   const onScanning = useCallback(() => dispatch({ type: "SCANNING" }), []);
@@ -138,14 +140,17 @@ const VirusScanner = ({ howToSteps = [] }) => {
     (phase) => dispatch({ type: "PHASE_COMPLETE", phase }),
     []
   );
-  const onResult = useCallback(
-    (r) => dispatch({ type: "RESULT", result: r }),
-    []
-  );
-  const onError = useCallback(
-    (err) => dispatch({ type: "ERROR", error: err }),
-    []
-  );
+  const onResult = useCallback((r) => {
+    track("tool_scan_complete", {
+      verdict: deriveVerdict(r),
+      duration_s: Math.round((Date.now() - scanStartedAtRef.current) / 1000),
+    });
+    dispatch({ type: "RESULT", result: r });
+  }, []);
+  const onError = useCallback((err) => {
+    track("tool_scan_error", { error_code: String(err?.code || "network") });
+    dispatch({ type: "ERROR", error: err });
+  }, []);
 
   const { upload, abort } = useScanUpload({
     onUploading,
@@ -178,10 +183,17 @@ const VirusScanner = ({ howToSteps = [] }) => {
       dispatch({ type: "PICK", file });
       const check = validateFile(file);
       if (!check.ok) {
+        track("tool_scan_error", { error_code: "validation" });
         dispatch({ type: "VALIDATE_ERR", error: { error: check.error } });
         return;
       }
       dispatch({ type: "VALIDATE_OK" });
+      // Extension and size bucket only: file names can carry personal data.
+      track("tool_scan_start", {
+        file_ext: fileExtension(file.name),
+        file_size_kb: fileSizeBucket(file.size),
+      });
+      scanStartedAtRef.current = Date.now();
       upload(file);
     },
     [upload]
