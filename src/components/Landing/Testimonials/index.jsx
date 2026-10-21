@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { VOICES } from "../../../constants/voices";
+import { track } from "../../../utils/analytics";
 import {
   Section,
   Shell,
@@ -24,6 +25,10 @@ const Testimonials = () => {
   const [page, setPage] = useState(0);
   const trackViewRef = useRef(null);
   const cardRefs = useRef([]);
+  const lastPageRef = useRef(0);
+  // Set while a dot click's smooth scroll is still travelling, so the pages it
+  // passes through aren't also counted as swipes.
+  const dotTargetRef = useRef(null);
 
   useEffect(() => {
     const mq = window.matchMedia(MOBILE_QUERY);
@@ -56,7 +61,20 @@ const Testimonials = () => {
         const nearest = isAtEnd
           ? pageCount - 1
           : Math.round(view.scrollLeft / pageStep);
-        setPage(Math.min(pageCount - 1, Math.max(0, nearest)));
+        const next = Math.min(pageCount - 1, Math.max(0, nearest));
+        if (next !== lastPageRef.current) {
+          if (dotTargetRef.current === null) {
+            track("testimonial_interact", {
+              method: "swipe",
+              direction: next > lastPageRef.current ? "next" : "previous",
+              page: next + 1,
+            });
+          } else if (next === dotTargetRef.current) {
+            dotTargetRef.current = null;
+          }
+          lastPageRef.current = next;
+        }
+        setPage(next);
       });
     };
     view.addEventListener("scroll", onScroll, { passive: true });
@@ -67,6 +85,14 @@ const Testimonials = () => {
   }, [perPage, pageCount]);
 
   const goToPage = (i) => {
+    if (i !== lastPageRef.current) {
+      dotTargetRef.current = i;
+      track("testimonial_interact", {
+        method: "dot",
+        direction: i > lastPageRef.current ? "next" : "previous",
+        page: i + 1,
+      });
+    }
     cardRefs.current[i * perPage]?.scrollIntoView({
       behavior: "smooth",
       inline: "start",

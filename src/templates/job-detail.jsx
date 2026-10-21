@@ -5,6 +5,7 @@ import JobDetailHero from "../components/Careers/JobDetailHero";
 import JobDetailBody from "../components/Careers/JobDetailBody";
 import { SEO } from "../components/seo";
 import { getJobBySlug } from "../constants/jobs";
+import { track } from "../utils/analytics";
 
 /**
  * One page per role in `src/constants/jobs.js`, generated at build time by
@@ -12,6 +13,10 @@ import { getJobBySlug } from "../constants/jobs";
  */
 const JobDetailTemplate = ({ pageContext }) => {
   const job = getJobBySlug(pageContext.slug);
+
+  React.useEffect(() => {
+    if (job) track("job_view", { job_title: job.title, job_department: job.department });
+  }, [job]);
 
   // Guards a stale/renamed slug reaching the template (e.g. mid-edit of
   // jobs.js) rather than rendering with `job` undefined.

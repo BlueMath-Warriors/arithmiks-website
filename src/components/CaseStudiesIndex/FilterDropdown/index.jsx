@@ -9,6 +9,7 @@ import {
   Option,
   CheckBox,
 } from "./index.styled";
+import { track } from "../../../utils/analytics";
 
 const TickIcon = () => (
   <svg
@@ -137,7 +138,15 @@ const FilterDropdown = ({
               type="button"
               role="option"
               aria-selected={checked}
-              onClick={() => onToggleOption(option)}
+              onClick={() => {
+                if (!checked) {
+                  track("filter_case_studies", {
+                    filter_type: label.toLowerCase(),
+                    filter_value: option,
+                  });
+                }
+                onToggleOption(option);
+              }}
             >
               <CheckBox $checked={checked}>{checked && <TickIcon />}</CheckBox>
               {option}

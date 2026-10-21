@@ -63,10 +63,11 @@ const DediacatedPage = () => {
           by acquiring the best talent to full fill the gap.
         </Caption>
         <MoreButton
+          data-cta="Tell us More"
           onClick={() => {
             document
-              .getElementById("contact-form")
-              .scrollIntoView({ behavior: "smooth" });
+              .getElementById("contact")
+              ?.scrollIntoView({ behavior: "smooth" });
           }}
         >
           Tell us More <ArrowRight />

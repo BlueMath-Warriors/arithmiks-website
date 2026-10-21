@@ -21,7 +21,7 @@ const LandingGrid = ({ caseStudies }) => {
   const featured = caseStudies.slice(0, 7);
 
   return (
-    <Stage ref={rail.stageRef} id="work">
+    <Stage ref={rail.stageRef} id="work" data-track-location="landing_rail">
       <Pin ref={rail.panelRef}>
         <Shell>
           <Header>

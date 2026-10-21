@@ -1,8 +1,9 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { navigate } from "gatsby";
 import { buildSearchIndex, searchSite } from "../../constants/searchIndex";
 import SearchField from "../Landing/Header/SearchOverlay/SearchField";
 import SearchResultsList, { Empty } from "../Landing/Header/SearchResultsList";
+import { track } from "../../utils/analytics";
 import { Section, Shell, Eyebrow, Title, Count, Results, Hint, FieldBox } from "./index.styled";
 
 /**
@@ -17,6 +18,16 @@ const SearchPage = ({ term }) => {
   const index = useMemo(buildSearchIndex, []);
   const results = useMemo(() => searchSite(index, term, Infinity), [index, term]);
   const hasTerm = term.length > 0;
+
+  // GA's automatic view_search_results has the term but not how many hits it
+  // got; zero-result searches are the ones worth reading.
+  useEffect(() => {
+    if (!hasTerm) return;
+    track("site_search", {
+      search_term: term,
+      search_results_count: results.length,
+    });
+  }, [hasTerm, term, results.length]);
 
   const submitSearch = () => {
     const next = draft.trim();

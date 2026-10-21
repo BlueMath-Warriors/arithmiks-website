@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { track } from "../../../utils/analytics";
 import {
   Shell,
   Eyebrow,
@@ -97,16 +98,41 @@ const DEFAULT_HIGHLIGHT = 1;
 
 const EngagementModels = () => {
   const [highlighted, setHighlighted] = useState(DEFAULT_HIGHLIGHT);
+  const sectionRef = useRef(null);
+  const inspectedRef = useRef(new Set());
+
+  // Once per page: the comparison scrolled into view.
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section || typeof IntersectionObserver === "undefined") return undefined;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        track("engagement_model_view", { model: "comparison", trigger: "scroll" });
+        observer.disconnect();
+      },
+      { threshold: 0.4 }
+    );
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, []);
 
   // The highlight follows the hovered column so the table reads as something
   // to compare with, not a fixed recommendation.
   const handlePointerOver = (event) => {
     const cell = event.target.closest("[data-column]");
-    if (cell) setHighlighted(Number(cell.getAttribute("data-column")));
+    if (!cell) return;
+    const index = Number(cell.getAttribute("data-column"));
+    setHighlighted(index);
+    // Once per model, so sweeping the pointer across the table isn't four events a second.
+    if (!inspectedRef.current.has(index)) {
+      inspectedRef.current.add(index);
+      track("engagement_model_view", { model: MODELS[index].name, trigger: "hover" });
+    }
   };
 
   return (
-    <Section id="models" aria-labelledby="models-h">
+    <Section id="models" aria-labelledby="models-h" ref={sectionRef}>
       <Shell data-shell="">
         <Intro>
           <Eyebrow $onDark>Engagement models</Eyebrow>

@@ -13,6 +13,7 @@ import {
   DropdownOption,
   SubmitButton,
 } from "./index.styled";
+import { track } from "../../../utils/analytics";
 
 const SearchIcon = (props) => (
   <FieldIcon viewBox="0 0 20 20" width="17" height="17" fill="none" stroke="#5C6478" strokeWidth="1.8" strokeLinecap="round" aria-hidden="true" {...props}>
@@ -141,6 +142,11 @@ const JobSearchBar = ({
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    track("job_search", {
+      search_term: keyword.trim(),
+      team: team || "any",
+      location: location || "any",
+    });
     onSubmit({ keyword: keyword.trim(), team, location });
   };
 
