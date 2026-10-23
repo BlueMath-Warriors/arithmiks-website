@@ -128,11 +128,21 @@ export const Screenshot = styled.div`
   }
 
   ${({ $framed }) =>
-    $framed &&
-    `
+    $framed
+      ? `
     background: #fff;
     border: 1px solid ${colors.border};
     box-shadow: 0 30px 70px -34px rgba(10, 15, 31, 0.38), 0 2px 6px rgba(10, 15, 31, 0.04);
+  `
+      : // An unframed image is a composed mockup (cards over a backdrop, with
+        // its own shadow), not a screenshot that can lose its bottom edge, so
+        // the box takes the image's own height instead of the 1.6 crop.
+        `
+    aspect-ratio: auto;
+
+    img {
+      height: auto;
+    }
   `}
 
   @media (max-width: 1000px) {
