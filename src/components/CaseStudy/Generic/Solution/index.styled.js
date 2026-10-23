@@ -84,10 +84,15 @@ export const IconTile = styled.span`
   }
 `;
 
-// Pages whose icon is a ready-made round badge image keep it as is.
+// Pages whose icon is an image (a glyph on a transparent 60px canvas, already
+// in the tile's glyph colour) sit in the same IconTile as the path icons. The
+// canvas is drawn at 50px, a touch over the tile's 48px, so the glyph ends up
+// about as large as the 24px path icons; its transparent margin overflows the
+// tile harmlessly.
 export const IconImage = styled.img`
-  width: 48px;
-  height: 48px;
+  flex: none;
+  width: 50px;
+  height: 50px;
   display: block;
 `;
 
