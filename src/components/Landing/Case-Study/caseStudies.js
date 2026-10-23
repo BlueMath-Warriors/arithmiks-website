@@ -62,7 +62,7 @@ export const caseStudies = [
     testimonial: {
       quote: "Omer and his team put in significant effort and delivered many positive contributions.",
       personName: "Louis-Antoine",
-      personRole: "GoAgents Founder & CEO",
+      personRole: "CTO at GO, Founder at Web2 Web3",
       stat1: { value: "6 wks", label: "To first release" },
       stat2: { value: "3.4×", label: "Content output" },
     },
@@ -124,7 +124,7 @@ export const caseStudies = [
     testimonial: {
       quote: "Omer is a professional, reliable, and kind person. Working with him was great! He was available for questions, gave professional answers, and the results are beautiful.",
       personName: "Ron Balmas",
-      personRole: "Lead Product Manager and Co-Founder",
+      personRole: "Co-Founder and Lead Product Manager",
       stat1: { value: "6 wks", label: "To first release" },
       stat2: { value: "+34%", label: "Repeat orders" },
     },
