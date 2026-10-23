@@ -207,6 +207,10 @@ const FRAME_TONES = {
 };
 
 // Every hero image gets the height of a 1800×1125 screenshot, so pages line up.
+// A screenshot taller than this loses its bottom edge, which is intended (the
+// image is anchored top). One wider than this would instead lose both side
+// edges, cutting into the UI's own left nav, so such a page passes its own
+// ratio via $imageRatio and keeps the whole screenshot.
 const HERO_IMAGE_RATIO = "1800 / 1125";
 
 export const Frame = styled.div`
@@ -233,7 +237,7 @@ export const Frame = styled.div`
   }
 
   .gatsby-image-wrapper {
-    aspect-ratio: ${HERO_IMAGE_RATIO};
+    aspect-ratio: ${({ $imageRatio }) => $imageRatio || HERO_IMAGE_RATIO};
     border-radius: ${IMAGE_RADIUS} ${IMAGE_RADIUS} 0 0;
     box-shadow: 0 0 0 1px rgba(10, 15, 31, 0.06);
   }

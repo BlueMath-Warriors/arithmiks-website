@@ -51,6 +51,9 @@ const splitTitle = (title) => {
  * @param {Object} [props.heroImageData] gatsbyImageData from GraphQL
  * @param {string} [props.heroImageSrc] static fallback path
  * @param {string} props.heroImageAlt
+ * @param {boolean} [props.heroImageUncropped] size the frame to this screenshot's
+ *   own ratio instead of the shared one — for a screenshot wider than 1.6, which
+ *   the shared box would crop on both sides, into its left nav
  */
 const Hero = ({
   category,
@@ -66,8 +69,13 @@ const Hero = ({
   heroImageData,
   heroImageSrc,
   heroImageAlt = "Hero image",
+  heroImageUncropped = false,
 }) => {
   const gatsbyImage = heroImageData ? getImage(heroImageData) : null;
+  const imageRatio =
+    heroImageUncropped && gatsbyImage
+      ? `${gatsbyImage.width} / ${gatsbyImage.height}`
+      : undefined;
   const headlineSource =
     headline ||
     caseStudies.find((study) => study.slug === slug)?.title ||
@@ -111,7 +119,7 @@ const Hero = ({
             </SecondaryCta>
           </CtaRow>
         </HeroContent>
-        <Frame $tone={tone}>
+        <Frame $tone={tone} $imageRatio={imageRatio}>
           {gatsbyImage ? (
             <GatsbyImage
               image={gatsbyImage}
