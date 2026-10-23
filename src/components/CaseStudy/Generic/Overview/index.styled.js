@@ -95,8 +95,11 @@ export const GapText = styled.p`
   text-wrap: pretty;
 `;
 
+// The screenshot's corner radius is sized from this column's width (see
+// Screenshot's border-radius), since the box itself bleeds past the column.
 export const ScreenshotColumn = styled.div`
   min-width: 0;
+  container-type: inline-size;
 `;
 
 export const Screenshot = styled.div`
@@ -105,8 +108,12 @@ export const Screenshot = styled.div`
   overflow: hidden;
   // Rounds the crop window itself, independent of $framed, so a tall
   // screenshot clipped at the bottom still ends on a rounded corner
-  // instead of a hard cut line.
-  border-radius: clamp(14px, 1.2vw, 20px);
+  // instead of a hard cut line. Most screenshots carry their own rounded
+  // corners as transparent pixels, up to 2.44% of the image's width; a smaller
+  // radius here would leave that baked arc visible as a second, inner corner.
+  // The box is SCREENSHOT_BLEED_RATIO (about 1.566) times the column's width,
+  // so 2.5% of the box is 3.95% of the column.
+  border-radius: clamp(14px, 3.95cqw, 30px);
 
   img {
     display: block;
@@ -130,5 +137,6 @@ export const Screenshot = styled.div`
 
   @media (max-width: 1000px) {
     width: 100%;
+    border-radius: clamp(14px, 2.5cqw, 30px);
   }
 `;

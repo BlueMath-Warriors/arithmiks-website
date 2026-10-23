@@ -4,7 +4,11 @@ import { Shell, glowOrb } from "../../../shared/Section/index.styled";
 
 const HERO_IMAGE_MAX_WIDTH = "1180px";
 const FRAME_RADIUS = "clamp(16px, 1.35vw, 22px)";
-const IMAGE_RADIUS = "clamp(10px, 0.85vw, 14px)";
+// Most hero screenshots ship with their own rounded corners baked in as
+// transparent pixels, up to 1.74% of the image's width. The CSS clip has to be
+// at least that round or the baked arc shows through as a second, inner corner,
+// so the radius tracks the image's width (the Frame is its size container).
+const IMAGE_RADIUS = "clamp(10px, 1.8cqw, 21px)";
 const FRAME_PADDING = "clamp(6px, 0.62vw, 11px)";
 
 export const HeroSection = styled.section`
@@ -218,6 +222,7 @@ export const Frame = styled.div`
   border-radius: ${FRAME_RADIUS} ${FRAME_RADIUS} 0 0;
   box-shadow: ${({ $tone }) => FRAME_TONES[$tone].shadow};
   overflow: hidden;
+  container-type: inline-size;
 
   img {
     display: block;
