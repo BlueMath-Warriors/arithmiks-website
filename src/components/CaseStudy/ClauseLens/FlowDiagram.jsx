@@ -1062,22 +1062,54 @@ const FlowDiagram = () => (
         style={{
           display: "none",
           position: "absolute",
-          top: "50%",
+          top: "calc(clamp(72px,6vw,88px) / 2)",
           right: "calc(50% + 40px)",
           transform: "translateY(-50%)",
           width: "max-content",
-          flexDirection: "column",
-          alignItems: "flex-start",
-          gap: "8px",
+          alignItems: "center",
+          gap: "4px",
         }}
       >
-        <div style={{ display: "flex", alignItems: "center", gap: "4px" }}>
-          <span
+        <span
+          data-clnopill=""
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: "6px",
+            padding: "6px 9px",
+            borderRadius: "12px",
+            background: "#F1F3F7",
+            border: "1px dashed #C9CFDA",
+            fontSize: "11.5px",
+            fontWeight: "550",
+            lineHeight: "1.25",
+            textAlign: "left",
+            color: "#5C6478",
+          }}
+        >
+          <svg
+            viewBox="0 0 16 16"
+            width="12"
+            height="12"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.8"
+            strokeLinecap="round"
             aria-hidden="true"
-            style={{ width: "8px", height: 0, borderTop: "1.6px solid #8A93A6" }}
-          ></span>
+            style={{ flex: "none" }}
+          >
+            <path d="M4 4l8 8M12 4l-8 8"></path>
+          </svg>
+          <span style={{ maxWidth: "58px" }}>Finding dropped</span>
+        </span>
+        <span style={{ position: "relative", display: "flex", flex: "none" }}>
           <span
             style={{
+              position: "absolute",
+              bottom: "100%",
+              left: "50%",
+              transform: "translateX(-50%)",
+              marginBottom: "1px",
               fontFamily: "ui-monospace,'JetBrains Mono',Menlo,monospace",
               fontSize: "13px",
               fontWeight: "700",
@@ -1100,44 +1132,6 @@ const FlowDiagram = () => (
           >
             <path d="M18 8H4M9 3 4 8l5 5"></path>
           </svg>
-          <span
-            aria-hidden="true"
-            style={{
-              display: "flex",
-              flex: "none",
-              alignItems: "center",
-              justifyContent: "center",
-              width: "30px",
-              height: "30px",
-              borderRadius: "9px",
-              border: "1.5px solid #C9CFDA",
-              background: "#fff",
-            }}
-          >
-            <svg
-              viewBox="0 0 16 16"
-              width="12"
-              height="12"
-              fill="none"
-              stroke="#5C6478"
-              strokeWidth="1.8"
-              strokeLinecap="round"
-              aria-hidden="true"
-            >
-              <path d="M4 4l8 8M12 4l-8 8"></path>
-            </svg>
-          </span>
-        </div>
-        <span
-          style={{
-            maxWidth: "88px",
-            fontSize: "12.5px",
-            lineHeight: "1.35",
-            color: "#0A0F1F",
-            textAlign: "left",
-          }}
-        >
-          Finding dropped
         </span>
       </div>
     </div>

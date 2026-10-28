@@ -5,6 +5,8 @@ const scroll = keyframes`
   to { transform: translateX(-50%); }
 `;
 
+const cssWidth = (width) => (width === "auto" ? "auto" : `${width}px`);
+
 export const MarqueeMask = styled.div`
   position: relative;
   overflow: hidden;
@@ -16,30 +18,36 @@ export const MarqueeRow = styled.div`
   display: flex;
   width: max-content;
   align-items: center;
-  gap: ${(p) => p.$gap}px;
   animation: ${scroll} ${(p) => p.$duration}s linear infinite;
 
   @media (max-width: ${(p) => p.$mobileBreakpoint}px) {
     animation-duration: ${(p) => p.$durationMobile}s;
-    gap: ${(p) => p.$gapMobile}px;
   }
 `;
 
+// The spacing is a trailing margin on every cell, not a flex `gap`: a gap has
+// no trailing space after the last cell, so the row's -50% loop distance would
+// fall half a gap short of one full set and the loop would jump at the seam.
 export const MarqueeCell = styled.span`
   display: flex;
   align-items: center;
   justify-content: center;
   flex: none;
   height: ${(p) => p.$cellHeight}px;
-  ${(p) => (p.$cellWidth ? `width: ${p.$cellWidth}px;` : "")}
+  margin-right: ${(p) => p.$gap}px;
+  ${(p) => (p.$cellWidth ? `width: ${cssWidth(p.$cellWidth)};` : "")}
+
+  @media (max-width: ${(p) => p.$mobileBreakpoint}px) {
+    margin-right: ${(p) => p.$gapMobile}px;
+  }
 
   @media (max-width: ${(p) => p.$bpMd}px) {
     height: ${(p) => p.$cellHeightMd}px;
-    ${(p) => (p.$cellWidthMd ? `width: ${p.$cellWidthMd}px;` : "")}
+    ${(p) => (p.$cellWidthMd ? `width: ${cssWidth(p.$cellWidthMd)};` : "")}
   }
 
   @media (max-width: ${(p) => p.$bpSm}px) {
     height: ${(p) => p.$cellHeightSm}px;
-    ${(p) => (p.$cellWidthSm ? `width: ${p.$cellWidthSm}px;` : "")}
+    ${(p) => (p.$cellWidthSm ? `width: ${cssWidth(p.$cellWidthSm)};` : "")}
   }
 `;

@@ -3,6 +3,8 @@ import { Link } from "gatsby";
 import { colors, shellMaxWidth, shellPadding } from "../../../../styles/tokens";
 import CaseStudyCard from "../CaseStudyCard";
 
+const railGap = "24px";
+
 export const Stage = styled.section`
   position: relative;
   padding-top: 110px;
@@ -83,21 +85,38 @@ export const View = styled.div`
   padding: 14px 0 28px;
   overflow: visible;
 
+  /* Any overflow other than visible clips box-shadows at the scroller's edge, so
+     the scroller bleeds to the screen edges and keeps the shell inset as inner
+     padding / scroll-padding / a trailing spacer (Track::after) for the shadows
+     to render in. The extra bottom padding is pulled back out with a negative
+     margin so the section's layout height is unchanged. */
   @media (max-width: 900px) {
     overflow-x: auto;
     scroll-snap-type: x mandatory;
+    scroll-padding-left: ${shellPadding};
     -webkit-overflow-scrolling: touch;
-    margin: 20px -${shellPadding} 0;
-    padding-left: ${shellPadding};
-    padding-right: ${shellPadding};
+    margin: 20px calc(-1 * ${shellPadding}) -28px;
+    padding: 14px 0 56px ${shellPadding};
   }
 `;
 
 export const Track = styled.div`
   display: flex;
-  gap: 24px;
+  gap: ${railGap};
   overflow: visible;
   will-change: transform;
+
+  /* The scroller's own end padding isn't part of its scrollable width, so the
+     last card would end flush against the clip edge. The negative margin
+     cancels the flex gap so the spacer is exactly the shell inset wide. */
+  @media (max-width: 900px) {
+    &::after {
+      content: "";
+      flex: none;
+      width: ${shellPadding};
+      margin-left: -${railGap};
+    }
+  }
 `;
 
 // The card's own visuals live in the shared CaseStudyCard; the rail only

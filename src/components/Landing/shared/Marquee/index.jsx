@@ -8,7 +8,8 @@ import { MarqueeMask, MarqueeRow, MarqueeCell } from "./index.styled";
  *
  * Cell metrics and the mobile breakpoint are props because two callers need
  * different ones: the homepage Hero spaces bare logos with a gap and shifts at
- * 768px, while the /services trust row uses fixed-width cells and shifts at
+ * 768px, while the /services trust row uses fixed-width cells on desktop and
+ * content-sized cells (width "auto") with an even gap on mobile, shifting at
  * 900px. The defaults are the Hero's original values.
  *
  * @param {{
@@ -16,7 +17,7 @@ import { MarqueeMask, MarqueeRow, MarqueeCell } from "./index.styled";
  *   durationSeconds?: number; durationSecondsMobile?: number;
  *   mobileBreakpoint?: number;
  *   gap?: number; gapMobile?: number;
- *   cellWidth?: number; cellWidthMd?: number; cellWidthSm?: number;
+ *   cellWidth?: number | "auto"; cellWidthMd?: number | "auto"; cellWidthSm?: number | "auto";
  *   cellHeight?: number; cellHeightMd?: number; cellHeightSm?: number;
  *   cellBreakpointMd?: number; cellBreakpointSm?: number;
  * }} props
@@ -42,12 +43,13 @@ const Marquee = ({
       $duration={durationSeconds}
       $durationMobile={durationSecondsMobile}
       $mobileBreakpoint={mobileBreakpoint}
-      $gap={gap}
-      $gapMobile={gapMobile}
     >
       {[...items, ...items].map((item, i) => (
         <MarqueeCell
           key={`${item.key}-${i}`}
+          $gap={gap}
+          $gapMobile={gapMobile}
+          $mobileBreakpoint={mobileBreakpoint}
           $cellWidth={cellWidth}
           $cellWidthMd={cellWidthMd ?? cellWidth}
           $cellWidthSm={cellWidthSm ?? cellWidthMd ?? cellWidth}

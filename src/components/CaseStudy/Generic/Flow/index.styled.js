@@ -94,16 +94,23 @@ export const DiagramLayout = styled.div`
     @media (max-width: 340px) {
       [data-clnobranch] {
         right: calc(50% + 36px) !important;
-        gap: 4px !important;
       }
-      [data-clnobranch] > div {
-        gap: 2px !important;
+      [data-clnopill] {
+        flex-direction: column;
+        padding: 6px 8px !important;
+        gap: 3px !important;
+        font-size: 11px !important;
+        text-align: center !important;
       }
     }
+    // The label sits beside the rotated arrow, out of flow, so the arrow
+    // itself stays centered under the diamond.
     [data-clyes] {
-      position: static !important;
-      transform: none !important;
-      margin-right: 6px;
+      top: 50% !important;
+      bottom: auto !important;
+      left: auto !important;
+      right: calc(50% + 14px);
+      transform: translateY(-50%) !important;
     }
     [data-clstart] {
       justify-self: center;

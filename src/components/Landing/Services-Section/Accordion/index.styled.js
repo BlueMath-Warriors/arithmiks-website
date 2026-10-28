@@ -127,10 +127,14 @@ export const PanelLabel = styled.span`
   color: ${colors.text};
   white-space: nowrap;
 
+  // A long title must give way to the service count rather than push it out
+  // of the panel (which clips overflow), so the label may shrink and wrap.
   @media (max-width: 900px) {
     writing-mode: horizontal-tb;
     transform: none;
-    flex: 1 1 auto;
+    flex: 1 1 0;
+    min-width: 0;
+    white-space: normal;
   }
 `;
 
@@ -140,6 +144,10 @@ export const PanelCount = styled.span`
   letter-spacing: -0.01em;
   color: ${colors.textFaint};
   white-space: nowrap;
+
+  @media (max-width: 900px) {
+    flex: none;
+  }
 `;
 
 export const PanelOpen = styled.div`
