@@ -46,10 +46,8 @@ export const Track = styled.div`
 `;
 
 export const ClientLogo = styled.img`
-  max-height: 32px;
-  max-width: 128px;
-  width: auto;
-  height: auto;
+  flex: none;
+  max-width: none;
   object-fit: contain;
   display: block;
   filter: grayscale(1) brightness(0.35);

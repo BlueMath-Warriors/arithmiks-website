@@ -41,7 +41,11 @@ const CardIcon = ({ solution }) => {
       </IconTile>
     );
   }
-  return <IconImage src={solution.icon} alt="" />;
+  return (
+    <IconTile>
+      <IconImage src={solution.icon} alt="" />
+    </IconTile>
+  );
 };
 
 /**

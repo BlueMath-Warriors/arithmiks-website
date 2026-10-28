@@ -12,6 +12,9 @@ export const getHeroData = (images) => ({
   ),
   heroImageData: images?.heroImage,
   heroImageAlt: "Mr. Seller Note Dashboard",
+  // This dashboard screenshot is wider than the shared hero box, so the box
+  // would crop both sides and cut into the sidebar.
+  heroImageUncropped: true,
 });
 
 export const techStackData = {
