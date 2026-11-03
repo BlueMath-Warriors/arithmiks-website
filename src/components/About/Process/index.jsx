@@ -12,7 +12,7 @@ const STEPS = [
 ];
 
 const STATS = [
-  { value: 10, suffix: "+", label: "Products shipped" },
+  { value: 50, suffix: "+", label: "Products shipped" },
   { value: 4, label: "Industries served" },
   { value: 100, suffix: "%", label: "Customer-centric delivery" },
   { value: 12, label: "Team members · 6 yrs" },
