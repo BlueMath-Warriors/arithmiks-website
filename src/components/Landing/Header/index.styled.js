@@ -103,6 +103,12 @@ export const NavLinks = styled.span`
     align-items: center;
   }
 
+  /* Five links plus the CTA need the tighter gap just above the collapse
+     width, or the labels wrap onto two lines. */
+  @media screen and (max-width: 1240px) {
+    gap: 22px;
+  }
+
   @media screen and (max-width: ${navCollapse}) {
     display: none;
   }
@@ -113,6 +119,7 @@ const navLinkColor = (p) =>
 
 export const NavButton = styled.button`
   display: inline-flex;
+  white-space: nowrap;
   align-items: center;
   gap: 6px;
   padding: 0;
@@ -139,6 +146,7 @@ export const Chevron = styled.svg`
 `;
 
 export const NavLink = styled(Link)`
+  white-space: nowrap;
   font-size: clamp(15px, 0.96vw, 16.5px);
   font-weight: 450;
   color: ${navLinkColor};

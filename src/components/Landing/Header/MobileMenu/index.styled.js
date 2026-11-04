@@ -160,6 +160,38 @@ export const ItemLink = styled(Link)`
   text-decoration: none;
 `;
 
+// A service group inside the Services accordion.
+export const GroupButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  min-height: 48px;
+  padding: 11px 0 11px 2px;
+  background: transparent;
+  border: 0;
+  color: ${colors.text};
+  font-size: 15.5px;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+`;
+
+export const GroupPanel = styled.div`
+  display: ${(p) => (p.$open ? "flex" : "none")};
+  flex-direction: column;
+  margin: 0 0 6px 2px;
+  padding-left: 14px;
+  border-left: 2px solid ${colors.border};
+`;
+
+export const SubLink = styled(ItemLink)`
+  min-height: 44px;
+  padding: 9px 0 9px 2px;
+  font-size: 15px;
+`;
+
 export const AllLink = styled(Link)`
   display: inline-flex;
   align-items: center;

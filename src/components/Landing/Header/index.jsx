@@ -239,6 +239,10 @@ const Header = ({ white, fixed_bar, lightHero, transparentWhile }) => {
               Case Studies
             </NavLink>
 
+            <NavLink to="/tools" $white={white} $onLight={onLight}>
+              Tools
+            </NavLink>
+
             <span
               ref={company.triggerRef}
               onMouseEnter={() => {
