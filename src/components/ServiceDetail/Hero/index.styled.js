@@ -45,13 +45,14 @@ export const Art = styled.div`
     max-width: none;
   }
 
-  /* Once the copy runs full width the art steps back behind the heading. */
+  /* Once the copy runs full width the art steps back behind the heading,
+     placed as the UI/UX design places it (its width stays 360px). */
   @media (max-width: 700px) {
-    top: 72px;
-    right: -22%;
+    top: calc(50% - 360px);
+    right: calc(-34% + 20px);
     transform: none;
-    width: min(62vw, 260px);
     opacity: 0.32;
+    z-index: 0;
   }
 `;
 

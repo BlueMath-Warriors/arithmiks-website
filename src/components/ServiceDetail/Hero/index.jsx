@@ -26,8 +26,8 @@ const ART_WIDTHS = [400, 540, 700, 1000, 1400];
  */
 export const heroArtSrcSet = (art) =>
   ART_WIDTHS.map((width) => `/services/hero/${art}-${width}.webp ${width}w`).join(", ");
-// Matches the Art box: clamp(360px, 44vw, 700px), and min(62vw, 260px) on phones.
-export const HERO_ART_SIZES = "(max-width: 700px) min(62vw, 260px), min(700px, 44vw)";
+// Matches the Art box: clamp(360px, 44vw, 700px), which is 360px on phones.
+export const HERO_ART_SIZES = "(max-width: 700px) 360px, min(700px, 44vw)";
 
 /**
  * @typedef {{ label: string, href: string, glyph: string }} HeroCta
@@ -55,7 +55,7 @@ const Hero = ({
   ctaGap,
 }) => (
   <Section id="top">
-    <MeshHeroBackground />
+    <MeshHeroBackground fillOnPhone />
     <Art aria-hidden="true">
       <img
         src={`/services/hero/${art}-700.webp`}

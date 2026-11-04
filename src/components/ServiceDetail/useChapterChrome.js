@@ -86,7 +86,13 @@ export const useChapterChrome = (chapters) => {
     const measure = () => {
       frame = 0;
       const bar = barRef.current;
-      const pinned = bar ? bar.getBoundingClientRect().top <= (headerHidden ? 0 : headerHeight) + 0.5 : false;
+      // Measured from where the bar sits before it sticks (the hero's bottom
+      // edge, which the bar overlaps by its own height), never from its live
+      // position: that moves while the header slides away, and reading it here
+      // made "pinned" flip off mid-slide, bringing the header straight back.
+      const hero = bar ? bar.previousElementSibling : null;
+      const pinned =
+        bar && hero ? hero.getBoundingClientRect().bottom - bar.offsetHeight <= headerHeight + 0.5 : false;
       setStuck(pinned);
       updateHeader(pinned);
 
