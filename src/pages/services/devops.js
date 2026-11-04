@@ -1,27 +1,10 @@
 import * as React from "react";
-import ServicePage from "../../components/ServicePage";
-import { SEO } from "../../components/seo";
-import { getServiceBySlug, servicePath } from "../../constants/serviceRoutes";
+import ServiceDetailPage from "../../components/ServiceDetail/ServiceDetailPage";
+import ServiceDetailHead from "../../components/ServiceDetail/ServiceDetailHead";
+import content from "../../components/ServiceDetail/content/devops";
 
-const slug = "devops";
-const service = getServiceBySlug(slug);
-const breadcrumbItems = [
-  { name: "Home", pathname: "/" },
-  { name: "Services", pathname: "/services" },
-  { name: service.label, pathname: servicePath(slug) },
-];
-
-const DevopsPage = () => (
-  <ServicePage headline={service.headline} intro={service.intro} breadcrumbItems={breadcrumbItems} />
-);
+const DevopsPage = () => <ServiceDetailPage content={content} />;
 
 export default DevopsPage;
 
-export const Head = () => (
-  <SEO
-    title={service.seoTitle}
-    description={service.seoDescription}
-    pathname={servicePath(slug)}
-    breadcrumbItems={breadcrumbItems}
-  />
-);
+export const Head = () => <ServiceDetailHead slug="devops" art={content.hero.art} />;
