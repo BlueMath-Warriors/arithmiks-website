@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import ServiceCard from "./Service-Card";
-import Accordion from "./Accordion";
+import ServiceGrid from "./ServiceGrid";
 import {
   SmallTxt,
   Header,
@@ -36,8 +36,8 @@ const Services = ({ landing = false }) => {
   const sectionRef = useRef(null);
 
   useEffect(() => {
-    // The homepage redesign renders <Accordion /> instead (see the return
-    // below) — its entrance animation lives in Accordion itself, not here.
+    // The homepage redesign renders <ServiceGrid /> instead (see the return
+    // below) — its entrance animation lives in ServiceGrid itself, not here.
     if (landing) return;
     if (typeof window === "undefined" || !sectionRef.current) return;
     if (prefersReducedMotion()) return;
@@ -79,7 +79,7 @@ const Services = ({ landing = false }) => {
     return () => ctx.revert();
   }, [landing]);
 
-  if (landing) return <Accordion />;
+  if (landing) return <ServiceGrid />;
 
   return (
     <section className={containerStyles.services} ref={sectionRef}>
@@ -94,11 +94,7 @@ const Services = ({ landing = false }) => {
           <ViewButton
             type="button"
             data-cta="Reach us"
-            onClick={() => {
-              document
-                .getElementById("contact")
-                ?.scrollIntoView({ behavior: "smooth" });
-            }}>
+            data-book="">
             Reach us
             <ArrowCricleRight />
           </ViewButton>

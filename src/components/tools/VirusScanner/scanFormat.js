@@ -38,61 +38,6 @@ export function getScanResultFilename(result) {
   return undefined;
 }
 
-/**
- * @param {Record<string, unknown> | null | undefined} result
- * @returns {string | undefined}
- */
-export function getScanResultJobId(result) {
-  if (!result) return undefined;
-  const top = result.job_id;
-  if (typeof top === "string" && top.trim()) return top.trim();
-  const meta = result.meta;
-  if (
-    meta &&
-    typeof meta === "object" &&
-    typeof meta.job_id === "string" &&
-    meta.job_id.trim()
-  ) {
-    return meta.job_id.trim();
-  }
-  return undefined;
-}
-
-/**
- * Prefers `user_summary_structured`; otherwise parses `user_summary` on `\n\n`.
- * @param {Record<string, unknown> | null | undefined} result
- * @returns {{ headline: string | null; bullets: string[] }}
- */
-export function getUserSummaryParts(result) {
-  if (!result) return { headline: null, bullets: [] };
-
-  const structured = result.user_summary_structured;
-  if (structured && typeof structured === "object") {
-    const rawHeadline = structured.headline;
-    const headline =
-      typeof rawHeadline === "string" ? rawHeadline.trim() : "";
-    const rawBullets = structured.bullets;
-    const bullets = Array.isArray(rawBullets)
-      ? rawBullets.map((b) => (typeof b === "string" ? b.trim() : String(b)).trim()).filter(Boolean)
-      : [];
-    if (headline || bullets.length) {
-      return { headline: headline || null, bullets };
-    }
-  }
-
-  const plain = result.user_summary;
-  if (typeof plain === "string" && plain.trim()) {
-    const blocks = plain
-      .split(/\n\n/)
-      .map((s) => s.trim())
-      .filter(Boolean);
-    if (blocks.length === 0) return { headline: null, bullets: [] };
-    return { headline: blocks[0], bullets: blocks.slice(1) };
-  }
-
-  return { headline: null, bullets: [] };
-}
-
 /** @returns {Record<"clamav"|"yara"|"ai", PhaseState>} */
 export function createInitialPhases() {
   return { clamav: "pending", yara: "pending", ai: "pending" };
@@ -180,35 +125,6 @@ export function deriveVerdict(result) {
   return "clean";
 }
 
-export function verdictCopy(verdict) {
-  switch (verdict) {
-    case "infected":
-      return {
-        heading: "Threat detected",
-        sub: "One or more engines flagged this file as malicious. Do not open it.",
-        color: "#c0261a",
-        bg: "#fdecec",
-        border: "#f3b4b0",
-      };
-    case "suspicious":
-      return {
-        heading: "Suspicious behaviors found",
-        sub: "Some patterns in this file are consistent with risky or unwanted software. Review the details before opening.",
-        color: "#8a5a00",
-        bg: "#fff5d6",
-        border: "#f2dd99",
-      };
-    default:
-      return {
-        heading: "No threats detected",
-        sub: "All scanning engines cleared this file. Stay cautious with unknown sources.",
-        color: "#0f7a3a",
-        bg: "#e9f8ef",
-        border: "#b8e7c9",
-      };
-  }
-}
-
 /**
  * Map error input (from hook or validation) to user-facing copy.
  */
@@ -280,15 +196,4 @@ export function errorCopy(err) {
     title: "Something went wrong",
     body: "We couldn't complete the scan. Please try again.",
   };
-}
-
-export function severityColor(severity) {
-  switch (severity) {
-    case "high":
-      return "#c0261a";
-    case "medium":
-      return "#8a5a00";
-    default:
-      return "#5c5c5c";
-  }
 }

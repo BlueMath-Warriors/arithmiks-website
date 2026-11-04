@@ -20,14 +20,16 @@ const ACCEPT = ATTACHMENT_EXTENSIONS.map((extension) => `.${extension}`).join(",
  * run for a picked file and on submit.
  *
  * @param {{
+ *   idPrefix: string;
  *   file: File | null;
  *   error: string;
  *   onPick: (file: File) => void;
  *   onClear: () => void;
  * }} props
  */
-const AttachField = ({ file, error, onPick, onClear }) => {
+const AttachField = ({ idPrefix, file, error, onPick, onClear }) => {
   const inputRef = useRef(null);
+  const inputId = `${idPrefix}-attachment`;
 
   const clear = () => {
     if (inputRef.current) inputRef.current.value = "";
@@ -38,11 +40,11 @@ const AttachField = ({ file, error, onPick, onClear }) => {
     <AttachWrap>
       <AttachInput
         ref={inputRef}
-        id="contact-attachment"
+        id={inputId}
         name="attachment"
         type="file"
         accept={ACCEPT}
-        aria-describedby="contact-attachment-hint contact-attachment-error"
+        aria-describedby={`${inputId}-hint ${inputId}-error`}
         onChange={(event) => {
           const picked = event.target.files && event.target.files[0];
           if (picked) onPick(picked);
@@ -60,7 +62,7 @@ const AttachField = ({ file, error, onPick, onClear }) => {
       ) : (
         <AttachRow>
           <AttachLabel
-            htmlFor="contact-attachment"
+            htmlFor={inputId}
             tabIndex={0}
             onKeyDown={(event) => {
               if (event.key === "Enter" || event.key === " ") {
@@ -71,13 +73,13 @@ const AttachField = ({ file, error, onPick, onClear }) => {
           >
             + Attach file
           </AttachLabel>
-          <AttachHint id="contact-attachment-hint">
+          <AttachHint id={`${inputId}-hint`}>
             Optional · PDF, DOC, DOCX or PPT, up to {ATTACHMENT_MAX_BYTES / MEGABYTE} MB
           </AttachHint>
         </AttachRow>
       )}
       {error && (
-        <ErrorMessage id="contact-attachment-error" role="alert">{`⚠ ${error}`}</ErrorMessage>
+        <ErrorMessage id={`${inputId}-error`} role="alert">{`⚠ ${error}`}</ErrorMessage>
       )}
     </AttachWrap>
   );

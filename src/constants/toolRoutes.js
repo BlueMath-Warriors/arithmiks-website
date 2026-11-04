@@ -8,10 +8,6 @@ export const TOOL_ROUTES = [
     slug: "virus-scanner",
     status: "live",
     label: "Virus Scanner",
-    tagline: "Free online file virus and malware scanner",
-    headline: "Free Online Virus Scanner",
-    intro:
-      "Scan any file for viruses and malware with ClamAV signatures, YARA behavioral rules, and AI-assisted analysis. Files are processed in memory and deleted immediately after each scan.",
     seoTitle: "Free Online Virus Scanner - Scan Files for Malware | Arithmiks",
     seoDescription:
       "Free online virus scanner powered by ClamAV, YARA rules, and AI analysis. Upload any file up to 1 GB, get a detailed threat report in seconds. No signup, files deleted after scan.",
@@ -42,60 +38,63 @@ export const TOOL_ROUTES = [
       howToSupplies: ["A file you want to scan"],
       howToTools: ["A web browser"],
     },
+    // Shown on the page and published as FAQPage / HowTo structured data, so
+    // the two always match.
     faq: [
       {
         question: "Is this virus scanner free?",
-        answer:
-          "Yes. Every scan is free with no signup required. We run ClamAV signature scanning, YARA behavioral rules, and an AI analysis step on every upload.",
+        // The design copy promised unlimited scans; the API enforces an hourly limit (HTTP 429).
+        answer: "Yes. It’s free to use, with no signup.",
       },
       {
         question: "Is my file safe? What do you do with it?",
         answer:
-          "Your file is scanned in memory and deleted immediately after the report is returned. We do not store your file, share it with third parties, or retain a copy for training or analysis.",
+          "Your file is scanned in memory and deleted as soon as your report is ready. We never store it, share it with third parties or use it to train AI models.",
       },
       {
         question: "What file size and types are supported?",
         answer:
-          "Any file type is accepted. Maximum upload size is 1 GB. Common targets include executables (.exe, .dll), scripts, Office documents, PDFs, and archives (.zip, .rar, .7z).",
+          "Any file type, up to 1 GB. That includes documents, installers, archives, images and scripts.",
       },
       {
         question: "How does the scanner detect threats?",
         answer:
-          "We combine three detection layers: ClamAV checks known malware signatures, YARA rules match suspicious code patterns and behaviors, and an AI agent correlates findings to produce a final verdict with context.",
+          "Three layers work together. ClamAV checks known malware signatures, YARA rules match suspicious code patterns, and an AI analyst weighs the findings into a final verdict.",
       },
       {
         question: "Can it scan inside archive files?",
         answer:
-          "Yes. Nested archives (zip inside zip, etc.) are unpacked and scanned to configurable depth. Matches inside archives show the full path so you can identify the exact member that triggered a rule.",
+          "Yes. ZIP, RAR, 7z and other common archives are unpacked and every file inside is scanned. Password-protected archives can’t be opened.",
       },
       {
         question: "Will this replace my antivirus?",
         answer:
-          "No. This is an on-demand file scanner for one-off checks — useful before opening a download, running an attachment, or sharing a file. For continuous protection, keep a real-time antivirus installed.",
+          "No. It gives a second opinion on a single file. Keep a real-time antivirus on your device for ongoing protection.",
       },
       {
-        question: "Why does my clean file take a few seconds?",
+        question: "Why does a clean file take a few seconds?",
         answer:
-          "Scans run three engines in sequence (signatures, heuristics, AI). Small files finish in under five seconds; larger archives can take up to a minute depending on depth and contents.",
+          "Every file goes through all three engines, even when the first finds nothing. That’s what makes a Clean verdict worth trusting.",
       },
       {
         question: "What happens if the scanner is busy?",
+        // The design copy described a queue; the API rejects scans when full (HTTP 503).
         answer:
-          "We cap concurrent scans to keep latency predictable. If the queue is full you will see a 'Scanner is busy' message — retry in a minute and your file will go through.",
+          "When too many scans are running at once you’ll see a “Scanner is busy” message. Wait a minute and try again.",
       },
     ],
     howToSteps: [
       {
         name: "Upload your file",
-        text: "Drag and drop a file onto the upload area, or click to pick one from your device. Files up to 1 GB are accepted.",
+        text: "Drag and drop a file onto the scanner, or click to choose one from your device. Files up to 1 GB are accepted.",
       },
       {
         name: "Wait for the scan to finish",
-        text: "ClamAV, YARA, and the AI agent run in sequence. Most scans complete in under 30 seconds.",
+        text: "ClamAV, YARA and the AI analyst run in sequence. Most scans finish in under 30 seconds.",
       },
       {
         name: "Review the threat report",
-        text: "See a clear verdict (clean, suspicious, or infected) plus a breakdown from each engine — signature hits, rule matches, and an AI summary.",
+        text: "See a clear verdict, clean, suspicious or infected, plus what each engine found and an AI summary.",
       },
     ],
   },

@@ -54,11 +54,7 @@ const DedicatedTeam = () => {
             </Caption>
             <MoreButton
               data-cta="Tell Us More"
-              onClick={() => {
-              document
-                .getElementById("contact")
-                ?.scrollIntoView({ behavior: "smooth" });
-            }}>
+              data-book="">
               Tell Us More <ArrowRight />
             </MoreButton>
           </TextContainer>
