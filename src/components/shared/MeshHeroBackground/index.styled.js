@@ -1,11 +1,11 @@
 import styled, { keyframes } from "styled-components";
 
-const floatA = keyframes`
+export const floatA = keyframes`
   0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
   50% { transform: translate3d(3%, -4%, 0) scale(1.06); }
 `;
 
-const floatB = keyframes`
+export const floatB = keyframes`
   0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
   50% { transform: translate3d(-4%, 3%, 0) scale(1.05); }
 `;
