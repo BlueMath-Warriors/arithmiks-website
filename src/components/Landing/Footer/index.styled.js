@@ -20,15 +20,19 @@ export const Shell = styled.div`
 
 export const ServiceMap = styled.div`
   display: grid;
-  grid-template-columns: repeat(4, max-content);
+  grid-template-columns: repeat(3, max-content);
   justify-content: space-between;
   gap: 40px 34px;
-  padding: 0 0 46px;
+  padding: 0 0 clamp(52px, 4.6vw, 88px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.13);
 
   @media (max-width: 1100px) {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     justify-content: stretch;
+  }
+
+  @media (max-width: 640px) {
+    grid-template-columns: 1fr;
   }
 `;
 

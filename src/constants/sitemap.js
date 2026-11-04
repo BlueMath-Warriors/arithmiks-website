@@ -1,4 +1,4 @@
-import { SERVICE_NAV_GROUPS } from "./serviceNavGroups";
+import { SERVICE_NAV_GROUPS, UNLISTED_SERVICES } from "./serviceNavGroups";
 
 /**
  * Sitemap page content. A link is one of:
@@ -18,7 +18,6 @@ const SERVICE_BLOCK_COLUMNS = {
   "ai-engineering-data": 0,
   "software-development": 0,
   solutions: 0,
-  "product-engineering": 1,
 };
 
 const serviceBlocks = SERVICE_NAV_GROUPS.map((category, index) => {
@@ -36,8 +35,18 @@ const serviceBlocks = SERVICE_NAV_GROUPS.map((category, index) => {
 
 export const BLOG_BLOCK_ID = "blog";
 
+// Live service pages the nav no longer lists, so they stay one click from here.
+const moreServicesBlock = {
+  id: "services-more",
+  title: "More services",
+  to: SERVICES_INDEX_PATH,
+  column: 1,
+  links: UNLISTED_SERVICES.map((svc) => ({ label: svc.label, to: svc.url })),
+};
+
 export const SITEMAP_BLOCKS = [
   ...serviceBlocks,
+  moreServicesBlock,
   {
     id: "products",
     title: "Our products",

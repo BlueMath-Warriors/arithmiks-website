@@ -1,5 +1,5 @@
 import React from "react";
-import { SERVICE_NAV_GROUPS } from "../../../constants/serviceNavGroups";
+import { getServiceBySlug, servicePath } from "../../../constants/serviceRoutes";
 import { ChipRow, Chip, ChipLabel, ChipArrow } from "./index.styled";
 
 const FEATURED_SERVICE_SLUGS = [
@@ -11,9 +11,11 @@ const FEATURED_SERVICE_SLUGS = [
 
 export const FEATURED_SERVICE_COUNT = FEATURED_SERVICE_SLUGS.length;
 
-const featuredServices = FEATURED_SERVICE_SLUGS.map((slug) =>
-  SERVICE_NAV_GROUPS.flatMap((category) => category.items).find((service) => service.slug === slug)
-).filter(Boolean);
+// Resolved from the routes rather than the nav: two of these are live pages
+// the V2 nav no longer lists, but the hero still features them.
+const featuredServices = FEATURED_SERVICE_SLUGS.map(getServiceBySlug)
+  .filter(Boolean)
+  .map((route) => ({ slug: route.slug, label: route.label, url: servicePath(route.slug) }));
 
 /**
  * Direct links to the hero's best-selling AI services.

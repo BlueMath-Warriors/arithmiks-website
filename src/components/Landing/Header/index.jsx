@@ -77,7 +77,6 @@ const SPOTLIGHT_SLUG_BY_CATEGORY = {
   "ai-engineering-data": "go",
   "software-development": "easybar",
   solutions: "swerv",
-  "product-engineering": "sbaloans",
 };
 
 const spotlightForCategory = (categorySlug) => {
