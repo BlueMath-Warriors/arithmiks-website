@@ -5,7 +5,7 @@
  * title outranks a mid-title match, which outranks a category match, which
  * outranks a description match.
  */
-import { SERVICE_NAV_GROUPS } from "./serviceNavGroups";
+import { SERVICE_NAV_GROUPS, UNLISTED_SERVICES } from "./serviceNavGroups";
 import { PRODUCTS } from "./products";
 import { caseStudies } from "../components/Landing/Case-Study/caseStudies.js";
 
@@ -56,7 +56,16 @@ export const buildSearchIndex = () => {
       url: svc.hasPage ? svc.url : "#",
       img: null,
     })),
-  ]);
+  ]).concat(
+    UNLISTED_SERVICES.map((svc) => ({
+      title: svc.label,
+      type: "Service",
+      cat: "More services",
+      desc: "One of our specialist services.",
+      url: svc.url,
+      img: null,
+    }))
+  );
 
   const productItems = PRODUCTS.map((p) => ({
     title: p.name,

@@ -115,6 +115,11 @@ export const SearchBox = styled.input`
   border-radius: 8px;
   outline: none;
 
+  /* Same iOS no-zoom rule as the form fields. */
+  @media (max-width: 900px) {
+    font-size: 16px;
+  }
+
   &:focus {
     border-color: ${colors.primary};
   }

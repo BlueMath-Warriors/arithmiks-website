@@ -51,6 +51,12 @@ export const Field = styled.label`
 const fieldText = `
   font-size: clamp(14.5px, 0.93vw, 15.5px);
   color: ${colors.text};
+
+  /* On small screens the design forces 16px on every input; below that size
+     iOS Safari zooms the page in when a field is focused. */
+  @media (max-width: 900px) {
+    font-size: 16px;
+  }
 `;
 
 export const fieldBox = ({ $invalid }) => `

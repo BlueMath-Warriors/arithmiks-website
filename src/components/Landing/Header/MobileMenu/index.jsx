@@ -20,7 +20,6 @@ import {
   Nav,
   AccButton,
   TopLink,
-  Chevron,
   PlainArrow,
   AccPanel,
   ItemLink,
@@ -29,6 +28,8 @@ import {
   CtaLink,
 } from "./index.styled";
 import { LOGO_MARK_SRC } from "../../../../constants/brand";
+import AccordionChevron from "./AccordionChevron";
+import ServiceGroups from "./ServiceGroups";
 
 const COMPANY_LINKS = [
   { label: "About", to: "/about" },
@@ -37,23 +38,6 @@ const COMPANY_LINKS = [
   { label: "Careers", to: "/careers" },
   { label: "Contact", to: "/contact" },
 ];
-
-const AccordionChevron = ({ open }) => (
-  <Chevron
-    $open={open}
-    viewBox="0 0 16 16"
-    width="15"
-    height="15"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="1.9"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    aria-hidden="true"
-  >
-    <path d="m4 6 4 4 4-4" />
-  </Chevron>
-);
 
 // Full-screen takeover, matching the design's own [data-menu] — a separate
 // layer with its own header row, not a panel hung off the main Headerr.
@@ -168,16 +152,7 @@ const MobileMenu = ({ onClose }) => {
               Services <AccordionChevron open={openAccordion === "services"} />
             </AccButton>
             <AccPanel $open={openAccordion === "services"}>
-              {SERVICE_NAV_GROUPS.map((category) => (
-                <ItemLink
-                  key={category.slug}
-                  to={category.hasPage ? category.url : "#"}
-                  onClick={onClose}
-                >
-                  <span>{category.title}</span>
-                  <PlainArrow aria-hidden="true">→</PlainArrow>
-                </ItemLink>
-              ))}
+              <ServiceGroups groups={SERVICE_NAV_GROUPS} onNavigate={onClose} />
               <AllLink to="/services" onClick={onClose}>
                 All services <ArrowGlyph aria-hidden="true">→</ArrowGlyph>
               </AllLink>
@@ -206,6 +181,10 @@ const MobileMenu = ({ onClose }) => {
 
             <TopLink to="/case-studies" onClick={onClose}>
               Case Studies <PlainArrow aria-hidden="true">→</PlainArrow>
+            </TopLink>
+
+            <TopLink to="/tools" onClick={onClose}>
+              Tools <PlainArrow aria-hidden="true">→</PlainArrow>
             </TopLink>
 
             <AccButton

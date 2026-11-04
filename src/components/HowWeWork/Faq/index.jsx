@@ -54,7 +54,7 @@ const Faq = () => {
             <SectionTitle id="faq-h">
               Things people ask before <GradientText>the first call.</GradientText>
             </SectionTitle>
-            <AskLink to="/contact">
+            <AskLink to="/contact" data-book="">
               Ask something else <ArrowGlyph aria-hidden="true">→</ArrowGlyph>
             </AskLink>
           </Aside>

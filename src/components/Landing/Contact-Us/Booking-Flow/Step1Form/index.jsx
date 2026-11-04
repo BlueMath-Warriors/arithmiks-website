@@ -25,6 +25,7 @@ const FieldError = ({ id, message }) =>
  *
  * @param {Object} props
  * @param {"h1" | "h2"} props.headingAs
+ * @param {string} props.idPrefix Keeps element ids unique when the form is on the page twice.
  * @param {{ name: string; company: string; email: string; phone: string; role: string; brief: string }} props.values
  * @param {(field: string, value: string) => void} props.onChange
  * @param {string} props.countryIso
@@ -40,6 +41,7 @@ const FieldError = ({ id, message }) =>
  */
 const Step1Form = ({
   headingAs = "h2",
+  idPrefix = "contact",
   values,
   onChange,
   countryIso,
@@ -67,7 +69,7 @@ const Step1Form = ({
 
   return (
     <div>
-      <Heading as={headingAs} id="contact-h">
+      <Heading as={headingAs} id={`${idPrefix}-h`}>
         Describe your <GradientText>idea</GradientText>
       </Heading>
       <Intro>
@@ -89,13 +91,13 @@ const Step1Form = ({
               type="text"
               autoComplete="name"
               aria-label="Full name"
-              aria-describedby="contact-error-name"
+              aria-describedby={`${idPrefix}-error-name`}
               aria-invalid={Boolean(errors.name)}
               $invalid={Boolean(errors.name)}
               placeholder="Full name *"
               {...bind("name")}
             />
-            <FieldError id="contact-error-name" message={errors.name} />
+            <FieldError id={`${idPrefix}-error-name`} message={errors.name} />
           </Field>
           <Field>
             <TextInput
@@ -115,13 +117,13 @@ const Step1Form = ({
               type="email"
               autoComplete="email"
               aria-label="Work email"
-              aria-describedby="contact-error-email"
+              aria-describedby={`${idPrefix}-error-email`}
               aria-invalid={Boolean(errors.email)}
               $invalid={Boolean(errors.email)}
               placeholder="Work email *"
               {...bind("email")}
             />
-            <FieldError id="contact-error-email" message={errors.email} />
+            <FieldError id={`${idPrefix}-error-email`} message={errors.email} />
           </Field>
           <PhoneField>
             <DialCodeSelect isoCode={countryIso} onChange={onCountryChange} />
@@ -145,7 +147,13 @@ const Step1Form = ({
             {...bind("brief")}
           />
         </Field>
-        <AttachField file={file} error={fileError} onPick={onPickFile} onClear={onClearFile} />
+        <AttachField
+          idPrefix={idPrefix}
+          file={file}
+          error={fileError}
+          onPick={onPickFile}
+          onClear={onClearFile}
+        />
         {submitError && <ErrorMessage role="alert">{`⚠ ${submitError}`}</ErrorMessage>}
         <SubmitButton type="submit" disabled={submitting}>
           {submitting ? (

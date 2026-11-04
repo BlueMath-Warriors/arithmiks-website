@@ -64,11 +64,7 @@ const DediacatedPage = () => {
         </Caption>
         <MoreButton
           data-cta="Tell us More"
-          onClick={() => {
-            document
-              .getElementById("contact")
-              ?.scrollIntoView({ behavior: "smooth" });
-          }}
+          data-book=""
         >
           Tell us More <ArrowRight />
         </MoreButton>
