@@ -44,7 +44,7 @@ const ContactCTA = ({ background, hideWatermarkOnNarrow = false }) => (
             </Heading>
             <Intro>Describe your idea and our team will get back to you within 24 hours.</Intro>
             <ActionRow>
-              <CtaLink to="/contact">
+              <CtaLink to="/contact" data-book="">
                 Let&apos;s discuss your idea <Glyph aria-hidden="true">→</Glyph>
               </CtaLink>
             </ActionRow>

@@ -17,6 +17,21 @@ export const Shell = styled.div`
   width: 100%;
   margin: 0 auto;
   padding: 0 ${shellPadding};
+
+  /* Service pages use their band gutters. */
+  ${({ $band }) =>
+    $band &&
+    `
+    @media (max-width: 960px) {
+      padding-left: 24px;
+      padding-right: 24px;
+    }
+
+    @media (max-width: 640px) {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+  `}
 `;
 
 export const Head = styled.div`
@@ -29,7 +44,7 @@ export const Eyebrow = styled.div`
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: ${colors.primary};
-  margin-bottom: 20px;
+  margin-bottom: ${({ $band }) => ($band ? "22px" : "20px")};
 `;
 
 export const HeadRow = styled.div`
@@ -44,16 +59,19 @@ export const HeadRow = styled.div`
   }
 `;
 
+// Service pages set this title in their band style: lighter, with only the
+// gradient run at full weight.
 export const Title = styled.h2`
   flex: 0 1 auto;
   margin: 0;
-  font-size: clamp(28px, 3.23vw, 50px);
-  font-weight: 750;
+  font-size: ${({ $band }) => ($band ? "clamp(30px, 3.6vw, 52px)" : "clamp(28px, 3.23vw, 50px)")};
+  font-weight: ${({ $band }) => ($band ? 550 : 750)};
   letter-spacing: -0.02em;
   line-height: 1.1;
   color: ${colors.text};
 
   span {
+    font-weight: 750;
     background: linear-gradient(100deg, #1355ff 0%, #a96fc8 62%, #ec4a9e 100%);
     -webkit-background-clip: text;
     background-clip: text;
@@ -104,12 +122,13 @@ export const Grid = styled.div`
   }
 `;
 
+// Service pages keep the 5:4 screenshot on phones.
 export const WorkCard = styled(CaseStudyCard)`
   height: 100%;
 
   @media (max-width: 768px) {
     img {
-      aspect-ratio: 4 / 3;
+      aspect-ratio: ${({ $band }) => ($band ? "5 / 4" : "4 / 3")};
     }
   }
 `;

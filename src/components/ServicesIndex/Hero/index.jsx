@@ -27,6 +27,9 @@ import {
 } from "./index.styled";
 import { useCountUp } from "../../../hooks/useCountUp";
 
+const COUNT_WORDS = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"];
+const countWord = (n) => COUNT_WORDS[n] || String(n);
+
 /**
  * @param {{ groups: { slug: string, number: string, title: string, items: unknown[] }[];
  *           capabilityCount: number }} props
@@ -73,7 +76,7 @@ const Hero = ({ groups, capabilityCount }) => {
               <CountLabel>
                 capabilities,
                 <br />
-                four focus areas
+                {countWord(groups.length)} focus areas
               </CountLabel>
             </CountRow>
 

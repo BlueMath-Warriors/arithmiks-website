@@ -30,13 +30,6 @@ if (typeof window !== "undefined") {
 const About = () => {
   const sectionRef = useRef(null);
 
-  const scrollToContact = () => {
-    const contactForm = document.getElementById("contact");
-    if (contactForm) {
-      contactForm.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
   useEffect(() => {
     if (typeof window === "undefined" || !sectionRef.current) return;
     if (prefersReducedMotion()) return;
@@ -108,8 +101,8 @@ const About = () => {
         <CardBtn
           type="button"
           data-cta="Learn More"
-          onClick={scrollToContact}
-          aria-label="Learn more about Arithmiks - scroll to contact form"
+          data-book=""
+          aria-label="Learn more about Arithmiks - open the contact form"
         >
           Learn More
           <ArrowRight aria-hidden="true" />

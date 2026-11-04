@@ -57,6 +57,25 @@ export const Shell = styled.div`
   }
 `;
 
+// Side gutters of the homepage-family designs' [data-shell] (Homepage V2,
+// service and tool pages) — narrower steps than Shell above.
+export const designShellGutters = `
+  @media (max-width: 900px) {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  @media (max-width: 640px) {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  @media (max-width: 420px) {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+`;
+
 // Vertical rhythm shared by every full-width band in the design ([data-band]).
 export const bandPadding = `
   padding-top: clamp(64px, 5.9vw, 109px);

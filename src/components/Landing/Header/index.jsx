@@ -77,7 +77,6 @@ const SPOTLIGHT_SLUG_BY_CATEGORY = {
   "ai-engineering-data": "go",
   "software-development": "easybar",
   solutions: "swerv",
-  "product-engineering": "sbaloans",
 };
 
 const spotlightForCategory = (categorySlug) => {
@@ -238,6 +237,10 @@ const Header = ({ white, fixed_bar, lightHero, transparentWhile }) => {
 
             <NavLink to="/case-studies" $white={white} $onLight={onLight}>
               Case Studies
+            </NavLink>
+
+            <NavLink to="/tools" $white={white} $onLight={onLight}>
+              Tools
             </NavLink>
 
             <span
