@@ -81,7 +81,7 @@ export const SERVICE_CATEGORIES = [
         relatedCaseStudy: "go",
       }),
       item("Application Modernisation", {
-        slug: "application-modernization",
+        slug: "mobile-app-development",
         teaser: "Move aging apps onto a modern stack.",
         desc: "Migrating legacy applications to modern frameworks and cloud infrastructure in stages, so the business keeps running throughout.",
         tags: ["Stack migration", "Cloud move", "Staged rollout"],

@@ -72,8 +72,9 @@ export const SERVICE_NAV_GROUPS = [
       item("UI/UX Design", "ui-ux-design"),
       // The live route is /services/devops, not the label's own slug.
       item("DevOps Services", "devops"),
-      // British spelling in the label, American in the existing live slug.
-      item("Application Modernisation", "application-modernization"),
+      // The entry opens the Mobile App Development page (a product decision),
+      // so the Application Modernization page is listed only as an unlisted service.
+      item("Application Modernisation", "mobile-app-development"),
     ]
   ),
   category(
