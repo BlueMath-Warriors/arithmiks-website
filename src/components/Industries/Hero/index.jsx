@@ -51,7 +51,7 @@ const Hero = ({ onSelectIndustry }) => (
             constraints, and each one is measured by what it changed.
           </Intro>
           <Actions>
-            <PrimaryAction as={Link} to="/contact">
+            <PrimaryAction as={Link} to="/contact" data-book="">
               Find my AI solution <span aria-hidden="true">→</span>
             </PrimaryAction>
             <SecondaryAction href="#industries">

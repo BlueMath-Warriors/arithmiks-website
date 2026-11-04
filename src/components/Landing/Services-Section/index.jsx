@@ -94,11 +94,7 @@ const Services = ({ landing = false }) => {
           <ViewButton
             type="button"
             data-cta="Reach us"
-            onClick={() => {
-              document
-                .getElementById("contact")
-                ?.scrollIntoView({ behavior: "smooth" });
-            }}>
+            data-book="">
             Reach us
             <ArrowCricleRight />
           </ViewButton>
