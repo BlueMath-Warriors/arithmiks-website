@@ -85,12 +85,32 @@ export const SERVICE_ROUTES = [
       "AI MVP development: scope, build, and launch an AI-powered minimum viable product quickly, with senior engineers and staged delivery.",
   },
   {
+    slug: "ai-squad",
+    label: "AI Squad",
+    headline: "Your own AI team, for one business goal",
+    intro:
+      "An AI Squad brings business and engineering together to decide what to build, measure its value, and take it to a working, production-ready system.",
+    seoTitle: "AI Squad - Arithmiks",
+    seoDescription:
+      "A dedicated AI Squad of an AI architect, AI-native engineers and a designer, focused on one business goal with KPIs set up front and a production-ready handoff.",
+  },
+  {
+    slug: "one-problem-automation",
+    label: "One-Problem Automation",
+    headline: "Automate one problem. Start with clear value.",
+    intro:
+      "One-Problem Automation finds the one high-value workflow worth automating and improves it with AI automation, delivered for a flat fee in a week.",
+    seoTitle: "One-Problem Automation - Arithmiks",
+    seoDescription:
+      "One-Problem Automation: Arithmiks finds one high-value manual workflow, automates it with n8n, Zapier or custom automation, and measures the time it gives back.",
+  },
+  {
     slug: "ai-agents-workflows",
-    label: "AI Agents & Workflows",
+    label: "AI Agents, Workflows & Automations",
     headline: "AI agents and workflows that take real work off your team",
     intro:
       "We design agents and multi-step workflows that connect to your tools and data, with guardrails, human review where it matters, and monitoring once they are live.",
-    seoTitle: "AI Agents & Workflows - Arithmiks",
+    seoTitle: "AI Agents, Workflows & Automations - Arithmiks",
     seoDescription:
       "AI agent and workflow development: tool-using agents, orchestration, guardrails, and monitoring integrated with your existing systems.",
   },
