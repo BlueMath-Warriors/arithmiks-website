@@ -14,9 +14,13 @@ const base = css`
   color: ${linkGrey};
   transition: color 0.3s ease;
 
-  /* The site colours spans globally; the label follows the link instead. Only
-     the direct child, so the "AI agent?" prefix inside keeps its own tone. */
-  > span {
+  /* The site sets every element's colour globally; the label and the icon
+     follow the link instead, hover included. The icon's paths need it too,
+     since currentColor resolves on each path. Only the direct-child span, so
+     the "AI agent?" prefix inside keeps its own tone. */
+  > span,
+  svg,
+  svg * {
     color: inherit;
   }
 
