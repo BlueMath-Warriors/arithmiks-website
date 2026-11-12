@@ -4,14 +4,19 @@ import { colors } from "../../../styles/tokens";
 const EASE = "cubic-bezier(.16,1,.3,1)";
 const RULE = "rgba(19, 85, 255, 0.1)";
 
+// On a white band the design keeps only this glow, lower and fainter.
 export const GlowLeft = styled.div`
   position: absolute;
   left: 10%;
-  bottom: 24%;
+  bottom: ${({ $white }) => ($white ? "10%" : "24%")};
   width: min(560px, 46vw);
   height: min(420px, 34vw);
   border-radius: 50%;
-  background: radial-gradient(closest-side, rgba(19, 85, 255, 0.11), rgba(19, 85, 255, 0));
+  background: radial-gradient(
+    closest-side,
+    rgba(19, 85, 255, ${({ $white }) => ($white ? 0.09 : 0.11)}),
+    rgba(19, 85, 255, 0)
+  );
   filter: blur(14px);
   pointer-events: none;
 `;
@@ -161,6 +166,17 @@ export const Card = styled.article`
     }
   }
 
+  /* With an odd number of cards, the last fills the paired row's width. */
+  ${({ $oddCount }) =>
+    $oddCount &&
+    `
+    @media (min-width: 601px) and (max-width: 1000px) {
+      &:last-child {
+        grid-column: 1 / -1;
+      }
+    }
+  `}
+
   @media (max-width: 600px) {
     border-right: 0;
     border-bottom: 1px solid ${RULE};
@@ -183,13 +199,23 @@ export const Card = styled.article`
 export const Grid = styled.div`
   position: relative;
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  border: 1px solid rgba(255, 255, 255, 0.9);
+  grid-template-columns: repeat(${({ $columns }) => $columns}, minmax(0, 1fr));
   border-radius: 24px;
-  background: linear-gradient(160deg, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.5));
-  backdrop-filter: blur(22px) saturate(160%);
-  -webkit-backdrop-filter: blur(22px) saturate(160%);
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.9) inset;
+
+  /* Frosted glass over the grey band; a plain ruled frame on a white one. */
+  ${({ $white }) =>
+    $white
+      ? `
+    border: 1px solid ${colors.border};
+    background: linear-gradient(160deg, rgba(245, 247, 251, 0.9), rgba(255, 255, 255, 0.6));
+  `
+      : `
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    background: linear-gradient(160deg, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.5));
+    backdrop-filter: blur(22px) saturate(160%);
+    -webkit-backdrop-filter: blur(22px) saturate(160%);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.9) inset;
+  `}
 
   /* Siblings of the hovered card step their art back. */
   &:hover ${Card}:not(:hover) ${Art} {
@@ -214,12 +240,13 @@ export const Label = styled.span`
   color: #8a93a6;
 `;
 
+// `$large`: the three-card designs set the card type a step up.
 export const Text = styled.div`
   position: relative;
 
   h3 {
     margin: 0;
-    font-size: clamp(19px, 1.5vw, 23px);
+    font-size: ${({ $large }) => ($large ? "clamp(20px, 1.6vw, 24px)" : "clamp(19px, 1.5vw, 23px)")};
     font-weight: 700;
     letter-spacing: -0.015em;
     line-height: 1.25;
@@ -229,8 +256,8 @@ export const Text = styled.div`
 `;
 
 export const Paragraph = styled.p`
-  margin: 14px 0 0;
-  font-size: 14.5px;
+  margin: ${({ $white }) => ($white ? "12px 0 0" : "14px 0 0")};
+  font-size: ${({ $large }) => ($large ? "15px" : "14.5px")};
   line-height: 1.6;
   color: ${colors.textMuted};
   text-wrap: pretty;

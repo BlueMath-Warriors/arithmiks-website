@@ -1,6 +1,7 @@
 import React from "react";
 import MeshHeroBackground from "../../shared/MeshHeroBackground";
 import { BandShell, EyebrowBar, PrimaryButton } from "../../shared/Band/index.styled";
+import MarkdownLink from "../MarkdownLink";
 import {
   Section,
   Art,
@@ -12,6 +13,7 @@ import {
   HeadingAccent,
   Intro,
   CtaRow,
+  MarkdownRow,
   SecondaryButton,
 } from "./index.styled";
 
@@ -41,7 +43,17 @@ export const HERO_ART_SIZES = "(max-width: 700px) 360px, min(700px, 44vw)";
  *   stackCtasOnMobile?: boolean,
  *   introMaxWidth?: string,
  *   ctaGap?: string,
+ *   markdown?: { href: string, filename: string },
+ *   ctaStackWidth?: number,
+ *   cornerArtOnPhone?: boolean,
+ *   fillMeshOnPhone?: boolean,
  * }} props
+ *   markdown: the page's Markdown rendition. The chapter bar shows it on wide
+ *   screens; this is the phone placement;
+ *   ctaStackWidth: the viewport width (px) below which stacked CTAs stack;
+ *   cornerArtOnPhone: place the art small in the top-right corner on phones;
+ *   fillMeshOnPhone: stretch the background glows over the hero on phones (the
+ *   AI service designs keep their desktop placement instead).
  */
 const Hero = ({
   eyebrow,
@@ -53,10 +65,14 @@ const Hero = ({
   stackCtasOnMobile = false,
   introMaxWidth,
   ctaGap,
+  markdown,
+  ctaStackWidth = 700,
+  cornerArtOnPhone = false,
+  fillMeshOnPhone = true,
 }) => (
   <Section id="top">
-    <MeshHeroBackground fillOnPhone />
-    <Art aria-hidden="true">
+    <MeshHeroBackground fillOnPhone={fillMeshOnPhone} />
+    <Art aria-hidden="true" $cornerOnPhone={cornerArtOnPhone}>
       <img
         src={`/services/hero/${art}-700.webp`}
         srcSet={heroArtSrcSet(art)}
@@ -86,7 +102,7 @@ const Hero = ({
               {paragraph}
             </Intro>
           ))}
-          <CtaRow $stackOnMobile={stackCtasOnMobile} $gap={ctaGap}>
+          <CtaRow $stackOnMobile={stackCtasOnMobile} $stackWidth={ctaStackWidth} $gap={ctaGap}>
             <PrimaryButton href={primaryCta.href}>
               {primaryCta.label} <span aria-hidden="true">{primaryCta.glyph}</span>
             </PrimaryButton>
@@ -97,6 +113,12 @@ const Hero = ({
         </Copy>
       </BandShell>
     </Body>
+
+    {markdown && (
+      <MarkdownRow>
+        <MarkdownLink href={markdown.href} filename={markdown.filename} variant="mobile" />
+      </MarkdownRow>
+    )}
   </Section>
 );
 
