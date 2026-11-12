@@ -56,7 +56,9 @@ export const SERVICE_NAV_GROUPS = [
       item("AI MVP Development"),
       item("AI Squad"),
       item("One-Problem Automation"),
-      item("AI Agents, Workflows & Automations"),
+      // The label slugifies to "ai-agents-workflows-automations"; the live page
+      // keeps its original route.
+      item("AI Agents, Workflows & Automations", "ai-agents-workflows"),
     ]
   ),
   category(

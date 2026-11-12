@@ -108,25 +108,23 @@ export const SERVICE_CATEGORIES = [
         tags: ["Working prototype", "Live AI MVP", "Adoption plan"],
         relatedCaseStudy: "quanta",
       }),
-      // DRAFT copy — pending review
       item("AI Squad", {
-        teaser: "A senior AI team, embedded with yours.",
-        desc: "A dedicated squad of AI engineers who join your roadmap, ship alongside your team, and leave the systems and know-how behind when they hand over.",
-        tags: ["Dedicated engineers", "Shared roadmap", "Knowledge transfer"],
+        teaser: "Your own AI team, for one business goal.",
+        desc: "A small team with a defined purpose, market-fit criteria and system KPIs. It brings your organisation’s talent and our engineering together on one AI project, builds the system and reviews the outcomes once it’s live.",
+        tags: ["AI Squad formation", "Functional AI system", "System handoff documentation"],
         relatedCaseStudy: "go",
       }),
-      // DRAFT copy — pending review
       item("One-Problem Automation", {
-        teaser: "One costly manual task, automated end to end.",
-        desc: "We pick the single repetitive task that costs your team the most hours, automate it end to end, and measure the time it gives back before taking on the next.",
-        tags: ["Process mapping", "Automation build", "Time saved"],
+        teaser: "Automate one problem. Start with clear value.",
+        desc: "Teams lose hours to repetitive work without noticing. One-Problem Automation finds one high-value process and improves it with AI automation.",
+        tags: ["Automation Blueprint", "Working AI-automated workflow", "Team Handoff"],
         relatedCaseStudy: "sbaloans",
       }),
-      // DRAFT copy — pending review
       item("AI Agents, Workflows & Automations", {
-        teaser: "Agents that do real work inside your systems.",
-        desc: "Agents and multi-step workflows that plan, call your tools, and complete work inside the systems you already run, with human approval where it matters.",
-        tags: ["Tool calling", "Multi-step flows", "Human approval"],
+        slug: "ai-agents-workflows",
+        teaser: "Automate the work that slows your team down.",
+        desc: "Arithmiks builds AI agents and automated workflows around your business process, with n8n, Zapier or custom automation.",
+        tags: ["Pilot agent", "Agentic Hub", "Monthly reports"],
         relatedCaseStudy: "go",
       }),
     ],
