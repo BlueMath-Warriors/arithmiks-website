@@ -13,12 +13,7 @@ export const Head = styled.div`
   margin-bottom: 48px;
 `;
 
-export const Cards = styled.div`
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 1px;
-  background: ${colors.border};
-
+const defaultColumns = `
   @media (max-width: 1000px) {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -26,6 +21,27 @@ export const Cards = styled.div`
   @media (max-width: 560px) {
     grid-template-columns: 1fr;
   }
+`;
+
+// The AI service designs hold four columns to 1100px, pair the cards only
+// down to 901px, and stack them below that.
+const tabletStackColumns = `
+  @media (min-width: 901px) and (max-width: 1100px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+export const Cards = styled.div`
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1px;
+  background: ${colors.border};
+
+  ${({ $tabletStack }) => ($tabletStack ? tabletStackColumns : defaultColumns)}
 `;
 
 export const Card = styled.div`
@@ -84,6 +100,17 @@ export const Name = styled.h3`
   @media (max-width: 600px) {
     margin: 0;
   }
+
+  /* With four columns held to 1100px, the names stay on one line by easing
+     the type down rather than wrapping. */
+  ${({ $tabletStack }) =>
+    $tabletStack &&
+    `
+    @media (min-width: 1101px) {
+      white-space: nowrap;
+      font-size: clamp(16px, 1.35vw, 22px);
+    }
+  `}
 `;
 
 export const Description = styled.p`

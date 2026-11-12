@@ -1,5 +1,6 @@
 import React from "react";
 import { BandShell } from "../../shared/Band/index.styled";
+import MarkdownLink from "../MarkdownLink";
 import { Bar, Links, ChapterLink } from "./index.styled";
 
 /**
@@ -7,12 +8,15 @@ import { Bar, Links, ChapterLink } from "./index.styled";
  * link for whichever section is being read is highlighted.
  *
  * @param {{ chapters: { id: string, label: string }[]; activeId: string; stuck: boolean;
- *           barRef: React.Ref<HTMLElement> }} props
+ *           barRef: React.Ref<HTMLElement>,
+ *           markdown?: { href: string, filename: string } }} props
+ *   markdown: when the page serves a Markdown rendition, the link to it sits at
+ *   the end of the bar. The hero carries the phone-sized variant.
  */
-const ChapterNav = ({ chapters, activeId, stuck, barRef }) => (
+const ChapterNav = ({ chapters, activeId, stuck, barRef, markdown }) => (
   <Bar ref={barRef} $stuck={stuck} aria-label="On this page" data-chapter-bar="">
     <BandShell style={{ height: "100%" }}>
-      <Links>
+      <Links $bleed={Boolean(markdown)}>
         {chapters.map((chapter) => (
           <ChapterLink
             key={chapter.id}
@@ -23,6 +27,7 @@ const ChapterNav = ({ chapters, activeId, stuck, barRef }) => (
             {chapter.label}
           </ChapterLink>
         ))}
+        {markdown && <MarkdownLink href={markdown.href} filename={markdown.filename} />}
       </Links>
     </BandShell>
   </Bar>

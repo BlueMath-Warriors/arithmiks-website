@@ -5,7 +5,7 @@ import { bandPadding } from "../../shared/Band/index.styled";
 export const Section = styled.section`
   ${bandPadding}
   position: relative;
-  background: ${colors.surface};
+  background: ${({ $white }) => ($white ? "#fff" : colors.surface)};
   overflow: clip;
 `;
 
@@ -42,17 +42,27 @@ export const Head = styled.div`
   margin-bottom: clamp(34px, 4vw, 52px);
 `;
 
+// `$even` is the later designs' heading row: title and intro share the width
+// in equal columns instead of the intro holding a fixed 420px measure.
 export const HeadRow = styled.div`
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   gap: 24px 64px;
+
+  ${({ $even }) =>
+    $even &&
+    `
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px clamp(40px, 5vw, 96px);
+  `}
 `;
 
 export const HeadIntro = styled.p`
   flex: 0 1 420px;
-  max-width: 420px;
+  max-width: ${({ $even }) => ($even ? "none" : "420px")};
   font-size: 16px;
   line-height: 1.6;
   color: ${colors.textMuted};
@@ -154,7 +164,7 @@ export const LeadQuestion = styled.span`
 `;
 
 export const LeadText = styled.span`
-  max-width: 38ch;
+  max-width: ${({ $maxWidth }) => $maxWidth || "38ch"};
   font-size: 15.5px;
   line-height: 1.62;
   color: rgba(255, 255, 255, 0.86);
@@ -239,9 +249,11 @@ export const TileIcon = styled.span`
   background: #eaf0ff;
 `;
 
+// Rendered as an h3 where the design marks tiles up as headings; the margin is
+// spelled out so the heading's own default never applies.
 export const TileTitle = styled.span`
-  margin-top: 6px;
-  max-width: 26ch;
+  margin: 6px 0 0;
+  max-width: ${({ $full }) => ($full ? "none" : "26ch")};
   font-size: clamp(17px, 1.7vw, 20px);
   font-weight: 700;
   letter-spacing: -0.015em;
@@ -251,6 +263,7 @@ export const TileTitle = styled.span`
 `;
 
 export const TileText = styled.span`
+  margin: 0;
   font-size: 14.5px;
   line-height: 1.62;
   color: ${colors.textMuted};

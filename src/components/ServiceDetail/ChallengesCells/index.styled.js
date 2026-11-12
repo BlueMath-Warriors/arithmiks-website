@@ -17,19 +17,79 @@ export const Wash = styled.div`
 `;
 
 export const Head = styled.div`
-  max-width: 720px;
+  max-width: ${({ $maxWidth }) => $maxWidth || "720px"};
 `;
 
+/**
+ * `$stackOnPhone` applies the design's phone treatment for this band: one
+ * column divided by horizontal rules instead of the vertical cell borders,
+ * which read as a stray line down the right of a single-column stack. Opt-in,
+ * because the AI Discovery design — the first page to use this band — does not
+ * carry these rules.
+ */
 export const Stats = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(268px, 1fr));
   margin-top: clamp(40px, 4vw, 56px);
   border-top: 1px solid rgba(255, 255, 255, 0.2);
+
+  /* Some pages stack the statistics from tablet width, not just on phones. */
+  ${({ $stackOnTablet }) =>
+    $stackOnTablet &&
+    `
+    @media (max-width: 900px) {
+      grid-template-columns: 1fr;
+    }
+  `}
+
+  ${({ $stackOnPhone }) =>
+    $stackOnPhone &&
+    `
+    margin-top: 56px;
+
+    @media (max-width: 700px) {
+      grid-template-columns: minmax(0, 1fr);
+      margin-top: 40px;
+    }
+  `}
 `;
 
 export const Cell = styled.div`
   padding: 38px 34px 34px 24px;
   border-right: 1px solid rgba(255, 255, 255, 0.2);
+
+  ${({ $stackOnTablet }) =>
+    $stackOnTablet &&
+    `
+    @media (max-width: 900px) {
+      border-right: 0;
+      padding-left: 0;
+      padding-right: 0;
+    }
+  `}
+
+  /* The row ends at the band's edge, so its last cell needs no divider. */
+  ${({ $openLastCell }) =>
+    $openLastCell &&
+    `
+    &:last-child {
+      border-right: 0;
+    }
+  `}
+
+  ${({ $stackOnPhone }) =>
+    $stackOnPhone &&
+    `
+    @media (max-width: 700px) {
+      padding: 28px 0;
+      border-right: 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+
+      &:last-child {
+        border-bottom: 0;
+      }
+    }
+  `}
 `;
 
 export const Figure = styled.div`
@@ -43,15 +103,32 @@ export const Figure = styled.div`
   span {
     color: inherit;
   }
+
+  ${({ $stackOnPhone }) =>
+    $stackOnPhone &&
+    `
+    @media (max-width: 700px) {
+      font-size: 64px;
+    }
+  `}
 `;
 
 export const Claim = styled.p`
   margin-top: 22px;
-  max-width: 290px;
+  max-width: ${({ $maxWidth }) => $maxWidth || "290px"};
   font-size: 15.5px;
   line-height: 1.55;
   color: rgba(255, 255, 255, 0.88);
   text-wrap: pretty;
+
+  ${({ $stackOnPhone }) =>
+    $stackOnPhone &&
+    `
+    @media (max-width: 700px) {
+      max-width: none;
+      margin-top: 16px;
+    }
+  `}
 `;
 
 export const Source = styled.a`
@@ -75,4 +152,46 @@ export const Source = styled.a`
   &:hover {
     color: #fff;
   }
+
+  ${({ $stackOnPhone }) =>
+    $stackOnPhone &&
+    `
+    @media (max-width: 700px) {
+      margin-top: 14px;
+    }
+  `}
+`;
+
+/**
+ * The two closing paragraphs some pages set below the statistics: the question
+ * the numbers raise, then the answer the service gives. The second is set
+ * larger, as the design's emphasis.
+ */
+export const Closing = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px clamp(40px, 5vw, 96px);
+  margin-top: clamp(40px, 4vw, 64px);
+  padding-top: clamp(28px, 2.6vw, 40px);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+
+  @media (max-width: 700px) {
+    margin-top: 0;
+  }
+`;
+
+export const ClosingText = styled.p`
+  font-size: 15.5px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.78);
+  text-wrap: pretty;
+`;
+
+export const ClosingLead = styled.p`
+  font-size: clamp(17px, 1.4vw, 21px);
+  font-weight: 550;
+  letter-spacing: -0.012em;
+  line-height: 1.5;
+  color: #fff;
+  text-wrap: pretty;
 `;

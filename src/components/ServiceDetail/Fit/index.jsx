@@ -27,22 +27,29 @@ import {
  * @param {{
  *   eyebrow: string,
  *   title: import("../../shared/Band/HeadingText").HeadingPart[],
- *   intro: string,
- *   lead: { icon: string, label: string, question: string, text: string, cta: string },
+ *   intro?: string,
+ *   lead: { icon: string, label: string, question: string, text: string, cta: string,
+ *     href?: string, textMaxWidth?: string },
  *   tiles: object[],
+ *   sectionId?: string,
+ *   tileHeadings?: boolean,
  * }} props
+ *   intro: omitted where the design sets the title alone;
+ *   lead.href: where the CTA goes (the contact form unless set);
+ *   sectionId: the band's anchor, which the chapter bar links to;
+ *   tileHeadings: mark tile titles up as h3 and their text as paragraphs.
  */
-const Fit = ({ eyebrow, title, intro, lead, tiles }) => (
-  <Section id="fit" aria-labelledby="fit-h">
+const Fit = ({ eyebrow, title, intro, lead, tiles, sectionId = "fit", tileHeadings = false }) => (
+  <Section id={sectionId} aria-labelledby={`${sectionId}-h`}>
     <Glow aria-hidden="true" />
     <BandShell>
       <Head data-reveal="">
         <Eyebrow $gap="20px">{eyebrow}</Eyebrow>
         <HeadRow>
-          <Title id="fit-h" $balance>
+          <Title id={`${sectionId}-h`} $balance>
             <HeadingText parts={title} />
           </Title>
-          <HeadIntro>{intro}</HeadIntro>
+          {intro && <HeadIntro>{intro}</HeadIntro>}
         </HeadRow>
       </Head>
 
@@ -69,14 +76,14 @@ const Fit = ({ eyebrow, title, intro, lead, tiles }) => (
           </LeadTop>
           <LeadBody>
             <LeadQuestion>{lead.question}</LeadQuestion>
-            <LeadText>{lead.text}</LeadText>
-            <LeadCta href="#contact">
+            <LeadText $maxWidth={lead.textMaxWidth}>{lead.text}</LeadText>
+            <LeadCta href={lead.href || "#contact"}>
               {lead.cta} <span aria-hidden="true">→</span>
             </LeadCta>
           </LeadBody>
         </Lead>
         {tiles.map((tile) => (
-          <FitTile key={tile.n} tile={tile} />
+          <FitTile key={tile.n} tile={tile} asHeadings={tileHeadings} />
         ))}
       </Bento>
     </BandShell>

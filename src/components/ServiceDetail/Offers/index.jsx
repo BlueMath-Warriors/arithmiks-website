@@ -10,22 +10,28 @@ import { Section, TrackArea, Stage, Head, Deck, Rail, Dots, Dot } from "./index.
  * drives on wide screens, and a swipeable deck on narrow ones.
  *
  * @param {{ eyebrow: string, title: import("../../shared/Band/HeadingText").HeadingPart[],
- *   offers: import("./OfferCard").Offer[], tightOnlyWhenShort?: boolean,
- *   sideRowOnNarrow?: boolean }} props
+ *   offers: import("./OfferCard").Offer[], tightOnlyWhenShort?: boolean, tightOnDesktopOnly?: boolean,
+ *   sideRowOnNarrow?: boolean, stackOnPhone?: boolean, railMinHeight?: number }} props
  *   tightOnlyWhenShort: keep the roomier card spacing except on short desktop screens;
- *   sideRowOnNarrow: below 1000px, lay the stage icon, title and duration in a row.
+ *   tightOnDesktopOnly: tighten the pinned desktop rail but not the swipe deck;
+ *   sideRowOnNarrow: below 1000px, lay the stage icon, title and duration in a row;
+ *   stackOnPhone: below 700px, icon and duration on top with the stage text beneath;
+ *   railMinHeight: the pinned rail's floor height in px, on wide screens.
  */
 const Offers = ({
   eyebrow,
   title,
   offers,
   tightOnlyWhenShort = false,
+  tightOnDesktopOnly = false,
   sideRowOnNarrow = false,
+  stackOnPhone = false,
+  railMinHeight,
 }) => {
   const { trackRef, stageRef, railRef, panelRefs, activeIndex, goTo } = useOfferRail(offers.length);
 
   return (
-    <Section id="process" aria-labelledby="process-h" data-offers="">
+    <Section id="process" aria-labelledby="process-h" data-offers="" $stackOnPhone={stackOnPhone}>
       <BandShell>
         <TrackArea ref={trackRef} data-offer-track="">
           <Stage ref={stageRef}>
@@ -39,7 +45,7 @@ const Offers = ({
             </Head>
 
             <Deck>
-              <Rail ref={railRef} $sideRow={sideRowOnNarrow}>
+              <Rail ref={railRef} $sideRow={sideRowOnNarrow} $minHeight={railMinHeight}>
                 {offers.map((offer, index) => (
                   <OfferCard
                     key={offer.title}
@@ -51,7 +57,9 @@ const Offers = ({
                     active={index === activeIndex}
                     onSelect={goTo}
                     tightOnlyWhenShort={tightOnlyWhenShort}
+                    tightOnDesktopOnly={tightOnDesktopOnly}
                     sideRowOnNarrow={sideRowOnNarrow}
+                    stackOnPhone={stackOnPhone}
                   />
                 ))}
               </Rail>

@@ -3,9 +3,12 @@ import { Tile, TileNumber, TileIcon, TileTitle, TileText, TileSource } from "./i
 
 /**
  * @param {{ tile: { n: string, icon: string, title: string, text: string, wide?: boolean,
- *   source?: { name: string, date: string, url: string } } }} props
+ *   fullTitle?: boolean, source?: { name: string, date: string, url: string } },
+ *   asHeadings?: boolean }} props
+ *   fullTitle: let the title run the tile's width instead of a 26ch measure;
+ *   asHeadings: render the title as an h3 and the text as a paragraph.
  */
-const FitTile = ({ tile }) => (
+const FitTile = ({ tile, asHeadings = false }) => (
   <Tile data-reveal="" $wide={tile.wide}>
     <TileNumber aria-hidden="true">{tile.n}</TileNumber>
     <TileIcon>
@@ -23,8 +26,10 @@ const FitTile = ({ tile }) => (
         <path d={tile.icon} />
       </svg>
     </TileIcon>
-    <TileTitle>{tile.title}</TileTitle>
-    <TileText>{tile.text}</TileText>
+    <TileTitle as={asHeadings ? "h3" : undefined} $full={tile.fullTitle}>
+      {tile.title}
+    </TileTitle>
+    <TileText as={asHeadings ? "p" : undefined}>{tile.text}</TileText>
     {tile.source && (
       <TileSource href={tile.source.url} target="_blank" rel="noopener noreferrer">
         <span>{tile.source.name}</span>

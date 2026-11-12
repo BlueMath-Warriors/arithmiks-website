@@ -7,9 +7,12 @@ import { Section, Head, Cards, Card, Icon, Tag, Name, Description } from "./inde
  * "Use cases": the kinds of product the service is used for, one card each.
  *
  * @param {{ eyebrow: string, title: import("../../shared/Band/HeadingText").HeadingPart[],
- *   cases: { icon: string, tag: string, name: string, text: string }[] }} props
+ *   cases: { icon: string, tag: string, name: string, text: string }[],
+ *   tabletStack?: boolean }} props
+ *   tabletStack: the AI service designs' columns — four to 1100px, two to 901px,
+ *   then one — instead of pairing the cards down to phone width.
  */
-const UseCases = ({ eyebrow, title, cases }) => (
+const UseCases = ({ eyebrow, title, cases, tabletStack = false }) => (
   <Section id="usecases" aria-labelledby="uc-h">
     <BandShell>
       <Head data-reveal="">
@@ -18,7 +21,7 @@ const UseCases = ({ eyebrow, title, cases }) => (
           <HeadingText parts={title} />
         </Title>
       </Head>
-      <Cards data-reveal="">
+      <Cards data-reveal="" $tabletStack={tabletStack}>
         {cases.map((useCase) => (
           <Card key={useCase.name}>
             <Icon>
@@ -37,7 +40,7 @@ const UseCases = ({ eyebrow, title, cases }) => (
               </svg>
             </Icon>
             <Tag>{useCase.tag}</Tag>
-            <Name>{useCase.name}</Name>
+            <Name $tabletStack={tabletStack}>{useCase.name}</Name>
             <Description>{useCase.text}</Description>
           </Card>
         ))}

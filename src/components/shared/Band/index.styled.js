@@ -90,6 +90,30 @@ export const Grad = styled.span`
   background-clip: text;
   -webkit-text-fill-color: transparent;
   color: ${({ $onDark }) => ($onDark ? "#9E9BE8" : colors.primary)};
+
+  ${({ $keepAbove }) =>
+    $keepAbove &&
+    `
+    @media (min-width: ${$keepAbove + 1}px) {
+      white-space: nowrap;
+    }
+  `}
+`;
+
+// A heading run kept on one line above a width, where balanced wrapping would
+// otherwise split a short phrase.
+// Without an `above` width it simply never wraps.
+export const KeepLine = styled.span`
+  color: inherit;
+
+  ${({ $above }) =>
+    $above
+      ? `
+    @media (min-width: ${$above + 1}px) {
+      white-space: nowrap;
+    }
+  `
+      : "white-space: nowrap;"}
 `;
 
 export const Lead = styled.p`

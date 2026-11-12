@@ -41,11 +41,21 @@ const CheckIcon = () => (
  * @typedef {{ n: string, icon: string, title: string, tag: string, duration: string,
  *   focusLabel: string, focus: string[], deliverables: { title: string, note: string }[] }} Offer
  * @param {{ offer: Offer, index: number, active: boolean, onSelect: (index: number) => void,
- *   tightOnlyWhenShort?: boolean, sideRowOnNarrow?: boolean }} props
+ *   tightOnlyWhenShort?: boolean, tightOnDesktopOnly?: boolean, sideRowOnNarrow?: boolean,
+ *   stackOnPhone?: boolean }} props
  */
 const OfferCard = forwardRef(
   (
-    { offer, index, active, onSelect, tightOnlyWhenShort = false, sideRowOnNarrow = false },
+    {
+      offer,
+      index,
+      active,
+      onSelect,
+      tightOnlyWhenShort = false,
+      tightOnDesktopOnly = false,
+      sideRowOnNarrow = false,
+      stackOnPhone = false,
+    },
     ref,
   ) => {
     const gradientId = `offer-grad-${index}`;
@@ -56,15 +66,23 @@ const OfferCard = forwardRef(
         aria-label={`Stage ${offer.n}: ${offer.title}`}
         $active={active}
         $sideRow={sideRowOnNarrow}
+        $stackOnPhone={stackOnPhone}
         onClick={() => onSelect(index)}
       >
-        <CardGrid $tightOnlyWhenShort={tightOnlyWhenShort} $sideRow={sideRowOnNarrow}>
-          <Detail>
+        <CardGrid
+          $tightOnlyWhenShort={tightOnlyWhenShort}
+          $tightOnDesktopOnly={tightOnDesktopOnly}
+          $sideRow={sideRowOnNarrow}
+          $stackOnPhone={stackOnPhone}
+        >
+          <Detail $stackOnPhone={stackOnPhone}>
             <div>
               <Label>{offer.focusLabel}</Label>
-              <Chips>
+              <Chips $stackOnPhone={stackOnPhone}>
                 {offer.focus.map((item) => (
-                  <Chip key={item}>{item}</Chip>
+                  <Chip key={item} $stackOnPhone={stackOnPhone}>
+                    {item}
+                  </Chip>
                 ))}
               </Chips>
             </div>
@@ -72,18 +90,23 @@ const OfferCard = forwardRef(
               <Label>What you receive</Label>
               <Deliverables>
                 {offer.deliverables.map((item) => (
-                  <Deliverable key={item.title} $tightOnlyWhenShort={tightOnlyWhenShort}>
+                  <Deliverable
+                    key={item.title}
+                    $tightOnlyWhenShort={tightOnlyWhenShort}
+                    $tightOnDesktopOnly={tightOnDesktopOnly}
+                    $stackOnPhone={stackOnPhone}
+                  >
                     <CheckIcon />
                     <span>
-                      <DeliverableTitle>{item.title}</DeliverableTitle>
-                      <DeliverableNote>{item.note}</DeliverableNote>
+                      <DeliverableTitle $stackOnPhone={stackOnPhone}>{item.title}</DeliverableTitle>
+                      <DeliverableNote $stackOnPhone={stackOnPhone}>{item.note}</DeliverableNote>
                     </span>
                   </Deliverable>
                 ))}
               </Deliverables>
             </div>
           </Detail>
-          <Side $sideRow={sideRowOnNarrow}>
+          <Side $sideRow={sideRowOnNarrow} $stackOnPhone={stackOnPhone}>
             <svg
               viewBox="0 0 24 24"
               fill="none"
@@ -111,12 +134,12 @@ const OfferCard = forwardRef(
             </svg>
             <div>
               <StageNumber>STAGE {offer.n}</StageNumber>
-              <StageTitle>{offer.title}</StageTitle>
-              <StageTag>{offer.tag}</StageTag>
+              <StageTitle $stackOnPhone={stackOnPhone}>{offer.title}</StageTitle>
+              <StageTag $stackOnPhone={stackOnPhone}>{offer.tag}</StageTag>
             </div>
-            <Duration $sideRow={sideRowOnNarrow}>
+            <Duration $sideRow={sideRowOnNarrow} $stackOnPhone={stackOnPhone}>
               <DurationLabel>Duration</DurationLabel>
-              <DurationValue>{offer.duration}</DurationValue>
+              <DurationValue $stackOnPhone={stackOnPhone}>{offer.duration}</DurationValue>
             </Duration>
           </Side>
         </CardGrid>

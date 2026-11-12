@@ -9,18 +9,22 @@ import ChapterNav from "./ChapterNav";
 import Challenges from "./Challenges";
 import SplitChallenges from "./Challenges/SplitChallenges";
 import ChallengesCells from "./ChallengesCells";
+import ChallengesFeature from "./ChallengesFeature";
 import AboutDiagram from "./AboutDiagram";
 import Fit from "./Fit";
 import InfraDiagram from "./InfraDiagram";
 import FitAccordion from "./FitAccordion";
 import FitReveal from "./FitReveal";
 import UseCases from "./UseCases";
+import ProofGrid from "./ProofGrid";
 import StoryTimeline from "./StoryTimeline";
 import NotesBoard from "./NotesBoard";
 import BuildTypes from "./BuildTypes";
 import Offers from "./Offers";
+import Stakes from "./Stakes";
 import Impact from "./Impact";
 import ValueCard from "./ValueCard";
+import Deliver from "./Deliver";
 import TechStack from "./TechStack";
 import { useChapterChrome } from "./useChapterChrome";
 
@@ -29,19 +33,23 @@ const SECTIONS = {
   challenges: Challenges,
   challengesSplit: SplitChallenges,
   challengesCells: ChallengesCells,
+  challengesFeature: ChallengesFeature,
   about: AboutDiagram,
   fit: Fit,
   infra: InfraDiagram,
   fitAccordion: FitAccordion,
   fitReveal: FitReveal,
   offers: Offers,
+  stakes: Stakes,
   notes: NotesBoard,
   story: StoryTimeline,
   buildTypes: BuildTypes,
   impact: Impact,
   value: ValueCard,
+  deliver: Deliver,
   stack: TechStack,
   useCases: UseCases,
+  proofGrid: ProofGrid,
   work: SelectedWork,
   faq: Faq,
 };
@@ -51,6 +59,7 @@ const SECTIONS = {
  * page's bands as its content file lists them.
  *
  * @param {{ content: { hero: object, chapters: { id: string, label: string }[],
+ *   markdown?: { href: string, filename: string },
  *   sections: ({ type: keyof typeof SECTIONS } & object)[] } }} props
  */
 const ServiceDetail = ({ content }) => {
@@ -66,8 +75,14 @@ const ServiceDetail = ({ content }) => {
       }}
     >
       <ScrollProgress />
-      <Hero {...content.hero} />
-      <ChapterNav chapters={content.chapters} activeId={activeId} stuck={stuck} barRef={barRef} />
+      <Hero {...content.hero} markdown={content.markdown} />
+      <ChapterNav
+        chapters={content.chapters}
+        activeId={activeId}
+        stuck={stuck}
+        barRef={barRef}
+        markdown={content.markdown}
+      />
       {content.sections.map(({ type, ...props }) => {
         const Section = SECTIONS[type];
         if (!Section) throw new Error(`ServiceDetail: unknown section type "${type}"`);

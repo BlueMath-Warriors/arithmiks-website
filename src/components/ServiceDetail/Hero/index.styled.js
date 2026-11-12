@@ -54,6 +54,18 @@ export const Art = styled.div`
     opacity: 0.32;
     z-index: 0;
   }
+
+  /* The AI service designs instead tuck a smaller art into the top-right
+     corner, clear of the headline. */
+  ${({ $cornerOnPhone }) =>
+    $cornerOnPhone &&
+    `
+    @media (max-width: 700px) {
+      top: 23px;
+      right: -68px;
+      width: 260px;
+    }
+  `}
 `;
 
 export const Body = styled.div`
@@ -128,10 +140,10 @@ export const CtaRow = styled.div`
   gap: 14px;
   margin-top: ${({ $gap }) => $gap || "42px"};
 
-  ${({ $stackOnMobile }) =>
+  ${({ $stackOnMobile, $stackWidth }) =>
     $stackOnMobile &&
     `
-    @media (max-width: 700px) {
+    @media (max-width: ${$stackWidth}px) {
       flex-direction: column;
       align-items: stretch;
       gap: 12px;
@@ -166,5 +178,20 @@ export const SecondaryButton = styled.a`
 
   span {
     color: inherit;
+  }
+`;
+
+/**
+ * Holds the phone-sized Markdown link at the foot of the hero, where the
+ * design puts it: the chapter bar has no room for it below 1140px, and below
+ * 640px the bar is gone altogether.
+ */
+export const MarkdownRow = styled.div`
+  display: none;
+
+  @media (max-width: 700px) {
+    display: flex;
+    justify-content: center;
+    padding: 0 20px 18px;
   }
 `;

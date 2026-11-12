@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { colors } from "../../../styles/tokens";
+import { colors, shellPadding } from "../../../styles/tokens";
 
 // The design's bar: 1px rules around a 51.6px link row (16px + 14px padding,
 // a 19.6px line, the 2px active underline).
@@ -35,6 +35,16 @@ export const Links = styled.div`
   &::-webkit-scrollbar {
     display: none;
   }
+
+  /* The AI service designs let the row scroll into the shell's side padding,
+     so a long row (eight chapters plus the Markdown link) still shows in full
+     at laptop widths instead of clipping at the content edge. */
+  ${({ $bleed }) =>
+    $bleed &&
+    `
+    margin: 0 calc(-1 * ${shellPadding});
+    padding: 0 ${shellPadding};
+  `}
 `;
 
 export const ChapterLink = styled.a`
