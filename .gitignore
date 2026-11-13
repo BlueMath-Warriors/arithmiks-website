@@ -4,3 +4,4 @@ public
 .env.development
 docs
 designs
+.vscode/
