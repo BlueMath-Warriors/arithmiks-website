@@ -4,7 +4,11 @@ import { prefersReducedMotion } from "../../../utils/animations";
 
 const PARALLAX_FACTOR = 0.14;
 
-const MeshHeroBackground = () => {
+/**
+ * @param {{ fillOnPhone?: boolean }} props
+ *   fillOnPhone: on phones, stretch the glows over the whole hero.
+ */
+const MeshHeroBackground = ({ fillOnPhone = false }) => {
   const meshRef = useRef(null);
 
   useEffect(() => {
@@ -34,9 +38,9 @@ const MeshHeroBackground = () => {
 
   return (
     <MeshClip aria-hidden="true">
-      <Mesh ref={meshRef}>
-        <BlobBlue />
-        <BlobPink />
+      <Mesh ref={meshRef} $fillOnPhone={fillOnPhone}>
+        <BlobBlue $fillOnPhone={fillOnPhone} />
+        <BlobPink $fillOnPhone={fillOnPhone} />
       </Mesh>
     </MeshClip>
   );

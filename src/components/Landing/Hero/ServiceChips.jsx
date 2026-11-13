@@ -1,19 +1,25 @@
 import React from "react";
-import { SERVICE_NAV_GROUPS } from "../../../constants/serviceNavGroups";
+import { getServiceBySlug, servicePath } from "../../../constants/serviceRoutes";
 import { ChipRow, Chip, ChipLabel, ChipArrow } from "./index.styled";
 
-const FEATURED_SERVICE_SLUGS = [
-  "ai-discovery-strategy-roadmap",
-  "ai-mvp-development",
-  "ai-agents-workflows",
-  "ai-automation",
+// The hero's own short names, as Homepage V2 sets them: they stay fixed even
+// where the page they open carries a different name. "AI Automation" opens
+// One-Problem Automation, the service that now delivers it (a product decision);
+// the older /services/ai-automation page stays live, just not featured here.
+const FEATURED_SERVICES = [
+  { slug: "ai-discovery-strategy-roadmap", label: "AI Discovery, Strategy & Roadmap" },
+  { slug: "ai-mvp-development", label: "AI MVP Development" },
+  { slug: "ai-agents-workflows", label: "AI Agents & Workflows" },
+  { slug: "one-problem-automation", label: "AI Automation" },
 ];
 
-export const FEATURED_SERVICE_COUNT = FEATURED_SERVICE_SLUGS.length;
+export const FEATURED_SERVICE_COUNT = FEATURED_SERVICES.length;
 
-const featuredServices = FEATURED_SERVICE_SLUGS.map((slug) =>
-  SERVICE_NAV_GROUPS.flatMap((category) => category.items).find((service) => service.slug === slug)
-).filter(Boolean);
+// Resolved against the routes rather than the nav, so a chip only renders for
+// a page that exists.
+const featuredServices = FEATURED_SERVICES.filter(({ slug }) => getServiceBySlug(slug)).map(
+  ({ slug, label }) => ({ slug, label, url: servicePath(slug) })
+);
 
 /**
  * Direct links to the hero's best-selling AI services.

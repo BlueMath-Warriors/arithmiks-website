@@ -103,6 +103,12 @@ export const NavLinks = styled.span`
     align-items: center;
   }
 
+  /* Five links plus the CTA need the tighter gap just above the collapse
+     width, or the labels wrap onto two lines. */
+  @media screen and (max-width: 1240px) {
+    gap: 22px;
+  }
+
   @media screen and (max-width: ${navCollapse}) {
     display: none;
   }
@@ -113,6 +119,7 @@ const navLinkColor = (p) =>
 
 export const NavButton = styled.button`
   display: inline-flex;
+  white-space: nowrap;
   align-items: center;
   gap: 6px;
   padding: 0;
@@ -139,6 +146,7 @@ export const Chevron = styled.svg`
 `;
 
 export const NavLink = styled(Link)`
+  white-space: nowrap;
   font-size: clamp(15px, 0.96vw, 16.5px);
   font-weight: 450;
   color: ${navLinkColor};
@@ -250,17 +258,20 @@ const panelBase = `
   }
 `;
 
+// Full-bleed, so the design gives it a top rule instead of the dropdowns' side borders.
 export const MegaPanel = styled.div`
   ${panelBase}
   left: 0;
   right: 0;
+  border: 0;
+  border-top: 1px solid ${colors.border};
   border-radius: 0;
 `;
 
 export const MegaGrid = styled.div`
   max-width: ${shellMaxWidth};
   display: grid;
-  grid-template-columns: clamp(250px, 17vw, 364px) minmax(0, 1fr) clamp(
+  grid-template-columns: clamp(250px, 16.9vw, 364px) minmax(0, 1fr) clamp(
       310px,
       23.1vw,
       486px
@@ -271,7 +282,7 @@ export const MegaGrid = styled.div`
 `;
 
 export const MegaTabsLabel = styled.span`
-  font-size: 13px;
+  font-size: clamp(10.5px, 0.82vw, 13.5px);
   font-weight: 650;
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -283,7 +294,7 @@ export const MegaTabs = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2px;
-  padding: 26px clamp(18px, 1.4vw, 33px) 26px 0;
+  padding: 26px clamp(18px, 1.42vw, 33px) 26px 0;
   border-right: 1px solid #edeff5;
 `;
 
@@ -301,13 +312,14 @@ export const MegaTab = styled.button`
   transition: background 0.22s ease;
 
   span:first-child {
-    font-size: 15.5px;
+    font-size: clamp(14.5px, 0.93vw, 15.5px);
     font-weight: 550;
+    line-height: 1.3;
     color: ${(p) => (p.$active ? colors.primary : colors.text)};
     transition: color 0.22s ease;
   }
   span:last-child {
-    font-size: 13px;
+    font-size: clamp(11.5px, 0.88vw, 14.5px);
     color: ${colors.textFaint};
   }
 `;
@@ -316,10 +328,10 @@ export const MegaPane = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
-  padding: 26px clamp(22px, 2.1vw, 52px);
+  padding: 26px clamp(22px, 2.13vw, 52px);
 
   h3 {
-    font-size: 17.5px;
+    font-size: clamp(16px, 1.02vw, 17.5px);
     font-weight: 700;
     letter-spacing: -0.015em;
     color: ${colors.text};
@@ -330,14 +342,15 @@ export const MegaPane = styled.div`
 export const MegaItemsGrid = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 0 clamp(20px, 1.8vw, 41px);
+  gap: 2px clamp(20px, 1.78vw, 41px);
 `;
 
 export const MegaPaneFooter = styled.div`
   display: flex;
   justify-content: flex-end;
+  align-items: flex-start;
   margin-top: auto;
-  padding-top: 18px;
+  padding-bottom: 18px;
 `;
 
 // Bare glyph — needs its own colour since global.module.css's `* { color: #000 }`
@@ -349,9 +362,7 @@ export const MegaPaneAllArrow = styled.span`
 `;
 
 export const MegaPaneAllLink = styled(Link)`
-  display: inline-flex;
-  align-items: baseline;
-  gap: 6px;
+  display: inline-block;
   font-size: 12.5px;
   font-weight: 550;
   color: ${colors.primary};
@@ -371,7 +382,7 @@ export const MegaSpotlight = styled.div`
 `;
 
 export const SpotlightLabel = styled.span`
-  font-size: 13px;
+  font-size: clamp(10.5px, 0.82vw, 13.5px);
   font-weight: 650;
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -386,13 +397,12 @@ export const SpotlightCard = styled(Link)`
   text-decoration: none;
 `;
 
-// Fixed aspect ratio (matches the case-study dashboard screenshots' actual
-// ~5:4 export size, same ratio CardImage uses in Landing-Grid) so the box
-// doesn't grow from ~0 to full height once the image resolves — the space
-// is reserved up front regardless of load timing.
+// Fixed aspect ratio — the design's own spotlight render (522x424) — so the
+// box doesn't grow from ~0 to full height once the image resolves; the
+// space is reserved up front regardless of load timing.
 export const SpotlightImageWrap = styled.span`
   display: block;
-  aspect-ratio: 5 / 4;
+  aspect-ratio: 522 / 424;
   border-radius: 10px;
   overflow: hidden;
   // The design declares #DCE6FA here, but its own spotlight renders ship an
@@ -414,14 +424,15 @@ export const SpotlightImageWrap = styled.span`
 // category tabs.
 export const SpotlightTitle = styled.span`
   min-height: 2.7em;
-  font-size: 16px;
+  font-size: clamp(15px, 0.96vw, 16.5px);
   font-weight: 650;
+  color: ${colors.text};
   letter-spacing: -0.012em;
   line-height: 1.35;
 `;
 
 export const SpotlightReadLink = styled.span`
-  font-size: 13.5px;
+  font-size: clamp(12.5px, 0.95vw, 16px);
   font-weight: 550;
   color: ${colors.primary};
 `;
@@ -456,7 +467,8 @@ export const MegaItem = styled(Link)`
   padding: clamp(8px, 0.7vw, 12px) clamp(10px, 0.85vw, 14px);
   margin: 0 -10px;
   border-radius: 8px;
-  font-size: 15px;
+  font-size: clamp(13.5px, 1vw, 17px);
+  line-height: 1.4;
   color: #3a4256;
   text-decoration: none;
   transition:
@@ -469,7 +481,7 @@ export const MegaItem = styled(Link)`
     width: 4px;
     height: 4px;
     border-radius: 50%;
-    background: #b4bccd;
+    background: #c9d6ff;
     transition: background 0.2s ease;
   }
 

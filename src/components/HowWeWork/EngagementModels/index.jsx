@@ -186,7 +186,7 @@ const EngagementModels = () => {
                     data-column={index}
                     $highlighted={highlighted === index}
                   >
-                    <CtaLink to="/contact" $highlighted={highlighted === index}>
+                    <CtaLink to="/contact" data-book="" $highlighted={highlighted === index}>
                       {model.cta} <ArrowGlyph aria-hidden="true">→</ArrowGlyph>
                     </CtaLink>
                   </FootCell>
@@ -210,7 +210,7 @@ const EngagementModels = () => {
                   </CardRow>
                 ))}
               </CardRows>
-              <CardCta to="/contact" $highlighted={highlighted === index}>
+              <CardCta to="/contact" data-book="" $highlighted={highlighted === index}>
                 {model.cta} <ArrowGlyph aria-hidden="true">→</ArrowGlyph>
               </CardCta>
             </Card>

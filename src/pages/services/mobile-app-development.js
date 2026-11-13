@@ -1,27 +1,10 @@
 import * as React from "react";
-import ServicePage from "../../components/ServicePage";
-import { SEO } from "../../components/seo";
-import { getServiceBySlug, servicePath } from "../../constants/serviceRoutes";
+import ServiceDetailPage from "../../components/ServiceDetail/ServiceDetailPage";
+import ServiceDetailHead from "../../components/ServiceDetail/ServiceDetailHead";
+import content from "../../components/ServiceDetail/content/mobileAppDevelopment";
 
-const slug = "mobile-app-development";
-const service = getServiceBySlug(slug);
-const breadcrumbItems = [
-  { name: "Home", pathname: "/" },
-  { name: "Services", pathname: "/services" },
-  { name: service.label, pathname: servicePath(slug) },
-];
-
-const MobileAppDevelopmentPage = () => (
-  <ServicePage headline={service.headline} intro={service.intro} breadcrumbItems={breadcrumbItems} />
-);
+const MobileAppDevelopmentPage = () => <ServiceDetailPage content={content} />;
 
 export default MobileAppDevelopmentPage;
 
-export const Head = () => (
-  <SEO
-    title={service.seoTitle}
-    description={service.seoDescription}
-    pathname={servicePath(slug)}
-    breadcrumbItems={breadcrumbItems}
-  />
-);
+export const Head = () => <ServiceDetailHead slug="mobile-app-development" art={content.hero.art} />;

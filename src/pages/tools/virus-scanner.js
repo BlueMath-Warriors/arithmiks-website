@@ -1,6 +1,6 @@
 import * as React from "react";
 import { SEO } from "../../components/seo";
-import ToolPage from "../../components/ToolPage";
+import BandPageChrome from "../../components/shared/BandPageChrome";
 import VirusScanner from "../../components/tools/VirusScanner";
 import { getToolBySlug, toolPath } from "../../constants/toolRoutes";
 import { buildToolSchemas } from "../../utils/toolSchemas";
@@ -8,6 +8,8 @@ import { buildToolSchemas } from "../../utils/toolSchemas";
 const slug = "virus-scanner";
 const tool = getToolBySlug(slug);
 
+// The design has no visible breadcrumb bar; the trail only feeds the
+// BreadcrumbList structured data.
 const breadcrumbItems = [
   { name: "Home", pathname: "/" },
   { name: "Tools", pathname: "/tools" },
@@ -15,21 +17,9 @@ const breadcrumbItems = [
 ];
 
 const VirusScannerPage = () => (
-  <ToolPage
-    slug={slug}
-    headline={tool.headline}
-    intro={tool.intro}
-    trustBadges={[
-      "ClamAV + YARA + AI",
-      "Up to 1 GB",
-      "Deleted after scan",
-      "No signup",
-    ]}
-    faq={tool.faq}
-    breadcrumbItems={breadcrumbItems}
-  >
-    <VirusScanner howToSteps={tool.howToSteps} />
-  </ToolPage>
+  <BandPageChrome darkHero>
+    <VirusScanner tool={tool} />
+  </BandPageChrome>
 );
 
 export default VirusScannerPage;

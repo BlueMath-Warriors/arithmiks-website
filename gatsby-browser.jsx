@@ -4,6 +4,7 @@ import "./src/styles/global.module.css";
 import { gsap } from "gsap";
 import CookieConsent from "./src/components/shared/CookieConsent";
 import { initGlobalTracking, resetPageTracking } from "./src/utils/globalTracking";
+import { initBookingTriggers } from "./src/utils/bookingTriggers";
 
 // Mounted outside the Gatsby-managed tree, not via wrapRootElement/
 // wrapPageElement: every page here also exports a Head component, and
@@ -16,6 +17,7 @@ export const onClientEntry = () => {
   document.body.appendChild(mountNode);
   createRoot(mountNode).render(<CookieConsent />);
   initGlobalTracking();
+  initBookingTriggers();
 };
 
 const prefersReducedMotion = () => {
