@@ -133,8 +133,12 @@ This is the site's lead-magnet tool.
 | `job_apply_click` | *Apply now* is clicked | `job_title`, `button_location` (`hero` \| `body`) |
 | `job_share` | LinkedIn / WhatsApp / email share | `method`, `job_title` |
 | `job_search` | `JobSearchBar` is submitted | `search_term`, `team`, `location` (`any` when unset) |
+| `job_application_submit` | Abacus accepted the application (HTTP 201) | `job_title`, `has_cover_letter` (bool), `link_count` |
+| `job_application_error` | The form rejected or failed a submit | `job_title`, `error_type` (`validation` \| `server_invalid` \| `rate_limited` \| `origin_not_allowed` \| `failed`), `fields` (comma-separated Abacus field names, empty unless validation) |
 
-> ⚠️ **Gap found:** both *Apply now* buttons (`JobDetailHero`, `JobDetailBody`) use `href="#"`, so they lead nowhere and every applicant is currently lost. Fix the link before tracking it.
+*Apply now* opens the `ApplyModal` dialog, which posts to Abacus (`POST /api/public/job-applications`). `job_apply_click` → `job_application_submit` gives the form's completion rate.
+
+> Never send the candidate's name, email, phone, links or file name. They are personal data.
 
 ### 2.8 `content_scroll` (blog posts + case studies)
 Fire at 25 / 50 / 75 / 100% depth, once each per page.
