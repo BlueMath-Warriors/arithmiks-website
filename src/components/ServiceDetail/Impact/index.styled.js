@@ -1,9 +1,10 @@
 import styled from "styled-components";
 import { colors } from "../../../styles/tokens";
 
-// "Compact" grids (most pages) pair cells up and tighten them on phones;
-// otherwise the grid simply drops to one column below 560px.
-const PHONE = "(max-width: 600px)";
+// On phones every variant of this band reads the same way: one outcome per
+// row, each carrying its own left rule, and the closing CTA flush with the
+// page margin beneath them.
+const PHONE = "(max-width: 640px)";
 
 export const Section = styled.section`
   padding: 104px 0 ${({ $padBottom }) => ($padBottom ? "clamp(72px, 6.4vw, 104px)" : "0")};
@@ -16,17 +17,12 @@ export const Section = styled.section`
 `;
 
 // A spanned CTA (the AI service designs) fixes the grid at four columns so the
-// CTA can fill the rest of the last row; two columns from 1000px, one on phones.
+// CTA can fill the rest of the last row; two columns from 1000px.
 const spannedGrid = `
   grid-template-columns: repeat(4, minmax(0, 1fr));
 
   @media (max-width: 1000px) {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  @media (max-width: 640px) {
-    grid-template-columns: 1fr;
-    border-left: 0;
   }
 `;
 
@@ -38,20 +34,12 @@ export const Grid = styled.div`
   border-top: 1px solid ${colors.border};
   border-left: 1px solid ${colors.border};
 
-  ${({ $ctaSpan, $compact }) =>
-    $ctaSpan
-      ? spannedGrid
-      : $compact
-      ? `
-    @media ${PHONE} {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-  `
-      : `
-    @media (max-width: 560px) {
-      grid-template-columns: 1fr;
-    }
-  `}
+  ${({ $ctaSpan }) => $ctaSpan && spannedGrid}
+
+  @media ${PHONE} {
+    grid-template-columns: 1fr;
+    border-left: 0;
+  }
 `;
 
 export const Cell = styled.div`
@@ -75,28 +63,11 @@ export const Cell = styled.div`
     text-wrap: balance;
   }
 
-  /* On phones the spanned grid drops its own left rule, so each outcome
-     carries one and the CTA beneath them stays open. */
-  ${({ $ctaSpan }) =>
-    $ctaSpan &&
-    `
-    @media (max-width: 640px) {
-      border-left: 1px solid ${colors.border};
-    }
-  `}
-
-  ${({ $compact }) =>
-    $compact &&
-    `
-    @media ${PHONE} {
-      padding: 20px 16px 22px;
-
-      h3 {
-        font-size: 16px;
-        line-height: 1.3;
-      }
-    }
-  `}
+  /* The grid drops its own left rule on phones, so each outcome carries one
+     and the CTA beneath them stays open. */
+  @media ${PHONE} {
+    border-left: 1px solid ${colors.border};
+  }
 `;
 
 export const CellNumber = styled.div`
@@ -107,14 +78,6 @@ export const CellNumber = styled.div`
   text-transform: ${({ $named }) => ($named ? "uppercase" : "none")};
   color: ${colors.primary};
   margin-bottom: 22px;
-
-  ${({ $compact }) =>
-    $compact &&
-    `
-    @media ${PHONE} {
-      margin-bottom: 12px;
-    }
-  `}
 `;
 
 // The CTA hangs from the top of the last grid slot so it never stretches the
@@ -135,14 +98,9 @@ export const CtaCell = styled.div`
     }
   `}
 
-  ${({ $compact }) =>
-    $compact &&
-    `
-    @media ${PHONE} {
-      grid-column: 1 / -1;
-      padding: 20px 16px 22px;
-    }
-  `}
+  @media ${PHONE} {
+    grid-column: 1 / -1;
+  }
 `;
 
 export const CtaInner = styled.div`
@@ -164,19 +122,12 @@ export const CtaInner = styled.div`
     padding: 32px 30px 34px;
   `}
 
+  /* Out of the grid slot and back into flow, with no padding of its own, so
+     the sentence starts at the page margin rather than inside a cell. */
   @media (max-width: 900px) {
     position: static;
     padding: 28px 0 0;
   }
-
-  /* The design's compact cell rule ("> * > div:first-child") reaches this wrapper too. */
-  ${({ $compact }) =>
-    $compact &&
-    `
-    @media ${PHONE} {
-      margin-bottom: 12px;
-    }
-  `}
 `;
 
 export const CtaText = styled.p`
@@ -204,13 +155,9 @@ export const CtaText = styled.p`
 
     /* Once the CTA runs full width the sentence must wrap, or its one long
        line sets the grid's minimum width and pushes the cells off screen. */
-    ${({ $compact, $ctaSpan }) =>
-      ($compact || $ctaSpan) &&
-      `
-      @media (max-width: 900px) {
-        white-space: normal;
-      }
-    `}
+    @media (max-width: 900px) {
+      white-space: normal;
+    }
   }
 `;
 

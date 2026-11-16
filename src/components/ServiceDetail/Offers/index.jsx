@@ -14,8 +14,9 @@ import { Section, TrackArea, Stage, Head, Deck, Rail, Dots, Dot } from "./index.
  *   sideRowOnNarrow?: boolean, stackOnPhone?: boolean, railMinHeight?: number }} props
  *   tightOnlyWhenShort: keep the roomier card spacing except on short desktop screens;
  *   tightOnDesktopOnly: tighten the pinned desktop rail but not the swipe deck;
- *   sideRowOnNarrow: below 1000px, lay the stage icon, title and duration in a row;
- *   stackOnPhone: below 700px, icon and duration on top with the stage text beneath;
+ *   sideRowOnNarrow: below 1000px, widen the cards and keep the rail flush with
+ *   the band, with a larger stage icon;
+ *   stackOnPhone: below 700px, the AI service designs' tighter phone card;
  *   railMinHeight: the pinned rail's floor height in px, on wide screens.
  */
 const Offers = ({

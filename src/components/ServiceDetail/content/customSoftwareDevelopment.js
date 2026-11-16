@@ -9,8 +9,11 @@ const customSoftwareDevelopment = {
     primaryCta: { label: "Describe your project", href: "#contact", glyph: "→" },
     secondaryCta: { label: "See our expertise", href: "#process", glyph: "↓" },
     art: "custom-software",
-    stackCtasOnMobile: true,
     introMaxWidth: "min(620px, 56vw)",
+  },
+  markdown: {
+    href: "/services/custom-software-development.md",
+    filename: "custom-software-development.md",
   },
   chapters: [
     { id: "challenges", label: "Why it matters" },

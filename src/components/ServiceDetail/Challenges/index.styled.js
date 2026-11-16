@@ -95,6 +95,7 @@ export const Claim = styled.p`
 `;
 
 export const Figure = styled.div`
+  position: relative;
   font-size: clamp(44px, 4.6vw, 68px);
   font-weight: 650;
   letter-spacing: -0.03em;
@@ -102,6 +103,25 @@ export const Figure = styled.div`
   color: #fff;
   font-variant-numeric: tabular-nums;
   text-align: right;
+`;
+
+/**
+ * The counter rewrites this figure's text on every animation frame ("0%" →
+ * "45%"), and it sits in the row's auto-sized column: left to itself the
+ * column would grow mid-count and re-wrap the claim beside it on each frame.
+ * This reserves the final width from first paint and the live value is laid
+ * over it, so nothing beside it moves.
+ */
+export const FigureSizer = styled.span`
+  visibility: hidden;
+  color: inherit;
+`;
+
+export const FigureValue = styled.span`
+  position: absolute;
+  inset: 0;
+  text-align: right;
+  color: inherit;
 `;
 
 export const Meta = styled.div`

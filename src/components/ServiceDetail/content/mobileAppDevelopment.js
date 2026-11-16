@@ -9,9 +9,9 @@ const mobileAppDevelopment = {
     primaryCta: { label: "Describe your app", href: "#contact", glyph: "→" },
     secondaryCta: { label: "See our expertise", href: "#process", glyph: "↓" },
     art: "mobile-app",
-    stackCtasOnMobile: true,
     introMaxWidth: "min(560px, 52vw)",
   },
+  markdown: { href: "/services/mobile-app-development.md", filename: "mobile-app-development.md" },
   chapters: [
     { id: "challenges", label: "Why it matters" },
     { id: "fit", label: "What it is" },

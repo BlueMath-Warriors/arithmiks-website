@@ -10,6 +10,10 @@ const aiDiscoveryStrategyRoadmap = {
     secondaryCta: { label: "How it works", href: "#process", glyph: "↓" },
     art: "ai-discovery",
   },
+  markdown: {
+    href: "/services/ai-discovery-strategy-roadmap.md",
+    filename: "ai-discovery-strategy-roadmap.md",
+  },
   chapters: [
     { id: "challenges", label: "Why now" },
     { id: "about", label: "What it is" },
@@ -21,6 +25,7 @@ const aiDiscoveryStrategyRoadmap = {
   sections: [
     {
       type: "challengesCells",
+      stackOnPhone: true,
       eyebrow: "WHY NOW",
       title: [
         { grad: "AI is everywhere." },
@@ -257,7 +262,6 @@ const aiDiscoveryStrategyRoadmap = {
     {
       type: "impact",
       sectionId: "outcomes",
-      compactOnPhone: false,
       eyebrow: "OUTCOMES",
       title: ["From AI ideas to a", { br: true }, { grad: "clear path forward" }],
       outcomes: [

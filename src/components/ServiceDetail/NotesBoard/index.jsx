@@ -47,7 +47,7 @@ const NotesBoard = ({ eyebrow, title, notes }) => {
         <DotGrid aria-hidden="true" />
         <Glow aria-hidden="true" />
         <BandShell>
-          <Head>
+          <Head $static={isStatic}>
             <Eyebrow $gap="18px">{eyebrow}</Eyebrow>
             <Title id="xp-h" $balance>
               <HeadingText parts={title} />

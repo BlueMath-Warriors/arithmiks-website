@@ -54,18 +54,6 @@ export const Art = styled.div`
     opacity: 0.32;
     z-index: 0;
   }
-
-  /* The AI service designs instead tuck a smaller art into the top-right
-     corner, clear of the headline. */
-  ${({ $cornerOnPhone }) =>
-    $cornerOnPhone &&
-    `
-    @media (max-width: 700px) {
-      top: 23px;
-      right: -68px;
-      width: 260px;
-    }
-  `}
 `;
 
 export const Body = styled.div`
@@ -133,27 +121,24 @@ export const Intro = styled.p`
   }
 `;
 
-// Some pages stack their hero buttons on phones (the design's [data-herocta]).
+// On phones the buttons stack and run the hero's full width (the design's
+// [data-herocta]), so neither CTA reads as the secondary one.
 export const CtaRow = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 14px;
   margin-top: ${({ $gap }) => $gap || "42px"};
 
-  ${({ $stackOnMobile, $stackWidth }) =>
-    $stackOnMobile &&
-    `
-    @media (max-width: ${$stackWidth}px) {
-      flex-direction: column;
-      align-items: stretch;
-      gap: 12px;
-      margin-top: 32px;
+  @media (max-width: 700px) {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    margin-top: 32px;
 
-      > a {
-        justify-content: center;
-      }
+    > a {
+      justify-content: center;
     }
-  `}
+  }
 `;
 
 export const SecondaryButton = styled.a`

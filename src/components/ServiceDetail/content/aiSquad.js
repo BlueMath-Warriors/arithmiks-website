@@ -10,10 +10,6 @@ const aiSquad = {
     secondaryCta: { label: "See how it works", href: "#process", glyph: "↓" },
     art: "ai-discovery",
     introMaxWidth: "660px",
-    stackCtasOnMobile: true,
-    ctaStackWidth: 600,
-    cornerArtOnPhone: true,
-    fillMeshOnPhone: false,
   },
   markdown: { href: "/services/ai-squad.md", filename: "ai-squad.md" },
   chapters: [
@@ -214,7 +210,6 @@ const aiSquad = {
     {
       type: "impact",
       sectionId: "outcomes",
-      compactOnPhone: false,
       ctaSpan: 3,
       padBottom: true,
       eyebrow: "Outcomes & business impact",
