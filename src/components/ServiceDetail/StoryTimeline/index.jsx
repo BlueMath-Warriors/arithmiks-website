@@ -19,6 +19,7 @@ import {
   StepBody,
   StepVisual,
   VisualFrame,
+  VisualStage,
 } from "./index.styled";
 
 // Content refers to each step's art by name.
@@ -65,7 +66,9 @@ const StoryTimeline = ({ eyebrow, title, steps }) => {
                 </StepText>
                 <StepVisual aria-hidden="true">
                   <VisualFrame>
-                    <Visual />
+                    <VisualStage>
+                      <Visual />
+                    </VisualStage>
                   </VisualFrame>
                 </StepVisual>
               </Step>

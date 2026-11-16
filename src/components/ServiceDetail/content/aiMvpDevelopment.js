@@ -9,10 +9,6 @@ const aiMvpDevelopment = {
     primaryCta: { label: "Book a Free AI Consultation", href: "#contact", glyph: "→" },
     secondaryCta: { label: "See the 4 phases", href: "#process", glyph: "↓" },
     art: "ai-discovery",
-    stackCtasOnMobile: true,
-    ctaStackWidth: 600,
-    cornerArtOnPhone: true,
-    fillMeshOnPhone: false,
   },
   markdown: { href: "/services/ai-mvp-development.md", filename: "ai-mvp-development.md" },
   chapters: [
@@ -224,7 +220,6 @@ const aiMvpDevelopment = {
     {
       type: "impact",
       sectionId: "outcomes",
-      compactOnPhone: false,
       ctaSpan: 3,
       padBottom: true,
       eyebrow: "Outcomes & business impact",

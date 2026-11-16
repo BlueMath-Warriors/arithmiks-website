@@ -10,6 +10,7 @@ const devops = {
     secondaryCta: { label: "See our offers", href: "#process", glyph: "↓" },
     art: "devops",
   },
+  markdown: { href: "/services/devops.md", filename: "devops.md" },
   chapters: [
     { id: "challenges", label: "Why it matters" },
     { id: "fit", label: "What it is" },

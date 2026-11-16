@@ -210,4 +210,51 @@ export const VisualFrame = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  container-type: inline-size;
+`;
+
+// The frame width the illustrations are drawn for: their padding, type and
+// chips are fixed pixels, so a narrower frame reflows them (chips wrap, the
+// card clips) instead of shrinking them.
+const VISUAL_DESIGN_WIDTH = 480;
+// Below that, the stage holds its design width and scales down to the frame.
+// The frame is the viewport less the page gutters (24px each), the spine
+// column (28px) and its gap (16px).
+const SCALED = `(max-width: ${VISUAL_DESIGN_WIDTH + 92}px)`;
+// Fallback for browsers without container units; each step is sized for the
+// bottom of its band so the art never overflows.
+const visualScaleSteps = [
+  [570, 0.89],
+  [520, 0.81],
+  [480, 0.7],
+  [430, 0.62],
+  [390, 0.53],
+  [345, 0.46],
+]
+  .map(([width, scale]) => `@media (max-width: ${width}px) { transform: scale(${scale}); }`)
+  .join(" ");
+
+/**
+ * Holds an illustration at the width it was drawn for and scales the whole
+ * composition down to the frame, so a phone sees what a desktop sees, smaller,
+ * rather than a reflowed and clipped version of it.
+ */
+export const VisualStage = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @media ${SCALED} {
+    width: ${VISUAL_DESIGN_WIDTH}px;
+    flex: none;
+  }
+
+  ${visualScaleSteps}
+
+  /* Exact where container units are available, which is every current
+     browser; elsewhere this is dropped and the steps above stand. */
+  @media ${SCALED} {
+    transform: scale(min(1, calc(100cqw / ${VISUAL_DESIGN_WIDTH}px)));
+  }
 `;

@@ -66,6 +66,15 @@ export const Head = styled.div`
   z-index: 1;
   padding-top: clamp(92px, 12vh, 132px);
   text-align: center;
+
+  /* That lead-in is for the pinned full-viewport stage. Once the board is a
+     static band the section's own padding is the whole gap, as on every other
+     band. */
+  ${({ $static }) =>
+    $static &&
+    css`
+      padding-top: 0;
+    `}
 `;
 
 export const Board = styled.div`

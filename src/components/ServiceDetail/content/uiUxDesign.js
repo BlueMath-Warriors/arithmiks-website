@@ -9,10 +9,10 @@ const uiUxDesign = {
     primaryCta: { label: "Describe your project", href: "#contact", glyph: "→" },
     secondaryCta: { label: "See our expertise", href: "#process", glyph: "↓" },
     art: "ui-ux",
-    stackCtasOnMobile: true,
     introMaxWidth: "min(560px, 52vw)",
     ctaGap: "40px",
   },
+  markdown: { href: "/services/ui-ux-design.md", filename: "ui-ux-design.md" },
   chapters: [
     { id: "challenges", label: "Why it matters" },
     { id: "story", label: "Design process" },

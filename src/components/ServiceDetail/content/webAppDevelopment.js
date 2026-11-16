@@ -10,6 +10,7 @@ const webAppDevelopment = {
     secondaryCta: { label: "See our offers", href: "#process", glyph: "↓" },
     art: "web-app",
   },
+  markdown: { href: "/services/web-app-development.md", filename: "web-app-development.md" },
   chapters: [
     { id: "challenges", label: "Why it matters" },
     { id: "fit", label: "What it is" },
