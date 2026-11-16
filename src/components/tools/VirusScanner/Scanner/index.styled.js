@@ -204,6 +204,12 @@ export const Activity = styled.span`
   color: ${colors.textFaint};
 `;
 
+export const BusyHint = styled.p`
+  margin: 14px 0 0;
+  font-size: 13px;
+  color: ${colors.textFaint};
+`;
+
 export const ProgressList = styled.ul`
   margin: 16px 0 0;
   padding: 0;
@@ -302,13 +308,28 @@ export const VerdictDot = styled.span`
   background: ${({ $tone }) => TONES[$tone].dot};
 `;
 
+// A $sentence title is the API's one-line verdict, longer than the short
+// fixed titles, so it is set a step smaller to stay readable.
 export const VerdictTitle = styled.h2`
   margin: 0;
-  font-size: clamp(24px, 2.2vw, 32px);
+  font-size: ${({ $sentence }) => ($sentence ? "clamp(19px, 1.7vw, 24px)" : "clamp(24px, 2.2vw, 32px)")};
   font-weight: 650;
   letter-spacing: -0.02em;
-  line-height: 1.15;
+  line-height: ${({ $sentence }) => ($sentence ? 1.3 : 1.15)};
   color: ${colors.text};
+`;
+
+export const SummaryPoints = styled.ul`
+  margin: 0;
+  padding-left: 18px;
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: ${colors.textMuted};
+  text-wrap: pretty;
+
+  li + li {
+    margin-top: 6px;
+  }
 `;
 
 export const Advice = styled.p`
@@ -337,6 +358,7 @@ export const MetaLine = styled.p`
   font-size: 13.5px;
   line-height: 1.6;
   color: ${colors.textFaint};
+  overflow-wrap: anywhere;
 `;
 
 export const OutlineButton = styled.button`

@@ -118,8 +118,8 @@ This is the site's lead-magnet tool.
 | Event | When | Params |
 |---|---|---|
 | `tool_scan_start` | A file is dropped in `UploadDropzone` | `file_ext` (`exe`), `file_size_kb` (bucketed: `<100`, `100-1000`, `1000+`) |
-| `tool_scan_complete` | Final result is shown | `verdict` (`clean` \| `suspicious` \| `malicious`), `duration_s` |
-| `tool_scan_error` | `onError` in `useScanUpload` | `error_code` (HTTP status) |
+| `tool_scan_complete` | Final result is shown | `verdict` (`clean` \| `low_risk` \| `harmless_match` \| `suspicious` \| `high_risk` \| `threat`), `duration_s` |
+| `tool_scan_error` | A scan fails or a file is refused before upload | `error_code` (HTTP status, or `scan_failed`, `connection_lost`, `network`, `validation`) |
 
 > Never send the file name. It can contain personal data.
 

@@ -1,11 +1,24 @@
 {
+  "job_id": "00000000-0000-0000-0000-000000000006",
+  "filename": "presentation.pdf",
+  "content_type": "application/pdf",
+  "user_summary": "This file looks clean based on the checks that ran.\n\nNo known threat signatures and no suspicious content patterns were found in this file.\n\nNote: deeper analysis did not run for this file, so the verdict is based on the remaining checks only.",
+  "user_summary_structured": {
+    "headline": "This file looks clean based on the checks that ran.",
+    "bullets": [
+      "No known threat signatures and no suspicious content patterns were found in this file.",
+      "Note: deeper analysis did not run for this file, so the verdict is based on the remaining checks only."
+    ]
+  },
   "phase1": {
+    "engine": "clamav",
     "infected": false,
     "threat_name": null,
     "raw_exit_code": 0,
     "details": null
   },
   "yara": {
+    "engine": "yara",
     "enabled": true,
     "skipped": false,
     "skip_reason": null,
@@ -19,14 +32,11 @@
     "archive_scan": null
   },
   "phase2": {
+    "engine": "claude_agent",
     "skipped": true,
-    "skip_reason": "no_api_key",
-    "verdict": {
-      "risk_level": "low",
-      "summary": "",
-      "indicators": []
-    },
-    "analysis": "",
+    "skip_reason": "agent_all_failed",
+    "verdict": null,
+    "analysis": null,
     "risk_notes": []
   },
   "meta": {

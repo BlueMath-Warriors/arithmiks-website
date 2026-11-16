@@ -1,4 +1,15 @@
 {
+  "job_id": "00000000-0000-0000-0000-000000000004",
+  "filename": "bundle.zip",
+  "content_type": "application/zip",
+  "user_summary": "This archive contains a malicious delivery chain — do not open it.\n\nA macro-enabled document and a hidden script launcher were found inside nested archives.\n\nSeveral independent signals point the same way.",
+  "user_summary_structured": {
+    "headline": "This archive contains a malicious delivery chain — do not open it.",
+    "bullets": [
+      "A macro-enabled document and a hidden script launcher were found inside nested archives.",
+      "Several independent signals point the same way."
+    ]
+  },
   "phase1": {
     "infected": false,
     "threat_name": null,

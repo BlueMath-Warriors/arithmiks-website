@@ -9,6 +9,8 @@
  * @typedef {"clean"|"suspicious"|"infected"|"neutral"|"active"} Tone
  */
 
+import { MAX_UPLOAD_MB } from "./scanFormat";
+
 /** The three engines, in the order they run. */
 export const ENGINES = [
   { id: "clamav", name: "ClamAV", activity: "signatures" },
@@ -16,37 +18,85 @@ export const ENGINES = [
   { id: "ai", name: "AI analyst", activity: "analysis" },
 ];
 
+// Six verdicts share the design's three status colours. `title` and `advice`
+// only show when the report carries no plain-language summary of its own.
 const VERDICTS = {
-  clean: { label: "Clean", title: "No threats found", advice: null },
+  clean: { tone: "clean", label: "Clean", title: "No threats found", advice: null },
+  low_risk: {
+    tone: "clean",
+    label: "Low risk",
+    title: "Only minor patterns found",
+    advice: "A few low-risk patterns matched, but nothing points to a real threat.",
+  },
+  harmless_match: {
+    tone: "suspicious",
+    label: "Flagged, likely harmless",
+    title: "Flagged, but likely harmless",
+    advice:
+      "A signature engine flagged this file, but the AI analysis rates it low risk. It is probably a test file or a false alarm.",
+  },
   suspicious: {
+    tone: "suspicious",
     label: "Suspicious",
     title: "Suspicious patterns found",
     advice:
       "Some behavior in this file is risky or unwanted. Read what each engine found before you open it.",
   },
-  infected: {
-    label: "Infected",
+  high_risk: {
+    tone: "infected",
+    label: "High risk",
+    title: "High-risk file",
+    advice: "This file shows strong signs of malicious behavior. Don’t open or share it.",
+  },
+  threat: {
+    tone: "infected",
+    label: "Threat detected",
     title: "Threat detected",
     advice: "One or more engines flagged this file as malicious. Don’t open or share it.",
   },
 };
 
 /**
- * @param {"clean"|"suspicious"|"infected"} verdict from deriveVerdict
- * @returns {{ tone: Tone, label: string, title: string, advice: string | null }}
+ * @param {import("./scanFormat").Verdict} verdict from deriveVerdict
+ * @returns {{ tone: "clean"|"suspicious"|"infected", label: string, title: string, advice: string | null }}
  */
-export const describeVerdict = (verdict) => ({
-  tone: verdict,
-  ...(VERDICTS[verdict] || VERDICTS.clean),
-});
+export const describeVerdict = (verdict) => VERDICTS[verdict] || VERDICTS.clean;
+
+const nonEmptyText = (value) => (typeof value === "string" ? value.trim() : "");
+
+/**
+ * The plain-language answer written for visitors: a one-sentence headline plus
+ * supporting points. Prefers the structured summary and falls back to the
+ * plain-text one (headline first, then one point per paragraph).
+ *
+ * @param {object} result the scanner's final report
+ * @returns {{ headline: string, bullets: string[] } | null} null when the report has none
+ */
+export const getScanSummary = (result) => {
+  const structured = result?.user_summary_structured;
+  const headline = nonEmptyText(structured?.headline);
+  if (headline) {
+    const bullets = Array.isArray(structured.bullets) ? structured.bullets : [];
+    return { headline, bullets: bullets.map(nonEmptyText).filter(Boolean) };
+  }
+
+  const [first, ...rest] = nonEmptyText(result?.user_summary)
+    .split("\n\n")
+    .map(nonEmptyText)
+    .filter(Boolean);
+  return first ? { headline: first, bullets: rest } : null;
+};
 
 const plural = (count, word) => `${count} ${word}${count === 1 ? "" : "es"}`;
 
+// The scanner's `phase2.skip_reason` values. Unlisted ones (missing_input,
+// unknown_error, anything new) get the generic fallback below.
 const AI_SKIP_REASONS = {
-  clean_clamav: "Not needed. Signatures and patterns already cleared this file.",
-  phase1_infected: "Not needed. A signature engine already flagged this file.",
-  timeout: "This file took too long to analyze.",
-  error: "AI analysis is temporarily unavailable.",
+  agent_all_failed: "AI analysis is temporarily unavailable.",
+  archive_encrypted: "This archive is password-protected, so the AI couldn’t read inside it.",
+  archive_no_text_candidates: "This archive has no readable text for the AI to review.",
+  archive_invalid: "This archive looks corrupt, so the AI couldn’t read it.",
+  disabled: "AI analysis is turned off.",
 };
 const AI_SKIP_FALLBACK = "AI analysis wasn’t run for this file.";
 
@@ -88,15 +138,19 @@ const toPatternMatch = (match = {}) => ({
   rule: String(match.rule || "Unnamed rule"),
   description: typeof match.description === "string" ? match.description : "",
   tags: Array.isArray(match.tags) ? match.tags.map(String) : [],
-  // Matches inside archives arrive as "outer.zip::inner.zip::file".
+  // `source` is the member path for a match inside an archive, "" otherwise.
+  // Nested archives may arrive as "outer.zip::inner.zip::file"; that delimiter
+  // is not in the API guide, so a plain path is kept whole rather than split.
   archivePath:
-    typeof match.source === "string" && match.source.includes("::") ? match.source.split("::") : [],
+    typeof match.source === "string" && match.source !== ""
+      ? match.source.split("::")
+      : [],
 });
 
 /** @returns {EngineRow} */
 const yaraRow = (yara = {}) => {
   const base = { id: "yara", name: "YARA rules", matches: [], indicators: [] };
-  if (yara.skipped === true) {
+  if (yara.skipped === true || yara.enabled === false) {
     return { ...base, ...NOT_RUN, note: "Pattern matching wasn’t run for this file." };
   }
   const matches = Array.isArray(yara.matches) ? yara.matches : [];
@@ -177,20 +231,23 @@ export const buildProgressRows = (phases) =>
     ...(PHASE_PROGRESS[phases[id]] || PHASE_PROGRESS.pending),
   }));
 
+export const SCAN_DURATION_HINT = "This usually takes about a minute.";
+
 /**
  * The status line under the file name while a scan runs.
  *
- * @param {"uploading"|"scanning"} status
+ * @param {"uploading"|"queued"|"scanning"} status
  * @param {Record<"clamav"|"yara"|"ai", string>} phases
  */
 export const describeActivity = (status, phases) => {
   if (status === "uploading") return "Uploading…";
+  if (status === "queued") return "Waiting for a free scanner…";
   const running = ENGINES.find(({ id }) => phases[id] === "running");
   return running ? `Checking ${running.activity}…` : "Scanning…";
 };
 
 const REJECTIONS = {
-  TOO_LARGE: "That file is over 1 GB. Try a smaller one.",
+  TOO_LARGE: `That file is over ${MAX_UPLOAD_MB} MB. Try a smaller one.`,
   EMPTY: "That file is empty. Choose another one.",
 };
 
