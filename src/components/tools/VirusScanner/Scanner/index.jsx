@@ -24,7 +24,7 @@ const Scanner = () => {
       {status === "idle" && (
         <Dropzone rejection={state.rejection} onPick={pick} focusOnMount={returning} />
       )}
-      {(status === "uploading" || status === "scanning") && (
+      {(status === "uploading" || status === "queued" || status === "scanning") && (
         <ScanBusy
           status={status}
           phases={state.phases}

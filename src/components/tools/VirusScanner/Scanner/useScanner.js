@@ -12,6 +12,8 @@ const FIXTURES = {
   "infected-yara-archive": () => import("../__fixtures__/infected-yara-archive.json"),
   "suspicious-escalated": () => import("../__fixtures__/suspicious-escalated.json"),
   "phase2-skipped": () => import("../__fixtures__/phase2-skipped.json"),
+  eicar: () => import("../__fixtures__/eicar.json"),
+  "archive-encrypted": () => import("../__fixtures__/archive-encrypted.json"),
 };
 
 /**
@@ -25,7 +27,7 @@ export const useScanner = () => {
   const [state, dispatch] = useReducer(scanReducer, initialScanState);
   const startedAtRef = useRef(0);
 
-  const onScanning = useCallback(() => dispatch({ type: "SCANNING" }), []);
+  const onQueued = useCallback(() => dispatch({ type: "QUEUED" }), []);
   const onPhaseStart = useCallback((phase) => dispatch({ type: "PHASE_START", phase }), []);
   const onPhaseComplete = useCallback((phase) => dispatch({ type: "PHASE_COMPLETE", phase }), []);
   const onResult = useCallback((result) => {
@@ -42,7 +44,7 @@ export const useScanner = () => {
   }, []);
 
   const { upload, abort } = useScanUpload({
-    onScanning,
+    onQueued,
     onPhaseStart,
     onPhaseComplete,
     onResult,
