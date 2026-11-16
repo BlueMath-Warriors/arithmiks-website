@@ -60,7 +60,7 @@ export const ActionRow = styled.div`
   margin-top: clamp(26px, 3vw, 38px);
 `;
 
-export const ApplyButton = styled.a`
+export const ApplyButton = styled.button`
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -69,7 +69,9 @@ export const ApplyButton = styled.a`
   font-weight: 600;
   color: ${colors.primary};
   background: #fff;
+  border: 0;
   border-radius: 100px;
+  cursor: pointer;
   white-space: nowrap;
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 

@@ -1,6 +1,6 @@
 import { ATTACHMENT_EXTENSIONS, ATTACHMENT_MAX_BYTES } from "./constants";
 
-const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+export const EMAIL_PATTERN =/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 const MEGABYTE = 1024 * 1024;
 
 /** @returns {{ name?: string; email?: string }} messages keyed by field; empty when valid */
