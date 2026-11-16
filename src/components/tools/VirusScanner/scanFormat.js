@@ -1,4 +1,6 @@
-export const MAX_UPLOAD_MB = 1024;
+// Both limits are enforced by the scanner API; keep in sync with its settings.
+export const MAX_UPLOAD_MB = 100;
+export const SCANS_PER_HOUR = 10;
 
 /**
  * @typedef {{ headline: string; bullets: string[] }} UserSummaryStructured
@@ -113,15 +115,29 @@ export function formatBytes(bytes) {
   return `${(bytes / Math.pow(k, i)).toFixed(i === 0 ? 0 : 1)} ${sizes[i]}`;
 }
 
-export function deriveVerdict(result) {
-  const p1 = result?.phase1 || {};
-  const yara = result?.yara || {};
-  const p2Risk = result?.phase2?.verdict?.risk_level || "low";
+/**
+ * @typedef {"threat"|"high_risk"|"suspicious"|"harmless_match"|"low_risk"|"clean"} Verdict
+ */
 
-  if (p1.infected) return "infected";
-  if (yara.severity === "high") return "infected";
-  if (p2Risk === "high") return "infected";
-  if (yara.severity === "medium" || p2Risk === "medium") return "suspicious";
+/**
+ * Mirrors the backend's headline logic so the badge always agrees with the
+ * plain-language summary. A signature hit the AI rates low risk (the EICAR
+ * test file) is "harmless_match", not a threat.
+ *
+ * @param {object} result the scanner's final report
+ * @returns {Verdict}
+ */
+export function deriveVerdict(result) {
+  const yara = result?.yara || {};
+  const phase2 = result?.phase2 || {};
+  const aiRan = !phase2.skipped && Boolean(phase2.verdict);
+  const aiRisk = aiRan ? phase2.verdict.risk_level : null;
+  const yaraHit = Boolean(yara.enabled) && !yara.skipped && yara.match_count > 0;
+
+  if (result?.phase1?.infected) return aiRisk === "low" ? "harmless_match" : "threat";
+  if (aiRisk === "high" || yara.severity === "high") return "high_risk";
+  if (aiRisk === "medium" || (yaraHit && yara.severity === "medium")) return "suspicious";
+  if (yaraHit) return "low_risk";
   return "clean";
 }
 
@@ -133,7 +149,7 @@ export function errorCopy(err) {
   if (err?.error === "TOO_LARGE" || code === 413) {
     return {
       title: "File too large",
-      body: `The scanner accepts files up to ${MAX_UPLOAD_MB} MB.`,
+      body: `The scanner accepts files up to ${MAX_UPLOAD_MB} MB. Try a smaller one.`,
     };
   }
   if (err?.error === "EMPTY") {
@@ -142,42 +158,29 @@ export function errorCopy(err) {
   if (err?.error === "NO_FILE") {
     return { title: "No file selected", body: "Pick a file and try again." };
   }
-  if (code === 415) {
-    return {
-      title: "Unsupported file type",
-      body: "This file type isn't accepted by the scanner.",
-    };
-  }
   if (code === 429) {
     return {
       title: "Scan limit reached",
-      body: "You've hit the hourly scan limit. Please wait a bit and try again.",
-    };
-  }
-  if (code === 503) {
-    return {
-      title: "Scanner is busy",
-      body: "Too many scans in progress. Please retry in a minute.",
+      body: `You've reached the limit of ${SCANS_PER_HOUR} scans per hour. Please try again in an hour.`,
     };
   }
   if (code === 400) {
     return {
-      title: "Invalid request",
-      body: "Something was wrong with the upload. Please pick a file and try again.",
+      title: "File can't be scanned",
+      body: "This file can't be scanned. Please try a different file.",
     };
   }
   if (code === "connection_lost") {
     return {
       title: "Connection lost",
-      body:
-        err?.message ||
-        "The connection closed before the scan finished. Please try again.",
+      body: "The connection closed before the scan finished. Please try again.",
     };
   }
+  // The server's message is technical, so it is logged by the client and never shown.
   if (code === "scan_failed") {
     return {
       title: "Scan failed",
-      body: err?.message || "The scan could not be completed. Please try again.",
+      body: "The scan could not be completed. Please try again.",
     };
   }
   if (err?.network) {

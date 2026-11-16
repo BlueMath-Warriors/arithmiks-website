@@ -2,7 +2,7 @@ import React from "react";
 import GradientMark from "../../../shared/GradientMark";
 import { SHIELD_MARK } from "../shieldMark";
 import { formatBytes } from "../scanFormat";
-import { buildProgressRows, describeActivity } from "../scanReport";
+import { SCAN_DURATION_HINT, buildProgressRows, describeActivity } from "../scanReport";
 import {
   BusyPanel,
   Radar,
@@ -13,6 +13,7 @@ import {
   FileName,
   ActivityRow,
   Activity,
+  BusyHint,
   ProgressList,
   ProgressRow,
   EngineName,
@@ -25,7 +26,7 @@ import {
 /**
  * The scan card while a file uploads and the engines run.
  *
- * @param {{ status: "uploading"|"scanning", phases: Record<string, string>,
+ * @param {{ status: "uploading"|"queued"|"scanning", phases: Record<string, string>,
  *   file: File | null, onCancel: () => void }} props
  */
 const ScanBusy = ({ status, phases, file, onCancel }) => {
@@ -66,6 +67,7 @@ const ScanBusy = ({ status, phases, file, onCancel }) => {
             </ProgressRow>
           ))}
         </ProgressList>
+        {status !== "uploading" && <BusyHint>{SCAN_DURATION_HINT}</BusyHint>}
       </BusyBody>
     </BusyPanel>
   );

@@ -6,8 +6,10 @@ import {
 } from "../scanFormat";
 
 /**
- * idle → uploading → scanning → result | error. A file refused before upload
- * (too large, empty) keeps the card idle and records why in `rejection`.
+ * idle → uploading → queued → scanning → result | error. "queued" is the wait
+ * after the upload is accepted and before the first engine starts: the server
+ * scans one file at a time. A file refused before upload (too large, empty)
+ * keeps the card idle and records why in `rejection`.
  */
 export const initialScanState = {
   status: "idle",
@@ -28,10 +30,10 @@ export function scanReducer(state, action) {
       return { ...initialScanState, rejection: action.code };
     case "START":
       return { ...initialScanState, status: "uploading", file: action.file };
-    case "SCANNING":
-      return { ...state, status: "scanning" };
+    case "QUEUED":
+      return { ...state, status: "queued" };
     case "PHASE_START":
-      return setPhase(state, action.phase, "running");
+      return setPhase({ ...state, status: "scanning" }, action.phase, "running");
     case "PHASE_COMPLETE":
       return setPhase(state, action.phase, "completed");
     case "RESULT":
