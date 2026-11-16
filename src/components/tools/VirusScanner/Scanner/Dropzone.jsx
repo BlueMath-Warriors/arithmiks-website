@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { MAX_UPLOAD_MB, SCANS_PER_HOUR } from "../scanFormat";
 import { describeRejection } from "../scanReport";
 import {
   HiddenInput,
@@ -97,7 +98,7 @@ const Dropzone = ({ rejection, onPick, focusOnMount = false }) => {
           {title}
         </DropTitle>
         <DropNote id={NOTE_ID}>
-          Up to 1 GB · any file type · scanned in memory, deleted after
+          Up to {MAX_UPLOAD_MB} MB · any file type · {SCANS_PER_HOUR} scans per hour
         </DropNote>
         <DropButton aria-hidden="true">Choose a file</DropButton>
       </Zone>

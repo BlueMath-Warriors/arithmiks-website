@@ -13,7 +13,7 @@ export const TOOL_CATALOG = [
     key: "antivirus",
     name: "Antivirus",
     category: "Security",
-    description: "Scan files and links for malware in a second, before you open or share them.",
+    description: "Scan a file for malware in about a minute, before you open or share it.",
     slug: "virus-scanner",
     mark: {
       rib: "M24 5.5 38.5 11v11.5c0 9.5-6 16.5-14.5 20-8.5-3.5-14.5-10.5-14.5-20V11Z M18.8 23.2l3.6 3.6 6.8-7.2",
