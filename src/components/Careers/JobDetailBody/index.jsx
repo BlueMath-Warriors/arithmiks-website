@@ -34,8 +34,11 @@ const INFO_ROWS = (job) => [
   ["Zip/Postal Code", job.jobInfo.zipCode],
 ];
 
-/** @param {{ job: import("../../../constants/jobs").jobs[number] }} props */
-const JobDetailBody = ({ job }) => (
+/**
+ * @param {{ job: import("../../../constants/jobs").jobs[number],
+ *   onApply: (trigger: HTMLElement) => void }} props
+ */
+const JobDetailBody = ({ job, onApply }) => (
   <Section>
     <BreadcrumbShell>
       <Breadcrumb aria-label="Breadcrumb">
@@ -71,8 +74,11 @@ const JobDetailBody = ({ job }) => (
           </ParagraphList>
 
           <ApplyButton
-            href="#"
-            onClick={() => track("job_apply_click", { job_title: job.title, button_location: "body" })}
+            type="button"
+            onClick={(event) => {
+              track("job_apply_click", { job_title: job.title, button_location: "body" });
+              onApply(event.currentTarget);
+            }}
           >
             Apply now
           </ApplyButton>

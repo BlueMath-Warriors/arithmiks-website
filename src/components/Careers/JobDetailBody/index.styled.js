@@ -90,7 +90,7 @@ export const ParagraphList = styled.div`
   }
 `;
 
-export const ApplyButton = styled.a`
+export const ApplyButton = styled.button`
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -100,7 +100,9 @@ export const ApplyButton = styled.a`
   font-weight: 600;
   color: #fff;
   background: ${colors.primary};
+  border: 0;
   border-radius: 100px;
+  cursor: pointer;
   white-space: nowrap;
   transition: background 0.25s;
 
