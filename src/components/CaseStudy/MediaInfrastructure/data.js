@@ -41,6 +41,7 @@ export const getOverviewData = (images) => ({
   detail:
     "Built for a major broadcast archive, this platform auto-transforms raw video into searchable content via AI: transcripts, face recognition, chapters, summaries, and semantic indexing.",
   imageSrc: images?.overviewImage,
+  mobileImageSrc: images?.overviewMobileImage,
   problemData: {
     title: "The Problem",
     text: "Decades of footage were searchable only via manually assigned metadata, making content hard to discover. Each AI task—transcription, face recognition, chapter generation—ran independently, with undocumented, assumption-based dependencies. The platform orchestrates every AI service through one scalable workflow with real dependency tracing built in.",

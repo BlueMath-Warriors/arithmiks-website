@@ -46,6 +46,7 @@ export const getOverviewData = (images) => ({
   detail:
     "Togather is a community engagement platform that helps churches and NGOs connect members, manage activities, and drive participation through a centralized digital hub.",
   imageSrc: images?.overviewImage,
+  mobileImageSrc: images?.overviewMobileImage,
   problemData: {
     title: "The Problem",
     text: "Community organizations relied on scattered tools for communication, events, and donations, resulting in low engagement and poor visibility. Togather solves this by unifying community management into one accessible and easy-to-use platform.",

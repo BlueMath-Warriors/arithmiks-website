@@ -42,6 +42,7 @@ export const getOverviewData = (images) => ({
   detail:
     "On Ofertas Perronas MX, users find or post deals with pricing, coupons & images in one flow—the community votes and comments while moderation keeps it honest.",
   imageSrc: images?.overviewImage,
+  mobileImageSrc: images?.overviewMobileImage,
   problemData: {
     title: "The Problem",
     text: "Users had no structured way to publish deals, no moderation visibility, and no engagement tools worth returning for. It's the tension every deal platform faces: open submissions drive engagement but demand quality control. Ofertas Perronas MX pairs both in one flow.",

@@ -48,6 +48,7 @@ export const getOverviewData = (images) => ({
   detail:
     "GoAgents is an AI-powered SaaS platform that automates end-to-end digital marketing workflows, enabling teams to scale campaigns with speed and efficiency.",
   imageSrc: images?.overviewImage,
+  mobileImageSrc: images?.overviewMobileImage,
   problemData: {
     title: "The Problem",
     text: "Marketing teams relied on manual, fragmented tools to manage content, ads, and reporting, making it difficult to scale without errors or high overhead. GoAgents solves this by unifying and automating the entire marketing workflow in one intelligent platform.",

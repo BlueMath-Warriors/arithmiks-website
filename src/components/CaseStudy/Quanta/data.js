@@ -37,6 +37,7 @@ export const overviewData = {
     "Quanta is a multi-tenant BI platform for teams without a SQL expert. Each org gets its own Postgres/MySQL workspace, roles, AI credits, and plain-English queries. Live in production, security tested.",
   framed: true,
   imageSrc: `${ASSET_ROOT}/overview.webp`,
+  mobileImageSrc: `${ASSET_ROOT}/overview-mobile.webp`,
   imageAlt: "Quanta schema view: connected tables and their relationships",
   problemData: {
     title: "The Problem",

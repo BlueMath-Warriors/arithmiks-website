@@ -39,6 +39,7 @@ export const getOverviewData = (images) => ({
   detail:
     "Expat Haven Hub is your entire relocation journey in one place—AI research across 20+ countries, tools to compare destinations & a trust-based city community.",
   imageSrc: images?.overviewImage,
+  mobileImageSrc: images?.overviewMobileImage,
   problemData: {
     title: "The Problem",
     text: "Relocation research was scattered across dozens of tabs—government sites, cost-of-living tools, tax blogs, Facebook groups—with no place to decide. Country data went stale, and communities ran on unverified groups full of cold-DM noise. Expat Haven Hub unifies research, decisions, and community into one continuous journey.",

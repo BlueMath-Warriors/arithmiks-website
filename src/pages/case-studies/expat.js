@@ -49,5 +49,16 @@ export const query = graphql`
         )
       }
     }
+    overviewMobileImage: file(relativePath: { eq: "ehhFinancialSummaryMobile.webp" }) {
+      childImageSharp {
+        gatsbyImageData(
+          width: 1000
+          placeholder: NONE
+          formats: [AUTO]
+          quality: 85
+          sizes: "calc(100vw - 32px)"
+        )
+      }
+    }
   }
 `;

@@ -44,6 +44,7 @@ export const getOverviewData = (images) => ({
   detail:
     "EasyBar is a web-based platform that digitizes and automates the design, quotation, and ordering of iron rebars, connecting buyers and vendors in one streamlined workflow.",
   imageSrc: images?.overviewImage,
+  mobileImageSrc: images?.overviewMobileImage,
   problemData: {
     title: "The Problem",
     text: "Rebar procurement relied on manual, fragmented processes that caused delays, limited design flexibility, and poor coordination between buyers and vendors. EasyBar solves this by centralizing sketches, quotations, and orders into a single, efficient digital system.",

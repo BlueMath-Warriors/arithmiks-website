@@ -37,6 +37,7 @@ export const getOverviewData = (images) => ({
   detail:
     "LFGO is a Web3 platform that simplifies creating, launching, and trading custom tokens across multiple blockchains through an intuitive, guided experience.",
   imageSrc: images?.overviewImage,
+  mobileImageSrc: images?.overviewMobileImage,
   problemData: {
     title: "The Problem",
     text: "Token creation and trading required complex, fragmented tools and deep technical knowledge, limiting accessibility and efficiency. LFGO addresses this by unifying minting, management, and marketplace trading into one easy-to-use, cross-chain platform.",
