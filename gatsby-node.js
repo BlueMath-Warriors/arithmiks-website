@@ -4,8 +4,13 @@
 
 const fs = require("fs");
 const path = require("path");
+const { removeStaleStaticPages } = require("./src/server/build/removeStaleStaticPages.cjs");
 
 const WORDS_PER_MINUTE = 200;
+
+// Pages that used to be static and are now rendered on request (they export
+// getServerData). Add a page here when it changes from static to server-rendered.
+const REQUEST_TIME_PAGE_PATHS = ["/careers", "/careers/jobs"];
 
 const computeReadingTime = (filePath) => {
   if (!filePath || !fs.existsSync(filePath)) return 1;
@@ -66,6 +71,18 @@ exports.createResolvers = ({ createResolvers }) => {
       },
     },
   });
+};
+
+// Runs before the Netlify adapter stores its build cache and collects the
+// files to publish, so the cleanup also keeps future restored caches clean.
+exports.onPostBuild = async ({ reporter }) => {
+  const removed = await removeStaleStaticPages({
+    publicDir: path.join(process.cwd(), "public"),
+    pagePaths: REQUEST_TIME_PAGE_PATHS,
+  });
+  if (removed.length > 0) {
+    reporter.info(`Removed ${removed.length} stale static file(s) of request-time pages.`);
+  }
 };
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
