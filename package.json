@@ -19,7 +19,6 @@
   "dependencies": {
     "@gsap/react": "^2.1.2",
     "@mdx-js/react": "^2.3.0",
-    "@netlify/cache": "^4.2.1",
     "babel-plugin-styled-components": "^2.1.4",
     "dotenv": "^16.3.2",
     "gatsby": "^5.14.3",
