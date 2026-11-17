@@ -1,0 +1,48 @@
+{
+  "job_id": "00000000-0000-0000-0000-000000000007",
+  "filename": "invoices.zip",
+  "content_type": "application/zip",
+  "phase1": {
+    "engine": "clamav",
+    "infected": false,
+    "threat_name": null,
+    "raw_exit_code": 0,
+    "details": null
+  },
+  "yara": {
+    "engine": "yara",
+    "enabled": true,
+    "skipped": false,
+    "skip_reason": null,
+    "severity": "low",
+    "severity_base": "low",
+    "severity_escalated": false,
+    "correlation_reason": null,
+    "match_count": 0,
+    "matches": [],
+    "rules_loaded": 9,
+    "archive_scan": {
+      "members_scanned": 0,
+      "nested_archives": 0,
+      "max_depth": 0,
+      "errors": ["invoices.zip: encrypted"]
+    }
+  },
+  "phase2": {
+    "engine": "claude_agent",
+    "skipped": true,
+    "skip_reason": "archive_encrypted",
+    "verdict": null,
+    "analysis": null,
+    "risk_notes": []
+  },
+  "user_summary": "This file looks clean based on the checks that ran.\n\nNo known threat signatures and no suspicious content patterns were found in this file.\n\nNote: deeper analysis did not run for this file, so the verdict is based on the remaining checks only.",
+  "user_summary_structured": {
+    "headline": "This file looks clean based on the checks that ran.",
+    "bullets": [
+      "No known threat signatures and no suspicious content patterns were found in this file.",
+      "Note: deeper analysis did not run for this file, so the verdict is based on the remaining checks only."
+    ]
+  },
+  "meta": { "job_id": "00000000-0000-0000-0000-000000000007", "original_filename": "invoices.zip" }
+}

@@ -55,8 +55,11 @@ const LinkIcon = () => (
   </svg>
 );
 
-/** @param {{ job: import("../../../constants/jobs").jobs[number] }} props */
-const JobDetailHero = ({ job }) => {
+/**
+ * @param {{ job: import("../../../constants/jobs").Job,
+ *   onApply: (trigger: HTMLElement) => void }} props
+ */
+const JobDetailHero = ({ job, onApply }) => {
   const { siteUrl } = useSiteMetadata();
   const [copied, setCopied] = useState(false);
   const pageUrl = `${siteUrl}/careers/jobs/${job.slug}`;
@@ -87,8 +90,11 @@ const JobDetailHero = ({ job }) => {
         </SubMeta>
         <ActionRow>
           <ApplyButton
-            href="#"
-            onClick={() => track("job_apply_click", { job_title: job.title, button_location: "hero" })}
+            type="button"
+            onClick={(event) => {
+              track("job_apply_click", { job_title: job.title, button_location: "hero" });
+              onApply(event.currentTarget);
+            }}
           >
             Apply now
           </ApplyButton>

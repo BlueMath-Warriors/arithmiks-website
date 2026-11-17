@@ -1,0 +1,58 @@
+{
+  "job_id": "e787c232-454e-4732-9b31-26bd9326c4f0",
+  "filename": "eicar.txt",
+  "content_type": "text/plain",
+  "phase1": {
+    "engine": "clamav",
+    "infected": true,
+    "threat_name": "Eicar-Test-Signature",
+    "raw_exit_code": 1,
+    "details": "/scan/e787c232/eicar.txt: Eicar-Test-Signature FOUND"
+  },
+  "yara": {
+    "engine": "yara",
+    "enabled": true,
+    "skipped": false,
+    "skip_reason": null,
+    "severity": "high",
+    "severity_base": "high",
+    "severity_escalated": false,
+    "correlation_reason": null,
+    "match_count": 1,
+    "matches": [
+      {
+        "rule": "EICAR_Test_Signature",
+        "namespace": "test_eicar",
+        "tags": ["test", "high_risk"],
+        "severity": "high",
+        "description": "EICAR antivirus test file (not malware) — detection verification",
+        "source": ""
+      }
+    ],
+    "rules_loaded": 9,
+    "archive_scan": null
+  },
+  "phase2": {
+    "engine": "claude_agent",
+    "skipped": false,
+    "skip_reason": null,
+    "verdict": {
+      "summary": "This file contains the well-known EICAR Standard Antivirus Test File string. It is benign by design and carries no actual malicious payload or capability.",
+      "risk_level": "low",
+      "indicators": [
+        "EICAR standard test string ('EICAR-STANDARD-ANTIVIRUS-TEST-FILE'), a known benign AV test artifact, not real malware"
+      ]
+    },
+    "analysis": "LOW risk across 1 unit(s), 1 chunk(s).",
+    "risk_notes": []
+  },
+  "user_summary": "This file is the standard EICAR antivirus test string — it is harmless and contains no real malware.\n\nAll three layers of scanning flagged it as 'Eicar-Test-Signature', which is exactly the expected result for this well-known 68-byte test pattern.\n\nThis file is safe; the detections are a sign the scanner is functioning correctly, not a sign of any real threat.",
+  "user_summary_structured": {
+    "headline": "This file is the standard EICAR antivirus test string — it is harmless and contains no real malware.",
+    "bullets": [
+      "All three layers of scanning flagged it as 'Eicar-Test-Signature', which is exactly the expected result for this well-known 68-byte test pattern.",
+      "This file is safe; the detections are a sign the scanner is functioning correctly, not a sign of any real threat."
+    ]
+  },
+  "meta": { "job_id": "e787c232-454e-4732-9b31-26bd9326c4f0", "original_filename": "eicar.txt" }
+}

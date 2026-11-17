@@ -3,7 +3,7 @@ import Header from "../../components/Landing/Header";
 import Footer from "../../components/Landing/Footer";
 import JobsList from "../../components/Careers/JobsList";
 import { SEO } from "../../components/seo";
-import { jobs } from "../../constants/jobs";
+import { getJobsServerData } from "../../server/jobs/jobsServerData";
 
 const breadcrumbItems = [
   { name: "Home", pathname: "/" },
@@ -11,8 +11,8 @@ const breadcrumbItems = [
   { name: "Open Roles", pathname: "/careers/jobs" },
 ];
 
-/** @param {{ location: { search: string } }} props Gatsby-injected page props. */
-const JobsSearchPage = ({ location }) => {
+/** @param {{ location: { search: string }, serverData: { jobs: import("../../constants/jobs").Job[], loadFailed: boolean } }} props Gatsby-injected page props. */
+const JobsSearchPage = ({ location, serverData }) => {
   const params = new URLSearchParams(location.search);
 
   return (
@@ -20,7 +20,8 @@ const JobsSearchPage = ({ location }) => {
       <Header white />
       <main>
         <JobsList
-          jobs={jobs}
+          jobs={serverData.jobs}
+          loadFailed={serverData.loadFailed}
           initialKeyword={params.get("q") || ""}
           initialTeam={params.get("team")}
           initialLocation={params.get("location")}
@@ -32,6 +33,8 @@ const JobsSearchPage = ({ location }) => {
 };
 
 export default JobsSearchPage;
+
+export const getServerData = getJobsServerData;
 
 export const Head = () => (
   <SEO

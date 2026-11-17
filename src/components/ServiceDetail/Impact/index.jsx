@@ -21,12 +21,11 @@ import {
  *
  * @param {{ eyebrow: string, title: import("../../shared/Band/HeadingText").HeadingPart[],
  *   outcomes: (string | { label: string, title: string })[], ctaLines: string[],
- *   ctaLabel: string, sectionId?: string, compactOnPhone?: boolean, ctaSpan?: number,
+ *   ctaLabel: string, sectionId?: string, ctaSpan?: number,
  *   padBottom?: boolean,
  *   extraCell?: { label: string, chips: { label: string, href?: string }[] } }} props
  *   outcomes: a plain string is numbered 01, 02…; an object names its own label;
  *   ctaLines: the CTA sentence in pieces that each stay on one line;
- *   compactOnPhone: pair the cells up on phones (most pages) rather than stack them;
  *   ctaSpan: fix the grid at four columns and let the CTA fill this many of the
  *   last row's, as the AI service designs set it;
  *   padBottom: close the band with its own bottom padding;
@@ -40,7 +39,6 @@ const Impact = ({
   ctaLines,
   ctaLabel,
   sectionId = "impact",
-  compactOnPhone = true,
   ctaSpan,
   padBottom = false,
   extraCell,
@@ -56,26 +54,22 @@ const Impact = ({
           </Title>
         </div>
 
-        <Grid $compact={compactOnPhone} $ctaSpan={ctaSpan}>
+        <Grid $ctaSpan={ctaSpan}>
           {outcomes.map((outcome, index) => {
             const named = typeof outcome !== "string";
             const { label, title: outcomeTitle } = named
               ? outcome
               : { label: String(index + 1).padStart(2, "0"), title: outcome };
             return (
-              <Cell key={outcomeTitle} data-reveal="" $compact={compactOnPhone} $ctaSpan={ctaSpan}>
-                <CellNumber $compact={compactOnPhone} $named={named}>
-                  {label}
-                </CellNumber>
+              <Cell key={outcomeTitle} data-reveal="" $ctaSpan={ctaSpan}>
+                <CellNumber $named={named}>{label}</CellNumber>
                 <h3>{outcomeTitle}</h3>
               </Cell>
             );
           })}
           {extraCell && (
-            <Cell data-reveal="" $compact={compactOnPhone} $ctaSpan={ctaSpan}>
-              <CellNumber $compact={compactOnPhone} $named>
-                {extraCell.label}
-              </CellNumber>
+            <Cell data-reveal="" $ctaSpan={ctaSpan}>
+              <CellNumber $named>{extraCell.label}</CellNumber>
               <Chips>
                 {extraCell.chips.map((chip) =>
                   chip.href ? (
@@ -89,9 +83,9 @@ const Impact = ({
               </Chips>
             </Cell>
           )}
-          <CtaCell data-reveal="" $compact={compactOnPhone} $ctaSpan={ctaSpan}>
-            <CtaInner $compact={compactOnPhone} $ctaSpan={ctaSpan}>
-              <CtaText $compact={compactOnPhone} $ctaSpan={ctaSpan}>
+          <CtaCell data-reveal="" $ctaSpan={ctaSpan}>
+            <CtaInner $ctaSpan={ctaSpan}>
+              <CtaText $ctaSpan={ctaSpan}>
                 {ctaLines.map((line, index) => (
                   <React.Fragment key={line}>
                     {index > 0 && " "}

@@ -1,7 +1,17 @@
 import React from "react";
 import { useCountUp } from "../../../hooks/useCountUp";
 import { useInViewOnce } from "../../../hooks/useInViewOnce";
-import { Row, Claim, Figure, Meta, Track, Fill, Source } from "./index.styled";
+import {
+  Row,
+  Claim,
+  Figure,
+  FigureSizer,
+  FigureValue,
+  Meta,
+  Track,
+  Fill,
+  Source,
+} from "./index.styled";
 
 // The design's counter: 1.1s with a cubic ease-out.
 const COUNT_OPTIONS = { duration: 1.1, ease: "power2.out" };
@@ -24,7 +34,10 @@ const StatBar = ({ stat, wrapSourceOnPhone = true }) => {
   return (
     <Row data-reveal="">
       <Claim>{stat.claim}</Claim>
-      <Figure ref={figureRef}>{stat.label}</Figure>
+      <Figure>
+        <FigureSizer aria-hidden="true">{stat.label}</FigureSizer>
+        <FigureValue ref={figureRef}>{stat.label}</FigureValue>
+      </Figure>
       <Meta>
         {hasBar && (
           <Track ref={trackRef} aria-hidden="true">

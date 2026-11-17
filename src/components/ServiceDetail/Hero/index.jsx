@@ -40,20 +40,12 @@ export const HERO_ART_SIZES = "(max-width: 700px) 360px, min(700px, 44vw)";
  *   primaryCta: HeroCta,
  *   secondaryCta: HeroCta,
  *   art: string,
- *   stackCtasOnMobile?: boolean,
  *   introMaxWidth?: string,
  *   ctaGap?: string,
  *   markdown?: { href: string, filename: string },
- *   ctaStackWidth?: number,
- *   cornerArtOnPhone?: boolean,
- *   fillMeshOnPhone?: boolean,
  * }} props
  *   markdown: the page's Markdown rendition. The chapter bar shows it on wide
- *   screens; this is the phone placement;
- *   ctaStackWidth: the viewport width (px) below which stacked CTAs stack;
- *   cornerArtOnPhone: place the art small in the top-right corner on phones;
- *   fillMeshOnPhone: stretch the background glows over the hero on phones (the
- *   AI service designs keep their desktop placement instead).
+ *   screens; this is the phone placement.
  */
 const Hero = ({
   eyebrow,
@@ -62,17 +54,13 @@ const Hero = ({
   primaryCta,
   secondaryCta,
   art,
-  stackCtasOnMobile = false,
   introMaxWidth,
   ctaGap,
   markdown,
-  ctaStackWidth = 700,
-  cornerArtOnPhone = false,
-  fillMeshOnPhone = true,
 }) => (
   <Section id="top">
-    <MeshHeroBackground fillOnPhone={fillMeshOnPhone} />
-    <Art aria-hidden="true" $cornerOnPhone={cornerArtOnPhone}>
+    <MeshHeroBackground fillOnPhone />
+    <Art aria-hidden="true">
       <img
         src={`/services/hero/${art}-700.webp`}
         srcSet={heroArtSrcSet(art)}
@@ -102,7 +90,7 @@ const Hero = ({
               {paragraph}
             </Intro>
           ))}
-          <CtaRow $stackOnMobile={stackCtasOnMobile} $stackWidth={ctaStackWidth} $gap={ctaGap}>
+          <CtaRow $gap={ctaGap}>
             <PrimaryButton href={primaryCta.href}>
               {primaryCta.label} <span aria-hidden="true">{primaryCta.glyph}</span>
             </PrimaryButton>

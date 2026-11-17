@@ -47,6 +47,7 @@ export const getOverviewData = (images) => ({
   detail:
     "SBALoansHQ is multi-tenant SaaS running the full SBA loan lifecycle—AI handles lead scoring, doc reading & credit memos, cutting overhead 60%, 30% faster.",
   imageSrc: images?.overviewImage,
+  mobileImageSrc: images?.overviewMobileImage,
   problemData: {
     title: "The Problem",
     text: "Loan brokers ran everything through email threads and spreadsheets—every lead reviewed by hand, every document read manually, underwriters piecing deal summaries together from scattered files. SBALoansHQ centralizes the workflow and lets AI handle the repetitive work.",

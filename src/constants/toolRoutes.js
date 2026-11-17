@@ -10,7 +10,7 @@ export const TOOL_ROUTES = [
     label: "Virus Scanner",
     seoTitle: "Free Online Virus Scanner - Scan Files for Malware | Arithmiks",
     seoDescription:
-      "Free online virus scanner powered by ClamAV, YARA rules, and AI analysis. Upload any file up to 1 GB, get a detailed threat report in seconds. No signup, files deleted after scan.",
+      "Free online virus scanner powered by ClamAV, YARA rules, and AI analysis. Upload any file up to 100 MB, get a detailed threat report in about a minute. No signup, files deleted after scan.",
     keywords: [
       "free online virus scanner",
       "scan file for virus online",
@@ -43,8 +43,9 @@ export const TOOL_ROUTES = [
     faq: [
       {
         question: "Is this virus scanner free?",
-        // The design copy promised unlimited scans; the API enforces an hourly limit (HTTP 429).
-        answer: "Yes. It’s free to use, with no signup.",
+        // The design copy promised unlimited scans; the API allows 10 per IP per hour (HTTP 429).
+        answer:
+          "Yes. It’s free to use, with no signup. To keep it fast for everyone, each visitor can run up to 10 scans per hour.",
       },
       {
         question: "Is my file safe? What do you do with it?",
@@ -54,7 +55,7 @@ export const TOOL_ROUTES = [
       {
         question: "What file size and types are supported?",
         answer:
-          "Any file type, up to 1 GB. That includes documents, installers, archives, images and scripts.",
+          "Any file type, up to 100 MB. That includes documents, installers, archives, images and scripts.",
       },
       {
         question: "How does the scanner detect threats?",
@@ -72,29 +73,29 @@ export const TOOL_ROUTES = [
           "No. It gives a second opinion on a single file. Keep a real-time antivirus on your device for ongoing protection.",
       },
       {
-        question: "Why does a clean file take a few seconds?",
+        question: "Why does a scan take about a minute?",
         answer:
-          "Every file goes through all three engines, even when the first finds nothing. That’s what makes a Clean verdict worth trusting.",
+          "Every file goes through all three engines, even when the first finds nothing, and the AI analysis is the longest step. That’s what makes a Clean verdict worth trusting.",
       },
       {
         question: "What happens if the scanner is busy?",
-        // The design copy described a queue; the API rejects scans when full (HTTP 503).
+        // The scanner handles one file at a time and queues the rest; it never turns a scan away.
         answer:
-          "When too many scans are running at once you’ll see a “Scanner is busy” message. Wait a minute and try again.",
+          "The scanner checks one file at a time. If someone else is scanning, your file waits in line and you’ll see “Waiting for a free scanner…” until it’s your turn. Keep the page open and it will start by itself.",
       },
     ],
     howToSteps: [
       {
         name: "Upload your file",
-        text: "Drag and drop a file onto the scanner, or click to choose one from your device. Files up to 1 GB are accepted.",
+        text: "Drag and drop a file onto the scanner, or click to choose one from your device. Files up to 100 MB are accepted.",
       },
       {
         name: "Wait for the scan to finish",
-        text: "ClamAV, YARA and the AI analyst run in sequence. Most scans finish in under 30 seconds.",
+        text: "ClamAV, YARA and the AI analyst run in sequence. Most scans finish in about a minute.",
       },
       {
         name: "Review the threat report",
-        text: "See a clear verdict, clean, suspicious or infected, plus what each engine found and an AI summary.",
+        text: "See a clear verdict, from Clean to Threat detected, plus what each engine found and an AI summary.",
       },
     ],
   },

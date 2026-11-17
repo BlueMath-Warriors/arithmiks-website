@@ -12,8 +12,8 @@ export const PANEL_GAP = 16;
 // screens; the AI service designs only on the pinned desktop rail, never the deck.
 //
 // Separately, `$stackOnPhone` on the components below is the AI service designs'
-// phone card: under 700px the stage icon and duration share the top row, the
-// stage text runs full width beneath, and the type and spacing tighten to suit.
+// phone card: under 700px the type and spacing tighten and the stage is closed
+// off from the rest of the card by a rule.
 const tight =
   (rules) =>
   ({ $tightOnlyWhenShort, $tightOnDesktopOnly }) => {
@@ -326,12 +326,14 @@ export const Side = styled.div`
     height: 88px;
   }
 
+  /* Off the pinned rail every card reads top to bottom: icon, stage text, then
+     the duration beneath it. Laid level with the heading instead, a long stage
+     title and a long duration collide. */
   @media ${DECK} {
     border-right: 0;
     padding-right: 0;
-    flex-direction: ${({ $sideRow }) => ($sideRow ? "row" : "column")};
-    align-items: ${({ $sideRow }) => ($sideRow ? "center" : "flex-start")};
-    gap: ${({ $sideRow }) => ($sideRow ? "18px" : "14px")};
+    align-items: flex-start;
+    gap: 14px;
 
     svg {
       width: ${({ $sideRow }) => ($sideRow ? "56px" : "48px")};
@@ -343,23 +345,17 @@ export const Side = styled.div`
     $stackOnPhone &&
     `
     @media (max-width: 700px) {
-      display: grid;
-      grid-template-columns: auto minmax(0, 1fr);
-      grid-template-areas: "icon dur" "text text";
-      align-items: center;
-      gap: 16px 12px;
+      gap: 14px;
       padding: 0 0 20px;
       border-right: 0;
       border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 
       svg {
-        grid-area: icon;
         width: 44px;
         height: 44px;
       }
 
       > div:first-of-type {
-        grid-area: text;
         min-width: 0;
       }
     }
@@ -421,22 +417,11 @@ export const Duration = styled.div`
   align-items: center;
   gap: 10px;
 
+  /* On the rail the duration is pushed to the foot of the column; in the deck
+     it simply follows the stage text. */
   @media ${DECK} {
     margin-top: 0;
-    margin-left: ${({ $sideRow }) => ($sideRow ? "auto" : "0")};
   }
-
-  ${({ $stackOnPhone }) =>
-    $stackOnPhone &&
-    `
-    @media (max-width: 700px) {
-      grid-area: dur;
-      justify-self: end;
-      margin: 0;
-      gap: 10px;
-      flex-wrap: nowrap;
-    }
-  `}
 `;
 
 export const DurationLabel = styled.span`
@@ -451,14 +436,6 @@ export const DurationValue = styled.span`
   font-size: 15px;
   font-weight: 600;
   color: #fff;
-
-  ${({ $stackOnPhone }) =>
-    $stackOnPhone &&
-    `
-    @media (max-width: 700px) {
-      white-space: nowrap;
-    }
-  `}
 `;
 
 export const Dots = styled.div`

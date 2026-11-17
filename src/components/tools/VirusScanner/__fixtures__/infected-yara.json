@@ -1,4 +1,15 @@
 {
+  "job_id": "00000000-0000-0000-0000-000000000003",
+  "filename": "installer.js",
+  "content_type": "text/javascript",
+  "user_summary": "This file looks like a malware loader — do not run it.\n\nPattern rules found a hidden PowerShell launcher and obfuscated strings.\n\nThe AI review agrees: the behavior is consistent with a loader.",
+  "user_summary_structured": {
+    "headline": "This file looks like a malware loader — do not run it.",
+    "bullets": [
+      "Pattern rules found a hidden PowerShell launcher and obfuscated strings.",
+      "The AI review agrees: the behavior is consistent with a loader."
+    ]
+  },
   "phase1": {
     "infected": false,
     "threat_name": null,

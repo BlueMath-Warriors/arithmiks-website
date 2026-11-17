@@ -2,7 +2,7 @@ import React from "react";
 import TagPill from "../TagPill";
 import { Card, TitleRow, Title, Arrow, Summary, TagRow } from "./index.styled";
 
-/** @param {{ job: import("../../../constants/jobs").jobs[number] }} props */
+/** @param {{ job: import("../../../constants/jobs").Job }} props */
 const RoleCard = ({ job }) => (
   <Card to={`/careers/jobs/${job.slug}`}>
     <TitleRow>

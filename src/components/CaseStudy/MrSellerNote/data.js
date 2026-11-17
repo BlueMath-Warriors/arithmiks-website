@@ -43,6 +43,7 @@ export const getOverviewData = (images) => ({
   detail:
     "Mr Seller Note is a fintech platform for tracking loans end to end. It splits principal and interest per installment, records payments, tracks balances, and runs Stripe transfers.",
   imageSrc: images?.overviewImage,
+  mobileImageSrc: images?.overviewMobileImage,
   problemData: {
     title: "The Problem",
     text: "Private lending is often managed through spreadsheets and manual calculations, creating gaps in accuracy, consistency, and visibility across all parties. Interest and principal are calculated by hand with no reliable way to track balances, payments have to be initiated and recorded manually, and receipts and loan data live in disconnected places.",

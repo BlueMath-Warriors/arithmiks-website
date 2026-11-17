@@ -137,9 +137,9 @@ const OfferCard = forwardRef(
               <StageTitle $stackOnPhone={stackOnPhone}>{offer.title}</StageTitle>
               <StageTag $stackOnPhone={stackOnPhone}>{offer.tag}</StageTag>
             </div>
-            <Duration $sideRow={sideRowOnNarrow} $stackOnPhone={stackOnPhone}>
+            <Duration>
               <DurationLabel>Duration</DurationLabel>
-              <DurationValue $stackOnPhone={stackOnPhone}>{offer.duration}</DurationValue>
+              <DurationValue>{offer.duration}</DurationValue>
             </Duration>
           </Side>
         </CardGrid>

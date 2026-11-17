@@ -1,4 +1,15 @@
 {
+  "job_id": "00000000-0000-0000-0000-000000000005",
+  "filename": "setup-bundle.exe",
+  "content_type": "application/x-msdownload",
+  "user_summary": "This file is probably unwanted software, not malware.\n\nIt bundles extra installs, starts with your computer and sends usage data without asking.\n\nYou may prefer to avoid it.",
+  "user_summary_structured": {
+    "headline": "This file is probably unwanted software, not malware.",
+    "bullets": [
+      "It bundles extra installs, starts with your computer and sends usage data without asking.",
+      "You may prefer to avoid it."
+    ]
+  },
   "phase1": {
     "infected": false,
     "threat_name": null,

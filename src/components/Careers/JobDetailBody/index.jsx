@@ -34,8 +34,11 @@ const INFO_ROWS = (job) => [
   ["Zip/Postal Code", job.jobInfo.zipCode],
 ];
 
-/** @param {{ job: import("../../../constants/jobs").jobs[number] }} props */
-const JobDetailBody = ({ job }) => (
+/**
+ * @param {{ job: import("../../../constants/jobs").Job,
+ *   onApply: (trigger: HTMLElement) => void }} props
+ */
+const JobDetailBody = ({ job, onApply }) => (
   <Section>
     <BreadcrumbShell>
       <Breadcrumb aria-label="Breadcrumb">
@@ -52,27 +55,24 @@ const JobDetailBody = ({ job }) => (
 
           <Heading>Job Description</Heading>
           <ParagraphList>
-            {job.description.intro.map((line) => (
-              <p key={line}>{line}</p>
-            ))}
-            {job.description.whatYouWillDo.map((line) => (
-              <p key={line}>{line}</p>
+            {job.description.map((line, index) => (
+              <p key={index}>{line}</p>
             ))}
           </ParagraphList>
 
           <Heading>Requirements</Heading>
           <ParagraphList>
-            {job.requirements.whatYouWillBring.map((line) => (
-              <p key={line}>{line}</p>
-            ))}
-            {job.requirements.niceToHave.map((line) => (
-              <p key={line}>{line}</p>
+            {job.requirements.map((line, index) => (
+              <p key={index}>{line}</p>
             ))}
           </ParagraphList>
 
           <ApplyButton
-            href="#"
-            onClick={() => track("job_apply_click", { job_title: job.title, button_location: "body" })}
+            type="button"
+            onClick={(event) => {
+              track("job_apply_click", { job_title: job.title, button_location: "body" });
+              onApply(event.currentTarget);
+            }}
           >
             Apply now
           </ApplyButton>

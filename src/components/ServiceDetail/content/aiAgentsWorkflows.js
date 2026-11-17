@@ -12,10 +12,6 @@ const aiAgentsWorkflows = {
     secondaryCta: { label: "See how it works", href: "#process", glyph: "↓" },
     art: "ai-discovery",
     introMaxWidth: "660px",
-    stackCtasOnMobile: true,
-    ctaStackWidth: 600,
-    cornerArtOnPhone: true,
-    fillMeshOnPhone: false,
   },
   markdown: {
     href: "/services/ai-agents-workflows-automations.md",
@@ -189,7 +185,6 @@ const aiAgentsWorkflows = {
     {
       type: "impact",
       sectionId: "outcomes",
-      compactOnPhone: false,
       ctaSpan: 2,
       eyebrow: "Outcomes & business impact",
       title: ["Routine work,", { br: true }, { grad: "off your team’s plate" }],

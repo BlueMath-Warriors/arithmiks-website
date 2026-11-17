@@ -6,8 +6,8 @@ export const HERO = {
   eyebrow: "Free online virus scanner",
   title: ["Know a file is safe ", { grad: "before you open it" }],
   intro:
-    "Three engines check every file for viruses, ransomware and hidden scripts, then give you one clear verdict in seconds.",
-  badges: ["ClamAV + YARA + AI", "Files up to 1 GB", "Deleted after scan", "No signup"],
+    "Three engines check every file for viruses, ransomware and hidden scripts, then give you one clear verdict in about a minute.",
+  badges: ["ClamAV + YARA + AI", "Files up to 100 MB", "Deleted after scan", "No signup"],
 };
 
 export const THREATS = {

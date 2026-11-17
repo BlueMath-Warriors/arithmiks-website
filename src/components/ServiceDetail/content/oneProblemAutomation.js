@@ -10,10 +10,6 @@ const oneProblemAutomation = {
     secondaryCta: { label: "See how it works", href: "#process", glyph: "↓" },
     art: "ai-discovery",
     introMaxWidth: "660px",
-    stackCtasOnMobile: true,
-    ctaStackWidth: 600,
-    cornerArtOnPhone: true,
-    fillMeshOnPhone: false,
   },
   markdown: { href: "/services/one-problem-automation.md", filename: "one-problem-automation.md" },
   chapters: [
@@ -159,7 +155,6 @@ const oneProblemAutomation = {
     {
       type: "impact",
       sectionId: "outcomes",
-      compactOnPhone: false,
       ctaSpan: 3,
       padBottom: true,
       eyebrow: "Outcomes & business impact",
