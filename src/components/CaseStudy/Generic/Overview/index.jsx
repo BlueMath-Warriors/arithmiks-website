@@ -3,7 +3,10 @@ import { getImage, getSrc } from "gatsby-plugin-image";
 import useReveal from "../../../../hooks/useReveal";
 import { GradientText, Shell } from "../../../shared/Section/index.styled";
 import { SectionEyebrow, SectionHeading } from "../layout.styled";
+import { getMobileImageSource } from "./mobileImageSource";
 import {
+  OVERVIEW_MOBILE_MAX_WIDTH,
+  ResponsivePicture,
   OverviewSection,
   OverviewGrid,
   TextColumn,
@@ -31,11 +34,29 @@ const renderImage = (image, alt) => {
   return <img src={src} alt={alt} loading="lazy" />;
 };
 
+const renderResponsiveImage = (image, mobileSource, alt) => {
+  if (!mobileSource) return renderImage(image, alt);
+
+  return (
+    <ResponsivePicture>
+      <source
+        media={`(max-width: ${OVERVIEW_MOBILE_MAX_WIDTH}px)`}
+        srcSet={mobileSource.srcSet}
+        sizes={mobileSource.sizes}
+      />
+      {renderImage(image, alt)}
+    </ResponsivePicture>
+  );
+};
+
 /**
  * @param {Object} props
  * @param {string} props.name product / client name used in "What is …?"
  * @param {string} props.detail
  * @param {string|Object} props.imageSrc static path or gatsby image node
+ * @param {string|Object} [props.mobileImageSrc] uncropped version shown only at
+ *   or below OVERVIEW_MOBILE_MAX_WIDTH, where the desktop image's cropped right
+ *   edge would otherwise be visible; static path or gatsby image node
  * @param {string} [props.imageAlt]
  * @param {boolean} [props.framed] show the image as a bordered card with a drop shadow (default)
  * @param {{ title: string; text: string }} props.problemData rendered in the "gap" box
@@ -44,12 +65,14 @@ const Overview = ({
   name,
   detail,
   imageSrc,
+  mobileImageSrc,
   imageAlt,
   framed = true,
   problemData,
 }) => {
   const rootRef = useRef(null);
   useReveal(rootRef);
+  const mobileSource = getMobileImageSource(mobileImageSrc);
 
   return (
     <OverviewSection
@@ -76,8 +99,12 @@ const Overview = ({
             )}
           </TextColumn>
           <ScreenshotColumn data-reveal="">
-            <Screenshot $framed={framed}>
-              {renderImage(imageSrc, imageAlt || `${name} overview`)}
+            <Screenshot $framed={framed} $hasMobileImage={Boolean(mobileSource)}>
+              {renderResponsiveImage(
+                imageSrc,
+                mobileSource,
+                imageAlt || `${name} overview`,
+              )}
             </Screenshot>
           </ScreenshotColumn>
         </OverviewGrid>

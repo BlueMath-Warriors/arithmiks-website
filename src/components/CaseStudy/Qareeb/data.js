@@ -37,6 +37,7 @@ export const getOverviewData = (images) => ({
   detail:
     "Qareeb is an AI meeting assistant for Arabic-speaking and international teams. It transcribes meetings into a searchable knowledge base you can query like a colleague.",
   imageSrc: images?.overviewImage,
+  mobileImageSrc: images?.overviewMobileImage,
   problemData: {
     title: "The Problem",
     text: "Teams were losing critical information to fragmented tools, scattered calendars, and unstructured transcripts. Notes lived in one place, recordings in another, follow-ups nowhere. Qareeb solves this by combining AI transcription, knowledge organization, and calendar intelligence into one platform for Arabic and English.",

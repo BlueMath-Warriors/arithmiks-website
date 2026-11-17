@@ -4,6 +4,9 @@ import { bandPadding } from "../layout.styled";
 
 const GAP_BOX_BLUE = "rgba(9, 87, 222, 0.7)";
 const SCREENSHOT_BLEED_RATIO = "calc(100% * 2036 / 1300)";
+// Shared with the <picture> source in index.jsx so the layout switch and the
+// image switch always happen at the same width.
+export const OVERVIEW_MOBILE_MAX_WIDTH = 1000;
 
 export const OverviewSection = styled.section`
   ${bandPadding}
@@ -145,8 +148,27 @@ export const Screenshot = styled.div`
     }
   `}
 
-  @media (max-width: 1000px) {
+  @media (max-width: ${OVERVIEW_MOBILE_MAX_WIDTH}px) {
     width: 100%;
     border-radius: clamp(14px, 2.5cqw, 30px);
+
+    // The desktop image is cropped on the right on purpose (it bleeds off the
+    // page), so phones get a separate uncropped image shown at its own height.
+    ${({ $hasMobileImage }) =>
+      $hasMobileImage &&
+      `
+      aspect-ratio: auto;
+
+      img {
+        height: auto;
+      }
+    `}
   }
+`;
+
+// display: contents takes the wrapper out of layout, so the <img> keeps sizing
+// against Screenshot exactly as it does without a <picture> (a bare <picture>
+// is inline and would break the img's height: 100%).
+export const ResponsivePicture = styled.picture`
+  display: contents;
 `;
