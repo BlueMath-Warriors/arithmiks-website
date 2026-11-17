@@ -56,7 +56,7 @@ const LinkIcon = () => (
 );
 
 /**
- * @param {{ job: import("../../../constants/jobs").jobs[number],
+ * @param {{ job: import("../../../constants/jobs").Job,
  *   onApply: (trigger: HTMLElement) => void }} props
  */
 const JobDetailHero = ({ job, onApply }) => {

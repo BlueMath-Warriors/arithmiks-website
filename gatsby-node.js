@@ -4,9 +4,13 @@
 
 const fs = require("fs");
 const path = require("path");
-const { jobs } = require("./src/constants/jobs");
+const { removeStaleStaticPages } = require("./src/server/build/removeStaleStaticPages.cjs");
 
 const WORDS_PER_MINUTE = 200;
+
+// Pages that used to be static and are now rendered on request (they export
+// getServerData). Add a page here when it changes from static to server-rendered.
+const REQUEST_TIME_PAGE_PATHS = ["/careers", "/careers/jobs"];
 
 const computeReadingTime = (filePath) => {
   if (!filePath || !fs.existsSync(filePath)) return 1;
@@ -69,20 +73,21 @@ exports.createResolvers = ({ createResolvers }) => {
   });
 };
 
+// Runs before the Netlify adapter stores its build cache and collects the
+// files to publish, so the cleanup also keeps future restored caches clean.
+exports.onPostBuild = async ({ reporter }) => {
+  const removed = await removeStaleStaticPages({
+    publicDir: path.join(process.cwd(), "public"),
+    pagePaths: REQUEST_TIME_PAGE_PATHS,
+  });
+  if (removed.length > 0) {
+    reporter.info(`Removed ${removed.length} stale static file(s) of request-time pages.`);
+  }
+};
+
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions;
   const blogPostTemplate = path.resolve("./src/templates/blog-post.jsx");
-  const jobDetailTemplate = path.resolve("./src/templates/job-detail.jsx");
-
-  // Static data (src/constants/jobs.js), not file-sourced content — no
-  // GraphQL query needed, unlike the MDX blog posts below.
-  jobs.forEach((job) => {
-    createPage({
-      path: `/careers/jobs/${job.slug}`,
-      component: jobDetailTemplate,
-      context: { slug: job.slug },
-    });
-  });
 
   const result = await graphql(`
     query {

@@ -102,7 +102,10 @@ module.exports = {
       resolve: `gatsby-plugin-sitemap`,
       options: {
         output: '/',
-        excludes: ['/404', '/404.html', '/search'],
+        // `/careers/jobs/[slug]` is the route template of the server-rendered job pages, not a real
+        // URL; the real job URLs come from /api/sitemap-jobs. Excludes are minimatch globs, so the
+        // template's brackets cannot be written literally.
+        excludes: ['/404', '/404.html', '/search', '/careers/jobs/*'],
         query: `
           {
             site {
@@ -129,7 +132,11 @@ module.exports = {
       resolve: 'gatsby-plugin-robots-txt',
       options: {
         host: 'https://arithmiks.com',
-        sitemap: 'https://arithmiks.com/sitemap-index.xml',
+        sitemap: [
+          'https://arithmiks.com/sitemap-index.xml',
+          // Job pages are rendered on request, so the build-time sitemap above cannot list them.
+          'https://arithmiks.com/api/sitemap-jobs',
+        ],
         policy: [
           { userAgent: '*', allow: '/', disallow: ['/404'] },
         ],

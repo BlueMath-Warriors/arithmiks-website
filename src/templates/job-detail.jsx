@@ -3,19 +3,22 @@ import Header from "../components/Landing/Header";
 import Footer from "../components/Landing/Footer";
 import JobDetailHero from "../components/Careers/JobDetailHero";
 import JobDetailBody from "../components/Careers/JobDetailBody";
+import JobsList from "../components/Careers/JobsList";
 import ApplyModal from "../components/Careers/ApplyModal";
 import ApplicationNotice from "../components/Careers/ApplicationNotice";
-import { SEO } from "../components/seo";
-import { getJobBySlug } from "../constants/jobs";
+import NotFoundPage from "../pages/404";
 import { track } from "../utils/analytics";
 
 /**
- * One page per role in `src/constants/jobs.js`, generated at build time by
- * the createPages loop in gatsby-node.js (`pageContext.slug` is set there).
- * Owns the Apply dialog state so the hero and body buttons share one dialog.
+ * One role's page, rendered on the server by src/pages/careers/jobs/[slug].js
+ * from the job loaded for that request. Owns the Apply dialog state so the
+ * hero and body buttons share one dialog.
+ *
+ * @param {{ job: import("../constants/jobs").Job | null, loadFailed?: boolean }} props
+ * `job` is null for an unknown slug; `loadFailed` means Contentful could not
+ * be reached, so we cannot tell whether the role exists.
  */
-const JobDetailTemplate = ({ pageContext }) => {
-  const job = getJobBySlug(pageContext.slug);
+const JobDetailTemplate = ({ job, loadFailed = false }) => {
   const [isApplyOpen, setIsApplyOpen] = React.useState(false);
   const [isNoticeVisible, setIsNoticeVisible] = React.useState(false);
   const applyTriggerRef = React.useRef(null);
@@ -32,9 +35,19 @@ const JobDetailTemplate = ({ pageContext }) => {
   const showNotice = React.useCallback(() => setIsNoticeVisible(true), []);
   const hideNotice = React.useCallback(() => setIsNoticeVisible(false), []);
 
-  // Guards a stale/renamed slug reaching the template (e.g. mid-edit of
-  // jobs.js) rather than rendering with `job` undefined.
-  if (!job) return null;
+  if (loadFailed) {
+    return (
+      <>
+        <Header white />
+        <main>
+          <JobsList jobs={[]} loadFailed />
+        </main>
+        <Footer />
+      </>
+    );
+  }
+
+  if (!job) return <NotFoundPage />;
 
   return (
     <>
@@ -57,24 +70,3 @@ const JobDetailTemplate = ({ pageContext }) => {
 };
 
 export default JobDetailTemplate;
-
-export const Head = ({ pageContext }) => {
-  const job = getJobBySlug(pageContext.slug);
-  if (!job) return null;
-
-  const breadcrumbItems = [
-    { name: "Home", pathname: "/" },
-    { name: "Careers", pathname: "/careers" },
-    { name: "Open Roles", pathname: "/careers/jobs" },
-    { name: job.title, pathname: `/careers/jobs/${job.slug}` },
-  ];
-
-  return (
-    <SEO
-      title={`${job.title} - Careers - Arithmiks`}
-      description={job.summary}
-      pathname={`/careers/jobs/${job.slug}`}
-      breadcrumbItems={breadcrumbItems}
-    />
-  );
-};

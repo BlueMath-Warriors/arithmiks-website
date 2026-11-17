@@ -14,7 +14,7 @@ const TITLE_ID = `${ID_PREFIX}-title`;
  * accidental close; it resets after a successful submit.
  *
  * @param {{
- *   job: import("../../../constants/jobs").jobs[number],
+ *   job: import("../../../constants/jobs").Job,
  *   isOpen: boolean,
  *   onClose: () => void,
  *   onSubmitted: () => void,
