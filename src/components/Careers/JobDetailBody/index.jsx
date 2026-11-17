@@ -35,7 +35,7 @@ const INFO_ROWS = (job) => [
 ];
 
 /**
- * @param {{ job: import("../../../constants/jobs").jobs[number],
+ * @param {{ job: import("../../../constants/jobs").Job,
  *   onApply: (trigger: HTMLElement) => void }} props
  */
 const JobDetailBody = ({ job, onApply }) => (
@@ -55,21 +55,15 @@ const JobDetailBody = ({ job, onApply }) => (
 
           <Heading>Job Description</Heading>
           <ParagraphList>
-            {job.description.intro.map((line) => (
-              <p key={line}>{line}</p>
-            ))}
-            {job.description.whatYouWillDo.map((line) => (
-              <p key={line}>{line}</p>
+            {job.description.map((line, index) => (
+              <p key={index}>{line}</p>
             ))}
           </ParagraphList>
 
           <Heading>Requirements</Heading>
           <ParagraphList>
-            {job.requirements.whatYouWillBring.map((line) => (
-              <p key={line}>{line}</p>
-            ))}
-            {job.requirements.niceToHave.map((line) => (
-              <p key={line}>{line}</p>
+            {job.requirements.map((line, index) => (
+              <p key={index}>{line}</p>
             ))}
           </ParagraphList>
 
